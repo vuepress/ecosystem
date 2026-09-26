@@ -52,15 +52,15 @@ Markdown 语法 `[[toc]]` 仅能在 Markdown 文件中使用。它是由 markdow
 ## 选项
 
 ::: fields
-@componentName@ type=string default=`'Toc'`
+@`componentName` type=string default=`'Toc'`
 
 指定目录组件的名称。
 
-@headersOptions@ type=GetHeadersOptions default=`{}`
+@`headersOptions` type=GetHeadersOptions default=`{}`
 
 覆盖组件 [headersOptions](#headersoptions-1) Prop 的默认值。
 
-@renderOptions@ type=TocRenderOptions default=`{}`
+@`renderOptions` type=TocRenderOptions default=`{}`
 
 覆盖组件 [renderOptions](#renderoptions-1) Prop 的默认值。
 
@@ -81,33 +81,33 @@ Markdown 语法 `[[toc]]` 仅能在 Markdown 文件中使用。它是由 markdow
 ```
 
 ::: fields
-@headers@ type=`PageHeader[]`
+@`headers` type=`PageHeader[]`
 
 指定要渲染的标题数组。如果该 Prop 没有被设置，默认会使用当前页面的标题。
 
-@@headers[].level@ type=number
+@@`headers[*].level` type=number
 
 标题的级别。
 
-@@headers[].title@ type=string
+@@`headers[*].title` type=string
 
 标题的文本。
 
-@@headers[].slug@ type=string
+@@`headers[*].slug` type=string
 
 标题的 slug。
 
-@@headers[].children@ type=`PageHeader[]`
+@@`headers[*].children` type=`PageHeader[]`
 
 标题的子标题。
 
-@headersOptions@ type=GetHeadersOptions
+@`headersOptions` type=GetHeadersOptions
 
 自定义标题提取行为。
 
 可用的选项详见 [GetHeadersOptions](../../tools/helper/client.md#getheaders)，它可以通过插件配置项中的 [headersOptions](#headersoptions) 来覆盖。
 
-@renderOptions@ type=TocRenderOptions
+@`renderOptions` type=TocRenderOptions
 
 自定义目录组件渲染行为。它可以通过插件配置项中的 [renderOptions](#renderoptions) 来覆盖。
 
@@ -144,35 +144,35 @@ Markdown 语法 `[[toc]]` 仅能在 Markdown 文件中使用。它是由 markdow
 </template>
 ```
 
-@@renderOptions.containerTag@ type=string default=`'nav'`
+@@`renderOptions.containerTag` type=string default=`'nav'`
 
 容器标签名。如果 `containerTag` 设置为空字符串 `''`，那么最外层的 `<nav>` Container 会被完全移除。
 
-@@renderOptions.containerClass@ type=string default=`'vuepress-toc'`
+@@`renderOptions.containerClass` type=string default=`'vuepress-toc'`
 
 容器类名。
 
-@@renderOptions.listClass@ type=string default=`'vuepress-toc-list'`
+@@`renderOptions.listClass` type=string default=`'vuepress-toc-list'`
 
 列表类名。
 
-@@renderOptions.itemClass@ type=string default=`'vuepress-toc-item'`
+@@`renderOptions.itemClass` type=string default=`'vuepress-toc-item'`
 
 列表项类名。
 
-@@renderOptions.linkTag@ type=`'a' | 'RouteLink' | 'RouterLink'` default=`'RouteLink'`
+@@`renderOptions.linkTag` type=`'a' | 'RouteLink' | 'RouterLink'` default=`'RouteLink'`
 
 链接标签类型。
 
-@@renderOptions.linkClass@ type=string default=`'vuepress-toc-link'`
+@@`renderOptions.linkClass` type=string default=`'vuepress-toc-link'`
 
 链接类名。
 
-@@renderOptions.linkActiveClass@ type=string default=`'active'`
+@@`renderOptions.linkActiveClass` type=string default=`'active'`
 
 激活链接的类名。
 
-@@renderOptions.linkChildrenActiveClass@ type=string default=`'active'`
+@@`renderOptions.linkChildrenActiveClass` type=string default=`'active'`
 
 子元素激活链接的类名。
 

@@ -30,137 +30,58 @@ export default {
 
 ## 选项
 
-### selector
+:::: fields
+@`selector` type=`string[] | string` default=`'[vp-content] div[class*="language-"] pre'`
 
-- 类型：`string | string[]`
-- 默认值：`'[vp-content] div[class*="language-"] pre'`
-- 详情：
+代码块的 CSS 选择器，用于确定需添加复制按钮的代码块范围。
 
-  代码块的 CSS 选择器，用于确定需添加复制按钮的代码块范围
+@`showInMobile` type=boolean
 
-### showInMobile
+是否在移动端设备上显示复制按钮。默认情况下，移动端不显示复制按钮以避免干扰内容浏览。
 
-- 类型：`boolean`
-- 默认值：`false`
-- 详情：
+@`duration` type=number default=`2000`
 
-  是否在移动端设备上显示复制按钮。默认情况下，移动端不显示复制按钮以避免干扰内容浏览
+复制成功提示消息的显示时间（毫秒）。设置为 `0` 将禁用提示信息。
 
-### duration
+@`ignoreSelector` type=`string[] | string`
 
-- 类型：`number`
-- 默认值：`2000`
-- 详情：
+指定复制代码时需要忽略的元素选择器。匹配的元素在复制时将被排除。
 
-  复制成功提示消息的显示时间（毫秒）。设置为 `0` 将禁用提示信息
+例如：`['.token.comment']` 将在复制时忽略代码块中所有带有类名 `.token.comment` 的元素（在 `prismjs` 高亮情况下，这会自动跳过注释内容）。
 
-### ignoreSelector
+@`inline` type=`string[] | boolean | string`
 
-- 类型：`string[] | string`
-- 默认值：`""`
-- 详情：
+配置行内代码（inline code）的双击复制功能：
 
-  指定复制代码时需要忽略的元素选择器。匹配的元素在复制时将被排除。
+- 设置为 `true`：启用默认选择器 `'[vp-content] :not(pre) > code'` 匹配行内代码元素。
+- 设置为 `false`：禁用行内代码双击复制功能。
+- 设置为自定义选择器：使用指定的选择器匹配行内代码元素。
 
-  例如：`['.token.comment']` 将在复制时忽略代码块中所有带有类名 `.token.comment` 的元素（在 `prismjs` 高亮情况下，这会自动跳过注释内容）
+@`transform` type=`(preElement: HTMLPreElement) => void` client="仅限组合式 API"
 
-### inline
+一个转换器，用于在复制之前对 `<pre>` 中代码块内容进行修改。该选项仅在使用 `useCopyCode()` 时有效。
 
-- 类型：`string[] | string | boolean`
-- 默认值：`false`
-- 详情：
+```ts title=".vuepress/client.ts"
+import { useCopyCode } from '@vuepress/plugin-copy-code/client'
 
-  配置行内代码（inline code）的双击复制功能：
-  - 设置为 `true`：启用默认选择器 `'[vp-content] :not(pre) > code'` 匹配行内代码元素
-  - 设置为 `false`：禁用行内代码双击复制功能
-  - 设置为自定义选择器：使用指定的选择器匹配行内代码元素
-
-### transform <Badge type="tip" text="仅限组合式 API" />
-
-- 类型：`(preElement: HTMLPreElement) => void`
-- 详情：
-
-  一个转换器，用于在复制之前对 `<pre>` 中代码块内容进行修改。该选项仅在使用 `useCopyCode()` 时有效。
-
-- 示例：
-
-  ```ts title=".vuepress/client.ts"
-  import { useCopyCode } from '@vuepress/plugin-copy-code/client'
-
-  export default {
-    setup() {
-      useCopyCode({
-        transform: (preElement) => {
-          // 删除 `.ignore` 类名的元素
-          preElement.querySelectorAll('.ignore').forEach((el) => el.remove())
-          // 插入版权信息
-          preElement.innerHTML += `\n Copied by VuePress`
-        },
-        // ...其它选项
-      })
-    },
-  }
-  ```
-
-### locales
-
-- 类型：`CopyCodePluginLocaleConfig`
-
-  ```ts
-  interface CopyCodePluginLocaleData {
-    /**
-     * 复制文字
-     */
-    copy: string
-
-    /**
-     * 已复制文字
-     */
-    copied: string
-  }
-
-  interface CopyCodePluginLocaleConfig {
-    [localePath: string]: Partial<CopyCodePluginLocaleData>
-  }
-  ```
-
-- 详情：
-
-  复制按钮插件的国际化配置。
-
-- 示例：
-
-  ```ts title=".vuepress/config.ts"
-  import { copyCodePlugin } from '@vuepress/plugin-copy-code'
-
-  export default {
-    locales: {
-      '/': {
-        // 这是一个支持的语言
-        lang: 'zh-CN',
+export default {
+  setup() {
+    useCopyCode({
+      transform: (preElement) => {
+        // 删除 `.ignore` 类名的元素
+        preElement.querySelectorAll('.ignore').forEach((el) => el.remove())
+        // 插入版权信息
+        preElement.innerHTML += `\n Copied by VuePress`
       },
-      '/xx/': {
-        // 这是一个没有收到插件支持的语言
-        lang: 'mm-NN',
-      },
-    },
+      // ...其它选项
+    })
+  },
+}
+```
 
-    plugins: [
-      copyCodePlugin({
-        locales: {
-          '/': {
-            // 覆盖复制按钮标签文字
-            copy: '复制此段代码',
-          },
+@`locales` type=`CopyCodePluginLocaleConfig`
 
-          '/xx/': {
-            // 在这里完整设置 `mm-NN` 的多语言配置
-          },
-        },
-      }),
-    ],
-  }
-  ```
+插件的多语言配置。
 
 ::: details 内置支持语言
 
@@ -185,6 +106,48 @@ export default {
 - **荷兰语** (nl-NL)
 
 :::
+
+@@`locales.<localePath>.copy` type=string
+
+复制按钮的文字。
+
+@@`locales.<localePath>.copied` type=string
+
+复制成功后的提示文字。
+
+```ts title=".vuepress/config.ts"
+import { copyCodePlugin } from '@vuepress/plugin-copy-code'
+
+export default {
+  locales: {
+    '/': {
+      // 这是一个支持的语言
+      lang: 'zh-CN',
+    },
+    '/xx/': {
+      // 这是一个没有收到插件支持的语言
+      lang: 'mm-NN',
+    },
+  },
+
+  plugins: [
+    copyCodePlugin({
+      locales: {
+        '/': {
+          // 覆盖复制按钮标签文字
+          copy: '复制此段代码',
+        },
+
+        '/xx/': {
+          // 在这里完整设置 `mm-NN` 的多语言配置
+        },
+      },
+    }),
+  ],
+}
+```
+
+::::
 
 ## 样式
 

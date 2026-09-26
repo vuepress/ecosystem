@@ -253,39 +253,39 @@ export default {
 ## 选项
 
 ::: fields
-@align@ type=boolean
+@`align` type=boolean
 
 是否启用对齐支持。
 
-@attrs@ type=`MarkdownItAttrsOptions | boolean`
+@`attrs` type=`MarkdownItAttrsOptions | boolean`
 
 是否启用 attrs 支持。你也可以传递一个对象来指定 [@mdit/plugin-attrs](https://mdit-plugins.github.io/zh/attrs.html#高级) 的选项。
 
-@layout@ type=boolean
+@`layout` type=boolean
 
 是否启用布局支持。
 
-@mark@ type=boolean
+@`mark` type=boolean
 
 是否启用标记格式支持。
 
-@spoiler@ type=boolean
+@`spoiler` type=boolean
 
 是否启用剧透支持。
 
-@steps@ type=boolean
+@`steps` type=boolean
 
 是否启用步骤支持。
 
-@sup@ type=boolean
+@`sup` type=boolean
 
 是否启用上标格式支持。
 
-@sub@ type=boolean
+@`sub` type=boolean
 
 是否启用下标格式支持。
 
-@custom@ type=`MarkdownItStylizeConfig[]`
+@`custom` type=`MarkdownItStylizeConfig[]`
 
 创建自定义样式化。详情请参阅 [@mdit/plugin-stylize](https://mdit-plugins.github.io/zh/stylize.html#使用)。
 

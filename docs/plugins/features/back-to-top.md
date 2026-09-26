@@ -27,19 +27,19 @@ export default {
 ## Options
 
 ::: fields
-@threshold@ type=number default=`100`
+@`threshold` type=number default=`100`
 
 Scroll threshold distance to display the back to top button (in pixels).
 
-@progress@ type=boolean default=`true`
+@`progress` type=boolean default=`true`
 
 Whether to display scroll progress.
 
-@locales@ type=`LocaleConfig<BackToTopPluginLocaleData>`
+@`locales` type=`LocaleConfig<BackToTopPluginLocaleData>`
 
 Locale config of the plugin.
 
-@@locales.backToTop@ type=string
+@@`locales.<localePath>.backToTop` type=string
 
 Label text of the back to top button.
 

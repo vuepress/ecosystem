@@ -45,11 +45,11 @@ export default {
 ## 选项
 
 ::: fields
-@cachePatterns@ type=`string[]` default=`[]`
+@`cachePatterns` type=`string[]` default=`[]`
 
 用于匹配需要移除的缓存名称的正则表达式模式。如果为空，将移除所有缓存。
 
-@swLocation@ type=string default=`'service-worker.js'`
+@`swLocation` type=string default=`'service-worker.js'`
 
 相对于 dest 文件夹的原始 service worker 位置。
 

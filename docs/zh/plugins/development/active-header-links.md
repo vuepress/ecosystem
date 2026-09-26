@@ -31,13 +31,13 @@ export default {
 ## 选项
 
 ::: fields
-@headerLinkSelector@ type=string default=`'a.vp-sidebar-item'`
+@`headerLinkSelector` type=string default=`'a.vp-sidebar-item'`
 
 _标题链接_ 的选择器。
 
 如果一个 _标题锚点_ 没有对应的 _标题链接_，那么即使滚动到这个 _标题锚点_，该插件也不会更改路由 Hash。
 
-@headerAnchorSelector@ type=string default=`'.header-anchor'`
+@`headerAnchorSelector` type=string default=`'.header-anchor'`
 
 _标题锚点_ 的选择器。
 
@@ -45,11 +45,11 @@ _标题锚点_ 的选择器。
 
 参考：[指南 > Markdown > 语法扩展 > 标题锚点](https://vuejs.press/zh/guide/markdown.html#标题锚点)。
 
-@delay@ type=number default=`200`
+@`delay` type=number default=`200`
 
 滚动事件监听器的 Debounce 延迟，单位为毫秒。
 
-@offset@ type=number default=`5`
+@`offset` type=number default=`5`
 
 判定 _标题锚点_ 是否激活时使用的偏移量，单位为像素。
 

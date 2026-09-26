@@ -31,20 +31,39 @@ export default {
 
 You can use `::: fields` container to describe field information, including field name, type, whether it's required, default value, etc.
 
-Inside the container, lines starting with `@name@` are field items. Attributes are appended after the closing `@`.
+Inside the container, a line starting with `@` followed by an inline code is a field item. Attributes are appended after the closing backtick.
 
 ```md
 ::: fields
-@theme@ type=ThemeConfig required default=`{ base: '/' }`
+@`theme` type=ThemeConfig required default=`{ base: '/' }`
 
 Theme Config
 
-@enabled@ type=boolean optional default=`true`
+@`enabled` type=boolean optional default=`true`
 
 Whether it's enabled
 
 :::
 ```
+
+### Field Name
+
+The name is an inline code, so it follows the inline code syntax and is always closed on the same line. This allows a path that describes a nested type to be written directly, such as an array element or a record value:
+
+```md
+::: fields
+@`contributors.info[*].username` type=string
+
+The username of each contributor.
+
+@`locales.<localePath>.title` type=string
+
+The title of each locale, where `<localePath>` is a locale path like `/` or `/zh/`.
+
+:::
+```
+
+`[*]` marks an array element, and `<key>` marks the value of a `Record`. Both are kept in the rendered name, while they are stripped when generating the [field id](#field-id).
 
 ### Attributes
 
@@ -65,11 +84,11 @@ Since `default` is rendered as plain text unless it is wrapped in backticks, use
 
 ```md
 ::: fields
-@size@ type=number default=`320px`
+@`size` type=number default=`320px`
 
 Rendered as inline code.
 
-@timeout@ type=number default="Determined by the theme, set it explicitly to override"
+@`timeout` type=number default="Determined by the theme, set it explicitly to override"
 
 Rendered as plain text.
 
@@ -80,24 +99,38 @@ Rendered as plain text.
 
 Each field item gets an `id` generated from its name, so that you can link to it directly (e.g. `#theme`). The id is generated with the same slugify function as headings (`markdown.anchor.slugify`, falling back to `markdown.slugify`), and is unique within the page.
 
+Array and record placeholders are stripped from the id: `contributors.info[*].username` gets `#contributors-info-username`, and `locales.<localePath>.title` gets `#locales-localepath-title`.
+
 ### Nesting
 
 Fields can be nested to describe fields of an object type. To create a field item inside another field, increase the starting `@` by one for each level of nesting.
 
 ```md
 ::: fields
-@options@ type=object
+@`options` type=object
 
 Options.
 
-@@options.name@ type=string
+@@`options.name` type=string
 
 Option name.
 
-@other@ type=string
+@`other` type=string
 
 Other field.
 
+:::
+```
+
+### Escaping
+
+Escape the `@` with `\` to keep a marker-like line as content:
+
+```md
+::: fields
+@`theme` type=object
+
+\@`not-a-field`
 :::
 ```
 
@@ -106,19 +139,19 @@ For more syntax details, see [@mdit/plugin-field](https://mdit-plugins.github.io
 ## Demo
 
 ::: fields
-@theme@ type=ThemeConfig required default=`{ base: '/' }`
+@`theme` type=ThemeConfig required default=`{ base: '/' }`
 
 Theme Config
 
-@enabled@ type=boolean optional default=`true`
+@`enabled` type=boolean optional default=`true`
 
 Whether it's enabled
 
-@timeout@ type=number default="Determined by the theme, set it explicitly to override"
+@`timeout` type=number default="Determined by the theme, set it explicitly to override"
 
 Descriptive default, rendered as plain text.
 
-@other@ type=string deprecated
+@`other` type=string deprecated
 
 Deprecated field
 
@@ -126,37 +159,29 @@ Deprecated field
 
 ## Options
 
-### fields
+::: fields
+@`fields` type=boolean
 
-- Type: `boolean`
-- Details: Whether to enable fields.
+Whether to enable the `::: fields` container.
 
-### locales
+@`locales` type=`MarkdownFieldPluginLocaleConfig`
 
-- Type: `MarkdownFieldPluginLocaleConfig`
+Locale config for badge texts, keyed by locale path (`/`, `/zh/`, ...).
 
-```ts
-interface MarkdownFieldPluginLocaleData {
-  /**
-   * Label text for the `default` attribute
-   */
-  default: string
+@@`locales.<localePath>.default` type=string
 
-  /**
-   * Badge text for the `required` attribute
-   */
-  required: string
+Label text for the `default` attribute.
 
-  /**
-   * Badge text for the `optional` attribute
-   */
-  optional: string
+@@`locales.<localePath>.required` type=string
 
-  /**
-   * Badge text for the `deprecated` attribute
-   */
-  deprecated: string
-}
-```
+Badge text for the `required` attribute.
 
-- Details: Locale config for badge texts.
+@@`locales.<localePath>.optional` type=string
+
+Badge text for the `optional` attribute.
+
+@@`locales.<localePath>.deprecated` type=string
+
+Badge text for the `deprecated` attribute.
+
+:::

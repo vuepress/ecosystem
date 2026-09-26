@@ -26,7 +26,9 @@ export default {
 }
 ```
 
-## 搜索索引
+## 指南
+
+### 搜索索引
 
 基于 [Orama](https://docs.orama.com/docs/orama-js/)，该插件能够提供快速的搜索体验，即使在大型站点上也是如此。
 
@@ -34,7 +36,7 @@ export default {
 
 如果要防止某个页面被索引，可以在其 Frontmatter 中设置 `search: false`。如果需要通过编程方式过滤页面（例如根据路径排除），可以使用 [`filter` 选项](#filter)。
 
-## 自定义字段
+### 自定义字段
 
 无论你是主题开发者还是普通用户，通过 Frontmatter 或 `extendsPage` 生命周期为页面添加额外数据是很常见的，在大多数情况下，你可能也希望索引这些数据。
 
@@ -119,12 +121,10 @@ export default defineUserConfig({
 
 ## 选项
 
-### indexContent
+:::: fields
+@`indexContent` type=boolean
 
-- 类型: `boolean`
-- 默认值: `false`
-
-是否启用内容索引。
+是否索引页面的全部内容。
 
 ::: tip
 
@@ -132,78 +132,69 @@ export default defineUserConfig({
 
 :::
 
-### preserveTags
+参见：[搜索索引](#搜索索引)。
 
-- 类型: `string[]`
-- 默认值: `[]`
+@`preserveTags` type=`string[]` default=`[]`
 
 需要在索引时保留内部内容的标签。
 
 默认情况下，索引器只会遍历一组内置的 HTML 标签来提取文本内容，并且会索引诸如 `pre`、`code` 中的代码内容。像 `script`、`style` 这类标签，以及不在这组内置标签中的自定义标签 / 组件，其内部内容会被整体跳过，不会进入索引。
 
+将标签名添加到 `preserveTags`，可以让索引器保留并遍历该标签的子文本，即使该标签本身不在默认的遍历集合中。标签名按小写匹配。
+
 对于一些会将其插槽内容渲染为普通文本的自定义 Vue 组件（如 `<human-only>contents</human-only>`），你可以将其标签名添加到这里，以便在搜索索引中保留其内部内容。
 
-### suggestion
-
-- 类型: `boolean`
-- 默认值: `true`
+@`suggestion` type=boolean default=`true`
 
 是否在搜索时显示建议。
 
-### customFields
-
-- 类型: `CustomFieldOptions[]`
-
-  ```ts
-  interface CustomFieldOptions {
-    /**
-     * 自定义字段获取器
-     */
-    getter: (page: Page) => string[] | string | null | undefined
-
-    /**
-     * 展示内容
-     *
-     * `$content` 会被 `getter` 返回的内容替换
-     *
-     * @default `$content`
-     */
-    formatter?: Record<string, string> | string
-  }
-  ```
+@`customFields` type=`CustomFieldOptions[]`
 
 自定义索引字段配置。
 
-### hotKeys
+参见：[自定义字段](#自定义字段)。
 
-- 类型: `(KeyOptions | string)[]`
+@@`customFields[*].getter` type=`(page: Page) => string[] | string | null | undefined` required
 
-  @[code ts](@vuepress/helper/src/shared/key.ts)
+该自定义字段的获取器。这个函数接收 `page` 对象作为参数，并返回需要被索引的值（可以是字符串、字符串数组，或者在缺失时返回 `null`/`undefined`）。
 
-- 默认值: `[{ key: "k", ctrl: true }, { key: "/", ctrl: true }]`
+@@`customFields[*].formatter` type=`Record<string, string> | string` default=`'$content'`
 
-指定热键的 [event.key](http://keycode.info/)。
+控制该条目在搜索结果中如何显示的格式字符串或对象。其中 `$content` 会被替换为 `getter` 返回的实际值。如果你的站点支持多语言，也可以将其设置为对象，以便为每种语言单独设置显示格式。
 
-当按下热键时，搜索框输入框将获得焦点。设置为空数组以禁用热键。
+@`hotKeys` type=`(KeyOptions | string)[]` default=`[{ key: 'k', ctrl: true }, { key: '/', ctrl: true }]`
 
-### queryHistoryCount
+指定热键的 [event.key](http://keycode.info/)。当按下热键时，搜索框输入框将获得焦点。设置为空数组以禁用热键。
 
-- 类型: `number`
-- 默认值: `5`
+@@`hotKeys[*].key` type=string required
+
+热键的 `event.key` 值。
+
+@@`hotKeys[*].ctrl` type=boolean
+
+是否同时按下 `event.ctrlKey`。
+
+@@`hotKeys[*].shift` type=boolean
+
+是否同时按下 `event.shiftKey`。
+
+@@`hotKeys[*].alt` type=boolean
+
+是否同时按下 `event.altKey`。
+
+@@`hotKeys[*].meta` type=boolean
+
+是否同时按下 `event.metaKey`。
+
+@`queryHistoryCount` type=number default=`5`
 
 最大存储的搜索查询历史记录数量，设置为 `0` 以禁用。
 
-### resultHistoryCount
-
-- 类型: `number`
-- 默认值: `5`
+@`resultHistoryCount` type=number default=`5`
 
 最大存储的匹配结果历史记录数量，设置为 `0` 以禁用。
 
-### searchDelay
-
-- 类型: `number`
-- 默认值: `150`
+@`searchDelay` type=number default=`150`
 
 输入后开始搜索的延迟时间（毫秒）。
 
@@ -213,58 +204,41 @@ export default defineUserConfig({
 
 :::
 
-### filter
+@`suggestDelay` type=number default=`0`
 
-- 类型: `(page: Page) => boolean`
-- 默认值: `() => true`
+输入后开始自动建议的延迟时间（毫秒）。
+
+@`filter` type=`(page: Page) => boolean` default=`() => true`
 
 用于过滤页面的函数。
 
-### sortStrategy
+@`sortStrategy` type=`'max' | 'total'` default=`'max'`
 
-- 类型: `"max" | "total"`
-- 默认值: `"max"`
+结果排序策略。当有多个匹配结果时，`max` 表示具有更高最大分数的页面将排在前面，`total` 表示具有更高总分数的页面将排在前面。
 
-结果排序策略。
-
-当有多个匹配结果时，结果将按此策略排序。`max` 表示具有更高最大分数的页面将排在前面。`total` 表示具有更高总分数的页面将排在前面。
-
-### worker
-
-- 类型: `string`
-- 默认值: `orama.worker.js`
+@`worker` type=string default=`'orama.worker.js'`
 
 输出 Worker 的文件名。
 
-### hotReload
-
-- 类型: `boolean`
-- 默认值: 是否启用了 `--debug` 标志
+@`hotReload` type=boolean default="同 --debug 标志的状态"
 
 是否在开发服务器中启用热重载。
 
 ::: note
 
-默认情况下它是禁用的，因为对于内容庞大的站点，此功能会对性能产生巨大影响，并在编辑 Markdown 时显著降低热重载速度。
+默认情况下它是禁用的，因为对于内容庞大的站点，此功能会对性能产生巨大影响。
 
 :::
 
-### indexOptions
-
-- 类型: `OramaIndexOptions`
-
-  ```ts
-  interface OramaIndexOptions {
-    /**
-     * 自定义分词器工厂
-     *
-     * 未提供时，会为语言环境的语言创建开箱即用的分词器。
-     */
-    tokenizer?: (language: string) => Tokenizer
-  }
-  ```
+@`indexOptions` type=OramaIndexOptions
 
 用于创建索引的选项。
+
+参见：[分词](#分词)、[自定义索引生成](#自定义索引生成)。
+
+@@`indexOptions.tokenizer` type=`(language: string) => Tokenizer`
+
+自定义分词器工厂。未提供时，会为语言环境的语言创建开箱即用的分词器。
 
 ::: warning
 
@@ -272,105 +246,13 @@ export default defineUserConfig({
 
 :::
 
-### indexLocaleOptions
-
-- 类型: `Record<string, OramaIndexOptions>`
+@`indexLocaleOptions` type=`Record<string, OramaIndexOptions>`
 
 每个语言环境用于创建索引的选项，对象键应为语言环境路径。
 
-### locales
+@`locales` type=`LocaleConfig<SearchLocaleData>`
 
-- 类型: `OramaLocaleConfig`
-
-  ```ts
-  interface OramaLocaleData {
-    /**
-     * 搜索框占位符
-     */
-    placeholder: string
-
-    /**
-     * 搜索文字
-     */
-    search: string
-
-    /**
-     * 清空搜索文字
-     */
-    clear: string
-
-    /**
-     * 移除当前条目
-     */
-    remove: string
-
-    /**
-     * 搜索中文字
-     */
-    searching: string
-
-    /**
-     * 取消文字
-     */
-    cancel: string
-
-    /**
-     * 默认标题
-     */
-    defaultTitle: string
-
-    /**
-     * 选择提示
-     */
-    select: string
-
-    /**
-     * 切换提示
-     */
-    navigate: string
-
-    /**
-     * 自动补全提示
-     */
-    autocomplete: string
-
-    /**
-     * 关闭提示
-     */
-    exit: string
-
-    /**
-     * 加载提示
-     */
-    loading: string
-
-    /**
-     * 搜索查询历史标题
-     */
-    queryHistory: string
-
-    /**
-     * 搜索结果历史标题
-     */
-    resultHistory: string
-
-    /**
-     * 搜索历史为空提示
-     */
-    emptyHistory: string
-
-    /**
-     * 结果为空提示
-     */
-    emptyResult: string
-  }
-
-  interface OramaLocaleConfig {
-    [localePath: string]: OramaLocaleData
-  }
-  ```
-
-搜索插件的多语言配置。
+搜索界面的多语言配置。搜索界面使用的任何文字都可以按语言环境路径覆盖。
 
 ::: details 内置支持的语言
 
@@ -394,6 +276,71 @@ export default defineUserConfig({
 - **荷兰语** (nl-NL)
 
 :::
+
+@@`locales.<localePath>.placeholder` type=string
+
+搜索框占位符。
+
+@@`locales.<localePath>.search` type=string
+
+搜索文字。
+
+@@`locales.<localePath>.clear` type=string
+
+清空搜索文字。
+
+@@`locales.<localePath>.remove` type=string
+
+移除当前条目。
+
+@@`locales.<localePath>.searching` type=string
+
+搜索中文字。
+
+@@`locales.<localePath>.cancel` type=string
+
+取消文字。
+
+@@`locales.<localePath>.defaultTitle` type=string
+
+默认标题。
+
+@@`locales.<localePath>.select` type=string
+
+选择提示。
+
+@@`locales.<localePath>.navigate` type=string
+
+切换提示。
+
+@@`locales.<localePath>.autocomplete` type=string
+
+自动补全提示。
+
+@@`locales.<localePath>.exit` type=string
+
+关闭提示。
+
+@@`locales.<localePath>.loading` type=string
+
+加载提示。
+
+@@`locales.<localePath>.queryHistory` type=string
+
+搜索查询历史标题。
+
+@@`locales.<localePath>.resultHistory` type=string
+
+搜索结果历史标题。
+
+@@`locales.<localePath>.emptyHistory` type=string
+
+搜索历史为空提示。
+
+@@`locales.<localePath>.emptyResult` type=string
+
+结果为空提示。
+::::
 
 ## Frontmatter
 

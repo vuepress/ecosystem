@@ -31,15 +31,15 @@ export default {
 ## Options
 
 ::: fields
-@dev@ type=boolean default=`true`
+@`dev` type=boolean default=`true`
 
 Whether to check dead links in markdown in dev server.
 
-@build@ type=`boolean | 'error'` default=`true`
+@`build` type=`boolean | 'error'` default=`true`
 
 Whether to check dead links in markdown during build. If set to `'error'`, the build will fail when dead links are found.
 
-@exclude@ type=`(string | RegExp)[] | ((link: string, isDev: boolean) => boolean)`
+@`exclude` type=`(string | RegExp)[] | ((link: string, isDev: boolean) => boolean)`
 
 Links to exclude from checking. You can use a list of strings or regular expressions, or a function that returns a boolean.
 

@@ -480,47 +480,47 @@ See also: [Shiki > Twoslash](https://shiki.style/packages/twoslash).
 ## Options
 
 ::: fields
-@langs@ type=`ShikiLang[]`
+@`langs` type=`ShikiLang[]`
 
 Additional languages to be parsed by Shiki.
 
 See also: [Languages](#languages).
 
-@langAlias@ type=`{ [lang: string]: string }`
+@`langAlias` type=`{ [lang: string]: string }`
 
 Custom language aliases for Shiki.
 
 See also: [Languages](#languages).
 
-@theme@ type=ShikiTheme default=`'nord'`
+@`theme` type=ShikiTheme default=`'nord'`
 
 Shiki theme applied to code blocks.
 
-@themes@ type=`{ light: ShikiTheme; dark: ShikiTheme }`
+@`themes` type=`{ light: ShikiTheme; dark: ShikiTheme }`
 
 Use different Shiki themes for light and dark mode. The styles of both themes are injected as `--shiki-light` and `--shiki-dark` CSS variables.
 
 See also: [Shiki Themes](#shiki-themes).
 
-@lineNumbers@ type=`boolean | number | 'disable'` default=`true`
+@`lineNumbers` type=`boolean | number | 'disable'` default=`true`
 
 Whether to enable line numbers. A number is the minimum number of lines required to enable line numbers on a code block, and `'disable'` turns the `:line-numbers` marker off completely.
 
 See also: [Line Numbers](#line-numbers).
 
-@highlightLines@ type=boolean default=`true`
+@`highlightLines` type=boolean default=`true`
 
 Whether to enable line highlighting with line range markers.
 
 See also: [Highlight Lines](#highlight-lines).
 
-@collapsedLines@ type=`boolean | number | 'disable'` default=`'disable'`
+@`collapsedLines` type=`boolean | number | 'disable'` default=`'disable'`
 
 Whether to enable code block collapsing. A number is the line to collapse from, and `true` is equivalent to `15`. Set it to `false` to support the `:collapsed-lines` marker without collapsing any code block by default.
 
 See also: [Collapsed Lines](#collapsed-lines).
 
-@codeBlockTitle@ type=`boolean | CodeBlockTitleRender` default=`true`
+@`codeBlockTitle` type=`boolean | CodeBlockTitleRender` default=`true`
 
 Whether to render a title bar for code blocks with `title="Title"` in the fence info.
 
@@ -532,41 +532,41 @@ type CodeBlockTitleRender = (title: string, code: string) => string
 
 See also: [Code Block Title](#code-block-title).
 
-@notationDiff@ type=boolean default=`false`
+@`notationDiff` type=boolean default=`false`
 
 Whether to enable the notation diff transformer.
 
-@notationFocus@ type=boolean default=`false`
+@`notationFocus` type=boolean default=`false`
 
 Whether to enable the notation focus transformer.
 
-@notationHighlight@ type=boolean default=`false`
+@`notationHighlight` type=boolean default=`false`
 
 Whether to enable the notation highlight transformer.
 
-@notationErrorLevel@ type=boolean default=`false`
+@`notationErrorLevel` type=boolean default=`false`
 
 Whether to enable the notation error level transformer.
 
-@notationWordHighlight@ type=boolean default=`false`
+@`notationWordHighlight` type=boolean default=`false`
 
 Whether to enable the notation word highlight transformer.
 
 See also: [Notation](#notation).
 
-@removeComments@ type=boolean default=`false`
+@`removeComments` type=boolean default=`false`
 
 Whether to remove comments from the code.
 
 See also: [Remove Comments](#remove-comments).
 
-@whitespace@ type=`boolean | 'all' | 'boundary' | 'leading' | 'trailing'` default=`false`
+@`whitespace` type=`boolean | 'all' | 'boundary' | 'leading' | 'trailing'` default=`false`
 
 Whether to render whitespace characters. `true` enables the syntax without rendering any whitespace by default, and `false` turns the `:whitespace` marker off completely.
 
 See also: [Render Whitespace](#render-whitespace).
 
-@twoslash@ type=`boolean | ShikiTwoslashOptions` default=`false`
+@`twoslash` type=`boolean | ShikiTwoslashOptions` default=`false`
 
 Whether to enable [twoslash](https://github.com/twoslashes/twoslash).
 
@@ -599,11 +599,11 @@ See also: [Twoslash Support](#twoslash-support).
 ## Advanced Options
 
 ::: fields
-@defaultLang@ type=string default=`'plain'`
+@`defaultLang` type=string default=`'plain'`
 
 Fallback language to use when the specified language is not available.
 
-@logLevel@ type=`'warn' | 'debug' | 'silent'` default=`'warn'`
+@`logLevel` type=`'warn' | 'debug' | 'silent'` default=`'warn'`
 
 Log level for Shiki language detection.
 
@@ -611,17 +611,17 @@ Log level for Shiki language detection.
 - `debug`: log every unknown code block with its file path (default when `--debug` flag is set)
 - `silent`: no warnings
 
-@preWrapper@ type=boolean default=`true`
+@`preWrapper` type=boolean default=`true`
 
 Whether to add an extra wrapper outside the `<pre>` tag.
 
 This wrapper is required by `lineNumbers` and `collapsedLines`, which means disabling it also disables line numbers and collapsed lines.
 
-@shikiSetup@ type=`(shiki: Highlighter) => void | Promise<void>`
+@`shikiSetup` type=`(shiki: Highlighter) => void | Promise<void>`
 
 A hook function to customize the Shiki highlighter instance.
 
-@transformers@ type=`ShikiTransformer[]`
+@`transformers` type=`ShikiTransformer[]`
 
 Shiki transformers, passed to the `codeToHtml()` method of Shiki.
 

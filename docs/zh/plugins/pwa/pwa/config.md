@@ -7,15 +7,15 @@ icon: settings-2
 ## 选项
 
 :::: fields
-@serviceWorkerFilename@ type=string default=`'service-worker.js'`
+@`serviceWorkerFilename` type=string default=`'service-worker.js'`
 
 Service Worker 文件路径。
 
-@showInstall@ type=boolean default=`true`
+@`showInstall` type=boolean default=`true`
 
 是否在 Service Worker 首次成功注册时显示 PWA 安装按钮。
 
-@manifest@ type=AppManifest
+@`manifest` type=AppManifest
 
 填充一个将被解析为 manifest.webmanifest 的对象。
 
@@ -42,7 +42,7 @@ Service Worker 文件路径。
 - [MDN Web Docs: Web App Manifest](https://developer.mozilla.org/zh-CN/docs/Web/Manifest)
 - [W3C Manifest](https://w3c.github.io/manifest/)
 
-@favicon@ type=string
+@`favicon` type=string
 
 `favicon.ico` 地址，填入绝对路径。
 
@@ -52,11 +52,11 @@ Service Worker 文件路径。
 
 :::
 
-@themeColor@ type=string default=`'#46bd87'`
+@`themeColor` type=string default=`'#46bd87'`
 
 PWA 的主题色。
 
-@maxSize@ type=number default=`2048`
+@`maxSize` type=number default=`2048`
 
 允许缓存的最大大小 (以 KB 为单位)。
 
@@ -68,15 +68,15 @@ PWA 的主题色。
 
 :::
 
-@cacheHTML@ type=boolean
+@`cacheHTML` type=boolean
 
 是否缓存主页和 404 错误页之外的 HTML 文件。
 
-@cacheImage@ type=boolean
+@`cacheImage` type=boolean
 
 是否缓存图片。
 
-@maxImageSize@ type=number default=`1024`
+@`maxImageSize` type=number default=`1024`
 
 图片允许缓存的最大大小 (以 KB 为单位)。
 
@@ -86,7 +86,7 @@ PWA 的主题色。
 
 :::
 
-@update@ type=`'available' | 'disable' | 'force' | 'hint'` default=`'available'`
+@`update` type=`'available' | 'disable' | 'force' | 'hint'` default=`'available'`
 
 发现新内容时的控制逻辑。
 
@@ -104,39 +104,39 @@ PWA 的主题色。
 
 :::
 
-@apple@ type=`ApplePwaOptions | false`
+@`apple` type=`ApplePwaOptions | false`
 
 支持苹果的特殊设置，忽略它们是安全的。
 
-@@apple.icon@ type=string
+@@`apple.icon` type=string
 
 填入苹果使用的图标地址，推荐 152×152 大小。
 
-@@apple.maskIcon@ type=string
+@@`apple.maskIcon` type=string
 
 Safari 图标。
 
-@@apple.statusBarColor@ type=`'black-translucent' | 'black' | 'default'` default=`'default'` deprecated
+@@`apple.statusBarColor` type=`'black-translucent' | 'black' | 'default'` default=`'default'` deprecated
 
 Safari 状态栏颜色。相关标签尚未标准化，你应该避免声明它。
 
-@foundComponent@ type=string default=`'PwaFoundPopup'`
+@`foundComponent` type=string default=`'PwaFoundPopup'`
 
 自定义的提示弹窗组件路径。
 
-@readyComponent@ type=string default=`'PwaReadyPopup'`
+@`readyComponent` type=string default=`'PwaReadyPopup'`
 
 自定义的更新弹窗组件路径。
 
-@appendBase@ type=boolean
+@`appendBase` type=boolean
 
 是否为选项中所有绝对链接添加 base。
 
-@generateSWConfig@ type=`Partial<GenerateSWOptions>`
+@`generateSWConfig` type=`Partial<GenerateSWOptions>`
 
 传递给 `workbox-build` 的选项，具体详情，请见 [Workbox 文档](https://developers.google.com/web/tools/workbox/reference-docs/latest/module-workbox-build#.generateSW)。
 
-@locales@ type=`LocaleConfig<PwaPluginLocaleData>`
+@`locales` type=`LocaleConfig<PwaPluginLocaleData>`
 
 PWA 插件的国际化配置，各语言的数据为 `PwaPluginLocaleData` 的一部分。
 
@@ -163,47 +163,47 @@ PWA 插件的国际化配置，各语言的数据为 `PwaPluginLocaleData` 的�
 
 :::
 
-@@locales.install@ type=string
+@@`locales.<localePath>.install` type=string
 
 安装按钮文字。
 
-@@locales.iOSInstall@ type=string
+@@`locales.<localePath>.iOSInstall` type=string
 
 iOS 安装文字。
 
-@@locales.cancel@ type=string
+@@`locales.<localePath>.cancel` type=string
 
 取消按钮文字。
 
-@@locales.close@ type=string
+@@`locales.<localePath>.close` type=string
 
 关闭按钮文字。
 
-@@locales.prevImage@ type=string
+@@`locales.<localePath>.prevImage` type=string
 
 上一张图片文字。
 
-@@locales.nextImage@ type=string
+@@`locales.<localePath>.nextImage` type=string
 
 下一张图片文字。
 
-@@locales.explain@ type=string
+@@`locales.<localePath>.explain` type=string
 
 安装解释。
 
-@@locales.desc@ type=string
+@@`locales.<localePath>.desc` type=string
 
 描述标签文字。
 
-@@locales.feature@ type=string
+@@`locales.<localePath>.feature` type=string
 
 特性标签文字。
 
-@@locales.hint@ type=string
+@@`locales.<localePath>.hint` type=string
 
 更新内容提示文字。
 
-@@locales.update@ type=string
+@@`locales.<localePath>.update` type=string
 
 更新内容可用文字。
 

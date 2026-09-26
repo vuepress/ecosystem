@@ -7,11 +7,11 @@ icon: settings-2
 ## 插件选项
 
 :::: fields
-@id@ type=string required
+@`id` type=string required
 
 插件实例的唯一标识符。用于隔离样式系统，避免不同插件或主题之间的重复注册与冲突。
 
-@config@ type=string default=`.vuepress/styles/${id}-config.scss`
+@`config` type=string default=`.vuepress/styles/${id}-config.scss`
 
 用户配置文件的路径，相对于源码目录。
 
@@ -23,7 +23,7 @@ icon: settings-2
 
 :::
 
-@defaultConfig@ type=string default=`"@vuepress/plugin-sass-palette/styles/default/config.scss"`
+@`defaultConfig` type=string default=`"@vuepress/plugin-sass-palette/styles/default/config.scss"`
 
 默认 Sass 配置文件的绝对路径。
 
@@ -33,7 +33,7 @@ icon: settings-2
 
 :::
 
-@palette@ type=string default=`.vuepress/styles/${id}-palette.scss`
+@`palette` type=string default=`.vuepress/styles/${id}-palette.scss`
 
 用户调色板文件的路径，相对于源码目录。
 
@@ -45,7 +45,7 @@ icon: settings-2
 
 :::
 
-@defaultPalette@ type=string
+@`defaultPalette` type=string
 
 默认调色板文件的绝对路径。
 
@@ -55,7 +55,7 @@ icon: settings-2
 
 :::
 
-@generator@ type=string
+@`generator` type=string
 
 自定义生成器文件的绝对路径。该文件用于基于调色板配置推导生成新的值。
 

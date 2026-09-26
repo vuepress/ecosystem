@@ -1,110 +1,82 @@
 # Giscus Options
 
-## Config
+## Options
 
-### repo
+::: fields
+@`repo` type=string required
 
-- Type: `string`
-- Required: Yes
-- Details: The name of repository to store discussions
+The name of repository to store discussions.
 
-### repoId
+@`repoId` type=string required
 
-- Type: `string`
-- Required: Yes
-- Details: The ID of repository to store discussions. Generate through [Giscus Page](https://giscus.app/)
+The ID of repository to store discussions. Generate through [Giscus Page](https://giscus.app/).
 
-### category
+@`category` type=string required
 
-- Type: `string`
-- Required: Yes
-- Details: The name of the discussion category
+The name of the discussion category.
 
-### categoryId
+@`categoryId` type=string required
 
-- Type: `string`
-- Required: Yes
-- Details: The ID of the discussion category. Generate through [Giscus Page](https://giscus.app/)
+The ID of the discussion category. Generate through [Giscus Page](https://giscus.app/).
 
-### mapping
+@`mapping` type=`'number' | 'og:title' | 'pathname' | 'specific' | 'title' | 'url'` default=`'pathname'`
 
-- Type: `string`
-- Default: `"pathname"`
-- Details: Page - Discussion mapping. For details see [Giscus Page](https://giscus.app/)
+Page - Discussion mapping. For details see [Giscus Page](https://giscus.app/).
 
-### strict
+@`strict` type=boolean default=`true`
 
-- Type: `boolean`
-- Default: `true`
-- Details: Whether to enable strict mapping
+Whether to enable strict mapping.
 
-### lazyLoading
+@`lazyLoading` type=boolean default=`true`
 
-- Type: `boolean`
-- Default: `true`
-- Details: Whether to enable lazy loading
+Whether to enable lazy loading.
 
-### reactionsEnabled
+@`reactionsEnabled` type=boolean default=`true`
 
-- Type: `boolean`
-- Default: `true`
-- Details: Whether to enable reactions
+Whether to enable reactions.
 
-### inputPosition
+@`inputPosition` type=`'top' | 'bottom'` default=`'top'`
 
-- Type: `"top" | "bottom"`
-- Default: `"top"`
-- Details: Input position
+Input position.
 
-### lightTheme
+@`lightTheme` type=GiscusTheme default=`'light'`
 
-- Type: `GiscusTheme`
+Giscus theme used in light mode. Should be a built-in theme keyword or a CSS link starting with `https://`.
 
-  ```ts
-  type GiscusTheme =
-    | 'dark_dimmed'
-    | 'dark_high_contrast'
-    | 'dark_protanopia'
-    | 'dark'
-    | 'light_high_contrast'
-    | 'light_protanopia'
-    | 'light'
-    | 'preferred_color_scheme'
-    | 'transparent_dark'
-    | `https://${string}`
-  ```
+Available themes:
 
-- Default: `"light"`
-- Details:
+- `'catppuccin_frappe'`
+- `'catppuccin_latte'`
+- `'catppuccin_macchiato'`
+- `'catppuccin_mocha'`
+- `'cobalt'`
+- `'dark_dimmed'`
+- `'dark_high_contrast'`
+- `'dark_protanopia'`
+- `'dark_tritanopia'`
+- `'dark'`
+- `'fro'`
+- `'gruvbox_dark'`
+- `'gruvbox_light'`
+- `'gruvbox'`
+- `'light_high_contrast'`
+- `'light_protanopia'`
+- `'light_tritanopia'`
+- `'light'`
+- `'noborder_dark'`
+- `'noborder_gray'`
+- `'noborder_light'`
+- `'preferred_color_scheme'`
+- `'purple_dark'`
+- `'transparent_dark'`
 
-  Giscus theme used in light mode
+@`darkTheme` type=GiscusTheme default=`'dark'`
 
-  Should be a built-in theme keyword or a CSS link starting with `https://`.
+Giscus theme used in dark mode. Should be a built-in theme keyword or a CSS link starting with `https://`.
 
-### darkTheme
+See `lightTheme` for the available themes.
 
-- Type: `GiscusTheme`
-
-  ```ts
-  type GiscusTheme =
-    | 'dark_dimmed'
-    | 'dark_high_contrast'
-    | 'dark_protanopia'
-    | 'dark'
-    | 'light_high_contrast'
-    | 'light_protanopia'
-    | 'light'
-    | 'preferred_color_scheme'
-    | 'transparent_dark'
-    | `https://${string}`
-  ```
-
-- Default: `"dark"`
-- Details:
-
-  Giscus theme used in dark mode
-
-  Should be a built-in theme keyword or a CSS link starting with `https://`.
+:::
 
 ## Plugin Config
 

@@ -51,11 +51,11 @@ Microsoft Clarity 是一款免费且易用的行为分析工具，旨在帮助�
 ## 选项
 
 ::: fields
-@id@ type=string required
+@`id` type=string required
 
 Microsoft Clarity 分配的项目 ID (Project ID)。你可以在 Clarity 控制台的“设置 (Settings)”页面中找到此 ID。
 
-@crossOrigin@ type=`'' | 'anonymous' | 'use-credentials'`
+@`crossOrigin` type=`'' | 'anonymous' | 'use-credentials'`
 
 注入脚本标签的 `crossorigin` 属性。用于配置加载 Clarity 资源时的 [CORS](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/CORS) 设置。
 

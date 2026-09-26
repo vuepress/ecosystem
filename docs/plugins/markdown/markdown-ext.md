@@ -121,7 +121,7 @@ You can use any mustache syntax as raw text in `v-pre` container:
 ## Options
 
 ::: fields
-@gfm@ type=boolean
+@`gfm` type=boolean
 
 Whether tweaks the behavior and features to be more similar to GitHub Flavored Markdown.
 
@@ -134,39 +134,39 @@ Whether tweaks the behavior and features to be more similar to GitHub Flavored M
 
 Note: Not all behavior is exactly the same as GitHub Flavored Markdown.
 
-@footnote@ type=boolean gfm=Yes
+@`footnote` type=boolean gfm=Yes
 
 Whether to enable footnote format support.
 
-@tasklist@ type=`MarkdownItTaskListOptions | boolean` gfm=Yes
+@`tasklist` type=`MarkdownItTaskListOptions | boolean` gfm=Yes
 
 Whether to enable tasklist format support. You can pass an object to config tasklist.
 
-@@tasklist.disabled@ type=boolean default=`true`
+@@`tasklist.disabled` type=boolean default=`true`
 
 Whether disable checkbox.
 
-@@tasklist.label@ type=boolean default=`true`
+@@`tasklist.label` type=boolean default=`true`
 
 Whether use `<label>` to wrap text.
 
-@breaks@ type=boolean gfm=Yes
+@`breaks` type=boolean gfm=Yes
 
 Whether convert `\n` in paragraphs into `<br>`s.
 
-@linkify@ type=boolean gfm=Yes
+@`linkify` type=boolean gfm=Yes
 
 Whether convert URL-like text into links.
 
-@component@ type=boolean
+@`component` type=boolean
 
 Whether to enable component fence support.
 
-@vPre@ type=boolean
+@`vPre` type=boolean
 
 Whether to enable v-pre wrapper.
 
-@cjkFriendly@ type=boolean
+@`cjkFriendly` type=boolean
 
 Whether to enable CJK-friendly support for emphasis marks. When not set, automatically enabled for CJK languages (`zh`, `ja`, `ko`) detected in site configuration.
 

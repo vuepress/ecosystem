@@ -51,7 +51,7 @@ window._hmt.push(['_trackEvent', 'category', 'action', 'label', 'value'])
 ## Options
 
 ::: fields
-@id@ type=string required
+@`id` type=string required
 
 The tracking ID for your Baidu Analytics account. This is usually the string found in the `hm.js` script URL provided by Baidu (e.g., `hm.js?your_tracking_id`).
 

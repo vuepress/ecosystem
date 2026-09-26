@@ -42,13 +42,13 @@ Google Analytics 4 默认[自动收集多种事件](https://support.google.com/a
 ## 选项
 
 ::: fields
-@id@ type=string required
+@`id` type=string required
 
 Google Analytics 4 的测定 ID（Measurement ID），通常以 `'G-'` 开头。
 
 请参考[官方指南](https://support.google.com/analytics/answer/9539598)查找你的测定 ID。请注意区分 Google Analytics 4 的测定 ID（"G-" ID）与 Universal Analytics 的追踪 ID（"UA-" ID）。
 
-@debug@ type=boolean
+@`debug` type=boolean
 
 设置为 `true` 以启用向 Google Analytics DebugView 发送事件的功能。这对于在开发过程中验证配置和调试事件数据非常有用。[了解更多关于 DebugView 的信息](https://support.google.com/analytics/answer/7201382)。
 

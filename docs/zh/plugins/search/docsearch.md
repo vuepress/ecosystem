@@ -176,45 +176,45 @@ new Crawler({
 ## 选项
 
 ::: fields
-@appId@ type=string required
+@`appId` type=string required
 
 定义你的 Algolia 应用 ID (Application ID)。
 
 参见：[DocSearch > Options > appId](https://docsearch.algolia.com/docs/api#appid)。
 
-@apiKey@ type=string required
+@`apiKey` type=string required
 
 DocSearch 团队提供的，或者你自己生成的搜索 API 密钥 (Search API Key)。
 
 参见：[DocSearch > Options > apiKey](https://docsearch.algolia.com/docs/api#apikey)。
 
-@indices@ type=`Array<string | DocSearchIndex>` required
+@`indices` type=`Array<string | DocSearchIndex>` required
 
 用于关键词搜索的索引列表，也可以为每个索引提供可选的 `searchParameters`。
 
 参见：[DocSearch > Options > indices](https://docsearch.algolia.com/docs/api#indices)。
 
-@placeholder@ type=string default=`'Search docs'`
+@`placeholder` type=string default=`'Search docs'`
 
 搜索输入框的占位符文本。
 
-@disableUserPersonalization@ type=boolean
+@`disableUserPersonalization` type=boolean
 
 是否禁用所有个性化功能，例如最近搜索和收藏的搜索。
 
-@initialQuery@ type=string
+@`initialQuery` type=string
 
 打开搜索模态框时的初始查询内容。
 
-@maxResultsPerGroup@ type=number default=`5`
+@`maxResultsPerGroup` type=number default=`5`
 
 每组（例如每个层级）显示的最大搜索结果数量。
 
-@translations@ type=`Partial<DocSearchTranslations>`
+@`translations` type=`Partial<DocSearchTranslations>`
 
 允许替换 DocSearch 按钮或模态框中的默认文本。
 
-@locales@ type=`LocaleConfig<DocSearchLocaleOptions>`
+@`locales` type=`LocaleConfig<DocSearchLocaleOptions>`
 
 该插件在不同语言环境下的配置。上述所有选项都可以针对特定语言路径进行覆盖。
 
@@ -250,7 +250,7 @@ export default {
 
 参见：[指南 > 多语言支持](https://vuejs.press/zh/guide/i18n.html)。
 
-@indexBase@ type=string default="站点 base"
+@`indexBase` type=string default="站点 base"
 
 生成搜索索引时站点的基础路径 (base path)。
 
@@ -258,7 +258,7 @@ export default {
 
 但是，如果你的不同部署使用了不同的 [base](https://vuejs.press/zh/reference/config.html#base) 路径，你需要将此选项设置为索引域名的 `base`，以确保在当前站点生成的搜索结果链接是正确的。
 
-@injectStyles@ type=boolean default=`true`
+@`injectStyles` type=boolean default=`true`
 
 是否注入 DocSearch 的默认样式。
 

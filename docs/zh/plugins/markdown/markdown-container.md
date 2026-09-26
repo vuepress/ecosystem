@@ -47,13 +47,13 @@ export default {
 ## 选项
 
 ::: fields
-@type@ type=string required
+@`type` type=string required
 
 容器的类型。
 
 它将会被用作 [markdown-it-container](https://github.com/markdown-it/markdown-it-container#api) 的 `name` 参数。
 
-@locales@ type=`Record<string, { defaultInfo: string }>` default=`{}`
+@`locales` type=`Record<string, { defaultInfo: string }>` default=`{}`
 
 容器在不同 locales 下的默认 `info`。
 
@@ -79,11 +79,11 @@ export default {
 
 参考：[指南 > 多语言支持](https://vuejs.press/zh/guide/i18n.html)。
 
-@@locales.defaultInfo@ type=string
+@@`locales.<localePath>.defaultInfo` type=string
 
 容器在该 locale 下的默认 `info`。
 
-@before@ type=`(info: string) => string`
+@`before` type=`(info: string) => string`
 
 一个用于渲染容器起始标签的函数。
 
@@ -98,7 +98,7 @@ export default {
   `<div class="custom-container ${type}">${info ? `<p class="custom-container-title">${info}</p>` : ''}\n`
 ```
 
-@after@ type=`(info: string) => string` @default=`(): string => '</div>\n'`
+@`after` type=`(info: string) => string` @default=`(): string => '</div>\n'`
 
 一个用于渲染容器结束标签的函数。
 
@@ -106,7 +106,7 @@ export default {
 
 如果你没有设置 [before](#before) 配置项，则该配置项也不会生效。
 
-@render@ type=`MarkdownItContainerRenderFunction`
+@`render` type=`MarkdownItContainerRenderFunction`
 
 [markdown-it-container](https://github.com/markdown-it/markdown-it-container#api) 的 `render` 配置项。
 
@@ -124,11 +124,11 @@ type MarkdownItContainerRenderFunction = (
 ) => string
 ```
 
-@validate@ type=`(params: string) => boolean`
+@`validate` type=`(params: string) => boolean`
 
 [markdown-it-container](https://github.com/markdown-it/markdown-it-container#api) 的 `validate` 配置项。
 
-@marker@ type=string default=`':'`
+@`marker` type=string default=`':'`
 
 [markdown-it-container](https://github.com/markdown-it/markdown-it-container#api) 的 `marker` 配置项。
 

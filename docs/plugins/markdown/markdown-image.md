@@ -158,35 +158,35 @@ If the image is standalone in a line, wrapped or not wrapped by link, it will be
 ## Options
 
 ::: fields
-@figure@ type=`MarkdownItFigureOptions | boolean`
+@`figure` type=`MarkdownItFigureOptions | boolean`
 
 Whether enable figure support.
 
-@lazyload@ type=boolean
+@`lazyload` type=boolean
 
 Whether to lazy load every image in page in native way.
 
-@mark@ type=`MarkdownItImgMarkOptions | boolean`
+@`mark` type=`MarkdownItImgMarkOptions | boolean`
 
 Whether enable image mark support.
 
-@@mark.light@ type=`string[]`
+@@`mark.light` type=`string[]`
 
 IDs for light mode only.
 
-@@mark.dark@ type=`string[]`
+@@`mark.dark` type=`string[]`
 
 IDs for dark mode only.
 
-@size@ type=boolean
+@`size` type=boolean
 
 Whether enable image size support.
 
-@obsidianSize@ type=boolean
+@`obsidianSize` type=boolean
 
 Whether enable obsidian image size support.
 
-@legacySize@ type=boolean deprecated
+@`legacySize` type=boolean deprecated
 
 Whether enable legacy image size support.
 

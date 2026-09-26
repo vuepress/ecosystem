@@ -480,47 +480,47 @@ console.log(a + b)
 ## 选项
 
 ::: fields
-@langs@ type=`ShikiLang[]`
+@`langs` type=`ShikiLang[]`
 
 被 Shiki 解析的额外语言。
 
 参考：[语言](#语言)。
 
-@langAlias@ type=`{ [lang: string]: string }`
+@`langAlias` type=`{ [lang: string]: string }`
 
 自定义 Shiki 语言别名。
 
 参考：[语言](#语言)。
 
-@theme@ type=ShikiTheme default=`'nord'`
+@`theme` type=ShikiTheme default=`'nord'`
 
 应用到代码块的 Shiki 主题。
 
-@themes@ type=`{ light: ShikiTheme; dark: ShikiTheme }`
+@`themes` type=`{ light: ShikiTheme; dark: ShikiTheme }`
 
 为亮色和暗色模式分别设置 Shiki 主题。两个主题的样式会分别通过 `--shiki-light` 和 `--shiki-dark` CSS 变量注入。
 
 参考：[Shiki 主题](#shiki-主题)。
 
-@lineNumbers@ type=`boolean | number | 'disable'` default=`true`
+@`lineNumbers` type=`boolean | number | 'disable'` default=`true`
 
 是否启用行号。数字表示代码块显示行号所需的最少行数，`'disable'` 表示完全关闭 `:line-numbers` 标记。
 
 参考：[行号](#行号)。
 
-@highlightLines@ type=boolean default=`true`
+@`highlightLines` type=boolean default=`true`
 
 是否启用行数标记的行高亮。
 
 参考：[行高亮](#行高亮)。
 
-@collapsedLines@ type=`boolean | number | 'disable'` default=`'disable'`
+@`collapsedLines` type=`boolean | number | 'disable'` default=`'disable'`
 
 是否启用折叠代码块。数字表示开始折叠的行号，`true` 等同于 `15`。设置为 `false` 时支持 `:collapsed-lines` 标记，但默认不折叠任何代码块。
 
 参考：[折叠代码块](#折叠代码块)。
 
-@codeBlockTitle@ type=`boolean | CodeBlockTitleRender` default=`true`
+@`codeBlockTitle` type=`boolean | CodeBlockTitleRender` default=`true`
 
 是否为信息描述中带有 `title="标题"` 的代码块渲染标题栏。
 
@@ -532,41 +532,41 @@ type CodeBlockTitleRender = (title: string, code: string) => string
 
 参考：[代码块标题](#代码块标题)。
 
-@notationDiff@ type=boolean default=`false`
+@`notationDiff` type=boolean default=`false`
 
 是否启用差异标记转换器。
 
-@notationFocus@ type=boolean default=`false`
+@`notationFocus` type=boolean default=`false`
 
 是否启用聚焦标记转换器。
 
-@notationHighlight@ type=boolean default=`false`
+@`notationHighlight` type=boolean default=`false`
 
 是否启用高亮标记转换器。
 
-@notationErrorLevel@ type=boolean default=`false`
+@`notationErrorLevel` type=boolean default=`false`
 
 是否启用错误级别标记转换器。
 
-@notationWordHighlight@ type=boolean default=`false`
+@`notationWordHighlight` type=boolean default=`false`
 
 是否启用词高亮标记转换器。
 
 参考：[标记](#标记)。
 
-@removeComments@ type=boolean default=`false`
+@`removeComments` type=boolean default=`false`
 
 是否从代码中移除注释。
 
 参考：[移除注释](#移除注释)。
 
-@whitespace@ type=`boolean | 'all' | 'boundary' | 'leading' | 'trailing'` default=`false`
+@`whitespace` type=`boolean | 'all' | 'boundary' | 'leading' | 'trailing'` default=`false`
 
 是否渲染空白符。`true` 表示启用该语法但默认不渲染任何空白符，`false` 表示完全关闭 `:whitespace` 标记。
 
 参考：[渲染空白符](#渲染空白符)。
 
-@twoslash@ type=`boolean | ShikiTwoslashOptions` default=`false`
+@`twoslash` type=`boolean | ShikiTwoslashOptions` default=`false`
 
 是否启用 [twoslash](https://github.com/twoslashes/twoslash)。
 
@@ -599,11 +599,11 @@ interface ShikiTwoslashOptions extends TransformerTwoslashOptions {
 ## 高级选项
 
 ::: fields
-@defaultLang@ type=string default=`'plain'`
+@`defaultLang` type=string default=`'plain'`
 
 指定语言不可用时所使用的备选语言。
 
-@logLevel@ type=`'warn' | 'debug' | 'silent'` default=`'warn'`
+@`logLevel` type=`'warn' | 'debug' | 'silent'` default=`'warn'`
 
 Shiki 语言检测的日志级别。
 
@@ -611,17 +611,17 @@ Shiki 语言检测的日志级别。
 - `debug`：每次检测到未知代码块时记录其文件路径（设置 `--debug` 标记时默认）
 - `silent`：不发出警告
 
-@preWrapper@ type=boolean default=`true`
+@`preWrapper` type=boolean default=`true`
 
 是否在 `<pre>` 标签外添加包裹容器。
 
 `lineNumbers` 和 `collapsedLines` 依赖于这个额外的包裹层，也就是说禁用它会同时禁用行号和折叠代码块。
 
-@shikiSetup@ type=`(shiki: Highlighter) => void | Promise<void>`
+@`shikiSetup` type=`(shiki: Highlighter) => void | Promise<void>`
 
 用于自定义 Shiki 高亮器的钩子函数。
 
-@transformers@ type=`ShikiTransformer[]`
+@`transformers` type=`ShikiTransformer[]`
 
 添加 Shiki 转换器，会被传递到 Shiki 的 `codeToHtml()` 方法。
 

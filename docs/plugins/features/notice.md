@@ -113,71 +113,71 @@ However, if you want users to acknowledge the notice, set `confirm: true` so use
 ## Options
 
 ::: fields
-@config@ type=`NoticeOptions[]` required
+@`config` type=`NoticeOptions[]` required
 
 Notice configuration. Each item needs a `path` or a `match` to decide which pages the notice appears on, see [Path Matching](#path-matching).
 
-@@config.path@ type=string
+@@`config[*].path` type=string
 
 Path prefix to match.
 
-@@config.match@ type=`RegExp`
+@@`config[*].match` type=`RegExp`
 
 A regexp matching the notice path.
 
-@@config.title@ type=string required
+@@`config[*].title` type=string required
 
 Notice title, which supports both text and HTML strings.
 
-@@config.content@ type=string
+@@`config[*].content` type=string
 
 Notice content, which supports text, HTML strings, and Markdown. Set `contentType` to `markdown` when using Markdown.
 
-@@config.contentType@ type=`'html' | 'markdown'` default=`'html'`
+@@`config[*].contentType` type=`'html' | 'markdown'` default=`'html'`
 
 Notice content type.
 
-@@config.contentFile@ type=string
+@@`config[*].contentFile` type=string
 
 Absolute path of the notice content file, whose format should be `.md` or `.html`. The file content is used as `content` with a higher priority.
 
-@@config.key@ type=string
+@@`config[*].key` type=string
 
 Notice key, used to identify and store the notice status.
 
 See also: [Display Control](#display-control).
 
-@@config.showOnce@ type=boolean
+@@`config[*].showOnce` type=boolean
 
 Whether to show the notice only once instead of on every visit.
 
 See also: [Display Control](#display-control).
 
-@@config.confirm@ type=boolean
+@@`config[*].confirm` type=boolean
 
 Whether the notice shall be confirmed.
 
 See also: [Close Button](#close-button).
 
-@@config.fullscreen@ type=boolean
+@@`config[*].fullscreen` type=boolean
 
 Whether the notice should appear fullscreen.
 
 See also: [Fullscreen Mode](#fullscreen-mode).
 
-@@config.actions@ type=`NoticeActionOption[]`
+@@`config[*].actions` type=`NoticeActionOption[]`
 
 Notice actions.
 
-@@@config.actions.text@ type=string required
+@@@`config[*].actions[*].text` type=string required
 
 Action text.
 
-@@@config.actions.link@ type=string
+@@@`config[*].actions[*].link` type=string
 
 Action link. Pathnames are treated as internal route links and handled by the router, while full URLs are treated as external links and opened in a new window.
 
-@@@config.actions.type@ type=`'default' | 'primary'` default=`'default'`
+@@@`config[*].actions[*].type` type=`'default' | 'primary'` default=`'default'`
 
 Action type.
 

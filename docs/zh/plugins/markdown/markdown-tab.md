@@ -253,11 +253,11 @@ npm i -D @vuepress/plugin-markdown-tab
 ## 选项
 
 ::: fields
-@tabs@ type=boolean
+@`tabs` type=boolean
 
 是否启用选项卡。
 
-@codeTabs@ type=boolean
+@`codeTabs` type=boolean
 
 是否启用代码选项卡。
 

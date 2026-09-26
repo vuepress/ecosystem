@@ -31,20 +31,39 @@ export default {
 
 你可以使用 `::: fields` 容器描述字段信息，包括字段名称、类型、是否必填、默认值等。
 
-在容器内部，以 `@名称@` 开头的行是字段项目。属性附加在闭合的 `@` 之后。
+在容器内部，以 `@` 加一段行内代码开头的行是字段项目。属性附加在闭合的反引号之后。
 
 ```md
 ::: fields
-@theme@ type=ThemeConfig required default=`{ base: '/' }`
+@`theme` type=ThemeConfig required default=`{ base: '/' }`
 
 主题配置
 
-@enabled@ type=boolean optional default=`true`
+@`enabled` type=boolean optional default=`true`
 
 是否启用
 
 :::
 ```
+
+### 字段名称
+
+名称是一段行内代码，因此遵循行内代码语法，且必须在同一行闭合。这使得描述嵌套类型的路径可以直接书写，例如数组元素或 Record 的值：
+
+```md
+::: fields
+@`contributors.info[*].username` type=string
+
+每个贡献者的用户名。
+
+@`locales.<localePath>.title` type=string
+
+每个语言的标题，其中 `<localePath>` 是 `/`、`/zh/` 这样的语言路径。
+
+:::
+```
+
+`[*]` 标记数组元素，`<key>` 标记 `Record` 的值。两者都会保留在渲染出的名称中，但在生成[字段 ID](#字段-id) 时会被去除。
 
 ### 属性
 
@@ -65,11 +84,11 @@ export default {
 
 ```md
 ::: fields
-@size@ type=number default=`320px`
+@`size` type=number default=`320px`
 
 渲染为行内代码。
 
-@timeout@ type=number default="由主题决定，显式设置可覆盖"
+@`timeout` type=number default="由主题决定，显式设置可覆盖"
 
 渲染为普通文字。
 
@@ -80,24 +99,38 @@ export default {
 
 每个字段项目都会根据其名称生成一个 `id`，以便你可以直接链接到它（例如 `#theme`）。该 id 使用与标题相同的 slugify 函数（`markdown.anchor.slugify`，回退到 `markdown.slugify`）生成，并在页面内保持唯一。
 
+数组和 Record 的占位符会从 id 中去除：`contributors.info[*].username` 得到 `#contributors-info-username`，`locales.<localePath>.title` 得到 `#locales-localepath-title`。
+
 ### 嵌套
 
 字段可以嵌套以描述对象类型的字段。要在另一个字段内创建字段项目，每个嵌套级别将起始 `@` 增加一个。
 
 ```md
 ::: fields
-@options@ type=object
+@`options` type=object
 
 选项。
 
-@@options.name@ type=string
+@@`options.name` type=string
 
 选项名称。
 
-@other@ type=string
+@`other` type=string
 
 其他字段。
 
+:::
+```
+
+### 转义
+
+使用 `\` 转义 `@`，即可把类似标记的一行保留为内容：
+
+```md
+::: fields
+@`theme` type=object
+
+\@`not-a-field`
 :::
 ```
 
@@ -106,19 +139,19 @@ export default {
 ## 演示
 
 ::: fields
-@theme@ type=ThemeConfig required default=`{ base: '/' }`
+@`theme` type=ThemeConfig required default=`{ base: '/' }`
 
 主题配置
 
-@enabled@ type=boolean optional default=`true`
+@`enabled` type=boolean optional default=`true`
 
 是否启用
 
-@timeout@ type=number default="由主题决定，显式设置可覆盖"
+@`timeout` type=number default="由主题决定，显式设置可覆盖"
 
 描述性默认值，渲染为普通文字。
 
-@other@ type=string deprecated
+@`other` type=string deprecated
 
 已弃用字段
 
@@ -126,37 +159,29 @@ export default {
 
 ## 选项
 
-### fields
+::: fields
+@`fields` type=boolean
 
-- 类型：`boolean`
-- 详情：是否启用字段容器。
+是否启用 `::: fields` 容器。
 
-### locales
+@`locales` type=`MarkdownFieldPluginLocaleConfig`
 
-- 类型：`MarkdownFieldPluginLocaleConfig`
+徽章文本的国际化配置，以语言路径（`/`、`/zh/` 等）为键。
 
-```ts
-interface MarkdownFieldPluginLocaleData {
-  /**
-   * `default` 属性的标签文本
-   */
-  default: string
+@@`locales.<localePath>.default` type=string
 
-  /**
-   * `required` 属性的徽章文本
-   */
-  required: string
+`default` 属性的标签文本。
 
-  /**
-   * `optional` 属性的徽章文本
-   */
-  optional: string
+@@`locales.<localePath>.required` type=string
 
-  /**
-   * `deprecated` 属性的徽章文本
-   */
-  deprecated: string
-}
-```
+`required` 属性的徽章文本。
 
-- 详情：徽章文本的国际化配置。
+@@`locales.<localePath>.optional` type=string
+
+`optional` 属性的徽章文本。
+
+@@`locales.<localePath>.deprecated` type=string
+
+`deprecated` 属性的徽章文本。
+
+:::

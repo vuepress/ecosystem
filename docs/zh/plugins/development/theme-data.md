@@ -33,7 +33,7 @@ export default {
 ## 选项
 
 :::: fields
-@themeData@ type=ThemeData required
+@`themeData` type=ThemeData required
 
 你希望在客户端中使用的主题数据对象。
 

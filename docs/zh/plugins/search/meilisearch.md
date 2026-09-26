@@ -335,35 +335,35 @@ jobs:
 ## 选项
 
 ::: fields
-@host@ type=string required
+@`host` type=string required
 
 MeiliSearch API 的 HTTP 地址。
 
-@apiKey@ type=string required
+@`apiKey` type=string required
 
 MeiliSearch 生成的仅限搜索的 API 密钥。
 
-@indexUid@ type=string required
+@`indexUid` type=string required
 
 用于搜索的索引名称。
 
-@locales@ type=`LocaleConfig<MeiliSearchDocSearchLocaleOptions>`
+@`locales` type=`LocaleConfig<MeiliSearchDocSearchLocaleOptions>`
 
 该插件在不同语言环境下的配置。上述所有选项都可以针对特定语言路径进行覆盖。
 
-@translations@ type=DocSearchTranslations
+@`translations` type=DocSearchTranslations
 
 允许你替换 DocSearch 按钮和弹出框中的默认文本。
 
-@hotKeys@ type=`string[] | false` default=`['ctrl+k', 's', '/']`
+@`hotKeys` type=`string[] | false` default=`['ctrl+k', 's', '/']`
 
 触发搜索框的热键数组。当设置 `false` 时无法用任何快捷键触发搜索框。
 
-@debounceDuration@ type=`number | false` default=`200`
+@`debounceDuration` type=`number | false` default=`200`
 
 在按键之间等待的毫秒数，以确定是否应该进行搜索。设置 `0` 或者 `false` 逻辑上是等效的。
 
-@searchParams@ type=SearchParams
+@`searchParams` type=SearchParams
 
 MeiliSearch API 的参数。
 

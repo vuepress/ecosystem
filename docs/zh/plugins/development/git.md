@@ -43,122 +43,122 @@ export default {
 ## 选项
 
 ::: fields
-@createdTime@ type=boolean default=`true`
+@`createdTime` type=boolean default=`true`
 
 是否收集页面的创建时间。
 
-@updatedTime@ type=boolean default=`true`
+@`updatedTime` type=boolean default=`true`
 
 是否收集页面的更新时间。
 
-@contributors@ type=`ContributorsOptions | boolean` default=`true`
+@`contributors` type=`ContributorsOptions | boolean` default=`true`
 
 是否收集页面的贡献者信息。你也可以传入一个对象进行配置。
 
-@@contributors.info@ type=`ContributorInfo[]`
+@@`contributors.info` type=`ContributorInfo[]`
 
 预定义的贡献者信息。
 
-@@@contributors.info[].username@ type=string required
+@@@`contributors.info[*].username` type=string required
 
 贡献者在 git 托管服务上的用户名。
 
-@@@contributors.info[].name@ type=string
+@@@`contributors.info[*].name` type=string
 
 页面上显示的贡献者名称，默认为 `username`。
 
-@@@contributors.info[].alias@ type=`string[] | string`
+@@@`contributors.info[*].alias` type=`string[] | string`
 
 贡献者的别名。因为贡献者在本地 git 配置中保存的用户名可能与托管服务上的用户名不同，在这种情况下，可以使用别名映射到实际的用户名。
 
-@@@contributors.info[].email@ type=string
+@@@`contributors.info[*].email` type=string
 
 贡献者的主要邮箱。
 
-@@@contributors.info[].emailAlias@ type=`string[] | string`
+@@@`contributors.info[*].emailAlias` type=`string[] | string`
 
 贡献者在 Git 托管服务上的备用邮箱，或者他们过去使用过的邮箱。
 
-@@@contributors.info[].avatar@ type=string
+@@@`contributors.info[*].avatar` type=string
 
 贡献者的头像 url。如果 git 托管服务是 `github`，可以忽略并留空，插件会自动填充它。
 
-@@@contributors.info[].url@ type=string
+@@@`contributors.info[*].url` type=string
 
 贡献者的主页 url。如果 git 托管服务是 `github`，可以忽略并留空，插件会自动填充它。
 
-@@contributors.avatar@ type=boolean default=`false`
+@@`contributors.avatar` type=boolean default=`false`
 
 是否在贡献者信息中添加头像。
 
-@@contributors.avatarPattern@ type=string
+@@`contributors.avatarPattern` type=string
 
 头像 url 模式。
 
 - `:username` - 贡献者的用户名
 
-@@contributors.transform@ type=`(contributors: GitContributorInfo[]) => GitContributorInfo[]`
+@@`contributors.transform` type=`(contributors: GitContributorInfo[]) => GitContributorInfo[]`
 
 转换贡献者列表的函数，例如去重和排序。输入是插件收集到的贡献者列表，输出应该是转换后的贡献者列表。
 
-@changelog@ type=`ChangelogOptions | boolean` default=`false`
+@`changelog` type=`ChangelogOptions | boolean` default=`false`
 
 是否收集页面的变更日志。你也可以传入一个对象进行配置。
 
-@@changelog.maxCount@ type=number
+@@`changelog.maxCount` type=number
 
 变更日志的最大条目数。
 
-@@changelog.repoUrl@ type=string
+@@`changelog.repoUrl` type=string
 
 git 仓库的 url，例如 `https://github.com/vuepress/ecosystem`。
 
-@@changelog.commitUrlPattern@ type=string default=`':repo/commit/:hash'`
+@@`changelog.commitUrlPattern` type=string default=`':repo/commit/:hash'`
 
 提交记录 url 模式。
 
 - `:repo` - git 仓库的 url
 - `:hash` - 提交记录的哈希值
 
-@@changelog.issueUrlPattern@ type=string default=`':repo/issues/:issue'`
+@@`changelog.issueUrlPattern` type=string default=`':repo/issues/:issue'`
 
 Issue url 模式。
 
 - `:repo` - git 仓库的 url
 - `:issue` - Issue 的 ID
 
-@@changelog.tagUrlPattern@ type=string default=`':repo/releases/tag/:tag'`
+@@`changelog.tagUrlPattern` type=string default=`':repo/releases/tag/:tag'`
 
 Tag url 模式。
 
 - `:repo` - git 仓库的 url
 - `:tag` - Tag 的名称
 
-@filter@ type=`(page: Page) => boolean`
+@`filter` type=`(page: Page) => boolean`
 
 页面过滤器。如果返回 `true`，则该页面将收集 git 信息。
 
-@locales@ type=`Record<string, GitLocaleData>`
+@`locales` type=`Record<string, GitLocaleData>`
 
 多语言配置，用于 [Git 组件](#component)。
 
-@@locales.contributors@ type=string
+@@`locales.<localePath>.contributors` type=string
 
 贡献者标题。
 
-@@locales.changelog@ type=string
+@@`locales.<localePath>.changelog` type=string
 
 变更日志标题。
 
-@@locales.timeOn@ type=string
+@@`locales.<localePath>.timeOn` type=string
 
 用于表示提交时间 "在" 某时的词语。
 
-@@locales.viewChangelog@ type=string
+@@`locales.<localePath>.viewChangelog` type=string
 
 查看变更日志按钮的文字。
 
-@@locales.latestUpdateAt@ type=string
+@@`locales.<localePath>.latestUpdateAt` type=string
 
 最近更新的文字。
 
@@ -167,7 +167,7 @@ Tag url 模式。
 ## Frontmatter
 
 ::: fields
-@gitInclude@ type=`string[]`
+@`gitInclude` type=`string[]`
 
 一个包含相对路径的数组。在计算页面数据（如时间、贡献者）时，会将这些文件的 Git 历史也包含在内。
 
@@ -179,7 +179,7 @@ gitInclude:
 ---
 ```
 
-@contributors@ type=`boolean | string[]`
+@`contributors` type=`boolean | string[]`
 
 是否收集当前页面的贡献者信息，此值将覆盖全局的 [contributors](#contributors) 配置项。
 
@@ -187,7 +187,7 @@ gitInclude:
 - `false` - 不收集贡献者信息
 - `string[]` - 额外的贡献者列表。有时页面会有额外的贡献者（例如不在 git 历史中），可以使用此配置项指定额外的贡献者列表以获取其详细信息。
 
-@changelog@ type=boolean
+@`changelog` type=boolean
 
 是否收集当前页面的变更历史，此值将覆盖全局的 [changelog](#changelog) 配置项。
 

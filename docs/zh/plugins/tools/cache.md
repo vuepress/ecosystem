@@ -41,14 +41,14 @@ export default {
 ## 选项
 
 ::: fields
-@type@ type=`'filesystem' | 'memory'` default=`'memory'`
+@`type` type=`'filesystem' | 'memory'` default=`'memory'`
 
 缓存类型。
 
 - `'memory'`: 内存缓存，可以获得最佳的优化效果，但随着项目规模增长，内存占用更多，适合页面较少的项目。
 - `'filesystem'`: 文件系统缓存，对于包含许多页面的复杂项目，建议使用。
 
-@enableInCi@ type=boolean
+@`enableInCi` type=boolean
 
 在 CI 环境中是否启用缓存。
 

@@ -254,39 +254,39 @@ Also, you can use `stylize` in frontmatter to provide extra stylize rules for co
 ## Options
 
 ::: fields
-@align@ type=boolean
+@`align` type=boolean
 
 Whether to enable align support.
 
-@attrs@ type=`MarkdownItAttrsOptions | boolean`
+@`attrs` type=`MarkdownItAttrsOptions | boolean`
 
 Whether to enable attrs support. You can also pass an object to specify the options of [@mdit/plugin-attrs](https://mdit-plugins.github.io/attrs.html#advanced).
 
-@layout@ type=boolean
+@`layout` type=boolean
 
 Whether to enable layout support.
 
-@mark@ type=boolean
+@`mark` type=boolean
 
 Whether to enable mark format support.
 
-@spoiler@ type=boolean
+@`spoiler` type=boolean
 
 Whether to enable spoiler support.
 
-@steps@ type=boolean
+@`steps` type=boolean
 
 Whether to enable steps support.
 
-@sup@ type=boolean
+@`sup` type=boolean
 
 Whether to enable superscript format support.
 
-@sub@ type=boolean
+@`sub` type=boolean
 
 Whether to enable subscript format support.
 
-@custom@ type=`MarkdownItStylizeConfig[]`
+@`custom` type=`MarkdownItStylizeConfig[]`
 
 Create own stylize customizations. For details, see [@mdit/plugin-stylize](https://mdit-plugins.github.io/stylize.html#usage).
 

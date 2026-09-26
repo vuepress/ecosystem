@@ -31,15 +31,15 @@ export default {
 ## 选项
 
 ::: fields
-@dev@ type=boolean default=`true`
+@`dev` type=boolean default=`true`
 
 是否在开发服务器中检查 Markdown 中的死链接。
 
-@build@ type=`boolean | 'error'` default=`true`
+@`build` type=`boolean | 'error'` default=`true`
 
 是否在构建时检查 Markdown 中的死链接。如果设置为 `'error'`，则在发现死链接时构建将失败。
 
-@exclude@ type=`(string | RegExp)[] | ((link: string, isDev: boolean) => boolean)`
+@`exclude` type=`(string | RegExp)[] | ((link: string, isDev: boolean) => boolean)`
 
 检查时需要排除的链接。你可以使用字符串或正则表达式的列表，或者返回布尔值的函数。
 

@@ -158,35 +158,35 @@ interface MarkdownItImgMarkOptions {
 ## 选项
 
 ::: fields
-@figure@ type=`MarkdownItFigureOptions | boolean`
+@`figure` type=`MarkdownItFigureOptions | boolean`
 
 是否启用图片 Figure 支持。
 
-@lazyload@ type=boolean
+@`lazyload` type=boolean
 
 是否使用原生方式懒加载页面图片。
 
-@mark@ type=`MarkdownItImgMarkOptions | boolean`
+@`mark` type=`MarkdownItImgMarkOptions | boolean`
 
 是否启用图片标注支持。
 
-@@mark.light@ type=`string[]`
+@@`mark.light` type=`string[]`
 
 仅日间模式的 ID。
 
-@@mark.dark@ type=`string[]`
+@@`mark.dark` type=`string[]`
 
 仅夜间模式的 ID。
 
-@size@ type=boolean
+@`size` type=boolean
 
 是否启用图片尺寸支持。
 
-@obsidianSize@ type=boolean
+@`obsidianSize` type=boolean
 
 是否启用 Obsidian 图片尺寸支持。
 
-@legacySize@ type=boolean deprecated
+@`legacySize` type=boolean deprecated
 
 是否启用旧版图片尺寸支持。
 

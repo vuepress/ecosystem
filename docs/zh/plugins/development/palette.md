@@ -79,13 +79,13 @@ $color: green;
 ## 选项
 
 ::: fields
-@preset@ type=`'css' | 'less' | 'sass' | 'stylus'` default=`'css'`
+@`preset` type=`'css' | 'less' | 'sass' | 'stylus'` default=`'css'`
 
 为其他配置项设置预设值。
 
 如果你不需要对插件进行高级自定义，建议只设置该配置项并省略其他配置项。
 
-@userPaletteFile@ type=string
+@`userPaletteFile` type=string
 
 用户调色板文件的路径，相对于源文件目录。
 
@@ -98,7 +98,7 @@ $color: green;
 
 此文件用于用户定义样式变量，建议保持默认文件路径作为约定。
 
-@tempPaletteFile@ type=string
+@`tempPaletteFile` type=string
 
 生成的调色板临时文件的路径，相对于临时文件目录。
 
@@ -111,7 +111,7 @@ $color: green;
 
 你应该通过 `@vuepress/plugin-palette/palette` 别名引入调色板文件，因此大部分情况下你不需要修改该配置项。
 
-@importCode@ type=`(filePath: string) => string`
+@`importCode` type=`(filePath: string) => string`
 
 生成引入代码的函数。
 

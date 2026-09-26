@@ -11,7 +11,7 @@ describe(field, () => {
 
     expect(
       markdownIt.render(`::: fields
-@theme@ type="ThemeConfig" required
+@\`theme\` type="ThemeConfig" required
 Theme Config
 :::
 `),
@@ -20,7 +20,7 @@ Theme Config
 <div class="vp-field-header">
 <span class="vp-field-name" id="theme">theme</span>
 <span class="vp-field-badges">
-<span class="vp-field-required">Required</span>
+  <span class="vp-field-required">Required</span>
 </span>
 <code class="vp-field-type">ThemeConfig</code>
 </div>
@@ -37,7 +37,7 @@ Theme Config
 
     expect(
       markdownIt.render(`::: fields
-@enabled@ type="boolean" optional default=\`true\`
+@\`enabled\` type="boolean" optional default=\`true\`
 Whether it's enabled
 :::
 `),
@@ -62,11 +62,34 @@ Whether it's enabled
 `)
   })
 
+  it('should render a backtick default value as inline code', () => {
+    const result = createMarkdownIt().render(`::: fields
+@\`theme\` default=\`'nord'\`
+:::
+`)
+
+    expect(result).toContain(
+      '<span class="vp-field-default-label">Default</span>\n<code>&#39;nord&#39;</code>',
+    )
+  })
+
+  it('should render a plain default value as text', () => {
+    const result = createMarkdownIt().render(`::: fields
+@\`timeout\` type=number default="Determined by the theme"
+:::
+`)
+
+    expect(result).toContain(
+      '<span class="vp-field-default-label">Default</span>\nDetermined by the theme',
+    )
+    expect(result).not.toContain('<code>Determined by the theme</code>')
+  })
+
   it('should mark deprecated fields', () => {
     const markdownIt = createMarkdownIt()
 
     const result = markdownIt.render(`::: fields
-@other@ type="string" deprecated
+@\`other\` type="string" deprecated
 Deprecated field
 :::
 `)
@@ -80,9 +103,9 @@ Deprecated field
     const markdownIt = createMarkdownIt()
 
     const result = markdownIt.render(`::: fields
-@parent@ type="object"
+@\`parent\` type="object"
 Parent description.
-@@parent.name@ type="string"
+@@\`parent.name\` type="string"
 Name description.
 :::
 `)
@@ -94,19 +117,13 @@ Name description.
 
   it('should escape field name and values', () => {
     const markdownIt = createMarkdownIt()
+    const result = markdownIt.render(`::: fields
+@\`a<b\` type="st&r"
+:::
+`)
 
-    expect(
-      markdownIt.render(`::: fields
-@a<b@ type="st&r"
-:::
-`),
-    ).toContain('&lt;b')
-    expect(
-      markdownIt.render(`::: fields
-@a<b@ type="st&r"
-:::
-`),
-    ).toContain('st&amp;r')
+    expect(result).toContain('>a&lt;b</span>')
+    expect(result).toContain('st&amp;r')
   })
 
   it('should use locale config for badges', () => {
@@ -129,10 +146,10 @@ Name description.
 
     const zhResult = markdownIt.render(
       `::: fields
-@theme@ type="ThemeConfig" required default="{}"
+@\`theme\` type="ThemeConfig" required default="{}"
 Theme Config
 
-@enabled@ type="boolean" optional
+@\`enabled\` type="boolean" optional
 Enabled
 :::
 `,
@@ -145,7 +162,7 @@ Enabled
 
     const enResult = markdownIt.render(
       `::: fields
-@theme@ type="ThemeConfig" required
+@\`theme\` type="ThemeConfig" required
 Theme Config
 :::
 `,
@@ -159,10 +176,10 @@ Theme Config
     const markdownIt = createMarkdownIt()
 
     const result = markdownIt.render(`::: fields
-@markdown.chartjs@ type="boolean"
+@\`markdown.chartjs\` type="boolean"
 Chart.js support
 
-@markdown.DANGEROUS_ALLOW_SCRIPT_EXECUTION@ type="boolean"
+@\`markdown.DANGEROUS_ALLOW_SCRIPT_EXECUTION\` type="boolean"
 Allow script execution
 :::
 `)
@@ -175,14 +192,40 @@ Allow script execution
     )
   })
 
+  it('should strip array and record placeholders from field ids', () => {
+    const markdownIt = createMarkdownIt()
+
+    const result = markdownIt.render(`::: fields
+@\`contributors.info[*].username\` type=string
+Username
+
+@\`config[*].actions[*].text\` type=string
+Text
+
+@\`locales.<localePath>.title\` type=string
+Title
+:::
+`)
+
+    expect(result).toContain(
+      '<span class="vp-field-name" id="contributors-info-username">contributors.info[*].username</span>',
+    )
+    expect(result).toContain(
+      '<span class="vp-field-name" id="config-actions-text">config[*].actions[*].text</span>',
+    )
+    expect(result).toContain(
+      '<span class="vp-field-name" id="locales-localepath-title">locales.&lt;localePath&gt;.title</span>',
+    )
+  })
+
   it('should make duplicate field ids unique', () => {
     const markdownIt = createMarkdownIt()
 
     const result = markdownIt.render(`::: fields
-@theme@ type="object"
+@\`theme\` type="object"
 Theme config
 
-@@theme@ type="string"
+@@\`theme\` type="string"
 Nested theme
 :::
 `)
@@ -196,7 +239,7 @@ Nested theme
 
     // `#theme` is used by the fields container, so the field item should not reuse it
     const result = markdownIt.render(`::: fields #theme
-@theme@ type="object"
+@\`theme\` type="object"
 Theme config
 :::
 `)
@@ -210,11 +253,36 @@ Theme config
     })
 
     const result = markdownIt.render(`::: fields
-@theme@ type="object"
+@\`theme\` type="object"
 Theme config
 :::
 `)
 
     expect(result).toContain('<span class="vp-field-name" id="field-theme">')
+  })
+
+  it('should keep a field that is not closed as plain content', () => {
+    const markdownIt = createMarkdownIt()
+
+    const result = markdownIt.render(`::: fields
+@theme type="object"
+:::
+`)
+
+    expect(result).not.toContain('<span class="vp-field-name"')
+  })
+
+  it('should keep an escaped marker as content', () => {
+    const markdownIt = createMarkdownIt()
+
+    const result = markdownIt.render(`::: fields
+@\`theme\` type=object
+
+\\@\`not-a-field\`
+:::
+`)
+
+    expect(result).toContain('<p>@<code>not-a-field</code></p>')
+    expect(result).not.toContain('id="not-a-field"')
   })
 })

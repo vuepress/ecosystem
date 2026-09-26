@@ -85,11 +85,11 @@ document.querySelector('body').innerText = 'Hello world!'
 ## 选项
 
 ::: fields
-@locales@ type=`Record<string, MarkdownPreviewLocaleData>`
+@`locales` type=`Record<string, MarkdownPreviewLocaleData>`
 
 `<VPPreview>` 的本地化配置。
 
-@@locales.toggle@ type=string
+@@`locales.<localePath>.toggle` type=string
 
 切换代码按钮文字。
 

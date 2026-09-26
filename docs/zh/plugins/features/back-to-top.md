@@ -27,19 +27,19 @@ export default {
 ## 选项
 
 ::: fields
-@threshold@ type=number default=`100`
+@`threshold` type=number default=`100`
 
 滚动距离阈值，用于显示返回顶部按钮（单位：像素）。
 
-@progress@ type=boolean default=`true`
+@`progress` type=boolean default=`true`
 
 是否显示滚动进度。
 
-@locales@ type=`LocaleConfig<BackToTopPluginLocaleData>`
+@`locales` type=`LocaleConfig<BackToTopPluginLocaleData>`
 
 插件的多语言配置。
 
-@@locales.backToTop@ type=string
+@@`locales.<localePath>.backToTop` type=string
 
 返回顶部按钮的标签文字。
 

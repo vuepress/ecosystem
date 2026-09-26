@@ -42,13 +42,13 @@ If you require advanced tracking capabilities, this plugin exposes the global `g
 ## Options
 
 ::: fields
-@id@ type=string required
+@`id` type=string required
 
 The Google Analytics 4 Measurement ID (must start with `'G-'`).
 
 Please refer to the [official guide](https://support.google.com/analytics/answer/9539598) to locate your Measurement ID. Ensure you are using a GA4 Measurement ID (`G-XXXXXXXXXX`) rather than a Universal Analytics Tracking ID (`UA-XXXXXXXX`).
 
-@debug@ type=boolean
+@`debug` type=boolean
 
 Whether to send events to the Google Analytics DebugView. This is useful for verifying your setup and troubleshooting event data during development. [Learn more about DebugView](https://support.google.com/analytics/answer/7201382).
 

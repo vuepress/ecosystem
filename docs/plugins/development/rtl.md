@@ -34,11 +34,11 @@ export default {
 ## Options
 
 ::: fields
-@locales@ type=`string[]` default=`['/']`
+@`locales` type=`string[]` default=`['/']`
 
 RTL locale paths to enable RTL layout.
 
-@selector@ type=SelectorOptions default=`{ 'html': { dir: 'rtl' } }`
+@`selector` type=SelectorOptions default=`{ 'html': { dir: 'rtl' } }`
 
 Selector configuration to enable RTL layout. The default settings mean that the `dir` attribute of the `html` element will be set to `rtl` in RTL locales.
 

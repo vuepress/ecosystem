@@ -84,13 +84,13 @@ $color: green;
 ## Options
 
 ::: fields
-@preset@ type=`'css' | 'less' | 'sass' | 'stylus'` default=`'css'`
+@`preset` type=`'css' | 'less' | 'sass' | 'stylus'` default=`'css'`
 
 Set preset for other options.
 
 If you don't need advanced customization of the plugin, it's recommended to set only this option and omit others.
 
-@userPaletteFile@ type=string
+@`userPaletteFile` type=string
 
 File path of the user palette file, relative to source directory.
 
@@ -103,7 +103,7 @@ The default value depends on the [preset](#preset) option:
 
 This file is where users define style variables, and it's recommended to keep the default file path as a convention.
 
-@tempPaletteFile@ type=string
+@`tempPaletteFile` type=string
 
 File path of the generated palette temp file, relative to temp directory.
 
@@ -116,7 +116,7 @@ The default value depends on the [preset](#preset) option:
 
 You should import the palette file via the `@vuepress/plugin-palette/palette` alias, so you don't need to change this option in most cases.
 
-@importCode@ type=`(filePath: string) => string`
+@`importCode` type=`(filePath: string) => string`
 
 Function to generate import code.
 

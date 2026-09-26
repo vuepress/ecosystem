@@ -94,7 +94,7 @@ Mathjax:
 ## Options
 
 ::: fields
-@type@ type=`'katex' | 'mathjax'`
+@`type` type=`'katex' | 'mathjax'`
 
 The package to render $\TeX$ contents.
 
@@ -103,7 +103,7 @@ The package to render $\TeX$ contents.
 
 When this option is not specified, the plugin will try to detect which package is installed. If both are installed, it will use "mathjax".
 
-@delimiters@ type=`'brackets' | 'dollars' | 'all'` default=`'dollars'`
+@`delimiters` type=`'brackets' | 'dollars' | 'all'` default=`'dollars'`
 
 Math delimiter syntax to enable.
 
@@ -120,11 +120,11 @@ When using KaTeX, any other options will be passed to KaTeX as `KatexOptions`. S
 Besides, 2 special options are supported:
 
 ::: fields
-@copy@ type=boolean
+@`copy` type=boolean
 
 Whether to enable copy extension.
 
-@mhchem@ type=boolean
+@`mhchem` type=boolean
 
 Whether to enable mhchem extension.
 
@@ -135,19 +135,19 @@ Whether to enable mhchem extension.
 When using MathJax, you can set:
 
 ::: fields
-@tex@ type=object
+@`tex` type=object
 
 Options passed to TeX input parser.
 
-@output@ type=`'svg' | 'chtml'` default=`'svg'`
+@`output` type=`'svg' | 'chtml'` default=`'svg'`
 
 Output format, either SVG or Common HTML.
 
-@chtml@ type=object
+@`chtml` type=object
 
 Options passed to Common HTML output parser.
 
-@svg@ type=object
+@`svg` type=object
 
 Options passed to SVG output parser.
 

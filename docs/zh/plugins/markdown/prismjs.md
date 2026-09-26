@@ -481,35 +481,35 @@ console.log(msg) // 打印 你好世界
 ## 选项
 
 ::: fields
-@theme@ type=PrismjsTheme default=`'nord'`
+@`theme` type=PrismjsTheme default=`'nord'`
 
 应用到代码块的 Prism.js 主题。可用值请参阅[Prism.js 主题](#prism-js-主题)。
 
-@themes@ type=`{ light: PrismjsTheme; dark: PrismjsTheme }`
+@`themes` type=`{ light: PrismjsTheme; dark: PrismjsTheme }`
 
 为亮色和暗色模式分别设置 Prism.js 主题。可用值请参阅[Prism.js 主题](#prism-js-主题)。
 
 要求你的主题在夜间模式下在 `<html>` 标签上设置 `data-theme="dark"` 属性。
 
-@lineNumbers@ type=`boolean | number | 'disable'` default=`true`
+@`lineNumbers` type=`boolean | number | 'disable'` default=`true`
 
 是否启用行号。数字表示代码块显示行号所需的最少行数，`'disable'` 表示完全关闭 `:line-numbers` 标记。
 
 参考：[行号](#行号)。
 
-@highlightLines@ type=boolean default=`true`
+@`highlightLines` type=boolean default=`true`
 
 是否启用行数标记的行高亮。
 
 参考：[行高亮](#行高亮)。
 
-@collapsedLines@ type=`boolean | number | 'disable'` default=`'disable'`
+@`collapsedLines` type=`boolean | number | 'disable'` default=`'disable'`
 
 是否启用折叠代码块。数字表示开始折叠的行号，`true` 等同于 `15`。设置为 `false` 时支持 `:collapsed-lines` 标记，但默认不折叠任何代码块。
 
 参考：[折叠代码块](#折叠代码块)。
 
-@codeBlockTitle@ type=`boolean | CodeBlockTitleRender` default=`true`
+@`codeBlockTitle` type=`boolean | CodeBlockTitleRender` default=`true`
 
 是否为信息描述中带有 `title="标题"` 的代码块渲染标题栏。
 
@@ -521,41 +521,41 @@ type CodeBlockTitleRender = (title: string, code: string) => string
 
 参考：[代码块标题](#代码块标题)。
 
-@notationDiff@ type=boolean default=`false`
+@`notationDiff` type=boolean default=`false`
 
 是否启用差异标记转换器。
 
-@notationFocus@ type=boolean default=`false`
+@`notationFocus` type=boolean default=`false`
 
 是否启用聚焦标记转换器。
 
-@notationHighlight@ type=boolean default=`false`
+@`notationHighlight` type=boolean default=`false`
 
 是否启用高亮标记转换器。
 
-@notationErrorLevel@ type=boolean default=`false`
+@`notationErrorLevel` type=boolean default=`false`
 
 是否启用错误级别标记转换器。
 
-@notationWordHighlight@ type=boolean default=`false`
+@`notationWordHighlight` type=boolean default=`false`
 
 是否启用词高亮标记转换器。
 
 参考：[标记](#标记)。
 
-@whitespace@ type=`boolean | 'all' | 'boundary' | 'leading' | 'trailing'` default=`false`
+@`whitespace` type=`boolean | 'all' | 'boundary' | 'leading' | 'trailing'` default=`false`
 
 是否渲染空白符。`true` 表示启用该语法但默认不渲染任何空白符，`false` 表示完全关闭 `:whitespace` 标记。
 
 参考：[渲染空白符](#渲染空白符)。
 
-@preloadLanguages@ type=`string[]` default=`['markdown', 'jsdoc', 'yaml']`
+@`preloadLanguages` type=`string[]` default=`['markdown', 'jsdoc', 'yaml']`
 
 需要预加载的语言。
 
 默认情况下，语言会在解析 Markdown 文件时按需加载，但 Prism.js 在动态加载语言时可能会遇到[一些潜在的问题](https://github.com/PrismJS/prism/issues/2716)。预加载语言可以避免这些问题。
 
-@preWrapper@ type=boolean default=`true`
+@`preWrapper` type=boolean default=`true`
 
 是否在 `<pre>` 标签外添加包裹容器。
 

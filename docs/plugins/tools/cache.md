@@ -40,14 +40,14 @@ export default {
 ## Options
 
 ::: fields
-@type@ type=`'filesystem' | 'memory'` default=`'memory'`
+@`type` type=`'filesystem' | 'memory'` default=`'memory'`
 
 Cache type.
 
 - `'memory'`: Use memory cache. It can achieve optimal optimization effects, but as the project scales up, it occupies more memory, suitable for projects with fewer pages.
 - `'filesystem'`: Use file system cache, for complex projects with many pages, it is recommended.
 
-@enableInCi@ type=boolean
+@`enableInCi` type=boolean
 
 Whether to enable the cache in CI environment.
 

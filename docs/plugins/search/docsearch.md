@@ -179,45 +179,45 @@ If you are not using the default theme or encounter issues with search results, 
 ## Options
 
 ::: fields
-@appId@ type=string required
+@`appId` type=string required
 
 The Application ID of your Algolia application.
 
 See also: [DocSearch > Options > appId](https://docsearch.algolia.com/docs/api#appid).
 
-@apiKey@ type=string required
+@`apiKey` type=string required
 
 The Search API Key provided by the DocSearch team or generated in your Algolia dashboard.
 
 See also: [DocSearch > Options > apiKey](https://docsearch.algolia.com/docs/api#apikey).
 
-@indices@ type=`Array<string | DocSearchIndex>` required
+@`indices` type=`Array<string | DocSearchIndex>` required
 
 A list of indices to use for keyword search. You can also provide optional `searchParameters` for each index.
 
 See also: [DocSearch > Options > indices](https://docsearch.algolia.com/docs/api#indices).
 
-@placeholder@ type=string default=`'Search docs'`
+@`placeholder` type=string default=`'Search docs'`
 
 The placeholder text displayed in the search input field.
 
-@disableUserPersonalization@ type=boolean
+@`disableUserPersonalization` type=boolean
 
 Whether to disable personalized features, such as recent searches and favorite searches.
 
-@initialQuery@ type=string
+@`initialQuery` type=string
 
 The initial search query to pre-fill when the modal opens.
 
-@maxResultsPerGroup@ type=number default=`5`
+@`maxResultsPerGroup` type=number default=`5`
 
 The maximum number of search results to display per group (e.g., per hierarchy level).
 
-@translations@ type=`Partial<DocSearchTranslations>`
+@`translations` type=`Partial<DocSearchTranslations>`
 
 Allows you to override the default text and labels used in the DocSearch button or modal.
 
-@locales@ type=`LocaleConfig<DocSearchLocaleOptions>`
+@`locales` type=`LocaleConfig<DocSearchLocaleOptions>`
 
 Configuration for different locales. Every option above can be overridden for a specific locale path.
 
@@ -253,7 +253,7 @@ export default {
 
 See also: [Guide > I18n](https://vuejs.press/guide/i18n.html).
 
-@indexBase@ type=string default="The site base"
+@`indexBase` type=string default="The site base"
 
 The base path of the site that generated the search index.
 
@@ -261,7 +261,7 @@ This is useful if you deploy your documentation to multiple domains (e.g., diffe
 
 If the [base](https://vuejs.press/reference/config.html#base) paths differ between the index domain and other deployments, set this option to the `base` of the index domain. This ensures that search result links are generated correctly for the current site.
 
-@injectStyles@ type=boolean default=`true`
+@`injectStyles` type=boolean default=`true`
 
 Whether to inject the default DocSearch styles.
 

@@ -450,45 +450,45 @@ Spotify 嵌入不接受音量或静音指令，因此组件没有 `muted` 属性
 ## 选项
 
 ::: fields
-@artplayer@ type=`boolean | ArtPlayerOptions`
+@`artplayer` type=`boolean | ArtPlayerOptions`
 
 是否启用 `ArtPlayer` 组件。传入对象可设置所有实例共享的默认配置。
 
-@pdf@ type=`boolean | PDFOptions`
+@`pdf` type=`boolean | PDFOptions`
 
 是否启用 `PDFViewer` 组件。传入对象可设置所有实例共享的默认配置。
 
-@pdfLocales@ type=`PDFLocaleData[]`
+@`pdfLocales` type=`PDFLocaleData[]`
 
 在 EmbedPDF 查看器中注册的语言。传入的语言会**替换** EmbedPDF 内置语言，因此需提供站点所需的全部语言。参见[国际化](https://www.embedpdf.com/docs/vue/viewer/plugins/plugin-i18n)。
 
 EmbedPDF 内置 `en`、`nl`、`de`、`fr`、`es`、`zh-CN`、`zh-TW`、`ja`、`sv` 与 `pt-BR`。页面语言由插件解析，其他代码的语言还需另经查看器配置的 `i18n.defaultLocale` 启用。
 
-@embeds@ type=`EmbedName[]`
+@`embeds` type=`EmbedName[]`
 
 提供自带嵌入播放器的平台。这些播放器不需要安装任何包，因此是本插件最轻量的选择，适合仅偶尔嵌入视频的页面。
 
 可用的平台：`bilibili`、`youtube`、`vimeo`、`twitch`、`dailymotion`、`tiktok` 与 `spotify`。
 
-@videojs@ type=`boolean | 'hlsjs'`
+@`videojs` type=`boolean | 'hlsjs'`
 
 `VideoPlayer` 组件的 HLS 元素，需要安装 `@videojs/html`。`true` 使用 [`hls-video`](https://videojs.org/docs/framework/html/reference/hls-video)，即覆盖大部分 HLS 播放的精简元素；`'hlsjs'` 使用由 hls.js 驱动、兼容性更好的 [`hlsjs-video`](https://videojs.org/docs/framework/html/reference/hlsjs-video)，后者还需要安装 `@videojs/hlsjs-video`。
 
-@videojsDash@ type=boolean
+@`videojsDash` type=boolean
 
 是否注册 [`dash-video`](https://videojs.org/docs/framework/html/reference/dash-video)，即 `VideoPlayer` 播放 DASH 源所用的元素。需要安装 `@videojs/html` 与 `@videojs/dash-video`，否则 DASH 源会交由浏览器自身播放。
 
-@videojsAudio@ type=boolean
+@`videojsAudio` type=boolean
 
 是否启用 `AudioPlayer` 组件，需要安装 `@videojs/html`。
 
-@videojsProviders@ type=`VideoJsProvider[]`
+@`videojsProviders` type=`VideoJsProvider[]`
 
 由 Video.js 而非平台自带播放器播放的平台。与 `embeds` 不同，视频由 Video.js 皮肤控制，因此播放器界面与 `VideoPlayer` 一致。
 
 可用的提供方：`youtube`、`vimeo`、`twitch`、`tiktok` 与 `spotify`。每一个都需要安装 `@videojs/html` 与对应的包。
 
-@videojsLocales@ type=`Record<string, VideoJsLocaleData>`
+@`videojsLocales` type=`Record<string, VideoJsLocaleData>`
 
 Video.js 的自定义翻译。部分翻译会合并到页面语言对应的语言包中，因此只有你提供的键会被覆盖。
 

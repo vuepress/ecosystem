@@ -34,11 +34,11 @@ export default {
 ## 选项
 
 ::: fields
-@locales@ type=`string[]` default=`['/']`
+@`locales` type=`string[]` default=`['/']`
 
 启用 RTL 布局的语言路径。
 
-@selector@ type=SelectorOptions default=`{ 'html': { dir: 'rtl' } }`
+@`selector` type=SelectorOptions default=`{ 'html': { dir: 'rtl' } }`
 
 启用 RTL 布局的选择器配置。默认设置意味着在 RTL 语言中，`html` 元素的 `dir` 属性将被设置为 `rtl`。
 

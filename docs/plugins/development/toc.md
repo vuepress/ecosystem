@@ -52,15 +52,15 @@ Therefore, this plugin is more useful for theme developers.
 ## Options
 
 ::: fields
-@componentName@ type=string default=`'Toc'`
+@`componentName` type=string default=`'Toc'`
 
 Specify the name of the TOC component.
 
-@headersOptions@ type=GetHeadersOptions default=`{}`
+@`headersOptions` type=GetHeadersOptions default=`{}`
 
 Override the default values of the component [headersOptions](#headersoptions-1) prop.
 
-@renderOptions@ type=TocRenderOptions default=`{}`
+@`renderOptions` type=TocRenderOptions default=`{}`
 
 Override the default values of the component [renderOptions](#renderoptions-1) prop.
 
@@ -81,33 +81,33 @@ The TOC component also accepts props for customization.
 ```
 
 ::: fields
-@headers@ type=`PageHeader[]`
+@`headers` type=`PageHeader[]`
 
 Specify the headers array to render. If this prop is not specified, the headers of current page will be used.
 
-@@headers[].level@ type=number
+@@`headers[*].level` type=number
 
 The level of the header.
 
-@@headers[].title@ type=string
+@@`headers[*].title` type=string
 
 The title of the header.
 
-@@headers[].slug@ type=string
+@@`headers[*].slug` type=string
 
 The slug of the header.
 
-@@headers[].children@ type=`PageHeader[]`
+@@`headers[*].children` type=`PageHeader[]`
 
 The children headers.
 
-@headersOptions@ type=GetHeadersOptions
+@`headersOptions` type=GetHeadersOptions
 
 Customize header extracting behavior.
 
 See [GetHeadersOptions](../../tools/helper/client.md#getheaders) for the available options. It can be overridden by the [headersOptions](#headersoptions) option in plugin options.
 
-@renderOptions@ type=TocRenderOptions
+@`renderOptions` type=TocRenderOptions
 
 Customize TOC component render behavior. It can be overridden by the [renderOptions](#renderoptions) option in plugin options.
 
@@ -144,35 +144,35 @@ The rendered TOC component with default options looks like:
 </template>
 ```
 
-@@renderOptions.containerTag@ type=string default=`'nav'`
+@@`renderOptions.containerTag` type=string default=`'nav'`
 
 Container tag name. If the `containerTag` is set to an empty string `''`, the `<nav>` container will be removed totally.
 
-@@renderOptions.containerClass@ type=string default=`'vuepress-toc'`
+@@`renderOptions.containerClass` type=string default=`'vuepress-toc'`
 
 Container class name.
 
-@@renderOptions.listClass@ type=string default=`'vuepress-toc-list'`
+@@`renderOptions.listClass` type=string default=`'vuepress-toc-list'`
 
 List class name.
 
-@@renderOptions.itemClass@ type=string default=`'vuepress-toc-item'`
+@@`renderOptions.itemClass` type=string default=`'vuepress-toc-item'`
 
 Item class name.
 
-@@renderOptions.linkTag@ type=`'a' | 'RouteLink' | 'RouterLink'` default=`'RouteLink'`
+@@`renderOptions.linkTag` type=`'a' | 'RouteLink' | 'RouterLink'` default=`'RouteLink'`
 
 Link tag type.
 
-@@renderOptions.linkClass@ type=string default=`'vuepress-toc-link'`
+@@`renderOptions.linkClass` type=string default=`'vuepress-toc-link'`
 
 Link class name.
 
-@@renderOptions.linkActiveClass@ type=string default=`'active'`
+@@`renderOptions.linkActiveClass` type=string default=`'active'`
 
 Active link class name.
 
-@@renderOptions.linkChildrenActiveClass@ type=string default=`'active'`
+@@`renderOptions.linkChildrenActiveClass` type=string default=`'active'`
 
 Active children link class name.
 

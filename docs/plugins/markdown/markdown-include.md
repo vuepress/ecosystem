@@ -332,23 +332,23 @@ int main() {
 ## Options
 
 ::: fields
-@resolvePath@ type=`(path: string, cwd: string | null) => string` default=`(path) => path`
+@`resolvePath` type=`(path: string, cwd: string | null) => string` default=`(path) => path`
 
 Handle the include file path.
 
-@deep@ type=boolean
+@`deep` type=boolean
 
 Whether to recursively include files referenced in included Markdown files.
 
-@useComment@ type=boolean default=`true`
+@`useComment` type=boolean default=`true`
 
 Whether use `<!-- @include: xxx -->` instead of `@include: xxx` to include files.
 
-@resolveImagePath@ type=boolean default=`true`
+@`resolveImagePath` type=boolean default=`true`
 
 Whether resolve the image related path in the included Markdown file.
 
-@resolveLinkPath@ type=boolean default=`true`
+@`resolveLinkPath` type=boolean default=`true`
 
 Whether resolve the related file link path in the included Markdown file.
 

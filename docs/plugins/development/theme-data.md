@@ -33,7 +33,7 @@ export default {
 ## Options
 
 :::: fields
-@themeData@ type=ThemeData required
+@`themeData` type=ThemeData required
 
 The theme data object that you want to use in client side.
 

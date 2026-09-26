@@ -94,7 +94,7 @@ Mathjax:
 ## 选项
 
 ::: fields
-@type@ type=`'katex' | 'mathjax'`
+@`type` type=`'katex' | 'mathjax'`
 
 用于渲染 $\TeX$ 内容的包。
 
@@ -103,7 +103,7 @@ Mathjax:
 
 当未指定此选项时，插件将尝试检测安装了哪个包。如果两者都安装了，它将使用“mathjax”。
 
-@delimiters@ type=`'brackets' | 'dollars' | 'all'` default=`'dollars'`
+@`delimiters` type=`'brackets' | 'dollars' | 'all'` default=`'dollars'`
 
 启用的数学分隔符语法。
 
@@ -120,11 +120,11 @@ Mathjax:
 此外，还支持 2 个特殊选项：
 
 ::: fields
-@copy@ type=boolean
+@`copy` type=boolean
 
 是否启用复制扩展。
 
-@mhchem@ type=boolean
+@`mhchem` type=boolean
 
 是否启用 mhchem 扩展。
 
@@ -135,19 +135,19 @@ Mathjax:
 使用 MathJax 时，你可以设置：
 
 ::: fields
-@tex@ type=object
+@`tex` type=object
 
 传递给 TeX 输入解析器的选项。
 
-@output@ type=`'svg' | 'chtml'` default=`'svg'`
+@`output` type=`'svg' | 'chtml'` default=`'svg'`
 
 输出格式，SVG 或通用 HTML。
 
-@chtml@ type=object
+@`chtml` type=object
 
 传递给通用 HTML 输出解析器的选项。
 
-@svg@ type=object
+@`svg` type=object
 
 传递给 SVG 输出解析器的选项。
 

@@ -235,23 +235,23 @@ Options are documented with the `::: fields` container provided by `@vuepress/pl
 ## Options
 
 ::: fields
-@optionName@ type=boolean default=`true`
+@`optionName` type=boolean default=`true`
 
 Whether to enable this feature.
 
-@requiredOption@ type=string required
+@`requiredOption` type=string required
 
 The required configuration.
 
-@optionWithNonStandardDefault@ type=number default=`100`
+@`optionWithNonStandardDefault` type=number default=`100`
 
 Custom timeout value.
 
-@objectOption@ type=`SomeOptions | boolean`
+@`objectOption` type=`SomeOptions | boolean`
 
 Whether to enable this feature. You can also pass an object to configure it.
 
-@@objectOption.child@ type=string
+@@`objectOption.child` type=string
 
 A child option of `objectOption`.
 
@@ -260,13 +260,13 @@ A child option of `objectOption`.
 
 **Field items**
 
-- A field item starts with `@name@` at the beginning of a line, followed by its attributes.
+- A field item starts with `@` followed by an inline code at the beginning of a line, followed by its attributes. The name is closed by a backtick on the same line.
 - The content after the marker, until the next field item or the closing marker, is the description. It supports full markdown, including lists, code fences and containers.
-- Sub-options of an object option are nested by adding one more `@`: `@@parent.child@`. Nesting is also used to expand a type definition instead of pasting a TypeScript interface in a code fence.
-- When a path goes into an array of objects, append `[]` to the segment being indexed so it reads as a member type rather than a single value, e.g. `@@contributors.info[].username@` for `contributors.info: ContributorInfo[]`, or `@@@config[].actions[].text@` for `config: NoticeOptions[]` with `actions: NoticeActionOption[]`. Add `[]` to every indexed array level.
-- When a path goes into a `Record<string, T>`, use a placeholder for the key so the path reads as a member type, e.g. `@@locales.<localePath>.title@` for `locales: LocaleConfig<...>`, where the key is a locale path (`/`, `/zh/`, ...). `LocaleConfig<T>` and `ExactLocaleConfig<T>` are both `Record<string, T>`, so they always need this level.
+- Sub-options of an object option are nested by adding one more `@`: `` @@`parent.child` ``. Nesting is also used to expand a type definition instead of pasting a TypeScript interface in a code fence.
+- When a path goes into an array of objects, append `[*]` to the segment being indexed so it reads as a member type rather than a single value, e.g. `` @@`contributors.info[*].username` `` for `contributors.info: ContributorInfo[]`, or `` @@@`config[*].actions[*].text` `` for `config: NoticeOptions[]` with `actions: NoticeActionOption[]`. Add `[*]` to every indexed array level.
+- When a path goes into a `Record<string, T>`, use a placeholder for the key so the path reads as a member type, e.g. `` @@`locales.<localePath>.title` `` for `locales: LocaleConfig<...>`, where the key is a locale path (`/`, `/zh/`, ...). `LocaleConfig<T>` and `ExactLocaleConfig<T>` are both `Record<string, T>`, so they always need this level.
 - Content that applies to the parent option as a whole — a list of accepted values, a note about the option group — belongs right after the parent field's own description, **before** the first sub-field. Putting it after the last sub-field makes it read as if it belonged to that sub-option.
-- Each field item gets an `id` from its name, so it can be linked to directly. Ids are unique within the page, and ids already used by headings are reserved first. Avoid naming a guide heading the same as an option, otherwise the option id gets a `-1` suffix. `[]` is stripped when generating the id, so adding it does not break existing links.
+- Each field item gets an `id` from its name, so it can be linked to directly. Ids are unique within the page, and ids already used by headings are reserved first. Avoid naming a guide heading the same as an option, otherwise the option id gets a `-1` suffix. `[*]` and `<...>` are stripped when generating the id, so adding them does not break existing links.
 
 **Descriptions**
 
@@ -284,7 +284,6 @@ A child option of `objectOption`.
 - An unquoted value ends at the first whitespace, so values containing spaces must be quoted.
 - Values wrapped in `"` or `'` support escaping with `\`.
 - Values wrapped in backticks are kept literal, with no escaping applied.
-- Never put two `*` on the same line: oxfmt normalizes an emphasis pair `*...*` to `_..._`, which would turn a two-level `[*]` path into `[_]`. Split the line, or keep a single `[*]` per line.
 
 Prefer the shortest form that parses correctly:
 
@@ -297,6 +296,10 @@ Prefer the shortest form that parses correctly:
 - Include `default` when the value is not the expected/obvious one.
 - Omit `default` when it is expected/obvious: `boolean` options defaulting to `false`, `string` options defaulting to `''`, and `object` options defaulting to `undefined`.
 - A multi-line default cannot be written as an attribute. Describe it in the field content instead, e.g. `Its default value is:` followed by a code fence.
+
+**Escaping**
+
+- To keep a marker-like line as content, escape the `@`: `` \@`not-a-field` ``.
 
 **Containers inside fields**
 

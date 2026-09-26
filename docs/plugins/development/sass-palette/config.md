@@ -7,11 +7,11 @@ icon: settings-2
 ## Options
 
 :::: fields
-@id@ type=string required
+@`id` type=string required
 
 The unique identifier for the plugin instance. This is used to scope the style system and avoid conflicts between different plugins or themes.
 
-@config@ type=string default=`.vuepress/styles/${id}-config.scss`
+@`config` type=string default=`.vuepress/styles/${id}-config.scss`
 
 The path to the user's Sass configuration file, relative to the source directory.
 
@@ -23,7 +23,7 @@ The default filename is prefixed with the `id` defined above.
 
 :::
 
-@defaultConfig@ type=string default=`"@vuepress/plugin-sass-palette/styles/default/config.scss"`
+@`defaultConfig` type=string default=`"@vuepress/plugin-sass-palette/styles/default/config.scss"`
 
 The absolute path to the default Sass configuration file.
 
@@ -33,7 +33,7 @@ As a plugin developer, you should use this file to provide fallback values for v
 
 :::
 
-@palette@ type=string default=`.vuepress/styles/${id}-palette.scss`
+@`palette` type=string default=`.vuepress/styles/${id}-palette.scss`
 
 The path to the user's palette file, relative to the source directory.
 
@@ -45,7 +45,7 @@ The default filename is prefixed with the `id` defined above.
 
 :::
 
-@defaultPalette@ type=string
+@`defaultPalette` type=string
 
 The absolute path to the default palette file.
 
@@ -55,7 +55,7 @@ As a plugin developer, you should use this file to provide default CSS variables
 
 :::
 
-@generator@ type=string
+@`generator` type=string
 
 The absolute path to a custom generator file. This is used to derive new values based on the palette configuration.
 

@@ -113,71 +113,71 @@ export default {
 ## 选项
 
 ::: fields
-@config@ type=`NoticeOptions[]` required
+@`config` type=`NoticeOptions[]` required
 
 通知配置。每一项都需要一个 `path` 或 `match` 来决定通知出现在哪些页面，参见[路径匹配](#路径匹配)。
 
-@@config.path@ type=string
+@@`config[*].path` type=string
 
 路径前缀匹配。
 
-@@config.match@ type=`RegExp`
+@@`config[*].match` type=`RegExp`
 
 匹配通知路径的正则表达式。
 
-@@config.title@ type=string required
+@@`config[*].title` type=string required
 
 通知标题，支持文本和 HTMLString。
 
-@@config.content@ type=string
+@@`config[*].content` type=string
 
 通知内容，支持文本、HTMLString 和 Markdown。使用 Markdown 时需将 `contentType` 设为 `markdown`。
 
-@@config.contentType@ type=`'html' | 'markdown'` default=`'html'`
+@@`config[*].contentType` type=`'html' | 'markdown'` default=`'html'`
 
 通知内容类型。
 
-@@config.contentFile@ type=string
+@@`config[*].contentFile` type=string
 
 通知内容文件的绝对路径，文件格式支持 `.md` 或 `.html`。文件内容会作为 `content` 使用，优先级更高。
 
-@@config.key@ type=string
+@@`config[*].key` type=string
 
 通知键值，用于标识和存储通知的状态。
 
 参考：[显示控制](#显示控制)。
 
-@@config.showOnce@ type=boolean
+@@`config[*].showOnce` type=boolean
 
 是否只显示一次通知，而非每次访问都显示。
 
 参考：[显示控制](#显示控制)。
 
-@@config.confirm@ type=boolean
+@@`config[*].confirm` type=boolean
 
 通知是否需要确认。
 
 参考：[关闭按钮](#关闭按钮)。
 
-@@config.fullscreen@ type=boolean
+@@`config[*].fullscreen` type=boolean
 
 通知是否应该全屏显示。
 
 参考：[全屏模式](#全屏模式)。
 
-@@config.actions@ type=`NoticeActionOption[]`
+@@`config[*].actions` type=`NoticeActionOption[]`
 
 通知操作。
 
-@@@config.actions.text@ type=string required
+@@@`config[*].actions[*].text` type=string required
 
 动作文本。
 
-@@@config.actions.link@ type=string
+@@@`config[*].actions[*].link` type=string
 
 操作链接。路径名会被当作内部路由链接处理，完整 URL 会被当作外部链接在新窗口打开。
 
-@@@config.actions.type@ type=`'default' | 'primary'` default=`'default'`
+@@@`config[*].actions[*].type` type=`'default' | 'primary'` default=`'default'`
 
 操作类型。
 

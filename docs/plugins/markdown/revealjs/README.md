@@ -185,19 +185,19 @@ For reveal.js options, see [reveal.js config](https://revealjs.com/config/). For
 ## Options
 
 ::: fields
-@plugins@ type=`RevealJsPlugin[]`
+@`plugins` type=`RevealJsPlugin[]`
 
 Built-in reveal.js plugins to enable.
 
 Available values: `highlight`, `math`, `search`, `notes`, `zoom`.
 
-@themes@ type=`RevealJsTheme[]` default=`['auto']`
+@`themes` type=`RevealJsTheme[]` default=`['auto']`
 
 Themes to enable.
 
 Available values: `auto`, `black`, `white`, `league`, `beige`, `sky`, `night`, `serif`, `simple`, `solarized`, `blood`, `moon`.
 
-@layout@ type=`string | false` default=`'SlidePage'`
+@`layout` type=`string | false` default=`'SlidePage'`
 
 Layout component name to render slides.
 

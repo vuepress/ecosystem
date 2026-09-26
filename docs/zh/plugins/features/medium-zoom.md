@@ -31,13 +31,13 @@ export default {
 ## 选项
 
 ::: fields
-@selector@ type=string default=`'[vp-content] > img, [vp-content] :not(a) > img'`
+@`selector` type=string default=`'[vp-content] > img, [vp-content] :not(a) > img'`
 
 可缩放图片的选择器。
 
 默认情况下，该插件会使 `<a>` 标签以外的所有图片都支持缩放。
 
-@zoomOptions@ type=`ZoomOptions`
+@`zoomOptions` type=`ZoomOptions`
 
 medium-zoom 的配置项，参见 [medium-zoom > Options](https://github.com/francoischalifour/medium-zoom#options)。
 

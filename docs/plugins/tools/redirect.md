@@ -26,13 +26,43 @@ export default {
 }
 ```
 
+## Guide
+
 ### Control Page Redirection
 
 If you change the address of an existing page, you can use the `redirectFrom` option in Frontmatter to redirect to the address of this page, which ensures that users are redirected to the new address when they visit the old link.
 
 If you need to redirect an existing page to a new page, you can use the `redirectTo` option in Frontmatter to set the address to redirect to. This way the page will redirect to the new address when accessed.
 
-You can also set `config` with a redirect map in plugin options, see [config](#config) for more details.
+You can also set `config` with a redirect map in plugin options:
+
+When base is set to `/base/`:
+
+- redirect `/base/foo.html` to `/base/bar.html`
+- redirect `/base/baz.html` to `https://example.com/qux.html`.
+
+```js
+redirect({
+  config: {
+    '/foo.html': '/bar.html',
+    '/baz.html': 'https://example.com/qux.html',
+  },
+})
+```
+
+Redirect post folder to posts folder:
+
+```js
+redirect({
+  hostname: 'https://example.com',
+  config: (app) =>
+    Object.fromEntries(
+      app.pages
+        .filter(({ path }) => path.startsWith('/posts/'))
+        .map(({ path }) => [path.replace(/^\/posts\//, '/post/'), path]),
+    ),
+})
+```
 
 ### Auto Locales
 
@@ -157,118 +187,55 @@ By default, the plugin will output to `.vuepress/redirect` directory under sourc
 
 ## Options
 
-### config
+:::: fields
 
-- Type: `Record<string, string> | ((app: App) => Record<string, string>)`
-- Details: Redirect map.
-- Example:
+@`config` type=`Record<string, string> | ((app: App) => Record<string, string>)`
 
-  When base is set to `/base/`:
-  - redirect `/base/foo.html` to `/base/bar.html`
-  - `/base/baz.html` to `https://example.com/qux.html`.
+Redirect map. The keys are the source paths to redirect from, and the values are the target paths to redirect to.
 
-  ```js
-  redirect({
-    config: {
-      '/foo.html': '/bar.html',
-      '/baz.html': 'https://example.com/qux.html',
-    },
-  })
-  ```
+See also: [Control Page Redirection](#control-page-redirection).
 
-  Redirect post folder to posts folder:
+@`autoLocale` type=boolean
 
-  ```js
-  redirect({
-    hostname: 'https://example.com',
-    config: (app) =>
-      Object.fromEntries(
-        app.pages
-          .filter(({ path }) => path.startsWith('/posts/'))
-          .map(({ path }) => [path.replace(/^\/posts\//, '/post/'), path]),
-      ),
-  })
-  ```
+Whether enable locales redirection.
 
-### autoLocale
+See also: [Auto Locales](#auto-locales).
 
-- Type: `boolean`
-- Default: `false`
-- Details: Whether enable locales redirection.
+@`switchLocale` type=`'direct' | 'modal' | 'popup' | false` default=`false`
 
-### switchLocale
+Whether switch to a new locale based on user preference.
 
-- Type: `"direct" | "popup" | "modal" | false`
-- Default: `false`
-- Details:
+- `'direct'`: Redirect to the new locale directly without asking.
+- `'popup'`: Show a popup to let user choose whether to switch to the new locale.
+- `'modal'`: Show a full screen modal to let user choose whether to switch to the new locale.
 
-  Whether switch to a new locale based on user preference.
-  - `"direct"`: redirect to the new locale directly without asking
-  - `"popup"`: show a popup to let user choose whether to switch to the new locale
-  - `"modal"`: show a full screen modal to let user choose whether to switch to the new locale
+See also: [Automatically switch languages](#automatically-switch-languages).
 
-### localeConfig
+@`localeConfig` type=`Record<string, string[] | string>`
 
-- Type: `Record<string, string | string[]>`
+Locale language config.
 
-- Details: Locale language config
+See also: [Customizing Locale Settings](#customizing-locale-settings).
 
-### localeFallback
+@`localeFallback` type=boolean default=`true`
 
-- Type: `boolean`
-- Default: `true`
-- Details: Whether fallback to other locales user defined
+Whether fallback to other locales user defined.
 
-### defaultBehavior
+@`defaultBehavior` type=`'404' | 'defaultLocale' | 'homepage'` default=`'defaultLocale'`
 
-- Type: `"defaultLocale" | "homepage" | "404"`
-- Default: `"defaultLocale"`
-- Details: Behavior when a locale version is not available for current link.
+Behavior when a locale version is not available for current link.
 
-### defaultLocale
+- `'defaultLocale'`: Redirect to default language or first available language page.
+- `'homepage'`: Redirect to the home page in the current language. Only available when a locale is assigned to the current language.
+- `'404'`: Redirect to the 404 page in the current language. Only available when a locale is assigned to the current language.
 
-- Type: `string`
-- Default: the first locale
-- Details: Default locale path.
+@`defaultLocale` type=string default="The first locale"
 
-- Type: `RedirectPluginLocaleConfig`
+Default locale path. The first locale will be used if absent.
 
-  ```ts
-  interface RedirectPluginLocaleData {
-    /**
-     * Language name
-     */
-    name: string
+@`locales` type=`LocaleConfig<RedirectPluginLocaleData>`
 
-    /**
-     * Switch hint
-     */
-    hint: string
-
-    /**
-     * Switch button text
-     */
-    switch: string
-
-    /**
-     * Cancel button text
-     */
-    cancel: string
-
-    /**
-     * remember hint text
-     */
-    remember: string
-  }
-
-  interface RedirectPluginLocaleConfig {
-    [localePath: string]: Partial<RedirectPluginLocaleData>
-  }
-  ```
-
-- Details:
-
-  Locales config for redirect plugin.
+Locales config for redirect plugin. The locale data is a partial of `RedirectPluginLocaleData`.
 
 ::: details Built-in Supported Languages
 
@@ -294,17 +261,44 @@ By default, the plugin will output to `.vuepress/redirect` directory under sourc
 
 :::
 
+@`locales.<localePath>.name` type=string
+
+Language name.
+
+@`locales.<localePath>.hint` type=string
+
+Switch hint.
+
+@`locales.<localePath>.switch` type=string
+
+Switch button text.
+
+@`locales.<localePath>.cancel` type=string
+
+Cancel button text.
+
+@`locales.<localePath>.remember` type=string
+
+Remember hint text.
+
+::::
+
 ## Frontmatter
 
-### redirectFrom
+::: fields
+@`redirectFrom` type=`string | string[]`
 
-- Type: `string | string[]`
-- Details: The link which this page redirects from.
+The link which this page redirects from.
 
-### redirectTo
+See also: [Control Page Redirection](#control-page-redirection).
 
-- Type: `string`
-- Details: The link which this page redirects to.
+@`redirectTo` type=string
+
+The link which this page redirects to.
+
+See also: [Control Page Redirection](#control-page-redirection).
+
+:::
 
 ## Styles
 

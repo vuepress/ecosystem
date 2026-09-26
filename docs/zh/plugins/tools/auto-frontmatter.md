@@ -154,7 +154,7 @@ export default {
 `autoFrontmatterPlugin` 接受 frontmatter 处理函数、规则对象，或规则对象数组。
 
 ::: fields
-@filter@ type=`string[] | string | ((relativePath: string) => boolean)`
+@`filter` type=`string[] | string | ((relativePath: string) => boolean)`
 
 文件过滤器，匹配文件的相对路径。
 
@@ -162,7 +162,7 @@ export default {
 
 可以传入 glob 字符串、glob 字符串数组（以 `!` 开头的字符串用于排除文件），或返回文件是否匹配的函数。
 
-@handle@ type=`(data: AutoFrontmatterData, context: AutoFrontmatterContext) => AutoFrontmatterData | Promise<AutoFrontmatterData>`
+@`handle` type=`(data: AutoFrontmatterData, context: AutoFrontmatterContext) => AutoFrontmatterData | Promise<AutoFrontmatterData>`
 
 处理 frontmatter 数据的函数。
 

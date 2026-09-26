@@ -97,35 +97,35 @@ export default {
 ## Options
 
 ::: fields
-@chartjs@ type=boolean
+@`chartjs` type=boolean
 
 Whether to enable Chart.js support.
 
-@echarts@ type=boolean
+@`echarts` type=boolean
 
 Whether to enable ECharts support.
 
-@flowchart@ type=boolean
+@`flowchart` type=boolean
 
 Whether to enable Flowchart support.
 
-@markmap@ type=boolean
+@`markmap` type=boolean
 
 Whether to enable Markmap support.
 
-@mermaid@ type=boolean
+@`mermaid` type=boolean
 
 Whether to enable Mermaid support.
 
-@plantuml@ type=`boolean | MarkdownItPlantumlOptions[]`
+@`plantuml` type=`boolean | MarkdownItPlantumlOptions[]`
 
 Whether to enable PlantUML support. Can accept configuration options for advanced usage.
 
-@DANGEROUS_ALLOW_SCRIPT_EXECUTION@ type=boolean
+@`DANGEROUS_ALLOW_SCRIPT_EXECUTION` type=boolean
 
 Whether to allow script execution in charts.
 
-@DANGEROUS_SCRIPT_EXECUTION_ALLOWLIST@ type=`string[] | '*'` default=[]
+@`DANGEROUS_SCRIPT_EXECUTION_ALLOWLIST` type=`string[] | '*'` default=[]
 
 Only effective when `DANGEROUS_ALLOW_SCRIPT_EXECUTION` is enabled. A list of file paths allowed to execute chart scripts. Use `'*'` to allow all files.
 

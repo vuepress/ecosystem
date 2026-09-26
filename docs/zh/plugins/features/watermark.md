@@ -34,17 +34,17 @@ export default {
 ## 选项
 
 ::: fields
-@enabled@ type=`boolean | ((page: Page) => boolean)` default=`true`
+@`enabled` type=`boolean | ((page: Page) => boolean)` default=`true`
 
 指定哪些页面需要添加水印。
 
 拥有 `true` 值的页面将会被添加水印。
 
-@watermarkOptions@ type=`WatermarkPureOptions`
+@`watermarkOptions` type=`WatermarkPureOptions`
 
 水印配置，全部可选项参见 [watermark-js-plus](https://zhensherlock.github.io/watermark-js-plus/zh/config/)。
 
-@@watermarkOptions.parent@ type=string default=`'body'`
+@@`watermarkOptions.parent` type=string default=`'body'`
 
 添加水印的父元素选择器。
 

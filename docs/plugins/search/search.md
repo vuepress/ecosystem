@@ -26,7 +26,9 @@ export default {
 }
 ```
 
-## Local Search Index
+## Guide
+
+### Local Search Index
 
 This plugin will generate search index from your pages locally, and load the search index file when users enter your site. In other words, this is a lightweight built-in search which does not require any external requests.
 
@@ -34,15 +36,14 @@ However, when your site has a large number of pages, the size of search index fi
 
 ## Options
 
-### locales
+::: fields
+@`locales` type=`LocaleConfig<SearchPluginLocaleData>` default=`{}`
 
-- Type: `Record<string, { placeholder?: string }>`
+The text of the search box in different locales.
 
-- Details:
+@@`locales.<localePath>.placeholder` type=string
 
-  The text of the search box in different locales.
-
-- Example:
+The placeholder of the search box.
 
 ```ts title=".vuepress/config.ts"
 export default {
@@ -61,48 +62,42 @@ export default {
 }
 ```
 
-- Also see:
-  - [Guide > I18n](https://vuejs.press/guide/i18n.html)
+See also: [Guide > I18n](https://vuejs.press/guide/i18n.html).
 
-### hotKeys
+@`hotKeys` type=`(KeyOptions | string)[]` default=`['s', '/']`
 
-- Type: `(string | KeyOptions)[]`
+Specify the [event.key](http://keycode.info/) of the hotkeys. When hotkeys are pressed, the search box input will be focused. Set to an empty array to disable hotkeys.
 
-  @[code ts](@vuepress/helper/src/shared/key.ts)
+@@`hotKeys[*].key` type=string required
 
-- Default: `['s', '/']`
+Value of `event.key` to trigger the hot key.
 
-- Details:
+@@`hotKeys[*].ctrl` type=boolean
 
-  Specify the [event.key](http://keycode.info/) of the hotkeys.
+Whether to press `event.ctrlKey` at the same time.
 
-  When hotkeys are pressed, the search box input will be focused.
+@@`hotKeys[*].shift` type=boolean
 
-  Set to an empty array to disable hotkeys.
+Whether to press `event.shiftKey` at the same time.
 
-### maxSuggestions
+@@`hotKeys[*].alt` type=boolean
 
-- Type: `number`
+Whether to press `event.altKey` at the same time.
 
-- Default: `5`
+@@`hotKeys[*].meta` type=boolean
 
-- Details:
+Whether to press `event.metaKey` at the same time.
 
-  Specify the maximum number of search results.
+@`maxSuggestions` type=number default=`5`
 
-### isSearchable
+Specify the maximum number of search results.
 
-- Type: `(page: Page) => boolean`
+@`isSearchable` type=`(page: Page) => boolean` default=`() => true`
 
-- Default: `() => true`
+A function to determine whether a page should be included in the search index.
 
-- Details:
-
-  A function to determine whether a page should be included in the search index.
-  - Return `true` to include the page.
-  - Return `false` to exclude the page.
-
-- Example:
+- Return `true` to include the page.
+- Return `false` to exclude the page.
 
 ```ts title=".vuepress/config.ts"
 export default {
@@ -115,19 +110,11 @@ export default {
 }
 ```
 
-### getExtraFields
+@`getExtraFields` type=`(page: Page) => string[]` default=`() => []`
 
-- Type: `(page: Page) => string[]`
+A function to add extra fields to the search index of a page.
 
-- Default: `() => []`
-
-- Details:
-
-  A function to add extra fields to the search index of a page.
-
-  By default, this plugin will use page title and headers as the search index. This option could help you to add more searchable fields.
-
-- Example:
+By default, this plugin will use page title and headers as the search index. This option could help you to add more searchable fields.
 
 ```ts title=".vuepress/config.ts"
 export default {
@@ -139,6 +126,8 @@ export default {
   ],
 }
 ```
+
+:::
 
 ## Styles
 

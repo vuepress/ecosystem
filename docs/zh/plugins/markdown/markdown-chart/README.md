@@ -97,35 +97,35 @@ export default {
 ## 选项
 
 ::: fields
-@chartjs@ type=boolean
+@`chartjs` type=boolean
 
 是否启用 Chart.js 支持。
 
-@echarts@ type=boolean
+@`echarts` type=boolean
 
 是否启用 ECharts 支持。
 
-@flowchart@ type=boolean
+@`flowchart` type=boolean
 
 是否启用 Flowchart 支持。
 
-@markmap@ type=boolean
+@`markmap` type=boolean
 
 是否启用 Markmap 支持。
 
-@mermaid@ type=boolean
+@`mermaid` type=boolean
 
 是否启用 Mermaid 支持。
 
-@plantuml@ type=`boolean | MarkdownItPlantumlOptions[]`
+@`plantuml` type=`boolean | MarkdownItPlantumlOptions[]`
 
 是否启用 PlantUML 支持。可以接受配置选项以供高级使用。
 
-@DANGEROUS_ALLOW_SCRIPT_EXECUTION@ type=boolean
+@`DANGEROUS_ALLOW_SCRIPT_EXECUTION` type=boolean
 
 是否允许在图表中执行脚本。这可能会带来安全风险，请谨慎使用。
 
-@DANGEROUS_SCRIPT_EXECUTION_ALLOWLIST@ type=`string[] | '*'` default=[]
+@`DANGEROUS_SCRIPT_EXECUTION_ALLOWLIST` type=`string[] | '*'` default=[]
 
 当启用脚本执行时，允许执行图表脚本的文件路径列表。使用 `'*'` 允许所有文件。
 

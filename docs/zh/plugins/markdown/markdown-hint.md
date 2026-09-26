@@ -92,47 +92,47 @@ const a = 1
 ## 选项
 
 ::: fields
-@hint@ type=boolean default=`true`
+@`hint` type=boolean default=`true`
 
 是否启用提示容器，包括 important、info、note、tip、warning、caution、details。
 
-@alert@ type=boolean
+@`alert` type=boolean
 
 是否启用 GFM 警告支持。
 
-@injectStyles@ type=boolean default=`true`
+@`injectStyles` type=boolean default=`true`
 
 是否注入默认样式。
 
-@locales@ type=MarkdownHintPluginLocaleConfig
+@`locales` type=MarkdownHintPluginLocaleConfig
 
 提示容器标题的本地化配置。
 
-@@locales.important@ type=string
+@@`locales.<localePath>.important` type=string
 
 重要块的默认标题。
 
-@@locales.note@ type=string
+@@`locales.<localePath>.note` type=string
 
 注释块的默认标题。
 
-@@locales.tip@ type=string
+@@`locales.<localePath>.tip` type=string
 
 提示块的默认标题。
 
-@@locales.warning@ type=string
+@@`locales.<localePath>.warning` type=string
 
 注意块的默认标题。
 
-@@locales.caution@ type=string
+@@`locales.<localePath>.caution` type=string
 
 警告块的默认标题。
 
-@@locales.info@ type=string
+@@`locales.<localePath>.info` type=string
 
 信息块的默认标题。
 
-@@locales.details@ type=string
+@@`locales.<localePath>.details` type=string
 
 详情块的默认标题。
 

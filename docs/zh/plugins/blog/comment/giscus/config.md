@@ -1,110 +1,82 @@
 # Giscus 选项
 
-## 配置
+## 选项
 
-### repo
+::: fields
+@`repo` type=string required
 
-- 类型：`string`
-- 必填: 是
-- 详情：存放评论的仓库名称
+存放评论的仓库名称。
 
-### repoId
+@`repoId` type=string required
 
-- 类型：`string`
-- 必填: 是
-- 详情：仓库 ID，请从 [Giscus 页面](https://giscus.app/zh-CN) 生成
+仓库 ID，请从 [Giscus 页面](https://giscus.app/zh-CN) 生成。
 
-### category
+@`category` type=string required
 
-- 类型：`string`
-- 必填: 是
-- 详情：讨论分类名称
+讨论分类名称。
 
-### categoryId
+@`categoryId` type=string required
 
-- 类型：`string`
-- 必填: 是
-- 详情：讨论分类 ID，请从 [Giscus 页面](https://giscus.app/zh-CN) 生成
+讨论分类 ID，请从 [Giscus 页面](https://giscus.app/zh-CN) 生成。
 
-### mapping
+@`mapping` type=`'number' | 'og:title' | 'pathname' | 'specific' | 'title' | 'url'` default=`'pathname'`
 
-- 类型：`string`
-- 默认值：`"pathname"`
-- 详情：页面 ↔️ discussion 映射关系，详见 [Giscus 页面](https://giscus.app/zh-CN)
+页面 ↔️ discussion 映射关系，详见 [Giscus 页面](https://giscus.app/zh-CN)。
 
-### strict
+@`strict` type=boolean default=`true`
 
-- 类型：`boolean`
-- 默认值：`true`
-- 详情：是否启用严格匹配
+是否启用严格匹配。
 
-### lazyLoading
+@`lazyLoading` type=boolean default=`true`
 
-- 类型：`boolean`
-- 默认值：`true`
-- 详情：是否启用懒加载
+是否启用懒加载。
 
-### reactionsEnabled
+@`reactionsEnabled` type=boolean default=`true`
 
-- 类型：`boolean`
-- 默认值：`true`
-- 详情：是否启用主帖子上的反应
+是否启用主帖子上的反应。
 
-### inputPosition
+@`inputPosition` type=`'top' | 'bottom'` default=`'top'`
 
-- 类型：`"top" | "bottom"`
-- 默认值：`"top"`
-- 详情：输入框的位置
+输入框的位置。
 
-### lightTheme
+@`lightTheme` type=GiscusTheme default=`'light'`
 
-- 类型：`GiscusTheme`
+Giscus 在日间模式下使用的主题。应为一个内置主题关键词或者一个 `https://` 开头的 CSS 链接。
 
-  ```ts
-  type GiscusTheme =
-    | 'dark_dimmed'
-    | 'dark_high_contrast'
-    | 'dark_protanopia'
-    | 'dark'
-    | 'light_high_contrast'
-    | 'light_protanopia'
-    | 'light'
-    | 'preferred_color_scheme'
-    | 'transparent_dark'
-    | `https://${string}`
-  ```
+可用主题：
 
-- 默认值：`"light"`
-- 详情：
+- `'catppuccin_frappe'`
+- `'catppuccin_latte'`
+- `'catppuccin_macchiato'`
+- `'catppuccin_mocha'`
+- `'cobalt'`
+- `'dark_dimmed'`
+- `'dark_high_contrast'`
+- `'dark_protanopia'`
+- `'dark_tritanopia'`
+- `'dark'`
+- `'fro'`
+- `'gruvbox_dark'`
+- `'gruvbox_light'`
+- `'gruvbox'`
+- `'light_high_contrast'`
+- `'light_protanopia'`
+- `'light_tritanopia'`
+- `'light'`
+- `'noborder_dark'`
+- `'noborder_gray'`
+- `'noborder_light'`
+- `'preferred_color_scheme'`
+- `'purple_dark'`
+- `'transparent_dark'`
 
-  Giscus 在日间模式下使用的主题
+@`darkTheme` type=GiscusTheme default=`'dark'`
 
-  应为一个内置主题关键词或者一个 CSS 链接。
+Giscus 在夜间模式下使用的主题。应为一个内置主题关键词或者一个 `https://` 开头的 CSS 链接。
 
-### darkTheme
+可用主题见 `lightTheme`。
 
-- 类型：`GiscusTheme`
-
-  ```ts
-  type GiscusTheme =
-    | 'dark_dimmed'
-    | 'dark_high_contrast'
-    | 'dark_protanopia'
-    | 'dark'
-    | 'light_high_contrast'
-    | 'light_protanopia'
-    | 'light'
-    | 'preferred_color_scheme'
-    | 'transparent_dark'
-    | `https://${string}`
-  ```
-
-- 默认值：`"dark"`
-- 详情：
-
-  Giscus 在夜间模式下使用的主题
-
-  应为一个内置主题关键词或者一个 CSS 链接。
+:::
 
 ## 插件配置
 

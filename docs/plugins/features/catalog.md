@@ -26,6 +26,10 @@ export default {
 }
 ```
 
+## Guide
+
+### Catalog Info
+
 First, you should set catalog info in `routeMeta`:
 
 ```ts title=".vuepress/config.ts"
@@ -57,7 +61,7 @@ Catalog info should contain:
 - `order`: Catalog order (optional)
 - `content`: Catalog content component (optional)
 
-::: tip Sorting with order
+### Sorting with Order
 
 The plugin sorts pages by `order` in the following sequence:
 
@@ -79,85 +83,56 @@ Project with order -2
 Project with order -1
 ```
 
-:::
-
 ## Options
 
-### level <Badge text="Built-in component only" />
+:::: fields
+@`level` type=`1 | 2 | 3` default=`3` built-in="Component only"
 
-- Type: `1 | 2 | 3`
-- Default: `3`
-- Details: Maximum depth of catalog items.
+Maximum depth of catalog items.
 
-### index <Badge text="Built-in component only" />
+@`index` type=boolean built-in="Component only"
 
-- Type: `boolean`
-- Default: `false`
-- Details: Whether to show index numbers for catalog items.
+Whether to show index numbers for catalog items.
 
-### frontmatter
+@`frontmatter` type=`(path: string) => PageFrontmatter`
 
-- Type: `(path: string) => Record<string, any>`
-- Details: Frontmatter getter for generated pages.
-- Example:
+Frontmatter getter for generated pages.
 
-  ```ts title=".vuepress/config.ts"
-  import { catalogPlugin } from '@vuepress/plugin-catalog'
+```ts title=".vuepress/config.ts"
+import { catalogPlugin } from '@vuepress/plugin-catalog'
 
-  export default {
-    plugins: [
-      catalogPlugin({
-        frontmatter: (path) => ({
-          // Frontmatter you want
-          // You may customize title, author, time, etc.
-        }),
+export default {
+  plugins: [
+    catalogPlugin({
+      frontmatter: (path) => ({
+        // Frontmatter you want
+        // You may customize title, author, time, etc.
       }),
-    ],
-  }
-  ```
+    }),
+  ],
+}
+```
 
-### exclude
+@`exclude` type=`(RegExp | string)[]` default=`[]`
 
-- Type: `(RegExp | string)[]`
-- Default: `[]`
-- Details:
+Catalog page path to be excluded during generation.
 
-  Catalog page path to be excluded during generation.
-  - `"/foo/"` means only exclude catalog page generation at `/foo/` folder.
-  - `/^\/foo\//` means exclude catalog page generation at `/foo/` folder and its subfolders.
+- `"/foo/"` means only exclude catalog page generation at the `/foo/` folder.
+- `/^\/foo\//` means exclude catalog page generation at the `/foo/` folder and its subfolders.
 
-  ::: tip 404 pages will be automatically excluded.
+::: tip 404 pages will be automatically excluded.
 
-  :::
+:::
 
-### component
+@`component` type=string
 
-- Type: `string`
-- Details: Component name to use as the catalog component.
+Component name to use as the catalog component.
 
-### locales
+By default the plugin registers and uses a `<Catalog />` component.
 
-- Type: `CatalogPluginLocaleConfig`
+@`locales` type=`CatalogPluginLocaleConfig`
 
-  ```ts
-  interface CatalogPluginLocaleData {
-    /**
-     * Catalog title
-     */
-    title: string
-
-    /**
-     * Empty hint
-     */
-    empty: string
-  }
-
-  interface CatalogPluginLocaleConfig {
-    [localePath: string]: Partial<CatalogPluginLocaleData>
-  }
-  ```
-
-- Details: Locales configuration for catalog component.
+Locale config of the catalog component.
 
 ::: details Built-in Supported Languages
 
@@ -181,6 +156,15 @@ Project with order -1
 - **Dutch** (nl-NL)
 
 :::
+
+@@`locales.<localePath>.title` type=string
+
+Catalog title text.
+
+@@`locales.<localePath>.empty` type=string
+
+Empty hint text.
+::::
 
 ## Client Options
 

@@ -121,7 +121,7 @@ type: tip
 ## 选项
 
 ::: fields
-@gfm@ type=boolean
+@`gfm` type=boolean
 
 是否调整行为和功能，使其更类似于 GitHub Flavored Markdown。
 
@@ -134,39 +134,39 @@ type: tip
 
 请注意：并不是所有行为都与 GitHub Flavored Markdown 完全相同。
 
-@footnote@ type=boolean gfm=Yes
+@`footnote` type=boolean gfm=Yes
 
 是否启用脚注格式支持。
 
-@tasklist@ type=`MarkdownItTaskListOptions | boolean` gfm=Yes
+@`tasklist` type=`MarkdownItTaskListOptions | boolean` gfm=Yes
 
 是否启用任务列表格式支持。你可以传递一个对象来配置任务列表。
 
-@@tasklist.disabled@ type=boolean default=`true`
+@@`tasklist.disabled` type=boolean default=`true`
 
 是否禁用 checkbox。
 
-@@tasklist.label@ type=boolean default=`true`
+@@`tasklist.label` type=boolean default=`true`
 
 是否使用 `<label>` 来包裹文字。
 
-@breaks@ type=boolean gfm=Yes
+@`breaks` type=boolean gfm=Yes
 
 是否将段落中的 `\n` 转换为 `<br>`。
 
-@linkify@ type=boolean gfm=Yes
+@`linkify` type=boolean gfm=Yes
 
 是否将类似 URL 的文本转换为链接。
 
-@component@ type=boolean
+@`component` type=boolean
 
 是否启用组件代码块支持。
 
-@vPre@ type=boolean
+@`vPre` type=boolean
 
 是否启用 v-pre 容器支持。
 
-@cjkFriendly@ type=boolean
+@`cjkFriendly` type=boolean
 
 是否启用对强调标记的 CJK 友好支持。未设置时，检测到 CJK 语言（`zh`、`ja`、`ko`）将自动启用。
 

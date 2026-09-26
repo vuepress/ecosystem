@@ -51,7 +51,7 @@ If you want Google Tag Manager to work properly when javascript is disabled, you
 ## Options
 
 ::: fields
-@id@ type=string required
+@`id` type=string required
 
 The container ID of Google Tag Manager, which should start with `'GTM-'`.
 

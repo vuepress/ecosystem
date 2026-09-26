@@ -39,31 +39,31 @@ export default {
 ## 选项
 
 ::: fields
-@id@ type=string required
+@`id` type=string required
 
 Umami 控制台提供的唯一网站 ID (Website ID)。
 
-@link@ type=string default=`'https://us.umami.is/script.js'`
+@`link` type=string default=`'https://us.umami.is/script.js'`
 
 Umami 追踪脚本的源地址 URL。
 
-@autoTrack@ type=boolean default=`true`
+@`autoTrack` type=boolean default=`true`
 
 控制是否自动追踪页面浏览和事件。
 
 如果希望禁用自动数据收集并仅依赖手动追踪函数，请将此项设置为 `false`。
 
-@cache@ type=boolean
+@`cache` type=boolean
 
 启用缓存以提高追踪脚本的性能。
 
 **注意：** 此功能会使用 Session Storage。根据你所在地区的法规，你可能需要向用户告知这一情况。
 
-@domains@ type=`string[]`
+@`domains` type=`string[]`
 
 允许的域名列表。只有通过这些特定域名访问站点时，才会进行追踪。
 
-@hostUrl@ type=string default=`link`
+@`hostUrl` type=string default=`link`
 
 用于发送分析数据的自定义端点。如果未指定，默认使用 [link](#link) 中定义的脚本位置。
 

@@ -51,11 +51,11 @@ Once the plugin is enabled, the `clarity()` function is exposed on the global `w
 ## Options
 
 ::: fields
-@id@ type=string required
+@`id` type=string required
 
 The Project ID assigned by Microsoft Clarity. You can find this in your Clarity dashboard under Settings.
 
-@crossOrigin@ type=`'' | 'anonymous' | 'use-credentials'`
+@`crossOrigin` type=`'' | 'anonymous' | 'use-credentials'`
 
 The `crossorigin` attribute for the injected script tag. This configures the [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) setting for loading the Clarity resources.
 

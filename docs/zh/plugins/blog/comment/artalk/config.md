@@ -1,12 +1,33 @@
 # Artalk 选项
 
-## 配置
+## 选项
 
-详见 [Artalk 配置](https://artalk.js.org/guide/frontend/config.html)。
+Artalk 的选项继承自 [Artalk 配置](https://artalk.js.org/guide/frontend/config.html)，所有可序列化的 Artalk 选项都可以直接在插件选项中配置。
 
-- `el`、`pageTitle`、`pageKey` 和 `site` 选项为插件的保留选项，将从 VuePress 配置中自动推断。
+以下选项为插件的保留选项，将从 VuePress 配置中自动推断：
 
-- `imgUploader` 和 `avatarURLBuilder` 这两个函数选项只能在客户端设置。
+::: fields
+@`el` type=`string | HTMLElement` managed-by="插件"
+
+容器元素，由 VuePress 配置推断。
+
+@`pageTitle` type=string managed-by="插件"
+
+页面标题，由 VuePress 页面推断。
+
+@`pageKey` type=string managed-by="插件"
+
+页面键名，由 VuePress 路由推断。
+
+@`site` type=string managed-by="插件"
+
+站点名称，由 VuePress 站点配置推断。
+
+:::
+
+::: tip
+`imgUploader` 和 `avatarURLBuilder` 这两个函数选项只能在客户端设置，详见 [客户端配置](#客户端配置)。
+:::
 
 ## 插件配置
 

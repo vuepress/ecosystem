@@ -26,13 +26,43 @@ export default {
 }
 ```
 
+## 指南
+
 ### 设置重定向
 
 如果你改动了已有页面的地址，你可以在 Frontmatter 中使用 `redirectFrom` 选项设置重定向到此页面的地址，这样可以保证用户在访问旧链接时重定向到新的地址。
 
 如果你需要将已有的页面重定向到新的页面，可以在 Frontmatter 中使用 `redirectTo` 选项设置需要重定向到的地址。这样该页面会在访问时重定向到新的地址。
 
-你还可以通过插件选项中的 `config` 设置一个重定向映射，详见 [config](#config)。
+你还可以通过插件选项中的 `config` 设置一个重定向映射：
+
+当 base 为 `/base/` 时：
+
+- 将 `/base/foo.html` 重定向到 `/base/bar.html`
+- 将 `/base/baz.html` 重定向到 `https://example.com/qux.html`。
+
+```js
+redirect({
+  config: {
+    '/foo.html': '/bar.html',
+    '/baz.html': 'https://example.com/qux.html',
+  },
+})
+```
+
+将 post 文件夹的路径重定向到 posts 文件夹：
+
+```js
+redirect({
+  hostname: 'https://example.com',
+  config: (app) =>
+    Object.fromEntries(
+      app.pages
+        .filter(({ path }) => path.startsWith('/posts/'))
+        .map(({ path }) => [path.replace(/^\/posts\//, '/post/'), path]),
+    ),
+})
+```
 
 ### 自动多语言
 
@@ -157,128 +187,54 @@ Generate redirect site for current VuePress project
 
 ## 选项
 
-### config
+:::: fields
+@`config` type=`Record<string, string> | ((app: App) => Record<string, string>)`
 
-- 类型：`Record<string, string> | ((app: App) => Record<string, string>)`
-- 详情
+页面重定向映射。键名为重定向的源页面地址，键值为重定向的目标地址。
 
-  页面重定向映射。
+参考：[设置重定向](#设置重定向)。
 
-  可直接传入对象或传入参数为 `App` 的函数返回值一个对象。
+@`autoLocale` type=boolean
 
-  每个键名必须是一个绝对路径，代表重定向的源页面地址。
+是否启用语言重定向。
 
-  每个键值是重定向的目标地址，可以是绝对路径或完整路径。
+参考：[自动多语言](#自动多语言)。
 
-- 示例：
+@`switchLocale` type=`'direct' | 'modal' | 'popup' | false` default=`false`
 
-  当 base 为 `/base/`时：
-  - 将 `/base/foo.html` 重定向到 `/base/bar.html`
-  - 将 `/base/baz.html` 重定向到 `https://example.com/qux.html`。
+是否根据用户偏好切换到新的语言环境。
 
-  ```js
-  redirect({
-    config: {
-      '/foo.html': '/bar.html',
-      '/baz.html': 'https://example.com/qux.html',
-    },
-  })
-  ```
+- `'direct'`: 直接重定向到新的语言环境而不询问。
+- `'popup'`: 显示一个弹窗让用户选择是否切换到新的语言环境。
+- `'modal'`: 显示一个全屏模态框让用户选择是否切换到新的语言环境。
 
-  将 post 文件夹的路径重定向到 posts 文件夹
+参考：[自动切换语言](#自动切换语言)。
 
-  ```js
-  redirect({
-    hostname: 'https://example.com',
-    config: (app) =>
-      Object.fromEntries(
-        app.pages
-          .filter(({ path }) => path.startsWith('/posts/'))
-          .map(({ path }) => [path.replace(/^\/posts\//, '/post/'), path]),
-      ),
-  })
-  ```
+@`localeConfig` type=`Record<string, string[] | string>`
 
-### autoLocale
+多语言语言配置。
 
-- 类型：`boolean`
-- 默认值：`false`
-- 详情： 是否启用语言重定向
+参考：[自定义多语言配置](#自定义多语言配置)。
 
-### switchLocale
+@`localeFallback` type=boolean default=`true`
 
-- 类型：`"direct" | "popup" | "modal" | false`
-- 默认值：`false`
-- 详情：
+是否回退到用户定义的其他语言。
 
-  是否根据用户偏好切换到新的语言环境。
-  - `"direct"`: 直接重定向到新的语言环境而不询问
-  - `"popup"`: 显示一个弹窗让用户选择是否切换到新的语言环境
-  - `"modal"`: 显示一个全屏模态框让用户选择是否切换到新的语言环境
+@`defaultBehavior` type=`'404' | 'defaultLocale' | 'homepage'` default=`'defaultLocale'`
 
-### localeConfig
+当前链接没有可用的语言版本时的行为。
 
-- 类型：`Record<string, string | string[]>`
-- 详情：多语言语言配置
+- `'defaultLocale'`: 重定向到默认语言或首个可用语言页面。
+- `'homepage'`: 重定向到当前语言的主页。仅当语言分配给当前语言时可用。
+- `'404'`: 重定向到当前语言的 404 页。仅当语言分配给当前语言时可用。
 
-### localeFallback
+@`defaultLocale` type=string default="首个语言路径"
 
-- 类型：`boolean`
-- 默认值：`true`
-- 详情：是否回退到用户定义的其他语言
+默认语言路径。如果缺失，则使用第一个语言。
 
-### defaultBehavior
+@`locales` type=`LocaleConfig<RedirectPluginLocaleData>`
 
-- 类型：`"defaultLocale" | "homepage" | "404"`
-- 默认值：`"defaultLocale"`
-- 详情：当前链接没有可用的语言版本时的行为
-
-### defaultLocale
-
-- 类型：`string`
-- 默认值：首个语言路径
-- 详情：默认语言路径
-
-### locales
-
-- 类型：`RedirectPluginLocaleConfig`
-
-  ```ts
-  interface RedirectPluginLocaleData {
-    /**
-     * 语言名称
-     */
-    name: string
-
-    /**
-     * 切换提示
-     */
-    hint: string
-
-    /**
-     * 切换按钮文字
-     */
-    switch: string
-
-    /**
-     * 取消按钮文字
-     */
-    cancel: string
-
-    /**
-     * 记住提示文本
-     */
-    remember: string
-  }
-
-  interface RedirectPluginLocaleConfig {
-    [localePath: string]: Partial<RedirectPluginLocaleData>
-  }
-  ```
-
-- 详情：
-
-  重定向插件的国际化配置。
+重定向插件的国际化配置，各语言的数据为 `RedirectPluginLocaleData` 的一部分。
 
 ::: details 内置支持语言
 
@@ -304,17 +260,44 @@ Generate redirect site for current VuePress project
 
 :::
 
+@`locales.<localePath>.name` type=string
+
+语言名称。
+
+@`locales.<localePath>.hint` type=string
+
+切换提示。
+
+@`locales.<localePath>.switch` type=string
+
+切换按钮文字。
+
+@`locales.<localePath>.cancel` type=string
+
+取消按钮文字。
+
+@`locales.<localePath>.remember` type=string
+
+记住提示文本。
+
+::::
+
 ## Frontmatter
 
-### redirectFrom
+::: fields
+@`redirectFrom` type=`string | string[]`
 
-- 类型：`string | string[]`
-- 详情：重定向到该页面的地址。
+重定向到该页面的地址。
 
-### redirectTo
+参考：[设置重定向](#设置重定向)。
 
-- 类型：`string`
-- 详情：该页面重定向到的地址。
+@`redirectTo` type=string
+
+该页面重定向到的地址。
+
+参考：[设置重定向](#设置重定向)。
+
+:::
 
 ## 样式
 

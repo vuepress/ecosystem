@@ -92,47 +92,47 @@ The plugin also provides an `alert` option to support gfm alerts:
 ## Options
 
 ::: fields
-@hint@ type=boolean default=`true`
+@`hint` type=boolean default=`true`
 
 Whether to enable hint containers including important, info, note, tip, warning, caution, details.
 
-@alert@ type=boolean
+@`alert` type=boolean
 
 Whether to enable GFM alert support.
 
-@injectStyles@ type=boolean default=`true`
+@`injectStyles` type=boolean default=`true`
 
 Whether to inject default styles.
 
-@locales@ type=MarkdownHintPluginLocaleConfig
+@`locales` type=MarkdownHintPluginLocaleConfig
 
 Locale config for hint container titles.
 
-@@locales.important@ type=string
+@@`locales.<localePath>.important` type=string
 
 Default title text for important block.
 
-@@locales.note@ type=string
+@@`locales.<localePath>.note` type=string
 
 Default title text for note block.
 
-@@locales.tip@ type=string
+@@`locales.<localePath>.tip` type=string
 
 Default title text for tip block.
 
-@@locales.warning@ type=string
+@@`locales.<localePath>.warning` type=string
 
 Default title text for warning block.
 
-@@locales.caution@ type=string
+@@`locales.<localePath>.caution` type=string
 
 Default title text for caution block.
 
-@@locales.info@ type=string
+@@`locales.<localePath>.info` type=string
 
 Default title text for info block.
 
-@@locales.details@ type=string
+@@`locales.<localePath>.details` type=string
 
 Default title text for details block.
 

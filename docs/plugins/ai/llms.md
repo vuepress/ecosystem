@@ -139,29 +139,29 @@ For example, if your site has a page at `/guide/quick-start.html`, the plugin ge
 ## Options
 
 ::: fields
-@llmsTxt@ type=boolean default=`true`
+@`llmsTxt` type=boolean default=`true`
 
 Specifies whether to generate the `llms.txt` file (the index file containing links to section summaries).
 
-@llmsFullTxt@ type=boolean default=`true`
+@`llmsFullTxt` type=boolean default=`true`
 
 Specifies whether to generate the `llms-full.txt` file (a consolidated text file containing the entire documentation).
 
-@llmsPageTxt@ type=boolean default=`true`
+@`llmsPageTxt` type=boolean default=`true`
 
 Specifies whether to generate individual LLM-friendly Markdown files for each page of the website.
 
-@stripHTML@ type=boolean default=`true`
+@`stripHTML` type=boolean default=`true`
 
 Determines whether HTML tags should be stripped from the generated Markdown files to ensure cleaner input for LLMs.
 
-@filter@ type=`(page: Page) => boolean` default=`() => true`
+@`filter` type=`(page: Page) => boolean` default=`() => true`
 
 A function to filter which pages are included. If the function returns `true`, the page is included in `llms.txt`.
 
 Note that pages explicitly disabled via `frontmatter.llmstxt` or pages not generated from Markdown sources will always be excluded, regardless of this setting.
 
-@domain@ type=string
+@`domain` type=string
 
 An optional domain to prepend to all URLs in `llms.txt` and other generated files.
 
@@ -172,7 +172,7 @@ While standard relative paths are often sufficient, some AI agents may handle ab
 - [title](https://example.com/foo/bar.md) <!-- [!code ++] -->
 ```
 
-@locale@ type=`string | 'all'` default=`'/'`
+@`locale` type=`string | 'all'` default=`'/'`
 
 Controls which locale to generate content for.
 
@@ -182,7 +182,7 @@ Controls which locale to generate content for.
 
 If your documentation contains specialized terminology or concepts that LLMs struggle to translate accurately, generating dedicated `llms.txt` files for each language ensures that international users (and their AI assistants) receive the most precise information available.
 
-@llmsTxtTemplate@ type=string
+@`llmsTxtTemplate` type=string
 
 Defines the structure of the `llms.txt` file. You can rearrange the default placeholders—`{title}`, `{description}`, `{details}`, and `{toc}`—or introduce new ones using `llmsTxtTemplateGetter`.
 
@@ -200,7 +200,7 @@ Its default value is:
 {toc}
 ```
 
-@llmsTxtTemplateGetter@ type=TemplateGetterOptions default=`{}`
+@`llmsTxtTemplateGetter` type=TemplateGetterOptions default=`{}`
 
 Provides custom variables or getter functions for the [`llmsTxtTemplate`](#llmstxttemplate).
 
@@ -312,7 +312,7 @@ llmsPlugin({
 })
 ```
 
-@transformMarkdown@ type=`(markdown: string, page: LLMPage) => string`
+@`transformMarkdown` type=`(markdown: string, page: LLMPage) => string`
 
 A function used to modify the Markdown content of a page. It accepts a Markdown string and a page object as parameters and returns the modified Markdown string.
 

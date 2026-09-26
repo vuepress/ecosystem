@@ -153,7 +153,7 @@ export default {
 `autoFrontmatterPlugin` accepts a frontmatter handle function, a rule object, or an array of rule objects.
 
 ::: fields
-@filter@ type=`string[] | string | ((relativePath: string) => boolean)`
+@`filter` type=`string[] | string | ((relativePath: string) => boolean)`
 
 File filter, matches the relative path of the file.
 
@@ -161,7 +161,7 @@ Uses [picomatch](https://github.com/micromatch/picomatch) for pattern matching.
 
 Pass a glob string, an array of glob strings (a string starting with `!` excludes files), or a function returning whether the file matches.
 
-@handle@ type=`(data: AutoFrontmatterData, context: AutoFrontmatterContext) => AutoFrontmatterData | Promise<AutoFrontmatterData>`
+@`handle` type=`(data: AutoFrontmatterData, context: AutoFrontmatterContext) => AutoFrontmatterData | Promise<AutoFrontmatterData>`
 
 The function to handle the frontmatter data.
 

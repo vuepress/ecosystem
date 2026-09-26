@@ -7,15 +7,15 @@ icon: settings-2
 ## Options
 
 :::: fields
-@serviceWorkerFilename@ type=string default=`'service-worker.js'`
+@`serviceWorkerFilename` type=string default=`'service-worker.js'`
 
 Service Worker file path.
 
-@showInstall@ type=boolean default=`true`
+@`showInstall` type=boolean default=`true`
 
 Whether to display the install button when the Service Worker is first registered successfully.
 
-@manifest@ type=AppManifest
+@`manifest` type=AppManifest
 
 An object which will be parsed to manifest.webmanifest.
 
@@ -42,7 +42,7 @@ See also:
 - [MDN Web Docs: Web App Manifest](https://developer.mozilla.org/en-US/docs/Web/Manifest)
 - [W3C: Web App Manifest](https://www.w3.org/TR/appmanifest/)
 
-@favicon@ type=string
+@`favicon` type=string
 
 Link of favicon.ico.
 
@@ -52,11 +52,11 @@ We recommend setting favicon for your site.
 
 :::
 
-@themeColor@ type=string default=`'#46bd87'`
+@`themeColor` type=string default=`'#46bd87'`
 
 Theme color of the PWA.
 
-@maxSize@ type=number default=`2048`
+@`maxSize` type=number default=`2048`
 
 Max size allowed to be cached, in KB.
 
@@ -68,15 +68,15 @@ So if you generate very large HTML or JS files, please consider increasing this 
 
 :::
 
-@cacheHTML@ type=boolean
+@`cacheHTML` type=boolean
 
 Whether to cache HTML files besides home page and 404 page.
 
-@cacheImage@ type=boolean
+@`cacheImage` type=boolean
 
 Whether to cache pictures.
 
-@maxImageSize@ type=number default=`1024`
+@`maxImageSize` type=number default=`1024`
 
 Max picture size allowed to be cached, in KB.
 
@@ -86,7 +86,7 @@ The value must not be greater than [maxSize](#maxsize) option.
 
 :::
 
-@update@ type=`'available' | 'disable' | 'force' | 'hint'` default=`'available'`
+@`update` type=`'available' | 'disable' | 'force' | 'hint'` default=`'available'`
 
 Control logic when new content is found.
 
@@ -104,39 +104,39 @@ How docs are updated is controlled by a previous version, so the current option 
 
 :::
 
-@apple@ type=`ApplePwaOptions | false`
+@`apple` type=`ApplePwaOptions | false`
 
 Special settings for better supporting Safari, ignoring these options are safe.
 
-@@apple.icon@ type=string
+@@`apple.icon` type=string
 
 Icon link used by Safari, recommend 152×152 size.
 
-@@apple.maskIcon@ type=string
+@@`apple.maskIcon` type=string
 
 Safari mask icon.
 
-@@apple.statusBarColor@ type=`'black-translucent' | 'black' | 'default'` default=`'default'` deprecated
+@@`apple.statusBarColor` type=`'black-translucent' | 'black' | 'default'` default=`'default'` deprecated
 
 Status bar color for Safari. Related tag is unstandardized, so you should avoid declaring it.
 
-@foundComponent@ type=string default=`'PwaFoundPopup'`
+@`foundComponent` type=string default=`'PwaFoundPopup'`
 
 Path of custom hint popup component.
 
-@readyComponent@ type=string default=`'PwaReadyPopup'`
+@`readyComponent` type=string default=`'PwaReadyPopup'`
 
 Path of custom update popup component.
 
-@appendBase@ type=boolean
+@`appendBase` type=boolean
 
 Whether append base to all absolute links in options.
 
-@generateSWConfig@ type=`Partial<GenerateSWOptions>`
+@`generateSWConfig` type=`Partial<GenerateSWOptions>`
 
 Options passed to `workbox-build`, for details, see [Workbox documentation](https://developers.google.com/web/tools/workbox/reference-docs/latest/module-workbox-build#.generateSW).
 
-@locales@ type=`LocaleConfig<PwaPluginLocaleData>`
+@`locales` type=`LocaleConfig<PwaPluginLocaleData>`
 
 Locales config for pwa plugin. The locale data is a partial of `PwaPluginLocaleData`.
 
@@ -163,47 +163,47 @@ Locales config for pwa plugin. The locale data is a partial of `PwaPluginLocaleD
 
 :::
 
-@@locales.install@ type=string
+@@`locales.<localePath>.install` type=string
 
 Install button text.
 
-@@locales.iOSInstall@ type=string
+@@`locales.<localePath>.iOSInstall` type=string
 
 IOS install hint text.
 
-@@locales.cancel@ type=string
+@@`locales.<localePath>.cancel` type=string
 
 Cancel button text.
 
-@@locales.close@ type=string
+@@`locales.<localePath>.close` type=string
 
 Close button text.
 
-@@locales.prevImage@ type=string
+@@`locales.<localePath>.prevImage` type=string
 
 Previous image text.
 
-@@locales.nextImage@ type=string
+@@`locales.<localePath>.nextImage` type=string
 
 Next image text.
 
-@@locales.explain@ type=string
+@@`locales.<localePath>.explain` type=string
 
 Install explain text.
 
-@@locales.desc@ type=string
+@@`locales.<localePath>.desc` type=string
 
 Description label text.
 
-@@locales.feature@ type=string
+@@`locales.<localePath>.feature` type=string
 
 Feature label text.
 
-@@locales.hint@ type=string
+@@`locales.<localePath>.hint` type=string
 
 Update hint text.
 
-@@locales.update@ type=string
+@@`locales.<localePath>.update` type=string
 
 Update available text.
 

@@ -51,7 +51,7 @@ export default {
 ## 选项
 
 ::: fields
-@id@ type=string required
+@`id` type=string required
 
 Google 跟踪代码管理器的容器 ID，应以 `'GTM-'` 开头。
 

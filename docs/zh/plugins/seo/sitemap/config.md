@@ -7,11 +7,11 @@ icon: settings-2
 ## 选项
 
 :::: fields
-@hostname@ type=string required
+@`hostname` type=string required
 
 当前网站部署到的域名，插件需要此选项才能工作。
 
-@extraUrls@ type=`string[]`
+@`extraUrls` type=`string[]`
 
 需要额外包含的网址。
 
@@ -21,7 +21,7 @@ icon: settings-2
 
 例如：`['/about.html', '/api/']`。
 
-@excludePaths@ type=`string[]` default=`['/404.html']`
+@`excludePaths` type=`string[]` default=`['/404.html']`
 
 不需要收录的页面路径，请以绝对路径开头。
 
@@ -29,7 +29,7 @@ icon: settings-2
 
 参考：[控制 Sitemap 链接](./guide.md#控制-sitemap-链接)。
 
-@devServer@ type=boolean
+@`devServer` type=boolean
 
 是否在开发服务器中启用。
 
@@ -39,37 +39,37 @@ icon: settings-2
 
 :::
 
-@devHostname@ type=string default=`'http://localhost:${port}'`
+@`devHostname` type=string default=`'http://localhost:${port}'`
 
 开发服务器使用的主机名。
 
-@sitemapFilename@ type=string default=`'sitemap.xml'`
+@`sitemapFilename` type=string default=`'sitemap.xml'`
 
 输出的文件名，相对于输出目录。
 
 参考：[输出位置](./guide.md#输出位置)。
 
-@sitemapXSLFilename@ type=string default=`'sitemap.xsl'`
+@`sitemapXSLFilename` type=string default=`'sitemap.xsl'`
 
 输出的 xsl 文件名，相对于输出目录。
 
-@sitemapXSLTemplate@ type=string default="`@vuepress/plugin-sitemap/templates/sitemap.xsl` 的内容"
+@`sitemapXSLTemplate` type=string default="`@vuepress/plugin-sitemap/templates/sitemap.xsl` 的内容"
 
 用作模板的 XSL 文件内容。
 
-@changefreq@ type=`'always' | 'hourly' | 'daily' | 'weekly' | 'monthly' | 'yearly' | 'never'` default=`'daily'`
+@`changefreq` type=`'always' | 'hourly' | 'daily' | 'weekly' | 'monthly' | 'yearly' | 'never'` default=`'daily'`
 
 页面默认更新频率，会被 Frontmatter 中的 [sitemap.changefreq](./frontmatter.md#sitemap-changefreq) 覆盖。
 
 参考：[更新周期](./guide.md#更新周期)。
 
-@priority@ type=number default=`0.5`
+@`priority` type=number default=`0.5`
 
 页面优先级，范围 `0` 至 `1`。
 
 参考：[优先级](./guide.md#优先级)。
 
-@modifyTimeGetter@ type=`(page: Page, app: App) => string`
+@`modifyTimeGetter` type=`(page: Page, app: App) => string`
 
 最后修改时间的获取器。默认情况下，插件会使用 Git 插件生成的时间戳。
 

@@ -31,13 +31,13 @@ export default {
 ## Options
 
 ::: fields
-@headerLinkSelector@ type=string default=`'a.vp-sidebar-item'`
+@`headerLinkSelector` type=string default=`'a.vp-sidebar-item'`
 
 Selector of _header link_.
 
 If a _header anchor_ does not have a corresponding _header link_, this plugin won't change the route hash to that anchor when scrolling to it.
 
-@headerAnchorSelector@ type=string default=`'.header-anchor'`
+@`headerAnchorSelector` type=string default=`'.header-anchor'`
 
 Selector of _header anchor_.
 
@@ -45,11 +45,11 @@ You don't need to specify this option unless you have changed the `permalinkClas
 
 See also: [Guide > Markdown > Syntax Extensions > Header Anchors](https://vuejs.press/guide/markdown.html#header-anchors).
 
-@delay@ type=number default=`200`
+@`delay` type=number default=`200`
 
 The delay in milliseconds of the debounced scroll event listener.
 
-@offset@ type=number default=`5`
+@`offset` type=number default=`5`
 
 The offset in pixels when a _header anchor_ is determined as active.
 

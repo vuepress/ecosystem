@@ -76,11 +76,11 @@ const readingTimeLocale = useReadingTimeLocale() // { time: "1 minute", words: "
 ## Options
 
 :::: fields
-@wordPerMinute@ type=number default=`300`
+@`wordPerMinute` type=number default=`300`
 
 Reading speed in words per minute.
 
-@locales@ type=`ReadingTimePluginLocaleConfig`
+@`locales` type=`ReadingTimePluginLocaleConfig`
 
 Locale config for reading time text and word count text.
 
@@ -107,15 +107,15 @@ Locale config for reading time text and word count text.
 
 :::
 
-@@locales.word@ type=string
+@@`locales.<localePath>.word` type=string
 
 Word template, `$word` will be automatically replaced by actual words.
 
-@@locales.less1Minute@ type=string
+@@`locales.<localePath>.less1Minute` type=string
 
 Text for less than one minute.
 
-@@locales.time@ type=string
+@@`locales.<localePath>.time` type=string
 
 Time template, `$time` will be automatically replaced by actual time.
 ::::

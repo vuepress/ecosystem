@@ -481,35 +481,35 @@ with trailing spaces
 ## Options
 
 ::: fields
-@theme@ type=PrismjsTheme default=`'nord'`
+@`theme` type=PrismjsTheme default=`'nord'`
 
 Prism.js theme applied to code blocks. See [Prism.js Themes](#prism-js-themes) for the available values.
 
-@themes@ type=`{ light: PrismjsTheme; dark: PrismjsTheme }`
+@`themes` type=`{ light: PrismjsTheme; dark: PrismjsTheme }`
 
 Use different Prism.js themes for light and dark mode. See [Prism.js Themes](#prism-js-themes) for the available values.
 
 Requires your theme to set the `data-theme="dark"` attribute on the `<html>` tag when dark mode is enabled.
 
-@lineNumbers@ type=`boolean | number | 'disable'` default=`true`
+@`lineNumbers` type=`boolean | number | 'disable'` default=`true`
 
 Whether to enable line numbers. A number is the minimum number of lines required to enable line numbers on a code block, and `'disable'` turns the `:line-numbers` marker off completely.
 
 See also: [Line Numbers](#line-numbers).
 
-@highlightLines@ type=boolean default=`true`
+@`highlightLines` type=boolean default=`true`
 
 Whether to enable line highlighting with line range markers.
 
 See also: [Highlight Lines](#highlight-lines).
 
-@collapsedLines@ type=`boolean | number | 'disable'` default=`'disable'`
+@`collapsedLines` type=`boolean | number | 'disable'` default=`'disable'`
 
 Whether to enable code block collapsing. A number is the line to collapse from, and `true` is equivalent to `15`. Set it to `false` to support the `:collapsed-lines` marker without collapsing any code block by default.
 
 See also: [Collapsed Lines](#collapsed-lines).
 
-@codeBlockTitle@ type=`boolean | CodeBlockTitleRender` default=`true`
+@`codeBlockTitle` type=`boolean | CodeBlockTitleRender` default=`true`
 
 Whether to render a title bar for code blocks with `title="Title"` in the fence info.
 
@@ -521,41 +521,41 @@ type CodeBlockTitleRender = (title: string, code: string) => string
 
 See also: [Code Block Title](#code-block-title).
 
-@notationDiff@ type=boolean default=`false`
+@`notationDiff` type=boolean default=`false`
 
 Whether to enable the notation diff transformer.
 
-@notationFocus@ type=boolean default=`false`
+@`notationFocus` type=boolean default=`false`
 
 Whether to enable the notation focus transformer.
 
-@notationHighlight@ type=boolean default=`false`
+@`notationHighlight` type=boolean default=`false`
 
 Whether to enable the notation highlight transformer.
 
-@notationErrorLevel@ type=boolean default=`false`
+@`notationErrorLevel` type=boolean default=`false`
 
 Whether to enable the notation error level transformer.
 
-@notationWordHighlight@ type=boolean default=`false`
+@`notationWordHighlight` type=boolean default=`false`
 
 Whether to enable the notation word highlight transformer.
 
 See also: [Notation](#notation).
 
-@whitespace@ type=`boolean | 'all' | 'boundary' | 'leading' | 'trailing'` default=`false`
+@`whitespace` type=`boolean | 'all' | 'boundary' | 'leading' | 'trailing'` default=`false`
 
 Whether to render whitespace characters. `true` enables the syntax without rendering any whitespace by default, and `false` turns the `:whitespace` marker off completely.
 
 See also: [Render Whitespace](#render-whitespace).
 
-@preloadLanguages@ type=`string[]` default=`['markdown', 'jsdoc', 'yaml']`
+@`preloadLanguages` type=`string[]` default=`['markdown', 'jsdoc', 'yaml']`
 
 Languages to preload.
 
 By default, languages are loaded on demand when parsing markdown files, but Prism.js has [some potential issues](https://github.com/PrismJS/prism/issues/2716) about loading languages dynamically. Preloading languages avoids them.
 
-@preWrapper@ type=boolean default=`true`
+@`preWrapper` type=boolean default=`true`
 
 Whether to add an extra wrapper outside the `<pre>` tag.
 

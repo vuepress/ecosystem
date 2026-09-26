@@ -39,31 +39,31 @@ For advanced tracking needs, the global `umami` object is exposed on the `window
 ## Options
 
 ::: fields
-@id@ type=string required
+@`id` type=string required
 
 The unique Website ID provided by your Umami dashboard.
 
-@link@ type=string default=`'https://us.umami.is/script.js'`
+@`link` type=string default=`'https://us.umami.is/script.js'`
 
 The source URL of the Umami tracking script.
 
-@autoTrack@ type=boolean default=`true`
+@`autoTrack` type=boolean default=`true`
 
 Whether to track pageviews and events automatically.
 
 Set this to `false` if you wish to disable automatic data collection and rely solely on manual tracking functions.
 
-@cache@ type=boolean
+@`cache` type=boolean
 
 Whether to cache the tracking script to improve its performance.
 
 **Note:** This feature utilizes Session Storage. Depending on your region's regulations, you may need to disclose this usage to your visitors.
 
-@domains@ type=`string[]`
+@`domains` type=`string[]`
 
 A list of allowed domains. Tracking will only occur when the site is accessed via these specific domains.
 
-@hostUrl@ type=string default=`link`
+@`hostUrl` type=string default=`link`
 
 A custom endpoint for sending analytics data. If not specified, it defaults to the script location defined in [link](#link).
 

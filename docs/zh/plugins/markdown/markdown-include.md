@@ -332,23 +332,23 @@ int main() {
 ## 选项
 
 ::: fields
-@resolvePath@ type=`(path: string, cwd: string | null) => string` default=`(path) => path`
+@`resolvePath` type=`(path: string, cwd: string | null) => string` default=`(path) => path`
 
 处理 include 文件路径。
 
-@deep@ type=boolean
+@`deep` type=boolean
 
 是否递归包含被包含的 Markdown 文件中引用的文件。
 
-@useComment@ type=boolean default=`true`
+@`useComment` type=boolean default=`true`
 
 是否使用 `<!-- @include: xxx -->` 代替 `@include: xxx` 导入文件。
 
-@resolveImagePath@ type=boolean default=`true`
+@`resolveImagePath` type=boolean default=`true`
 
 是否解析包含的 Markdown 文件的里的相对图像路径。
 
-@resolveLinkPath@ type=boolean default=`true`
+@`resolveLinkPath` type=boolean default=`true`
 
 是否解析包含的 Markdown 文件的里的文件相对路径。
 

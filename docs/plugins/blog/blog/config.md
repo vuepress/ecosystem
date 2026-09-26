@@ -7,7 +7,7 @@ icon: settings-2
 ## Options
 
 :::: fields
-@getInfo@ type=`(page: Page) => Record<string, unknown>`
+@`getInfo` type=`(page: Page) => Record<string, unknown>`
 
 A function to extract article information from pages.
 
@@ -15,7 +15,7 @@ The extracted information is injected into the route meta, making it accessible 
 
 See also: [Gathering Info](./guide.md#gathering-info).
 
-@filter@ type=`(page: Page) => boolean` default=`(page) => Boolean(page.filePathRelative) && !page.frontmatter.home`
+@`filter` type=`(page: Page) => boolean` default=`(page) => Boolean(page.filePathRelative) && !page.frontmatter.home`
 
 A function to determine which pages are treated as blog articles.
 
@@ -23,31 +23,31 @@ By default, it includes all pages generated from Markdown files, excluding the h
 
 See also: [Article Collection](./guide.md#article-collection).
 
-@category@ type=`BlogCategoryOptions[]`
+@`category` type=`BlogCategoryOptions[]`
 
 Category configurations. See also: [Blog Category Config](#blog-category-config).
 
-@type@ type=`BlogTypeOptions[]`
+@`type` type=`BlogTypeOptions[]`
 
 Type configurations. See also: [Blog Type Config](#blog-type-config).
 
-@slugify@ type=`(name: string) => string` default=`(name) => name.replaceAll(/[ _]/gu, '-').replaceAll(/[:?*|\\/<>]/gu, '').toLowerCase()`
+@`slugify` type=`(name: string) => string` default=`(name) => name.replaceAll(/[ _]/gu, '-').replaceAll(/[:?*|\\/<>]/gu, '').toLowerCase()`
 
 A function that converts strings into URL-friendly slugs for route registration.
 
-@excerpt@ type=boolean default=`true`
+@`excerpt` type=boolean default=`true`
 
 Enables or disables excerpt generation for pages.
 
 See also: [Generating Excerpt](./guide.md#generating-excerpt).
 
-@excerptSeparator@ type=string default=`'<!-- more -->'`
+@`excerptSeparator` type=string default=`'<!-- more -->'`
 
 The separator used to manually define excerpts within the content.
 
 See also: [Generating Excerpt](./guide.md#generating-excerpt).
 
-@excerptLength@ type=number default=`300`
+@`excerptLength` type=number default=`300`
 
 The target length for auto-generated excerpts.
 
@@ -61,7 +61,7 @@ Set to `0` to disable automatic excerpt generation.
 
 :::
 
-@excerptFilter@ type=`(page: Page) => boolean` default="Same as the filter option"
+@`excerptFilter` type=`(page: Page) => boolean` default="Same as the filter option"
 
 A function to filter pages for excerpt generation.
 
@@ -73,7 +73,7 @@ Use this to exclude pages from automatic excerpt generation. For instance, if `e
 
 :::
 
-@isCustomElement@ type=`(tagName: string) => boolean` default=`() => false`
+@`isCustomElement` type=`(tagName: string) => boolean` default=`() => false`
 
 A function to identify custom elements.
 
@@ -81,7 +81,7 @@ This is used to distinguish custom elements from unknown tags, which are otherwi
 
 See also: [Generating Excerpt](./guide.md#generating-excerpt).
 
-@metaScope@ type=string default=`'_blog'`
+@`metaScope` type=string default=`'_blog'`
 
 The key under which the extracted information is injected into the route meta.
 
@@ -91,7 +91,7 @@ Setting this to an empty string will inject the information directly into the ro
 
 :::
 
-@hotReload@ type=boolean default="Enabled if the --debug flag is used"
+@`hotReload` type=boolean default="Enabled if the --debug flag is used"
 
 Enables hot reload support in the development server.
 

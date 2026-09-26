@@ -26,7 +26,9 @@ export default {
 }
 ```
 
-## 本地搜索索引
+## 指南
+
+### 本地搜索索引
 
 该插件会根据你的页面，在本地生成搜索索引，然后在用户访问站点时加载搜索索引文件。换句话说，这是一个轻量级的内置搜索能力，不会进行任何外部请求。
 
@@ -34,15 +36,14 @@ export default {
 
 ## 选项
 
-### locales
+::: fields
+@`locales` type=`LocaleConfig<SearchPluginLocaleData>` default=`{}`
 
-- 类型： `Record<string, { placeholder?: string }>`
+搜索框在不同 locales 下的文字。
 
-- 详情：
+@@`locales.<localePath>.placeholder` type=string
 
-  搜索框在不同 locales 下的文字。
-
-- 示例：
+搜索框的占位符文本。
 
 ```ts title=".vuepress/config.ts"
 export default {
@@ -61,48 +62,42 @@ export default {
 }
 ```
 
-- 参考：
-  - [指南 > 多语言支持](https://vuejs.press/zh/guide/i18n.html)
+参见：[指南 > 多语言支持](https://vuejs.press/zh/guide/i18n.html)。
 
-### hotKeys
+@`hotKeys` type=`(KeyOptions | string)[]` default=`['s', '/']`
 
-- 类型： `(string | KeyOptions)[]`
+指定热键的 [event.key](http://keycode.info/) 。当按下热键时，搜索框会被聚焦。将该配置项设为空数组可以禁用热键功能。
 
-  @[code ts](@vuepress/helper/src/shared/key.ts)
+@@`hotKeys[*].key` type=string required
 
-- 默认值： `['s', '/']`
+热键的 `event.key` 值。
 
-- 详情：
+@@`hotKeys[*].ctrl` type=boolean
 
-  指定热键的 [event.key](http://keycode.info/) 。
+是否同时按下 `event.ctrlKey`。
 
-  当按下热键时，搜索框会被聚焦。
+@@`hotKeys[*].shift` type=boolean
 
-  将该配置项设为空数组可以禁用热键功能。
+是否同时按下 `event.shiftKey`。
 
-### maxSuggestions
+@@`hotKeys[*].alt` type=boolean
 
-- 类型： `number`
+是否同时按下 `event.altKey`。
 
-- 默认值： `5`
+@@`hotKeys[*].meta` type=boolean
 
-- 详情：
+是否同时按下 `event.metaKey`。
 
-  指定搜索结果的最大条数。
+@`maxSuggestions` type=number default=`5`
 
-### isSearchable
+指定搜索结果的最大条数。
 
-- 类型： `(page: Page) => boolean`
+@`isSearchable` type=`(page: Page) => boolean` default=`() => true`
 
-- 默认值： `() => true`
+一个函数，用于判断一个页面是否应该被包含在搜索索引中。
 
-- 详情：
-
-  一个函数，用于判断一个页面是否应该被包含在搜索索引中。
-  - 返回 `true` 来包含该页面。
-  - 返回 `false` 来排除该页面。
-
-- 示例：
+- 返回 `true` 来包含该页面。
+- 返回 `false` 来排除该页面。
 
 ```ts title=".vuepress/config.ts"
 export default {
@@ -115,19 +110,11 @@ export default {
 }
 ```
 
-### getExtraFields
+@`getExtraFields` type=`(page: Page) => string[]` default=`() => []`
 
-- 类型： `(page: Page) => string[]`
+一个函数，用于在页面的搜索索引中添加额外字段。
 
-- 默认值： `() => []`
-
-- 详情：
-
-  一个函数，用于在页面的搜索索引中添加额外字段。
-
-  默认情况下，该插件会将页面标题和小标题作为搜索索引。该配置项可以帮助你添加更多的可搜索字段。
-
-- 示例：
+默认情况下，该插件会将页面标题和小标题作为搜索索引。该配置项可以帮助你添加更多的可搜索字段。
 
 ```ts title=".vuepress/config.ts"
 export default {
@@ -139,6 +126,8 @@ export default {
   ],
 }
 ```
+
+:::
 
 ## 样式
 

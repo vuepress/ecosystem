@@ -7,11 +7,11 @@ icon: settings-2
 ## 选项
 
 ::: fields
-@hostname@ type=string required
+@`hostname` type=string required
 
 部署域名。
 
-@author@ type=SeoAuthor
+@`author` type=SeoAuthor
 
 默认作者。
 
@@ -32,35 +32,35 @@ interface AuthorInfo {
 type SeoAuthor = AuthorInfo | AuthorInfo[] | AuthorName | AuthorName[]
 ```
 
-@autoDescription@ type=boolean default=`true`
+@`autoDescription` type=boolean default=`true`
 
 是否自动生成描述。
 
-@canonical@ type=`string | ((page: Page) => string | null)`
+@`canonical` type=`string | ((page: Page) => string | null)`
 
 首选链接。
 
 参考：[规范链接](./guide.md#规范链接)。
 
-@fallBackImage@ type=string
+@`fallBackImage` type=string
 
 当找不到图片时的回退图片链接。
 
-@restrictions@ type=string
+@`restrictions` type=string
 
 内容分级。内容的年龄分级，格式为 `[int]+`，如 `"13+"`。
 
-@twitterID@ type=string
+@`twitterID` type=string
 
 你的 twitter 用户名。
 
-@isArticle@ type=`(page: Page) => boolean`
+@`isArticle` type=`(page: Page) => boolean`
 
 你可以使用此选项判断一个页面是否是文章。
 
 参考：[页面类型](./guide.md#页面类型)。
 
-@ogp@ type=`(ogp: SeoContent, page: Page, app: App) => SeoContent`
+@`ogp` type=`(ogp: SeoContent, page: Page, app: App) => SeoContent`
 
 自定义 OGP 生成器。
 
@@ -68,7 +68,7 @@ type SeoAuthor = AuthorInfo | AuthorInfo[] | AuthorName | AuthorName[]
 
 参考：[OGP](./guide.md#ogp)。
 
-@jsonLd@ type=`(jsonLD: ArticleSchema | BlogPostingSchema | WebPageSchema, page: Page, app: App) => ArticleSchema | BlogPostingSchema | WebPageSchema`
+@`jsonLd` type=`(jsonLD: ArticleSchema | BlogPostingSchema | WebPageSchema, page: Page, app: App) => ArticleSchema | BlogPostingSchema | WebPageSchema`
 
 自定义 JSON-LD 生成器。
 
@@ -76,7 +76,7 @@ type SeoAuthor = AuthorInfo | AuthorInfo[] | AuthorName | AuthorName[]
 
 参考：[JSON-LD](./guide.md#json-ld)。
 
-@customHead@ type=`(head: HeadConfig[], page: Page, app: App) => void`
+@`customHead` type=`(head: HeadConfig[], page: Page, app: App) => void`
 
 你可以使用此选项来直接注入任意格式的标签到 `<head>`。
 

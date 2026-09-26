@@ -26,69 +26,13 @@ export default {
 }
 ```
 
-## 选项
+## 指南
 
-### components
+### 从目录注册
 
-- 类型： `Record<string, string>`
+将 `componentsDir` 设为组件目录的绝对路径。该目录下匹配 `componentsPatterns` 的文件会被自动注册为 Vue 组件，组件名称由 `getComponentName` 根据相对于 `componentsDir` 的文件路径生成。
 
-- 默认值： `{}`
-
-- 详情：
-
-  一个定义了组件名称和其对应文件路径的对象。
-
-  键会被用作组件名称，值是组件文件的绝对路径。
-
-  如果该配置项中的组件名称和 [componentsDir](#componentsdir) 配置项发生冲突，那么该配置项会有更高的优先级。
-
-- 示例：
-
-```ts title=".vuepress/config.ts"
-import { path } from 'vuepress/utils'
-
-const __dirname = import.meta.dirname
-
-export default {
-  plugins: [
-    registerComponentsPlugin({
-      components: {
-        FooBar: path.resolve(__dirname, './components/FooBar.vue'),
-      },
-    }),
-  ],
-}
-```
-
-### componentsDir
-
-- 类型： `string | null`
-
-- 默认值： `null`
-
-- 详情：
-
-  组件目录的绝对路径。
-
-  该目录下匹配 [componentsPatterns](#componentspatterns) 的文件会被自动注册为 Vue 组件。
-
-- 示例：
-
-```ts title=".vuepress/config.ts"
-import { path } from 'vuepress/utils'
-
-const __dirname = import.meta.dirname
-
-export default {
-  plugins: [
-    registerComponentsPlugin({
-      componentsDir: path.resolve(__dirname, './components'),
-    }),
-  ],
-}
-```
-
-组件目录：
+对于以下组件目录：
 
 ```bash
 components
@@ -112,28 +56,65 @@ app.component(
 )
 ```
 
-### componentsPatterns
+## 选项
 
-- 类型： `string[]`
+::: fields
+@`components` type=`Record<string, string>` default={}
 
-- 默认值： `['**/*.vue']`
+一个定义了组件名称和其对应文件路径的对象。
 
-- 详情：
+键会被用作组件名称，值是组件文件的绝对路径。
 
-  使用 [tinyglobby](https://github.com/SuperchupuDev/tinyglobby) 来匹配组件文件的 Patterns 。
+如果该配置项中的组件名称和 [componentsDir](#componentsdir) 配置项发生冲突，那么该配置项会有更高的优先级。
 
-  该 Patterns 是相对于 [componentsDir](#componentsdir) 目录的。
+```ts title=".vuepress/config.ts"
+import { path } from 'vuepress/utils'
 
-### getComponentName
+const __dirname = import.meta.dirname
 
-- 类型： `(filename: string) => string`
+export default {
+  plugins: [
+    registerComponentsPlugin({
+      components: {
+        FooBar: path.resolve(__dirname, './components/FooBar.vue'),
+      },
+    }),
+  ],
+}
+```
 
-- 默认值： `(filename) => path.trimExt(filename.replace(/\/|\\/g, '-'))`
+@`componentsDir` type=`string | null` default=null
 
-- 详情：
+组件目录的绝对路径。
 
-  用于从文件名获取对应组件名称的函数。
+```ts title=".vuepress/config.ts"
+import { path } from 'vuepress/utils'
 
-  它只会对 [componentsDir](#componentsdir) 目录下匹配了 [componentsPatterns](#componentspatterns) 的文件生效。
+const __dirname = import.meta.dirname
 
-  注意，这里的 `filename` 是相对于 [componentsPatterns](#componentspatterns) 目录的文件路径。
+export default {
+  plugins: [
+    registerComponentsPlugin({
+      componentsDir: path.resolve(__dirname, './components'),
+    }),
+  ],
+}
+```
+
+参考：[从目录注册](#从目录注册)。
+
+@`componentsPatterns` type=`string[]` default=`['**/*.vue']`
+
+使用 [tinyglobby](https://github.com/SuperchupuDev/tinyglobby) 来匹配组件文件的 Patterns。
+
+该 Patterns 是相对于 [componentsDir](#componentsdir) 目录的。
+
+@`getComponentName` type=`(filename: string) => string` @default=`(filename) => path.trimExt(filename.replaceAll(/\/|\\/gu, '-'))`
+
+用于从文件名获取对应组件名称的函数。
+
+它只会对 [componentsDir](#componentsdir) 目录下匹配了 [componentsPatterns](#componentspatterns) 的文件生效。
+
+注意，这里的 `filename` 是相对于 [componentsDir](#componentsdir) 目录的文件路径。
+
+:::

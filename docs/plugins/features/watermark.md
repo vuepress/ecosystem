@@ -34,17 +34,17 @@ export default {
 ## Options
 
 ::: fields
-@enabled@ type=`boolean | ((page: Page) => boolean)` default=`true`
+@`enabled` type=`boolean | ((page: Page) => boolean)` default=`true`
 
 Specify which pages should have watermarks added.
 
 Pages with a `true` value will have watermarks added.
 
-@watermarkOptions@ type=`WatermarkPureOptions`
+@`watermarkOptions` type=`WatermarkPureOptions`
 
 Watermark config, see [watermark-js-plus](https://zhensherlock.github.io/watermark-js-plus/config/) for all available options.
 
-@@watermarkOptions.parent@ type=string default=`'body'`
+@@`watermarkOptions.parent` type=string default=`'body'`
 
 Parent element selector for watermark insertion.
 

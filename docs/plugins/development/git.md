@@ -43,122 +43,122 @@ This plugin may significantly increase data preparation time during builds, espe
 ## Options
 
 ::: fields
-@createdTime@ type=boolean default=`true`
+@`createdTime` type=boolean default=`true`
 
 Whether to collect the creation timestamp of the page.
 
-@updatedTime@ type=boolean default=`true`
+@`updatedTime` type=boolean default=`true`
 
 Whether to collect the update timestamp of the page.
 
-@contributors@ type=`ContributorsOptions | boolean` default=`true`
+@`contributors` type=`ContributorsOptions | boolean` default=`true`
 
 Whether to collect contributor information for the page. You can also pass an object to configure it.
 
-@@contributors.info@ type=`ContributorInfo[]`
+@@`contributors.info` type=`ContributorInfo[]`
 
 Pre-defined contributor information.
 
-@@@contributors.info[].username@ type=string required
+@@@`contributors.info[*].username` type=string required
 
 The contributor's username on the Git hosting service.
 
-@@@contributors.info[].name@ type=string
+@@@`contributors.info[*].name` type=string
 
 The contributor's display name on the page. Defaults to `username`.
 
-@@@contributors.info[].alias@ type=`string[] | string`
+@@@`contributors.info[*].alias` type=`string[] | string`
 
 Aliases for the contributor. Useful when a contributor's local Git username differs from their hosting service username. Use aliases to map them to the correct account.
 
-@@@contributors.info[].email@ type=string
+@@@`contributors.info[*].email` type=string
 
 The primary email of the contributor.
 
-@@@contributors.info[].emailAlias@ type=`string[] | string`
+@@@`contributors.info[*].emailAlias` type=`string[] | string`
 
 Alternative emails for the contributor (e.g., emails used in past commits).
 
-@@@contributors.info[].avatar@ type=string
+@@@`contributors.info[*].avatar` type=string
 
 The avatar URL of the contributor. If the hosting service is `github`, this can be left blank, as the plugin will automatically populate it.
 
-@@@contributors.info[].url@ type=string
+@@@`contributors.info[*].url` type=string
 
 The profile URL of the contributor. If the hosting service is `github`, this can be left blank, as the plugin will automatically populate it.
 
-@@contributors.avatar@ type=boolean default=`false`
+@@`contributors.avatar` type=boolean default=`false`
 
 Whether to include avatars in contributor information.
 
-@@contributors.avatarPattern@ type=string
+@@`contributors.avatarPattern` type=string
 
 The pattern for avatar URLs.
 
 - `:username` - Contributor's username
 
-@@contributors.transform@ type=`(contributors: GitContributorInfo[]) => GitContributorInfo[]`
+@@`contributors.transform` type=`(contributors: GitContributorInfo[]) => GitContributorInfo[]`
 
 A function to transform the contributors list (e.g., to deduplicate or sort). Accepts the list collected by the plugin and returns the transformed list.
 
-@changelog@ type=`ChangelogOptions | boolean` default=`false`
+@`changelog` type=`ChangelogOptions | boolean` default=`false`
 
 Whether to collect the changelog for the page. You can also pass an object to configure it.
 
-@@changelog.maxCount@ type=number
+@@`changelog.maxCount` type=number
 
 The maximum number of changelog entries to collect.
 
-@@changelog.repoUrl@ type=string
+@@`changelog.repoUrl` type=string
 
 The URL of the Git repository, e.g., `https://github.com/vuepress/ecosystem`.
 
-@@changelog.commitUrlPattern@ type=string default=`':repo/commit/:hash'`
+@@`changelog.commitUrlPattern` type=string default=`':repo/commit/:hash'`
 
 The pattern for commit URLs.
 
 - `:repo` - The URL of the Git repository
 - `:hash` - The hash of the commit
 
-@@changelog.issueUrlPattern@ type=string default=`':repo/issues/:issue'`
+@@`changelog.issueUrlPattern` type=string default=`':repo/issues/:issue'`
 
 The pattern for issue URLs.
 
 - `:repo` - The URL of the Git repository
 - `:issue` - The ID of the issue
 
-@@changelog.tagUrlPattern@ type=string default=`':repo/releases/tag/:tag'`
+@@`changelog.tagUrlPattern` type=string default=`':repo/releases/tag/:tag'`
 
 The pattern for tag URLs.
 
 - `:repo` - The URL of the Git repository
 - `:tag` - The name of the tag
 
-@filter@ type=`(page: Page) => boolean`
+@`filter` type=`(page: Page) => boolean`
 
 A function to filter pages. Git information will only be collected if this function returns `true`.
 
-@locales@ type=`Record<string, GitLocaleData>`
+@`locales` type=`Record<string, GitLocaleData>`
 
 Locale configuration, primarily used by the [Git Components](#component).
 
-@@locales.contributors@ type=string
+@@`locales.<localePath>.contributors` type=string
 
 The title for the contributors section.
 
-@@locales.changelog@ type=string
+@@`locales.<localePath>.changelog` type=string
 
 The title for the changelog section.
 
-@@locales.timeOn@ type=string
+@@`locales.<localePath>.timeOn` type=string
 
 The text representing a commit "on" a specific date.
 
-@@locales.viewChangelog@ type=string
+@@`locales.<localePath>.viewChangelog` type=string
 
 The text for the "View Changelog" button.
 
-@@locales.latestUpdateAt@ type=string
+@@`locales.<localePath>.latestUpdateAt` type=string
 
 The text for "Latest Updated".
 
@@ -167,7 +167,7 @@ The text for "Latest Updated".
 ## Frontmatter
 
 ::: fields
-@gitInclude@ type=`string[]`
+@`gitInclude` type=`string[]`
 
 An array of relative file paths. The Git history of these files will be included when calculating the current page's data (e.g., timestamps and contributors).
 
@@ -179,7 +179,7 @@ gitInclude:
 ---
 ```
 
-@contributors@ type=`boolean | string[]`
+@`contributors` type=`boolean | string[]`
 
 Controls the collection of contributor information for the current page. This overrides the global [contributors](#contributors) option.
 
@@ -187,7 +187,7 @@ Controls the collection of contributor information for the current page. This ov
 - `false` - Disable collection.
 - `string[]` - A list of additional contributors. Useful for manually specifying contributors who may not appear in the Git history.
 
-@changelog@ type=boolean
+@`changelog` type=boolean
 
 Whether to collect the changelog for the current page. This overrides the global [changelog](#changelog) option.
 

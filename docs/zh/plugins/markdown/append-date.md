@@ -25,11 +25,11 @@ export default {
 ## 选项
 
 ::: fields
-@key@ type=string default=`"date"`
+@`key` type=string default=`"date"`
 
 追加时间时使用的 frontmatter 键名。
 
-@format@ type=`"date" | "time" | "full"` default=`"date"`
+@`format` type=`"date" | "time" | "full"` default=`"date"`
 
 追加时间时使用的日期格式：
 

@@ -78,7 +78,7 @@ export const field: PluginWithOptions<FieldPluginOptions> = (
   { locales = {}, slugify = defaultSlugify } = {},
 ) => {
   const fieldOpenRenderer: MarkdownItFieldOpenRenderer = (
-    { details, name },
+    { attributes, name },
     tokens,
     index,
     _options,
@@ -90,7 +90,7 @@ export const field: PluginWithOptions<FieldPluginOptions> = (
     let type = ''
     let defaultValue = ''
 
-    for (const { attr, quote, value } of details) {
+    for (const { attr, quote, value } of attributes) {
       if (attr === 'type') {
         type = `<code class="vp-field-type">${escape(value)}</code>\n`
       } else if (attr === 'default') {

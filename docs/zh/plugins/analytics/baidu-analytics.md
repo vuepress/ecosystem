@@ -51,7 +51,7 @@ window._hmt.push(['_trackEvent', 'category', 'action', 'label', 'value'])
 ## 选项
 
 ::: fields
-@id@ type=string required
+@`id` type=string required
 
 百度统计的 ID。通常是百度统计提供的代码中 `hm.js` 链接后的字符串参数（例如 `hm.js?your_tracking_id`）。
 

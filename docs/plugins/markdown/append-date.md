@@ -25,11 +25,11 @@ export default {
 ## Options
 
 ::: fields
-@key@ type=string default=`"date"`
+@`key` type=string default=`"date"`
 
 Frontmatter key to use when appending date.
 
-@format@ type=`"date" | "time" | "full"` default=`"date"`
+@`format` type=`"date" | "time" | "full"` default=`"date"`
 
 Format of the date value when appending date:
 
