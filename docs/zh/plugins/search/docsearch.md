@@ -221,7 +221,7 @@ DocSearch 团队提供的，或者你自己生成的搜索 API 密钥 (Search AP
 
 该插件在不同语言环境下的配置。上述所有选项都可以针对特定语言路径进行覆盖。
 
-参见：[指南 > 多语言支持](https://vuejs.press/zh/guide/i18n.html)。
+参考：[多语言配置](../supported-locales.md)。
 
 @`indexBase` type=string default="站点 base"
 

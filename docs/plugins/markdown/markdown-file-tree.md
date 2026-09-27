@@ -46,36 +46,7 @@ The following syntax can be used to customize the appearance of the file tree:
 
 ### Example
 
-**Input：**
-
-```md
-::: file-tree
-
-- docs
-  - .vuepress
-    - ++ config.ts
-  - -- page1.md
-  - README.md
-- theme # a **theme** directory
-  - client
-    - components
-      - **Navbar.vue**
-    - composables
-      - useNavbar.ts
-    - styles
-      - navbar.css
-    - config.ts
-  - node/
-- package.json
-- pnpm-lock.yaml
-- .gitignore
-- README.md
-- …
-
-:::
-```
-
-**Output：**
+:::: preview
 
 ::: file-tree
 
@@ -101,6 +72,8 @@ The following syntax can be used to customize the appearance of the file tree:
 - …
 
 :::
+
+::::
 
 ## Code Tree
 
@@ -172,48 +145,7 @@ Do not disable `codeBlockTitle`, or replace it with a custom render function, ot
 
 ### Example
 
-**Input:**
-
-````md
-::: code-tree title="Vue App" height="400px" entry="src/main.ts"
-
-```vue title="src/components/HelloWorld.vue"
-<template>
-  <div class="hello">
-    <h1>Hello World</h1>
-  </div>
-</template>
-```
-
-```vue title="src/App.vue"
-<template>
-  <div id="app">
-    <h3>Vue App</h3>
-    <HelloWorld />
-  </div>
-</template>
-```
-
-```ts title="src/main.ts"
-import { createApp } from 'vue'
-import App from './App.vue'
-
-createApp(App).mount('#app')
-```
-
-```json title="package.json"
-{
-  "name": "Vue App",
-  "scripts": {
-    "dev": "vite"
-  }
-}
-```
-
-:::
-````
-
-**Output:**
+:::: preview
 
 ::: code-tree title="Vue App" height="400px" entry="src/main.ts"
 
@@ -251,6 +183,8 @@ createApp(App).mount('#app')
 ```
 
 :::
+
+::::
 
 ## Options
 

@@ -46,36 +46,7 @@ export default {
 
 ### 示例
 
-**输入：**
-
-```md
-::: file-tree
-
-- docs
-  - .vuepress
-    - ++ config.ts
-  - -- page1.md
-  - README.md
-- theme # 一个 **主题** 目录
-  - client
-    - components
-      - **Navbar.vue**
-    - composables
-      - useNavbar.ts
-    - styles
-      - navbar.css
-    - config.ts
-  - node/
-- package.json
-- pnpm-lock.yaml
-- .gitignore
-- README.md
-- …
-
-:::
-```
-
-**输出：**
+:::: preview
 
 ::: file-tree
 
@@ -101,6 +72,8 @@ export default {
 - …
 
 :::
+
+::::
 
 ## 代码树
 
@@ -172,48 +145,7 @@ pnpm --filter @vuepress/plugin-markdown-file-tree generate:icons
 
 ### 示例
 
-**输入：**
-
-````md
-::: code-tree title="Vue App" height="400px" entry="src/main.ts"
-
-```vue title="src/components/HelloWorld.vue"
-<template>
-  <div class="hello">
-    <h1>Hello World</h1>
-  </div>
-</template>
-```
-
-```vue title="src/App.vue"
-<template>
-  <div id="app">
-    <h3>Vue App</h3>
-    <HelloWorld />
-  </div>
-</template>
-```
-
-```ts title="src/main.ts"
-import { createApp } from 'vue'
-import App from './App.vue'
-
-createApp(App).mount('#app')
-```
-
-```json title="package.json"
-{
-  "name": "Vue App",
-  "scripts": {
-    "dev": "vite"
-  }
-}
-```
-
-:::
-````
-
-**输出：**
+:::: preview
 
 ::: code-tree title="Vue App" height="400px" entry="src/main.ts"
 
@@ -251,6 +183,8 @@ createApp(App).mount('#app')
 ```
 
 :::
+
+::::
 
 ## 选项
 

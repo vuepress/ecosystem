@@ -4,25 +4,19 @@ icon: captions
 
 # Frontmatter
 
-## sitemap
+::: fields
+@`sitemap` type=`SitemapFrontmatterOption | false`
 
-- Type: `SitemapFrontmatterOptions | false`
-- Details:
+Whether to include the page in the sitemap, or the sitemap config of the page.
 
-  `false` means exclude the page from sitemap.
+Set it to `false` to exclude the page from the sitemap.
 
-### sitemap.changefreq
+@@`sitemap.changefreq` type=`'always' | 'hourly' | 'daily' | 'weekly' | 'monthly' | 'yearly' | 'never'` default=`'daily'`
 
-- Type: `"always" | "hourly" | "daily" | "weekly" | "monthly" | "yearly" | "never"`
-- Default: `"daily"`
-- Details:
+Page default update frequency. It overrides the [changefreq](./config.md#changefreq) plugin option.
 
-  Page default update frequency. This will override [changefreq](./config.md#changefreq) in Plugin Options.
+@@`sitemap.priority` type=number default=`0.5`
 
-### sitemap.priority
+Page priority, range from `0` to `1`.
 
-- Type: `number`
-- Default: `0.5`
-- Details:
-
-  Page priority, range from `0` to `1`.
+:::

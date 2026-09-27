@@ -224,7 +224,7 @@ Allows you to override the default text and labels used in the DocSearch button 
 
 Configuration for different locales. Every option above can be overridden for a specific locale path.
 
-See also: [Guide > I18n](https://vuejs.press/guide/i18n.html).
+See also: [Locales](../supported-locales.md).
 
 @`indexBase` type=string default="The site base"
 

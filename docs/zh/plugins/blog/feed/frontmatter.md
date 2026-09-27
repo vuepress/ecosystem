@@ -14,69 +14,69 @@ icon: captions
 
 插件会自动读取以下标准的 Frontmatter 属性来填充 Feed 条目。
 
-### title
-
-- 类型: `string`
+:::: fields
+@`title` type=string
 
 页面标题。如果未指定，默认自动读取页面的第一个 `h1` 标题内容。
 
-### description
-
-- 类型: `string`
+@`description` type=string
 
 页面的描述或摘要。
 
-### date
-
-- 类型: `Date`
+@`date` type=`Date`
 
 页面的发布日期。
 
-### article
-
-- 类型: `boolean`
+@`article` type=boolean
 
 该页面是否为一篇文章。
 
-> 如果设置为 `false`，该页面将被视为非文章页面，并且不会包含在最终的 Feed 中。
+::: tip
 
-### copyright
+如果设置为 `false`，该页面将被视为非文章页面，并且不会包含在最终的 Feed 中。
 
-- 类型: `string`
+:::
+
+@`copyright` type=string
 
 页面的版权信息。
 
-### cover / image / banner
+@`cover` type=string
 
-- 类型: `string`
+页面的封面图片，必须是完整的 URL 链接或绝对路径。
 
-用作页面封面的图片。必须是完整的 URL 链接或绝对路径。
+@`banner` type=string
+
+页面的横幅图片，它会被用作 Feed 条目的图片，优先级高于 [cover](#cover)。它必须是完整的 URL 链接或绝对路径。
+
+两者都未设置时，会使用页面内容中的第一张图片。
+
+::::
 
 ## Feed 选项
 
 你可以使用 `feed` 对象来覆盖默认属性，或为 RSS/Atom/JSON 条目提供特定的配置。
 
-### feed.title
+:::: fields
+@`feed` type=`FeedFrontmatterOption | false`
 
-- 类型: `string`
+是否将页面包含在 Feed 中，或页面的 Feed 条目配置。
+
+设置为 `false` 可将页面从 Feed 中移除。
+
+@@`feed.title` type=string
 
 该条目在 Feed 中显示的标题。
 
-### feed.description
-
-- 类型: `string`
+@@`feed.description` type=string
 
 该条目在 Feed 中显示的描述。
 
-### feed.content
-
-- 类型: `string`
+@@`feed.content` type=string
 
 该条目在 Feed 中的内容。
 
-### feed.author
-
-- 类型: `FeedAuthor[] | FeedAuthor`
+@@`feed.author` type=`FeedAuthor[] | FeedAuthor`
 
 该 Feed 条目的作者。
 
@@ -112,9 +112,7 @@ interface FeedAuthor {
 
 :::
 
-### feed.contributor
-
-- 类型: `FeedContributor[] | FeedContributor`
+@@`feed.contributor` type=`FeedContributor[] | FeedContributor`
 
 该 Feed 条目的贡献者。
 
@@ -150,12 +148,14 @@ interface FeedContributor {
 
 :::
 
-### feed.guid
-
-- 类型: `string`
+@@`feed.guid` type=string
 
 Feed 条目的唯一标识符，用于识别该条目。
 
 ::: tip
+
 你应该确保每个 Feed 条目都有一个唯一的 GUID。
+
 :::
+
+::::

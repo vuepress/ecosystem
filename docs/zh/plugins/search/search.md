@@ -45,23 +45,6 @@ export default {
 
 搜索框的占位符文本。
 
-```ts title=".vuepress/config.ts"
-export default {
-  plugins: [
-    searchPlugin({
-      locales: {
-        '/': {
-          placeholder: 'Search',
-        },
-        '/zh/': {
-          placeholder: '搜索',
-        },
-      },
-    }),
-  ],
-}
-```
-
 参见：[指南 > 多语言支持](https://vuejs.press/zh/guide/i18n.html)。
 
 @`hotKeys` type=`(KeyOptions | string)[]` default=`['s', '/']`

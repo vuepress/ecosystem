@@ -4,26 +4,19 @@ icon: captions
 
 # Frontmatter
 
-## sitemap
+::: fields
+@`sitemap` type=`SitemapFrontmatterOption | false`
 
-- 类型：`SitemapFrontmatterOptions | false`
+是否将页面包含在 sitemap 中，或页面的 sitemap 配置。
 
-- 详情：
+设置为 `false` 可将页面排除在 sitemap 之外。
 
-  `false` 表示将页面排除在 sitemap 之外。
+@@`sitemap.changefreq` type=`'always' | 'hourly' | 'daily' | 'weekly' | 'monthly' | 'yearly' | 'never'` default=`'daily'`
 
-### sitemap.changefreq
+页面默认更新频率。它会覆盖插件选项中的 [changefreq](./config.md#changefreq)。
 
-- 类型：`"always" | "hourly" | "daily" | "weekly" | "monthly" | "yearly" | "never"`
-- 默认值：`"daily"`
-- 详情：
+@@`sitemap.priority` type=number default=`0.5`
 
-  页面默认更新频率。它会覆盖插件选项中的 [changefreq](./config.md#changefreq) 选项。
+页面优先级，范围 `0` 至 `1`。
 
-### sitemap.priority
-
-- 类型：`number`
-- 默认值：`0.5`
-- 详情：
-
-  页面优先级，范围 `0` 至 `1`。
+:::

@@ -45,23 +45,6 @@ The text of the search box in different locales.
 
 The placeholder of the search box.
 
-```ts title=".vuepress/config.ts"
-export default {
-  plugins: [
-    searchPlugin({
-      locales: {
-        '/': {
-          placeholder: 'Search',
-        },
-        '/zh/': {
-          placeholder: '搜索',
-        },
-      },
-    }),
-  ],
-}
-```
-
 See also: [Guide > I18n](https://vuejs.press/guide/i18n.html).
 
 @`hotKeys` type=`(KeyOptions | string)[]` default=`['s', '/']`

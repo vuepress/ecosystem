@@ -14,69 +14,69 @@ By default, all valid articles are included in the feed generation. To exclude a
 
 The plugin automatically extracts the following standard frontmatter properties to populate feed items.
 
-### title
-
-- Type: `string`
+:::: fields
+@`title` type=string
 
 The title of the page. It is automatically inferred from the first `h1` header if not specified.
 
-### description
-
-- Type: `string`
+@`description` type=string
 
 A summary or description of the page.
 
-### date
-
-- Type: `Date`
+@`date` type=`Date`
 
 The publication date of the page.
 
-### article
-
-- Type: `boolean`
+@`article` type=boolean
 
 Specifies whether the page is an article.
 
-> If set to `false`, the page will be treated as a non-article page and excluded from the feed.
+::: tip
 
-### copyright
+If set to `false`, the page will be treated as a non-article page and excluded from the feed.
 
-- Type: `string`
+:::
+
+@`copyright` type=string
 
 Copyright information specific to this page.
 
-### cover / image / banner
+@`cover` type=string
 
-- Type: `string`
+The cover image of the page, which must be a complete URL or an absolute path.
 
-The cover image for the page. This must be a complete URL or an absolute path.
+@`banner` type=string
+
+The banner image of the page, which is used as the feed item image and takes priority over [cover](#cover). It must be a complete URL or an absolute path.
+
+When neither is set, the first image of the page content is used.
+
+::::
 
 ## Feed Options
 
 You can use the `feed` object to override standard properties or provide specific configurations for the RSS/Atom/JSON feed item.
 
-### feed.title
+:::: fields
+@`feed` type=`FeedFrontmatterOption | false`
 
-- Type: `string`
+Whether to include the page in the feed, or the feed item config of the page.
+
+Set it to `false` to exclude the page from the feed.
+
+@@`feed.title` type=string
 
 Overrides the title used for this item in the feed.
 
-### feed.description
-
-- Type: `string`
+@@`feed.description` type=string
 
 Overrides the description used for this item in the feed.
 
-### feed.content
-
-- Type: `string`
+@@`feed.content` type=string
 
 Custom content for the feed item. If not provided, the page content is used.
 
-### feed.author
-
-- Type: `FeedAuthor[] | FeedAuthor`
+@@`feed.author` type=`FeedAuthor[] | FeedAuthor`
 
 The author(s) specific to this feed item.
 
@@ -112,9 +112,7 @@ interface FeedAuthor {
 
 :::
 
-### feed.contributor
-
-- Type: `FeedContributor[] | FeedContributor`
+@@`feed.contributor` type=`FeedContributor[] | FeedContributor`
 
 The contributor(s) specific to this feed item.
 
@@ -150,12 +148,14 @@ interface FeedContributor {
 
 :::
 
-### feed.guid
-
-- Type: `string`
+@@`feed.guid` type=string
 
 A unique identifier for the feed item.
 
 ::: tip
+
 Ensure that every feed item has a globally unique GUID to prevent feed readers from marking updated items as new or duplicating them.
+
 :::
+
+::::
