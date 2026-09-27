@@ -48,16 +48,16 @@
     "generate:icons": "unrun scripts/generateFileIcons.ts"
   },
   "dependencies": {
-    "@mdit/plugin-container": "^2.0.1",
-    "@types/markdown-it": "^14.2.0",
+    "@mdit/plugin-container": "^2.0.2",
+    "@types/markdown-it": "catalog:",
     "@vuepress/helper": "workspace:*",
     "vue": "catalog:"
   },
   "devDependencies": {
-    "@iconify-json/vscode-icons": "catalog:",
+    "@iconify-json/vscode-icons": "^1.2.81",
     "@vuepress/highlighter-helper": "workspace:*",
-    "@yutengjing/vscode-icons": "catalog:",
-    "markdown-it": "^14.3.2"
+    "@yutengjing/vscode-icons": "^0.1.1",
+    "markdown-it": "catalog:"
   },
   "peerDependencies": {
     "vuepress": "catalog:"
