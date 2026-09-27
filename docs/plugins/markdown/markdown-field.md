@@ -172,6 +172,8 @@ Whether to enable the `::: fields` container.
 
 Locale config for badge texts, keyed by locale path (`/`, `/zh/`, ...).
 
+See also: [Locales](../supported-locales.md).
+
 @@`locales.<localePath>.default` type=string
 
 Label text for the `default` attribute.

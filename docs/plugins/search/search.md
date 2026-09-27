@@ -41,11 +41,11 @@ However, when your site has a large number of pages, the size of search index fi
 
 The text of the search box in different locales.
 
+See also: [Locales](../supported-locales.md).
+
 @@`locales.<localePath>.placeholder` type=string
 
 The placeholder of the search box.
-
-See also: [Guide > I18n](https://vuejs.press/guide/i18n.html).
 
 @`hotKeys` type=`(KeyOptions | string)[]` default=`['s', '/']`
 

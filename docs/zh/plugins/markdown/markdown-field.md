@@ -172,6 +172,8 @@ export default {
 
 徽章文本的国际化配置，以语言路径（`/`、`/zh/` 等）为键。
 
+参考：[多语言配置](../supported-locales.md)。
+
 @@`locales.<localePath>.default` type=string
 
 `default` 属性的标签文本。

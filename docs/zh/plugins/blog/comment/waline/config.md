@@ -180,6 +180,8 @@ reCAPTCHA V3 站点密钥。服务端还需设置 `RECAPTCHA_V3_SECRET` 环境�
 
 Waline 多语言配置。
 
+参考：[多语言配置](../../../supported-locales.md)。
+
 其类型为：
 
 ```ts

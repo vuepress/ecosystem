@@ -39,6 +39,8 @@ Whether to display scroll progress.
 
 Locale config of the plugin.
 
+See also: [Locales](../supported-locales.md).
+
 @@`locales.<localePath>.backToTop` type=string
 
 Label text of the back to top button.

@@ -108,6 +108,8 @@ const a = 1
 
 提示容器标题的本地化配置。
 
+参考：[多语言配置](../supported-locales.md)。
+
 @@`locales.<localePath>.important` type=string
 
 重要块的默认标题。

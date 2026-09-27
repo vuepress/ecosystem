@@ -41,11 +41,11 @@ export default {
 
 搜索框在不同 locales 下的文字。
 
+参考：[多语言配置](../supported-locales.md)。
+
 @@`locales.<localePath>.placeholder` type=string
 
 搜索框的占位符文本。
-
-参见：[指南 > 多语言支持](https://vuejs.press/zh/guide/i18n.html)。
 
 @`hotKeys` type=`(KeyOptions | string)[]` default=`['s', '/']`
 

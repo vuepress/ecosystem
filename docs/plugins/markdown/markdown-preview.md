@@ -89,6 +89,8 @@ document.querySelector('body').innerText = 'Hello world!'
 
 Locales configuration for `<VPPreview>`.
 
+See also: [Locales](../supported-locales.md).
+
 @@`locales.<localePath>.toggle` type=string
 
 Toggle code button text.

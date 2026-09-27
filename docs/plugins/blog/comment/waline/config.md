@@ -182,6 +182,8 @@ Whether to import meta icon.
 
 Waline locales.
 
+See also: [Locales](../../../supported-locales.md).
+
 Its type is:
 
 ```ts

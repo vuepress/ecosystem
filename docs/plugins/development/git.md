@@ -142,6 +142,8 @@ A function to filter pages. Git information will only be collected if this funct
 
 Locale configuration, primarily used by the [Git Components](#component).
 
+See also: [Locales](../supported-locales.md).
+
 @@`locales.<localePath>.contributors` type=string
 
 The title for the contributors section.

@@ -351,6 +351,8 @@ The index name used for searching.
 
 Configuration for different locales. Every option above can be overridden for a specific locale path.
 
+See also: [Locales](../supported-locales.md).
+
 @`translations` type=DocSearchTranslations
 
 Allows you to replace the default text in the DocSearch button and popup.

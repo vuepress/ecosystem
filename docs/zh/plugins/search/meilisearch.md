@@ -351,6 +351,8 @@ MeiliSearch 生成的仅限搜索的 API 密钥。
 
 该插件在不同语言环境下的配置。上述所有选项都可以针对特定语言路径进行覆盖。
 
+参考：[多语言配置](../supported-locales.md)。
+
 @`translations` type=DocSearchTranslations
 
 允许你替换 DocSearch 按钮和弹出框中的默认文本。

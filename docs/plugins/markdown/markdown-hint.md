@@ -108,6 +108,8 @@ Whether to inject default styles.
 
 Locale config for hint container titles.
 
+See also: [Locales](../supported-locales.md).
+
 @@`locales.<localePath>.important` type=string
 
 Default title text for important block.

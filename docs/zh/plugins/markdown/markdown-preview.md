@@ -89,6 +89,8 @@ document.querySelector('body').innerText = 'Hello world!'
 
 `<VPPreview>` 的本地化配置。
 
+参考：[多语言配置](../supported-locales.md)。
+
 @@`locales.<localePath>.toggle` type=string
 
 切换代码按钮文字。

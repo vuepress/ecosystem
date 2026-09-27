@@ -142,6 +142,8 @@ Tag url 模式。
 
 多语言配置，用于 [Git 组件](#component)。
 
+参考：[多语言配置](../supported-locales.md)。
+
 @@`locales.<localePath>.contributors` type=string
 
 贡献者标题。

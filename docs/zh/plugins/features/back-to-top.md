@@ -39,6 +39,8 @@ export default {
 
 插件的多语言配置。
 
+参考：[多语言配置](../supported-locales.md)。
+
 @@`locales.<localePath>.backToTop` type=string
 
 返回顶部按钮的标签文字。
