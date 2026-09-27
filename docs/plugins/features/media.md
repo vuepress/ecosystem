@@ -490,4 +490,24 @@ Available providers: `youtube`, `vimeo`, `twitch`, `tiktok`, and `spotify`. Each
 
 Custom translations of Video.js. The partial translations merge into the language pack of the page locale, so only the keys you provide are overridden.
 
+The keys are Video.js locale tags (e.g. `zh-CN`, `zh-TW`, `fr`), and the values are its nested translation objects, so `buttons.play` is written as `{ buttons: { play: 'Play' } }`. The available groups are `buttons`, `seek`, `fullscreen`, `captions`, `pip`, `live`, `cast`, `airplay`, `container`, `slider`, `time`, `playback`, `volume`, `status`, `errors`, `common`, and `menu`.
+
+```ts title=".vuepress/config.ts"
+export default {
+  plugins: [
+    mediaPlugin({
+      videojs: true,
+      videojsLocales: {
+        'zh-CN': {
+          buttons: { play: '播放', pause: '暂停' },
+          fullscreen: { enter: '进入全屏' },
+        },
+      },
+    }),
+  ],
+}
+```
+
+See [Translation phrases](https://videojs.org/docs/framework/html/reference/translation-phrases) for the full key list and the English defaults, or the [`en.ts`](https://github.com/videojs/v10/blob/main/packages/core/src/core/i18n/locales/en.ts) defining them.
+
 :::

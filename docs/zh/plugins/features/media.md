@@ -492,4 +492,24 @@ EmbedPDF 内置 `en`、`nl`、`de`、`fr`、`es`、`zh-CN`、`zh-TW`、`ja`、`s
 
 Video.js 的自定义翻译。部分翻译会合并到页面语言对应的语言包中，因此只有你提供的键会被覆盖。
 
+键为 Video.js 的语言代码（如 `zh-CN`、`zh-TW`、`fr`），值为其嵌套的翻译对象，因此 `buttons.play` 需写成 `{ buttons: { play: 'Play' } }`。可用的分组有 `buttons`、`seek`、`fullscreen`、`captions`、`pip`、`live`、`cast`、`airplay`、`container`、`slider`、`time`、`playback`、`volume`、`status`、`errors`、`common` 与 `menu`。
+
+```ts title=".vuepress/config.ts"
+export default {
+  plugins: [
+    mediaPlugin({
+      videojs: true,
+      videojsLocales: {
+        'zh-CN': {
+          buttons: { play: '播放', pause: '暂停' },
+          fullscreen: { enter: '进入全屏' },
+        },
+      },
+    }),
+  ],
+}
+```
+
+完整的键名与英文默认值见 [Translation phrases](https://videojs.org/docs/framework/html/reference/translation-phrases)，默认值的定义见 [`en.ts`](https://github.com/videojs/v10/blob/main/packages/core/src/core/i18n/locales/en.ts)。
+
 :::
