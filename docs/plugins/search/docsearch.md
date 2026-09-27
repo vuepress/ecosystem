@@ -21,6 +21,9 @@ export default {
   plugins: [
     docsearchPlugin({
       // options
+      appId: '<APP_ID>',
+      apiKey: '<API_KEY>',
+      indices: ['<INDEX_NAME>'],
     }),
   ],
 }
@@ -220,36 +223,6 @@ Allows you to override the default text and labels used in the DocSearch button 
 @`locales` type=`LocaleConfig<DocSearchLocaleOptions>`
 
 Configuration for different locales. Every option above can be overridden for a specific locale path.
-
-```ts title=".vuepress/config.ts"
-export default {
-  plugins: [
-    docsearchPlugin({
-      appId: '<APP_ID>',
-      apiKey: '<API_KEY>',
-      indexName: '<INDEX_NAME>',
-      locales: {
-        '/': {
-          placeholder: 'Search Documentation',
-          translations: {
-            button: {
-              buttonText: 'Search Documentation',
-            },
-          },
-        },
-        '/zh/': {
-          placeholder: '搜索文档',
-          translations: {
-            button: {
-              buttonText: '搜索文档',
-            },
-          },
-        },
-      },
-    }),
-  ],
-}
-```
 
 See also: [Guide > I18n](https://vuejs.press/guide/i18n.html).
 

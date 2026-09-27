@@ -54,17 +54,14 @@ By default, watermarks are inserted into the body element, but you can specify a
 
 ## Frontmatter
 
-### watermark
+::: fields
+@`watermark` type=`boolean | WatermarkPureOptions`
 
-- Type: `boolean | WatermarkOptions`
+Whether to add a watermark to the current page, or the watermark config of the current page.
 
-- Details:
+Set it to `true` to enable the watermark, or `false` to disable it when the watermark is enabled globally.
 
-  When the type is `boolean`, it indicates whether watermarks are enabled.
-
-  When the type is `WatermarkOptions`, it represents the watermark configuration for the current page.
-
-  Refer to [watermark-js-plus](https://zhensherlock.github.io/watermark-js-plus/config/) for configuration options.
+See [watermark-js-plus](https://zhensherlock.github.io/watermark-js-plus/config/) for all available options.
 
 ```md
 ---
@@ -75,6 +72,8 @@ watermark:
   opacity: 0.5
 ---
 ```
+
+:::
 
 ## Client Config
 

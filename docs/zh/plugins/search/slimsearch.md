@@ -323,12 +323,12 @@ export default defineUserConfig({
 
 ## Frontmatter
 
-### search
-
-- 类型: `boolean`
-- 默认值: `true`
+::: fields
+@`search` type=boolean default=`true`
 
 是否索引该页面。
+
+:::
 
 ## 进阶
 

@@ -321,12 +321,12 @@ Empty result hint.
 
 ## Frontmatter
 
-### search
-
-- Type: `boolean`
-- Default: `true`
+::: fields
+@`search` type=boolean default=`true`
 
 Whether to include this page in the search index.
+
+:::
 
 ## Advanced
 

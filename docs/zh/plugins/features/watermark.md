@@ -54,17 +54,14 @@ export default {
 
 ## Frontmatter
 
-### watermark
+::: fields
+@`watermark` type=`boolean | WatermarkPureOptions`
 
-- 类型：`boolean | WatermarkOptions`
+是否为当前页面添加水印，或当前页面的水印配置。
 
-- 详情：
+设置为 `true` 可启用水印；当水印全局启用时，设置为 `false` 可在当前页面禁用它。
 
-  当类型为 `boolean` 时，表示是否启用水印。
-
-  当类型为 `WatermarkOptions` 时，表示当前页面水印配置。
-
-  可以参考 [watermark-js-plus](https://zhensherlock.github.io/watermark-js-plus/zh/config/) 。
+全部可选项参见 [watermark-js-plus](https://zhensherlock.github.io/watermark-js-plus/zh/config/)。
 
 ```md
 ---
@@ -75,6 +72,8 @@ watermark:
   opacity: 0.5
 ---
 ```
+
+:::
 
 ## 客户端配置
 

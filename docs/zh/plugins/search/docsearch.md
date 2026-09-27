@@ -21,6 +21,9 @@ export default {
   plugins: [
     docsearchPlugin({
       // 选项
+      appId: '<APP_ID>',
+      apiKey: '<API_KEY>',
+      indices: ['<INDEX_NAME>'],
     }),
   ],
 }
@@ -217,36 +220,6 @@ DocSearch 团队提供的，或者你自己生成的搜索 API 密钥 (Search AP
 @`locales` type=`LocaleConfig<DocSearchLocaleOptions>`
 
 该插件在不同语言环境下的配置。上述所有选项都可以针对特定语言路径进行覆盖。
-
-```ts title=".vuepress/config.ts"
-export default {
-  plugins: [
-    docsearchPlugin({
-      appId: '<APP_ID>',
-      apiKey: '<API_KEY>',
-      indexName: '<INDEX_NAME>',
-      locales: {
-        '/': {
-          placeholder: 'Search Documentation',
-          translations: {
-            button: {
-              buttonText: 'Search Documentation',
-            },
-          },
-        },
-        '/zh/': {
-          placeholder: '搜索文档',
-          translations: {
-            button: {
-              buttonText: '搜索文档',
-            },
-          },
-        },
-      },
-    }),
-  ],
-}
-```
 
 参见：[指南 > 多语言支持](https://vuejs.press/zh/guide/i18n.html)。
 
