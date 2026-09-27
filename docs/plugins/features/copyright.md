@@ -136,26 +136,27 @@ Link text, where `:link` will be replaced by the current page link.
 
 ## Frontmatter
 
-### copy.triggerLength
+::: fields
+@`copy` type=`boolean | object`
 
-- Type: `number`
-- Default: `100`
-- Details: Min content length triggering copyright append
+Whether to enable the plugin for the current page, or an object to configure it.
 
-### copy.maxLength
+Set it to `true` to enable the plugin on the current page, or `false` to disable it when the plugin is enabled globally.
 
-- Type: `number`
-- Default: `0`
-- Details: Max content length which allows to copy, `0` means no limit
+@@`copy.triggerLength` type=number default=`100`
 
-### copy.disableCopy
+Min content length triggering copyright append. This overrides the global [triggerLength](#triggerlength) option.
 
-- Type: `boolean`
-- Default: `false`
-- Details: Disable copy
+@@`copy.maxLength` type=number default=`0`
 
-### copy.disableSelection
+Max content length which allows to copy, `0` means no limit. This overrides the global [maxLength](#maxlength) option.
 
-- Type: `boolean`
-- Default: `false`
-- Details: Disable selection
+@@`copy.disableCopy` type=boolean default=`false`
+
+Whether to disable copying. This overrides the global [disableCopy](#disablecopy) option.
+
+@@`copy.disableSelection` type=boolean default=`false`
+
+Whether to disable selection. This overrides the global [disableSelection](#disableselection) option.
+
+:::

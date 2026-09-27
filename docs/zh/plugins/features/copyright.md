@@ -136,26 +136,27 @@ export default {
 
 ## Frontmatter
 
-### copy.triggerLength
+::: fields
+@`copy` type=`boolean | object`
 
-- 类型：`number`
-- 默认值：`100`
-- 详情：触发附加版权的最小内容长度
+是否为当前页面启用插件，或传入一个对象进行配置。
 
-### copy.maxLength
+设置为 `true` 可在当前页面启用插件；当插件全局启用时，设置为 `false` 可在当前页面禁用它。
 
-- 类型：`number`
-- 默认值：`0`
-- 详情：允许复制的最大内容长度，`0` 意味着无限制
+@@`copy.triggerLength` type=number default=`100`
 
-### copy.disableCopy
+触发附加版权的最小内容长度。它会覆盖全局的 [triggerLength](#triggerlength) 选项。
 
-- 类型：`boolean`
-- 默认值：`false`
-- 详情：禁用复制
+@@`copy.maxLength` type=number default=`0`
 
-### copy.disableSelection
+允许复制的最大内容长度，`0` 意味着无限制。它会覆盖全局的 [maxLength](#maxlength) 选项。
 
-- 类型：`boolean`
-- 默认值：`false`
-- 详情：禁用选择
+@@`copy.disableCopy` type=boolean default=`false`
+
+是否禁用复制。它会覆盖全局的 [disableCopy](#disablecopy) 选项。
+
+@@`copy.disableSelection` type=boolean default=`false`
+
+是否禁用选择。它会覆盖全局的 [disableSelection](#disableselection) 选项。
+
+:::
