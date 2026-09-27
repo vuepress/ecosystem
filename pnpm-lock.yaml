@@ -1375,7 +1375,7 @@ importers:
         version: 2.1.1(markdown-it@14.3.2)
       '@mdit/plugin-stylize':
         specifier: ^2.0.1
-        version: 2.0.1(markdown-it@14.3.2)
+        version: 2.0.2(markdown-it@14.3.2)
       '@mdit/plugin-sub':
         specifier: ^1.1.1
         version: 1.1.1(markdown-it@14.3.2)
@@ -4048,11 +4048,11 @@ packages:
       markdown-it:
         optional: true
 
-  '@mdit/plugin-stylize@2.0.1':
-    resolution: {integrity: sha512-VXZGLkyz91B2/BRE5u0Mwl0o1l4YZ3h1EUMkL4q6zH/deH7IznnA7+TUidy30yjsTe7CyvUwSSDhfAsOpw6SBg==}
+  '@mdit/plugin-stylize@2.0.2':
+    resolution: {integrity: sha512-iAjzp54VMa8Pd1S0+g0DS9ZB0XC4lhR8C2hTpR5QBpUIGmnh+c4Xle/hcqbJ5jfnpSbRa0S3EExBnH75Qu6BLA==}
     engines: {node: '>=22'}
     peerDependencies:
-      markdown-it: ^15.0.1
+      markdown-it: ^15.0.2
     peerDependenciesMeta:
       markdown-it:
         optional: true
@@ -13472,9 +13472,9 @@ snapshots:
     optionalDependencies:
       markdown-it: 14.3.2
 
-  '@mdit/plugin-stylize@2.0.1(markdown-it@14.3.2)':
+  '@mdit/plugin-stylize@2.0.2(markdown-it@14.3.2)':
     dependencies:
-      '@mdit/helper': 1.1.1(markdown-it@14.3.2)
+      '@mdit/helper': 1.1.2(markdown-it@14.3.2)
     optionalDependencies:
       markdown-it: 14.3.2
 
