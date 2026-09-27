@@ -1,6 +1,24 @@
 .vp-fields {
+  // Code blocks in field descriptions always have plain text around them, so
+  // use a smaller font size than regular code blocks. 1.72 keeps the line box
+  // at 22.4px with a 13px font size.
+  --code-line-height: 1.72;
+  --code-font-size: 0.8125em;
+
   margin: 16px 0;
   transition: border-color var(--vp-t-color);
+
+  // Shrink inline code to match the code blocks inside fields. Code blocks
+  // read the size from `--code-font-size` on their `pre`, so reset the nested
+  // `code` back to inherit to avoid scaling twice. The default value row
+  // already renders at a smaller font size, so its code keeps `1em`.
+  code {
+    font-size: 0.8125em;
+  }
+
+  pre code {
+    font-size: inherit;
+  }
 
   .vp-field + .vp-field {
     padding-top: 8px;
@@ -17,6 +35,10 @@
   }
 
   .vp-field-name {
+    // Keep the anchor target below the navbar by shifting the box up while
+    // pushing the content back down, the same way page headings do
+    margin-top: calc(-1 * var(--header-offset, 0px));
+    padding-top: var(--header-offset, 0);
     font-weight: 500;
     font-size: 18px;
   }

@@ -25,6 +25,7 @@ allowBuilds:
   esbuild: true
 
 minimumReleaseAgeExclude:
+  - '@mdit/*'
   - '@oxfmt/*'
   - '@oxlint/*'
   - '@vue/*'
@@ -38,7 +39,7 @@ minimumReleaseAgeExclude:
   - vue
   - vuepress
   - stylelint-config-hope
-  - '@mdit/plugin-advanced-links@0.2.0'
+minimumReleaseAgeExcludePrune: true
 
 packageExtensions:
   stylelint:
