@@ -8,8 +8,8 @@
     "bundle": "cross-env NODE_ENV=production pnpm run -r --stream build && pnpm run build:style",
     "clean": "pnpm -r --parallel --stream run clean",
     "format": "oxfmt",
-    "lint": "oxlint --fix --report-unused-disable-directives --deny-warnings && stylelint **/*.{css,html,scss,vue} --fix && oxfmt",
-    "lint:check": "oxlint --report-unused-disable-directives --deny-warnings && stylelint **/*.{css,html,scss,vue} && oxfmt --check",
+    "lint": "oxlint --fix && stylelint **/*.{css,html,scss,vue} --fix && oxfmt",
+    "lint:check": "oxlint && stylelint **/*.{css,html,scss,vue} && oxfmt --check",
     "pkg:check-update": "pnpm dlx npm-check-updates",
     "pkg:update": "pnpm up -r",
     "prepare": "husky",
@@ -36,7 +36,7 @@
     "husky": "^9.1.7",
     "lightningcss": "^1.33.0",
     "nano-staged": "^1.0.2",
-    "oxc-config-hope": "^0.3.13",
+    "oxc-config-hope": "^0.3.14",
     "oxfmt": "^0.70.0",
     "oxlint": "^1.85.0",
     "oxlint-tsgolint": "^7.0.2002",
@@ -60,7 +60,7 @@
   },
   "nano-staged": {
     "**/*": "oxfmt --no-error-on-unmatched-pattern",
-    "*.{cjs,js,ts,vue}": "oxlint --fix --deny-warnings --report-unused-disable-directives",
+    "*.{cjs,js,ts,vue}": "oxlint --fix",
     "*.{css,scss,html,vue}": "stylelint --fix"
   },
   "devEngines": {
