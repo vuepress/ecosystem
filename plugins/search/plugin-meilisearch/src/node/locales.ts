@@ -1,3 +1,4 @@
+/* oxlint-disable max-lines */
 import type { DefaultLocaleInfo } from '@vuepress/helper'
 
 import type { MeiliSearchLocaleData } from '../shared/index.js'
@@ -57,6 +58,31 @@ export const localeInfo: DefaultLocaleInfo<MeiliSearchLocaleData> = [
   ],
   [
     ['de', 'de-DE'],
+    {
+      button: {
+        buttonText: 'Durchsuchen',
+        buttonAriaLabel: 'Durchsuchen',
+      },
+      modal: {
+        searchDocsPlaceHolder: 'Dokumente durchsuchen',
+        resetButtonTitle: 'Suchkriterien zurücksetzen',
+        resetButtonAriaLabel: 'Suchkriterien zurücksetzen',
+        cancelButtonText: 'Abbrechen',
+        cancelButtonAriaLabel: 'Abbrechen',
+        linkToTheResultAriaLabel: 'Link zum Ergebnis',
+        selectText: 'Auswählen',
+        navigateText: 'Navigieren',
+        closeText: 'Schließen',
+        poweredByText: 'Anbieter',
+        selectKeyAriaLabel: 'Eingabetaste',
+        closeKeyAriaLabel: 'ESC-Taste',
+        navigateUpKeyAriaLabel: 'Aufwärtspfeil',
+        navigateDownKeyAriaLabel: 'Abwärtspfeil',
+      },
+    },
+  ],
+  [
+    ['de-AT'],
     {
       button: {
         buttonText: 'Durchsuchen',
@@ -156,7 +182,32 @@ export const localeInfo: DefaultLocaleInfo<MeiliSearchLocaleData> = [
     },
   ],
   [
-    ['br'],
+    ['pt', 'pt-PT'],
+    {
+      button: {
+        buttonText: 'Pesquisar',
+        buttonAriaLabel: 'Pesquisar',
+      },
+      modal: {
+        searchDocsPlaceHolder: 'Pesquisar na documentação',
+        resetButtonTitle: 'Repor os critérios de pesquisa',
+        resetButtonAriaLabel: 'Repor os critérios de pesquisa',
+        cancelButtonText: 'Cancelar',
+        cancelButtonAriaLabel: 'Cancelar',
+        linkToTheResultAriaLabel: 'Ligação para o resultado',
+        selectText: 'Selecionar',
+        navigateText: 'Navegar',
+        closeText: 'Fechar',
+        poweredByText: 'Fornecedor',
+        selectKeyAriaLabel: 'Tecla Enter',
+        closeKeyAriaLabel: 'Tecla Esc',
+        navigateUpKeyAriaLabel: 'Tecla de seta para cima',
+        navigateDownKeyAriaLabel: 'Tecla de seta para baixo',
+      },
+    },
+  ],
+  [
+    ['pt-BR'],
     {
       button: {
         buttonText: 'Pesquisar',
@@ -281,6 +332,31 @@ export const localeInfo: DefaultLocaleInfo<MeiliSearchLocaleData> = [
     },
   ],
   [
+    ['it', 'it-IT'],
+    {
+      button: {
+        buttonText: 'Cerca',
+        buttonAriaLabel: 'Cerca',
+      },
+      modal: {
+        searchDocsPlaceHolder: 'Cerca nei documenti',
+        resetButtonTitle: 'Reimposta i criteri di ricerca',
+        resetButtonAriaLabel: 'Reimposta i criteri di ricerca',
+        cancelButtonText: 'Annulla',
+        cancelButtonAriaLabel: 'Annulla',
+        linkToTheResultAriaLabel: 'Link al risultato',
+        selectText: 'Seleziona',
+        navigateText: 'Naviga',
+        closeText: 'Chiudi',
+        poweredByText: 'Fornitore',
+        selectKeyAriaLabel: 'Tasto Invio',
+        closeKeyAriaLabel: 'Tasto ESC',
+        navigateUpKeyAriaLabel: 'Tasto freccia su',
+        navigateDownKeyAriaLabel: 'Tasto freccia giù',
+      },
+    },
+  ],
+  [
     ['ja', 'ja-JP'],
     {
       button: {
@@ -331,7 +407,7 @@ export const localeInfo: DefaultLocaleInfo<MeiliSearchLocaleData> = [
     },
   ],
   [
-    ['ko', 'ko-KO'],
+    ['ko', 'ko-KR'],
     {
       button: {
         buttonText: '검색',
@@ -357,7 +433,6 @@ export const localeInfo: DefaultLocaleInfo<MeiliSearchLocaleData> = [
   ],
   [
     ['fi', 'fi-FI'],
-
     {
       button: {
         buttonText: 'Hae',
