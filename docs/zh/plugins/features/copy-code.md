@@ -165,7 +165,7 @@ export default {
 
 - 类型：`(config: MaybeRefOrGetter<CopyCodeClientOptions>) => void`
 
-在客户端中定义额外的复制代码选项。此处定义的选项会覆盖 Node 中定义的选项。
+在客户端中定义额外的复制代码选项。此处接受插件的[全部选项](#选项)，且此处定义的选项会覆盖 Node 中定义的选项。
 
 通常来说，大部分选项应该在 Node 中定义，但存在一些特殊情况。例如你需要传入 `transform` 之类的回调函数（它无法在 Node 中声明），或者需要根据客户端环境来决定选项。
 
@@ -173,14 +173,35 @@ export default {
 import { defineCopyCodeConfig } from '@vuepress/plugin-copy-code/client'
 
 defineCopyCodeConfig({
-  transform: (preElement) => {
-    // 删除 `.ignore` 类名的元素
-    preElement.querySelectorAll('.ignore').forEach((el) => el.remove())
-    // 插入版权信息
-    preElement.innerHTML += `\n Copied by VuePress`
-  },
+  selector: '.custom-code',
+  duration: 3000,
 })
 ```
+
+### transform
+
+- 类型：`(preElement: HTMLPreElement) => void`
+- 默认值：`undefined`
+- 详情：
+
+  一个转换器，用于在复制之前对 `<pre>` 中代码块内容进行修改。
+
+  该选项**仅限客户端**，因为回调函数无法在 Node 配置中声明。
+
+- 示例：
+
+  ```ts title=".vuepress/client.ts"
+  import { defineCopyCodeConfig } from '@vuepress/plugin-copy-code/client'
+
+  defineCopyCodeConfig({
+    transform: (preElement) => {
+      // 删除 `.ignore` 类名的元素
+      preElement.querySelectorAll('.ignore').forEach((el) => el.remove())
+      // 插入版权信息
+      preElement.innerHTML += `\n Copied by VuePress`
+    },
+  })
+  ```
 
 ## 样式
 

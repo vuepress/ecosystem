@@ -164,7 +164,7 @@ export default {
 
 - Type: `(config: MaybeRefOrGetter<CopyCodeClientOptions>) => void`
 
-Additional copy code options in the client side. The options defined here override the ones defined in Node.
+Additional copy code options in the client side. All options of the plugin are accepted (see [Options](#options)), and the ones defined here override the ones defined in Node.
 
 In most cases, options should be defined in the Node.js configuration, but there are special situations where client-side configuration is needed. For example, you may need to pass a `transform` callback, which cannot be declared in Node, or determine the options according to the client context.
 
@@ -172,14 +172,35 @@ In most cases, options should be defined in the Node.js configuration, but there
 import { defineCopyCodeConfig } from '@vuepress/plugin-copy-code/client'
 
 defineCopyCodeConfig({
-  transform: (preElement) => {
-    // Remove all `.ignore` elements
-    preElement.querySelectorAll('.ignore').forEach((el) => el.remove())
-    // insert copyright
-    preElement.innerHTML += `\n Copied by VuePress`
-  },
+  selector: '.custom-code',
+  duration: 3000,
 })
 ```
+
+### transform
+
+- Type: `(preElement: HTMLPreElement) => void`
+- Default: `undefined`
+- Details:
+
+  A transformer to modify the content of the code block in the `<pre>` element before copying.
+
+  This option is **client-side only**, since a callback cannot be declared in the Node.js configuration.
+
+- Example:
+
+  ```ts title=".vuepress/client.ts"
+  import { defineCopyCodeConfig } from '@vuepress/plugin-copy-code/client'
+
+  defineCopyCodeConfig({
+    transform: (preElement) => {
+      // Remove all `.ignore` elements
+      preElement.querySelectorAll('.ignore').forEach((el) => el.remove())
+      // insert copyright
+      preElement.innerHTML += `\n Copied by VuePress`
+    },
+  })
+  ```
 
 ## Styles
 
