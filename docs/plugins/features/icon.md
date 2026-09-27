@@ -338,7 +338,7 @@ Bundle the icons locally instead of loading them from a CDN or the Iconify API, 
 
 The icons are bundled for the icon type of the site, so this option does not affect the `type` and `assets` options.
 
-Only the `fontawesome` and the `iconify` icons can be bundled, the build stops when the icon type is another one, e.g. `iconfont`.
+Only the `fontawesome` and the `iconify` icons are bundled, as they load their assets from a CDN or the Iconify API. `iconfont` is offline by nature instead: its assets come from the link you set with the [assets](#assets) option, which you can host together with your site. There is nothing to bundle for it, so enabling the offline mode for the `iconfont` icon type is rejected.
 
 - `true`: bundle the icons used by the site, which are detected from the page content, the front matter and the component props, see the [scan](#scan) option.
 - `"all"`: bundle every icon of the icon type. It is only supported by `fontawesome`, as an Iconify icon set may contain thousands of icons, and the icons used by the site are bundled instead for `iconify`.
@@ -369,22 +369,6 @@ Bundling every Font Awesome icon adds about 1.8 MB to the client bundle, while a
 Fields to scan for the icons, which is used by the [offline](#offline) option and has no effect when the offline mode is not enabled.
 
 `frontmatter` and `components` are field paths, which support the field access and the array index, where `[*]` matches every element of an array. A field that does not exist is skipped silently.
-
-@@`scan.frontmatter` type=`string[]` default=`['icon']`
-
-Front matter fields of the pages, e.g. `['icon', 'features[*].name']`. Set it to `[]` to disable the front matter scan.
-
-@@`scan.components` type=`string[]`
-
-Props of the components used in the pages, in the form `<component>.<prop>`, e.g. `['VPCustom.icon', 'VPTest.files[*]']`.
-
-The props of a component are read as one object, so `VPCustom.icon` reads the `icon` prop, while `VPTest.files[*]` reads every element of the `files` prop. A prop that is bound with `:prop` or `v-bind` is reported when its value cannot be parsed as JSON, as its icons cannot be bundled then.
-
-@@`scan.scanner` type=`(app: App) => string[] | Promise<string[]>`
-
-Extra scanner for the icons that cannot be detected, e.g. the icons used by the theme config.
-
-The returned icons use the same syntax as in markdown, e.g. `mdi:home` for Iconify and `solid:house` for Font Awesome.
 
 ```ts title=".vuepress/config.ts"
 export default {
@@ -423,6 +407,22 @@ extractIconsFromComponents(
 ```
 
 :::
+
+@@`scan.frontmatter` type=`string[]` default=`['icon']`
+
+Front matter fields of the pages, e.g. `['icon', 'features[*].name']`. Set it to `[]` to disable the front matter scan.
+
+@@`scan.components` type=`string[]`
+
+Props of the components used in the pages, in the form `<component>.<prop>`, e.g. `['VPCustom.icon', 'VPTest.files[*]']`.
+
+The props of a component are read as one object, so `VPCustom.icon` reads the `icon` prop, while `VPTest.files[*]` reads every element of the `files` prop. A prop that is bound with `:prop` or `v-bind` is reported when its value cannot be parsed as JSON, as its icons cannot be bundled then.
+
+@@`scan.scanner` type=`(app: App) => string[] | Promise<string[]>`
+
+Extra scanner for the icons that cannot be detected, e.g. the icons used by the theme config.
+
+The returned icons use the same syntax as in markdown, e.g. `mdi:home` for Iconify and `solid:house` for Font Awesome.
 
 ::::
 

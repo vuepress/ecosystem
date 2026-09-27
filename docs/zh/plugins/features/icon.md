@@ -338,7 +338,7 @@ iconPlugin({ assets: 'fontawesome', offline: 'all' })
 
 图标按站点的图标类型打包，因此该选项不会影响 `type` 与 `assets` 选项。
 
-仅 `fontawesome` 与 `iconify` 的图标可以打包，图标类型为其他值（如 `iconfont`）时会终止构建。
+仅 `fontawesome` 与 `iconify` 的图标会被打包，因为它们需要从 CDN 或 Iconify API 加载资源。而 `iconfont` 天生就是离线的：其资源来自你通过 [assets](#assets) 选项设置的链接，可以与站点一同托管。因此它没有需要打包的内容，`iconfont` 图标类型下开启离线模式会被拒绝。
 
 - `true`：打包站点用到的图标，它们会从页面内容、front matter 与组件属性中检测，见 [scan](#scan) 选项。
 - `"all"`：打包该图标类型的全部图标。仅 `fontawesome` 支持，因为一个 Iconify 图标集可能包含数千个图标，`iconify` 下会改为打包站点用到的图标。
@@ -369,22 +369,6 @@ export default {
 需要扫描图标的字段，供 [offline](#offline) 选项使用，未启用离线模式时该选项无效。
 
 `frontmatter` 与 `components` 为字段路径，支持字段访问与数组下标，其中 `[*]` 匹配数组的每个元素。不存在的字段会被静默跳过。
-
-@@`scan.frontmatter` type=`string[]` default=`['icon']`
-
-页面的 front matter 字段，例如 `['icon', 'features[*].name']`。设为 `[]` 可关闭 front matter 扫描。
-
-@@`scan.components` type=`string[]`
-
-页面中使用的组件的属性，形式为 `<组件>.<属性>`，例如 `['VPCustom.icon', 'VPTest.files[*]']`。
-
-组件的属性会作为一个对象读取，因此 `VPCustom.icon` 读取 `icon` 属性，而 `VPTest.files[*]` 读取 `files` 属性的每个元素。用 `:prop` 或 `v-bind` 绑定的属性在值无法解析为 JSON 时会给出警告，因为此时其图标无法被打包。
-
-@@`scan.scanner` type=`(app: App) => string[] | Promise<string[]>`
-
-用于获取无法被检测到的图标的额外扫描器，例如主题配置中使用的图标。
-
-返回的图标使用与 Markdown 中一致的语法，Iconify 为 `mdi:home`，Font Awesome 为 `solid:house`。
 
 ```ts title=".vuepress/config.ts"
 export default {
@@ -423,6 +407,22 @@ extractIconsFromComponents(
 ```
 
 :::
+
+@@`scan.frontmatter` type=`string[]` default=`['icon']`
+
+页面的 front matter 字段，例如 `['icon', 'features[*].name']`。设为 `[]` 可关闭 front matter 扫描。
+
+@@`scan.components` type=`string[]`
+
+页面中使用的组件的属性，形式为 `<组件>.<属性>`，例如 `['VPCustom.icon', 'VPTest.files[*]']`。
+
+组件的属性会作为一个对象读取，因此 `VPCustom.icon` 读取 `icon` 属性，而 `VPTest.files[*]` 读取 `files` 属性的每个元素。用 `:prop` 或 `v-bind` 绑定的属性在值无法解析为 JSON 时会给出警告，因为此时其图标无法被打包。
+
+@@`scan.scanner` type=`(app: App) => string[] | Promise<string[]>`
+
+用于获取无法被检测到的图标的额外扫描器，例如主题配置中使用的图标。
+
+返回的图标使用与 Markdown 中一致的语法，Iconify 为 `mdi:home`，Font Awesome 为 `solid:house`。
 
 ::::
 
