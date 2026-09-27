@@ -1259,7 +1259,7 @@ importers:
     dependencies:
       '@mdit/plugin-figure':
         specifier: ^1.2.1
-        version: 1.2.1
+        version: 1.2.2
       '@mdit/plugin-img-lazyload':
         specifier: ^1.1.1
         version: 1.1.1
@@ -3917,11 +3917,11 @@ packages:
       markdown-it:
         optional: true
 
-  '@mdit/plugin-figure@1.2.1':
-    resolution: {integrity: sha512-a+MlxebF5oD5yI8lS+5wwRVfWFOsDVZaIJoQm7f+QSsMzH6glnH7E9E0DuYqhTJM7AnvyfofXkWuW+I0YbhfSg==}
+  '@mdit/plugin-figure@1.2.2':
+    resolution: {integrity: sha512-xDMFMdiftj3fElLCx6pqLLwW5J32hU5omPWwlv9T+6myc+XqVBIB3ASewarqVqkK75eNqVKy6KFC66tnYGveWQ==}
     engines: {node: '>=22'}
     peerDependencies:
-      markdown-it: ^15.0.1
+      markdown-it: ^15.0.2
     peerDependenciesMeta:
       markdown-it:
         optional: true
@@ -13393,9 +13393,9 @@ snapshots:
     optionalDependencies:
       markdown-it: 14.3.2
 
-  '@mdit/plugin-figure@1.2.1':
+  '@mdit/plugin-figure@1.2.2':
     dependencies:
-      '@mdit/helper': 1.1.1(markdown-it@14.3.2)
+      '@mdit/helper': 1.1.2(markdown-it@14.3.2)
 
   '@mdit/plugin-footnote@1.1.1(markdown-it@14.3.2)':
     dependencies:
