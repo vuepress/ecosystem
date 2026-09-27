@@ -5,10 +5,15 @@ import {
   useMediaQuery,
   watchImmediate,
 } from '@vueuse/core'
+import type { MaybeRefOrGetter } from 'vue'
 import { computed, nextTick } from 'vue'
 import { onContentUpdated } from 'vuepress/client'
 
-import type { CopyCodePluginLocaleConfig } from '../types.js'
+import { useCopyCodeOptions } from '../helpers/index.js'
+import type {
+  CopyCodeClientOptions,
+  CopyCodePluginLocaleConfig,
+} from '../types.js'
 
 import '@vuepress/helper/message.css'
 import '../styles/vars.scss'
@@ -18,74 +23,23 @@ import '../styles/copy-code.scss'
  * Options for the useCopyCode composable
  *
  * UseCopyCode 组合式 API 的选项
+ *
+ * @internal
  */
 export interface UseCopyCodeOptions {
+  /**
+   * Copy code options from Node
+   *
+   * Node 中定义的复制代码选项
+   */
+  options: MaybeRefOrGetter<CopyCodeClientOptions>
+
   /**
    * Locale config for copy button
    *
    * 复制按钮的多语言配置
    */
   locales: CopyCodePluginLocaleConfig
-
-  /**
-   * Code block selector
-   *
-   * 代码块选择器
-   */
-  selector: string
-
-  /**
-   * Elements selector in code blocks to ignore when copying
-   *
-   * 复制时忽略的代码块中的元素选择器
-   */
-  ignoreSelector?: string
-
-  /**
-   * Inline code selector
-   *
-   * 行内代码选择器
-   */
-  inlineSelector?: string
-
-  /**
-   * Prompt message display time
-   *
-   * 提示消息显示时间
-   *
-   * @default 2000
-   */
-  duration?: number
-
-  /**
-   * Whether to display on the mobile devices
-   *
-   * 是否在移动设备上显示
-   *
-   * @default false
-   */
-  showInMobile?: boolean
-  /**
-   * Transform pre element before copy
-   *
-   * 转换复制前的 pre 元素
-   *
-   * For example, deleting certain elements before copying, or inserting
-   * copyright information. 例如，在复制前删除特定元素，或插入版权信息。
-   *
-   * @example
-   *   ;({
-   *     transform(pre) {
-   *       // Remove all `.ignore` elements
-   *       pre.querySelectorAll('.ignore').forEach((el) => el.remove())
-   *       // insert copyright
-   *       pre.innerHTML += `\n Copied by VuePress`
-   *     },
-   *   })
-   *
-   * @param preElement `<pre>` clone Node
-   */
-  transform?: (preElement: HTMLElement) => void
 }
 
 const CHECK_ICON =
@@ -97,29 +51,13 @@ const SHELL_RE = /language-(?:shellscript|shell|bash|sh|zsh)/u
  *
  * 使用复制代码功能
  *
- * @example
- *   // .vuepress/client.ts
- *   import { useCopyCode } from '@vuepress/plugin-copy-code/client'
- *
- *   export default {
- *     setup() {
- *       useCopyCode({
- *         selector: '.custom-code',
- *         duration: 3000,
- *         showInMobile: true,
- *       })
- *     },
- *   }
+ * @param options - Options for copy code / 复制代码选项
+ * @internal
  */
 // oxlint-disable-next-line max-lines-per-function
 export const useCopyCode = ({
-  selector,
-  ignoreSelector,
-  inlineSelector,
-  duration = 2000,
+  options: baseOptions,
   locales,
-  showInMobile,
-  transform,
 }: UseCopyCodeOptions): void => {
   if (__VUEPRESS_SSR__) return
 
@@ -129,7 +67,8 @@ export const useCopyCode = ({
    * triggered by `touch` events.
    */
   const isMobile = useMediaQuery('(max-width: 419px)')
-  const enabled = computed(() => !isMobile.value || showInMobile)
+  const options = useCopyCodeOptions(baseOptions)
+  const enabled = computed(() => !isMobile.value || options.value.showInMobile)
 
   const locale = useLocale(locales)
 
@@ -151,12 +90,14 @@ export const useCopyCode = ({
     document.body.classList.toggle('no-copy-code', !enabled.value)
     if (!enabled.value) return
 
-    document.querySelectorAll<HTMLElement>(selector).forEach((el) => {
-      insertCopyButton(el)
-    })
+    document
+      .querySelectorAll<HTMLElement>(options.value.selector)
+      .forEach((el) => {
+        insertCopyButton(el)
+      })
   }
 
-  watchImmediate(enabled, () => nextTick(appendCopyButton), {
+  watchImmediate([enabled, options], () => nextTick(appendCopyButton), {
     flush: 'post',
   })
 
@@ -173,6 +114,7 @@ export const useCopyCode = ({
     codeContent: HTMLPreElement,
     button: HTMLButtonElement,
   ): Promise<void> => {
+    const { duration, ignoreSelector, transform } = options.value
     const clone = codeContent.cloneNode(true) as HTMLPreElement
 
     if (ignoreSelector) {
@@ -222,30 +164,29 @@ export const useCopyCode = ({
     { passive: true },
   )
 
-  if (inlineSelector) {
-    useEventListener(
-      'dblclick',
-      (event) => {
-        const el = event.target as HTMLElement
+  useEventListener(
+    'dblclick',
+    (event) => {
+      const el = event.target as HTMLElement
+      const { duration, inlineSelector } = options.value
 
-        if (enabled.value && el.matches(inlineSelector)) {
-          const selection = window.getSelection()
+      if (!enabled.value || !inlineSelector || !el.matches(inlineSelector))
+        return
 
-          if (
-            selection &&
-            (el.contains(selection.anchorNode) ||
-              el.contains(selection.focusNode))
-          )
-            selection.removeAllRanges()
+      const selection = window.getSelection()
 
-          void copy(el.textContent || '')
-          ;(message ??= new Message()).pop(
-            `${CHECK_ICON}<span>${locale.value.copied} </span>`,
-            duration,
-          )
-        }
-      },
-      { passive: true },
-    )
-  }
+      if (
+        selection &&
+        (el.contains(selection.anchorNode) || el.contains(selection.focusNode))
+      )
+        selection.removeAllRanges()
+
+      void copy(el.textContent || '')
+      ;(message ??= new Message()).pop(
+        `${CHECK_ICON}<span>${locale.value.copied} </span>`,
+        duration,
+      )
+    },
+    { passive: true },
+  )
 }

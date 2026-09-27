@@ -21,6 +21,7 @@
     "@vuepress/plugin-auto-frontmatter": "workspace:*",
     "@vuepress/plugin-blog": "workspace:*",
     "@vuepress/plugin-catalog": "workspace:*",
+    "@vuepress/plugin-copy-code": "workspace:*",
     "@vuepress/plugin-copyright": "workspace:*",
     "@vuepress/plugin-feed": "workspace:*",
     "@vuepress/plugin-markdown-file-tree": "workspace:*",
