@@ -913,7 +913,7 @@ importers:
         version: 1.1.2(markdown-it@14.3.2)
       '@mdit/plugin-advanced-links':
         specifier: ^0.2.0
-        version: 0.2.0(markdown-it@14.3.2)
+        version: 0.2.1(markdown-it@14.3.2)
       '@videojs/dash-video':
         specifier: 10.0.0-rc.4
         version: 10.0.0-rc.4(@svta/cml-cta@1.0.6(@svta/cml-structured-field-values@1.1.3(@svta/cml-utils@1.5.0))(@svta/cml-utils@1.5.0))(@svta/cml-structured-field-values@1.1.3(@svta/cml-utils@1.5.0))(@svta/cml-utils@1.5.0)
@@ -3854,8 +3854,8 @@ packages:
       markdown-it:
         optional: true
 
-  '@mdit/plugin-advanced-links@0.2.0':
-    resolution: {integrity: sha512-ma4KgKDoLNvNHfgQIm8m3IwF+x9MmCyF8npDvA/BSLrIzP2iqfbQjASi6Ezldhu4b8U9v3ioW0XzjkqSML8fJg==}
+  '@mdit/plugin-advanced-links@0.2.1':
+    resolution: {integrity: sha512-CjJJvEYA9B+ANCKsWfGUhH9qRYcrjRoa7SC7uwKAge67d93bqfLI0JMa+5jzGRLxGcyf+dhwbFiVJMaRMnLjug==}
     engines: {node: '>=22'}
     peerDependencies:
       markdown-it: ^15.0.2
@@ -13350,9 +13350,9 @@ snapshots:
     optionalDependencies:
       markdown-it: 14.3.2
 
-  '@mdit/plugin-advanced-links@0.2.0(markdown-it@14.3.2)':
+  '@mdit/plugin-advanced-links@0.2.1(markdown-it@14.3.2)':
     dependencies:
-      '@mdit/helper': 1.1.1(markdown-it@14.3.2)
+      '@mdit/helper': 1.1.2(markdown-it@14.3.2)
     optionalDependencies:
       markdown-it: 14.3.2
 
