@@ -118,29 +118,9 @@ Max content length which allows to copy, `0` means no limit.
 
 Locale config of the plugin.
 
-::: details Built-in Supported Languages
+See also: [Locales](../supported-locales.md).
 
-- **Simplified Chinese** (zh-CN)
-- **Traditional Chinese** (zh-TW)
-- **English (United States)** (en-US)
-- **German** (de-DE)
-- **Russian** (ru-RU)
-- **Ukrainian** (uk-UA)
-- **Vietnamese** (vi-VN)
-- **Portuguese** (pt)
-- **Polish** (pl-PL)
-- **French** (fr-FR)
-- **Spanish** (es-ES)
-- **Slovak** (sk-SK)
-- **Japanese** (ja-JP)
-- **Turkish** (tr-TR)
-- **Korean** (ko-KR)
-- **Finnish** (fi-FI)
-- **Hungarian** (hu-HU)
-- **Indonesian** (id-ID)
-- **Dutch** (nl-NL)
-
-:::
+See [Locales > Configuration](../supported-locales.md#configuration) for how to override a built-in text or add a language.
 
 @@`locales.<localePath>.author` type=string
 
@@ -153,38 +133,6 @@ License text, where `:license` will be replaced by the current license.
 @@`locales.<localePath>.link` type=string
 
 Link text, where `:link` will be replaced by the current page link.
-
-```ts title=".vuepress/config.ts"
-import { copyrightPlugin } from '@vuepress/plugin-copyright'
-
-export default {
-  locales: {
-    '/': {
-      // this is a supported language
-      lang: 'en-US',
-    },
-    '/xx/': {
-      // the plugin does not support this language
-      lang: 'mm-NN',
-    },
-  },
-
-  plugins: [
-    copyrightPlugin({
-      locales: {
-        '/': {
-          // Override link text
-          link: 'Original posted at :link',
-        },
-
-        '/xx/': {
-          // Complete locale config for `mm-NN` language here
-        },
-      },
-    }),
-  ],
-}
-```
 
 ::::
 

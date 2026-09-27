@@ -69,28 +69,9 @@ export default {
 
 插件的多语言配置。
 
-::: details 内置支持语言
+参考：[多语言配置](../supported-locales.md)。
 
-- **简体中文** (zh-CN)
-- **繁体中文** (zh-TW)
-- **英文(美国)** (en-US)
-- **德语** (de-DE)
-- **俄语** (ru-RU)
-- **乌克兰语** (uk-UA)
-- **越南语** (vi-VN)
-- **葡萄牙语** (pt)
-- **波兰语** (pl-PL)
-- **法语** (fr-FR)
-- **西班牙语** (es-ES)
-- **斯洛伐克** (sk-SK)
-- **日语** (ja-JP)
-- **土耳其语** (tr-TR)
-- **韩语** (ko-KR)
-- **芬兰语** (fi-FI)
-- **印尼语** (id-ID)
-- **荷兰语** (nl-NL)
-
-:::
+覆盖内置文本或新增语言的方式，请参阅[多语言配置 > 配置方式](../supported-locales.md#配置方式)。
 
 @@`locales.<localePath>.close` type=string
 
@@ -115,39 +96,6 @@ export default {
 @@`locales.<localePath>.arrowNext` type=string
 
 下一张图片按钮标签文字。
-
-```ts title=".vuepress/config.ts"
-import { photoSwipePlugin } from '@vuepress/plugin-photo-swipe'
-import { defineUserConfig } from 'vuepress'
-
-export default defineUserConfig({
-  locales: {
-    '/': {
-      // 这是一个支持的语言
-      lang: 'zh-CN',
-    },
-    '/xx/': {
-      // 插件不支持这个语言
-      lang: 'mm-NN',
-    },
-  },
-
-  plugins: [
-    photoSwipePlugin({
-      locales: {
-        '/': {
-          // 覆盖关闭标签文字
-          close: '关闭图片',
-        },
-
-        '/xx/': {
-          // 在这里完整设置 `mm-NN` 的多语言配置
-        },
-      },
-    }),
-  ],
-})
-```
 
 ::::
 

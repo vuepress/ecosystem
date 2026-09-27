@@ -118,29 +118,9 @@ export default {
 
 插件的多语言配置。
 
-::: details 内置支持语言
+参考：[多语言配置](../supported-locales.md)。
 
-- **简体中文** (zh-CN)
-- **繁体中文** (zh-TW)
-- **英文(美国)** (en-US)
-- **德语** (de-DE)
-- **俄语** (ru-RU)
-- **乌克兰语** (uk-UA)
-- **越南语** (vi-VN)
-- **葡萄牙语** (pt)
-- **波兰语** (pl-PL)
-- **法语** (fr-FR)
-- **西班牙语** (es-ES)
-- **斯洛伐克语** (sk-SK)
-- **日语** (ja-JP)
-- **土耳其语** (tr-TR)
-- **韩语** (ko-KR)
-- **芬兰语** (fi-FI)
-- **匈牙利语** (hu-HU)
-- **印尼语** (id-ID)
-- **荷兰语** (nl-NL)
-
-:::
+覆盖内置文本或新增语言的方式，请参阅[多语言配置 > 配置方式](../supported-locales.md#配置方式)。
 
 @@`locales.<localePath>.author` type=string
 
@@ -153,38 +133,6 @@ export default {
 @@`locales.<localePath>.link` type=string
 
 链接文字，其中的 `:link` 会替换为当前页面链接。
-
-```ts title=".vuepress/config.ts"
-import { copyrightPlugin } from '@vuepress/plugin-copyright'
-
-export default {
-  locales: {
-    '/': {
-      // this is a supported language
-      lang: 'en-US',
-    },
-    '/xx/': {
-      // the plugin does not support this language
-      lang: 'mm-NN',
-    },
-  },
-
-  plugins: [
-    copyrightPlugin({
-      locales: {
-        '/': {
-          // Override link text
-          link: 'Original posted at :link',
-        },
-
-        '/xx/': {
-          // Complete locale config for `mm-NN` language here
-        },
-      },
-    }),
-  ],
-}
-```
 
 ::::
 
