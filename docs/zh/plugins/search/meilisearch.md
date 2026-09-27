@@ -253,7 +253,7 @@ export default {
 
 接下来在你的 GitHub Actions 工作流文件中添加一个新的步骤 `scrape`，它将在部署步骤之后运行。以下是操作示例：
 
-```yml
+```yml :collapsed-lines=25
 name: 部署和抓取
 
 on:

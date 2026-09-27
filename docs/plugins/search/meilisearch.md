@@ -253,7 +253,7 @@ Then go to `Settings` -> `Secrets and variables` -> `Actions` in your Github rep
 
 Next add a new step `scrape` in your Github Actions workflow file, which will run after the deployment step. Here is an example of how to do this:
 
-```yml
+```yml :collapsed-lines=25
 name: Deploy and Scrape
 
 on:
