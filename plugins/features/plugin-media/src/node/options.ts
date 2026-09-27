@@ -132,9 +132,12 @@ export interface MediaPluginOptions {
    * Video.js 的自定义翻译
    *
    * The partial translations merge into the language pack of the page locale,
-   * so only the keys you provide are overridden.
+   * so only the keys you provide are overridden. See
+   * https://videojs.org/docs/framework/html/reference/translation-phrases for
+   * every available key.
    *
-   * 部分翻译会合并到页面语言对应的语言包中，因此只有你提供的键会被覆盖。
+   * 部分翻译会合并到页面语言对应的语言包中，因此只有你提供的键会被覆盖。所有可用的键见
+   * https://videojs.org/docs/framework/html/reference/translation-phrases。
    */
   videojsLocales?: Record<string, VideoJsLocaleData>
 }

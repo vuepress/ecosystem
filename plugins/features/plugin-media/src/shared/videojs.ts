@@ -7,7 +7,13 @@
  * page language. The partial translations you pass merge into the pack of the
  * same locale, so only the keys you provide are overridden.
  *
+ * Every available key is listed in the Video.js reference:
+ * https://videojs.org/docs/framework/html/reference/translation-phrases
+ *
  * Video.js 内置 50 多种语言，并会根据页面语言懒加载对应的语言包。传入的部分翻译会合并到同语言的语言包中，因此只有你提供的键会被覆盖。
+ *
+ * 所有可用的键见 Video.js 参考文档：
+ * https://videojs.org/docs/framework/html/reference/translation-phrases
  */
 export type { Translations as VideoJsLocaleData } from '@videojs/html/i18n'
 
