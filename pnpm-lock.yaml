@@ -1332,7 +1332,7 @@ importers:
         version: 1.1.2(markdown-it@14.3.2)
       '@mdit/plugin-demo':
         specifier: ^2.0.1
-        version: 2.0.1(markdown-it@14.3.2)
+        version: 2.0.2(markdown-it@14.3.2)
       '@types/markdown-it':
         specifier: ^14.2.0
         version: 14.2.0
@@ -3899,11 +3899,11 @@ packages:
       markdown-it:
         optional: true
 
-  '@mdit/plugin-demo@2.0.1':
-    resolution: {integrity: sha512-0Uhjoq7v2b0HirR+7yIo3gZaWs1ChieYYVmvhqR606sm5iZPipq1t1JQ7rmd8bWeaatUOSAFwKlJWKNAoziIig==}
+  '@mdit/plugin-demo@2.0.2':
+    resolution: {integrity: sha512-H2OH53G+O4eIJxHDFVuDdA0L+LNmP9yAeJn8C/SOP12E/+tiIJ94EQve6dnyUnpfu88BqPYNjOo+6Wgkk1ZqIA==}
     engines: {node: '>=22'}
     peerDependencies:
-      markdown-it: ^15.0.1
+      markdown-it: ^15.0.2
     peerDependenciesMeta:
       markdown-it:
         optional: true
@@ -13381,9 +13381,9 @@ snapshots:
     optionalDependencies:
       markdown-it: 14.3.2
 
-  '@mdit/plugin-demo@2.0.1(markdown-it@14.3.2)':
+  '@mdit/plugin-demo@2.0.2(markdown-it@14.3.2)':
     dependencies:
-      '@mdit/helper': 1.1.1(markdown-it@14.3.2)
+      '@mdit/helper': 1.1.2(markdown-it@14.3.2)
     optionalDependencies:
       markdown-it: 14.3.2
 
