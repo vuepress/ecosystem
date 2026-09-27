@@ -879,7 +879,7 @@ importers:
         version: 3.1.7
       '@mdit/plugin-icon':
         specifier: ^1.1.1
-        version: 1.1.1
+        version: 1.1.2
       '@vuepress/helper':
         specifier: workspace:*
         version: link:../../../tools/helper
@@ -3932,11 +3932,11 @@ packages:
     peerDependencies:
       markdown-it: ^15.0.1
 
-  '@mdit/plugin-icon@1.1.1':
-    resolution: {integrity: sha512-tcVGsp9544Vt49OYYc52bznmjQwE8giVujwgfn5OgZ95oZpLtVaHRoHdCvmsHfwzBZi2WnEa3v40MNpors279A==}
+  '@mdit/plugin-icon@1.1.2':
+    resolution: {integrity: sha512-1WguYlK62bmFu8nJMszdhDcQvF+pM0zMS9pEj/UKeI88du28TE7VkgxesbbF+0MRV1x1j8THiNXMdCzxjS5jwg==}
     engines: {node: '>=22'}
     peerDependencies:
-      markdown-it: ^15.0.1
+      markdown-it: ^15.0.2
     peerDependenciesMeta:
       markdown-it:
         optional: true
@@ -13402,9 +13402,9 @@ snapshots:
       '@mdit/helper': 1.1.1(markdown-it@14.3.2)
       markdown-it: 14.3.2
 
-  '@mdit/plugin-icon@1.1.1':
+  '@mdit/plugin-icon@1.1.2':
     dependencies:
-      '@mdit/helper': 1.1.1(markdown-it@14.3.2)
+      '@mdit/helper': 1.1.2(markdown-it@14.3.2)
 
   '@mdit/plugin-img-lazyload@1.1.1':
     dependencies:
