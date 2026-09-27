@@ -85,10 +85,20 @@ export const redirectLocaleInfo: DefaultLocaleInfo<RedirectPluginLocaleData> = [
     },
   ],
   [
-    ['br'],
+    ['pt', 'pt-PT'],
+    {
+      name: 'Português',
+      hint: 'O seu idioma principal é $1, pretende mudar para ele?',
+      switch: 'Mudar para $1',
+      cancel: 'Cancelar',
+      remember: 'Memorizar a minha escolha',
+    },
+  ],
+  [
+    ['pt-BR'],
     {
       name: 'Português (Brasil)',
-      hint: 'A língua principal é $1, deseja mudar para ela?',
+      hint: 'Seu idioma principal é $1, deseja mudar para ele?',
       switch: 'Mudar para $1',
       cancel: 'Cancelar',
       remember: 'Lembrar minha escolha',
@@ -125,6 +135,36 @@ export const redirectLocaleInfo: DefaultLocaleInfo<RedirectPluginLocaleData> = [
     },
   ],
   [
+    ['es', 'es-ES'],
+    {
+      name: 'Español',
+      hint: 'Su idioma principal es $1, ¿desea cambiarlo?',
+      switch: 'Cambiar a $1',
+      cancel: 'Cancelar',
+      remember: 'Recordar mi elección',
+    },
+  ],
+  [
+    ['it', 'it-IT'],
+    {
+      name: 'Italiano',
+      hint: 'La tua lingua principale è $1, vuoi passare a questa?',
+      switch: 'Passa a $1',
+      cancel: 'Annulla',
+      remember: 'Ricorda la mia scelta',
+    },
+  ],
+  [
+    ['ja', 'ja-JP'],
+    {
+      name: '日本語',
+      hint: 'あなたの主要な言語は $1 です。それに切り替えますか？',
+      switch: '$1 に切り替える',
+      cancel: 'キャンセル',
+      remember: '選択を記憶する',
+    },
+  ],
+  [
     ['tr', 'tr-TR'],
     {
       name: 'Türkçe',
@@ -132,6 +172,16 @@ export const redirectLocaleInfo: DefaultLocaleInfo<RedirectPluginLocaleData> = [
       switch: "$1'e geç",
       cancel: 'İptal',
       remember: 'Seçimimi hatırla',
+    },
+  ],
+  [
+    ['ko', 'ko-KR'],
+    {
+      name: '한국어',
+      hint: '당신의 기본 언어는 $1입니다. 그것으로 전환 하시겠습니까?',
+      switch: '$1로 전환',
+      cancel: '취소',
+      remember: '내 선택 기억하기',
     },
   ],
   [
@@ -172,46 +222,6 @@ export const redirectLocaleInfo: DefaultLocaleInfo<RedirectPluginLocaleData> = [
       switch: 'Overschakelen naar $1',
       cancel: 'Annuleren',
       remember: 'Onthoud mijn keuze',
-    },
-  ],
-  [
-    ['ja', 'ja-JP'],
-    {
-      name: '日本語',
-      hint: 'あなたの主要な言語は $1 です。それに切り替えますか？',
-      switch: '$1 に切り替える',
-      cancel: 'キャンセル',
-      remember: '選択を記憶する',
-    },
-  ],
-  [
-    ['ko', 'ko-KO'],
-    {
-      name: '한국어',
-      hint: '당신의 기본 언어는 $1입니다. 그것으로 전환 하시겠습니까?',
-      switch: '$1로 전환',
-      cancel: '취소',
-      remember: '내 선택 기억하기',
-    },
-  ],
-  [
-    ['es', 'es-ES'],
-    {
-      name: 'Español',
-      hint: 'Su idioma principal es $1, ¿desea cambiarlo?',
-      switch: 'Cambiar a $1',
-      cancel: 'Cancelar',
-      remember: 'Recordar mi elección',
-    },
-  ],
-  [
-    ['/pt'],
-    {
-      name: 'Português',
-      hint: 'Sua língua principal é $1, deseja mudar para ela?',
-      switch: 'Mudar para $1',
-      cancel: 'Cancelar',
-      remember: 'Lembrar minha escolha',
     },
   ],
 ]

@@ -34,18 +34,18 @@ export const copyrightLocaleInfo: DefaultLocaleInfo<CopyrightPluginLocaleData> =
       },
     ],
     [
-      ['ru', 'ru-RU'],
+      ['de', 'de-DE'],
       {
-        author: 'Авторские права :author',
-        license: 'Лицензия :license',
+        author: 'Urheberrecht :author',
+        license: 'Lizenziert unter :license',
         link: ':link',
       },
     ],
     [
-      ['uk', 'uk-UA'],
+      ['de-AT'],
       {
-        author: 'Авторські права :author',
-        license: 'Ліцензія :license',
+        author: 'Urheberrecht :author',
+        license: 'Lizenziert unter :license',
         link: ':link',
       },
     ],
@@ -58,7 +58,31 @@ export const copyrightLocaleInfo: DefaultLocaleInfo<CopyrightPluginLocaleData> =
       },
     ],
     [
+      ['uk', 'uk-UA'],
+      {
+        author: 'Авторські права :author',
+        license: 'Ліцензія :license',
+        link: ':link',
+      },
+    ],
+    [
+      ['ru', 'ru-RU'],
+      {
+        author: 'Авторские права :author',
+        license: 'Лицензия :license',
+        link: ':link',
+      },
+    ],
+    [
       ['pt', 'pt-PT'],
+      {
+        author: 'Direitos de autor de :author',
+        license: 'Licenciado sob :license',
+        link: ':link',
+      },
+    ],
+    [
+      ['pt-BR'],
       {
         author: 'Direitos autorais de :author',
         license: 'Licenciado sob :license',
@@ -98,6 +122,14 @@ export const copyrightLocaleInfo: DefaultLocaleInfo<CopyrightPluginLocaleData> =
       },
     ],
     [
+      ['it', 'it-IT'],
+      {
+        author: "Diritti d'autore di :author",
+        license: 'Sotto licenza :license',
+        link: ':link',
+      },
+    ],
+    [
       ['ja', 'ja-JP'],
       {
         author: '著作権者 :author',
@@ -126,14 +158,6 @@ export const copyrightLocaleInfo: DefaultLocaleInfo<CopyrightPluginLocaleData> =
       {
         author: 'Tekijänoikeus :author',
         license: 'Lisenssi :license',
-        link: ':link',
-      },
-    ],
-    [
-      ['de', 'de-DE'],
-      {
-        author: 'Copyright by :author',
-        license: 'Lizenziert unter :license',
         link: ':link',
       },
     ],
