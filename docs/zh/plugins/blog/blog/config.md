@@ -24,11 +24,77 @@ icon: settings-2
 
 @`category` type=`BlogCategoryOptions[]`
 
-博客分类配置。参考：[博客分类配置](#博客分类配置)。
+博客分类配置。每一项按标签对文章进行分组，例如标签或分类。
+
+参考：[Category 配置](./guide.md#category-配置)。
+
+@@`category[*].key` type=string required
+
+唯一的分类名称。
+
+@@`category[*].getter` type=`(page: Page) => string[]` required
+
+从页面中获取分类的函数。
+
+@@`category[*].sorter` type=`(pageA: Page, pageB: Page) => number`
+
+同一分类下页面的排序函数。
+
+@@`category[*].path` type=`string | false` default=`'/:key/'`
+
+分类页面的路径模式，其中 `:key` 会被替换为经过 slugify 处理的分类 key。设置为 `false` 可跳过生成该页面。
+
+@@`category[*].layout` type=string default=`'Layout'`
+
+分类页面的布局名称。
+
+@@`category[*].frontmatter` type=`(localePath: string) => Record<string, unknown>`
+
+分类页面的 frontmatter。
+
+@@`category[*].itemPath` type=`string | false | ((name: string) => string)` default=`'/:key/:name/'`
+
+分类子项页面的路径模式，其中 `:key` 和 `:name` 会被替换为经过 slugify 处理的分类 key 与子项名称。
+
+也可以是一个函数，根据子项名称返回路径；或者设置为 `false` 跳过生成子项页面。
+
+@@`category[*].itemLayout` type=string default=`'Layout'`
+
+分类子项页面的布局名称。
+
+@@`category[*].itemFrontmatter` type=`(name: string, localePath: string) => Record<string, unknown>`
+
+分类子项页面的 frontmatter，其中 `name` 为子项名称。
 
 @`type` type=`BlogTypeOptions[]`
 
-博客类型配置。参考：[博客类型配置](#博客类型配置)。
+博客类型配置。每一项收集满足条件的文章。
+
+参考：[Type 配置](./guide.md#type-配置)。
+
+@@`type[*].key` type=string required
+
+唯一的类型名称。
+
+@@`type[*].filter` type=`(page: Page) => boolean` required
+
+用于确定页面是否属于此类型的函数。
+
+@@`type[*].sorter` type=`(pageA: Page, pageB: Page) => number`
+
+该类型下页面的排序函数。
+
+@@`type[*].path` type=`string | false` default=`'/:key/'`
+
+类型页面的路径模式，其中 `:key` 会被替换为经过 slugify 处理的类型 key。设置为 `false` 可跳过生成该页面。
+
+@@`type[*].layout` type=string default=`'Layout'`
+
+类型页面的布局名称。
+
+@@`type[*].frontmatter` type=`(localePath: string) => Record<string, unknown>`
+
+类型页面的 frontmatter。
 
 @`slugify` type=`(name: string) => string` default=`(name) => name.replaceAll(/[ _]/gu, '-').replaceAll(/[:?*|\\/<>]/gu, '').toLowerCase()`
 
@@ -106,113 +172,6 @@ icon: settings-2
 
 ::::
 
-## 博客分类配置
-
-博客分类配置配置接受一个数组，其中每个项目定义一个特定的分类规则。
-
-```ts
-interface BlogCategoryOptions {
-  /**
-   * 唯一的分类名称
-   */
-  key: string
-
-  /**
-   * 从页面获取分类的函数
-   */
-  getter: (page: Page) => string[]
-
-  /**
-   * 自定义页面排序函数
-   */
-  sorter?: (pageA: Page, pageB: Page) => number
-
-  /**
-   * 注册页面的路径模式
-   *
-   * `:key` 将被替换为原始 key 的 "slugify" 结果
-   *
-   * @default `/:key/`
-   */
-  path?: string | false
-
-  /**
-   * 页面布局名称
-   *
-   * @default 'Layout'
-   */
-  layout?: string
-
-  /**
-   * Frontmatter 配置
-   */
-  frontmatter?: (localePath: string) => Record<string, string>
-
-  /**
-   * Item 页面的路径模式或自定义函数
-   *
-   * 当填入字符串时，`:key` 和 `:name` 将被替换为原始 key 和 name 的 "slugify" 结果
-   *
-   * @default `/:key/:name/`
-   */
-  itemPath?: string | false | ((name: string) => string)
-
-  /**
-   * Item 页面布局名称
-   *
-   * @default 'Layout'
-   */
-  itemLayout?: string
-
-  /**
-   * Items 的 Frontmatter 配置
-   */
-  itemFrontmatter?: (name: string, localePath: string) => Record<string, string>
-}
-```
-
-## 博客类型配置
-
-博客类型配置接受一个数组，其中每个项目定义一个特定的类型规则。
-
-```ts
-interface BlogTypeOptions {
-  /**
-   * 唯一的类型名称
-   */
-  key: string
-
-  /**
-   * 一个过滤函数，用于确定页面是否属于该类型
-   */
-  filter: (page: Page) => boolean
-
-  /**
-   * 自定义页面排序函数
-   */
-  sorter?: (pageA: Page, pageB: Page) => number
-
-  /**
-   * 注册页面的路径模式
-   *
-   * @default '/:key/'
-   */
-  path?: string
-
-  /**
-   * 布局名称
-   *
-   * @default 'Layout'
-   */
-  layout?: string
-
-  /**
-   * Frontmatter 配置
-   */
-  frontmatter?: (localePath: string) => Record<string, string>
-}
-```
-
 ## 组合式 API (Composition API)
 
 可以通过 `@vuepress/plugin-blog/client` 导入以下 API。
@@ -221,10 +180,10 @@ interface BlogTypeOptions {
 
   ```ts
   const useBlogCategory: <
-    T extends Record<string, unknown> = Record<string, unknown>,
+    Info extends Record<string, unknown> = Record<string, unknown>,
   >(
     key?: string,
-  ) => ComputedRef<BlogCategoryData<T>>
+  ) => ComputedRef<BlogCategoryData<Info>>
   ```
 
   `key` 参数代表唯一的分类 key。如果未提供 key，插件会尝试从当前路由推断 key。
@@ -233,10 +192,10 @@ interface BlogTypeOptions {
 
   ```ts
   const useBlogType: <
-    T extends Record<string, unknown> = Record<string, unknown>,
+    Info extends Record<string, unknown> = Record<string, unknown>,
   >(
     key?: string,
-  ) => ComputedRef<BlogTypeData<T>>
+  ) => ComputedRef<BlogTypeData<Info>>
   ```
 
   `key` 参数代表唯一的类型 key。如果未提供 key，插件会尝试从当前路由推断 key。
@@ -244,15 +203,17 @@ interface BlogTypeOptions {
 返回值为：
 
 ```ts
-interface Article<T extends Record<string, unknown> = Record<string, unknown>> {
+interface Article<
+  Info extends Record<string, unknown> = Record<string, unknown>,
+> {
   /** 文章路径 */
   path: string
   /** 文章信息 */
-  info: T
+  info: Info
 }
 
 interface BlogCategoryData<
-  T extends Record<string, unknown> = Record<string, unknown>,
+  Info extends Record<string, unknown> = Record<string, unknown>,
 > {
   /** 分类路径 */
   path: string
@@ -260,7 +221,7 @@ interface BlogCategoryData<
   /**
    * 仅当当前路由匹配特定的子项路径时可用
    */
-  currentItems?: Article<T>[]
+  currentItems?: Article<Info>[]
 
   /** 分类映射 */
   map: {
@@ -269,18 +230,18 @@ interface BlogCategoryData<
       /** 对应键值的分类路径 */
       path: string
       /** 对应键值的项目 */
-      items: Article<T>[]
+      items: Article<Info>[]
     }
   }
 }
 
 interface BlogTypeData<
-  T extends Record<string, unknown> = Record<string, unknown>,
+  Info extends Record<string, unknown> = Record<string, unknown>,
 > {
   /** 类别路径 */
   path: string
 
   /** 当前类别下的项目 */
-  items: Article<T>[]
+  items: Article<Info>[]
 }
 ```

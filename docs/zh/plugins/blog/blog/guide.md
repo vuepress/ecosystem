@@ -133,7 +133,7 @@ export default {
 }
 ```
 
-如需完整的选项列表，请参阅 [Category 配置](./config.md#blog-category-config) 和 [Type 配置](./config.md#blog-type-config)。
+如需完整的选项列表，请参阅 [Category 配置](./config.md#category) 和 [Type 配置](./config.md#type)。
 
 ## 在客户端使用组合式 API
 

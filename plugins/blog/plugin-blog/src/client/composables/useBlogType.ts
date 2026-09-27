@@ -31,10 +31,10 @@ export const blogTypeMap: DeepReadonly<ShallowRef<TypesMap>> =
  * @returns Computed blog type data / 返回计算的博客类型数据
  */
 export const useBlogType = <
-  T extends Record<string, unknown> = Record<string, unknown>,
+  Info extends Record<string, unknown> = Record<string, unknown>,
 >(
   key?: string,
-): ComputedRef<BlogTypeData<T>> => {
+): ComputedRef<BlogTypeData<Info>> => {
   const { frontmatter, routeLocale } = useData<{
     blog?: BlogTypeFrontmatterOptions
   }>()
@@ -54,7 +54,7 @@ export const useBlogType = <
       throw new Error(`useBlogType: key ${key} is invalid`)
 
     const configMap = typeMapRef.value[mapKey][routeLocale.value]
-    const result: BlogTypeData<T> = {
+    const result: BlogTypeData<Info> = {
       path: configMap.path,
       items: [],
     }
@@ -66,8 +66,8 @@ export const useBlogType = <
         path,
         info:
           __BLOG_META_SCOPE__ === ''
-            ? (meta as T)
-            : (meta[__BLOG_META_SCOPE__] as T),
+            ? (meta as Info)
+            : (meta[__BLOG_META_SCOPE__] as Info),
       })
     }
 

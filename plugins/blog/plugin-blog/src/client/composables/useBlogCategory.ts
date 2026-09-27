@@ -31,10 +31,10 @@ export const blogCategoryMap: DeepReadonly<ShallowRef<CategoriesMap>> =
  * @returns Computed blog category dat / 返回计算的博客分类数据
  */
 export const useBlogCategory = <
-  T extends Record<string, unknown> = Record<string, unknown>,
+  Info extends Record<string, unknown> = Record<string, unknown>,
 >(
   key?: string,
-): ComputedRef<BlogCategoryData<T>> => {
+): ComputedRef<BlogCategoryData<Info>> => {
   const { frontmatter, page, routeLocale } = useData<{
     blog?: BlogCategoryFrontmatterOptions
   }>()
@@ -54,7 +54,7 @@ export const useBlogCategory = <
       throw new Error(`useBlogCategory: key ${mapKey} is invalid`)
 
     const currentMap = categoryMapRef.value[mapKey][routeLocale.value]
-    const result: BlogCategoryData<T> = {
+    const result: BlogCategoryData<Info> = {
       path: currentMap.path,
       map: {},
     }
@@ -69,8 +69,8 @@ export const useBlogCategory = <
           path,
           info:
             __BLOG_META_SCOPE__ === ''
-              ? (meta as T)
-              : (meta[__BLOG_META_SCOPE__] as T),
+              ? (meta as Info)
+              : (meta[__BLOG_META_SCOPE__] as Info),
         })
       }
 

@@ -217,54 +217,47 @@ The documentation site lives in `docs/` and is built with VuePress. Each plugin 
 - Use "你" instead of "您" in Chinese
 - Ignore any errors with `@[code ...` as they are VuePress code import grammar, which is not standard.
 - Ignore any errors with VuePress components in markdown.
-- When a container (`::: name`) ends right after a list item, oxfmt re-indents the closing `:::` under the list item. Keep the closing marker at column 0 by adding a blank line between the last list item and `:::`.
+- Always keep a blank line before a container closing marker (`:::`, `::::`). Without it oxfmt treats the marker as a list continuation and drops it, leaving the container unclosed.
+- Do not repeat the built-in locale data of a plugin in its documentation. Link to [Locales](docs/plugins/supported-locales.md) instead.
 
-### Options Documentation Format
+### Locale Data
 
-Each option in plugin/theme documentation must include these sections **in this exact order**:
+Each plugin stores its built-in translations in `src/node/locales.ts` as a `DefaultLocaleInfo<T>` table. Every plugin must ship **all** of the supported languages, in the canonical order below, so a site works the same no matter which plugin it uses.
 
-1. **Type**
-   - English: `- Type: \`type\``
-   - Chinese: `- 类型：\`type\``
-   - Follow with code fence for complex types
+| #   | Language                | Locale codes             | Endonym              |
+| --- | ----------------------- | ------------------------ | -------------------- |
+| 1   | English (United States) | `en`, `en-US`            | English              |
+| 2   | Simplified Chinese      | `zh`, `zh-CN`, `zh-Hans` | 简体中文             |
+| 3   | Traditional Chinese     | `zh-TW`, `zh-Hant`       | 繁體中文             |
+| 4   | German                  | `de`, `de-DE`            | Deutsch              |
+| 5   | German (Austria)        | `de-AT`                  | Deutsch (Österreich) |
+| 6   | Vietnamese              | `vi`, `vi-VN`            | Tiếng Việt           |
+| 7   | Ukrainian               | `uk`, `uk-UA`            | Українська           |
+| 8   | Russian                 | `ru`, `ru-RU`            | Русский              |
+| 9   | Portuguese              | `pt`, `pt-PT`            | Português            |
+| 10  | Portuguese (Brazil)     | `pt-BR`                  | Português (Brasil)   |
+| 11  | Polish                  | `pl`, `pl-PL`            | Polski               |
+| 12  | Slovak                  | `sk`, `sk-SK`            | Slovenčina           |
+| 13  | French                  | `fr`, `fr-FR`            | Français             |
+| 14  | Spanish                 | `es`, `es-ES`            | Español              |
+| 15  | Italian                 | `it`, `it-IT`            | Italiano             |
+| 16  | Japanese                | `ja`, `ja-JP`            | 日本語               |
+| 17  | Turkish                 | `tr`, `tr-TR`            | Türkçe               |
+| 18  | Korean                  | `ko`, `ko-KR`            | 한국어               |
+| 19  | Finnish                 | `fi`, `fi-FI`            | Suomi                |
+| 20  | Hungarian               | `hu`, `hu-HU`            | Magyar               |
+| 21  | Indonesian              | `id`, `id-ID`            | Bahasa Indonesia     |
+| 22  | Dutch                   | `nl`, `nl-NL`            | Nederlands           |
 
-2. **Required Status**
-   - Only for required options: `- Required: Yes` / `- 必填：是`
-   - **Never write "Required: No" for optional options**
+Rules:
 
-3. **Default Value**
-   - **INCLUDE Default when**: Default value is NOT the expected/obvious value
-   - **OMIT Default when**: Default value is expected/obvious
-     - `boolean` options with `false` default → **OMIT**
-     - `string` options with `''` default → **OMIT**
-     - `object` options with `undefined` default → **OMIT**
-   - Format: `- Default: \`value\``/`- 默认值：\`value\``
-
-4. **Details** (必须包含)
-   - English: `- Details: Brief description`
-   - Chinese: `- 详情：简要描述`
-   - Prefer same line for short contents and paragraph for long contents.
-
-**Example Format:**
-
-```md
-### optionName
-
-- Type: `boolean`
-- Details: Whether to enable this feature.
-
-### requiredOption
-
-- Type: `string`
-- Required: Yes
-- Details: The required configuration.
-
-### optionWithNonStandardDefault
-
-- Type: `number`
-- Default: `100`
-- Details: Custom timeout value.
-```
+- **Order**: write the entries in the order above. Never reorder an existing table.
+- **Codes**: a language code must be a valid BCP 47 tag. `ko-KR` is Korean, not `ko-KO`; Brazilian Portuguese is `pt-BR`, not `br`. Include the language code and the region/variant codes a user may set as `lang`, so that exact and short-code lookup both hit.
+- **Fields**: every entry has exactly the same fields as the first one. Do not omit a field in a language; translate it.
+- **Placeholders**: keep every placeholder unchanged in shape — `$1`, `$word`, `$time`, `:author`, `:license`, `:link`. Only the surrounding text is translated. A placeholder may take language-specific suffixes (e.g. Finnish `$1:een`).
+- **Endonyms**: the value of a `name` field is the language's own name, from the table above.
+- **Translation quality**: translate the meaning and the tone of the English entry. Keep it concise; UI text should be no longer than needed. Do not translate product names (`VuePress`, `Markdown`, `Reveal.js`, ...).
+- **Docs**: `docs/plugins/supported-locales.md` (and its Chinese counterpart) is the single place that lists the languages. Plugin pages must link to it instead of repeating the list.
 
 ## CI
 

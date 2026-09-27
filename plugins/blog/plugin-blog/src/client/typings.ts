@@ -1,5 +1,5 @@
 export interface Article<
-  T extends Record<string, unknown> = Record<string, unknown>,
+  Info extends Record<string, unknown> = Record<string, unknown>,
 > {
   /**
    * Article path
@@ -13,11 +13,11 @@ export interface Article<
    *
    * 文章信息
    */
-  info: T
+  info: Info
 }
 
 export interface BlogCategoryData<
-  T extends Record<string, unknown> = Record<string, unknown>,
+  Info extends Record<string, unknown> = Record<string, unknown>,
 > {
   /**
    * Category path
@@ -31,7 +31,7 @@ export interface BlogCategoryData<
    *
    * 仅当当前路径和某个子项目匹配时可用
    */
-  currentItems?: Article<T>[]
+  currentItems?: Article<Info>[]
 
   /**
    * Category map
@@ -58,13 +58,13 @@ export interface BlogCategoryData<
        *
        * 对应键值的项目
        */
-      items: Article<T>[]
+      items: Article<Info>[]
     }
   >
 }
 
 export interface BlogTypeData<
-  T extends Record<string, unknown> = Record<string, unknown>,
+  Info extends Record<string, unknown> = Record<string, unknown>,
 > {
   /**
    * Type path
@@ -78,5 +78,5 @@ export interface BlogTypeData<
    *
    * 当前类别下的项目
    */
-  items: Article<T>[]
+  items: Article<Info>[]
 }

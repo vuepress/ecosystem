@@ -83,29 +83,7 @@ export default {
 
 Locale config of the plugin.
 
-::: details Built-in Supported Languages
-
-- **Simplified Chinese** (zh-CN)
-- **Traditional Chinese** (zh-TW)
-- **English (United States)** (en-US)
-- **German** (de-DE)
-- **German (Australia)** (de-AT)
-- **Russian** (ru-RU)
-- **Ukrainian** (uk-UA)
-- **Vietnamese** (vi-VN)
-- **Portuguese** (pt)
-- **Polish** (pl-PL)
-- **French** (fr-FR)
-- **Spanish** (es-ES)
-- **Slovak** (sk-SK)
-- **Japanese** (ja-JP)
-- **Turkish** (tr-TR)
-- **Korean** (ko-KR)
-- **Finnish** (fi-FI)
-- **Indonesian** (id-ID)
-- **Dutch** (nl-NL)
-
-:::
+See also: [Locales](../supported-locales.md).
 
 @@`locales.<localePath>.copy` type=string
 
@@ -114,38 +92,6 @@ Text of the copy button.
 @@`locales.<localePath>.copied` type=string
 
 Text shown after the code is copied.
-
-```ts title=".vuepress/config.ts"
-import { copyCodePlugin } from '@vuepress/plugin-copy-code'
-
-export default {
-  locales: {
-    '/': {
-      // this is a supported language
-      lang: 'en-US',
-    },
-    '/xx/': {
-      // the plugin does not support this language
-      lang: 'mm-NN',
-    },
-  },
-
-  plugins: [
-    copyCodePlugin({
-      locales: {
-        '/': {
-          // Override copy button label text
-          copy: 'Copy Codes from code block',
-        },
-
-        '/xx/': {
-          // Complete locale config for `mm-NN` language here
-        },
-      },
-    }),
-  ],
-}
-```
 
 ::::
 

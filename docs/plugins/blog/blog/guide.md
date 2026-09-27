@@ -133,7 +133,7 @@ export default {
 }
 ```
 
-For a complete list of options, please refer to the [Category Config](./config.md#blog-category-config) and [Type Config](./config.md#blog-type-config).
+For a complete list of options, please refer to the [Category Config](./config.md#category) and [Type Config](./config.md#type).
 
 ## Using Composition API in Client-side
 

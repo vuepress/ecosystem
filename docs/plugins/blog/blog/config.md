@@ -25,11 +25,77 @@ See also: [Article Collection](./guide.md#article-collection).
 
 @`category` type=`BlogCategoryOptions[]`
 
-Category configurations. See also: [Blog Category Config](#blog-category-config).
+Category configurations. Each item groups articles by a label, such as a tag or a category.
+
+See also: [Category Configuration](./guide.md#category-configuration).
+
+@@`category[*].key` type=string required
+
+Unique category name.
+
+@@`category[*].getter` type=`(page: Page) => string[]` required
+
+A function to retrieve the categories of a page.
+
+@@`category[*].sorter` type=`(pageA: Page, pageB: Page) => number`
+
+A function to sort the pages of the same category.
+
+@@`category[*].path` type=`string | false` default=`'/:key/'`
+
+The path pattern of the category page, where `:key` is replaced by the slugified category key. Set it to `false` to skip generating the page.
+
+@@`category[*].layout` type=string default=`'Layout'`
+
+The layout name of the category page.
+
+@@`category[*].frontmatter` type=`(localePath: string) => Record<string, unknown>`
+
+The frontmatter of the category page.
+
+@@`category[*].itemPath` type=`string | false | ((name: string) => string)` default=`'/:key/:name/'`
+
+The path pattern of the category item page, where `:key` and `:name` are replaced by the slugified category key and the item name.
+
+It can also be a function that returns the path for a given item name, or `false` to skip generating item pages.
+
+@@`category[*].itemLayout` type=string default=`'Layout'`
+
+The layout name of the category item page.
+
+@@`category[*].itemFrontmatter` type=`(name: string, localePath: string) => Record<string, unknown>`
+
+The frontmatter of the category item page, where `name` is the item name.
 
 @`type` type=`BlogTypeOptions[]`
 
-Type configurations. See also: [Blog Type Config](#blog-type-config).
+Type configurations. Each item collects articles matching a condition.
+
+See also: [Type Configuration](./guide.md#type-configuration).
+
+@@`type[*].key` type=string required
+
+Unique type name.
+
+@@`type[*].filter` type=`(page: Page) => boolean` required
+
+A function to determine whether a page belongs to this type.
+
+@@`type[*].sorter` type=`(pageA: Page, pageB: Page) => number`
+
+A function to sort the pages of this type.
+
+@@`type[*].path` type=`string | false` default=`'/:key/'`
+
+The path pattern of the type page, where `:key` is replaced by the slugified type key. Set it to `false` to skip generating the page.
+
+@@`type[*].layout` type=string default=`'Layout'`
+
+The layout name of the type page.
+
+@@`type[*].frontmatter` type=`(localePath: string) => Record<string, unknown>`
+
+The frontmatter of the type page.
 
 @`slugify` type=`(name: string) => string` default=`(name) => name.replaceAll(/[ _]/gu, '-').replaceAll(/[:?*|\\/<>]/gu, '').toLowerCase()`
 
@@ -107,113 +173,6 @@ Alternatively, you can detect the number of pages in the user's project and deci
 
 ::::
 
-## Blog Category Config
-
-The blog category configuration accepts an array, where each item defines a specific "category" rule.
-
-```ts
-interface BlogCategoryOptions {
-  /**
-   * Unique category name
-   */
-  key: string
-
-  /**
-   * Function to retrieve categories from a page
-   */
-  getter: (page: Page) => string[]
-
-  /**
-   * A custom function to sort the pages
-   */
-  sorter?: (pageA: Page, pageB: Page) => number
-
-  /**
-   * The path pattern for the registered page
-   *
-   * `:key` will be replaced by the "slugify" result of the original key
-   *
-   * @default `/:key/`
-   */
-  path?: string | false
-
-  /**
-   * Page layout name
-   *
-   * @default 'Layout'
-   */
-  layout?: string
-
-  /**
-   * Frontmatter configuration
-   */
-  frontmatter?: (localePath: string) => Record<string, string>
-
-  /**
-   * The path pattern or custom function for the item page
-   *
-   * When providing a string, `:key` and `:name` will be replaced by the "slugify" result of the original key and name
-   *
-   * @default `/:key/:name/`
-   */
-  itemPath?: string | false | ((name: string) => string)
-
-  /**
-   * Item page layout name
-   *
-   * @default 'Layout'
-   */
-  itemLayout?: string
-
-  /**
-   * Frontmatter configuration for items
-   */
-  itemFrontmatter?: (name: string, localePath: string) => Record<string, string>
-}
-```
-
-## Blog Type Config
-
-The blog type configuration accepts an array, where each item defines a specific "type" rule.
-
-```ts
-interface BlogTypeOptions {
-  /**
-   * Unique type name
-   */
-  key: string
-
-  /**
-   * A filter function to determine if a page belongs to this type
-   */
-  filter: (page: Page) => boolean
-
-  /**
-   * A custom function to sort the pages
-   */
-  sorter?: (pageA: Page, pageB: Page) => number
-
-  /**
-   * The path pattern for the registered page
-   *
-   * @default '/:key/'
-   */
-  path?: string
-
-  /**
-   * Layout name
-   *
-   * @default 'Layout'
-   */
-  layout?: string
-
-  /**
-   * Frontmatter configuration
-   */
-  frontmatter?: (localePath: string) => Record<string, string>
-}
-```
-
 ## Composition API
 
 The following APIs are available via `@vuepress/plugin-blog/client`.
@@ -222,10 +181,10 @@ The following APIs are available via `@vuepress/plugin-blog/client`.
 
   ```ts
   const useBlogCategory: <
-    T extends Record<string, unknown> = Record<string, unknown>,
+    Info extends Record<string, unknown> = Record<string, unknown>,
   >(
     key?: string,
-  ) => ComputedRef<BlogCategoryData<T>>
+  ) => ComputedRef<BlogCategoryData<Info>>
   ```
 
   The `key` argument represents the unique category key.
@@ -236,10 +195,10 @@ The following APIs are available via `@vuepress/plugin-blog/client`.
 
   ```ts
   const useBlogType: <
-    T extends Record<string, unknown> = Record<string, unknown>,
+    Info extends Record<string, unknown> = Record<string, unknown>,
   >(
     key?: string,
-  ) => ComputedRef<BlogTypeData<T>>
+  ) => ComputedRef<BlogTypeData<Info>>
   ```
 
   The `key` argument represents the unique type key.
@@ -249,15 +208,17 @@ The following APIs are available via `@vuepress/plugin-blog/client`.
 The return values are:
 
 ```ts
-interface Article<T extends Record<string, unknown> = Record<string, unknown>> {
+interface Article<
+  Info extends Record<string, unknown> = Record<string, unknown>,
+> {
   /** Article path */
   path: string
   /** Article info */
-  info: T
+  info: Info
 }
 
 interface BlogCategoryData<
-  T extends Record<string, unknown> = Record<string, unknown>,
+  Info extends Record<string, unknown> = Record<string, unknown>,
 > {
   /** Category path */
   path: string
@@ -265,7 +226,7 @@ interface BlogCategoryData<
   /**
    * Available only when the current route matches a specific item path
    */
-  currentItems?: Article<T>[]
+  currentItems?: Article<Info>[]
 
   /** Category map */
   map: {
@@ -274,18 +235,18 @@ interface BlogCategoryData<
       /** Category path of the key */
       path: string
       /** Category items of the key */
-      items: Article<T>[]
+      items: Article<Info>[]
     }
   }
 }
 
 interface BlogTypeData<
-  T extends Record<string, unknown> = Record<string, unknown>,
+  Info extends Record<string, unknown> = Record<string, unknown>,
 > {
   /** Type path */
   path: string
 
   /** Items under current type */
-  items: Article<T>[]
+  items: Article<Info>[]
 }
 ```
