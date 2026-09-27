@@ -8,7 +8,7 @@ icon: package
 
 Register markdown custom containers in your VuePress site.
 
-This plugin simplifies the use of [markdown-it-container](https://github.com/markdown-it/markdown-it-container), but also retains its original capabilities.
+This plugin simplifies the use of [@mdit/plugin-container](https://mdit-plugins.github.io/container.html), but also retains its original capabilities.
 
 ## Usage
 
@@ -55,7 +55,7 @@ This plugin can be used multiple times to support different types of containers.
 
   The type of the container.
 
-  It will be used as the `name` param of [markdown-it-container](https://github.com/markdown-it/markdown-it-container#api).
+  It will be used as the `name` option of [@mdit/plugin-container](https://mdit-plugins.github.io/container.html).
 
 ### locales
 
@@ -142,7 +142,9 @@ export default {
 
 - Details:
 
-  The `render` option of [markdown-it-container](https://github.com/markdown-it/markdown-it-container#api).
+  The render function of the container.
+
+  It will be used as both the `openRenderer` and `closeRenderer` options of [@mdit/plugin-container](https://mdit-plugins.github.io/container.html).
 
   This plugin uses a default `render` function. If you specify this option, the default `render` function will be replaced, and the [locales](#locales), [before](#before) and [after](#after) options will be ignored.
 
@@ -152,7 +154,7 @@ export default {
 
 - Details:
 
-  The `validate` option of [markdown-it-container](https://github.com/markdown-it/markdown-it-container#api).
+  The `validate` option of [@mdit/plugin-container](https://mdit-plugins.github.io/container.html).
 
 ### marker
 
@@ -161,4 +163,4 @@ export default {
 
 - Details:
 
-  The `marker` option of [markdown-it-container](https://github.com/markdown-it/markdown-it-container#api).
+  The `marker` option of [@mdit/plugin-container](https://mdit-plugins.github.io/container.html).
