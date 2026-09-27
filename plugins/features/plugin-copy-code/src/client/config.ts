@@ -2,24 +2,19 @@ import type { ClientConfig } from 'vuepress/client'
 import { defineClientConfig } from 'vuepress/client'
 
 import { useCopyCode } from './composables/index.js'
-import type { CopyCodePluginLocaleConfig } from './types.js'
+import type {
+  CopyCodeClientOptions,
+  CopyCodePluginLocaleConfig,
+} from './types.js'
 
-declare const __CC_DURATION__: number
+declare const __CC_OPTIONS__: CopyCodeClientOptions
 declare const __CC_LOCALES__: CopyCodePluginLocaleConfig
-declare const __CC_SELECTOR__: string
-declare const __CC_IGNORE_SELECTOR__: string
-declare const __CC_INLINE_SELECTOR__: string
-declare const __CC_SHOW_IN_MOBILE__: boolean
 
 const clientConfig: ClientConfig = defineClientConfig({
   setup: () => {
     useCopyCode({
-      selector: __CC_SELECTOR__,
-      ignoreSelector: __CC_IGNORE_SELECTOR__,
-      inlineSelector: __CC_INLINE_SELECTOR__,
+      options: __CC_OPTIONS__,
       locales: __CC_LOCALES__,
-      duration: __CC_DURATION__,
-      showInMobile: __CC_SHOW_IN_MOBILE__,
     })
   },
 })

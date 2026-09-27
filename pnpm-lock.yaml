@@ -454,6 +454,9 @@ importers:
       '@vuepress/plugin-catalog':
         specifier: workspace:*
         version: link:../plugins/features/plugin-catalog
+      '@vuepress/plugin-copy-code':
+        specifier: workspace:*
+        version: link:../plugins/features/plugin-copy-code
       '@vuepress/plugin-copyright':
         specifier: workspace:*
         version: link:../plugins/features/plugin-copyright
