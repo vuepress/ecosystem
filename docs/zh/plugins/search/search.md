@@ -68,7 +68,7 @@ export default {
 
 - 类型： `(string | KeyOptions)[]`
 
-  @[code ts](@vuepress/helper/src/shared/key.ts)
+  @[code](@vuepress/helper/src/shared/key.ts)
 
 - 默认值： `['s', '/']`
 
@@ -144,7 +144,7 @@ export default {
 
 你可以通过 CSS 变量来自定义搜索框的样式：
 
-@[code css](@vuepress/plugin-search/src/client/styles/vars.css)
+@[code](@vuepress/plugin-search/src/client/styles/vars.css)
 
 ## 组件
 

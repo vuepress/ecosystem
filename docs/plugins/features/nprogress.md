@@ -28,4 +28,4 @@ export default {
 
 You can customize the style of the progress bar via CSS variables:
 
-@[code css](@vuepress/plugin-nprogress/src/client/styles/vars.css)
+@[code](@vuepress/plugin-nprogress/src/client/styles/vars.css)

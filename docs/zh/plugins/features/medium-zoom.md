@@ -54,7 +54,7 @@ export default {
 
 你可以通过 [zoomOptions](#zoomoptions) 对大部分缩放样式进行自定义，该插件还提供了一些 CSS 变量用于补充自定义：
 
-@[code css](@vuepress/plugin-medium-zoom/src/client/styles/vars.css)
+@[code](@vuepress/plugin-medium-zoom/src/client/styles/vars.css)
 
 ## Composition API
 

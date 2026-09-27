@@ -68,7 +68,7 @@ export default {
 
 - Type: `(string | KeyOptions)[]`
 
-  @[code ts](@vuepress/helper/src/shared/key.ts)
+  @[code](@vuepress/helper/src/shared/key.ts)
 
 - Default: `['s', '/']`
 
@@ -144,7 +144,7 @@ export default {
 
 You can customize the style of the search box via CSS variables:
 
-@[code css](@vuepress/plugin-search/src/client/styles/vars.css)
+@[code](@vuepress/plugin-search/src/client/styles/vars.css)
 
 ## Components
 

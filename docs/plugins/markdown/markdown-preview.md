@@ -103,4 +103,4 @@ document.querySelector('body').innerText = 'Hello world!'
 
 You can customize the style via CSS variables:
 
-@[code css](@vuepress/plugin-markdown-preview/src/client/styles/vars.css)
+@[code](@vuepress/plugin-markdown-preview/src/client/styles/vars.css)

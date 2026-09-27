@@ -177,7 +177,7 @@ Configuration for indexing custom fields.
 
 - Type: `(KeyOptions | string)[]`
 
-  @[code ts](@vuepress/helper/src/shared/key.ts)
+  @[code](@vuepress/helper/src/shared/key.ts)
 
 - Default: `[{ key: "k", ctrl: true }, { key: "/", ctrl: true }]`
 

@@ -238,4 +238,4 @@ onUnmounted(() => {
 
 你可以通过 CSS 变量自定义样式：
 
-@[code css](@vuepress/plugin-photo-swipe/src/client/styles/vars.css)
+@[code](@vuepress/plugin-photo-swipe/src/client/styles/vars.css)

@@ -223,6 +223,6 @@ const defineCatalogInfoGetter: (options: CatalogInfoGetter) => void
 
 你可以通过 CSS 变量来自定义目录样式：
 
-@[code css](@vuepress/plugin-catalog/src/client/styles/vars.css)
+@[code](@vuepress/plugin-catalog/src/client/styles/vars.css)
 
 [client-config]: https://vuejs.press/zh/guide/configuration.html#%E5%AE%A2%E6%88%B7%E7%AB%AF%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6

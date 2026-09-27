@@ -54,7 +54,7 @@ export default {
 
 You can customize most of the zoom styles via [zoomOptions](#zoomoptions), while this plugin also provides some CSS variables for additional customization:
 
-@[code css](@vuepress/plugin-medium-zoom/src/client/styles/vars.css)
+@[code](@vuepress/plugin-medium-zoom/src/client/styles/vars.css)
 
 ## Composition API
 

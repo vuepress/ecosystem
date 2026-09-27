@@ -105,4 +105,4 @@ document.querySelector('body').innerText = 'Hello world!'
 
 你可以通过 CSS 变量自定义样式：
 
-@[code css](@vuepress/plugin-markdown-preview/src/client/styles/vars.css)
+@[code](@vuepress/plugin-markdown-preview/src/client/styles/vars.css)

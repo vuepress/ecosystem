@@ -310,4 +310,4 @@ By default, the plugin will output to `.vuepress/redirect` directory under sourc
 
 You can customize the style of the redirect popup via CSS variables:
 
-@[code css](@vuepress/plugin-redirect/src/client/styles/vars.css)
+@[code](@vuepress/plugin-redirect/src/client/styles/vars.css)

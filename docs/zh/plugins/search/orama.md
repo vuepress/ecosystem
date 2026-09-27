@@ -178,7 +178,7 @@ export default defineUserConfig({
 
 - 类型: `(KeyOptions | string)[]`
 
-  @[code ts](@vuepress/helper/src/shared/key.ts)
+  @[code](@vuepress/helper/src/shared/key.ts)
 
 - 默认值: `[{ key: "k", ctrl: true }, { key: "/", ctrl: true }]`
 

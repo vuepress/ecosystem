@@ -225,4 +225,4 @@ Customizes how to extract catalog info from route meta.
 
 You can customize catalog styles via CSS variables:
 
-@[code css](@vuepress/plugin-catalog/src/client/styles/vars.css)
+@[code](@vuepress/plugin-catalog/src/client/styles/vars.css)

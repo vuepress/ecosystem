@@ -209,6 +209,6 @@ For reveal.js options, see [reveal.js config](https://revealjs.com/config/). For
 
 You can customize the style via CSS variables:
 
-@[code css](@vuepress/plugin-revealjs/src/client/styles/vars.css)
+@[code](@vuepress/plugin-revealjs/src/client/styles/vars.css)
 
 [client-config]: https://vuejs.press/guide/configuration.html#client-config-file

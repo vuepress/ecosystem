@@ -404,4 +404,4 @@ icon: settings-2
 
 你可以通过 CSS 变量来自定义样式：
 
-@[code css](@vuepress/plugin-pwa/src/client/styles/vars.css)
+@[code](@vuepress/plugin-pwa/src/client/styles/vars.css)
