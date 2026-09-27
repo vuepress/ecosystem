@@ -1,12 +1,17 @@
 # Twikoo Options
 
-## Config
+## Options
 
-### envId
+::: fields
+@`envId` type=string required
 
-- Type: `string`
-- Required: Yes
-- Details: Vercel address or Tencent CloudBase environment ID.
+Vercel address or Tencent CloudBase environment ID.
+
+@`region` type=string default=`'ap-shanghai'`
+
+Tencent Cloud region.
+
+:::
 
 ## Plugin Config
 

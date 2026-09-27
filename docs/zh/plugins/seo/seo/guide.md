@@ -172,7 +172,7 @@ function customHead(
 
 - [RDFa 1.1](https://www.w3.org/TR/rdfa-primer/)
 
-  RDFa 主要标记 HTML 结构。这是插件无法支持的内容，<ProjectLink type="theme" name="hope" path="/zh/">vuepress-theme-hope</ProjectLink> 使用了这一功能通过了谷歌的富媒体结构测试。你可以考虑搭配使用。
+  RDFa 主要标记 HTML 结构。这是插件无法支持的内容。
 
 - [Schema.Org](https://schema.org/)
 

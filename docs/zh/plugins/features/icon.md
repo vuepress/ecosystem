@@ -26,15 +26,9 @@ export default {
 }
 ```
 
-我们支持多种类型的图标：
+## 指南
 
-- `iconify`（默认）
-- `fontawesome`
-- `iconfont`
-
-此外，你也可以使用任何图像链接作为图标（不支持相对链接）。
-
-如果你想要一个新的图标类型，请提交一个议题或提交 PR。
+### 图标语法
 
 在 Markdown 中，你可以使用 `::icon decorators... =size /color key=value complex-key="complex value"...::` 插入自定义图标。
 
@@ -57,6 +51,16 @@ export default {
 :::
 
 ## 图标类型
+
+我们支持多种类型的图标：
+
+- `iconify`（默认）
+- `fontawesome`
+- `iconfont`
+
+此外，你也可以使用任何图像链接作为图标（不支持相对链接）。
+
+如果你想要一个新的图标类型，请提交一个议题或提交 PR。
 
 ### Iconify
 
@@ -292,189 +296,135 @@ iconPlugin({ assets: 'fontawesome', offline: 'all' })
 
 ## 选项
 
-### assets
+:::: fields
+@`assets` type=`IconAsset` default=`'iconify'`
 
-- 类型：`IconAsset`
+要使用的图标资源。
 
-  ```ts
-  export type BuiltInIcon =
-    'fontawesome-with-brands' | 'fontawesome' | 'iconify'
+支持以下关键字，你可以使用其他 CDN 链接甚至你自己的：
 
-  export type IconLink =
-    `//${string}` | `/${string}` | `http://${string}` | `https://${string}`
+- `iconify`：Iconify
+- `fontawesome`：仅限 Font Awesome 免费图标
+- `fontawesome-with-brands`：Font Awesome 免费图标和品牌图标
 
-  export type IconAsset = (BuiltInIcon | IconLink)[] | BuiltInIcon | IconLink
-  ```
+@`type` type=`IconType`
 
-- 默认值：`"iconify"`
+图标的类型，默认从 `assets` 中推断，并回退到 `unknown`。
 
-- 详情：
+特别地，插件可以识别：
 
-  要使用的图标资源。
+- iconfont css 链接
+- fontawesome kits
+- fontawesome 和 iconify 的 CDN 链接
 
-  支持以下关键字，你可以使用其他 CDN 链接甚至你自己的：
-  - `iconify`：Iconify
-  - `fontawesome`：仅限 Font Awesome 免费图标
-  - `fontawesome-with-brands`：Font Awesome 免费图标和品牌图标
+@`prefix` type=string
 
-### type
+图标组件的前缀，默认从 `assets` 和 `type` 推断。插件将使用：
 
-- 类型：`IconType`
+- `iconfont icon-` 用于 iconfont 类型
+- 空字符串用于所有其他类型
 
-  ```ts
-  export type IconType = 'fontawesome' | 'iconfont' | 'iconify' | 'unknown'
-  ```
+@`component` type=string default=`'VPIcon'`
 
-- 默认值：从 `assets` 中推断
+图标组件的名称。
 
-- 详情：
+@`markdown` type=boolean default=`true`
 
-  图标的类型，插件将尝试从资源中推断类型，并回退到 `unknown`。
+是否在 Markdown 中启用图标语法（`::icon::`）。
 
-  特别地，插件可以识别：
-  - iconfont css 链接
-  - fontawesome kits
-  - fontawesome 和 iconify 的 CDN 链接
+@`offline` type=`boolean | 'all'`
 
-### prefix
+本地打包图标，而非从 CDN 或 Iconify API 加载，使站点无需联网即可访问。
 
-- 类型：`string`
+图标按站点的图标类型打包，因此该选项不会影响 `type` 与 `assets` 选项。
 
-- 默认值：从 `assets` 和 `type` 推断
+仅 `fontawesome` 与 `iconify` 的图标可以打包，图标类型为其他值（如 `iconfont`）时会终止构建。
 
-- 详情：
+- `true`：打包站点用到的图标，它们会从页面内容、front matter 与组件属性中检测，见 [scan](#scan) 选项。
+- `"all"`：打包该图标类型的全部图标。仅 `fontawesome` 支持，因为一个 Iconify 图标集可能包含数千个图标，`iconify` 下会改为打包站点用到的图标。
 
-  图标组件的前缀。默认情况下，插件将使用：
-  - `iconfont icon-` 用于 iconfont 类型
-  - 空字符串用于所有其他类型
+```ts title=".vuepress/config.ts"
+export default {
+  plugins: [
+    iconPlugin({
+      prefix: 'mdi:',
+      offline: true,
+    }),
+  ],
+}
+```
 
-### component
+图标在站点准备阶段检测，因此新增图标后需要重启开发服务器。
 
-- 类型：`string`
-- 默认值：`"VPIcon"`
-- 详情：图标组件的名称
+参考：[Iconify 离线使用](#iconify-离线使用)与 [Font Awesome 离线使用](#font-awesome-离线使用)。
 
-### markdown
+::: tip
 
-- 类型：`boolean`
-- 默认值：`true`
-- 详情：是否在 Markdown 中启用图标语法（`::icon::`）
+打包全部 Font Awesome 图标会为客户端产物增加约 1.8 MB，而 Iconify 的产物只包含使用中的图标。
 
-### offline
+:::
 
-- 类型：`boolean | "all"`
-- 默认值：`false`
-- 详情：
+@`scan` type=`IconScan`
 
-  本地打包图标，而非从 CDN 或 Iconify API 加载，使站点无需联网即可访问。
+需要扫描图标的字段，供 [offline](#offline) 选项使用，未启用离线模式时该选项无效。
 
-  图标按站点的图标类型打包，因此该选项不会影响 `type` 与 `assets` 选项。需要安装的包见
-  [Iconify 离线使用](#iconify-离线使用)与 [Font Awesome 离线使用](#font-awesome-离线使用)。
+`frontmatter` 与 `components` 为字段路径，支持字段访问与数组下标，其中 `[*]` 匹配数组的每个元素。不存在的字段会被静默跳过。
 
-  仅 `fontawesome` 与 `iconify` 的图标可以打包，图标类型为其他值（如 `iconfont`）时会终止构建。
+@@`scan.frontmatter` type=`string[]` default=`['icon']`
 
-  - `true`：打包站点用到的图标，它们会从页面内容、front matter 与组件属性中检测，见
-    [scan](#scan) 选项。
-  - `"all"`：打包该图标类型的全部图标。仅 `fontawesome` 支持，因为一个 Iconify 图标集可能
-    包含数千个图标，`iconify` 下会改为打包站点用到的图标。
+页面的 front matter 字段，例如 `['icon', 'features[*].name']`。设为 `[]` 可关闭 front matter 扫描。
 
-  ```ts title=".vuepress/config.ts"
-  export default {
-    plugins: [
-      iconPlugin({
-        prefix: 'mdi:',
-        offline: true,
-      }),
-    ],
-  }
-  ```
+@@`scan.components` type=`string[]`
 
-  图标在站点准备阶段检测，因此新增图标后需要重启开发服务器。
+页面中使用的组件的属性，形式为 `<组件>.<属性>`，例如 `['VPCustom.icon', 'VPTest.files[*]']`。
 
-  ::: tip
+组件的属性会作为一个对象读取，因此 `VPCustom.icon` 读取 `icon` 属性，而 `VPTest.files[*]` 读取 `files` 属性的每个元素。用 `:prop` 或 `v-bind` 绑定的属性在值无法解析为 JSON 时会给出警告，因为此时其图标无法被打包。
 
-  打包全部 Font Awesome 图标会为客户端产物增加约 1.8 MB，而 Iconify 的产物只包含使用中的图标。
+@@`scan.scanner` type=`(app: App) => string[] | Promise<string[]>`
 
-  :::
+用于获取无法被检测到的图标的额外扫描器，例如主题配置中使用的图标。
 
-### scan
+返回的图标使用与 Markdown 中一致的语法，Iconify 为 `mdi:home`，Font Awesome 为 `solid:house`。
 
-- 类型：`IconScan`
-- 详情：
+```ts title=".vuepress/config.ts"
+export default {
+  plugins: [
+    iconPlugin({
+      offline: true,
+      scan: {
+        frontmatter: ['icon', 'features[*].name'],
+        components: ['VPCustom.icon'],
+        scanner: (app) => ['mdi:home'],
+      },
+    }),
+  ],
+}
+```
 
-  需要扫描图标的字段，供 [offline](#offline) 选项使用，未启用离线模式时该选项无效。
+::: tip
 
-  ```ts
-  export interface IconScan {
-    frontmatter?: string[]
-    components?: string[]
-    scanner?: (app: App) => string[] | Promise<string[]>
-  }
-  ```
+可复用的辅助函数会被导出，因此扫描器可以基于它们构建：
 
-  `frontmatter` 与 `components` 为字段路径，支持字段访问与数组下标，其中 `[*]` 匹配数组的
-  每个元素。不存在的字段会被静默跳过。
+```ts
+import {
+  extractIconsFromComponents,
+  extractIconsFromFields,
+  parseComponentField,
+} from '@vuepress/plugin-icon'
 
-#### frontmatter
+// 读取某个对象中的图标，例如主题配置或数据文件
+extractIconsFromFields(data, ['icon', 'features[*].name'])
 
-- 类型：`string[]`
-- 默认值：`['icon']`
-- 详情：页面的 front matter 字段，例如 `['icon', 'features[*].name']`。设为
-  `[]` 可关闭 front matter 扫描。
+// 读取站点组件属性中的图标
+extractIconsFromComponents(
+  app,
+  ['VPCustom.icon'].map(parseComponentField).filter((field) => field != null),
+)
+```
 
-#### components
+:::
 
-- 类型：`string[]`
-- 详情：页面中使用的组件的属性，形式为 `<组件>.<属性>`，例如
-  `['VPCustom.icon', 'VPTest.files[*]']`。
-
-  组件的属性会作为一个对象读取，因此 `VPCustom.icon` 读取 `icon` 属性，而
-  `VPTest.files[*]` 读取 `files` 属性的每个元素。用 `:prop` 或 `v-bind` 绑定的属性在值无法解析为 JSON 时会给出警告，因为此时其图标无法被打包。
-
-#### scanner
-
-- 类型：`(app: App) => string[] | Promise<string[]>`
-- 详情：用于获取无法被检测到的图标的额外扫描器，例如主题配置中使用的图标。
-
-  返回的图标使用与 Markdown 中一致的语法，Iconify 为 `mdi:home`，Font Awesome 为 `solid:house`。
-
-  ```ts title=".vuepress/config.ts"
-  export default {
-    plugins: [
-      iconPlugin({
-        offline: true,
-        scan: {
-          frontmatter: ['icon', 'features[*].name'],
-          components: ['VPCustom.icon'],
-          scanner: (app) => ['mdi:home'],
-        },
-      }),
-    ],
-  }
-  ```
-
-  ::: tip
-
-  可复用的辅助函数会被导出，因此扫描器可以基于它们构建：
-
-  ```ts
-  import {
-    extractIconsFromComponents,
-    extractIconsFromFields,
-    parseComponentField,
-  } from '@vuepress/plugin-icon'
-
-  // 读取某个对象中的图标，例如主题配置或数据文件
-  extractIconsFromFields(data, ['icon', 'features[*].name'])
-
-  // 读取站点组件属性中的图标
-  extractIconsFromComponents(
-    app,
-    ['VPCustom.icon'].map(parseComponentField).filter((field) => field != null),
-  )
-  ```
-
-  :::
+::::
 
 ## 组件属性
 

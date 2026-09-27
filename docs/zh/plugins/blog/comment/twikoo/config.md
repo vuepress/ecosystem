@@ -1,18 +1,17 @@
 # Twikoo 选项
 
-## 配置
+## 选项
 
-### envId
+::: fields
+@`envId` type=string required
 
-- 类型：`string`
-- 必填: 是
-- 详情： 腾讯云环境 ID 或 Vercel 地址。
+腾讯云环境 ID 或 Vercel 地址。
 
-### region
+@`region` type=string default=`'ap-shanghai'`
 
-- 类型：`string`
-- 默认值：`"ap-shanghai"`
-- 详情： 腾讯云区域。
+腾讯云区域。
+
+:::
 
 ## 插件配置
 

@@ -26,6 +26,10 @@ export default {
 }
 ```
 
+## 指南
+
+### 目录信息
+
 首先，你需要在路由元信息中设置目录信息：
 
 ```ts title=".vuepress/config.ts"
@@ -57,7 +61,7 @@ defineCatalogInfoGetter((meta) => (meta.title ? { title: meta.title } : null))
 - `order`：目录顺序（可选）
 - `content`：目录内容组件（可选）
 
-::: tip 通过 order 排序
+### 通过 order 排序
 
 插件会按以下顺序通过 `order` 对页面进行排序：
 
@@ -79,85 +83,56 @@ order -2 的项目
 order -1 的项目
 ```
 
-:::
-
 ## 选项
 
-### level <Badge text="仅限内置组件" />
+:::: fields
+@`level` type=`1 | 2 | 3` default=`3` built-in="仅限内置组件"
 
-- 类型：`1 | 2 | 3`
-- 默认值：`3`
-- 详情：目录项级别的最大深度
+目录项级别的最大深度。
 
-### index <Badge text="仅限内置组件" />
+@`index` type=boolean built-in="仅限内置组件"
 
-- 类型：`boolean`
-- 默认值：`false`
-- 详情：是否显示目录索引
+是否显示目录索引。
 
-### frontmatter
+@`frontmatter` type=`(path: string) => PageFrontmatter`
 
-- 类型：`(path: string) => Record<string, any>`
-- 详情：生成页面的 Frontmatter 获取器
-- 示例：
+生成页面的 Frontmatter 获取器。
 
-  ```ts title=".vuepress/config.ts"
-  import { catalogPlugin } from '@vuepress/plugin-catalog'
+```ts title=".vuepress/config.ts"
+import { catalogPlugin } from '@vuepress/plugin-catalog'
 
-  export default {
-    plugins: [
-      catalogPlugin({
-        frontmatter: (path) => ({
-          // 你想要的 frontmatter
-          // 你可以自定义标题、作者、时间等
-        }),
+export default {
+  plugins: [
+    catalogPlugin({
+      frontmatter: (path) => ({
+        // 你想要的 frontmatter
+        // 你可以自定义标题、作者、时间等
       }),
-    ],
-  }
-  ```
+    }),
+  ],
+}
+```
 
-### exclude
+@`exclude` type=`(RegExp | string)[]` default=`[]`
 
-- 类型：`(RegExp | string)[]`
-- 默认值：`[]`
-- 详情：
+需要排除的目录页路径。
 
-  需要排除的目录页路径。
-  - `"/foo/"` 仅排除 `/foo/` 文件夹的目录页生成
-  - `/^\/foo\//` 排除 `/foo/` 文件夹及其子文件夹的目录页生成
+- `"/foo/"` 仅排除 `/foo/` 文件夹的目录页生成。
+- `/^\/foo\//` 排除 `/foo/` 文件夹及其子文件夹的目录页生成。
 
-  ::: tip 404 页面会被自动排除。
+::: tip 404 页面会被自动排除。
 
-  :::
+:::
 
-### component
+@`component` type=string
 
-- 类型：`string`
-- 详情：用作目录的组件名称
+用作目录的组件名称。
 
-### locales
+默认情况下，插件会注册并使用 `<Catalog />` 组件。
 
-- 类型：`CatalogPluginLocaleConfig`
+@`locales` type=`CatalogPluginLocaleConfig`
 
-  ```ts
-  interface CatalogPluginLocaleData {
-    /**
-     * 目录标题
-     */
-    title: string
-
-    /**
-     * 空目录提示
-     */
-    empty: string
-  }
-
-  interface CatalogPluginLocaleConfig {
-    [localePath: string]: Partial<CatalogPluginLocaleData>
-  }
-  ```
-
-- 详情：目录组件国际化配置
+目录组件的多语言配置。
 
 ::: details 内置支持语言
 
@@ -181,6 +156,15 @@ order -1 的项目
 - **荷兰语** (nl-NL)
 
 :::
+
+@@`locales.<localePath>.title` type=string
+
+目录标题文字。
+
+@@`locales.<localePath>.empty` type=string
+
+空目录提示文字。
+::::
 
 ## 客户端选项
 

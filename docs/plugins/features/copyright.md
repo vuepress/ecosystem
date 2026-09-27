@@ -26,6 +26,8 @@ export default {
 }
 ```
 
+## Guide
+
 ### Enabling Copyright
 
 This plugin **is disabled globally by default**, you can:
@@ -41,7 +43,7 @@ If your site have different authors and license in different pages, you can set 
 
 The plugin will generate copyright information from author, license, and page link via template by default, and append it when copying. If you think that this is not flexible enough, you can set `copyrightGetter` option to return a completely customized information with Page object or return null to use the default template.
 
-### Disable Copy and Selection
+### Disabling Copy and Selection
 
 If you want to prevent users copying long content, you can set `maxLength` in plugin options to customize this limit, or set `copy.maxLength` in page frontmatter.
 
@@ -50,144 +52,71 @@ If you want to prevent users copying long content, you can set `maxLength` in pl
 
 ## Options
 
-### author
+:::: fields
+@`author` type=string
 
-- Type: `string`
-- Details: Default author information
+Default author information.
 
-### license
+@`license` type=string
 
-- Type: `string`
-- Details: Default license information
+Default license information.
 
-### authorGetter
+@`authorGetter` type=`(page: Page) => string | null`
 
-- Type: `(page: Page) => string | null`
-- Details: Author getter
+Author getter. It takes the current page as the parameter and returns the author information.
 
-### licenseGetter
+@`licenseGetter` type=`(page: Page) => string | null`
 
-- Type: `(page: Page) => string | null`
-- Details: License getter
+License getter. It takes the current page as the parameter and returns the license information.
 
-### copyrightGetter
+@`copyrightGetter` type=`(page: Page) => string | null`
 
-- Type: `(page: Page) => string | null`
-- Details: Copyright getter
+Copyright getter. It takes the current page as the parameter and returns a completely customized copyright information, or `null` to use the default template.
 
-### canonical
+@`canonical` type=string
 
-- Type: `string`
-- Details: Canonical deploy location
+Canonical hostname with base, which is used as the reference link in the appended copyright information.
 
-  ::: tip Example
+::: tip Example
 
-  If you are deploying same content under `https://myblog.com` and `https://blog.com/username/`, you may want to prefer one site as reference link.
-  - If you prefer the first one, you should set `canonical` to `https://myblog.com`
-  - If you prefer the second one, you should set `canonical` to `https://blog.com/username/`
+If you are deploying same content under `https://myblog.com` and `https://blog.com/username/`, you may want to prefer one site as reference link.
 
-  So copyright message triggered on another site also points to your preferred site.
+- If you prefer the first one, you should set `canonical` to `https://myblog.com`
+- If you prefer the second one, you should set `canonical` to `https://blog.com/username/`
 
-  :::
+So copyright message triggered on another site also points to your preferred site.
 
-### global
+:::
 
-- Type: `boolean`
-- Default: `false`
-- Details: Whether enable globally
+@`global` type=boolean
 
-### disableCopy
+Whether to enable the plugin globally.
 
-- Type: `boolean`
-- Default: `false`
-- Details: Disable copy
+See also: [Enabling Copyright](#enabling-copyright).
 
-### disableSelection
+@`disableCopy` type=boolean
 
-- Type: `boolean`
-- Default: `false`
-- Details: Disable selection
+Whether to disable copying.
 
-### triggerLength
+See also: [Disabling Copy and Selection](#disabling-copy-and-selection).
 
-- Type: `number`
-- Default: `100`
-- Details: Min content length triggering copyright append
+@`disableSelection` type=boolean
 
-### maxLength
+Whether to disable selection.
 
-- Type: `number`
-- Default: `0`
-- Details: Max content length which allows to copy, `0` means no limit
+See also: [Disabling Copy and Selection](#disabling-copy-and-selection).
 
-### locales
+@`triggerLength` type=number default=`100`
 
-- Type: `CopyrightPluginLocaleConfig`
+Min content length triggering copyright append.
 
-  ```ts
-  interface CopyrightPluginLocaleData {
-    /**
-     * Author text
-     *
-     * `:author` will be replaced by author
-     */
-    author: string
+@`maxLength` type=number default=`0`
 
-    /**
-     * License text
-     *
-     * `:license` will be replaced by current license
-     */
-    license: string
+Max content length which allows to copy, `0` means no limit.
 
-    /**
-     * Link text
-     *
-     * `:link` will be replaced by current page link
-     */
-    link: string
-  }
+@`locales` type=`CopyrightPluginLocaleConfig`
 
-  interface CopyrightPluginLocaleConfig {
-    [localePath: string]: Partial<CopyrightPluginLocaleData>
-  }
-  ```
-
-- Details: Locale config for copyright plugin.
-
-- Example:
-
-  ```ts title=".vuepress/config.ts"
-  import { copyrightPlugin } from '@vuepress/plugin-copyright'
-
-  export default {
-    locales: {
-      '/': {
-        // this is a supported language
-        lang: 'en-US',
-      },
-      '/xx/': {
-        // the plugin does not support this language
-        lang: 'mm-NN',
-      },
-    },
-
-    plugins: [
-      copyrightPlugin({
-        locales: {
-          '/': {
-            // Override link text
-            link: 'Original posted at :link',
-          },
-
-          '/xx/': {
-            // Complete locale config for `mm-NN` language here
-          },
-        },
-      }),
-    ],
-  }
-  ```
+Locale config of the plugin.
 
 ::: details Built-in Supported Languages
 
@@ -212,6 +141,52 @@ If you want to prevent users copying long content, you can set `maxLength` in pl
 - **Dutch** (nl-NL)
 
 :::
+
+@@`locales.<localePath>.author` type=string
+
+Author text, where `:author` will be replaced by the author.
+
+@@`locales.<localePath>.license` type=string
+
+License text, where `:license` will be replaced by the current license.
+
+@@`locales.<localePath>.link` type=string
+
+Link text, where `:link` will be replaced by the current page link.
+
+```ts title=".vuepress/config.ts"
+import { copyrightPlugin } from '@vuepress/plugin-copyright'
+
+export default {
+  locales: {
+    '/': {
+      // this is a supported language
+      lang: 'en-US',
+    },
+    '/xx/': {
+      // the plugin does not support this language
+      lang: 'mm-NN',
+    },
+  },
+
+  plugins: [
+    copyrightPlugin({
+      locales: {
+        '/': {
+          // Override link text
+          link: 'Original posted at :link',
+        },
+
+        '/xx/': {
+          // Complete locale config for `mm-NN` language here
+        },
+      },
+    }),
+  ],
+}
+```
+
+::::
 
 ## Frontmatter
 

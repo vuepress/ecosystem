@@ -3,143 +3,108 @@ title: 配置
 icon: settings-2
 ---
 
-## 插件选项
+## 选项
 
-### getInfo
+:::: fields
+@`getInfo` type=`(page: Page) => Record<string, unknown>`
 
-- 类型：`(page: Page) => Record<string, unknown>`
-- 参考:
-  - [指南 → 收集信息](./guide.md#收集信息)
-- 详情:
+用于从页面中提取文章信息的函数。
 
-  用于从页面中提取文章信息的函数。
+提取的信息会被注入到路由元数据 (route meta) 中，使其可以通过客户端组合式 API 访问。
 
-  提取的信息会被注入到路由元数据 (route meta) 中，使其可以通过客户端组合式 API 访问。
+参考：[收集信息](./guide.md#收集信息)。
 
-### filter
+@`filter` type=`(page: Page) => boolean` default=`(page) => Boolean(page.filePathRelative) && !page.frontmatter.home`
 
-- 类型：`(page: Page) => boolean`
-- 默认值：`(page) => Boolean(page.filePathRelative) && !page.frontmatter.home`
-- 参考:
-  - [指南 → 文章收集](./guide.md#文章收集)
-- 详情:
+用于确定哪些页面被视为博客文章的函数。
 
-  用于确定哪些页面被视为博客文章的函数。
+默认情况下，它包含所有从 Markdown 文件生成的页面，但排除主页。
 
-  默认情况下，它包含所有从 Markdown 文件生成的页面，但排除主页。
+参考：[文章收集](./guide.md#文章收集)。
 
-### category
+@`category` type=`BlogCategoryOptions[]`
 
-- 类型：`BlogCategoryOptions[]`
-- 参考:
-  - [指南 → 自定义类别和类型](./guide.md#自定义类别和类型)
-- 详情：博客分类配置，详见 [博客分类配置](#博客分类配置)。
+博客分类配置。参考：[博客分类配置](#博客分类配置)。
 
-### type
+@`type` type=`BlogTypeOptions[]`
 
-- 类型：`BlogTypeOptions[]`
-- 参考：
-  - [指南 → 自定义类别和类型](./guide.md#自定义类别和类型)
-- 详情：博客类型配置，详见 [博客类型配置](#博客类型配置)。
+博客类型配置。参考：[博客类型配置](#博客类型配置)。
 
-### slugify
+@`slugify` type=`(name: string) => string` default=`(name) => name.replaceAll(/[ _]/gu, '-').replaceAll(/[:?*|\\/<>]/gu, '').toLowerCase()`
 
-- 类型：`(name: string) => string`
-- 默认值：`(name) => name.replace(/ _/g, '-').replace(/[:?*|\\/<>]/g, "").toLowerCase()`
-- 详情: 将字符串转换为 URL 友好的 slug 的函数，用于路由注册。
+将字符串转换为 URL 友好的 slug 的函数，用于路由注册。
 
-### excerpt
+@`excerpt` type=boolean default=`true`
 
-- 类型：`boolean`
-- 默认值：`true`
-- 参考: [指南 → 生成摘要](./guide.md#generating-excerpt)
-- 详情: 启用或禁用页面摘要生成。
+启用或禁用页面摘要生成。
 
-### excerptSeparator
+参考：[生成摘要](./guide.md#生成摘要)。
 
-- 类型：`string`
-- 默认值：`<!-- more -->`
-- 参考:
-  - [指南 → 生成摘要](./guide.md#generating-excerpt)
-- 详情: 内容中用于手动定义摘要的分隔符。
+@`excerptSeparator` type=string default=`'<!-- more -->'`
 
-### excerptLength
+内容中用于手动定义摘要的分隔符。
 
-- 类型：`number`
-- 默认值：`300`
-- 参考:
-  - [指南 → 生成摘要](./guide.md#generating-excerpt)
-- 详情:
+参考：[生成摘要](./guide.md#生成摘要)。
 
-  自动生成摘要的目标长度。
+@`excerptLength` type=number default=`300`
 
-  ::: tip
+自动生成摘要的目标长度。
 
-  生成器会在达到或超过此长度的最近位置截断文本。
+参考：[生成摘要](./guide.md#生成摘要)。
 
-  设置为 `0` 可禁用自动摘要生成。
+::: tip
 
-  :::
+生成器会在达到或超过此长度的最近位置截断文本。
 
-### excerptFilter
+设置为 `0` 可禁用自动摘要生成。
 
-- 类型：`(page: Page) => boolean`
-- 默认值: 与 `filter` 选项相同
-- 参考:
-  - [指南 → 生成摘要](./guide.md#generating-excerpt)
-- 详情:
+:::
 
-  用于过滤摘要生成的页面的函数。
+@`excerptFilter` type=`(page: Page) => boolean` default="与 filter 选项相同"
 
-  ::: tip
+用于过滤摘要生成的页面的函数。
 
-  使用此选项可将某些页面排除在自动摘要生成之外。例如，如果 `excerpt` 或 `description` 已经在 Frontmatter 中定义，你可能更愿意直接使用这些值。
+参考：[生成摘要](./guide.md#生成摘要)。
 
-  :::
+::: tip
 
-### isCustomElement
+使用此选项可将某些页面排除在自动摘要生成之外。例如，如果 `excerpt` 或 `description` 已经在 Frontmatter 中定义，你可能更愿意直接使用这些值。
 
-- 类型：`(tagName: string) => boolean`
-- 默认值：`() => false`
-- 参考:
-  - [指南 → 生成摘要](./guide.md#generating-excerpt)
-- 详情:
+:::
 
-  用于识别自定义元素的函数。
+@`isCustomElement` type=`(tagName: string) => boolean` default=`() => false`
 
-  这用于区分自定义元素和未知标签，后者在摘要生成过程中会被剥离。
+用于识别自定义元素的函数。
 
-### metaScope
+这用于区分自定义元素和未知标签，后者在摘要生成过程中会被剥离。
 
-- 类型：`string`
-- 默认值：`"_blog"`
-- 详情:
+参考：[生成摘要](./guide.md#生成摘要)。
 
-  提取的信息注入到路由元数据下的键名。
+@`metaScope` type=string default=`'_blog'`
 
-  ::: tip
+提取的信息注入到路由元数据下的键名。
 
-  将此设置为空字符串会直接将信息注入到路由元数据的根对象中，而不是嵌套在一个字段下。
+::: tip
 
-  :::
+将此设置为空字符串会直接将信息注入到路由元数据的根对象中，而不是嵌套在一个字段下。
 
-### hotReload
+:::
 
-- 类型：`boolean`
-- 默认值: 如果使用了 `--debug` 标志则启用
-- 详情:
+@`hotReload` type=boolean default="使用 --debug 标志时启用"
 
-  在开发服务器中启用热重载支持。
+在开发服务器中启用热重载支持。
 
-  ::: tip 致主题开发者
+::: tip 致主题开发者
 
-  由于在包含大量分类和类型的站点上可能会有性能影响，此选项默认禁用。在编辑 Markdown 时，它也可能会减慢热更新速度。
+由于在包含大量分类和类型的站点上可能会有性能影响，此选项默认禁用。在编辑 Markdown 时，它也可能会减慢热更新速度。
 
-  建议仅在用户积极添加或组织分类/标签时启用此功能。对于日常使用，建议保持禁用。
+建议仅在用户积极添加或组织分类/标签时启用此功能。对于日常使用，建议保持禁用。
 
-  此外，你也可以通过检测用户项目中的页面数量来决定是否通过编程方式启用它。
+此外，你也可以通过检测用户项目中的页面数量来决定是否通过编程方式启用它。
 
-  :::
+:::
+
+::::
 
 ## 博客分类配置
 

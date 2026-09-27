@@ -29,13 +29,9 @@ icon: lucide:replace
 
 ## 使用方法
 
-### 安装
-
 ```sh
 npm i -D @vuepress/plugin-replace-assets@next
 ```
-
-### 配置
 
 ```ts title=".vuepress/config.ts"
 import { replaceAssetsPlugin } from '@vuepress/plugin-replace-assets'
@@ -46,6 +42,8 @@ export default {
   ],
 }
 ```
+
+## 指南
 
 ### 资源管理
 
@@ -96,62 +94,6 @@ img.src = '/images/foo.jpg'
 
 :::warning 插件不支持识别 `'/images/' + 'foo.jpg'` 拼接的路径。
 :::
-
-## 配置说明
-
-```ts
-/**
- * 资源替换目标路径
- * - `string`: 直接拼接在原始路径前面
- * - `(url) => string`: 自定义替换方法，返回新路径
- */
-export type Replacement = string | ((url: string) => string)
-
-/**
- * 资源替换规则
- */
-export interface ReplacementRule {
-  /**
-   * 资源匹配
-   *
-   * - `RegExp`: 匹配正则
-   * - `string`: 匹配字符串
-   *   - 以 `^` 开头或以 `$` 结尾的字符串，会自动转换为正则
-   *   - 普通字符串检查是否以其作为开头或结尾
-   */
-  find: RegExp | string
-
-  /**
-   * 资源替换目标路径
-   */
-  replacement: Replacement
-}
-
-export interface ReplaceAssetsOptions {
-  /**
-   * 自定义资源替换规则
-   */
-  rules?: ReplacementRule | ReplacementRule[]
-  /**
-   * 内置的图片匹配规则，匹配查找 `^/images/` 开头的常见的图片路径
-   */
-  image?: Replacement
-  /**
-   * 内置的媒体匹配规则，匹配查找 `^/medias/` 开头的常见的视频、音频等媒体路径
-   */
-  media?: Replacement
-  /**
-   * 相当于同时设置 `image` 和 `media`
-   */
-  all?: Replacement
-}
-
-/**
- * 资源替换插件配置项
- */
-export type ReplaceAssetsPluginOptions =
-  ReplaceAssetsOptions | Replacement | ReplacementRule | ReplacementRule[]
-```
 
 ### 内置资源匹配规则
 
@@ -261,4 +203,48 @@ export default {
 ```
 
 ::: important 所有匹配的资源地址都是以 `/` 开头。
+:::
+
+## 选项
+
+`replaceAssetsPlugin` 接受配置对象、`Replacement`，或 `ReplacementRule | ReplacementRule[]`。
+
+::: fields
+@`rules` type=`ReplacementRule | ReplacementRule[]`
+
+自定义资源替换规则。
+
+@@`rules[*].find` type=`RegExp | string`
+
+资源匹配。
+
+- `RegExp`: 匹配正则。
+- `string`: 匹配字符串。
+
+  - 以 `^` 开头或以 `$` 结尾的字符串，会自动转换为正则。
+  - 普通字符串检查是否以其作为开头或结尾。
+
+@@`rules[*].replacement` type=`string | ((url: string) => string)`
+
+资源替换目标路径。
+
+- `string`: 直接拼接在原始路径前面。
+- `(url) => string`: 自定义替换方法，返回新路径。
+
+@`image` type=`string | ((url: string) => string)`
+
+内置的图片匹配规则，匹配查找 `^/images/` 开头的常见的图片路径。
+
+参考：[内置资源匹配规则](#内置资源匹配规则)。
+
+@`media` type=`string | ((url: string) => string)`
+
+内置的媒体匹配规则，匹配查找 `^/medias/` 开头的常见的视频、音频等媒体路径。
+
+参考：[内置资源匹配规则](#内置资源匹配规则)。
+
+@`all` type=`string | ((url: string) => string)`
+
+相当于同时设置 [image](#image) 和 [media](#media)。
+
 :::

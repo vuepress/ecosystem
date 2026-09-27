@@ -26,6 +26,10 @@ export default {
 }
 ```
 
+## 指南
+
+### 预览模式
+
 在图片预览模式中，你可以:
 
 - 左右滑动按顺序浏览页面内其他的图片
@@ -44,108 +48,26 @@ export default {
 
 ## 选项
 
-### selector
+:::: fields
+@`selector` type=`string | string[]` default=`'[vp-content] :not(a) > img:not([no-view])'`
 
-- 类型：`string | string[]`
-- 默认值：`"[vp-content] :not(a) > img:not([no-view])"`
-- 详情：图片选择器
+图片选择器。
 
-### download
+@`download` type=boolean default=`true`
 
-- 类型：`boolean`
-- 默认值：`true`
-- 详情：是否显示下载按钮
+是否显示下载按钮。
 
-### fullscreen
+@`fullscreen` type=boolean default=`true`
 
-- 类型：`boolean`
-- 默认值：`true`
-- 详情：是否显示全屏按钮
+是否显示全屏按钮。
 
-### scrollToClose
+@`scrollToClose` type=boolean default=`true`
 
-- 类型：`boolean`
-- 默认值：`true`
-- 详情：是否在滚动时关闭当前图片
+是否在滚动时关闭当前图片。
 
-### locales
+@`locales` type=`PhotoSwipePluginLocaleConfig`
 
-- 类型：`PhotoSwipePluginLocaleConfig`
-
-  ```ts
-  interface PhotoSwipePluginLocaleData {
-    /**
-     * 关闭按钮标签文字
-     */
-    close: string
-
-    /**
-     * 下载按钮标签文字
-     */
-    download: string
-
-    /**
-     * 全屏按钮标签文字
-     */
-    fullscreen: string
-
-    /**
-     * 缩放按钮标签文字
-     */
-    zoom: string
-
-    /**
-     * 上一张图片按钮标签文字
-     */
-    arrowPrev: string
-
-    /**
-     * 下一张图片按钮标签文字
-     */
-    arrowNext: string
-  }
-
-  interface PhotoSwipePluginLocaleConfig {
-    [localePath: string]: Partial<PhotoSwipePluginLocaleData>
-  }
-  ```
-
-- 详情：Photo Swipe 插件的国际化配置
-
-- 示例：
-
-  ```ts title=".vuepress/config.ts"
-  import { photoSwipePlugin } from '@vuepress/plugin-photo-swipe'
-  import { defineUserConfig } from 'vuepress'
-
-  export default defineUserConfig({
-    locales: {
-      '/': {
-        // 这是一个支持的语言
-        lang: 'zh-CN',
-      },
-      '/xx/': {
-        // 插件不支持这个语言
-        lang: 'mm-NN',
-      },
-    },
-
-    plugins: [
-      photoSwipePlugin({
-        locales: {
-          '/': {
-            // 覆盖关闭标签文字
-            close: '关闭图片',
-          },
-
-          '/xx/': {
-            // 在这里完整设置 `mm-NN` 的多语言配置
-          },
-        },
-      }),
-    ],
-  })
-  ```
+插件的多语言配置。
 
 ::: details 内置支持语言
 
@@ -169,6 +91,65 @@ export default {
 - **荷兰语** (nl-NL)
 
 :::
+
+@@`locales.<localePath>.close` type=string
+
+关闭按钮标签文字。
+
+@@`locales.<localePath>.download` type=string
+
+下载按钮标签文字。
+
+@@`locales.<localePath>.fullscreen` type=string
+
+全屏按钮标签文字。
+
+@@`locales.<localePath>.zoom` type=string
+
+缩放按钮标签文字。
+
+@@`locales.<localePath>.arrowPrev` type=string
+
+上一张图片按钮标签文字。
+
+@@`locales.<localePath>.arrowNext` type=string
+
+下一张图片按钮标签文字。
+
+```ts title=".vuepress/config.ts"
+import { photoSwipePlugin } from '@vuepress/plugin-photo-swipe'
+import { defineUserConfig } from 'vuepress'
+
+export default defineUserConfig({
+  locales: {
+    '/': {
+      // 这是一个支持的语言
+      lang: 'zh-CN',
+    },
+    '/xx/': {
+      // 插件不支持这个语言
+      lang: 'mm-NN',
+    },
+  },
+
+  plugins: [
+    photoSwipePlugin({
+      locales: {
+        '/': {
+          // 覆盖关闭标签文字
+          close: '关闭图片',
+        },
+
+        '/xx/': {
+          // 在这里完整设置 `mm-NN` 的多语言配置
+        },
+      },
+    }),
+  ],
+})
+```
+
+::::
 
 ## Frontmatter
 

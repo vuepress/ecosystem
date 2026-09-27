@@ -1,12 +1,35 @@
 # Artalk Options
 
-## Config
+## Options
 
-See [Artalk Configuration](https://artalk.js.org/guide/frontend/config.html) for details.
+Artalk options are inherited from [Artalk Configuration](https://artalk.js.org/guide/frontend/config.html). All serializable Artalk options can be set directly in the plugin options.
 
-- The `el`, `pageTitle`, `pageKey`, and `site` options are reserved for the plugin and will be automatically inferred from VuePress config.
+The following options are reserved for the plugin and will be automatically inferred from VuePress config:
 
-- The two function options `imgUploader` and `avatarURLBuilder` can only be set on the client side.
+::: fields
+@`el` type=`string | HTMLElement` managed-by="Plugin"
+
+The container element, inferred from the VuePress config.
+
+@`pageTitle` type=string managed-by="Plugin"
+
+The page title, inferred from the VuePress page.
+
+@`pageKey` type=string managed-by="Plugin"
+
+The page key, inferred from the VuePress route.
+
+@`site` type=string managed-by="Plugin"
+
+The site name, inferred from the VuePress site config.
+
+:::
+
+::: tip
+
+The two function options `imgUploader` and `avatarURLBuilder` can only be set on the client side. See [Client Config](#client-config).
+
+:::
 
 ## Plugin Config
 

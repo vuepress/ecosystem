@@ -26,6 +26,8 @@ export default {
 }
 ```
 
+## 指南
+
 ### 启用版权信息
 
 此插件**默认全局禁用**。你可以:
@@ -50,143 +52,71 @@ export default {
 
 ## 选项
 
-### author
+:::: fields
+@`author` type=string
 
-- 类型：`string`
-- 详情：默认作者信息
+默认作者信息。
 
-### license
+@`license` type=string
 
-- 类型：`string`
-- 详情：默认协议信息
+默认协议信息。
 
-### authorGetter
+@`authorGetter` type=`(page: Page) => string | null`
 
-- 类型：`(page: Page) => string | null`
-- 详情：作者信息获取器
+作者信息获取器。它以当前页面对象作为参数，返回作者信息。
 
-### licenseGetter
+@`licenseGetter` type=`(page: Page) => string | null`
 
-- 类型：`(page: Page) => string | null`
-- 详情：协议信息获取器
+协议信息获取器。它以当前页面对象作为参数，返回协议信息。
 
-### copyrightGetter
+@`copyrightGetter` type=`(page: Page) => string | null`
 
-- 类型：`(page: Page) => string | null`
-- 详情：版权信息获取器
+版权信息获取器。它以当前页面对象作为参数，返回完全由你自定义的版权信息，或返回 `null` 以使用默认模板。
 
-### canonical
+@`canonical` type=string
 
-- 类型：`string`
-- 详情：首选部署位置
+首选域名与部署目录，它将作为追加的版权信息中的参考链接。
 
-  ::: tip 例子
+::: tip 例子
 
-  如果你在 `https://myblog.com` 和 `https://blog.com/username/` 下部署相同的内容，你可能希望选择一个站点作为首选链接。
-  - 如果你倾向于使用第一个，你应该将 `canonical` 设置为 `https://myblog.com`
-  - 如果你倾向于使用第二个，你应该将 `canonical` 设置为 `https://blog.com/username/`
+如果你在 `https://myblog.com` 和 `https://blog.com/username/` 下部署相同的内容，你可能希望选择一个站点作为首选链接。
 
-  这样，在另一个站点触发的版权信息也会指向你的首选站点。
+- 如果你倾向于使用第一个，你应该将 `canonical` 设置为 `https://myblog.com`
+- 如果你倾向于使用第二个，你应该将 `canonical` 设置为 `https://blog.com/username/`
 
-  :::
+这样，在另一个站点触发的版权信息也会指向你的首选站点。
 
-### global
+:::
 
-- 类型：`boolean`
-- 默认值：`false`
-- 详情：是否全局启用
+@`global` type=boolean
 
-### disableCopy
+是否全局启用插件。
 
-- 类型：`boolean`
-- 默认值：`false`
-- 详情：禁用复制
+参考：[启用版权信息](#启用版权信息)。
 
-### disableSelection
+@`disableCopy` type=boolean
 
-- 类型：`boolean`
-- 默认值：`false`
-- 详情：禁用选择
+是否禁用复制。
 
-### triggerLength
+参考：[禁用复制和选择](#禁用复制和选择)。
 
-- 类型：`number`
-- 默认值：`100`
-- 详情：触发附加版权的最小内容长度
+@`disableSelection` type=boolean
 
-### maxLength
+是否禁用选择。
 
-- 类型：`number`
-- 默认值：`0`
-- 详情：允许复制的最大内容长度，`0` 意味着无限制
+参考：[禁用复制和选择](#禁用复制和选择)。
 
-### locales
+@`triggerLength` type=number default=`100`
 
-- 类型：`CopyrightPluginLocaleConfig`
+触发附加版权的最小内容长度。
 
-  ```ts
-  interface CopyrightPluginLocaleData {
-    /**
-     * 作者文字
-     *
-     * `:author` 将会被作者替换
-     */
-    author: string
+@`maxLength` type=number default=`0`
 
-    /**
-     * 协议文字
-     *
-     * `:license` 会被当前协议替换
-     */
-    license: string
+允许复制的最大内容长度，`0` 意味着无限制。
 
-    /**
-     * 链接文字
-     *
-     * `:link` 会替换为当前页面链接
-     */
-    link: string
-  }
+@`locales` type=`CopyrightPluginLocaleConfig`
 
-  interface CopyrightPluginLocaleConfig {
-    [localePath: string]: Partial<CopyrightPluginLocaleData>
-  }
-  ```
-
-- 详情：版权插件的国际化配置。
-- 示例：
-
-  ```ts title=".vuepress/config.ts"
-  import { copyrightPlugin } from '@vuepress/plugin-copyright'
-
-  export default {
-    locales: {
-      '/': {
-        // this is a supported language
-        lang: 'en-US',
-      },
-      '/xx/': {
-        // the plugin does not support this language
-        lang: 'mm-NN',
-      },
-    },
-
-    plugins: [
-      copyrightPlugin({
-        locales: {
-          '/': {
-            // Override link text
-            link: 'Original posted at :link',
-          },
-
-          '/xx/': {
-            // Complete locale config for `mm-NN` language here
-          },
-        },
-      }),
-    ],
-  }
-  ```
+插件的多语言配置。
 
 ::: details 内置支持语言
 
@@ -211,6 +141,52 @@ export default {
 - **荷兰语** (nl-NL)
 
 :::
+
+@@`locales.<localePath>.author` type=string
+
+作者文字，其中的 `:author` 将会被作者替换。
+
+@@`locales.<localePath>.license` type=string
+
+协议文字，其中的 `:license` 会被当前协议替换。
+
+@@`locales.<localePath>.link` type=string
+
+链接文字，其中的 `:link` 会替换为当前页面链接。
+
+```ts title=".vuepress/config.ts"
+import { copyrightPlugin } from '@vuepress/plugin-copyright'
+
+export default {
+  locales: {
+    '/': {
+      // this is a supported language
+      lang: 'en-US',
+    },
+    '/xx/': {
+      // the plugin does not support this language
+      lang: 'mm-NN',
+    },
+  },
+
+  plugins: [
+    copyrightPlugin({
+      locales: {
+        '/': {
+          // Override link text
+          link: 'Original posted at :link',
+        },
+
+        '/xx/': {
+          // Complete locale config for `mm-NN` language here
+        },
+      },
+    }),
+  ],
+}
+```
+
+::::
 
 ## Frontmatter
 
