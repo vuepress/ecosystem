@@ -97,8 +97,8 @@ Project with order -1
 
 ### frontmatter
 
-- Type: `(path: string) => Record<string, any>`
-- Details: Frontmatter getter for generated pages.
+- Type: `(path: string, app: App) => Record<string, any>`
+- Details: Frontmatter getter for generated pages. The second parameter is the VuePress app instance.
 - Example:
 
   ```ts title=".vuepress/config.ts"
@@ -107,7 +107,7 @@ Project with order -1
   export default {
     plugins: [
       catalogPlugin({
-        frontmatter: (path) => ({
+        frontmatter: (path, app) => ({
           // Frontmatter you want
           // You may customize title, author, time, etc.
         }),
