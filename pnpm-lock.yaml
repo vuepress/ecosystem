@@ -1234,7 +1234,7 @@ importers:
     dependencies:
       '@mdit/plugin-alert':
         specifier: ^2.0.1
-        version: 2.0.1(markdown-it@14.3.2)
+        version: 2.0.2(markdown-it@14.3.2)
       '@mdit/plugin-container':
         specifier: ^2.0.1
         version: 2.0.1(markdown-it@14.3.2)
@@ -3863,11 +3863,11 @@ packages:
       markdown-it:
         optional: true
 
-  '@mdit/plugin-alert@2.0.1':
-    resolution: {integrity: sha512-aWAjNZWQlXfCYUmTJvE+uWV0XZSz7SFcrI8N9Iq78XDZ3E/lEZo2apf9V5Nlbtc8cbda16fM9kx11GYwZlCSzw==}
+  '@mdit/plugin-alert@2.0.2':
+    resolution: {integrity: sha512-0vjhfT58lKE5BDkrdpXdsX4jzRq2zDhlVqQNcgAOAatjG+Tq7k8eCQZBle+10lzNegqpWRgszpu2BSS4df7luw==}
     engines: {node: '>=22'}
     peerDependencies:
-      markdown-it: ^15.0.1
+      markdown-it: ^15.0.2
     peerDependenciesMeta:
       markdown-it:
         optional: true
@@ -13356,9 +13356,9 @@ snapshots:
     optionalDependencies:
       markdown-it: 14.3.2
 
-  '@mdit/plugin-alert@2.0.1(markdown-it@14.3.2)':
+  '@mdit/plugin-alert@2.0.2(markdown-it@14.3.2)':
     dependencies:
-      '@mdit/helper': 1.1.1(markdown-it@14.3.2)
+      '@mdit/helper': 1.1.2(markdown-it@14.3.2)
     optionalDependencies:
       markdown-it: 14.3.2
 
