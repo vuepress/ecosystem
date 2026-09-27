@@ -8,4 +8,12 @@ export default defineHopeConfig({
   sortImports: {
     internalPattern: ['@internal', '@temp', '@theme'],
   },
+  overrides: [
+    {
+      files: ['*.md'],
+      options: {
+        printWidth: 80,
+      },
+    },
+  ],
 })
