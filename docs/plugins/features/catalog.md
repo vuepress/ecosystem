@@ -94,9 +94,9 @@ Maximum depth of catalog items.
 
 Whether to show index numbers for catalog items.
 
-@`frontmatter` type=`(path: string) => PageFrontmatter`
+@`frontmatter` type=`(path: string, app: App) => PageFrontmatter`
 
-Frontmatter getter for generated pages.
+Frontmatter getter for generated pages, where `app` is the VuePress app instance.
 
 ```ts title=".vuepress/config.ts"
 import { catalogPlugin } from '@vuepress/plugin-catalog'
@@ -104,7 +104,7 @@ import { catalogPlugin } from '@vuepress/plugin-catalog'
 export default {
   plugins: [
     catalogPlugin({
-      frontmatter: (path) => ({
+      frontmatter: (path, app) => ({
         // Frontmatter you want
         // You may customize title, author, time, etc.
       }),
@@ -188,4 +188,4 @@ Customizes how to extract catalog info from route meta.
 
 You can customize catalog styles via CSS variables:
 
-@[code css](@vuepress/plugin-catalog/src/client/styles/vars.css)
+@[code](@vuepress/plugin-catalog/src/client/styles/vars.css)

@@ -333,4 +333,4 @@ Update available text.
 
 You can customize the style via CSS variables:
 
-@[code css](@vuepress/plugin-pwa/src/client/styles/vars.css)
+@[code](@vuepress/plugin-pwa/src/client/styles/vars.css)

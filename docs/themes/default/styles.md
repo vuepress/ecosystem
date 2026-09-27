@@ -36,9 +36,9 @@ You can add extra styles here, or override the default styles:
 You can also make use of it to override predefined CSS variables of the default theme.
 
 ::: details Click to expand CSS variables
-@[code scss](@vuepress/theme-default/src/client/styles/vars.scss)
+@[code](@vuepress/theme-default/src/client/styles/vars.scss)
 :::
 
 ::: details Click to expand dark mode CSS variables
-@[code scss](@vuepress/theme-default/src/client/styles/vars-dark.scss)
+@[code](@vuepress/theme-default/src/client/styles/vars-dark.scss)
 :::

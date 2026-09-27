@@ -267,5 +267,5 @@ Whether to enable code tabs.
 
 You can customize the style via CSS variables:
 
-@[code css](@vuepress/plugin-markdown-tab/src/client/styles/code-tabs-vars.scss)
-@[code css](@vuepress/plugin-markdown-tab/src/client/styles/tabs-vars.scss)
+@[code](@vuepress/plugin-markdown-tab/src/client/styles/code-tabs-vars.scss)
+@[code](@vuepress/plugin-markdown-tab/src/client/styles/tabs-vars.scss)

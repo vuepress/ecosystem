@@ -40,11 +40,11 @@
     "clean": "rimraf ./dist"
   },
   "dependencies": {
-    "@types/markdown-it": "^14.2.0",
-    "markdown-it-container": "^4.0.0"
+    "@mdit/plugin-container": "^2.0.2",
+    "@types/markdown-it": "catalog:"
   },
   "devDependencies": {
-    "markdown-it": "^14.3.2"
+    "markdown-it": "catalog:"
   },
   "peerDependencies": {
     "vuepress": "catalog:"

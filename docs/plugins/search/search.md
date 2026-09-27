@@ -51,6 +51,8 @@ The placeholder of the search box.
 
 Specify the [event.key](http://keycode.info/) of the hotkeys. When hotkeys are pressed, the search box input will be focused. Set to an empty array to disable hotkeys.
 
+@[code](@vuepress/helper/src/shared/key.ts)
+
 @@`hotKeys[*].key` type=string required
 
 Value of `event.key` to trigger the hot key.
@@ -116,7 +118,7 @@ export default {
 
 You can customize the style of the search box via CSS variables:
 
-@[code css](@vuepress/plugin-search/src/client/styles/vars.css)
+@[code](@vuepress/plugin-search/src/client/styles/vars.css)
 
 ## Components
 

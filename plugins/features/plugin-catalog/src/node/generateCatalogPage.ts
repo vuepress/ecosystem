@@ -64,7 +64,7 @@ export const generateCatalogPage = async (
         return createPage(app, {
           frontmatter: {
             title,
-            ...frontmatter(path),
+            ...frontmatter(path, app),
           },
           content,
           path,

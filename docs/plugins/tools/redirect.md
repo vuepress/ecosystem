@@ -282,4 +282,4 @@ See also: [Control Page Redirection](#control-page-redirection).
 
 You can customize the style of the redirect popup via CSS variables:
 
-@[code css](@vuepress/plugin-redirect/src/client/styles/vars.css)
+@[code](@vuepress/plugin-redirect/src/client/styles/vars.css)

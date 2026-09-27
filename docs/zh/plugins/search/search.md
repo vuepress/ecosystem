@@ -51,6 +51,8 @@ export default {
 
 指定热键的 [event.key](http://keycode.info/) 。当按下热键时，搜索框会被聚焦。将该配置项设为空数组可以禁用热键功能。
 
+@[code](@vuepress/helper/src/shared/key.ts)
+
 @@`hotKeys[*].key` type=string required
 
 热键的 `event.key` 值。
@@ -116,7 +118,7 @@ export default {
 
 你可以通过 CSS 变量来自定义搜索框的样式：
 
-@[code css](@vuepress/plugin-search/src/client/styles/vars.css)
+@[code](@vuepress/plugin-search/src/client/styles/vars.css)
 
 ## 组件
 

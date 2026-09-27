@@ -166,6 +166,8 @@ How the item appears in search results. The placeholder `$content` is replaced b
 
 Specify the [event.key](http://keycode.info/) for hotkeys. Pressing these keys will focus the search input. Set to an empty array `[]` to disable hotkeys.
 
+@[code](@vuepress/helper/src/shared/key.ts)
+
 @@`hotKeys[*].key` type=string required
 
 Value of `event.key` to trigger the hot key.

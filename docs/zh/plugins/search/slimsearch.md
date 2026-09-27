@@ -168,6 +168,8 @@ export default defineUserConfig({
 
 指定热键的 [event.key](http://keycode.info/)。当按下热键时，搜索框输入框将获得焦点。设置为空数组以禁用热键。
 
+@[code](@vuepress/helper/src/shared/key.ts)
+
 @@`hotKeys[*].key` type=string required
 
 热键的 `event.key` 值。

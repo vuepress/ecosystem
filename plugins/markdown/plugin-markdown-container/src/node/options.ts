@@ -4,9 +4,9 @@ import type { MarkdownEnv } from 'vuepress/markdown'
 import type { LocaleConfig } from 'vuepress/shared'
 
 /**
- * Options for markdown-it-container
+ * Options for `@mdit/plugin-container`
  *
- * `markdown-it-container` 的配置项
+ * `@mdit/plugin-container` 的配置项
  */
 export interface MarkdownItContainerOptions {
   /**
@@ -15,7 +15,7 @@ export interface MarkdownItContainerOptions {
    * 容器语法的标记符
    *
    * @default ':'
-   * @see https://github.com/markdown-it/markdown-it-container#api
+   * @see https://mdit-plugins.github.io/container.html
    */
   marker?: string
 
@@ -24,7 +24,7 @@ export interface MarkdownItContainerOptions {
    *
    * 用于渲染开始/结束标记的函数
    *
-   * @see https://github.com/markdown-it/markdown-it-container#api
+   * @see https://mdit-plugins.github.io/container.html
    */
   render?: MarkdownItContainerRenderFunction
 
@@ -38,9 +38,9 @@ export interface MarkdownItContainerOptions {
 }
 
 /**
- * Renderer function for markdown-it-container
+ * Renderer function for `@mdit/plugin-container`
  *
- * `markdown-it-container` 的渲染函数
+ * `@mdit/plugin-container` 的渲染函数
  *
  * @param tokens - Token array / Token 数组
  * @param index - Current token index / 当前 token 索引
@@ -80,7 +80,7 @@ export interface MarkdownContainerPluginOptions extends MarkdownItContainerOptio
    *
    * 它将被用作容器的 `name` 参数
    *
-   * @see https://github.com/markdown-it/markdown-it-container#api
+   * @see https://mdit-plugins.github.io/container.html
    */
   type: string
 

@@ -1,4 +1,5 @@
-import container from 'markdown-it-container'
+import type { MarkdownItContainerOptions as MditContainerOptions } from '@mdit/plugin-container'
+import { container } from '@mdit/plugin-container'
 import type { Plugin, PluginObject } from 'vuepress/core'
 import { ensureLeadingSlash, resolveLocalePath } from 'vuepress/shared'
 import { colors, logger } from 'vuepress/utils'
@@ -31,7 +32,7 @@ export const markdownContainerPlugin = ({
   before,
   locales,
 
-  // raw options for markdown-it-container
+  // raw options for the container plugin
   validate,
   marker,
   render: renderOptions,
@@ -108,9 +109,15 @@ export const markdownContainerPlugin = ({
     }
   }
 
-  // use markdown-it-container
+  // use @mdit/plugin-container
   plugin.extendsMarkdown = (md) => {
-    md.use(container, type, { render, validate, marker })
+    md.use<MditContainerOptions>(container, {
+      name: type,
+      marker,
+      validate,
+      openRenderer: render,
+      closeRenderer: render,
+    })
   }
 
   return plugin

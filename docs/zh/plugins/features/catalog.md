@@ -94,9 +94,9 @@ order -1 的项目
 
 是否显示目录索引。
 
-@`frontmatter` type=`(path: string) => PageFrontmatter`
+@`frontmatter` type=`(path: string, app: App) => PageFrontmatter`
 
-生成页面的 Frontmatter 获取器。
+生成页面的 Frontmatter 获取器，其中 `app` 为 VuePress 应用实例。
 
 ```ts title=".vuepress/config.ts"
 import { catalogPlugin } from '@vuepress/plugin-catalog'
@@ -104,7 +104,7 @@ import { catalogPlugin } from '@vuepress/plugin-catalog'
 export default {
   plugins: [
     catalogPlugin({
-      frontmatter: (path) => ({
+      frontmatter: (path, app) => ({
         // 你想要的 frontmatter
         // 你可以自定义标题、作者、时间等
       }),
@@ -186,6 +186,6 @@ const defineCatalogInfoGetter: (options: CatalogInfoGetter) => void
 
 你可以通过 CSS 变量来自定义目录样式：
 
-@[code css](@vuepress/plugin-catalog/src/client/styles/vars.css)
+@[code](@vuepress/plugin-catalog/src/client/styles/vars.css)
 
 [client-config]: https://vuejs.press/zh/guide/configuration.html#%E5%AE%A2%E6%88%B7%E7%AB%AF%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6

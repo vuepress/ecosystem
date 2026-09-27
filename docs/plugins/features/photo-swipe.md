@@ -188,4 +188,4 @@ Release the listeners of the state. Call it when the state is no longer needed, 
 
 You can customize the style via CSS variables:
 
-@[code css](@vuepress/plugin-photo-swipe/src/client/styles/vars.css)
+@[code](@vuepress/plugin-photo-swipe/src/client/styles/vars.css)

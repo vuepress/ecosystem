@@ -28,4 +28,4 @@ export default {
 
 你可以通过 CSS 变量来自定义进度条的样式：
 
-@[code css](@vuepress/plugin-nprogress/src/client/styles/vars.css)
+@[code](@vuepress/plugin-nprogress/src/client/styles/vars.css)

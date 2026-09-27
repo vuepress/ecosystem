@@ -18,7 +18,7 @@ icon: octicon:markdown-16
 :::
 
 ::: warning
-这是一个警告
+这是需要注意的内容
 :::
 
 ::: danger
@@ -49,7 +49,7 @@ icon: octicon:markdown-16
 :::
 
 ::: warning
-这是一个警告
+这是需要注意的内容
 :::
 
 ::: danger

@@ -51,4 +51,4 @@ Label text of the back to top button.
 
 You can customize the style of the _back to top_ button via CSS variables:
 
-@[code css](@vuepress/plugin-back-to-top/src/client/styles/vars.scss)
+@[code](@vuepress/plugin-back-to-top/src/client/styles/vars.scss)

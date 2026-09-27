@@ -281,4 +281,4 @@ Generate redirect site for current VuePress project
 
 你可以通过 CSS 变量来自定义重定向弹窗的样式：
 
-@[code css](@vuepress/plugin-redirect/src/client/styles/vars.css)
+@[code](@vuepress/plugin-redirect/src/client/styles/vars.css)
