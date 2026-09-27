@@ -11,6 +11,10 @@
       "matchUpdateTypes": ["minor", "patch"]
     },
     {
+      "groupName": "mdit",
+      "matchPackageNames": ["@mdit/**"]
+    },
+    {
       "groupName": "videojs",
       "matchPackageNames": ["@videojs/**"]
     },

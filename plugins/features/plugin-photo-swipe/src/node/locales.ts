@@ -46,7 +46,18 @@ export const photoSwipeLocaleInfo: DefaultLocaleInfo<PhotoSwipePluginLocaleData>
       ['de', 'de-DE'],
       {
         close: 'Schließen',
-        download: 'Download',
+        download: 'Bild herunterladen',
+        fullscreen: 'Vollbild aktivieren',
+        zoom: 'Rein / rauszoomen',
+        arrowPrev: 'Zurück (Pfeil links)',
+        arrowNext: 'Weiter (Pfeil rechts)',
+      },
+    ],
+    [
+      ['de-AT'],
+      {
+        close: 'Schließen',
+        download: 'Bild herunterladen',
         fullscreen: 'Vollbild aktivieren',
         zoom: 'Rein / rauszoomen',
         arrowPrev: 'Zurück (Pfeil links)',
@@ -57,7 +68,7 @@ export const photoSwipeLocaleInfo: DefaultLocaleInfo<PhotoSwipePluginLocaleData>
       ['vi', 'vi-VN'],
       {
         close: 'Đóng',
-        download: 'download',
+        download: 'Tải hình ảnh',
         fullscreen: 'Bật chế độ toàn màn hình',
         zoom: 'Phóng to / thu nhỏ',
         arrowPrev: 'Trước (Mũi tên trái)',
@@ -87,7 +98,18 @@ export const photoSwipeLocaleInfo: DefaultLocaleInfo<PhotoSwipePluginLocaleData>
       },
     ],
     [
-      ['br'],
+      ['pt', 'pt-PT'],
+      {
+        close: 'Fechar',
+        download: 'Descarregar imagem',
+        fullscreen: 'Alternar para ecrã inteiro',
+        zoom: 'Aproximar/afastar',
+        arrowPrev: 'Anterior (Seta esquerda)',
+        arrowNext: 'Seguinte (Seta direita)',
+      },
+    ],
+    [
+      ['pt-BR'],
       {
         close: 'Fechar',
         download: 'Baixar imagem',
@@ -142,6 +164,17 @@ export const photoSwipeLocaleInfo: DefaultLocaleInfo<PhotoSwipePluginLocaleData>
       },
     ],
     [
+      ['it', 'it-IT'],
+      {
+        close: 'Chiudi',
+        download: 'Scarica immagine',
+        fullscreen: 'Passa a schermo intero',
+        zoom: 'Ingrandisci/riduci',
+        arrowPrev: 'Precedente (Freccia sinistra)',
+        arrowNext: 'Successivo (Freccia destra)',
+      },
+    ],
+    [
       ['ja', 'ja-JP'],
       {
         close: '閉じる',
@@ -164,7 +197,7 @@ export const photoSwipeLocaleInfo: DefaultLocaleInfo<PhotoSwipePluginLocaleData>
       },
     ],
     [
-      ['ko', 'ko-KO'],
+      ['ko', 'ko-KR'],
       {
         close: '닫기',
         download: '이미지 다운로드',

@@ -73,6 +73,24 @@ export const pwaLocaleInfo: DefaultLocaleInfo<PwaPluginLocaleData> = [
     },
   ],
   [
+    ['de-AT'],
+    {
+      install: 'Installieren',
+      iOSInstall:
+        'Tippen Sie auf die Teilen-Schaltfläche und dann auf „Zum Home-Bildschirm“',
+      cancel: 'Abbrechen',
+      close: 'Schließen',
+      prevImage: 'Vorheriges Bild',
+      nextImage: 'Nächstes Bild',
+      desc: 'Beschreibung',
+      feature: 'Hauptfunktionen',
+      explain:
+        'Diese App kann auf Ihrem PC oder Mobilgerät installiert werden. Dadurch verhält sich diese Web-App wie jede andere installierte App. Sie finden sie in der App-Liste und können sie auf dem Home-Bildschirm, im Startmenü oder in der Taskleiste anheften. Diese installierte Web-App kann auch sicher mit anderen Apps und Ihrem Betriebssystem zusammenarbeiten.',
+      hint: 'Neuer Inhalt gefunden.',
+      update: 'Neue Inhalte sind verfügbar.',
+    },
+  ],
+  [
     ['vi', 'vi-VN'],
     {
       install: 'Tải về',
@@ -126,20 +144,39 @@ export const pwaLocaleInfo: DefaultLocaleInfo<PwaPluginLocaleData> = [
     },
   ],
   [
-    ['br'],
+    ['pt', 'pt-PT'],
     {
       install: 'Instalar',
-      iOSInstall: "Toque no botão de compartilhar e depois 'Adicionar à Home'",
+      iOSInstall:
+        'Toque no botão de partilha e depois em „Adicionar ao ecrã principal“',
+      cancel: 'Cancelar',
+      close: 'Fechar',
+      prevImage: 'Imagem anterior',
+      nextImage: 'Imagem seguinte',
+      desc: 'Descrição',
+      feature: 'Funcionalidades principais',
+      explain:
+        'Esta aplicação pode ser instalada no seu PC ou dispositivo móvel. Isso permite que esta aplicação web se apresente e se comporte como qualquer outra aplicação instalada. Vai encontrá-la na lista de aplicações e poderá fixá-la no ecrã principal, no menu Iniciar ou na barra de tarefas. Esta aplicação web instalada também poderá interagir em segurança com outras aplicações e com o seu sistema operativo.',
+      hint: 'Novo conteúdo encontrado.',
+      update: 'Está disponível novo conteúdo.',
+    },
+  ],
+  [
+    ['pt-BR'],
+    {
+      install: 'Instalar',
+      iOSInstall:
+        "Toque no botão de compartilhar e depois em 'Adicionar à Tela de Início'",
       cancel: 'Cancelar',
       close: 'Fechar',
       prevImage: 'Imagem anterior',
       nextImage: 'Próxima imagem',
       desc: 'Descrição',
-      feature: 'Características Chave',
+      feature: 'Principais recursos',
       explain:
-        'Esta aplicação web pode ser instalada no seu PC ou dispositivo móvel. Isso fará com que ela se pareça e se comporte como qualquer outra aplicação.  Você a encontrará na lista de apps e poderá adicionar seu ícone à tela de entrada, menus ou barras de tarefa.  Uma vez instalada, esta aplicação web também poderá interagir com outras aplicações ou com o próprio sistema operacional. ',
-      hint: 'Novo conteúdo encontrado',
-      update: 'Novo conteúdo está disponível.',
+        'Este aplicativo pode ser instalado no seu PC ou dispositivo móvel. Isso permitirá que este aplicativo web se pareça e se comporte como qualquer outro aplicativo instalado. Você o encontrará na lista de aplicativos e poderá fixá-lo na tela inicial, no menu Iniciar ou na barra de tarefas. Este aplicativo web instalado também poderá interagir com segurança com outros aplicativos e com o seu sistema operacional.',
+      hint: 'Novo conteúdo encontrado.',
+      update: 'Novo conteúdo disponível.',
     },
   ],
   [
@@ -163,17 +200,17 @@ export const pwaLocaleInfo: DefaultLocaleInfo<PwaPluginLocaleData> = [
   [
     ['sk', 'sk-SK'],
     {
-      install: 'Insštalácia',
+      install: 'Inštalácia',
       iOSInstall:
-        "Klikni na tlačidlo zdielania a potom 'Daj na domovskú obrazovku'",
+        "Klikni na tlačidlo zdieľania a potom na 'Pridať na domovskú obrazovku'",
       cancel: 'Zrušiť',
       close: 'Zavrieť',
-      prevImage: 'Prodošlí obrázok',
+      prevImage: 'Predchádzajúci obrázok',
       nextImage: 'Ďalší obrázok',
-      desc: 'Poznámka',
+      desc: 'Popis',
       feature: 'Kľúčové vlastnosti',
       explain:
-        'Túto aplikáciu je možné nainštalovať na počítač alebo mobil.  Toto umožný sa správať aplikácii ako každej inej nainštalovanej aplikácii.  Nájdeš ju vo svojom liste aplikácii a budeš môcť ju pripnúť na domovskú stránku, štartovacieho menu alebo do panelu úloh.  Táto nainštalovaná webová aplikácia umžní tiež bezpečne komunikovať s ostatnými nainštalovanými aplikáciami a operačným systémom. ',
+        'Túto aplikáciu je možné nainštalovať na počítač alebo mobil. Toto umožní tejto webovej aplikácii správať sa ako každá iná nainštalovaná aplikácia. Nájdeš ju vo svojom zozname aplikácií a budeš si ju môcť pripnúť na domovskú obrazovku, do ponuky Štart alebo na panel úloh. Táto nainštalovaná webová aplikácia bude tiež môcť bezpečne komunikovať s ostatnými aplikáciami a operačným systémom.',
       hint: 'Nový obsah bol nájdený.',
       update: 'Nový obsah je dostupný.',
     },
@@ -192,8 +229,8 @@ export const pwaLocaleInfo: DefaultLocaleInfo<PwaPluginLocaleData> = [
       feature: 'Composants clés',
       explain:
         "Cette app peut être installée sur PC ou smartphone.  Cela permettra de rendre cette page web comme n'importe quelle autre application.  Vous la trouverez dans votre liste d'application et serez capable de la pin sur votre écran principal et divers menus.  L'application web installée sera capable d'interagir avec les autres applications et le système d'exploitation.",
-      hint: 'New content found.',
-      update: 'New content is available.',
+      hint: 'Nouveau contenu trouvé.',
+      update: 'De nouveaux contenus sont disponibles.',
     },
   ],
   [
@@ -212,6 +249,24 @@ export const pwaLocaleInfo: DefaultLocaleInfo<PwaPluginLocaleData> = [
         'Esta aplicación se puede instalar en su PC o dispositivo móvil. Esto permitirá que esta aplicación web se vea y se comporte como cualquier otra aplicación instalada. Lo encontrará en su lista de aplicaciones y podrá fijarlo a su pantalla de inicio, menús de inicio o barras de tareas. Esta aplicación web instalada también podrá interactuar de manera segura con otras aplicaciones y su sistema operativo.',
       hint: 'Nuevo contenido encontrado.',
       update: 'Hay nuevo contenido disponible.',
+    },
+  ],
+  [
+    ['it', 'it-IT'],
+    {
+      install: 'Installa',
+      iOSInstall:
+        "Tocca il pulsante di condivisione e poi 'Aggiungi alla schermata Home'",
+      cancel: 'Annulla',
+      close: 'Chiudi',
+      prevImage: 'Immagine precedente',
+      nextImage: 'Immagine successiva',
+      desc: 'Descrizione',
+      feature: 'Funzionalità principali',
+      explain:
+        "Questa app può essere installata sul tuo PC o dispositivo mobile. In questo modo questa web app apparirà e si comporterà come qualsiasi altra app installata. La troverai nell'elenco delle app e potrai aggiungerla alla schermata Home, al menu Start o alla barra delle applicazioni. Questa web app installata potrà anche interagire in modo sicuro con altre app e con il tuo sistema operativo.",
+      hint: 'Nuovo contenuto trovato.',
+      update: 'È disponibile nuovo contenuto.',
     },
   ],
   [
@@ -251,7 +306,7 @@ export const pwaLocaleInfo: DefaultLocaleInfo<PwaPluginLocaleData> = [
     },
   ],
   [
-    ['ko', 'ko-KO'],
+    ['ko', 'ko-KR'],
     {
       install: '설치',
       iOSInstall: "공유 버튼을 누르고 '홈 화면에 추가'를 누르세요",
@@ -298,7 +353,7 @@ export const pwaLocaleInfo: DefaultLocaleInfo<PwaPluginLocaleData> = [
       feature: 'Főbb jellemzők',
       explain:
         'Ez az alkalmazás telepíthető PC-re vagy mobil eszközre. Ez lehetővé teszi, hogy ez a webalkalmazás úgy nézzen ki és viselkedjen, mint bármely más telepített alkalmazás. Az alkalmazáslistában találod majd, és hozzáadhatod a kezdőképernyőhöz, indító menühöz vagy a feladatok sávjához. Az telepített webalkalmazás biztonságosan interakcióba léphet más alkalmazásokkal és az operációs rendszerrel.',
-      hint: 'Új tartalom érhető el.',
+      hint: 'Új tartalom található.',
       update: 'Új tartalom érhető el.',
     },
   ],

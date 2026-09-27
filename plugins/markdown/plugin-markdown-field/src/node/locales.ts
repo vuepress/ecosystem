@@ -77,7 +77,16 @@ export const fieldLocaleInfo: DefaultLocaleInfo<MarkdownFieldPluginLocaleData> =
       },
     ],
     [
-      ['br'],
+      ['pt', 'pt-PT'],
+      {
+        default: 'Predefinido',
+        required: 'Obrigatório',
+        optional: 'Opcional',
+        deprecated: 'Obsoleto',
+      },
+    ],
+    [
+      ['pt-BR'],
       {
         default: 'Padrão',
         required: 'Obrigatório',
@@ -122,6 +131,15 @@ export const fieldLocaleInfo: DefaultLocaleInfo<MarkdownFieldPluginLocaleData> =
       },
     ],
     [
+      ['it', 'it-IT'],
+      {
+        default: 'Predefinito',
+        required: 'Obbligatorio',
+        optional: 'Opzionale',
+        deprecated: 'Deprecato',
+      },
+    ],
+    [
       ['ja', 'ja-JP'],
       {
         default: 'デフォルト',
@@ -140,7 +158,7 @@ export const fieldLocaleInfo: DefaultLocaleInfo<MarkdownFieldPluginLocaleData> =
       },
     ],
     [
-      ['ko', 'ko-KO'],
+      ['ko', 'ko-KR'],
       {
         default: '기본값',
         required: '필수',

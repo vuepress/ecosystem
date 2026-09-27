@@ -38,6 +38,14 @@ export const readingTimeLocaleInfo: DefaultLocaleInfo<ReadingTimePluginLocaleDat
       },
     ],
     [
+      ['de-AT'],
+      {
+        word: 'Ungefähr $word Wörter',
+        less1Minute: 'Weniger als eine Minute',
+        time: 'Ungefähr $time min',
+      },
+    ],
+    [
       ['vi', 'vi-VN'],
       {
         word: 'Khoảng $word từ',
@@ -62,11 +70,19 @@ export const readingTimeLocaleInfo: DefaultLocaleInfo<ReadingTimePluginLocaleDat
       },
     ],
     [
-      ['br'],
+      ['pt', 'pt-PT'],
       {
-        word: 'Por volta de $word palavras',
+        word: 'Cerca de $word palavras',
         less1Minute: 'Menos de 1 minuto',
-        time: 'Por volta de $time min',
+        time: 'Cerca de $time min',
+      },
+    ],
+    [
+      ['pt-BR'],
+      {
+        word: 'Aproximadamente $word palavras',
+        less1Minute: 'Menos de 1 minuto',
+        time: 'Aproximadamente $time min',
       },
     ],
     [
@@ -102,6 +118,14 @@ export const readingTimeLocaleInfo: DefaultLocaleInfo<ReadingTimePluginLocaleDat
       },
     ],
     [
+      ['it', 'it-IT'],
+      {
+        word: 'Circa $word parole',
+        less1Minute: 'Meno di 1 minuto',
+        time: 'Circa $time min',
+      },
+    ],
+    [
       ['ja', 'ja-JP'],
       { word: '$word字程度', less1Minute: '1分以内', time: '約$time分' },
     ],
@@ -114,14 +138,14 @@ export const readingTimeLocaleInfo: DefaultLocaleInfo<ReadingTimePluginLocaleDat
       },
     ],
     [
-      ['ko', 'ko-KO'],
+      ['ko', 'ko-KR'],
       { word: '약 $word 단어', less1Minute: '1분 미만', time: '약 $time 분' },
     ],
     [
       ['fi', 'fi-FI'],
       {
         word: 'Noin $word sanaa',
-        less1Minute: 'Alle minuutti',
+        less1Minute: 'Alle minuutin',
         time: 'Noin $time minuuttia',
       },
     ],

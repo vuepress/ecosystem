@@ -197,6 +197,70 @@ export const docSearchLocaleInfo: DefaultLocaleInfo<DocSearchLocaleData> = [
     },
   ],
   [
+    ['de-AT'],
+    {
+      placeholder: 'Durchsuchen der Dokumentation',
+      translations: {
+        button: {
+          buttonText: 'Durchsuchen',
+          buttonAriaLabel: 'Durchsuchen',
+        },
+        modal: {
+          // @ts-expect-error: enterKeyHint do not need to be provided per locale
+          searchBox: {
+            searchInputLabel: 'Suche',
+            clearButtonTitle: 'Suchkriterien zurücksetzen',
+            clearButtonAriaLabel: 'Suchkriterien zurücksetzen',
+            closeButtonText: 'Schließen',
+            closeButtonAriaLabel: 'Schließen',
+            placeholderText: 'Dokumentation durchsuchen',
+          },
+          footer: {
+            selectText: 'Auswählen',
+            submitQuestionText: 'Frage senden',
+            selectKeyAriaLabel: 'Eingabetaste',
+            navigateText: 'Navigieren',
+            navigateUpKeyAriaLabel: 'Nach oben Pfeil',
+            navigateDownKeyAriaLabel: 'Nach unten Pfeil',
+            closeText: 'Schließen',
+            backToSearchText: 'Zurück zur Suche',
+            closeKeyAriaLabel: 'ESC-Taste',
+            poweredByText: 'Suchanbieter',
+          },
+          facets: {
+            defaultValueLabel: 'Alle',
+            facetMenuTriggerAriaLabel: 'Filter',
+            clearAllLabel: 'Alle löschen',
+            facetsAriaLabel: 'Suchfilter',
+            selectedFacetsAriaLabel: 'Ausgewählte Suchfilter',
+            clearFacetAriaLabel: 'Filter löschen:',
+          },
+          startScreen: {
+            recentConversationsTitle: 'Letzte Gespräche',
+            removeRecentConversationButtonTitle: 'Gespräch entfernen',
+            recentSearchesTitle: 'Letzte Suchen',
+            noRecentSearchesText: 'Keine letzten Suchen',
+            saveRecentSearchButtonTitle: 'Zu den letzten Suchen hinzufügen',
+            removeRecentSearchButtonTitle: 'Aus den letzten Suchen entfernen',
+            favoriteSearchesTitle: 'Favoriten',
+            removeFavoriteSearchButtonTitle: 'Aus den Favoriten entfernen',
+          },
+          errorScreen: {
+            titleText: 'Keine Ergebnisse gefunden',
+            helpText: 'Überprüfen Sie Ihre Netzwerkverbindung',
+          },
+          noResultsScreen: {
+            noResultsText: 'Keine relevanten Ergebnisse gefunden',
+            suggestedQueryText:
+              'Versuchen Sie es mit einer anderen Suchanfrage',
+            reportMissingResultsText: 'Sie denken, es sollte Ergebnisse geben?',
+            reportMissingResultsLinkText: 'Feedback geben',
+          },
+        },
+      },
+    },
+  ],
+  [
     ['vi', 'vi-VN'],
     {
       placeholder: 'Tìm kiếm tài liệu',
@@ -386,7 +450,70 @@ export const docSearchLocaleInfo: DefaultLocaleInfo<DocSearchLocaleData> = [
     },
   ],
   [
-    ['br'],
+    ['pt', 'pt-PT'],
+    {
+      placeholder: 'Pesquisar na documentação',
+      translations: {
+        button: {
+          buttonText: 'Pesquisar',
+          buttonAriaLabel: 'Pesquisar',
+        },
+        modal: {
+          // @ts-expect-error: enterKeyHint do not need to be provided per locale
+          searchBox: {
+            searchInputLabel: 'Pesquisar',
+            clearButtonTitle: 'Repor os critérios de pesquisa',
+            clearButtonAriaLabel: 'Repor os critérios de pesquisa',
+            closeButtonText: 'Fechar',
+            closeButtonAriaLabel: 'Fechar',
+            placeholderText: 'Pesquisar na documentação',
+          },
+          footer: {
+            selectText: 'Selecionar',
+            submitQuestionText: 'Enviar pergunta',
+            selectKeyAriaLabel: 'Tecla Enter',
+            navigateText: 'Navegar',
+            navigateUpKeyAriaLabel: 'Seta para cima',
+            navigateDownKeyAriaLabel: 'Seta para baixo',
+            closeText: 'Fechar',
+            backToSearchText: 'Voltar à pesquisa',
+            closeKeyAriaLabel: 'Tecla Esc',
+            poweredByText: 'Fornecedor de pesquisa',
+          },
+          facets: {
+            defaultValueLabel: 'Todos',
+            facetMenuTriggerAriaLabel: 'Filtros',
+            clearAllLabel: 'Limpar tudo',
+            facetsAriaLabel: 'Filtros de pesquisa',
+            selectedFacetsAriaLabel: 'Filtros de pesquisa selecionados',
+            clearFacetAriaLabel: 'Limpar filtro:',
+          },
+          startScreen: {
+            recentConversationsTitle: 'Conversas recentes',
+            removeRecentConversationButtonTitle: 'Remover conversa',
+            recentSearchesTitle: 'Pesquisas recentes',
+            noRecentSearchesText: 'Sem pesquisas recentes',
+            saveRecentSearchButtonTitle: 'Guardar nas pesquisas recentes',
+            removeRecentSearchButtonTitle: 'Remover das pesquisas recentes',
+            favoriteSearchesTitle: 'Favoritos',
+            removeFavoriteSearchButtonTitle: 'Remover dos favoritos',
+          },
+          errorScreen: {
+            titleText: 'Não foi possível obter resultados',
+            helpText: 'Talvez deva verificar a sua ligação à rede',
+          },
+          noResultsScreen: {
+            noResultsText: 'Não foram encontrados resultados para',
+            suggestedQueryText: 'Pode tentar pesquisar',
+            reportMissingResultsText: 'Acha que deveria haver resultados?',
+            reportMissingResultsLinkText: 'Comunique-nos',
+          },
+        },
+      },
+    },
+  ],
+  [
+    ['pt-BR'],
     {
       placeholder: 'Pesquisar documentação',
       translations: {
@@ -703,6 +830,71 @@ export const docSearchLocaleInfo: DefaultLocaleInfo<DocSearchLocaleData> = [
     },
   ],
   [
+    ['it', 'it-IT'],
+    {
+      placeholder: 'Cerca nella documentazione',
+      translations: {
+        button: {
+          buttonText: 'Cerca',
+          buttonAriaLabel: 'Cerca',
+        },
+        modal: {
+          // @ts-expect-error: enterKeyHint do not need to be provided per locale
+          searchBox: {
+            searchInputLabel: 'Cerca',
+            clearButtonTitle: 'Reimposta i criteri di ricerca',
+            clearButtonAriaLabel: 'Reimposta i criteri di ricerca',
+            closeButtonText: 'Chiudi',
+            closeButtonAriaLabel: 'Chiudi',
+            placeholderText: 'Cerca nella documentazione',
+          },
+          footer: {
+            selectText: 'Seleziona',
+            submitQuestionText: 'Invia domanda',
+            selectKeyAriaLabel: 'Tasto Invio',
+            navigateText: 'Naviga',
+            navigateUpKeyAriaLabel: 'Freccia su',
+            navigateDownKeyAriaLabel: 'Freccia giù',
+            closeText: 'Chiudi',
+            backToSearchText: 'Torna alla ricerca',
+            closeKeyAriaLabel: 'Tasto ESC',
+            poweredByText: 'Provider di ricerca',
+          },
+          facets: {
+            defaultValueLabel: 'Tutti',
+            facetMenuTriggerAriaLabel: 'Filtri',
+            clearAllLabel: 'Cancella tutto',
+            facetsAriaLabel: 'Filtri di ricerca',
+            selectedFacetsAriaLabel: 'Filtri di ricerca selezionati',
+            clearFacetAriaLabel: 'Cancella filtro:',
+          },
+          startScreen: {
+            recentConversationsTitle: 'Conversazioni recenti',
+            removeRecentConversationButtonTitle: 'Rimuovi conversazione',
+            recentSearchesTitle: 'Ricerche recenti',
+            noRecentSearchesText: 'Nessuna ricerca recente',
+            saveRecentSearchButtonTitle: 'Salva nelle ricerche recenti',
+            removeRecentSearchButtonTitle: 'Rimuovi dalle ricerche recenti',
+            favoriteSearchesTitle: 'Preferiti',
+            removeFavoriteSearchButtonTitle: 'Rimuovi dai preferiti',
+          },
+          errorScreen: {
+            titleText: 'Impossibile ottenere risultati',
+            helpText:
+              'Potrebbe essere necessario verificare la connessione di rete',
+          },
+          noResultsScreen: {
+            noResultsText: 'Nessun risultato trovato per',
+            suggestedQueryText: 'Puoi provare a cercare',
+            reportMissingResultsText:
+              'Pensi che dovrebbero esserci dei risultati?',
+            reportMissingResultsLinkText: 'Facci sapere',
+          },
+        },
+      },
+    },
+  ],
+  [
     ['ja', 'ja-JP'],
     {
       placeholder: 'ドキュメントを検索',
@@ -830,7 +1022,7 @@ export const docSearchLocaleInfo: DefaultLocaleInfo<DocSearchLocaleData> = [
     },
   ],
   [
-    ['ko', 'ko-KO'],
+    ['ko', 'ko-KR'],
     {
       placeholder: '문서 검색',
       translations: {

@@ -23,7 +23,14 @@ export const walineLocalesInfo: DefaultLocaleInfo<WalineLocaleData> = [
     ['de', 'de-DE'],
     {
       placeholder:
-        'Schreibe ein Kommentar (Geben Sie die E-Mail-Adresse ein, um eine E-Mail-Benachrichtigung zu erhalten, wenn Sie eine Antwort erhalten)',
+        'Schreibe einen Kommentar (Gib die E-Mail-Adresse ein, um eine E-Mail-Benachrichtigung zu erhalten, wenn du eine Antwort bekommst)',
+    },
+  ],
+  [
+    ['de-AT'],
+    {
+      placeholder:
+        'Hinterlasse einen Kommentar (Gib die E-Mail-Adresse an, um per E-Mail benachrichtigt zu werden, wenn du eine Antwort erhältst)',
     },
   ],
   [
@@ -48,10 +55,17 @@ export const walineLocalesInfo: DefaultLocaleInfo<WalineLocaleData> = [
     },
   ],
   [
-    ['br', 'br-BR'],
+    ['pt', 'pt-PT'],
     {
       placeholder:
-        'Escreva um comentário aqui (preencha com o endereço de email para receber notificações quando tiver alguma resposta)',
+        'Escreva um comentário aqui (preencha o endereço de e-mail para receber uma notificação por e-mail quando obtiver uma resposta)',
+    },
+  ],
+  [
+    ['pt-BR'],
+    {
+      placeholder:
+        'Escreva um comentário aqui (preencha com o endereço de e-mail para receber notificações quando tiver alguma resposta)',
     },
   ],
   [
@@ -83,6 +97,13 @@ export const walineLocalesInfo: DefaultLocaleInfo<WalineLocaleData> = [
     },
   ],
   [
+    ['it', 'it-IT'],
+    {
+      placeholder:
+        "Scrivi un commento qui (inserisci l'indirizzo email per ricevere una notifica via email quando ti rispondono)",
+    },
+  ],
+  [
     ['ja', 'ja-JP'],
     {
       placeholder:
@@ -97,7 +118,7 @@ export const walineLocalesInfo: DefaultLocaleInfo<WalineLocaleData> = [
     },
   ],
   [
-    ['ko', 'ko-KO'],
+    ['ko', 'ko-KR'],
     {
       placeholder:
         '댓글을 남겨주세요 (답글이 달렸을 때 이메일로 알림을 받으려면 이메일 주소를 입력하세요)',
@@ -128,7 +149,7 @@ export const walineLocalesInfo: DefaultLocaleInfo<WalineLocaleData> = [
     ['nl', 'nl-NL'],
     {
       placeholder:
-        'Schrijf een opmerking hier (Vul je emailadres in om een email-notificatie te ontvangen wanneer er gereageerd wordt.',
+        'Schrijf hier een opmerking (Vul je e-mailadres in om een e-mailmelding te ontvangen wanneer er gereageerd wordt)',
     },
   ],
 ]
