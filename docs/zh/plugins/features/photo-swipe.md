@@ -71,8 +71,6 @@ export default {
 
 参考：[多语言配置](../supported-locales.md)。
 
-覆盖内置文本或新增语言的方式，请参阅[多语言配置 > 配置方式](../supported-locales.md#配置方式)。
-
 @@`locales.<localePath>.close` type=string
 
 关闭按钮标签文字。

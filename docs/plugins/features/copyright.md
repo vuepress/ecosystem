@@ -120,8 +120,6 @@ Locale config of the plugin.
 
 See also: [Locales](../supported-locales.md).
 
-See [Locales > Configuration](../supported-locales.md#configuration) for how to override a built-in text or add a language.
-
 @@`locales.<localePath>.author` type=string
 
 Author text, where `:author` will be replaced by the author.

@@ -71,8 +71,6 @@ Locale config of the plugin.
 
 See also: [Locales](../supported-locales.md).
 
-See [Locales > Configuration](../supported-locales.md#configuration) for how to override a built-in text or add a language.
-
 @@`locales.<localePath>.close` type=string
 
 Label text of the close button.
