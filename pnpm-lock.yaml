@@ -910,7 +910,7 @@ importers:
         version: 2.15.1(react-dom@19.3.0(react@19.3.0))(react@19.3.0)(svelte@5.57.1)(vue@3.5.43(typescript@6.0.3))
       '@mdit/helper':
         specifier: ^1.1.1
-        version: 1.1.1(markdown-it@14.3.2)
+        version: 1.1.2(markdown-it@14.3.2)
       '@mdit/plugin-advanced-links':
         specifier: ^0.2.0
         version: 0.2.0(markdown-it@14.3.2)
@@ -1181,10 +1181,10 @@ importers:
         version: 3.0.2
       '@mdit/helper':
         specifier: ^1.1.1
-        version: 1.1.1(markdown-it@14.3.2)
+        version: 1.1.2(markdown-it@14.3.2)
       '@mdit/plugin-field':
-        specifier: ^2.0.1
-        version: 2.0.1(markdown-it@14.3.2)
+        specifier: ^3.0.0
+        version: 3.0.0(markdown-it@14.3.2)
       '@types/markdown-it':
         specifier: ^14.2.0
         version: 14.2.0
@@ -1329,7 +1329,7 @@ importers:
     dependencies:
       '@mdit/helper':
         specifier: ^1.1.1
-        version: 1.1.1(markdown-it@14.3.2)
+        version: 1.1.2(markdown-it@14.3.2)
       '@mdit/plugin-demo':
         specifier: ^2.0.1
         version: 2.0.1(markdown-it@14.3.2)
@@ -3845,6 +3845,15 @@ packages:
       markdown-it:
         optional: true
 
+  '@mdit/helper@1.1.2':
+    resolution: {integrity: sha512-xZywQ7aXrmkRCuGvFXguXVKeiQ7kHCxPkjtR+nK/n31YiSPPi/Rmb/ll+CYt0LdyeXR0Y1I16da7gxDT4/VXWg==}
+    engines: {node: '>=22'}
+    peerDependencies:
+      markdown-it: ^15.0.2
+    peerDependenciesMeta:
+      markdown-it:
+        optional: true
+
   '@mdit/plugin-advanced-links@0.2.0':
     resolution: {integrity: sha512-ma4KgKDoLNvNHfgQIm8m3IwF+x9MmCyF8npDvA/BSLrIzP2iqfbQjASi6Ezldhu4b8U9v3ioW0XzjkqSML8fJg==}
     engines: {node: '>=22'}
@@ -3899,11 +3908,11 @@ packages:
       markdown-it:
         optional: true
 
-  '@mdit/plugin-field@2.0.1':
-    resolution: {integrity: sha512-pu8KRS3K/a4o5tlACccnhhapVBhUY6J6RsBJOKqbtbCyR+SH1J4B6qH72w145EDf+zkRrAIdIiQRdoSqoKaxwg==}
+  '@mdit/plugin-field@3.0.0':
+    resolution: {integrity: sha512-hfWaIT0OBe9QqtD8xHOEEAyy/zAecOuZ6OECOQqXJK5XKPXrbKRs/YezQ0zKa+8iGOj0HCuAYLloYk9/xl9kew==}
     engines: {node: '>=20'}
     peerDependencies:
-      markdown-it: ^15.0.1
+      markdown-it: ^15.0.2
     peerDependenciesMeta:
       markdown-it:
         optional: true
@@ -13337,6 +13346,10 @@ snapshots:
     optionalDependencies:
       markdown-it: 14.3.2
 
+  '@mdit/helper@1.1.2(markdown-it@14.3.2)':
+    optionalDependencies:
+      markdown-it: 14.3.2
+
   '@mdit/plugin-advanced-links@0.2.0(markdown-it@14.3.2)':
     dependencies:
       '@mdit/helper': 1.1.1(markdown-it@14.3.2)
@@ -13374,9 +13387,9 @@ snapshots:
     optionalDependencies:
       markdown-it: 14.3.2
 
-  '@mdit/plugin-field@2.0.1(markdown-it@14.3.2)':
+  '@mdit/plugin-field@3.0.0(markdown-it@14.3.2)':
     dependencies:
-      '@mdit/helper': 1.1.1(markdown-it@14.3.2)
+      '@mdit/helper': 1.1.2(markdown-it@14.3.2)
     optionalDependencies:
       markdown-it: 14.3.2
 
@@ -15713,7 +15726,7 @@ snapshots:
     dependencies:
       ansi-align: 3.0.1
       camelcase: 7.0.1
-      chalk: 5.0.1
+      chalk: 5.6.2
       cli-boxes: 3.0.0
       string-width: 5.1.2
       type-fest: 2.19.0

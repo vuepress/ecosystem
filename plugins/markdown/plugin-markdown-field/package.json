@@ -51,7 +51,7 @@
   "dependencies": {
     "@mdit-vue/shared": "^3.0.2",
     "@mdit/helper": "^1.1.1",
-    "@mdit/plugin-field": "^2.0.1",
+    "@mdit/plugin-field": "^3.0.0",
     "@types/markdown-it": "^14.2.0",
     "@vuepress/helper": "workspace:*"
   },

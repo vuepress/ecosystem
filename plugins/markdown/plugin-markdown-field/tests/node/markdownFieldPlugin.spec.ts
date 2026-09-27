@@ -28,7 +28,7 @@ const render = (markdown: MarkdownOptions, source: string): string => {
 }
 
 const SOURCE = `::: fields
-@theme@ type="object"
+@\`theme\` type="object"
 Theme config
 :::
 `
