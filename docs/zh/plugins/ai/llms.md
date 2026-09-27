@@ -381,46 +381,36 @@ description: ...
 
 插件会读取 Markdown 文件中的以下 `frontmatter` 属性。
 
-### title {#frontmatter-title}
+::: fields
+@`title` type=string
 
-- 类型: `string`
-- 详情:
-  - 在 **首页** (`README.md`) 上，此属性覆盖 `llms.txt` 中的站点标题。
-  - 在 **普通页面** 上，此属性作为目录中的页面标题。
+- 在 **首页** (`README.md`) 上，此属性覆盖 `llms.txt` 中的站点标题。
+- 在 **普通页面** 上，此属性作为目录中的页面标题。
 
-### description {#frontmatter-description}
+@`description` type=string
 
-- 类型: `string`
-- 详情:
-  - 在 **首页** (`README.md`) 上，此属性覆盖 `llms.txt` 中的站点描述。
-  - 在 **普通页面** 上，此属性提供目录中的页面摘要。
+- 在 **首页** (`README.md`) 上，此属性覆盖 `llms.txt` 中的站点描述。
+- 在 **普通页面** 上，此属性提供目录中的页面摘要。
 
-  _建议：为每个页面编写清晰、简洁的描述，帮助 LLM 理解链接的上下文和相关性。_
+_建议：为每个页面编写清晰、简洁的描述，帮助 LLM 理解链接的上下文和相关性。_
 
-### heroText {#frontmatter-herotext}
+@`heroText` type=string
 
-- 类型: `string`
-- 详情:
-  - 仅用于首页（语言环境 `README.md`）。它是 `llms.txt` 标题的首选来源。
+仅用于首页（语言环境 `README.md`）。它是 `llms.txt` 标题的首选来源。
 
-### tagline {#frontmatter-tagline}
+@`tagline` type=string
 
-- 类型: `string`
-- 详情:
-  - 仅用于首页（语言环境 `README.md`）。它是 `llms.txt` 描述的首选来源。
+仅用于首页（语言环境 `README.md`）。它是 `llms.txt` 描述的首选来源。
 
-### details {#frontmatter-details}
+@`details` type=string
 
-- 类型: `string`
-- 详情:
-  - 仅用于首页（语言环境 `README.md`）。它提供 `llms.txt` 中 `{details}` 部分的内容。
+仅用于首页（语言环境 `README.md`）。它提供 `llms.txt` 中 `{details}` 部分的内容。
 
-### llmstxt
+@`llmstxt` type=boolean default=`true`
 
-- 类型: `boolean`
-- 默认值: `true`
-- 详情:
-  - 控制是否将当前页面包含在生成的 LLM 文件中。设置为 `false` 可对 AI Agent 隐藏特定页面。
+控制是否将当前页面包含在生成的 LLM 文件中。设置为 `false` 可对 AI Agent 隐藏特定页面。
+
+:::
 
 ## 扩展标记 (Markup)
 

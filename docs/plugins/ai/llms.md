@@ -333,46 +333,36 @@ llmsPlugin({
 
 The plugin respects the following `frontmatter` properties in your Markdown files.
 
-### title {#frontmatter-title}
+::: fields
+@`title` type=string
 
-- Types: `string`
-- Details:
-  - On the **homepage** (`README.md`), this overrides the site title in `llms.txt`.
-  - On **regular pages**, this serves as the page title in the Table of Contents.
+- On the **homepage** (`README.md`), this overrides the site title in `llms.txt`.
+- On **regular pages**, this serves as the page title in the Table of Contents.
 
-### description {#frontmatter-description}
+@`description` type=string
 
-- Types: `string`
-- Details:
-  - On the **homepage** (`README.md`), this overrides the site description in `llms.txt`.
-  - On **regular pages**, this provides the page summary in the Table of Contents.
+- On the **homepage** (`README.md`), this overrides the site description in `llms.txt`.
+- On **regular pages**, this provides the page summary in the Table of Contents.
 
-  _Recommendation: Write clear, concise descriptions for every page to help LLMs understand the context and relevance of the link._
+_Recommendation: Write clear, concise descriptions for every page to help LLMs understand the context and relevance of the link._
 
-### heroText {#frontmatter-herotext}
+@`heroText` type=string
 
-- Types: `string`
-- Details:
-  - Used exclusively on the homepage (locale `README.md`). It serves as the primary title source for `llms.txt`.
+Used exclusively on the homepage (locale `README.md`). It serves as the primary title source for `llms.txt`.
 
-### tagline {#frontmatter-tagline}
+@`tagline` type=string
 
-- Types: `string`
-- Details:
-  - Used exclusively on the homepage (locale `README.md`). It serves as the primary description source for `llms.txt`.
+Used exclusively on the homepage (locale `README.md`). It serves as the primary description source for `llms.txt`.
 
-### details {#frontmatter-details}
+@`details` type=string
 
-- Types: `string`
-- Details:
-  - Used exclusively on the homepage (locale `README.md`). It provides the content for the `{details}` section in `llms.txt`.
+Used exclusively on the homepage (locale `README.md`). It provides the content for the `{details}` section in `llms.txt`.
 
-### llmstxt
+@`llmstxt` type=boolean default=`true`
 
-- Types: `boolean`
-- Default: `true`
-- Details:
-  - Controls whether the current page is included in the generated LLM files. Set to `false` to hide a specific page from AI agents.
+Controls whether the current page is included in the generated LLM files. Set to `false` to hide a specific page from AI agents.
+
+:::
 
 ## Markup Extensions
 
