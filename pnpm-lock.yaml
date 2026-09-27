@@ -1450,7 +1450,7 @@ importers:
     dependencies:
       '@mdit/plugin-uml':
         specifier: ^2.0.1
-        version: 2.0.1(markdown-it@14.3.2)
+        version: 2.0.2(markdown-it@14.3.2)
       '@types/markdown-it':
         specifier: ^14.2.0
         version: 14.2.0
@@ -4107,6 +4107,15 @@ packages:
     engines: {node: '>=22'}
     peerDependencies:
       markdown-it: ^15.0.1
+    peerDependenciesMeta:
+      markdown-it:
+        optional: true
+
+  '@mdit/plugin-uml@2.0.2':
+    resolution: {integrity: sha512-RWhsxKszRbLAo1z0zdYw5wtqbxDYSgV/ylLimunm9th80JvSCFIeh5TsIxvA7gPHwxMEvMUgkOHBTioXHFQnpg==}
+    engines: {node: '>=22'}
+    peerDependencies:
+      markdown-it: ^15.0.2
     peerDependenciesMeta:
       markdown-it:
         optional: true
@@ -13513,6 +13522,12 @@ snapshots:
   '@mdit/plugin-uml@2.0.1(markdown-it@14.3.2)':
     dependencies:
       '@mdit/helper': 1.1.1(markdown-it@14.3.2)
+    optionalDependencies:
+      markdown-it: 14.3.2
+
+  '@mdit/plugin-uml@2.0.2(markdown-it@14.3.2)':
+    dependencies:
+      '@mdit/helper': 1.1.2(markdown-it@14.3.2)
     optionalDependencies:
       markdown-it: 14.3.2
 
