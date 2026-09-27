@@ -99,10 +99,14 @@ export default {
 
 ## Frontmatter
 
-### photoSwipe
+::: fields
+@`photoSwipe` type=`boolean | string`
 
-- 类型：`string | false`
-- 详情：当前页面的图片选择器，或 `false` 以在当前页面禁用 photo-swipe
+当前页面的图片选择器。
+
+字符串会覆盖当前页面的 [selector](#selector) 选项，`false` 会在当前页面禁用插件，`true` 或不设置则使用插件选项。
+
+:::
 
 ## 客户端配置
 
@@ -120,9 +124,9 @@ definePhotoSwipeConfig({
 
 ## API
 
-你也可以通过 API 调用 PhotoSwipe。
+### createPhotoSwipe
 
-`createPhotoSwipe` 允许你以编程方式使用 PhotoSwipe 查看图片链接：
+你也可以通过 API 调用 PhotoSwipe。`createPhotoSwipe` 允许你以编程方式使用 PhotoSwipe 查看图片链接，它接收图片链接与 PhotoSwipe 选项，并返回一个 [PhotoSwipeState](#photoswipestate)：
 
 ```vue
 <script setup lang="ts">
@@ -160,6 +164,25 @@ onUnmounted(() => {
   </button>
 </template>
 ```
+
+### PhotoSwipeState
+
+`createPhotoSwipe` 返回的状态，用于控制它所创建的 PhotoSwipe 实例：
+
+::: fields
+@`open` type=`(index: number) => void`
+
+在指定图片索引处打开 PhotoSwipe。
+
+@`close` type=`() => void`
+
+关闭 PhotoSwipe 实例。
+
+@`destroy` type=`() => void`
+
+释放该状态的监听器。当不再需要该状态时调用它，例如持有它的组件卸载时。
+
+:::
 
 ## 样式
 

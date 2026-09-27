@@ -99,10 +99,14 @@ Label text of the next image button.
 
 ## Frontmatter
 
-### photoSwipe
+::: fields
+@`photoSwipe` type=`boolean | string`
 
-- Type: `string | false`
-- Details: Image selector for the current page, or `false` to disable photo-swipe on the current page
+Image selector for the current page.
+
+A string overrides the [selector](#selector) option for the current page, `false` disables the plugin on the current page, and `true` or leaving it unset uses the plugin option.
+
+:::
 
 ## Client Config
 
@@ -120,9 +124,9 @@ definePhotoSwipeConfig({
 
 ## API
 
-You can also call PhotoSwipe with APIs.
+### createPhotoSwipe
 
-`createPhotoSwipe` allows you to programmatically view image links with PhotoSwipe:
+You can also call PhotoSwipe with APIs. `createPhotoSwipe` allows you to programmatically view image links with PhotoSwipe. It takes the image links and the PhotoSwipe options, and resolves to a [PhotoSwipeState](#photoswipestate):
 
 ```vue
 <script setup lang="ts">
@@ -160,6 +164,25 @@ onUnmounted(() => {
   </button>
 </template>
 ```
+
+### PhotoSwipeState
+
+The state returned by `createPhotoSwipe`, which controls the PhotoSwipe instance it creates:
+
+::: fields
+@`open` type=`(index: number) => void`
+
+Open PhotoSwipe at the given image index.
+
+@`close` type=`() => void`
+
+Close the PhotoSwipe instance.
+
+@`destroy` type=`() => void`
+
+Release the listeners of the state. Call it when the state is no longer needed, e.g. when the component that holds it is unmounted.
+
+:::
 
 ## Styles
 
