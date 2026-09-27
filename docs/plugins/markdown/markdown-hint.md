@@ -65,7 +65,7 @@ The container can contain a title only:
 
 :::: preview
 
-::: warning A warning text
+::: warning Title only
 :::
 
 ::::

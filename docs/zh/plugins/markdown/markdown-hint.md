@@ -65,7 +65,7 @@ const a = 1
 
 :::: preview
 
-::: warning 警告文字
+::: warning 仅有标题
 :::
 
 ::::
