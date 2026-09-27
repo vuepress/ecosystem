@@ -1,4 +1,5 @@
 const coolDownExcludePrefixes = [
+  '@mdit/',
   '@oxfmt/',
   '@oxlint/',
   '@vue/',

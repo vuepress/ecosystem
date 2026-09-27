@@ -164,9 +164,9 @@ settings:
 
 catalogs:
   default:
-    '@iconify-json/vscode-icons':
-      specifier: ^1.2.80
-      version: 1.2.80
+    '@types/markdown-it':
+      specifier: ^14.2.0
+      version: 14.2.0
     '@vuepress/bundler-vite':
       specifier: 2.0.0-rc.31
       version: 2.0.0-rc.31
@@ -176,12 +176,12 @@ catalogs:
     '@vueuse/core':
       specifier: ^15.0.0
       version: 15.0.0
-    '@yutengjing/vscode-icons':
-      specifier: ^0.1.1
-      version: 0.1.1
     chokidar:
       specifier: ^5.0.0
       version: 5.0.0
+    markdown-it:
+      specifier: ^14.3.2
+      version: 14.3.2
     sass:
       specifier: ^1.105.0
       version: 1.105.0
@@ -197,8 +197,6 @@ catalogs:
     vuepress:
       specifier: 2.0.0-rc.31
       version: 2.0.0-rc.31
-
-packageExtensionsChecksum: sha256-ixlNthTWfNCzCzk7FdRhdkYCTwZGGe1RToQ31yGBJfA=
 
 patchedDependencies:
   '@vuepress/bundler-webpack': 04b94fa0b74e570a10fc5281985904559acafc30087e7d0c1a55cf60d7fed589
@@ -275,13 +273,13 @@ importers:
         version: 14.2.6(supports-color@10.2.2)
       stylelint:
         specifier: ^17.15.0
-        version: 17.15.0(postcss-html@2.0.0(postcss@8.5.28))(supports-color@10.2.2)(typescript@6.0.3)
+        version: 17.15.0(supports-color@10.2.2)(typescript@6.0.3)
       stylelint-config-hope:
         specifier: ^12.1.0
-        version: 12.1.0(postcss-html@2.0.0(postcss@8.5.28))(postcss@8.5.28)(stylelint@17.15.0(postcss-html@2.0.0(postcss@8.5.28))(supports-color@10.2.2)(typescript@6.0.3))
+        version: 12.1.0(postcss-html@2.0.0(postcss@8.5.28))(postcss@8.5.28)(stylelint@17.15.0(supports-color@10.2.2)(typescript@6.0.3))
       stylelint-config-html:
         specifier: ^2.0.0
-        version: 2.0.0(postcss-html@2.0.0(postcss@8.5.28))(stylelint@17.15.0(postcss-html@2.0.0(postcss@8.5.28))(supports-color@10.2.2)(typescript@6.0.3))
+        version: 2.0.0(postcss-html@2.0.0(postcss@8.5.28))(stylelint@17.15.0(supports-color@10.2.2)(typescript@6.0.3))
       tsconfig-vuepress:
         specifier: ^7.0.0
         version: 7.0.0
@@ -558,13 +556,13 @@ importers:
         specifier: ^8.1.2
         version: 8.1.2
       '@types/markdown-it':
-        specifier: ^14.2.0
+        specifier: 'catalog:'
         version: 14.2.0
       '@vuepress/plugin-markdown-include':
         specifier: workspace:*
         version: link:../../markdown/plugin-markdown-include
       markdown-it:
-        specifier: ^14.3.2
+        specifier: 'catalog:'
         version: 14.3.2
       unified:
         specifier: ^11.0.5
@@ -878,7 +876,7 @@ importers:
         specifier: ^3.1.7
         version: 3.1.7
       '@mdit/plugin-icon':
-        specifier: ^1.1.1
+        specifier: ^1.1.2
         version: 1.1.2
       '@vuepress/helper':
         specifier: workspace:*
@@ -909,10 +907,10 @@ importers:
         specifier: ^2.15.0
         version: 2.15.1(react-dom@19.3.0(react@19.3.0))(react@19.3.0)(svelte@5.57.1)(vue@3.5.43(typescript@6.0.3))
       '@mdit/helper':
-        specifier: ^1.1.1
+        specifier: ^1.1.2
         version: 1.1.2(markdown-it@14.3.2)
       '@mdit/plugin-advanced-links':
-        specifier: ^0.2.0
+        specifier: ^0.2.1
         version: 0.2.1(markdown-it@14.3.2)
       '@videojs/dash-video':
         specifier: 10.0.0-rc.4
@@ -964,10 +962,10 @@ importers:
         version: 2.0.0-rc.31(64fe27a61b2d7fe5486fea782158c0c7)
     devDependencies:
       '@types/markdown-it':
-        specifier: ^14.2.0
+        specifier: 'catalog:'
         version: 14.2.0
       markdown-it:
-        specifier: ^14.3.2
+        specifier: 'catalog:'
         version: 14.3.2
 
   plugins/features/plugin-medium-zoom:
@@ -1075,10 +1073,10 @@ importers:
   plugins/markdown/plugin-markdown-chart:
     dependencies:
       '@mdit/plugin-container':
-        specifier: ^2.0.1
+        specifier: ^2.0.2
         version: 2.0.2(markdown-it@14.3.2)
       '@mdit/plugin-plantuml':
-        specifier: ^2.0.1
+        specifier: ^2.0.2
         version: 2.0.2(markdown-it@14.3.2)
       '@vuepress/helper':
         specifier: workspace:*
@@ -1115,10 +1113,10 @@ importers:
         version: 2.0.0-rc.31(64fe27a61b2d7fe5486fea782158c0c7)
     devDependencies:
       '@types/markdown-it':
-        specifier: ^14.2.0
+        specifier: 'catalog:'
         version: 14.2.0
       markdown-it:
-        specifier: ^14.3.2
+        specifier: 'catalog:'
         version: 14.3.2
       markmap-common:
         specifier: ^0.18.9
@@ -1127,7 +1125,7 @@ importers:
   plugins/markdown/plugin-markdown-container:
     dependencies:
       '@types/markdown-it':
-        specifier: ^14.2.0
+        specifier: 'catalog:'
         version: 14.2.0
       markdown-it-container:
         specifier: ^4.0.0
@@ -1137,22 +1135,22 @@ importers:
         version: 2.0.0-rc.31(64fe27a61b2d7fe5486fea782158c0c7)
     devDependencies:
       markdown-it:
-        specifier: ^14.3.2
+        specifier: 'catalog:'
         version: 14.3.2
 
   plugins/markdown/plugin-markdown-ext:
     dependencies:
       '@mdit/plugin-container':
-        specifier: ^2.0.1
+        specifier: ^2.0.2
         version: 2.0.2(markdown-it@14.3.2)
       '@mdit/plugin-footnote':
-        specifier: ^1.1.1
+        specifier: ^1.1.2
         version: 1.1.2(markdown-it@14.3.2)
       '@mdit/plugin-tasklist':
-        specifier: ^1.1.1
+        specifier: ^1.1.3
         version: 1.1.3(markdown-it@14.3.2)
       '@types/markdown-it':
-        specifier: ^14.2.0
+        specifier: 'catalog:'
         version: 14.2.0
       '@vuepress/helper':
         specifier: workspace:*
@@ -1171,7 +1169,7 @@ importers:
         specifier: ^4.0.9
         version: 4.0.9
       markdown-it:
-        specifier: ^14.3.2
+        specifier: 'catalog:'
         version: 14.3.2
 
   plugins/markdown/plugin-markdown-field:
@@ -1180,13 +1178,13 @@ importers:
         specifier: ^3.0.2
         version: 3.0.2
       '@mdit/helper':
-        specifier: ^1.1.1
+        specifier: ^1.1.2
         version: 1.1.2(markdown-it@14.3.2)
       '@mdit/plugin-field':
         specifier: ^3.0.0
         version: 3.0.0(markdown-it@14.3.2)
       '@types/markdown-it':
-        specifier: ^14.2.0
+        specifier: 'catalog:'
         version: 14.2.0
       '@vuepress/helper':
         specifier: workspace:*
@@ -1196,16 +1194,16 @@ importers:
         version: 2.0.0-rc.31(64fe27a61b2d7fe5486fea782158c0c7)
     devDependencies:
       markdown-it:
-        specifier: ^14.3.2
+        specifier: 'catalog:'
         version: 14.3.2
 
   plugins/markdown/plugin-markdown-file-tree:
     dependencies:
       '@mdit/plugin-container':
-        specifier: ^2.0.1
+        specifier: ^2.0.2
         version: 2.0.2(markdown-it@14.3.2)
       '@types/markdown-it':
-        specifier: ^14.2.0
+        specifier: 'catalog:'
         version: 14.2.0
       '@vuepress/helper':
         specifier: workspace:*
@@ -1218,28 +1216,28 @@ importers:
         version: 2.0.0-rc.31(64fe27a61b2d7fe5486fea782158c0c7)
     devDependencies:
       '@iconify-json/vscode-icons':
-        specifier: 'catalog:'
-        version: 1.2.80
+        specifier: ^1.2.81
+        version: 1.2.82
       '@vuepress/highlighter-helper':
         specifier: workspace:*
         version: link:../../../tools/highlighter-helper
       '@yutengjing/vscode-icons':
-        specifier: 'catalog:'
+        specifier: ^0.1.1
         version: 0.1.1
       markdown-it:
-        specifier: ^14.3.2
+        specifier: 'catalog:'
         version: 14.3.2
 
   plugins/markdown/plugin-markdown-hint:
     dependencies:
       '@mdit/plugin-alert':
-        specifier: ^2.0.1
+        specifier: ^2.0.2
         version: 2.0.2(markdown-it@14.3.2)
       '@mdit/plugin-container':
-        specifier: ^2.0.1
+        specifier: ^2.0.2
         version: 2.0.2(markdown-it@14.3.2)
       '@types/markdown-it':
-        specifier: ^14.2.0
+        specifier: 'catalog:'
         version: 14.2.0
       '@vuepress/helper':
         specifier: workspace:*
@@ -1252,25 +1250,25 @@ importers:
         version: 2.0.0-rc.31(64fe27a61b2d7fe5486fea782158c0c7)
     devDependencies:
       markdown-it:
-        specifier: ^14.3.2
+        specifier: 'catalog:'
         version: 14.3.2
 
   plugins/markdown/plugin-markdown-image:
     dependencies:
       '@mdit/plugin-figure':
-        specifier: ^1.2.1
+        specifier: ^1.2.2
         version: 1.2.2
       '@mdit/plugin-img-lazyload':
-        specifier: ^1.1.1
+        specifier: ^1.1.2
         version: 1.1.2
       '@mdit/plugin-img-mark':
-        specifier: ^1.1.1
+        specifier: ^1.1.2
         version: 1.1.2
       '@mdit/plugin-img-size':
-        specifier: ^1.1.1
+        specifier: ^1.1.2
         version: 1.1.2
       '@types/markdown-it':
-        specifier: ^14.2.0
+        specifier: 'catalog:'
         version: 14.2.0
       '@vuepress/helper':
         specifier: workspace:*
@@ -1282,10 +1280,10 @@ importers:
   plugins/markdown/plugin-markdown-include:
     dependencies:
       '@mdit/plugin-include':
-        specifier: ^1.1.1
+        specifier: ^1.1.3
         version: 1.1.3
       '@types/markdown-it':
-        specifier: ^14.2.0
+        specifier: 'catalog:'
         version: 14.2.0
       '@vuepress/helper':
         specifier: workspace:*
@@ -1300,13 +1298,13 @@ importers:
         specifier: ^4.1.1
         version: 4.1.3
       '@mdit/plugin-katex-slim':
-        specifier: ^1.1.1
+        specifier: ^1.1.3
         version: 1.1.3(katex@0.18.9)(markdown-it@14.3.2)
       '@mdit/plugin-mathjax-slim':
-        specifier: ^1.2.1
+        specifier: ^1.2.2
         version: 1.2.2(@mathjax/mathjax-newcm-font@4.1.3)(@mathjax/src@4.1.3)(markdown-it@14.3.2)
       '@types/markdown-it':
-        specifier: ^14.2.0
+        specifier: 'catalog:'
         version: 14.2.0
       '@vuepress/helper':
         specifier: workspace:*
@@ -1322,19 +1320,19 @@ importers:
         version: 2.0.0-rc.31(64fe27a61b2d7fe5486fea782158c0c7)
     devDependencies:
       markdown-it:
-        specifier: ^14.3.2
+        specifier: 'catalog:'
         version: 14.3.2
 
   plugins/markdown/plugin-markdown-preview:
     dependencies:
       '@mdit/helper':
-        specifier: ^1.1.1
+        specifier: ^1.1.2
         version: 1.1.2(markdown-it@14.3.2)
       '@mdit/plugin-demo':
-        specifier: ^2.0.1
+        specifier: ^2.0.2
         version: 2.0.2(markdown-it@14.3.2)
       '@types/markdown-it':
-        specifier: ^14.2.0
+        specifier: 'catalog:'
         version: 14.2.0
       '@vuepress/helper':
         specifier: workspace:*
@@ -1350,40 +1348,40 @@ importers:
         version: 2.0.0-rc.31(64fe27a61b2d7fe5486fea782158c0c7)
     devDependencies:
       markdown-it:
-        specifier: ^14.3.2
+        specifier: 'catalog:'
         version: 14.3.2
 
   plugins/markdown/plugin-markdown-stylize:
     dependencies:
       '@mdit/plugin-align':
-        specifier: ^1.1.1
+        specifier: ^1.1.2
         version: 1.1.2(markdown-it@14.3.2)
       '@mdit/plugin-attrs':
-        specifier: ^1.3.1
+        specifier: ^1.3.3
         version: 1.3.3(markdown-it@14.3.2)
       '@mdit/plugin-container':
-        specifier: ^2.0.1
+        specifier: ^2.0.2
         version: 2.0.2(markdown-it@14.3.2)
       '@mdit/plugin-layout':
-        specifier: ^1.1.1
+        specifier: ^1.1.3
         version: 1.1.3(markdown-it@14.3.2)
       '@mdit/plugin-mark':
-        specifier: ^2.1.1
+        specifier: ^2.1.2
         version: 2.1.2(markdown-it@14.3.2)
       '@mdit/plugin-spoiler':
-        specifier: ^2.1.1
+        specifier: ^2.1.2
         version: 2.1.2(markdown-it@14.3.2)
       '@mdit/plugin-stylize':
-        specifier: ^2.0.1
+        specifier: ^2.0.2
         version: 2.0.2(markdown-it@14.3.2)
       '@mdit/plugin-sub':
-        specifier: ^1.1.1
+        specifier: ^1.1.2
         version: 1.1.2(markdown-it@14.3.2)
       '@mdit/plugin-sup':
-        specifier: ^1.1.1
+        specifier: ^1.1.2
         version: 1.1.2(markdown-it@14.3.2)
       '@types/markdown-it':
-        specifier: ^14.2.0
+        specifier: 'catalog:'
         version: 14.2.0
       '@vuepress/helper':
         specifier: workspace:*
@@ -1393,16 +1391,16 @@ importers:
         version: 2.0.0-rc.31(64fe27a61b2d7fe5486fea782158c0c7)
     devDependencies:
       markdown-it:
-        specifier: ^14.3.2
+        specifier: 'catalog:'
         version: 14.3.2
 
   plugins/markdown/plugin-markdown-tab:
     dependencies:
       '@mdit/plugin-tab':
-        specifier: ^2.0.1
+        specifier: ^2.0.2
         version: 2.0.2(markdown-it@14.3.2)
       '@types/markdown-it':
-        specifier: ^14.2.0
+        specifier: 'catalog:'
         version: 14.2.0
       '@vuepress/helper':
         specifier: workspace:*
@@ -1418,7 +1416,7 @@ importers:
         version: 2.0.0-rc.31(64fe27a61b2d7fe5486fea782158c0c7)
     devDependencies:
       markdown-it:
-        specifier: ^14.3.2
+        specifier: 'catalog:'
         version: 14.3.2
 
   plugins/markdown/plugin-prismjs:
@@ -1437,22 +1435,22 @@ importers:
         version: 2.0.0-rc.31(64fe27a61b2d7fe5486fea782158c0c7)
     devDependencies:
       '@types/markdown-it':
-        specifier: ^14.2.0
+        specifier: 'catalog:'
         version: 14.2.0
       '@types/prismjs':
         specifier: ^1.26.6
         version: 1.26.6
       markdown-it:
-        specifier: ^14.3.2
+        specifier: 'catalog:'
         version: 14.3.2
 
   plugins/markdown/plugin-revealjs:
     dependencies:
       '@mdit/plugin-uml':
-        specifier: ^2.0.1
+        specifier: ^2.0.2
         version: 2.0.2(markdown-it@14.3.2)
       '@types/markdown-it':
-        specifier: ^14.2.0
+        specifier: 'catalog:'
         version: 14.2.0
       '@vuepress/helper':
         specifier: workspace:*
@@ -1471,7 +1469,7 @@ importers:
         version: 2.0.0-rc.31(64fe27a61b2d7fe5486fea782158c0c7)
     devDependencies:
       markdown-it:
-        specifier: ^14.3.2
+        specifier: 'catalog:'
         version: 14.3.2
 
   plugins/markdown/plugin-shiki:
@@ -1499,13 +1497,13 @@ importers:
         version: 2.0.0-rc.31(64fe27a61b2d7fe5486fea782158c0c7)
     devDependencies:
       '@types/markdown-it':
-        specifier: ^14.2.0
+        specifier: 'catalog:'
         version: 14.2.0
       '@vuepress/shiki-twoslash':
         specifier: workspace:*
         version: link:../../../tools/shiki-twoslash
       markdown-it:
-        specifier: ^14.3.2
+        specifier: 'catalog:'
         version: 14.3.2
 
   plugins/pwa/plugin-pwa:
@@ -1788,7 +1786,7 @@ importers:
         specifier: workspace:*
         version: link:../../../tools/helper
       magic-string:
-        specifier: ^1.4.1
+        specifier: ^1.4.2
         version: 1.4.2
       unplugin:
         specifier: ^3.4.0
@@ -3417,8 +3415,8 @@ packages:
   '@iconify-json/mdi@1.2.3':
     resolution: {integrity: sha512-O3cLwbDOK7NNDf2ihaQOH5F9JglnulNDFV7WprU2dSoZu3h3cWH//h74uQAB87brHmvFVxIOkuBX2sZSzYhScg==}
 
-  '@iconify-json/vscode-icons@1.2.80':
-    resolution: {integrity: sha512-+LXhqJKz3a/7x5LlR7WPrihuUKEulctXaBAFsFmXLetuthscnfyZoe4c2kQ0PKsUUy4LRuquSuw4AzOAaW+hOQ==}
+  '@iconify-json/vscode-icons@1.2.82':
+    resolution: {integrity: sha512-J4TIauES5jhw7Ij38qhH5JoE/6MciTWz2Wz6KPiVj5kgP07mI4ai9MYpl+bn991LiqC3uW6YqNrIk0jlabT3ug==}
 
   '@iconify/types@2.0.0':
     resolution: {integrity: sha512-+wluvCrRhXrhyOmRDJ3q8mux9JkKy5SJ/v8ol2tu4FVjyYvtEzkc/3pK15ET6RKg4b4w4BmTk1+gsCUhf21Ykg==}
@@ -10353,11 +10351,6 @@ packages:
     resolution: {integrity: sha512-mWIkesYQvQjf4Kvdeu9ns0IL8/K/wtjaGxPqsPd6DlLZvaQxGysJsocxUDrBcyHQ5VleAk4uSMat4yMrVED7PA==}
     engines: {node: '>=20.19.0'}
     hasBin: true
-    peerDependencies:
-      postcss-html: ^1.8.1
-    peerDependenciesMeta:
-      postcss-html:
-        optional: true
 
   stylis@4.4.0:
     resolution: {integrity: sha512-5Z9ZpRzfuH6l/UAvCPAPUo3665Nk2wLaZU3x+TLHKVzIz33+sbJqbtrYoC3KD4/uVOr2Zp+L0LySezP9OHV9yA==}
@@ -12812,7 +12805,7 @@ snapshots:
     dependencies:
       '@iconify/types': 2.0.0
 
-  '@iconify-json/vscode-icons@1.2.80':
+  '@iconify-json/vscode-icons@1.2.82':
     dependencies:
       '@iconify/types': 2.0.0
 
@@ -20240,55 +20233,55 @@ snapshots:
       postcss: 8.5.28
       postcss-selector-parser: 7.1.6
 
-  stylelint-config-hope@12.1.0(postcss-html@2.0.0(postcss@8.5.28))(postcss@8.5.28)(stylelint@17.15.0(postcss-html@2.0.0(postcss@8.5.28))(supports-color@10.2.2)(typescript@6.0.3)):
+  stylelint-config-hope@12.1.0(postcss-html@2.0.0(postcss@8.5.28))(postcss@8.5.28)(stylelint@17.15.0(supports-color@10.2.2)(typescript@6.0.3)):
     dependencies:
-      stylelint: 17.15.0(postcss-html@2.0.0(postcss@8.5.28))(supports-color@10.2.2)(typescript@6.0.3)
-      stylelint-config-standard: 40.0.0(stylelint@17.15.0(postcss-html@2.0.0(postcss@8.5.28))(supports-color@10.2.2)(typescript@6.0.3))
-      stylelint-config-standard-scss: 17.0.0(postcss@8.5.28)(stylelint@17.15.0(postcss-html@2.0.0(postcss@8.5.28))(supports-color@10.2.2)(typescript@6.0.3))
-      stylelint-order: 8.1.1(stylelint@17.15.0(postcss-html@2.0.0(postcss@8.5.28))(supports-color@10.2.2)(typescript@6.0.3))
+      stylelint: 17.15.0(supports-color@10.2.2)(typescript@6.0.3)
+      stylelint-config-standard: 40.0.0(stylelint@17.15.0(supports-color@10.2.2)(typescript@6.0.3))
+      stylelint-config-standard-scss: 17.0.0(postcss@8.5.28)(stylelint@17.15.0(supports-color@10.2.2)(typescript@6.0.3))
+      stylelint-order: 8.1.1(stylelint@17.15.0(supports-color@10.2.2)(typescript@6.0.3))
     optionalDependencies:
       postcss-html: 2.0.0(postcss@8.5.28)
     transitivePeerDependencies:
       - postcss
 
-  stylelint-config-html@2.0.0(postcss-html@2.0.0(postcss@8.5.28))(stylelint@17.15.0(postcss-html@2.0.0(postcss@8.5.28))(supports-color@10.2.2)(typescript@6.0.3)):
+  stylelint-config-html@2.0.0(postcss-html@2.0.0(postcss@8.5.28))(stylelint@17.15.0(supports-color@10.2.2)(typescript@6.0.3)):
     dependencies:
       postcss-html: 2.0.0(postcss@8.5.28)
-      stylelint: 17.15.0(postcss-html@2.0.0(postcss@8.5.28))(supports-color@10.2.2)(typescript@6.0.3)
+      stylelint: 17.15.0(supports-color@10.2.2)(typescript@6.0.3)
 
-  stylelint-config-recommended-scss@17.0.1(postcss@8.5.28)(stylelint@17.15.0(postcss-html@2.0.0(postcss@8.5.28))(supports-color@10.2.2)(typescript@6.0.3)):
+  stylelint-config-recommended-scss@17.0.1(postcss@8.5.28)(stylelint@17.15.0(supports-color@10.2.2)(typescript@6.0.3)):
     dependencies:
       postcss-scss: 4.0.9(postcss@8.5.28)
-      stylelint: 17.15.0(postcss-html@2.0.0(postcss@8.5.28))(supports-color@10.2.2)(typescript@6.0.3)
-      stylelint-config-recommended: 18.0.0(stylelint@17.15.0(postcss-html@2.0.0(postcss@8.5.28))(supports-color@10.2.2)(typescript@6.0.3))
-      stylelint-scss: 7.3.0(stylelint@17.15.0(postcss-html@2.0.0(postcss@8.5.28))(supports-color@10.2.2)(typescript@6.0.3))
+      stylelint: 17.15.0(supports-color@10.2.2)(typescript@6.0.3)
+      stylelint-config-recommended: 18.0.0(stylelint@17.15.0(supports-color@10.2.2)(typescript@6.0.3))
+      stylelint-scss: 7.3.0(stylelint@17.15.0(supports-color@10.2.2)(typescript@6.0.3))
     optionalDependencies:
       postcss: 8.5.28
 
-  stylelint-config-recommended@18.0.0(stylelint@17.15.0(postcss-html@2.0.0(postcss@8.5.28))(supports-color@10.2.2)(typescript@6.0.3)):
+  stylelint-config-recommended@18.0.0(stylelint@17.15.0(supports-color@10.2.2)(typescript@6.0.3)):
     dependencies:
-      stylelint: 17.15.0(postcss-html@2.0.0(postcss@8.5.28))(supports-color@10.2.2)(typescript@6.0.3)
+      stylelint: 17.15.0(supports-color@10.2.2)(typescript@6.0.3)
 
-  stylelint-config-standard-scss@17.0.0(postcss@8.5.28)(stylelint@17.15.0(postcss-html@2.0.0(postcss@8.5.28))(supports-color@10.2.2)(typescript@6.0.3)):
+  stylelint-config-standard-scss@17.0.0(postcss@8.5.28)(stylelint@17.15.0(supports-color@10.2.2)(typescript@6.0.3)):
     dependencies:
-      stylelint: 17.15.0(postcss-html@2.0.0(postcss@8.5.28))(supports-color@10.2.2)(typescript@6.0.3)
-      stylelint-config-recommended-scss: 17.0.1(postcss@8.5.28)(stylelint@17.15.0(postcss-html@2.0.0(postcss@8.5.28))(supports-color@10.2.2)(typescript@6.0.3))
-      stylelint-config-standard: 40.0.0(stylelint@17.15.0(postcss-html@2.0.0(postcss@8.5.28))(supports-color@10.2.2)(typescript@6.0.3))
+      stylelint: 17.15.0(supports-color@10.2.2)(typescript@6.0.3)
+      stylelint-config-recommended-scss: 17.0.1(postcss@8.5.28)(stylelint@17.15.0(supports-color@10.2.2)(typescript@6.0.3))
+      stylelint-config-standard: 40.0.0(stylelint@17.15.0(supports-color@10.2.2)(typescript@6.0.3))
     optionalDependencies:
       postcss: 8.5.28
 
-  stylelint-config-standard@40.0.0(stylelint@17.15.0(postcss-html@2.0.0(postcss@8.5.28))(supports-color@10.2.2)(typescript@6.0.3)):
+  stylelint-config-standard@40.0.0(stylelint@17.15.0(supports-color@10.2.2)(typescript@6.0.3)):
     dependencies:
-      stylelint: 17.15.0(postcss-html@2.0.0(postcss@8.5.28))(supports-color@10.2.2)(typescript@6.0.3)
-      stylelint-config-recommended: 18.0.0(stylelint@17.15.0(postcss-html@2.0.0(postcss@8.5.28))(supports-color@10.2.2)(typescript@6.0.3))
+      stylelint: 17.15.0(supports-color@10.2.2)(typescript@6.0.3)
+      stylelint-config-recommended: 18.0.0(stylelint@17.15.0(supports-color@10.2.2)(typescript@6.0.3))
 
-  stylelint-order@8.1.1(stylelint@17.15.0(postcss-html@2.0.0(postcss@8.5.28))(supports-color@10.2.2)(typescript@6.0.3)):
+  stylelint-order@8.1.1(stylelint@17.15.0(supports-color@10.2.2)(typescript@6.0.3)):
     dependencies:
       postcss: 8.5.28
       postcss-sorting: 10.0.0(postcss@8.5.28)
-      stylelint: 17.15.0(postcss-html@2.0.0(postcss@8.5.28))(supports-color@10.2.2)(typescript@6.0.3)
+      stylelint: 17.15.0(supports-color@10.2.2)(typescript@6.0.3)
 
-  stylelint-scss@7.3.0(stylelint@17.15.0(postcss-html@2.0.0(postcss@8.5.28))(supports-color@10.2.2)(typescript@6.0.3)):
+  stylelint-scss@7.3.0(stylelint@17.15.0(supports-color@10.2.2)(typescript@6.0.3)):
     dependencies:
       '@csstools/css-calc': 3.4.0(@csstools/css-parser-algorithms@4.0.0(@csstools/css-tokenizer@4.0.1))(@csstools/css-tokenizer@4.0.1)
       '@csstools/css-parser-algorithms': 4.0.0(@csstools/css-tokenizer@4.0.1)
@@ -20301,9 +20294,9 @@ snapshots:
       postcss-resolve-nested-selector: 0.1.6
       postcss-selector-parser: 7.1.6
       postcss-value-parser: 4.2.0
-      stylelint: 17.15.0(postcss-html@2.0.0(postcss@8.5.28))(supports-color@10.2.2)(typescript@6.0.3)
+      stylelint: 17.15.0(supports-color@10.2.2)(typescript@6.0.3)
 
-  stylelint@17.15.0(postcss-html@2.0.0(postcss@8.5.28))(supports-color@10.2.2)(typescript@6.0.3):
+  stylelint@17.15.0(supports-color@10.2.2)(typescript@6.0.3):
     dependencies:
       '@csstools/css-calc': 3.4.0(@csstools/css-parser-algorithms@4.0.0(@csstools/css-tokenizer@4.0.1))(@csstools/css-tokenizer@4.0.1)
       '@csstools/css-parser-algorithms': 4.0.0(@csstools/css-tokenizer@4.0.1)
@@ -20340,8 +20333,6 @@ snapshots:
       svg-tags: 1.0.0
       table: 6.9.0
       write-file-atomic: 7.0.1
-    optionalDependencies:
-      postcss-html: 2.0.0(postcss@8.5.28)
     transitivePeerDependencies:
       - supports-color
       - typescript

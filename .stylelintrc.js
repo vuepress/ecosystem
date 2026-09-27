@@ -1,4 +1,6 @@
 import { defineHopeConfig } from 'stylelint-config-hope'
+import html from 'stylelint-config-html/html'
+import vue from 'stylelint-config-html/vue'
 
 export default defineHopeConfig({
   scss: true,
@@ -21,11 +23,11 @@ export default defineHopeConfig({
   overrides: [
     {
       files: ['**/*.html'],
-      extends: ['stylelint-config-html/html'],
+      extends: [html],
     },
     {
       files: ['**/*.vue'],
-      extends: ['stylelint-config-html/vue'],
+      extends: [vue],
       rules: {
         'function-no-unknown': [
           true,
