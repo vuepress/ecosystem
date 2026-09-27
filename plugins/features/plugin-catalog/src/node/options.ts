@@ -1,3 +1,4 @@
+import type { App } from 'vuepress/core'
 import type { LocaleConfig, PageFrontmatter } from 'vuepress/shared'
 
 import type { CatalogPluginLocaleData } from '../shared/index.js'
@@ -31,9 +32,10 @@ export interface CatalogPluginOptions {
    * 生成页面的 Frontmatter 获取器。
    *
    * @param path Path to be generated / 当前生成的路径名称
+   * @param app VuePress app instance / VuePress 应用实例
    * @returns Page frontmatter / 页面 Frontmatter
    */
-  frontmatter?: (path: string) => PageFrontmatter
+  frontmatter?: (path: string, app: App) => PageFrontmatter
 
   /**
    * Catalog page path to be excluded during generation.

@@ -97,8 +97,8 @@ order -1 的项目
 
 ### frontmatter
 
-- 类型：`(path: string) => Record<string, any>`
-- 详情：生成页面的 Frontmatter 获取器
+- 类型：`(path: string, app: App) => Record<string, any>`
+- 详情：生成页面的 Frontmatter 获取器，第二个参数为 VuePress 应用实例
 - 示例：
 
   ```ts title=".vuepress/config.ts"
@@ -107,7 +107,7 @@ order -1 的项目
   export default {
     plugins: [
       catalogPlugin({
-        frontmatter: (path) => ({
+        frontmatter: (path, app) => ({
           // 你想要的 frontmatter
           // 你可以自定义标题、作者、时间等
         }),
