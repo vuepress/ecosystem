@@ -1369,7 +1369,7 @@ importers:
         version: 1.1.1(markdown-it@14.3.2)
       '@mdit/plugin-mark':
         specifier: ^2.1.1
-        version: 2.1.1(markdown-it@14.3.2)
+        version: 2.1.2(markdown-it@14.3.2)
       '@mdit/plugin-spoiler':
         specifier: ^2.1.1
         version: 2.1.1(markdown-it@14.3.2)
@@ -3986,6 +3986,15 @@ packages:
       markdown-it:
         optional: true
 
+  '@mdit/plugin-inline-rule@2.2.2':
+    resolution: {integrity: sha512-FQFiXeWjZCgolJ/3OPZfL7ycsWtEQIUoEXzin+j+rDgeer7lMp3ixBhYF7ye50zkKDIZi+wR/VMJ8dXlUQaXSQ==}
+    engines: {node: '>=22'}
+    peerDependencies:
+      markdown-it: ^15.0.2
+    peerDependenciesMeta:
+      markdown-it:
+        optional: true
+
   '@mdit/plugin-katex-slim@1.1.1':
     resolution: {integrity: sha512-infYH1nOHs+5R987rvrdLqUUCXuyq/d/McI0I3KCwslbY3SLTAkXVlolw8t2UbqbrVpzYHZUP5layTFRp6eiqA==}
     engines: {node: '>=22'}
@@ -4006,11 +4015,11 @@ packages:
       markdown-it:
         optional: true
 
-  '@mdit/plugin-mark@2.1.1':
-    resolution: {integrity: sha512-GGc83glYiPWJYKxkS69btqDKb5MabiGo+WwgRWKaDimZjsNiZrvFyIF10zUXAEmYLBPMrY3a6TCBKaMCyp3l/w==}
+  '@mdit/plugin-mark@2.1.2':
+    resolution: {integrity: sha512-X547HlZcbP29k+tG/cRy0+IHtxGdAlaEoXDqj3pE0D1QYF5+p+KRzle43V1zvaYourD03ci5MmEtQIIZBB7vdA==}
     engines: {node: '>=22'}
     peerDependencies:
-      markdown-it: ^15.0.1
+      markdown-it: ^15.0.2
     peerDependenciesMeta:
       markdown-it:
         optional: true
@@ -13429,6 +13438,12 @@ snapshots:
     optionalDependencies:
       markdown-it: 14.3.2
 
+  '@mdit/plugin-inline-rule@2.2.2(markdown-it@14.3.2)':
+    dependencies:
+      '@mdit/helper': 1.1.2(markdown-it@14.3.2)
+    optionalDependencies:
+      markdown-it: 14.3.2
+
   '@mdit/plugin-katex-slim@1.1.1(katex@0.18.9)(markdown-it@14.3.2)':
     dependencies:
       '@mdit/helper': 1.1.1(markdown-it@14.3.2)
@@ -13443,10 +13458,10 @@ snapshots:
     optionalDependencies:
       markdown-it: 14.3.2
 
-  '@mdit/plugin-mark@2.1.1(markdown-it@14.3.2)':
+  '@mdit/plugin-mark@2.1.2(markdown-it@14.3.2)':
     dependencies:
-      '@mdit/helper': 1.1.1(markdown-it@14.3.2)
-      '@mdit/plugin-inline-rule': 2.2.1(markdown-it@14.3.2)
+      '@mdit/helper': 1.1.2(markdown-it@14.3.2)
+      '@mdit/plugin-inline-rule': 2.2.2(markdown-it@14.3.2)
     optionalDependencies:
       markdown-it: 14.3.2
 
