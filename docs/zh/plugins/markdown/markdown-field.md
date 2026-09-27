@@ -138,6 +138,8 @@ export default {
 
 ## 演示
 
+:::: preview
+
 ::: fields
 @`theme` type=ThemeConfig required default=`{ base: '/' }`
 
@@ -156,6 +158,8 @@ export default {
 已弃用字段
 
 :::
+
+::::
 
 ## 选项
 

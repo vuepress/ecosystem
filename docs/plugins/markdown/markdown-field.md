@@ -138,6 +138,8 @@ For more syntax details, see [@mdit/plugin-field](https://mdit-plugins.github.io
 
 ## Demo
 
+:::: preview
+
 ::: fields
 @`theme` type=ThemeConfig required default=`{ base: '/' }`
 
@@ -156,6 +158,8 @@ Descriptive default, rendered as plain text.
 Deprecated field
 
 :::
+
+::::
 
 ## Options
 
