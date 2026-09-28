@@ -79,6 +79,10 @@ export default defaultTheme({
     hint: {
       alert: true,
     },
+    // `#/1/1` in the reveal.js demos is a slide route rather than a markdown anchor
+    linksCheck: {
+      exclude: [/^#\//u],
+    },
     // use shiki plugin instead
     prismjs: false,
   },

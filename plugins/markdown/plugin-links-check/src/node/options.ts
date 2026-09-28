@@ -1,3 +1,5 @@
+import type { AnchorsCheckMode } from './checkMarkdownLink.js'
+
 export interface LinksCheckPluginOptions {
   /**
    * Whether check dead links in markdown in devServer
@@ -25,6 +27,24 @@ export interface LinksCheckPluginOptions {
    * Links to exclude from checking
    *
    * 检查时需要排除的链接
+   *
+   * For anchor checking, a link is compared both as it is written (including
+   * the anchor) and as its path without the anchor.
+   *
+   * 检查锚点时，链接会同时以原样（含锚点）和去掉锚点的路径进行比较。
    */
   exclude?: (RegExp | string)[] | ((link: string, isDev: boolean) => boolean)
+
+  /**
+   * Whether to check anchors of links
+   *
+   * 是否检查链接的锚点
+   *
+   * Set to `'same-page'` to only check anchors pointing to the current page.
+   *
+   * 设置为 `'same-page'` 时仅检查指向当前页面的锚点。
+   *
+   * @default true
+   */
+  anchors?: AnchorsCheckMode
 }

@@ -43,7 +43,11 @@
     "clean": "rimraf ./dist"
   },
   "dependencies": {
+    "@types/markdown-it": "catalog:",
     "@vuepress/helper": "workspace:*"
+  },
+  "devDependencies": {
+    "markdown-it": "catalog:"
   },
   "peerDependencies": {
     "vuepress": "catalog:"
