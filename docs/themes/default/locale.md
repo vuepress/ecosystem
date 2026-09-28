@@ -8,49 +8,34 @@ These options configure locale-related texts.
 
 If your site is served in a different language besides English, you should set these options per locale to provide translations.
 
-## repoLabel
+## Options
 
-- Type: `string`
+:::: fields
+@`repoLabel` type=string
 
-- Details:
+Specify the repository label of your project.
 
-  Specify the repository label of your project.
+This will be used as the text of the _repository link_, which will be displayed as the last item of the navbar.
 
-  This will be used as the text of the _repository link_, which will be displayed as the last item of the navbar.
+If you don't set this option explicitly, it will be automatically inferred from the [repo](./config.md#repo) option.
 
-  If you don't set this option explicitly, it will be automatically inferred from the [repo](./config.md#repo) option.
+@`selectLanguageText` type=string
 
-## selectLanguageText
+Specify the text of the _select language menu_.
 
-- Type: `string`
+The _select language menu_ will appear next to the repository button in the navbar when you set multiple [locales](./config.md#locales) in your site config.
 
-- Details:
+@`selectLanguageAriaLabel` type=string
 
-  Specify the text of the _select language menu_.
+Specify the `aria-label` attribute of the _select language menu_.
 
-  The _select language menu_ will appear next to the repository button in the navbar when you set multiple [locales](./config.md#locales) in your site config.
+This is mainly for a11y purpose.
 
-## selectLanguageAriaLabel
+@`selectLanguageName` type=string default=`'English'`
 
-- Type: `string`
+Specify the name of the language of a locale.
 
-- Details:
-
-  Specify the `aria-label` attribute of the _select language menu_.
-
-  This is mainly for a11y purpose.
-
-## selectLanguageName
-
-- Type: `string`
-
-- Details:
-
-  Specify the name of the language of a locale.
-
-  This option will **only take effect inside** the [locales](./config.md#locales) of your theme config. It will be used as the language name of the locale, which will be displayed in the _select language menu_.
-
-- Example:
+This option will **only take effect inside** the [locales](./config.md#locales) of your theme config. It will be used as the language name of the locale, which will be displayed in the _select language menu_.
 
 ```ts title=".vuepress/config.ts"
 export default {
@@ -75,149 +60,80 @@ export default {
 }
 ```
 
-## navbarLabel
+@`navbarLabel` type=`string | null`
 
-- Type: `null | string`
+Specify the `aria-label` value for main navigation in navbar.
 
-- Details:
+@`pageNavbarLabel` type=`string | null`
 
-  `aria-label` value for main navigation in navbar.
+Specify the `aria-label` value for next/previous page navigation.
 
-## pageNavbarLabel
+@`editLinkText` type=string default=`'Edit this page'`
 
-- Type: `null | string`
+Specify the text of the _edit this page_ link.
 
-- Details:
+@`lastUpdatedText` type=string default=`'Last Updated'`
 
-  `aria-label` value for next/previous page navigation.
+Specify the text of the _last updated timestamp_ label.
 
-## editLinkText
+@`contributorsText` type=string default=`'Contributors'`
 
-- Type: `string`
+Specify the text of the _contributors list_ label.
 
-- Default: `'Edit this page'`
+@`tip` type=string default=`'Tips'`
 
-- Details:
+Specify the default title of the tip [hint container](./markdown.md#hint-containers).
 
-  Specify the text of the _edit this page_ link.
+@`warning` type=string default=`'Warning'`
 
-## lastUpdatedText
+Specify the default title of the warning [hint container](./markdown.md#hint-containers).
 
-- Type: `string`
+@`danger` type=string default=`'Caution'`
 
-- Default: `'Last Updated'`
+Specify the default title of the danger [hint container](./markdown.md#hint-containers).
 
-- Details:
+@`important` type=string default=`'Important'`
 
-  Specify the text of the _last updated timestamp_ label.
+Specify the default title of the important [hint container](./markdown.md#hint-containers).
 
-## contributorsText
+@`note` type=string default=`'Note'`
 
-- Type: `string`
+Specify the default title of the note [hint container](./markdown.md#hint-containers).
 
-- Default: `'Contributors'`
+@`notFound` type=`string[]` default=`['There's nothing here.', 'How did we get here?', 'That's a Four-Oh-Four.', 'Looks like we've got some broken links.']`
 
-- Details:
+Specify the messages of the 404 page.
 
-  Specify the text of the _contributors list_ label.
+The message will be randomly picked from the array when users enter the 404 page.
 
-## tip
+@`backToHome` type=string default=`'Take me home'`
 
-- Type: `string`
+Specify the text of the _back to home_ link in the 404 page.
 
-- Default: `'TIP'`
+@`toggleColorMode` type=string default=`'toggle color mode'`
 
-- Details:
+Title text for the color mode toggle button.
 
-  Specify the default title of the tip [custom containers](./markdown.md#custom-containers).
+This is mainly for a11y purpose.
 
-## warning
+See also: [colorModeSwitch](./config.md#colormodeswitch)
 
-- Type: `string`
+@`toggleSidebar` type=string default=`'toggle sidebar'`
 
-- Default: `'WARNING'`
+Title text for sidebar toggle button.
 
-- Details:
+This is mainly for a11y purpose.
 
-  Specify the default title of the warning [custom containers](./markdown.md#custom-containers).
+@`prev` type=`string | false` default=`'Prev'`
 
-## danger
+Text for the previous page navigation button.
 
-- Type: `string`
+Set to `false` to disable the previous page navigation button.
 
-- Default: `'DANGER'`
+@`next` type=`string | false` default=`'Next'`
 
-- Details:
+Text for the next page navigation button.
 
-  Specify the default title of the danger [custom containers](./markdown.md#custom-containers).
+Set to `false` to disable the next page navigation button.
 
-## notFound
-
-- Type: `string[]`
-
-- Default: `['Not Found']`
-
-- Details:
-
-  Specify the messages of the 404 page.
-
-  The message will be randomly picked from the array when users enter the 404 page.
-
-## backToHome
-
-- Type: `string`
-
-- Default: `'Back to home'`
-
-- Details:
-
-  Specify the text of the _back to home_ link in the 404 page.
-
-## toggleColorMode
-
-- Type: `string`
-
-- Default: `'toggle color mode'`
-
-- Details:
-
-  Title text for the color mode toggle button.
-
-  This is mainly for a11y purpose.
-
-- Also see:
-  - [Default Theme > Config > colorModeSwitch](./config.md#colormodeswitch)
-
-## toggleSidebar
-
-- Type: `string`
-
-- Default: `'toggle sidebar'`
-
-- Details:
-
-  Title text for sidebar toggle button.
-
-  This is mainly for a11y purpose.
-
-## prev
-
-- Type: `string | false`
-
-- Default: `'Prev'`
-
-- Details:
-
-  Text for the previous page navigation button.
-
-  Set to `false` to disable the previous page navigation button.
-
-## next
-
-- Type: `string | false`
-- Default: `'Next'`
-- Details:
-
-  Text for the next page navigation button.
-
-  Set to `false` to disable the next page navigation button.
+::::

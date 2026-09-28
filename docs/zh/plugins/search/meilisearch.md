@@ -8,7 +8,9 @@ icon: https://www.meilisearch.com/favicon.ico
 
 将 [MeiliSearch](https://www.meilisearch.com/) 集成到 VuePress 中，为你的文档网站提供搜索功能。
 
-## 安装 MeiliSearch
+## 指南 {#guide}
+
+### 安装 MeiliSearch {#setup-meilisearch}
 
 要免费使用 MeiliSearch，你需要在自己的服务器上自托管它，否则需要付费使用 MeiliSearch Cloud。
 
@@ -18,7 +20,7 @@ icon: https://www.meilisearch.com/favicon.ico
 
 :::
 
-### 启动 MeiliSearch
+#### 启动 MeiliSearch {#starting-meilisearch}
 
 ::: tip
 
@@ -65,7 +67,7 @@ docker run -it --rm \
 
 :::
 
-### 设置抓取器
+#### 设置抓取器 {#setting-up-the-scraper}
 
 ::: tip
 
@@ -112,7 +114,7 @@ docker pull jqiue/docs-scraper:latest
 ```
 
 - `index_uid` 应为你的索引分配一个唯一名称，用于搜索。
-- `start_urls` 和 `sitemap_urls`（可选）应根据要抓取的网站进行自定义。我们建议与 [`@vuepress/plugin-sitemap`](../seo/sitemap/README.md) 插件一起使用并提供对应的 `sitemap.xml` URL。
+- `start_urls` 和 `sitemap_urls`（可选）应根据要抓取的网站进行自定义。我们建议与 [`@vuepress/plugin-sitemap`](../seo/sitemap.md) 插件一起使用并提供对应的 `sitemap.xml` URL。
 - `selectors` 字段可以根据第三方主题 DOM 结构进行自定义。
 - 你可以根据需要向 `custom_settings` 中添加新字段。
 
@@ -179,7 +181,7 @@ docker run -t --rm \
 
 :::
 
-### 设置插件
+#### 设置插件 {#setting-up-the-plugin}
 
 为了使插件正常工作，需要为插件生成一个仅限搜索的访问密钥。此密钥可以通过 MeiliSearch API 创建。
 你可以使用以下命令创建仅限搜索的访问密钥：
@@ -243,7 +245,7 @@ export default {
 }
 ```
 
-### 使用 GitHub Actions 自动重新抓取
+#### 使用 GitHub Actions 自动重新抓取 {#automatic-re-scraping-with-github-actions}
 
 将你的抓取器配置文件放在项目中的某个位置。
 
@@ -251,7 +253,7 @@ export default {
 
 接下来在你的 GitHub Actions 工作流文件中添加一个新的步骤 `scrape`，它将在部署步骤之后运行。以下是操作示例：
 
-```yml
+```yml :collapsed-lines=25
 name: 部署和抓取
 
 on:
@@ -330,77 +332,47 @@ jobs:
 
 :::
 
-## 选项
+## 选项 {#options}
 
-### host
+::: fields
+@`host` type=string required
 
-- 类型：`string`
+MeiliSearch API 的 HTTP 地址。
 
-- 是否必需：`true`
+@`apiKey` type=string required
 
-- 详情：
+MeiliSearch 生成的仅限搜索的 API 密钥。
 
-  提供 MeiliSearch API 的 HTTP 地址。
+@`indexUid` type=string required
 
-### apiKey
+用于搜索的索引名称。
 
-- 类型：`string`
+@`locales` type=`LocaleConfig<MeiliSearchDocSearchLocaleOptions>`
 
-- 是否必需：`true`
+该插件在不同语言环境下的配置。上述所有选项都可以针对特定语言路径进行覆盖。
 
-- 详情：
+参考：[多语言配置](../supported-locales.md)。
 
-  MeiliSearch 生成的 API 密钥。
+@`translations` type=DocSearchTranslations
 
-### indexUid
+允许你替换 DocSearch 按钮和弹出框中的默认文本。
 
-- 类型：`string`
+@`hotKeys` type=`string[] | false` default=`['ctrl+k', 's', '/']`
 
-- 是否必需：`true`
+触发搜索框的热键数组。当设置 `false` 时无法用任何快捷键触发搜索框。
 
-- 详情：
+@`debounceDuration` type=`number | false` default=`200`
 
-  指定用于搜索的索引名称。
+在按键之间等待的毫秒数，以确定是否应该进行搜索。设置 `0` 或者 `false` 逻辑上是等效的。
 
-### translations
+@`searchParams` type=SearchParams
 
-- 类型：`DocSearchTranslations`
+MeiliSearch API 的参数。
 
-- 详情：
+参见：[Meilisearch API 文档](https://www.meilisearch.com/docs/reference/api/search#search-parameters)。
 
-  允许你替换 DocSearch 按钮和弹出框中的默认文本。
+:::
 
-### hotKeys
-
-- 类型：`string[] | false`
-
-- 默认值：`['ctrl+k', 's', '/']`
-
-- 详情：
-
-  触发搜索框的热键数组, 当设置 `false` 时无法用任何快捷键触发搜索框。
-
-### debounceDuration
-
-- 类型：`number | false`
-
-- 默认值：`200`
-
-- 详情：
-
-  在按键之间等待的毫秒数，以确定是否应该进行搜索。设置 `0` 或者 `false` 逻辑上是等效的。
-
-### searchParams
-
-- 类型：`SearchParams`
-
-- 详情：
-
-  MeiliSearch API 的参数。
-
-- 另请参阅：
-  - [Meilisearch API 文档](https://www.meilisearch.com/docs/reference/api/search#search-parameters)
-
-## 组件
+## 组件 {#components}
 
 - SearchBox

@@ -6,7 +6,7 @@ icon: octicon:markdown-16
 
 <NpmBadge package="@vuepress/theme-default" />
 
-## 提示容器
+## 提示容器 {#hint-containers}
 
 - 示例 1 （默认标题）：
 
@@ -104,7 +104,7 @@ console.log('你好，VuePress！')
 
 :::
 
-## 代码选项卡
+## 代码选项卡 {#code-tabs}
 
 **输入**
 
@@ -150,7 +150,7 @@ console.log(`你好，${name}！`)
 
 :::
 
-## 选项卡
+## 选项卡 {#tabs}
 
 **输入**
 

@@ -8,7 +8,7 @@ icon: scan-eye
 
 在 VuePress 站点中支持内容预览。
 
-## 使用
+## 使用 {#usage}
 
 ```bash
 npm i -D @vuepress/plugin-markdown-preview@next
@@ -22,7 +22,7 @@ export default {
 }
 ```
 
-## 指南
+## 指南 {#guide}
 
 该插件提供了 `preview` 容器和 `VPPreview` 组件来在 VuePress 站点中预览内容。
 
@@ -82,26 +82,22 @@ document.querySelector('body').innerText = 'Hello world!'
   </template>
 </VPPreview>
 
-## 选项
+## 选项 {#options}
 
-### locales
+::: fields
+@`locales` type=`Record<string, MarkdownPreviewLocaleData>`
 
-- 类型：`Record<string, MarkdownPreviewLocaleData>`
+`<VPPreview>` 的本地化配置。
 
-  ```ts
-  export interface MarkdownPreviewLocaleData {
-    /**
-     * Toggle code button text
-     *
-     * 切换代码按钮文字
-     */
-    toggle: string
-  }
-  ```
+参考：[多语言配置](../supported-locales.md)。
 
-- 详情：`<VPPreview>` 的本地化配置。
+@@`locales.<localePath>.toggle` type=string
 
-## 样式
+切换代码按钮文字。
+
+:::
+
+## 样式 {#styles}
 
 你可以通过 CSS 变量自定义样式：
 

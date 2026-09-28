@@ -10,7 +10,7 @@ icon: arrow-up-to-line
 
 该插件已经集成到默认主题中。
 
-## 使用方法
+## 使用方法 {#usage}
 
 ```bash
 npm i -D @vuepress/plugin-back-to-top@next
@@ -24,21 +24,30 @@ export default {
 }
 ```
 
-## 选项
+## 选项 {#options}
 
-### threshold
+::: fields
+@`threshold` type=number default=`100`
 
-- 类型：`number`
-- 默认值：`100`
-- 详情：滚动距离阈值，用于显示返回顶部按钮（单位：像素）
+滚动距离阈值，用于显示返回顶部按钮（单位：像素）。
 
-### progress
+@`progress` type=boolean default=`true`
 
-- 类型：`boolean`
-- 默认值：`true`
-- 详情：是否显示滚动进度
+是否显示滚动进度。
 
-## 样式
+@`locales` type=`LocaleConfig<BackToTopPluginLocaleData>`
+
+插件的多语言配置。
+
+参考：[多语言配置](../supported-locales.md)。
+
+@@`locales.<localePath>.backToTop` type=string
+
+返回顶部按钮的标签文字。
+
+:::
+
+## 样式 {#styles}
 
 你可以通过 CSS 变量来自定义 _返回顶部_ 按钮的样式：
 

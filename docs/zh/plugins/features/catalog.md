@@ -8,7 +8,7 @@ icon: list-tree
 
 此插件可以自动生成目录页面，并提供目录组件。
 
-## 使用方法
+## 使用方法 {#usage}
 
 ```bash
 npm i -D @vuepress/plugin-catalog@next
@@ -25,6 +25,10 @@ export default {
   ],
 }
 ```
+
+## 指南 {#guide}
+
+### 目录信息 {#catalog-info}
 
 首先，你需要在路由元信息中设置目录信息：
 
@@ -57,7 +61,7 @@ defineCatalogInfoGetter((meta) => (meta.title ? { title: meta.title } : null))
 - `order`：目录顺序（可选）
 - `content`：目录内容组件（可选）
 
-::: tip 通过 order 排序
+### 通过 order 排序 {#sorting-with-order}
 
 插件会按以下顺序通过 `order` 对页面进行排序：
 
@@ -79,110 +83,69 @@ order -2 的项目
 order -1 的项目
 ```
 
-:::
+## 选项 {#options}
 
-## 选项
+:::: fields
+@`level` type=`1 | 2 | 3` default=`3` built-in="仅限内置组件"
 
-### level <Badge text="仅限内置组件" />
+目录项级别的最大深度。
 
-- 类型：`1 | 2 | 3`
-- 默认值：`3`
-- 详情：目录项级别的最大深度
+@`index` type=boolean built-in="仅限内置组件"
 
-### index <Badge text="仅限内置组件" />
+是否显示目录索引。
 
-- 类型：`boolean`
-- 默认值：`false`
-- 详情：是否显示目录索引
+@`frontmatter` type=`(path: string, app: App) => PageFrontmatter`
 
-### frontmatter
+生成页面的 Frontmatter 获取器，其中 `app` 为 VuePress 应用实例。
 
-- 类型：`(path: string, app: App) => Record<string, any>`
-- 详情：生成页面的 Frontmatter 获取器，第二个参数为 VuePress 应用实例
-- 示例：
+```ts title=".vuepress/config.ts"
+import { catalogPlugin } from '@vuepress/plugin-catalog'
 
-  ```ts title=".vuepress/config.ts"
-  import { catalogPlugin } from '@vuepress/plugin-catalog'
-
-  export default {
-    plugins: [
-      catalogPlugin({
-        frontmatter: (path, app) => ({
-          // 你想要的 frontmatter
-          // 你可以自定义标题、作者、时间等
-        }),
+export default {
+  plugins: [
+    catalogPlugin({
+      frontmatter: (path, app) => ({
+        // 你想要的 frontmatter
+        // 你可以自定义标题、作者、时间等
       }),
-    ],
-  }
-  ```
+    }),
+  ],
+}
+```
 
-### exclude
+@`exclude` type=`(RegExp | string)[]` default=`[]`
 
-- 类型：`(RegExp | string)[]`
-- 默认值：`[]`
-- 详情：
+需要排除的目录页路径。
 
-  需要排除的目录页路径。
-  - `"/foo/"` 仅排除 `/foo/` 文件夹的目录页生成
-  - `/^\/foo\//` 排除 `/foo/` 文件夹及其子文件夹的目录页生成
+- `"/foo/"` 仅排除 `/foo/` 文件夹的目录页生成。
+- `/^\/foo\//` 排除 `/foo/` 文件夹及其子文件夹的目录页生成。
 
-  ::: tip 404 页面会被自动排除。
-
-  :::
-
-### component
-
-- 类型：`string`
-- 详情：用作目录的组件名称
-
-### locales
-
-- 类型：`CatalogPluginLocaleConfig`
-
-  ```ts
-  interface CatalogPluginLocaleData {
-    /**
-     * 目录标题
-     */
-    title: string
-
-    /**
-     * 空目录提示
-     */
-    empty: string
-  }
-
-  interface CatalogPluginLocaleConfig {
-    [localePath: string]: Partial<CatalogPluginLocaleData>
-  }
-  ```
-
-- 详情：目录组件国际化配置
-
-::: details 内置支持语言
-
-- **简体中文** (zh-CN)
-- **繁体中文** (zh-TW)
-- **英文(美国)** (en-US)
-- **德语** (de-DE)
-- **俄语** (ru-RU)
-- **乌克兰语** (uk-UA)
-- **越南语** (vi-VN)
-- **葡萄牙语** (pt)
-- **波兰语** (pl-PL)
-- **法语** (fr-FR)
-- **西班牙语** (es-ES)
-- **斯洛伐克** (sk-SK)
-- **日语** (ja-JP)
-- **土耳其语** (tr-TR)
-- **韩语** (ko-KR)
-- **芬兰语** (fi-FI)
-- **印尼语** (id-ID)
-- **荷兰语** (nl-NL)
+::: tip 404 页面会被自动排除。
 
 :::
 
-## 客户端选项
+@`component` type=string
+
+用作目录的组件名称。
+
+默认情况下，插件会注册并使用 `<Catalog />` 组件。
+
+@`locales` type=`CatalogPluginLocaleConfig`
+
+目录组件的多语言配置。
+
+参考：[多语言配置](../supported-locales.md)。
+
+@@`locales.<localePath>.title` type=string
+
+目录标题文字。
+
+@@`locales.<localePath>.empty` type=string
+
+空目录提示文字。
+::::
+
+## 客户端选项 {#client-options}
 
 ### defineCatalogInfoGetter
 
@@ -203,7 +166,7 @@ const defineCatalogInfoGetter: (options: CatalogInfoGetter) => void
 
 自定义如何从路由元信息中提取目录信息。
 
-## 组件
+## 组件 {#components}
 
 ### Catalog
 
@@ -219,7 +182,7 @@ const defineCatalogInfoGetter: (options: CatalogInfoGetter) => void
   - `index`：为目录项添加索引号，默认无标号
   - `hideHeading`：隐藏组件标题，默认显示 `目录` 标题
 
-## 样式
+## 样式 {#styles}
 
 你可以通过 CSS 变量来自定义目录样式：
 

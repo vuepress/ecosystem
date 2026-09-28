@@ -8,7 +8,7 @@ icon: fa-regular:copyright
 
 此插件可以在访问者从你的站点复制内容时，自动追加版权信息，也可以禁止站点的复制或者选择。
 
-## 使用
+## 使用 {#usage}
 
 ```bash
 npm i -D @vuepress/plugin-copyright@next
@@ -26,7 +26,9 @@ export default {
 }
 ```
 
-### 启用版权信息
+## 指南 {#guide}
+
+### 启用版权信息 {#enabling-copyright}
 
 此插件**默认全局禁用**。你可以:
 
@@ -41,199 +43,120 @@ export default {
 
 插件会默认通过模板从作者、协议和页面链接生成版权信息，并在复制时追加。如果你认为这不够灵活，你可以设置 `copyrightGetter` 返回一个完全由你自定义的版权信息，或返回 null 以使用默认模板。
 
-### 禁用复制和选择
+### 禁用复制和选择 {#disabling-copy-and-selection}
 
 如果你希望禁止用户复制较长内容，你可以在插件选项中设置 `maxLength` 控制这个临界值，或在页面 frontmatter 中设置 `copy.maxLength`。
 
 - 如果你不希望用户复制你的整个站点或特定页面文字，你可以在插件选项中设置 `disableCopy` 或在页面 frontmatter 中设置 `copy.disableCopy` 来禁用复制。后者具有更高优先级。
 - 如果你不希望用户选择你的整个站点或特定页面文字，你可以在插件选项中设置 `disableSelection` 或在页面 frontmatter 中设置 `copy.disableSelection` 来禁用文字选择。后者具有更高优先级。
 
-## 选项
+## 选项 {#options}
 
-### author
+:::: fields
+@`author` type=string
 
-- 类型：`string`
-- 详情：默认作者信息
+默认作者信息。
 
-### license
+@`license` type=string
 
-- 类型：`string`
-- 详情：默认协议信息
+默认协议信息。
 
-### authorGetter
+@`authorGetter` type=`(page: Page) => string | null`
 
-- 类型：`(page: Page) => string | null`
-- 详情：作者信息获取器
+作者信息获取器。它以当前页面对象作为参数，返回作者信息。
 
-### licenseGetter
+@`licenseGetter` type=`(page: Page) => string | null`
 
-- 类型：`(page: Page) => string | null`
-- 详情：协议信息获取器
+协议信息获取器。它以当前页面对象作为参数，返回协议信息。
 
-### copyrightGetter
+@`copyrightGetter` type=`(page: Page) => string | null`
 
-- 类型：`(page: Page) => string | null`
-- 详情：版权信息获取器
+版权信息获取器。它以当前页面对象作为参数，返回完全由你自定义的版权信息，或返回 `null` 以使用默认模板。
 
-### canonical
+@`canonical` type=string
 
-- 类型：`string`
-- 详情：首选部署位置
+首选域名与部署目录，它将作为追加的版权信息中的参考链接。
 
-  ::: tip 例子
+::: tip 例子
 
-  如果你在 `https://myblog.com` 和 `https://blog.com/username/` 下部署相同的内容，你可能希望选择一个站点作为首选链接。
-  - 如果你倾向于使用第一个，你应该将 `canonical` 设置为 `https://myblog.com`
-  - 如果你倾向于使用第二个，你应该将 `canonical` 设置为 `https://blog.com/username/`
+如果你在 `https://myblog.com` 和 `https://blog.com/username/` 下部署相同的内容，你可能希望选择一个站点作为首选链接。
 
-  这样，在另一个站点触发的版权信息也会指向你的首选站点。
+- 如果你倾向于使用第一个，你应该将 `canonical` 设置为 `https://myblog.com`
+- 如果你倾向于使用第二个，你应该将 `canonical` 设置为 `https://blog.com/username/`
 
-  :::
-
-### global
-
-- 类型：`boolean`
-- 默认值：`false`
-- 详情：是否全局启用
-
-### disableCopy
-
-- 类型：`boolean`
-- 默认值：`false`
-- 详情：禁用复制
-
-### disableSelection
-
-- 类型：`boolean`
-- 默认值：`false`
-- 详情：禁用选择
-
-### triggerLength
-
-- 类型：`number`
-- 默认值：`100`
-- 详情：触发附加版权的最小内容长度
-
-### maxLength
-
-- 类型：`number`
-- 默认值：`0`
-- 详情：允许复制的最大内容长度，`0` 意味着无限制
-
-### locales
-
-- 类型：`CopyrightPluginLocaleConfig`
-
-  ```ts
-  interface CopyrightPluginLocaleData {
-    /**
-     * 作者文字
-     *
-     * `:author` 将会被作者替换
-     */
-    author: string
-
-    /**
-     * 协议文字
-     *
-     * `:license` 会被当前协议替换
-     */
-    license: string
-
-    /**
-     * 链接文字
-     *
-     * `:link` 会替换为当前页面链接
-     */
-    link: string
-  }
-
-  interface CopyrightPluginLocaleConfig {
-    [localePath: string]: Partial<CopyrightPluginLocaleData>
-  }
-  ```
-
-- 详情：版权插件的国际化配置。
-- 示例：
-
-  ```ts title=".vuepress/config.ts"
-  import { copyrightPlugin } from '@vuepress/plugin-copyright'
-
-  export default {
-    locales: {
-      '/': {
-        // this is a supported language
-        lang: 'en-US',
-      },
-      '/xx/': {
-        // the plugin does not support this language
-        lang: 'mm-NN',
-      },
-    },
-
-    plugins: [
-      copyrightPlugin({
-        locales: {
-          '/': {
-            // Override link text
-            link: 'Original posted at :link',
-          },
-
-          '/xx/': {
-            // Complete locale config for `mm-NN` language here
-          },
-        },
-      }),
-    ],
-  }
-  ```
-
-::: details 内置支持语言
-
-- **简体中文** (zh-CN)
-- **繁体中文** (zh-TW)
-- **英文(美国)** (en-US)
-- **德语** (de-DE)
-- **俄语** (ru-RU)
-- **乌克兰语** (uk-UA)
-- **越南语** (vi-VN)
-- **葡萄牙语** (pt)
-- **波兰语** (pl-PL)
-- **法语** (fr-FR)
-- **西班牙语** (es-ES)
-- **斯洛伐克语** (sk-SK)
-- **日语** (ja-JP)
-- **土耳其语** (tr-TR)
-- **韩语** (ko-KR)
-- **芬兰语** (fi-FI)
-- **匈牙利语** (hu-HU)
-- **印尼语** (id-ID)
-- **荷兰语** (nl-NL)
+这样，在另一个站点触发的版权信息也会指向你的首选站点。
 
 :::
 
+@`global` type=boolean
+
+是否全局启用插件。
+
+参考：[启用版权信息](#enabling-copyright)。
+
+@`disableCopy` type=boolean
+
+是否禁用复制。
+
+参考：[禁用复制和选择](#disabling-copy-and-selection)。
+
+@`disableSelection` type=boolean
+
+是否禁用选择。
+
+参考：[禁用复制和选择](#disabling-copy-and-selection)。
+
+@`triggerLength` type=number default=`100`
+
+触发附加版权的最小内容长度。
+
+@`maxLength` type=number default=`0`
+
+允许复制的最大内容长度，`0` 意味着无限制。
+
+@`locales` type=`CopyrightPluginLocaleConfig`
+
+插件的多语言配置。
+
+参考：[多语言配置](../supported-locales.md)。
+
+@@`locales.<localePath>.author` type=string
+
+作者文字，其中的 `:author` 将会被作者替换。
+
+@@`locales.<localePath>.license` type=string
+
+协议文字，其中的 `:license` 会被当前协议替换。
+
+@@`locales.<localePath>.link` type=string
+
+链接文字，其中的 `:link` 会替换为当前页面链接。
+
+::::
+
 ## Frontmatter
 
-### copy.triggerLength
+::: fields
+@`copy` type=`boolean | object`
 
-- 类型：`number`
-- 默认值：`100`
-- 详情：触发附加版权的最小内容长度
+是否为当前页面启用插件，或传入一个对象进行配置。
 
-### copy.maxLength
+设置为 `true` 可在当前页面启用插件；当插件全局启用时，设置为 `false` 可在当前页面禁用它。
 
-- 类型：`number`
-- 默认值：`0`
-- 详情：允许复制的最大内容长度，`0` 意味着无限制
+@@`copy.triggerLength` type=number default=`100`
 
-### copy.disableCopy
+触发附加版权的最小内容长度。它会覆盖全局的 [triggerLength](#triggerlength) 选项。
 
-- 类型：`boolean`
-- 默认值：`false`
-- 详情：禁用复制
+@@`copy.maxLength` type=number default=`0`
 
-### copy.disableSelection
+允许复制的最大内容长度，`0` 意味着无限制。它会覆盖全局的 [maxLength](#maxlength) 选项。
 
-- 类型：`boolean`
-- 默认值：`false`
-- 详情：禁用选择
+@@`copy.disableCopy` type=boolean default=`false`
+
+是否禁用复制。它会覆盖全局的 [disableCopy](#disablecopy) 选项。
+
+@@`copy.disableSelection` type=boolean default=`false`
+
+是否禁用选择。它会覆盖全局的 [disableSelection](#disableselection) 选项。
+
+:::

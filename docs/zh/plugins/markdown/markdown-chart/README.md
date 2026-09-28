@@ -36,7 +36,7 @@ icon: chart-no-axes-combined
 
 <!-- more -->
 
-## 安装
+## 安装 {#installation}
 
 ::: code-tabs#shell
 
@@ -60,7 +60,7 @@ npm i -D @vuepress/plugin-markdown-chart@next
 
 :::
 
-## 使用
+## 使用 {#usage}
 
 ```ts
 import { markdownChartPlugin } from '@vuepress/plugin-markdown-chart'
@@ -85,7 +85,7 @@ export default {
 }
 ```
 
-## 可用图表
+## 可用图表 {#available-charts}
 
 - [Chart.js](./chartjs.md)
 - [ECharts](./echarts.md)
@@ -94,45 +94,39 @@ export default {
 - [Mermaid](./mermaid.md)
 - [PlantUML](./plantuml.md)
 
-## 选项
+## 选项 {#options}
 
-### chartjs
+::: fields
+@`chartjs` type=boolean
 
-- 类型：`boolean`
-- 详情：是否启用 Chart.js 支持。
+是否启用 Chart.js 支持。
 
-### echarts
+@`echarts` type=boolean
 
-- 类型：`boolean`
-- 详情：是否启用 ECharts 支持。
+是否启用 ECharts 支持。
 
-### flowchart
+@`flowchart` type=boolean
 
-- 类型：`boolean`
-- 详情：是否启用 Flowchart 支持。
+是否启用 Flowchart 支持。
 
-### markmap
+@`markmap` type=boolean
 
-- 类型：`boolean`
-- 详情：是否启用 Markmap 支持。
+是否启用 Markmap 支持。
 
-### mermaid
+@`mermaid` type=boolean
 
-- 类型：`boolean`
-- 详情：是否启用 Mermaid 支持。
+是否启用 Mermaid 支持。
 
-### plantuml
+@`plantuml` type=`boolean | MarkdownItPlantumlOptions[]`
 
-- 类型：`boolean | MarkdownItPlantumlOptions[]`
-- 详情：是否启用 PlantUML 支持。可以接受配置选项以供高级使用。
+是否启用 PlantUML 支持。可以接受配置选项以供高级使用。
 
-### DANGEROUS_ALLOW_SCRIPT_EXECUTION
+@`DANGEROUS_ALLOW_SCRIPT_EXECUTION` type=boolean
 
-- 类型：`boolean`
-- 详情：是否允许在图表中执行脚本。这可能会带来安全风险，请谨慎使用。
+是否允许在图表中执行脚本。这可能会带来安全风险，请谨慎使用。
 
-### DANGEROUS_SCRIPT_EXECUTION_ALLOWLIST
+@`DANGEROUS_SCRIPT_EXECUTION_ALLOWLIST` type=`string[] | '*'` default=[]
 
-- 类型：`string[] | '*'`
-- 默认：`[]`
-- 详情：当启用脚本执行时，允许执行图表脚本的文件路径列表。使用 `'*'` 允许所有文件。
+当启用脚本执行时，允许执行图表脚本的文件路径列表。使用 `'*'` 允许所有文件。
+
+:::

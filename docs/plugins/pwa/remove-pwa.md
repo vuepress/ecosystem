@@ -10,7 +10,7 @@ This plugin removes service workers from your VuePress site, ensuring users can 
 
 ::: tip Why this plugin is needed if you used PWA plugin once?
 
-PWA plugins like [`@vuepress/plugin-pwa`](./pwa/README.md) register service workers that cache your site for offline access.
+PWA plugins like [`@vuepress/plugin-pwa`](./pwa.md) register service workers that cache your site for offline access.
 
 If you remove a PWA plugin, the old service worker remains but can't receive updates as there's no new service worker to update to. Users will be stuck with the old version of your site.
 
@@ -44,14 +44,13 @@ export default {
 
 ## Options
 
-### cachePatterns
+::: fields
+@`cachePatterns` type=`string[]` default=`[]`
 
-- Type: `string[]`
-- Default: `[]`
-- Details: Regular expression patterns to match cache names for removal. If empty, all caches will be removed.
+Regular expression patterns to match cache names for removal. If empty, all caches will be removed.
 
-### swLocation
+@`swLocation` type=string default=`'service-worker.js'`
 
-- Type: `string`
-- Default: `'service-worker.js'`
-- Details: Original service worker location relative to dest folder.
+Original service worker location relative to dest folder.
+
+:::

@@ -10,7 +10,7 @@ icon: siren
 
 该插件已经集成到默认主题中。
 
-## 使用方法
+## 使用方法 {#usage}
 
 ```bash
 npm i -D @vuepress/plugin-markdown-hint@next
@@ -31,7 +31,7 @@ export default {
 }
 ```
 
-## 指南
+## 指南 {#guide}
 
 默认情况下，我们支持 `important`、`info`、`note`、`tip`、`warning`、`caution`、`details` 容器与 markdown 容器：
 
@@ -89,70 +89,53 @@ const a = 1
 > This is caution text
 ```
 
-## 选项
+## 选项 {#options}
 
-### hint
+::: fields
+@`hint` type=boolean default=`true`
 
-- 类型：`boolean`
-- 默认值：`true`
-- 详情：是否启用提示容器，包括 important、info、note、tip、warning、caution、details。
+是否启用提示容器，包括 important、info、note、tip、warning、caution、details。
 
-### alert
+@`alert` type=boolean
 
-- 类型：`boolean`
-- 详情：是否启用 GFM 警告支持。
+是否启用 GFM 警告支持。
 
-### injectStyles
+@`injectStyles` type=boolean default=`true`
 
-- 类型：`boolean`
-- 默认值：`true`
-- 详情：是否注入默认样式。
+是否注入默认样式。
 
-### locales
+@`locales` type=MarkdownHintPluginLocaleConfig
 
-- 类型：`MarkdownHintPluginLocaleConfig`
+提示容器标题的本地化配置。
 
-  ```ts
-  interface MarkdownHintPluginLocaleConfig {
-    [localePath: string]: Partial<MarkdownHintPluginLocaleData>
-  }
+参考：[多语言配置](../supported-locales.md)。
 
-  interface MarkdownHintPluginLocaleData {
-    /**
-     * 重要块的默认标题
-     */
-    important: string
+@@`locales.<localePath>.important` type=string
 
-    /**
-     * 注释块的默认标题
-     */
-    note: string
+重要块的默认标题。
 
-    /**
-     * 提示块的默认标题
-     */
-    tip: string
+@@`locales.<localePath>.note` type=string
 
-    /**
-     * 注意块的默认标题
-     */
-    warning: string
+注释块的默认标题。
 
-    /**
-     * 警告块的默认标题
-     */
-    caution: string
+@@`locales.<localePath>.tip` type=string
 
-    /**
-     * 信息块的默认标题
-     */
-    info: string
+提示块的默认标题。
 
-    /**
-     * 详情块的默认标题
-     */
-    details: string
-  }
-  ```
+@@`locales.<localePath>.warning` type=string
 
-- 详情：提示容器标题的本地化配置。
+注意块的默认标题。
+
+@@`locales.<localePath>.caution` type=string
+
+警告块的默认标题。
+
+@@`locales.<localePath>.info` type=string
+
+信息块的默认标题。
+
+@@`locales.<localePath>.details` type=string
+
+详情块的默认标题。
+
+:::

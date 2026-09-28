@@ -8,7 +8,7 @@ icon: folder-tree
 
 该插件用于在 Markdown 中渲染目录结构，既可以来自 Markdown 无序列表（文件树），也可以来自多个文件的代码块（代码树）。
 
-## 使用
+## 使用 {#usage}
 
 ```bash
 npm i -D @vuepress/plugin-markdown-file-tree@next
@@ -27,11 +27,11 @@ export default {
 }
 ```
 
-## 文件树
+## 文件树 {#file-tree}
 
 在 Markdown 中，使用 `::: file-tree` 容器展示带有文件图标和可折叠子目录的目录结构。
 
-### 语法
+### 语法 {#syntax}
 
 在 `::: file-tree` 容器中，使用内置的 **Markdown 无序列表语法** 来指定文件和目录结构。
 使用嵌套列表项创建子目录；如果你不希望目录显示其内容，请在该列表项后添加一个斜杠 `/`。
@@ -44,38 +44,9 @@ export default {
 - 使用 `...` 或 `…` 作为名称来添加占位文件和目录。
 - 在 `:::file-tree` 容器后添加任意文本可以为文件树添加标题。
 
-### 示例
+### 示例 {#example}
 
-**输入：**
-
-```md
-::: file-tree
-
-- docs
-  - .vuepress
-    - ++ config.ts
-  - -- page1.md
-  - README.md
-- theme # 一个 **主题** 目录
-  - client
-    - components
-      - **Navbar.vue**
-    - composables
-      - useNavbar.ts
-    - styles
-      - navbar.css
-    - config.ts
-  - node/
-- package.json
-- pnpm-lock.yaml
-- .gitignore
-- README.md
-- …
-
-:::
-```
-
-**输出：**
+:::: preview
 
 ::: file-tree
 
@@ -102,11 +73,13 @@ export default {
 
 :::
 
-## 代码树
+::::
+
+## 代码树 {#code-tree}
 
 在 Markdown 中，使用 `::: code-tree` 容器将多个文件的代码块与文件树一起展示，让小型模板的结构一目了然。
 
-### 语法
+### 语法 {#syntax-1}
 
 将多个代码块包裹在 `::: code-tree` 容器中，并为代码块添加 `title="filepath"` 属性来声明它所属的文件。
 
@@ -140,7 +113,7 @@ console.log('main')
 pnpm --filter @vuepress/plugin-markdown-file-tree generate:icons
 ```
 
-### 嵌入目录
+### 嵌入目录 {#embedding-a-directory}
 
 使用 `@[code-tree](dir_path)` 将目录嵌入为代码树。目录中的所有代码文件都会被读取并渲染为代码块。
 
@@ -170,50 +143,9 @@ pnpm --filter @vuepress/plugin-markdown-file-tree generate:icons
 
 :::
 
-### 示例
+### 示例 {#example-1}
 
-**输入：**
-
-````md
-::: code-tree title="Vue App" height="400px" entry="src/main.ts"
-
-```vue title="src/components/HelloWorld.vue"
-<template>
-  <div class="hello">
-    <h1>Hello World</h1>
-  </div>
-</template>
-```
-
-```vue title="src/App.vue"
-<template>
-  <div id="app">
-    <h3>Vue App</h3>
-    <HelloWorld />
-  </div>
-</template>
-```
-
-```ts title="src/main.ts"
-import { createApp } from 'vue'
-import App from './App.vue'
-
-createApp(App).mount('#app')
-```
-
-```json title="package.json"
-{
-  "name": "Vue App",
-  "scripts": {
-    "dev": "vite"
-  }
-}
-```
-
-:::
-````
-
-**输出：**
+:::: preview
 
 ::: code-tree title="Vue App" height="400px" entry="src/main.ts"
 
@@ -252,20 +184,21 @@ createApp(App).mount('#app')
 
 :::
 
-## 选项
+::::
 
-### fileTree
+## 选项 {#options}
 
-- 类型：`boolean`
-- 详情：是否启用文件树，即从 `::: file-tree` 容器内的 Markdown 无序列表渲染目录结构。禁用后 `::: file-tree` 容器不可用。
+::: fields
+@`fileTree` type=boolean
 
-### codeTree
+是否启用文件树，即从 `::: file-tree` 容器内的 Markdown 无序列表渲染目录结构。禁用后 `::: file-tree` 容器不可用。
 
-- 类型：`boolean | MarkdownCodeTreePluginOptions`
-- 详情：是否启用代码树，即将多个文件的代码块与文件树一起展示。禁用后 `::: code-tree` 容器和 `@[code-tree](dir_path)` 语法不可用。传入对象表示启用代码树并附加选项。
+@`codeTree` type=`boolean | MarkdownCodeTreePluginOptions`
 
-#### codeTree.height
+是否启用代码树，即将多个文件的代码块与文件树一起展示。禁用后 `::: code-tree` 容器和 `@[code-tree](dir_path)` 语法不可用。传入对象表示启用代码树并附加选项。
 
-- 类型：`number | string`
-- 默认值：`'320px'`
-- 详情：代码树的默认高度。数字会被视为像素值。
+@@`codeTree.height` type=`number | string` default=`'320px'`
+
+代码树的默认高度。数字会被视为像素值。
+
+:::

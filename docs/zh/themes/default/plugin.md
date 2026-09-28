@@ -2,7 +2,7 @@
 icon: unplug
 ---
 
-# 插件配置
+# 插件配置 {#plugins-config}
 
 你可以通过 `themePlugins` 设置默认主题使用的插件。
 
@@ -20,154 +20,69 @@ export default {
 }
 ```
 
-## themePlugins.activeHeaderLinks
+## themePlugins
 
-- 类型： `boolean`
+:::: fields
+@`activeHeaderLinks` type=boolean default=`true`
 
-- 默认值： `true`
+是否启用 [@vuepress/plugin-active-header-links](../../plugins/development/active-header-links.md)。
 
-- 详情：
+@`backToTop` type=`BackToTopPluginOptions | boolean` default=`true`
 
-  是否启用 [@vuepress/plugin-active-header-links](../../plugins/development/active-header-links.md) 。
+是否启用 [@vuepress/plugin-back-to-top](../../plugins/features/back-to-top.md)。
 
-## themePlugins.backToTop
+支持对象格式以作为插件选项。
 
-- 类型： `BackToTopPluginOptions | boolean`
+@`copyCode` type=`CopyCodePluginOptions | boolean` default=`true`
 
-- 默认值： `true`
+是否启用 [@vuepress/plugin-copy-code](../../plugins/features/copy-code.md)。
 
-- 详情：
+支持对象格式以作为插件选项。
 
-  是否启用 [@vuepress/plugin-back-to-top](../../plugins/features/back-to-top.md) 。
+@`git` type=`GitPluginOptions | boolean` default=`true`
 
-  支持对象格式以作为插件选项。
+是否启用 [@vuepress/plugin-git](../../plugins/development/git.md)。
 
-## themePlugins.container
+@`hint` type=`MarkdownHintPluginOptions | boolean` default=`true`
 
-- 类型： `Record<ContainerType, boolean>`
+是否启用 [@vuepress/plugin-markdown-hint](../../plugins/markdown/markdown-hint.md)。
 
-- 详情：
+参考：[提示容器](./markdown.md#hint-containers)
 
-  是否启用由 [@vuepress/plugin-markdown-container](../../plugins/markdown/markdown-container.md) 支持的自定义容器。
+@`linksCheck` type=`LinksCheckPluginOptions | boolean` default=`true`
 
-  `ContainerType` 类型为：
-  - `codeGroup`
-  - `codeGroupItem`
+是否启用 [@vuepress/plugin-links-check](../../plugins/markdown/links-check.md)。
 
-- 参考：
-  - [默认主题 > Markdown > 自定义容器](./markdown.md#自定义容器)
+支持对象格式以作为插件选项。
 
-## themePlugins.copyCode
+@`mediumZoom` type=boolean default=`true`
 
-- 类型： `CopyCodePluginOptions | boolean`
+是否启用 [@vuepress/plugin-medium-zoom](../../plugins/features/medium-zoom.md)。
 
-- 默认值： `true`
+@`nprogress` type=boolean default=`true`
 
-- 详情：
+是否启用 [@vuepress/plugin-nprogress](../../plugins/features/nprogress.md)。
 
-  是否启用 [@vuepress/plugin-copy-code](../../plugins/features/copy-code.md)。
+@`prismjs` type=`PrismjsPluginOptions | boolean` default=`true`
 
-  支持对象格式以作为插件选项。
+是否启用 [@vuepress/plugin-prismjs](../../plugins/markdown/prismjs.md)。
 
-## themePlugins.git
+@`seo` type=`Partial<SeoPluginOptions> | boolean` default=`true`
 
-- 类型： `boolean`
+是否启用 [@vuepress/plugin-seo](../../plugins/seo/seo.md)。
 
-- 默认值： `true`
+支持对象格式以作为插件选项。
 
-- 详情：
+@`sitemap` type=`Partial<SitemapPluginOptions> | boolean` default=`true`
 
-  是否启用 [@vuepress/plugin-git](../../plugins/development/git.md) 。
+是否启用 [@vuepress/plugin-sitemap](../../plugins/seo/sitemap.md)。
 
-## themePlugins.hint
+支持对象格式以作为插件选项。
 
-- 类型： `MarkdownHintPluginOptions | boolean`
+@`tab` type=`MarkdownTabPluginOptions | boolean` default=`true`
 
-- 默认值： `true`
+是否启用 [@vuepress/plugin-markdown-tab](../../plugins/markdown/markdown-tab.md)。
 
-- 详情：
+参考：[代码选项卡](./markdown.md#code-tabs) 与 [选项卡](./markdown.md#tabs)
 
-  是否启用 [@vuepress/plugin-markdown-hint](../../plugins/markdown/markdown-hint.md)。
-
-- 参考：
-  - [默认主题 > Markdown > 提示容器](./markdown.md#提示容器)
-
-## themePlugins.linksCheck
-
-- 类型：`LinksCheckPluginOptions | boolean`
-
-- 默认值：`true`
-
-- 详情：
-
-  是否启用 [@vuepress/plugin-links-check](../../plugins/markdown/links-check.md)。
-
-  支持对象格式以作为插件选项。
-
-## themePlugins.mediumZoom
-
-- 类型： `boolean`
-
-- 默认值： `true`
-
-- 详情：
-
-  是否启用 [@vuepress/plugin-medium-zoom](../../plugins/features/medium-zoom.md) 。
-
-## themePlugins.nprogress
-
-- 类型： `boolean`
-
-- 默认值： `true`
-
-- 详情：
-
-  是否启用 [@vuepress/plugin-nprogress](../../plugins/features/nprogress.md) 。
-
-## themePlugins.prismjs
-
-- 类型： `boolean`
-
-- 默认值： `true`
-
-- 详情：
-
-  是否启用 [@vuepress/plugin-prismjs](../../plugins/markdown/prismjs.md) 。
-
-## themePlugins.seo
-
-- 类型： `SeoPluginOptions | boolean`
-
-- 默认值： `true`
-
-- 详情：
-
-  是否启用 [@vuepress/plugin-seo](../../plugins/seo/seo/README.md) 。
-
-  支持对象格式以作为插件选项。
-
-## themePlugins.sitemap
-
-- 类型： `SitemapPluginOptions | boolean`
-
-- 默认值： `true`
-
-- 详情：
-
-  是否启用 [@vuepress/plugin-sitemap](../../plugins/seo/sitemap/README.md) 。
-
-  支持对象格式以作为插件选项。
-
-## themePlugins.tab
-
-- 类型： `MarkdownTabPluginOptions | boolean`
-
-- 默认值： `true`
-
-- 详情：
-
-  是否启用 [@vuepress/plugin-markdown-tab](../../plugins/markdown/markdown-tab.md)。
-
-- 参考：
-  - [默认主题 > Markdown > 代码选项卡](./markdown.md#代码选项卡)
-  - [默认主题 > Markdown > 选项卡](./markdown.md#选项卡)
+::::

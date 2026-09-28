@@ -1,253 +1,204 @@
-# Waline Config
-
-## Config
-
-### serverURL
-
-- Type: `string`
-- Required: Yes
-- Details: Waline server address URL
-
-### emoji
-
-- Type: `(string | WalineEmojiInfo)[] | false`
-
-  ```ts
-  type WalineEmojiPresets = `http://${string}` | `https://${string}`
+---
+icon: settings-2
+---
 
-  interface WalineEmojiInfo {
-    /**
-     * Emoji name show on tab
-     */
-    name: string
-    /**
-     * Current folder link
-     */
-    folder?: string
-    /**
-     * Common prefix of Emoji icons
-     */
-    prefix?: string
-    /**
-     * Type of Emoji icons, will be regarded as file extension
-     */
-    type?: string
-    /**
-     * Emoji icon show on tab
-     */
-    icon: string
-    /**
-     * Emoji image list
-     */
-    items: string[]
-  }
-  ```
+# Waline Options
 
-- Default: `['//unpkg.com/@waline/emojis@1.1.0/weibo']`
-- Reference:
-  - [Guide → Emoji](https://waline.js.org/en/guide/features/emoji.html)
-- Details: Emoji settings
+## Options
 
-### dark
+::: fields
+@`serverURL` type=string required
 
-- Type: `string | boolean`
-- Default: `false`
-- Reference:
-  - [Custom Style](https://waline.js.org/en/guide/features/style.html)
-- Details: Dark mode support. Setting a boolean will set the dark mode according to its value. Set it to `'auto'` will display darkmode due to device settings. Filling in a CSS selector will enable darkmode only when the selector match waline ancestor nodes.
+Waline server address URL.
 
-### commentSorting
+@`emoji` type=`(string | WalineEmojiInfo)[] | false` default=`['//unpkg.com/@waline/emojis@1.1.0/weibo']`
 
-- Type: `WalineCommentSorting`
-- Default: `'latest'`
-- Details: Comment list sorting method. Should be one of `'latest'`, `'oldest'`, or `'hottest'`.
+Emoji settings.
 
-### meta
+Its type is:
 
-- Type: `string[]`
-- Default: `['nick', 'mail', 'link']`
-- Details: Reviewer attributes. Should be one of `'nick'`, `'mail'`, `'link'`.
+```ts
+type WalineEmojiPresets = `http://${string}` | `https://${string}`
 
-### requiredMeta
+interface WalineEmojiInfo {
+  /**
+   * Emoji name show on tab
+   */
+  name: string
+  /**
+   * Current folder link
+   */
+  folder?: string
+  /**
+   * Common prefix of Emoji icons
+   */
+  prefix?: string
+  /**
+   * Type of Emoji icons, will be regarded as file extension
+   */
+  type?: string
+  /**
+   * Emoji icon show on tab
+   */
+  icon: string
+  /**
+   * Emoji image list
+   */
+  items: string[]
+}
+```
 
-- Type: `string[]`
-- Default: `[]`
-- Details:
+See also: [Emoji](https://waline.js.org/en/guide/features/emoji.html).
 
-  Set required fields. Available values:
-  - `[]`
-  - `['nick']`
-  - `['nick', 'mail']`
+@`dark` type=`string | boolean` default=`false`
 
-### login
+Dark mode support. Setting a boolean will set the dark mode according to its value. Set it to `'auto'` will display darkmode due to device settings. Filling in a CSS selector will enable darkmode only when the selector match waline ancestor nodes.
 
-- Type: `string`
-- Default: `'enable'`
-- Details:
+See also: [Custom Style](https://waline.js.org/en/guide/features/style.html).
 
-  Login mode status. Available values:
-  - `'enable'`: Enable login (default)
-  - `'disable'`: Login is disabled, users should fill in information to comment
-  - `'force'`: Forced login, users must login to comment
+@`commentSorting` type=WalineCommentSorting default=`'latest'`
 
-### wordLimit
+Comment list sorting method. Should be one of `'latest'`, `'oldest'`, or `'hottest'`.
 
-- Type: `number | [number, number]`
-- Default: `0`
-- Details: Comment word limit. When a single number is filled in, it's the maximum number of comment words. No limit when set to `0`.
+@`meta` type=`string[]` default=`['nick', 'mail', 'link']`
 
-### pageSize
+Reviewer attributes. Should be one of `'nick'`, `'mail'`, `'link'`.
 
-- Type: `number`
-- Default: `10`
-- Details: Number of comments per page.
+@`requiredMeta` type=`string[]` default=`[]`
 
-### imageUploader <Badge text="Client Config Only" type="warning"/>
+Set required fields. Available values:
 
-- Type: `WalineImageUploader | false`
+- `[]`
+- `['nick']`
+- `['nick', 'mail']`
 
-  ```ts
-  type WalineImageUploader = (image: File) => Promise<string>
-  ```
+@`login` type=string default=`'enable'`
 
-- Reference:
-  - [Cookbook → Upload Image](https://waline.js.org/en/cookbook/customize/upload-image.html)
+Login mode status. Available values:
 
-- Details:
+- `'enable'`: Enable login (default)
+- `'disable'`: Login is disabled, users should fill in information to comment
+- `'force'`: Forced login, users must login to comment
 
-  Custom image upload method. The default behavior is to embed images Base 64 encoded, you can set this to `false` to disable image uploading.
+@`wordLimit` type=`number | [number, number]` default=`0`
 
-  The function should receive an image object and return a Promise that provides the image address.
+Comment word limit. When a single number is filled in, it's the maximum number of comment words. No limit when set to `0`.
 
-### highlighter <Badge text="Client Config Only" type="warning"/>
+@`pageSize` type=number default=`10`
 
-- Type: `WalineHighlighter | false`
+Number of comments per page.
 
-  ```ts
-  type WalineHighlighter = (code: string, lang: string) => string
-  ```
+@`imageUploader` type=`((image: File) => Promise<string>) | false` client-only="Yes"
 
-- Reference:
-  - [Cookbook → Customize Highlighter](https://waline.js.org/en/cookbook/customize/highlighter.html)
+Custom image upload method. The default behavior is to embed images Base 64 encoded, you can set this to `false` to disable image uploading.
 
-- Details:
+The function should receive an image object and return a Promise that provides the image address.
 
-  **Code highlighting** uses `hanabi` by default. The function passes in original content of code block and language of the code block. You should return a string directly.
+See also: [Upload Image](https://waline.js.org/en/cookbook/customize/upload-image.html).
 
-  You can pass in a code highlighter of your own, or set to `false` to disable code highlighting.
+@`highlighter` type=`((code: string, lang: string) => string) | false` client-only="Yes"
 
-### texRenderer <Badge text="Client Config Only" type="warning"/>
+Code highlighting uses `hanabi` by default. The function passes in original content of code block and language of the code block. You should return a string directly.
 
-- Type: `WalineTexRenderer | false`
+You can pass in a code highlighter of your own, or set to `false` to disable code highlighting.
 
-  ```ts
-  type WalineTexRenderer = (blockMode: boolean, tex: string) => string
-  ```
+See also: [Customize Highlighter](https://waline.js.org/en/cookbook/customize/highlighter.html).
 
-- Reference:
-  - [Cookbook → Customize TeX Renderer](https://waline.js.org/en/cookbook/customize/tex-renderer.html)
-  - [MathJax](https://www.mathjax.org/)
-  - [KaTeX](https://katex.org/)
+@`texRenderer` type=`((blockMode: boolean, tex: string) => string) | false` client-only="Yes"
 
-- Details:
+Customize TeX rendering. The default behavior is to prompt that the preview mode does not support TeX. The function provides two parameters: the first parameter indicates whether it should be rendered in block level, and the second parameter is the string of the TeX content. Return an HTML string as render result.
 
-  Customize TeX rendering. The default behavior is to prompt that the preview mode does not support TeX. The function provides two parameters: the first parameter indicates whether it should be rendered in block level, and the second parameter is the string of the TeX content. Return an HTML string as render result.
+You can import TeX renderer to provide preview feature. We recommend you use KaTeX or MathJax, or set to `false` to disable parsing TeX.
 
-  You can import TeX renderer to provide preview feature. We recommend you use KaTeX or MathJax, or set to `false` to disable parsing TeX.
+See also: [Customize TeX Renderer](https://waline.js.org/en/cookbook/customize/tex-renderer.html).
 
-### search <Badge text="Client Config Only" type="warning"/>
+@`search` type=`WalineSearchOptions | false` client-only="Yes"
 
-- Type: `WalineSearchOptions | false`
+Customize search features. You can disable search function by setting it to `false`.
 
-  ```ts
-  interface WalineSearchImageData extends Record<string, unknown> {
-    /**
-     * Image link
-     */
-    src: string
+Its type is:
 
-    /**
-     * Image title
-     *
-     * Used for alt attribute of image
-     */
-    title?: string
+```ts
+interface WalineSearchImageData extends Record<string, unknown> {
+  /**
+   * Image link
+   */
+  src: string
 
-    /**
-     * Image preview link
-     *
-     * For better loading performance, we will use this thumbnail first in the list
-     *
-     * @default src
-     */
-    preview?: string
-  }
+  /**
+   * Image title
+   *
+   * Used for alt attribute of image
+   */
+  title?: string
 
-  type WalineSearchResult = WalineSearchImageData[]
+  /**
+   * Image preview link
+   *
+   * For better loading performance, we will use this thumbnail first in the list
+   *
+   * @default src
+   */
+  preview?: string
+}
 
-  interface WalineSearchOptions {
-    /**
-     * Search action
-     */
-    search: (word: string) => Promise<WalineSearchResult>
+type WalineSearchResult = WalineSearchImageData[]
 
-    /**
-     * Default result when opening list
-     *
-     * @default () => search('')
-     */
-    default?: () => Promise<WalineSearchResult>
+interface WalineSearchOptions {
+  /**
+   * Search action
+   */
+  search: (word: string) => Promise<WalineSearchResult>
 
-    /**
-     * Fetch more action
-     *
-     * It will be triggered when the list scrolls to the bottom. If your search service supports paging, you should set this to achieve infinite scrolling
-     *
-     * @default (word) => search(word)
-     */
-    more?: (word: string, currentCount: number) => Promise<WalineSearchResult>
-  }
-  ```
+  /**
+   * Default result when opening list
+   *
+   * @default () => search('')
+   */
+  default?: () => Promise<WalineSearchResult>
 
-- Details: Customize search features. You can disable search function by setting it to `false`.
+  /**
+   * Fetch more action
+   *
+   * It will be triggered when the list scrolls to the bottom. If your search service supports paging, you should set this to achieve infinite scrolling
+   *
+   * @default (word) => search(word)
+   */
+  more?: (word: string, currentCount: number) => Promise<WalineSearchResult>
+}
+```
 
-### recaptchaV3Key
+@`recaptchaV3Key` type=string
 
-- Type: `string`
-- Details:
+reCAPTCHA V3 is a captcha service provided by Google. You can add reCAPTCHA V3 site key with `recaptchaV3Key` to enable it.
 
-  reCAPTCHA V3 is a captcha service provided by Google. You can add reCAPTCHA V3 site key with `recaptchaV3Key` to enable it.
+You should also set environment variable `RECAPTCHA_V3_SECRET` for server.
 
-  You should also set environment variable `RECAPTCHA_V3_SECRET` for server.
+@`reaction` type=`boolean | string[]` default=`false`
 
-### reaction
+Add emoji interaction function to the article. Set it to `true` to provide the default emoji, you can also customize the emoji image by setting the emoji URL array, and supports a maximum of 8 emojis.
 
-- Type: `boolean | string[]`
-- Default: `false`
-- Details:
+@`metaIcon` type=boolean default=`true` plugin-only="Yes"
 
-  Add emoji interaction function to the article. Set it to `true` to provide the default emoji, you can also customize the emoji image by setting the emoji URL array, and supports a maximum of 8 emojis.
+Whether to import meta icon.
 
-### metaIcon <Badge text="Plugin Option Only" type="warning"/>
+@`locales` type=WalineLocales plugin-only="Yes"
 
-- Type: `boolean`
-- Default: `true`
-- Details: Whether to import meta icon.
+Waline locales.
 
-### locales <Badge text="Plugin Option Only" type="warning"/>
+See also: [Locales](../../../supported-locales.md).
 
-- Type: `WalineLocales`
+Its type is:
 
-  ```ts
-  interface WalineLocales {
-    [localePath: string]: Partial<WalineLocale>
-  }
-  ```
+```ts
+interface WalineLocales {
+  [localePath: string]: Partial<WalineLocale>
+}
+```
 
-- Reference:
-  - [Waline Locales](https://waline.js.org/en/cookbook/customize/locale.html)
-- Details:
-  Waline locales.
+See also: [Waline Locales](https://waline.js.org/en/cookbook/customize/locale.html).
+
+:::
 
 ## Plugin Config
 

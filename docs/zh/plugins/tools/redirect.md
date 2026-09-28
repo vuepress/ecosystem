@@ -8,7 +8,7 @@ icon: forward
 
 此插件提供页面与整站重定向功能。
 
-## 使用方法
+## 使用方法 {#usage}
 
 ```bash
 npm i -D @vuepress/plugin-redirect@next
@@ -26,15 +26,45 @@ export default {
 }
 ```
 
-### 设置重定向
+## 指南 {#guide}
+
+### 设置重定向 {#control-page-redirection}
 
 如果你改动了已有页面的地址，你可以在 Frontmatter 中使用 `redirectFrom` 选项设置重定向到此页面的地址，这样可以保证用户在访问旧链接时重定向到新的地址。
 
 如果你需要将已有的页面重定向到新的页面，可以在 Frontmatter 中使用 `redirectTo` 选项设置需要重定向到的地址。这样该页面会在访问时重定向到新的地址。
 
-你还可以通过插件选项中的 `config` 设置一个重定向映射，详见 [config](#config)。
+你还可以通过插件选项中的 `config` 设置一个重定向映射：
 
-### 自动多语言
+当 base 为 `/base/` 时：
+
+- 将 `/base/foo.html` 重定向到 `/base/bar.html`
+- 将 `/base/baz.html` 重定向到 `https://example.com/qux.html`。
+
+```js
+redirect({
+  config: {
+    '/foo.html': '/bar.html',
+    '/baz.html': 'https://example.com/qux.html',
+  },
+})
+```
+
+将 post 文件夹的路径重定向到 posts 文件夹：
+
+```js
+redirect({
+  hostname: 'https://example.com',
+  config: (app) =>
+    Object.fromEntries(
+      app.pages
+        .filter(({ path }) => path.startsWith('/posts/'))
+        .map(({ path }) => [path.replace(/^\/posts\//, '/post/'), path]),
+    ),
+})
+```
+
+### 自动多语言 {#auto-locales}
 
 插件可以根据用户的语言首选项，自动将无多语言链接重定向到用户需要的多语言页面。为了实现这一点，你需要留空默认的语言目录 (`/`)，并在插件选项中设置 `autoLocale: true`。插件会自动根据用户语言跳转到对应的语言页面。
 
@@ -101,14 +131,14 @@ export default {
 
 :::
 
-### 自动切换语言
+### 自动切换语言 {#automatically-switch-languages}
 
 插件支持在多语言文档中，自动根据用户语言首选项，将链接切换到用户需要的多语言页面。为了实现这一点，你需要在插件选项中设置 `switchLocale`，它可以是以下两个值:
 
 - `direct`: 直接切换到用户语言首选项页面，而不询问
 - `modal`: 在用户语言首选项与当前页面语言不同时，弹出一个对话框询问用户是否切换语言
 
-### 自定义多语言配置
+### 自定义多语言配置 {#customizing-locale-settings}
 
 默认情况下，插件会从站点的多语言配置 `locales` 选项中，读取 `语言路径` 和 `lang` 生成多语言配置。有些时候，你可能希望多个语言命中同一个路径，这种情况下，你应该设置插件的 `localeConfig` 选项。
 
@@ -123,7 +153,7 @@ redirect({
 })
 ```
 
-### 重定向站点
+### 重定向站点 {#redirecting-sites}
 
 有时你可能会更改 `base` 或为你的站点使用新域名，因此你可能希望原始站点自动重定向到新站点。
 
@@ -155,168 +185,99 @@ Generate redirect site for current VuePress project
 
 默认情况下，插件将输出到源文件夹下的 `.vuepress/redirect` 目录。你应该将其上传到你的原始站点以提供重定向。
 
-## 选项
+## 选项 {#options}
 
-### config
+:::: fields
+@`config` type=`Record<string, string> | ((app: App) => Record<string, string>)`
 
-- 类型：`Record<string, string> | ((app: App) => Record<string, string>)`
-- 详情
+页面重定向映射。键名为重定向的源页面地址，键值为重定向的目标地址。
 
-  页面重定向映射。
+参考：[设置重定向](#control-page-redirection)。
 
-  可直接传入对象或传入参数为 `App` 的函数返回值一个对象。
+@`autoLocale` type=boolean
 
-  每个键名必须是一个绝对路径，代表重定向的源页面地址。
+是否启用语言重定向。
 
-  每个键值是重定向的目标地址，可以是绝对路径或完整路径。
+参考：[自动多语言](#auto-locales)。
 
-- 示例：
+@`switchLocale` type=`'direct' | 'modal' | 'popup' | false` default=`false`
 
-  当 base 为 `/base/`时：
-  - 将 `/base/foo.html` 重定向到 `/base/bar.html`
-  - 将 `/base/baz.html` 重定向到 `https://example.com/qux.html`。
+是否根据用户偏好切换到新的语言环境。
 
-  ```js
-  redirect({
-    config: {
-      '/foo.html': '/bar.html',
-      '/baz.html': 'https://example.com/qux.html',
-    },
-  })
-  ```
+- `'direct'`: 直接重定向到新的语言环境而不询问。
+- `'popup'`: 显示一个弹窗让用户选择是否切换到新的语言环境。
+- `'modal'`: 显示一个全屏模态框让用户选择是否切换到新的语言环境。
 
-  将 post 文件夹的路径重定向到 posts 文件夹
+参考：[自动切换语言](#automatically-switch-languages)。
 
-  ```js
-  redirect({
-    hostname: 'https://example.com',
-    config: (app) =>
-      Object.fromEntries(
-        app.pages
-          .filter(({ path }) => path.startsWith('/posts/'))
-          .map(({ path }) => [path.replace(/^\/posts\//, '/post/'), path]),
-      ),
-  })
-  ```
+@`localeConfig` type=`Record<string, string[] | string>`
 
-### autoLocale
+多语言语言配置。
 
-- 类型：`boolean`
-- 默认值：`false`
-- 详情： 是否启用语言重定向
+参考：[自定义多语言配置](#customizing-locale-settings)。
 
-### switchLocale
+@`localeFallback` type=boolean default=`true`
 
-- 类型：`"direct" | "popup" | "modal" | false`
-- 默认值：`false`
-- 详情：
+是否回退到用户定义的其他语言。
 
-  是否根据用户偏好切换到新的语言环境。
-  - `"direct"`: 直接重定向到新的语言环境而不询问
-  - `"popup"`: 显示一个弹窗让用户选择是否切换到新的语言环境
-  - `"modal"`: 显示一个全屏模态框让用户选择是否切换到新的语言环境
+@`defaultBehavior` type=`'404' | 'defaultLocale' | 'homepage'` default=`'defaultLocale'`
 
-### localeConfig
+当前链接没有可用的语言版本时的行为。
 
-- 类型：`Record<string, string | string[]>`
-- 详情：多语言语言配置
+- `'defaultLocale'`: 重定向到默认语言或首个可用语言页面。
+- `'homepage'`: 重定向到当前语言的主页。仅当语言分配给当前语言时可用。
+- `'404'`: 重定向到当前语言的 404 页。仅当语言分配给当前语言时可用。
 
-### localeFallback
+@`defaultLocale` type=string default="首个语言路径"
 
-- 类型：`boolean`
-- 默认值：`true`
-- 详情：是否回退到用户定义的其他语言
+默认语言路径。如果缺失，则使用第一个语言。
 
-### defaultBehavior
+@`locales` type=`LocaleConfig<RedirectPluginLocaleData>`
 
-- 类型：`"defaultLocale" | "homepage" | "404"`
-- 默认值：`"defaultLocale"`
-- 详情：当前链接没有可用的语言版本时的行为
+重定向插件的国际化配置，各语言的数据为 `RedirectPluginLocaleData` 的一部分。
 
-### defaultLocale
+参考：[多语言配置](../supported-locales.md)。
 
-- 类型：`string`
-- 默认值：首个语言路径
-- 详情：默认语言路径
+@`locales.<localePath>.name` type=string
 
-### locales
+语言名称。
 
-- 类型：`RedirectPluginLocaleConfig`
+@`locales.<localePath>.hint` type=string
 
-  ```ts
-  interface RedirectPluginLocaleData {
-    /**
-     * 语言名称
-     */
-    name: string
+切换提示。
 
-    /**
-     * 切换提示
-     */
-    hint: string
+@`locales.<localePath>.switch` type=string
 
-    /**
-     * 切换按钮文字
-     */
-    switch: string
+切换按钮文字。
 
-    /**
-     * 取消按钮文字
-     */
-    cancel: string
+@`locales.<localePath>.cancel` type=string
 
-    /**
-     * 记住提示文本
-     */
-    remember: string
-  }
+取消按钮文字。
 
-  interface RedirectPluginLocaleConfig {
-    [localePath: string]: Partial<RedirectPluginLocaleData>
-  }
-  ```
+@`locales.<localePath>.remember` type=string
 
-- 详情：
+记住提示文本。
 
-  重定向插件的国际化配置。
-
-::: details 内置支持语言
-
-- **简体中文** (zh-CN)
-- **繁体中文** (zh-TW)
-- **英文(美国)** (en-US)
-- **德语** (de-DE)
-- **德语(澳大利亚)** (de-AT)
-- **俄语** (ru-RU)
-- **乌克兰语** (uk-UA)
-- **越南语** (vi-VN)
-- **葡萄牙语** (pt)
-- **波兰语** (pl-PL)
-- **法语** (fr-FR)
-- **西班牙语** (es-ES)
-- **斯洛伐克** (sk-SK)
-- **日语** (ja-JP)
-- **土耳其语** (tr-TR)
-- **韩语** (ko-KR)
-- **芬兰语** (fi-FI)
-- **印尼语** (id-ID)
-- **荷兰语** (nl-NL)
-
-:::
+::::
 
 ## Frontmatter
 
-### redirectFrom
+::: fields
+@`redirectFrom` type=`string | string[]`
 
-- 类型：`string | string[]`
-- 详情：重定向到该页面的地址。
+重定向到该页面的地址。
 
-### redirectTo
+参考：[设置重定向](#control-page-redirection)。
 
-- 类型：`string`
-- 详情：该页面重定向到的地址。
+@`redirectTo` type=string
 
-## 样式
+该页面重定向到的地址。
+
+参考：[设置重定向](#control-page-redirection)。
+
+:::
+
+## 样式 {#styles}
 
 你可以通过 CSS 变量来自定义重定向弹窗的样式：
 

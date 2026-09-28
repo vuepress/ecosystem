@@ -2,7 +2,7 @@
 icon: package
 ---
 
-# 打包器相关
+# 打包器相关 {#bundler-related}
 
 打包器函数用于在主题和插件中追加或修改打包器选项。
 
@@ -29,7 +29,7 @@ export const yourPlugin = {
 
 :::
 
-## 通用方法
+## 通用方法 {#common-methods}
 
 ### getBundlerName
 
@@ -145,7 +145,7 @@ useCustomDevServer(bundlerOptions, app, {
 
 :::
 
-## Vite 相关
+## Vite 相关 {#vite-related}
 
 - addViteOptimizeDepsInclude
 
@@ -297,7 +297,7 @@ useCustomDevServer(bundlerOptions, app, {
 
   :::
 
-## Webpack 相关
+## Webpack 相关 {#webpack-related}
 
 - chainWebpack
 

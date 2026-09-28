@@ -12,7 +12,7 @@ icon: la:git-alt
 
 该插件主要用于主题开发，在大多数情况下你不需要直接使用它，而是通过主题配置来开启相关功能。
 
-## 使用方法
+## 使用方法 {#usage}
 
 ```bash
 npm i -D @vuepress/plugin-git@next
@@ -30,7 +30,7 @@ export default {
 }
 ```
 
-## Git 仓库
+## Git 仓库 {#git-repository}
 
 本插件要求你的项目必须在一个 [Git 仓库](https://git-scm.com/book/zh/v2/%E8%B5%B7%E6%AD%A5-%E8%8E%B7%E5%8F%96-Git-%E4%BB%93%E5%BA%93)中，以便它能从提交历史中收集信息。
 
@@ -40,217 +40,138 @@ export default {
 该插件会显著降低数据准备阶段的速度，特别是当你拥有大量页面时。你可以考虑在 `dev` 模式下禁用此插件，以获得更好的开发体验。
 :::
 
-## 配置项
+## 选项 {#options}
 
-### createdTime
+::: fields
+@`createdTime` type=boolean default=`true`
 
-- 类型：`boolean`
+是否收集页面的创建时间。
 
-- 默认值：`true`
+@`updatedTime` type=boolean default=`true`
 
-- 详情：
+是否收集页面的更新时间。
 
-  是否收集页面的创建时间。
+@`contributors` type=`ContributorsOptions | boolean` default=`true`
 
-### updatedTime
+是否收集页面的贡献者信息。你也可以传入一个对象进行配置。
 
-- 类型：`boolean`
+@@`contributors.info` type=`ContributorInfo[]`
 
-- 默认值：`true`
+预定义的贡献者信息。
 
-- 详情：
+@@@`contributors.info[*].username` type=string required
 
-  是否收集页面的更新时间。
+贡献者在 git 托管服务上的用户名。
 
-### contributors
+@@@`contributors.info[*].name` type=string
 
-- 类型：`boolean | ContributorsOptions`
+页面上显示的贡献者名称，默认为 `username`。
 
-  ```ts
-  interface ContributorInfo {
-    /**
-     * 贡献者在 git 托管服务上的用户名
-     */
-    username: string
-    /**
-     * 页面上显示的贡献者名称，默认为 `username`
-     */
-    name?: string
-    /**
-     * 贡献者的别名，
-     * 因为贡献者在本地 git 配置中保存的用户名可能与托管服务上的用户名不同。
-     * 在这种情况下，可以使用别名映射到实际的用户名。
-     */
-    alias?: string[] | string
-    /**
-     * 贡献者的主要邮箱
-     */
-    email?: string
-    /**
-     * 贡献者在 Git 托管服务上的备用邮箱，
-     * 或者他们过去使用过的邮箱。
-     */
-    emailAlias?: string[] | string
-    /**
-     * 贡献者的头像 url。
-     *
-     * 如果 git 托管服务是 `github`，可以忽略并留空，
-     * 插件会自动填充它。
-     */
-    avatar?: string
-    /**
-     * 贡献者的主页 url
-     *
-     * 如果 git 托管服务是 `github`，可以忽略并留空，
-     * 插件会自动填充它。
-     */
-    url?: string
-  }
+@@@`contributors.info[*].alias` type=`string[] | string`
 
-  interface ContributorsOptions {
-    /**
-     * 贡献者信息
-     */
-    info?: ContributorInfo[]
+贡献者的别名。因为贡献者在本地 git 配置中保存的用户名可能与托管服务上的用户名不同，在这种情况下，可以使用别名映射到实际的用户名。
 
-    /**
-     * 是否在贡献者信息中添加头像
-     * @default false
-     */
-    avatar?: boolean
+@@@`contributors.info[*].email` type=string
 
-    /**
-     * 头像 url 模式
-     * - `:username` - 贡献者的用户名
-     *
-     * @example 'https://github.com/:username'
-     */
-    avatarPattern?: string
+贡献者的主要邮箱。
 
-    /**
-     * 转换贡献者列表的函数，例如去重和排序。
-     * 输入是插件收集到的贡献者列表，输出应该是转换后的贡献者列表。
-     */
-    transform?: (contributors: GitContributorInfo[]) => GitContributorInfo[]
-  }
-  ```
+@@@`contributors.info[*].emailAlias` type=`string[] | string`
 
-- 默认值：`true`
+贡献者在 Git 托管服务上的备用邮箱，或者他们过去使用过的邮箱。
 
-- 详情：
+@@@`contributors.info[*].avatar` type=string
 
-  是否收集页面的贡献者信息。
+贡献者的头像 url。如果 git 托管服务是 `github`，可以忽略并留空，插件会自动填充它。
 
-### changelog
+@@@`contributors.info[*].url` type=string
 
-- 类型：`boolean | ChangelogOptions`
+贡献者的主页 url。如果 git 托管服务是 `github`，可以忽略并留空，插件会自动填充它。
 
-  ```ts
-  interface ChangelogOptions {
-    /**
-     * 变更日志的最大条目数
-     */
-    maxCount?: number
+@@`contributors.avatar` type=boolean default=`false`
 
-    /**
-     * git 仓库的 url，例如: https://github.com/vuepress/ecosystem
-     */
-    repoUrl?: string
+是否在贡献者信息中添加头像。
 
-    /**
-     * 提交记录 url 模式
-     *
-     * - `:repo` - git 仓库的 url
-     * - `:hash` - 提交记录的哈希值
-     *
-     * @default ':repo/commit/:hash'
-     */
-    commitUrlPattern?: string
+@@`contributors.avatarPattern` type=string
 
-    /**
-     * Issue url 模式
-     *
-     * - `:repo` - git 仓库的 url
-     * - `:issue` - Issue 的 ID
-     *
-     * @default ':repo/issues/:issue'
-     */
-    issueUrlPattern?: string
+头像 url 模式。
 
-    /**
-     * Tag url 模式
-     *
-     * - `:repo` - git 仓库的 url
-     * - `:tag` - Tag 的名称
-     *
-     * @default ':repo/releases/tag/:tag'
-     */
-    tagUrlPattern?: string
-  }
-  ```
+- `:username` - 贡献者的用户名
 
-- 默认值：`false`
+@@`contributors.transform` type=`(contributors: GitContributorInfo[]) => GitContributorInfo[]`
 
-- 详情：
+转换贡献者列表的函数，例如去重和排序。输入是插件收集到的贡献者列表，输出应该是转换后的贡献者列表。
 
-  是否收集页面的变更日志。
+@`changelog` type=`ChangelogOptions | boolean` default=`false`
 
-### filter
+是否收集页面的变更日志。你也可以传入一个对象进行配置。
 
-- 类型：`(page: Page) => boolean`
+@@`changelog.maxCount` type=number
 
-- 详情：
+变更日志的最大条目数。
 
-  页面过滤器。如果返回 `true`，则该页面将收集 git 信息。
+@@`changelog.repoUrl` type=string
 
-### locales
+git 仓库的 url，例如 `https://github.com/vuepress/ecosystem`。
 
-- 类型：`Record<string, GitLocaleData>`
+@@`changelog.commitUrlPattern` type=string default=`':repo/commit/:hash'`
 
-  ```ts
-  export interface GitLocaleData {
-    /**
-     * 贡献者标题
-     */
-    contributors: string
+提交记录 url 模式。
 
-    /**
-     * 变更日志标题
-     */
-    changelog: string
+- `:repo` - git 仓库的 url
+- `:hash` - 提交记录的哈希值
 
-    /**
-     * 用于表示提交时间 "在" 某时的词语
-     */
-    timeOn: string
+@@`changelog.issueUrlPattern` type=string default=`':repo/issues/:issue'`
 
-    /**
-     * 查看变更日志按钮的文字
-     */
-    viewChangelog: string
+Issue url 模式。
 
-    /**
-     * 最近更新
-     */
-    latestUpdateAt: string
-  }
-  ```
+- `:repo` - git 仓库的 url
+- `:issue` - Issue 的 ID
 
-- 详情：
+@@`changelog.tagUrlPattern` type=string default=`':repo/releases/tag/:tag'`
 
-  多语言配置，用于 [Git 组件](#component)。
+Tag url 模式。
+
+- `:repo` - git 仓库的 url
+- `:tag` - Tag 的名称
+
+@`filter` type=`(page: Page) => boolean`
+
+页面过滤器。如果返回 `true`，则该页面将收集 git 信息。
+
+@`locales` type=`Record<string, GitLocaleData>`
+
+多语言配置，用于 [Git 组件](#component)。
+
+参考：[多语言配置](../supported-locales.md)。
+
+@@`locales.<localePath>.contributors` type=string
+
+贡献者标题。
+
+@@`locales.<localePath>.changelog` type=string
+
+变更日志标题。
+
+@@`locales.<localePath>.timeOn` type=string
+
+用于表示提交时间 "在" 某时的词语。
+
+@@`locales.<localePath>.viewChangelog` type=string
+
+查看变更日志按钮的文字。
+
+@@`locales.<localePath>.latestUpdateAt` type=string
+
+最近更新的文字。
+
+:::
 
 ## Frontmatter
 
-### gitInclude
+::: fields
+@`gitInclude` type=`string[]`
 
-- 类型：`string[]`
-
-- 详情：
-
-  一个包含相对路径的数组。在计算页面数据（如时间、贡献者）时，会将这些文件的 Git 历史也包含在内。
-
-- 示例：
+一个包含相对路径的数组。在计算页面数据（如时间、贡献者）时，会将这些文件的 Git 历史也包含在内。
 
 ```md
 ---
@@ -260,26 +181,21 @@ gitInclude:
 ---
 ```
 
-### contributors
+@`contributors` type=`boolean | string[]`
 
-- 类型：`boolean | string[]`
+是否收集当前页面的贡献者信息，此值将覆盖全局的 [contributors](#contributors) 配置项。
 
-- 详情：
+- `true` - 收集贡献者信息
+- `false` - 不收集贡献者信息
+- `string[]` - 额外的贡献者列表。有时页面会有额外的贡献者（例如不在 git 历史中），可以使用此配置项指定额外的贡献者列表以获取其详细信息。
 
-  是否收集当前页面的贡献者信息，此值将覆盖全局的 [contributors](#contributors) 配置项。
-  - `true` - 收集贡献者信息
-  - `false` - 不收集贡献者信息
-  - `string[]` - 额外的贡献者列表。有时页面会有额外的贡献者（例如不在 git 历史中），可以使用此配置项指定额外的贡献者列表以获取其详细信息。
+@`changelog` type=boolean
 
-### changelog
+是否收集当前页面的变更历史，此值将覆盖全局的 [changelog](#changelog) 配置项。
 
-- 类型：`boolean`
+:::
 
-- 详情：
-
-  是否收集当前页面的变更历史，此值将覆盖全局的 [changelog](#changelog) 配置项。
-
-## 组合式 API
+## 组合式 API {#composables}
 
 你可以从 `@vuepress/plugin-git/client` 导入以下组合式 API。
 
@@ -416,7 +332,7 @@ export const useLastUpdated: (
 ) => ComputedRef<LastUpdated | null>
 ```
 
-## 页面数据
+## 页面数据 {#page-data}
 
 该插件会向页面数据（Page Data）中添加一个 `git` 字段。
 

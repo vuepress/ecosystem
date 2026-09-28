@@ -26,6 +26,10 @@ export default {
 }
 ```
 
+## Guide
+
+### Preview Mode
+
 In preview mode, you can:
 
 - Swipe left and right to preview other pictures on the page in order
@@ -44,138 +48,65 @@ In preview mode, you can:
 
 ## Options
 
-### selector
+:::: fields
+@`selector` type=`string | string[]` default=`'[vp-content] :not(a) > img:not([no-view])'`
 
-- Type: `string | string[]`
-- Default: `"[vp-content] :not(a) > img:not([no-view])"`
-- Details: Image selector
+Image selector.
 
-### download
+@`download` type=boolean default=`true`
 
-- Type: `boolean`
-- Default: `true`
-- Details: Whether to show the download button
+Whether to show the download button.
 
-### fullscreen
+@`fullscreen` type=boolean default=`true`
 
-- Type: `boolean`
-- Default: `true`
-- Details: Whether to show the fullscreen button
+Whether to show the fullscreen button.
 
-### scrollToClose
+@`scrollToClose` type=boolean default=`true`
 
-- Type: `boolean`
-- Default: `true`
-- Details: Whether to close the current image when scrolling
+Whether to close the current image when scrolling.
 
-### locales
+@`locales` type=`PhotoSwipePluginLocaleConfig`
 
-- Type: `PhotoSwipePluginLocaleConfig`
+Locale config of the plugin.
 
-  ```ts
-  interface PhotoSwipePluginLocaleData {
-    /**
-     * Close button label text
-     */
-    close: string
+See also: [Locales](../supported-locales.md).
 
-    /**
-     * Download button label text
-     */
-    download: string
+@@`locales.<localePath>.close` type=string
 
-    /**
-     * Full screen button label text
-     */
-    fullscreen: string
+Label text of the close button.
 
-    /**
-     * Zoom button label text
-     */
-    zoom: string
+@@`locales.<localePath>.download` type=string
 
-    /**
-     * Previous image button label text
-     */
-    arrowPrev: string
+Label text of the download button.
 
-    /**
-     * Next image button label text
-     */
-    arrowNext: string
-  }
+@@`locales.<localePath>.fullscreen` type=string
 
-  interface PhotoSwipePluginLocaleConfig {
-    [localePath: string]: Partial<PhotoSwipePluginLocaleData>
-  }
-  ```
+Label text of the fullscreen button.
 
-- Details: Locales config for photo-swipe plugin
+@@`locales.<localePath>.zoom` type=string
 
-- Example:
+Label text of the zoom button.
 
-  ```ts title=".vuepress/config.ts"
-  import { photoSwipePlugin } from '@vuepress/plugin-photo-swipe'
-  import { defineUserConfig } from 'vuepress'
+@@`locales.<localePath>.arrowPrev` type=string
 
-  export default defineUserConfig({
-    locales: {
-      '/': {
-        // this is a supported language
-        lang: 'en-US',
-      },
-      '/xx/': {
-        // the plugin does not support this language
-        lang: 'mm-NN',
-      },
-    },
+Label text of the previous image button.
 
-    plugins: [
-      photoSwipePlugin({
-        locales: {
-          '/': {
-            // Override close label text
-            close: 'Close Image',
-          },
+@@`locales.<localePath>.arrowNext` type=string
 
-          '/xx/': {
-            // Complete locale config for `mm-NN` language here
-          },
-        },
-      }),
-    ],
-  })
-  ```
+Label text of the next image button.
 
-::: details Built-in Supported Languages
-
-- **Simplified Chinese** (zh-CN)
-- **Traditional Chinese** (zh-TW)
-- **English (United States)** (en-US)
-- **German** (de-DE)
-- **Russian** (ru-RU)
-- **Ukrainian** (uk-UA)
-- **Vietnamese** (vi-VN)
-- **Portuguese** (pt)
-- **Polish** (pl-PL)
-- **French** (fr-FR)
-- **Spanish** (es-ES)
-- **Slovak** (sk-SK)
-- **Japanese** (ja-JP)
-- **Turkish** (tr-TR)
-- **Korean** (ko-KR)
-- **Finnish** (fi-FI)
-- **Indonesian** (id-ID)
-- **Dutch** (nl-NL)
-
-:::
+::::
 
 ## Frontmatter
 
-### photoSwipe
+::: fields
+@`photoSwipe` type=`boolean | string`
 
-- Type: `string | false`
-- Details: Image selector for the current page, or `false` to disable photo-swipe on the current page
+Image selector for the current page.
+
+A string overrides the [selector](#selector) option for the current page, `false` disables the plugin on the current page, and `true` or leaving it unset uses the plugin option.
+
+:::
 
 ## Client Config
 
@@ -193,9 +124,9 @@ definePhotoSwipeConfig({
 
 ## API
 
-You can also call PhotoSwipe with APIs.
+### createPhotoSwipe
 
-`createPhotoSwipe` allows you to programmatically view image links with PhotoSwipe:
+You can also call PhotoSwipe with APIs. `createPhotoSwipe` allows you to programmatically view image links with PhotoSwipe. It takes the image links and the PhotoSwipe options, and resolves to a [PhotoSwipeState](#photoswipestate):
 
 ```vue
 <script setup lang="ts">
@@ -233,6 +164,25 @@ onUnmounted(() => {
   </button>
 </template>
 ```
+
+### PhotoSwipeState
+
+The state returned by `createPhotoSwipe`, which controls the PhotoSwipe instance it creates:
+
+::: fields
+@`open` type=`(index: number) => void`
+
+Open PhotoSwipe at the given image index.
+
+@`close` type=`() => void`
+
+Close the PhotoSwipe instance.
+
+@`destroy` type=`() => void`
+
+Release the listeners of the state. Call it when the state is no longer needed, e.g. when the component that holds it is unmounted.
+
+:::
 
 ## Styles
 

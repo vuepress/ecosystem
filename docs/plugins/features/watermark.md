@@ -33,49 +33,35 @@ export default {
 
 ## Options
 
-### enabled
+::: fields
+@`enabled` type=`boolean | ((page: Page) => boolean)` default=`true`
 
-- Type: `boolean | ((page: Page) => boolean)`
+Specify which pages should have watermarks added.
 
-- Default: `true`
+Pages with a `true` value will have watermarks added.
 
-- Details:
+@`watermarkOptions` type=`WatermarkPureOptions`
 
-  Specify which pages should have watermarks added.
+Watermark config, see [watermark-js-plus](https://zhensherlock.github.io/watermark-js-plus/config/) for all available options.
 
-  Pages with a `true` value will have watermarks added.
+@@`watermarkOptions.parent` type=string default=`'body'`
 
-### watermarkOptions
+Parent element selector for watermark insertion.
 
-- Type: `WatermarkOptions`
+By default, watermarks are inserted into the body element, but you can specify a different parent element on the page.
 
-- Default: `undefined`
-
-- Details: Configuration options. Please refer to [watermark-js-plus](https://zhensherlock.github.io/watermark-js-plus/config/) for details.
-
-#### watermarkOptions.parent
-
-- Type: `string`
-
-- Default: `'body'`
-
-- Details: Parent element selector for watermark insertion.
-
-  By default, watermarks are inserted into the body element, but you can specify a different parent element on the page.
+:::
 
 ## Frontmatter
 
-### watermark
+::: fields
+@`watermark` type=`boolean | WatermarkPureOptions`
 
-- Type: `boolean | WatermarkOptions`
+Whether to add a watermark to the current page, or the watermark config of the current page.
 
-- Details:
+Set it to `true` to enable the watermark, or `false` to disable it when the watermark is enabled globally.
 
-  When the type is `boolean`, it indicates whether watermarks are enabled.
-
-  When the type is `WatermarkOptions`, it represents the watermark configuration for the current page.
-
-  Refer to [watermark-js-plus](https://zhensherlock.github.io/watermark-js-plus/config/) for configuration options.
+See [watermark-js-plus](https://zhensherlock.github.io/watermark-js-plus/config/) for all available options.
 
 ```md
 ---
@@ -86,6 +72,8 @@ watermark:
   opacity: 0.5
 ---
 ```
+
+:::
 
 ## Client Config
 

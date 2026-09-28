@@ -10,7 +10,7 @@ icon: trash-2
 
 ::: tip 如果你启用过 PWA，为什么需要这个插件？
 
-PWA 插件，如 [`@vuepress/plugin-pwa`](./pwa/README.md) 会注册 service worker 到你的站点，使其可以被缓存并离线访问。
+PWA 插件，如 [`@vuepress/plugin-pwa`](./pwa.md) 会注册 service worker 到你的站点，使其可以被缓存并离线访问。
 
 如果你删除 PWA 插件，旧的 service worker 仍会存在，但它无法获得更新，因为没有可更新的新 service worker。用户将继续使用你网站的旧版本。
 
@@ -21,7 +21,7 @@ PWA 插件，如 [`@vuepress/plugin-pwa`](./pwa/README.md) 会注册 service wor
 
 :::
 
-## 使用方法
+## 使用方法 {#usage}
 
 ```bash
 npm i -D @vuepress/plugin-remove-pwa@next
@@ -42,16 +42,15 @@ export default {
 }
 ```
 
-## 选项
+## 选项 {#options}
 
-### cachePatterns
+::: fields
+@`cachePatterns` type=`string[]` default=`[]`
 
-- 类型：`string[]`
-- 默认值：`[]`
-- 详情：用于匹配需要移除的缓存名称的正则表达式模式。如果为空，将移除所有缓存。
+用于匹配需要移除的缓存名称的正则表达式模式。如果为空，将移除所有缓存。
 
-### swLocation
+@`swLocation` type=string default=`'service-worker.js'`
 
-- 类型：`string`
-- 默认值：`'service-worker.js'`
-- 详情：相对于 dest 文件夹的原始 service worker 位置。
+相对于 dest 文件夹的原始 service worker 位置。
+
+:::

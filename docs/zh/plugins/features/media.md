@@ -10,7 +10,7 @@ icon: video
 
 国内平台（腾讯、优酷、爱奇艺、芒果、搜狐）因试看限制与权限问题不提供嵌入，其中仅 B 站可用。
 
-## 使用
+## 使用 {#usage}
 
 ```bash
 npm i -D @vuepress/plugin-media@next
@@ -68,7 +68,7 @@ export default {
 
 :::
 
-## 链接语法
+## 链接语法 {#link-syntax}
 
 每个启用的组件都可以通过 `@[name ...props](link)` 语法使用，其中链接就是组件的资源地址。该语法必须独占一行。
 
@@ -100,7 +100,7 @@ props 会作为属性传给组件，因此只能是字符串或标志，不带�
 
 链接会成为组件的 `src`，只有 `bilibili` 例外，它的链接是 `bvid`，同时支持 `bilibili.com/video/BV…` 链接，链接中的 `p` 与 `t` 参数会成为 `page` 与 `time`。
 
-## 组件
+## 组件 {#components}
 
 ### ArtPlayer
 
@@ -447,55 +447,69 @@ Spotify 嵌入不接受音量或静音指令，因此组件没有 `muted` 属性
 <SpotifyPlayer src="https://open.spotify.com/track/4uLU6hMCjMI75M1A2tKUQC" />
 ```
 
-## 选项
+## 选项 {#options}
 
-### artplayer
+::: fields
+@`artplayer` type=`boolean | ArtPlayerOptions`
 
-- 类型：`boolean | ArtPlayerOptions`
-- 详情：是否启用 `ArtPlayer` 组件。传入对象可设置所有实例共享的默认配置。
+是否启用 `ArtPlayer` 组件。传入对象可设置所有实例共享的默认配置。
 
-### pdf
+@`pdf` type=`boolean | PDFOptions`
 
-- 类型：`boolean | PDFOptions`
-- 详情：是否启用 `PDFViewer` 组件。传入对象可设置所有实例共享的默认配置。
+是否启用 `PDFViewer` 组件。传入对象可设置所有实例共享的默认配置。
 
-### pdfLocales
+@`pdfLocales` type=`PDFLocaleData[]`
 
-- 类型：`PDFLocaleData[]`
-- 详情：在 EmbedPDF 查看器中注册的语言。传入的语言会**替换** EmbedPDF 内置语言，因此需提供站点所需的全部语言。参见 [国际化](https://www.embedpdf.com/docs/vue/viewer/plugins/plugin-i18n)。
+在 EmbedPDF 查看器中注册的语言。传入的语言会**替换** EmbedPDF 内置语言，因此需提供站点所需的全部语言。参见[国际化](https://www.embedpdf.com/docs/vue/viewer/plugins/plugin-i18n)。
 
-  EmbedPDF 内置 `en`、`nl`、`de`、`fr`、`es`、`zh-CN`、`zh-TW`、`ja`、`sv` 与 `pt-BR`。页面语言由插件解析，其他代码的语言还需另经查看器配置的 `i18n.defaultLocale` 启用。
+EmbedPDF 内置 `en`、`nl`、`de`、`fr`、`es`、`zh-CN`、`zh-TW`、`ja`、`sv` 与 `pt-BR`。页面语言由插件解析，其他代码的语言还需另经查看器配置的 `i18n.defaultLocale` 启用。
 
-### embeds
+@`embeds` type=`EmbedName[]`
 
-- 类型：`EmbedName[]`
-- 详情：提供自带嵌入播放器的平台。这些播放器不需要安装任何包，因此是本插件最轻量的选择，适合仅偶尔嵌入视频的页面。
+提供自带嵌入播放器的平台。这些播放器不需要安装任何包，因此是本插件最轻量的选择，适合仅偶尔嵌入视频的页面。
 
-  可用的平台：`bilibili`、`youtube`、`vimeo`、`twitch`、`dailymotion`、`tiktok` 与 `spotify`。
+可用的平台：`bilibili`、`youtube`、`vimeo`、`twitch`、`dailymotion`、`tiktok` 与 `spotify`。
 
-### videojs
+@`videojs` type=`boolean | 'hlsjs'`
 
-- 类型：`boolean | 'hlsjs'`
-- 详情：`VideoPlayer` 组件的 HLS 元素，需要安装 `@videojs/html`。`true` 使用 [`hls-video`](https://videojs.org/docs/framework/html/reference/hls-video)，即覆盖大部分 HLS 播放的精简元素；`'hlsjs'` 使用由 hls.js 驱动、兼容性更好的 [`hlsjs-video`](https://videojs.org/docs/framework/html/reference/hlsjs-video)，后者还需要安装 `@videojs/hlsjs-video`。
+`VideoPlayer` 组件的 HLS 元素，需要安装 `@videojs/html`。`true` 使用 [`hls-video`](https://videojs.org/docs/framework/html/reference/hls-video)，即覆盖大部分 HLS 播放的精简元素；`'hlsjs'` 使用由 hls.js 驱动、兼容性更好的 [`hlsjs-video`](https://videojs.org/docs/framework/html/reference/hlsjs-video)，后者还需要安装 `@videojs/hlsjs-video`。
 
-### videojsDash
+@`videojsDash` type=boolean
 
-- 类型：`boolean`
-- 详情：是否注册 [`dash-video`](https://videojs.org/docs/framework/html/reference/dash-video)，即 `VideoPlayer` 播放 DASH 源所用的元素。需要安装 `@videojs/html` 与 `@videojs/dash-video`，否则 DASH 源会交由浏览器自身播放。
+是否注册 [`dash-video`](https://videojs.org/docs/framework/html/reference/dash-video)，即 `VideoPlayer` 播放 DASH 源所用的元素。需要安装 `@videojs/html` 与 `@videojs/dash-video`，否则 DASH 源会交由浏览器自身播放。
 
-### videojsAudio
+@`videojsAudio` type=boolean
 
-- 类型：`boolean`
-- 详情：是否启用 `AudioPlayer` 组件，需要安装 `@videojs/html`。
+是否启用 `AudioPlayer` 组件，需要安装 `@videojs/html`。
 
-### videojsProviders
+@`videojsProviders` type=`VideoJsProvider[]`
 
-- 类型：`VideoJsProvider[]`
-- 详情：由 Video.js 而非平台自带播放器播放的平台。与 `embeds` 不同，视频由 Video.js 皮肤控制，因此播放器界面与 `VideoPlayer` 一致。
+由 Video.js 而非平台自带播放器播放的平台。与 `embeds` 不同，视频由 Video.js 皮肤控制，因此播放器界面与 `VideoPlayer` 一致。
 
-  可用的提供方：`youtube`、`vimeo`、`twitch`、`tiktok` 与 `spotify`。每一个都需要安装 `@videojs/html` 与对应的包。
+可用的提供方：`youtube`、`vimeo`、`twitch`、`tiktok` 与 `spotify`。每一个都需要安装 `@videojs/html` 与对应的包。
 
-### videojsLocales
+@`videojsLocales` type=`Record<string, VideoJsLocaleData>`
 
-- 类型：`Record<string, VideoJsLocaleData>`
-- 详情：Video.js 的自定义翻译。部分翻译会合并到页面语言对应的语言包中，因此只有你提供的键会被覆盖。
+Video.js 的自定义翻译。部分翻译会合并到页面语言对应的语言包中，因此只有你提供的键会被覆盖。
+
+键为 Video.js 的语言代码（如 `zh-CN`、`zh-TW`、`fr`），值为其嵌套的翻译对象，因此 `buttons.play` 需写成 `{ buttons: { play: 'Play' } }`。可用的分组有 `buttons`、`seek`、`fullscreen`、`captions`、`pip`、`live`、`cast`、`airplay`、`container`、`slider`、`time`、`playback`、`volume`、`status`、`errors`、`common` 与 `menu`。
+
+```ts title=".vuepress/config.ts"
+export default {
+  plugins: [
+    mediaPlugin({
+      videojs: true,
+      videojsLocales: {
+        'zh-CN': {
+          buttons: { play: '播放', pause: '暂停' },
+          fullscreen: { enter: '进入全屏' },
+        },
+      },
+    }),
+  ],
+}
+```
+
+完整的键名与英文默认值见 [Translation phrases](https://videojs.org/docs/framework/html/reference/translation-phrases)，默认值的定义见 [`en.ts`](https://github.com/videojs/v10/blob/main/packages/core/src/core/i18n/locales/en.ts)。
+
+:::

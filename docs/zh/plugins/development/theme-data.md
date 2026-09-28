@@ -12,7 +12,7 @@ icon: database
 
 对于主题作者，该插件可以提供与 VuePress 及默认主题相同的多语言支持机制。但是如果你的主题不需要提供多语言支持，或者你想用自己的方式来实现多语言支持，那么你不需要使用该插件。
 
-## 使用方法
+## 使用方法 {#usage}
 
 ```bash
 npm i -D @vuepress/plugin-theme-data@next
@@ -30,21 +30,14 @@ export default {
 }
 ```
 
-## 配置项
+## 选项 {#options}
 
-### themeData
+:::: fields
+@`themeData` type=ThemeData required
 
-- 类型：`ThemeData`
+你希望在客户端中使用的主题数据对象。
 
-- 必填：是
-
-- 详情：
-
-  你希望在客户端中使用的主题数据对象。
-
-  你可以通过该配置项，在 Node 端提供主题数据，然后在客户端通过 [useThemeData](#usethemedata) 和 [useThemeLocaleData](#usethemelocaledata) 来使用主题数据。
-
-- 示例：
+你可以通过该配置项，在 Node 端提供主题数据，然后在客户端通过 [useThemeData](#usethemedata) 和 [useThemeLocaleData](#usethemelocaledata) 来使用主题数据。
 
 ```ts title=".vuepress/config.ts"
 export default {
@@ -66,6 +59,8 @@ export default {
 ::: warning
 主题数据对象在传递到客户端之前，会使用 `JSON.stringify()` 进行处理，因此你需要保证你提供的是一个可以被 JSON 序列化的对象。
 :::
+
+::::
 
 ## Composition API
 

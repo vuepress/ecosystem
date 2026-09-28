@@ -2,11 +2,11 @@
 icon: chrome
 ---
 
-# 客户端相关
+# 客户端相关 {#client-related}
 
 这些函数仅在 `@vuepress/helper/client` 中可用。
 
-## 可组合 API
+## 可组合 API {#composables-apis}
 
 ### hasGlobalComponent
 
@@ -64,7 +64,7 @@ locale.value // '标题'
 
 :::
 
-## 工具
+## 工具 {#utils}
 
 ### env
 

@@ -16,7 +16,7 @@ icon: chart-no-axes-combined
 
 :::
 
-## Usage
+## 使用方法 {#usage}
 
 ```bash
 npm i -D @vuepress/plugin-baidu-analytics@next
@@ -28,13 +28,15 @@ import { baiduAnalyticsPlugin } from '@vuepress/plugin-baidu-analytics'
 export default {
   plugins: [
     baiduAnalyticsPlugin({
-      // 选项s
+      // 选项
     }),
   ],
 }
 ```
 
-### 事件追踪
+## 指南 {#guide}
+
+### 事件追踪 {#event-tracking}
 
 配置完成后，插件会自动在用户访问页面及路由切换时上报页面浏览（PV）事件。
 
@@ -46,10 +48,11 @@ window._hmt = window._hmt || []
 window._hmt.push(['_trackEvent', 'category', 'action', 'label', 'value'])
 ```
 
-## 选项
+## 选项 {#options}
 
-### id
+::: fields
+@`id` type=string required
 
-- 类型：`string`
-- 必填：是
-- 详情：百度统计的 ID。通常是百度统计提供的代码中 `hm.js` 链接后的字符串参数（例如 `hm.js?your_tracking_id`）。
+百度统计的 ID。通常是百度统计提供的代码中 `hm.js` 链接后的字符串参数（例如 `hm.js?your_tracking_id`）。
+
+:::

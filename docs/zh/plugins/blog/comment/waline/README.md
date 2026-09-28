@@ -8,13 +8,13 @@ icon: https://waline.js.org/favicon.ico
 
 <!-- more -->
 
-## 安装
+## 安装 {#install}
 
 ```bash
 npm i -D @waline/client
 ```
 
-## LeanCloud 设置 (数据库)
+## LeanCloud 设置 (数据库) {#leancloud-settings-database}
 
 1. [登录](https://console.leancloud.app/login) 或 [注册](https://console.leancloud.app/register) `LeanCloud 国际版` 并进入 [控制台](https://console.leancloud.app/apps)
 
@@ -39,7 +39,7 @@ npm i -D @waline/client
 
 :::
 
-## Vercel 部署 (服务端)
+## Vercel 部署 (服务端) {#deploy-to-vercel-server}
 
 [![Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fwalinejs%2Fwaline%2Ftree%2Fmain%2Fexample)
 
@@ -81,7 +81,7 @@ npm i -D @waline/client
 
    ![redeploy success](/images/comment/vercel-7.png)
 
-## 绑定域名 (可选)
+## 绑定域名 (可选) {#assign-domain-optional}
 
 1. 点击顶部的 `Settings` - `Domains` 进入域名配置页
 
@@ -101,9 +101,9 @@ npm i -D @waline/client
 
    ![success](/images/comment/vercel-9.png)
 
-## 客户端
+## 客户端 {#client}
 
-### 使用插件
+### 使用插件 {#using-plugin}
 
 在插件选项中设置 `provider: "Waline"`，同时设置服务端地址 `serverURL` 为上一步获取到的值。
 
@@ -115,7 +115,7 @@ npm i -D @waline/client
 
 :::
 
-## 评论管理 (管理端)
+## 评论管理 (管理端) {#comment-management-management}
 
 1. 部署完成后，请访问 `<serverURL>/ui/register` 进行注册。首个注册的人会被设定成管理员。
 1. 管理员登陆后，即可看到评论管理界面。在这里可以修改、标记或删除评论。

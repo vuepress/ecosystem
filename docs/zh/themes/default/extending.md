@@ -2,11 +2,11 @@
 icon: cable
 ---
 
-# 继承
+# 继承 {#extending}
 
 VuePress 默认主题有着大量的用户，因此我们对它进行了一些便于继承的设计，以便用户轻松进行定制化。
 
-## 布局插槽
+## 布局插槽 {#layout-slots}
 
 默认主题的 `Layout` 布局提供了一些插槽：
 
@@ -24,9 +24,11 @@ VuePress 默认主题有着大量的用户，因此我们对它进行了一些�
 
 在它们的帮助下，你可以很容易地添加或替换内容。下面通过一个示例来介绍一下如何使用布局插槽来继承默认主题。
 
-首先，创建一个客户端配置文件 `.vuepress/client.ts` ：
+创建一个客户端配置文件和一个本地布局，并在前者中注册该布局：
 
-```ts title=".vuepress/client.ts"
+::: code-tree title=".vuepress" entry="client.ts"
+
+```ts title="client.ts"
 import { defineClientConfig } from 'vuepress/client'
 import Layout from './layouts/Layout.vue'
 
@@ -37,9 +39,7 @@ export default defineClientConfig({
 })
 ```
 
-接下来，创建 `.vuepress/layouts/Layout.vue` ，并使用由默认主题的 `Layout` 布局提供的插槽：
-
-```vue
+```vue title="layouts/Layout.vue"
 <script setup>
 import ParentLayout from '@vuepress/theme-default/layouts/Layout.vue'
 </script>
@@ -59,11 +59,13 @@ import ParentLayout from '@vuepress/theme-default/layouts/Layout.vue'
 </style>
 ```
 
+:::
+
 此时默认的 `Layout` 布局已经被你的本地布局覆盖，将会在除了首页外的所有页面添加一个自定义的页脚：
 
 ![extending-a-theme](/images/cookbook/extending-a-theme-01.png)
 
-## 组件替换
+## 组件替换 {#components-replacement}
 
 布局插槽十分实用，但有时候你可能会觉得它不够灵活。默认主题同样提供了替换单个组件的能力。
 
@@ -89,13 +91,13 @@ export default defineUserConfig({
 })
 ```
 
-## 修改行为
+## 修改行为 {#modifying-behavior}
 
 默认主题的核心行为大多都被抽离成可组合式 API 或工具函数，并同样提供了 `@theme` 前缀的 [alias](https://v2.vuepress.vuejs.org/zh/reference/plugin-api.html#alias)。
 
 比如，如果你想为默认主题的主题数据添加一些默认值，你可以通过覆盖 `@theme/useThemeData` 的 `useThemeData` 函数来实现。
 
-## 开发一个子主题
+## 开发一个子主题 {#developing-a-child-theme}
 
 除了在 `.vuepress/config.ts` 和 `.vuepress/client.ts` 中直接扩展默认主题以外，你可以通过继承默认主题来开发一个你自己的主题：
 

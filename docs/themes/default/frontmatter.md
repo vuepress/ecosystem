@@ -10,39 +10,24 @@ icon: captions
 
 Frontmatter in this section will take effect in all types of pages.
 
-### externalLinkIcon
+::: fields
+@`externalLinkIcon` type=boolean
 
-- Type: `boolean`
+Show external link icon on external links or not.
 
-- Details:
+See also: [externalLinkIcon](./config.md#externallinkicon)
 
-  Show external link icon on external links or not.
+@`navbar` type=boolean
 
-- Also see:
-  - [Default Theme > Config > externalLinkIcon](./config.md#externallinkicon)
+Show navbar on this page or not.
 
-### navbar
+If you disable navbar in theme config, this frontmatter will not take effect.
 
-- Type: `boolean`
+See also: [navbar](./config.md#navbar)
 
-- Details:
+@`pageClass` type=string
 
-  Show navbar on this page or not.
-
-  If you disable navbar in theme config, this frontmatter will not take effect.
-
-- Also see:
-  - [Default Theme > Config > navbar](./config.md#navbar)
-
-### pageClass
-
-- Type: `string`
-
-- Details:
-
-  Add extra class name to this page.
-
-- Example:
+Add extra class name to this page.
 
 ```md
 ---
@@ -58,24 +43,20 @@ Then you can customize styles of this page in `.vuepress/styles/index.scss` file
 }
 ```
 
-- Also see:
-  - [Default Theme > Styles > Style File](./styles.md#style-file)
+See also: [Style File](./styles.md#style-file)
+
+:::
 
 ## Home Page
 
 Frontmatter in this section will only take effect in home pages.
 
-### home
+::: fields
+@`home` type=boolean
 
-- Type: `boolean`
+Specify whether the page is homepage or a normal page.
 
-- Details:
-
-  Specify whether the page is homepage or a normal page.
-
-  If you don't set this frontmatter or set it to `false`, the page would be a [normal page](#normal-page).
-
-- Example:
+If you don't set this frontmatter or set it to `false`, the page would be a [normal page](#normal-page).
 
 ```md
 ---
@@ -83,15 +64,9 @@ home: true
 ---
 ```
 
-### heroImage
+@`heroImage` type=string
 
-- Type: `string`
-
-- Details:
-
-  Specify the url of the hero image.
-
-- Example:
+Specify the url of the hero image.
 
 ```md
 ---
@@ -102,88 +77,49 @@ heroImage: https://vuepress.vuejs.org/images/hero.png
 ---
 ```
 
-- Also see:
-  - [Guide > Assets > Public Files](https://v2.vuepress.vuejs.org/guide/assets.html#public-files)
+See also: [Guide > Assets > Public Files](https://v2.vuepress.vuejs.org/guide/assets.html#public-files)
 
-### heroImageDark
+@`heroImageDark` type=string
 
-- Type: `string`
+Specify the url of hero image to be used in dark mode.
 
-- Details:
+You can make use of this option if you want to use different heroImage config in dark mode.
 
-  Specify the url of hero image to be used in dark mode.
+See also: [heroImage](#heroimage) and [colorMode](./config.md#colormode)
 
-  You can make use of this option if you want to use different heroImage config in dark mode.
+@`heroAlt` type=string
 
-- Also see:
-  - [Default Theme > Frontmatter > heroImage](#heroimage)
-  - [Default Theme > Config > colorMode](./config.md#colormode)
+Specify the `alt` attribute of the hero image.
 
-### heroAlt
+This will fallback to the [heroText](#herotext).
 
-- Type: `string`
+@`heroHeight` type=number default=`280`
 
-- Details:
+Specify the `height` attribute of the hero `<img>` tag.
 
-  Specify the `alt` attribute of the hero image.
+You may need to reduce this value if the height of your hero image is less than the default value.
 
-  This will fallback to the [heroText](#herotext).
+Notice that the height is also constrained by CSS. This attribute is to reduce [Cumulative Layout Shift (CLS)](https://web.dev/cls/) that caused by the loading of the hero image.
 
-### heroHeight
+@`heroText` type=`string | null`
 
-- Type: `number`
+Specify the the hero text.
 
-- Default: `280`
+This will fallback to the site [title](https://v2.vuepress.vuejs.org/reference/config.html#title).
 
-- Details:
+Set to `null` to disable hero text.
 
-  Specify the `height` attribute of the hero `<img>` tag.
+@`tagline` type=`string | null`
 
-  You may need to reduce this value if the height of your hero image is less than the default value.
+Specify the the tagline.
 
-  Notice that the height is also constrained by CSS. This attribute is to reduce [Cumulative Layout Shift (CLS)](https://web.dev/cls/) that caused by the loading of the hero image.
+This will fallback to the site [description](https://v2.vuepress.vuejs.org/reference/config.html#description).
 
-### heroText
+Set to `null` to disable tagline.
 
-- Type: `string | null`
+@`actions` type=`Array<{ text: string; link: string; type?: 'primary' | 'secondary' }>`
 
-- Details:
-
-  Specify the the hero text.
-
-  This will fallback to the site [title](https://v2.vuepress.vuejs.org/reference/config.html#title).
-
-  Set to `null` to disable hero text.
-
-### tagline
-
-- Type: `string | null`
-
-- Details:
-
-  Specify the the tagline.
-
-  This will fallback to the site [description](https://v2.vuepress.vuejs.org/reference/config.html#description).
-
-  Set to `null` to disable tagline.
-
-### actions
-
-- Type:
-
-```ts
-Array<{
-  text: string
-  link: string
-  type?: 'primary' | 'secondary'
-}>
-```
-
-- Details:
-
-  Configuration of the action buttons.
-
-- Example:
+Configuration of the action buttons.
 
 ```md
 ---
@@ -197,22 +133,9 @@ actions:
 ---
 ```
 
-### features
+@`features` type=`Array<{ title: string; details: string }>`
 
-- Type:
-
-```ts
-Array<{
-  title: string
-  details: string
-}>
-```
-
-- Details:
-
-  Configuration of the features list.
-
-- Example:
+Configuration of the features list.
 
 ```md
 ---
@@ -226,110 +149,70 @@ features:
 ---
 ```
 
-### footer
+@`footer` type=string
 
-- Type: `string`
+Specify the content of the footer.
 
-- Details:
+@`footerHtml` type=boolean
 
-  Specify the content of the footer.
+Allow HTML in footer or not.
 
-### footerHtml
+If you set it to `true`, the [footer](#footer) will be treated as HTML code.
 
-- Type: `boolean`
-
-- Details:
-
-  Allow HTML in footer or not.
-
-  If you set it to `true`, the [footer](#footer) will be treated as HTML code.
+:::
 
 ## Normal Page
 
 Frontmatter in this section will only take effect in normal pages.
 
-### editLink
+::: fields
+@`editLink` type=boolean
 
-- Type: `boolean`
+Enable the _edit this page_ link in this page or not.
 
-- Details:
+See also: [editLink](./config.md#editlink)
 
-  Enable the _edit this page_ link in this page or not.
+@`editLinkPattern` type=string
 
-- Also see:
-  - [Default Theme > Config > editLink](./config.md#editlink)
+Specify the pattern of the _edit this page_ link of this page.
 
-### editLinkPattern
+See also: [editLinkPattern](./config.md#editlinkpattern)
 
-- Type: `string`
+@`lastUpdated` type=boolean
 
-- Details:
+Enable the _last updated timestamp_ in this page or not.
 
-  Specify the pattern of the _edit this page_ link of this page.
+See also: [lastUpdated](./config.md#lastupdated)
 
-- Also see:
-  - [Default Theme > Config > editLinkPattern](./config.md#editlinkpattern)
+@`contributors` type=boolean
 
-### lastUpdated
+Enable the _contributors list_ in this page or not.
 
-- Type: `boolean`
+See also: [contributors](./config.md#contributors)
 
-- Details:
+@`sidebar` type=`false | SidebarOptions`
 
-  Enable the _last updated timestamp_ in this page or not.
+Configure the sidebar of this page.
 
-- Also see:
-  - [Default Theme > Config > lastUpdated](./config.md#lastupdated)
+See also: [sidebar](./config.md#sidebar)
 
-### contributors
+@`sidebarDepth` type=number
 
-- Type: `boolean`
+Configure the sidebar depth of this page.
 
-- Details:
+See also: [sidebarDepth](./config.md#sidebardepth)
 
-  Enable the _contributors list_ in this page or not.
+@`prev` type=`AutoLinkConfig | string | false`
 
-- Also see:
-  - [Default Theme > Config > contributors](./config.md#contributors)
+Specify the link of the previous page.
 
-### sidebar
+If you don't set this frontmatter, the link will be inferred from the sidebar config.
 
-- Type: `false | SidebarOptions`
+To configure the prev link manually, you can set this frontmatter to a `AutoLinkConfig` object or a string:
 
-- Details:
-
-  Configure the sidebar of this page.
-
-- Also see:
-  - [Default Theme > Config > sidebar](./config.md#sidebar)
-
-### sidebarDepth
-
-- Type: `number`
-
-- Details:
-
-  Configure the sidebar depth of this page.
-
-- Also see:
-  - [Default Theme > Config > sidebarDepth](./config.md#sidebardepth)
-
-### prev
-
-- Type: `AutoLinkConfig | string | false`
-
-- Details:
-
-  Specify the link of the previous page.
-
-  If you don't set this frontmatter, the link will be inferred from the sidebar config.
-
-  To configure the prev link manually, you can set this frontmatter to a `AutoLinkConfig` object or a string:
-  - A `AutoLinkConfig` object should have a `text` field and a `link` field.
-  - A string should be the path to the target page file. It will be converted to a `AutoLinkConfig` object, whose `text` is the page title, and `link` is the page route path.
-  - Set to `false` to disable the prev link.
-
-- Example:
+- A `AutoLinkConfig` object should have a `text` field and a `link` field.
+- A string should be the path to the target page file. It will be converted to a `AutoLinkConfig` object, whose `text` is the page title, and `link` is the page route path.
+- Set to `false` to disable the prev link.
 
 ```md
 ---
@@ -351,14 +234,12 @@ prev: ../../guide/getting-started.md
 ---
 ```
 
-### next
+@`next` type=`AutoLinkConfig | string | false`
 
-- Type: `AutoLinkConfig | string | false`
+Specify the link of the next page.
 
-- Details:
+If you don't set this frontmatter, the link will be inferred from the sidebar config.
 
-  Specify the link of the next page.
+The type is the same as [prev](#prev) frontmatter.
 
-  If you don't set this frontmatter, the link will be inferred from the sidebar config.
-
-  The type is the same as [prev](#prev) frontmatter.
+:::

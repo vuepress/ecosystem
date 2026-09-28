@@ -8,7 +8,7 @@ icon: image-play
 
 此插件使用 PhotoSwipe 提供图片画廊功能，允许用户在优雅的全屏灯箱中查看图片，支持缩放、导航和分享功能。
 
-## 使用方法
+## 使用方法 {#usage}
 
 ```bash
 npm i -D @vuepress/plugin-photo-swipe@next
@@ -26,6 +26,10 @@ export default {
 }
 ```
 
+## 指南 {#guide}
+
+### 预览模式 {#preview-mode}
+
 在图片预览模式中，你可以:
 
 - 左右滑动按顺序浏览页面内其他的图片
@@ -42,142 +46,69 @@ export default {
 
 :::
 
-## 选项
+## 选项 {#options}
 
-### selector
+:::: fields
+@`selector` type=`string | string[]` default=`'[vp-content] :not(a) > img:not([no-view])'`
 
-- 类型：`string | string[]`
-- 默认值：`"[vp-content] :not(a) > img:not([no-view])"`
-- 详情：图片选择器
+图片选择器。
 
-### download
+@`download` type=boolean default=`true`
 
-- 类型：`boolean`
-- 默认值：`true`
-- 详情：是否显示下载按钮
+是否显示下载按钮。
 
-### fullscreen
+@`fullscreen` type=boolean default=`true`
 
-- 类型：`boolean`
-- 默认值：`true`
-- 详情：是否显示全屏按钮
+是否显示全屏按钮。
 
-### scrollToClose
+@`scrollToClose` type=boolean default=`true`
 
-- 类型：`boolean`
-- 默认值：`true`
-- 详情：是否在滚动时关闭当前图片
+是否在滚动时关闭当前图片。
 
-### locales
+@`locales` type=`PhotoSwipePluginLocaleConfig`
 
-- 类型：`PhotoSwipePluginLocaleConfig`
+插件的多语言配置。
 
-  ```ts
-  interface PhotoSwipePluginLocaleData {
-    /**
-     * 关闭按钮标签文字
-     */
-    close: string
+参考：[多语言配置](../supported-locales.md)。
 
-    /**
-     * 下载按钮标签文字
-     */
-    download: string
+@@`locales.<localePath>.close` type=string
 
-    /**
-     * 全屏按钮标签文字
-     */
-    fullscreen: string
+关闭按钮标签文字。
 
-    /**
-     * 缩放按钮标签文字
-     */
-    zoom: string
+@@`locales.<localePath>.download` type=string
 
-    /**
-     * 上一张图片按钮标签文字
-     */
-    arrowPrev: string
+下载按钮标签文字。
 
-    /**
-     * 下一张图片按钮标签文字
-     */
-    arrowNext: string
-  }
+@@`locales.<localePath>.fullscreen` type=string
 
-  interface PhotoSwipePluginLocaleConfig {
-    [localePath: string]: Partial<PhotoSwipePluginLocaleData>
-  }
-  ```
+全屏按钮标签文字。
 
-- 详情：Photo Swipe 插件的国际化配置
+@@`locales.<localePath>.zoom` type=string
 
-- 示例：
+缩放按钮标签文字。
 
-  ```ts title=".vuepress/config.ts"
-  import { photoSwipePlugin } from '@vuepress/plugin-photo-swipe'
-  import { defineUserConfig } from 'vuepress'
+@@`locales.<localePath>.arrowPrev` type=string
 
-  export default defineUserConfig({
-    locales: {
-      '/': {
-        // 这是一个支持的语言
-        lang: 'zh-CN',
-      },
-      '/xx/': {
-        // 插件不支持这个语言
-        lang: 'mm-NN',
-      },
-    },
+上一张图片按钮标签文字。
 
-    plugins: [
-      photoSwipePlugin({
-        locales: {
-          '/': {
-            // 覆盖关闭标签文字
-            close: '关闭图片',
-          },
+@@`locales.<localePath>.arrowNext` type=string
 
-          '/xx/': {
-            // 在这里完整设置 `mm-NN` 的多语言配置
-          },
-        },
-      }),
-    ],
-  })
-  ```
+下一张图片按钮标签文字。
 
-::: details 内置支持语言
-
-- **简体中文** (zh-CN)
-- **繁体中文** (zh-TW)
-- **英文(美国)** (en-US)
-- **德语** (de-DE)
-- **俄语** (ru-RU)
-- **乌克兰语** (uk-UA)
-- **越南语** (vi-VN)
-- **葡萄牙语** (pt)
-- **波兰语** (pl-PL)
-- **法语** (fr-FR)
-- **西班牙语** (es-ES)
-- **斯洛伐克** (sk-SK)
-- **日语** (ja-JP)
-- **土耳其语** (tr-TR)
-- **韩语** (ko-KR)
-- **芬兰语** (fi-FI)
-- **印尼语** (id-ID)
-- **荷兰语** (nl-NL)
-
-:::
+::::
 
 ## Frontmatter
 
-### photoSwipe
+::: fields
+@`photoSwipe` type=`boolean | string`
 
-- 类型：`string | false`
-- 详情：当前页面的图片选择器，或 `false` 以在当前页面禁用 photo-swipe
+当前页面的图片选择器。
 
-## 客户端配置
+字符串会覆盖当前页面的 [selector](#selector) 选项，`false` 会在当前页面禁用插件，`true` 或不设置则使用插件选项。
+
+:::
+
+## 客户端配置 {#client-config}
 
 ### definePhotoSwipeConfig
 
@@ -193,9 +124,9 @@ definePhotoSwipeConfig({
 
 ## API
 
-你也可以通过 API 调用 PhotoSwipe。
+### createPhotoSwipe
 
-`createPhotoSwipe` 允许你以编程方式使用 PhotoSwipe 查看图片链接：
+你也可以通过 API 调用 PhotoSwipe。`createPhotoSwipe` 允许你以编程方式使用 PhotoSwipe 查看图片链接，它接收图片链接与 PhotoSwipe 选项，并返回一个 [PhotoSwipeState](#photoswipestate)：
 
 ```vue
 <script setup lang="ts">
@@ -234,7 +165,26 @@ onUnmounted(() => {
 </template>
 ```
 
-## 样式
+### PhotoSwipeState
+
+`createPhotoSwipe` 返回的状态，用于控制它所创建的 PhotoSwipe 实例：
+
+::: fields
+@`open` type=`(index: number) => void`
+
+在指定图片索引处打开 PhotoSwipe。
+
+@`close` type=`() => void`
+
+关闭 PhotoSwipe 实例。
+
+@`destroy` type=`() => void`
+
+释放该状态的监听器。当不再需要该状态时调用它，例如持有它的组件卸载时。
+
+:::
+
+## 样式 {#styles}
 
 你可以通过 CSS 变量自定义样式：
 

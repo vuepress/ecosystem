@@ -10,7 +10,7 @@ icon: fullscreen
 
 该插件已经集成到默认主题中。
 
-## 使用方法
+## 使用方法 {#usage}
 
 ```bash
 npm i -D @vuepress/plugin-medium-zoom@next
@@ -28,29 +28,22 @@ export default {
 }
 ```
 
-## 配置项
+## 选项 {#options}
 
-### selector
+::: fields
+@`selector` type=string default=`'[vp-content] > img, [vp-content] :not(a) > img'`
 
-- 类型：`string`
-- 默认值：`'[vp-content] > img, [vp-content] :not(a) > img'`
-- 详情：
+可缩放图片的选择器。
 
-  可缩放图片的选择器。
+默认情况下，该插件会使 `<a>` 标签以外的所有图片都支持缩放。
 
-  默认情况下，该插件会使 `<a>` 标签以外的所有图片都支持缩放。
+@`zoomOptions` type=`ZoomOptions`
 
-### zoomOptions
+medium-zoom 的配置项，参见 [medium-zoom > Options](https://github.com/francoischalifour/medium-zoom#options)。
 
-- 类型：`Object`
-- 详情：
+:::
 
-  medium-zoom 的配置项。
-
-- 参考：
-  - [medium-zoom > Options](https://github.com/francoischalifour/medium-zoom#options)
-
-## 样式
+## 样式 {#styles}
 
 你可以通过 [zoomOptions](#zoomoptions) 对大部分缩放样式进行自定义，该插件还提供了一些 CSS 变量用于补充自定义：
 

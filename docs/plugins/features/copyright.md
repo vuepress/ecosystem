@@ -26,6 +26,8 @@ export default {
 }
 ```
 
+## Guide
+
 ### Enabling Copyright
 
 This plugin **is disabled globally by default**, you can:
@@ -41,7 +43,7 @@ If your site have different authors and license in different pages, you can set 
 
 The plugin will generate copyright information from author, license, and page link via template by default, and append it when copying. If you think that this is not flexible enough, you can set `copyrightGetter` option to return a completely customized information with Page object or return null to use the default template.
 
-### Disable Copy and Selection
+### Disabling Copy and Selection
 
 If you want to prevent users copying long content, you can set `maxLength` in plugin options to customize this limit, or set `copy.maxLength` in page frontmatter.
 
@@ -50,191 +52,111 @@ If you want to prevent users copying long content, you can set `maxLength` in pl
 
 ## Options
 
-### author
+:::: fields
+@`author` type=string
 
-- Type: `string`
-- Details: Default author information
+Default author information.
 
-### license
+@`license` type=string
 
-- Type: `string`
-- Details: Default license information
+Default license information.
 
-### authorGetter
+@`authorGetter` type=`(page: Page) => string | null`
 
-- Type: `(page: Page) => string | null`
-- Details: Author getter
+Author getter. It takes the current page as the parameter and returns the author information.
 
-### licenseGetter
+@`licenseGetter` type=`(page: Page) => string | null`
 
-- Type: `(page: Page) => string | null`
-- Details: License getter
+License getter. It takes the current page as the parameter and returns the license information.
 
-### copyrightGetter
+@`copyrightGetter` type=`(page: Page) => string | null`
 
-- Type: `(page: Page) => string | null`
-- Details: Copyright getter
+Copyright getter. It takes the current page as the parameter and returns a completely customized copyright information, or `null` to use the default template.
 
-### canonical
+@`canonical` type=string
 
-- Type: `string`
-- Details: Canonical deploy location
+Canonical hostname with base, which is used as the reference link in the appended copyright information.
 
-  ::: tip Example
+::: tip Example
 
-  If you are deploying same content under `https://myblog.com` and `https://blog.com/username/`, you may want to prefer one site as reference link.
-  - If you prefer the first one, you should set `canonical` to `https://myblog.com`
-  - If you prefer the second one, you should set `canonical` to `https://blog.com/username/`
+If you are deploying same content under `https://myblog.com` and `https://blog.com/username/`, you may want to prefer one site as reference link.
 
-  So copyright message triggered on another site also points to your preferred site.
+- If you prefer the first one, you should set `canonical` to `https://myblog.com`
+- If you prefer the second one, you should set `canonical` to `https://blog.com/username/`
 
-  :::
-
-### global
-
-- Type: `boolean`
-- Default: `false`
-- Details: Whether enable globally
-
-### disableCopy
-
-- Type: `boolean`
-- Default: `false`
-- Details: Disable copy
-
-### disableSelection
-
-- Type: `boolean`
-- Default: `false`
-- Details: Disable selection
-
-### triggerLength
-
-- Type: `number`
-- Default: `100`
-- Details: Min content length triggering copyright append
-
-### maxLength
-
-- Type: `number`
-- Default: `0`
-- Details: Max content length which allows to copy, `0` means no limit
-
-### locales
-
-- Type: `CopyrightPluginLocaleConfig`
-
-  ```ts
-  interface CopyrightPluginLocaleData {
-    /**
-     * Author text
-     *
-     * `:author` will be replaced by author
-     */
-    author: string
-
-    /**
-     * License text
-     *
-     * `:license` will be replaced by current license
-     */
-    license: string
-
-    /**
-     * Link text
-     *
-     * `:link` will be replaced by current page link
-     */
-    link: string
-  }
-
-  interface CopyrightPluginLocaleConfig {
-    [localePath: string]: Partial<CopyrightPluginLocaleData>
-  }
-  ```
-
-- Details: Locale config for copyright plugin.
-
-- Example:
-
-  ```ts title=".vuepress/config.ts"
-  import { copyrightPlugin } from '@vuepress/plugin-copyright'
-
-  export default {
-    locales: {
-      '/': {
-        // this is a supported language
-        lang: 'en-US',
-      },
-      '/xx/': {
-        // the plugin does not support this language
-        lang: 'mm-NN',
-      },
-    },
-
-    plugins: [
-      copyrightPlugin({
-        locales: {
-          '/': {
-            // Override link text
-            link: 'Original posted at :link',
-          },
-
-          '/xx/': {
-            // Complete locale config for `mm-NN` language here
-          },
-        },
-      }),
-    ],
-  }
-  ```
-
-::: details Built-in Supported Languages
-
-- **Simplified Chinese** (zh-CN)
-- **Traditional Chinese** (zh-TW)
-- **English (United States)** (en-US)
-- **German** (de-DE)
-- **Russian** (ru-RU)
-- **Ukrainian** (uk-UA)
-- **Vietnamese** (vi-VN)
-- **Portuguese** (pt)
-- **Polish** (pl-PL)
-- **French** (fr-FR)
-- **Spanish** (es-ES)
-- **Slovak** (sk-SK)
-- **Japanese** (ja-JP)
-- **Turkish** (tr-TR)
-- **Korean** (ko-KR)
-- **Finnish** (fi-FI)
-- **Hungarian** (hu-HU)
-- **Indonesian** (id-ID)
-- **Dutch** (nl-NL)
+So copyright message triggered on another site also points to your preferred site.
 
 :::
 
+@`global` type=boolean
+
+Whether to enable the plugin globally.
+
+See also: [Enabling Copyright](#enabling-copyright).
+
+@`disableCopy` type=boolean
+
+Whether to disable copying.
+
+See also: [Disabling Copy and Selection](#disabling-copy-and-selection).
+
+@`disableSelection` type=boolean
+
+Whether to disable selection.
+
+See also: [Disabling Copy and Selection](#disabling-copy-and-selection).
+
+@`triggerLength` type=number default=`100`
+
+Min content length triggering copyright append.
+
+@`maxLength` type=number default=`0`
+
+Max content length which allows to copy, `0` means no limit.
+
+@`locales` type=`CopyrightPluginLocaleConfig`
+
+Locale config of the plugin.
+
+See also: [Locales](../supported-locales.md).
+
+@@`locales.<localePath>.author` type=string
+
+Author text, where `:author` will be replaced by the author.
+
+@@`locales.<localePath>.license` type=string
+
+License text, where `:license` will be replaced by the current license.
+
+@@`locales.<localePath>.link` type=string
+
+Link text, where `:link` will be replaced by the current page link.
+
+::::
+
 ## Frontmatter
 
-### copy.triggerLength
+::: fields
+@`copy` type=`boolean | object`
 
-- Type: `number`
-- Default: `100`
-- Details: Min content length triggering copyright append
+Whether to enable the plugin for the current page, or an object to configure it.
 
-### copy.maxLength
+Set it to `true` to enable the plugin on the current page, or `false` to disable it when the plugin is enabled globally.
 
-- Type: `number`
-- Default: `0`
-- Details: Max content length which allows to copy, `0` means no limit
+@@`copy.triggerLength` type=number default=`100`
 
-### copy.disableCopy
+Min content length triggering copyright append. This overrides the global [triggerLength](#triggerlength) option.
 
-- Type: `boolean`
-- Default: `false`
-- Details: Disable copy
+@@`copy.maxLength` type=number default=`0`
 
-### copy.disableSelection
+Max content length which allows to copy, `0` means no limit. This overrides the global [maxLength](#maxlength) option.
 
-- Type: `boolean`
-- Default: `false`
-- Details: Disable selection
+@@`copy.disableCopy` type=boolean default=`false`
+
+Whether to disable copying. This overrides the global [disableCopy](#disablecopy) option.
+
+@@`copy.disableSelection` type=boolean default=`false`
+
+Whether to disable selection. This overrides the global [disableSelection](#disableselection) option.
+
+:::

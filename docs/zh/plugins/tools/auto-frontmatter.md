@@ -14,7 +14,7 @@ icon: pajamas:insert
 ::: tip 插件仅处理 [源文件目录](https://v2.vuepress.vuejs.org/zh/guide/getting-started.html#%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84) 下的满足 [config.pagePatterns](https://v2.vuepress.vuejs.org/zh/reference/config.html#pagepatterns) 规则的 markdown 文件
 :::
 
-## 使用方法
+## 使用方法 {#usage}
 
 ```bash
 npm i -D @vuepress/plugin-auto-frontmatter@next
@@ -32,54 +32,9 @@ export default {
 }
 ```
 
-## 配置说明
+## 指南 {#guide}
 
-```ts
-export type AutoFrontmatterData = Record<string, unknown>
-
-/**
- * markdown 文件的上下文
- */
-export interface AutoFrontmatterContext {
-  /**
-   * 文件绝对路径
-   */
-  filepath: string
-  /**
-   * 文件相对路径
-   */
-  relativePath: string
-  /**
-   * 文件 markdown 内容
-   */
-  content: string
-}
-
-/**
- * 处理 frontmatter 数据的函数
- */
-export type AutoFrontmatterHandle<
-  D extends AutoFrontmatterData = AutoFrontmatterData,
-> = (data: D, context: AutoFrontmatterContext) => D | Promise<D>
-
-export interface AutoFrontmatterRule {
-  /**
-   * 文件过滤器，匹配文件的相对路径
-   *
-   * 使用 [picomatch](https://github.com/micromatch/picomatch) 进行模式匹配
-   */
-  filter: string[] | string | ((relativePath: string) => boolean)
-  /**
-   * 处理 frontmatter 数据的函数
-   */
-  handle: AutoFrontmatterHandle
-}
-
-export type AutoFrontmatterPluginOptions =
-  AutoFrontmatterHandle | AutoFrontmatterRule | AutoFrontmatterRule[]
-```
-
-### 处理所有 markdown 文件
+### 处理所有 markdown 文件 {#process-all-markdown-files}
 
 直接传入 `AutoFrontmatterHandle` 函数，表示对所有的 markdown 文件进行处理：
 
@@ -98,7 +53,7 @@ export default {
 }
 ```
 
-### 配置生成规则
+### 配置生成规则 {#configuring-general-rules}
 
 使用 `AutoFrontmatterRule` 配置过滤规则和处理器，匹配文件的相对路径。
 
@@ -161,7 +116,7 @@ export default {
 }
 ```
 
-### 多个生成规则
+### 多个生成规则 {#multiple-general-rules}
 
 可以同时配置多个过滤规则和处理器，这样可以针对不同的目录下的文件进行不同的处理：
 
@@ -194,7 +149,32 @@ export default {
 }
 ```
 
-## 帮助函数
+## 选项 {#options}
+
+`autoFrontmatterPlugin` 接受 frontmatter 处理函数、规则对象，或规则对象数组。
+
+::: fields
+@`filter` type=`string[] | string | ((relativePath: string) => boolean)`
+
+文件过滤器，匹配文件的相对路径。
+
+使用 [picomatch](https://github.com/micromatch/picomatch) 进行模式匹配。
+
+可以传入 glob 字符串、glob 字符串数组（以 `!` 开头的字符串用于排除文件），或返回文件是否匹配的函数。
+
+@`handle` type=`(data: AutoFrontmatterData, context: AutoFrontmatterContext) => AutoFrontmatterData | Promise<AutoFrontmatterData>`
+
+处理 frontmatter 数据的函数。
+
+`data` 为 frontmatter 数据（`Record<string, unknown>`），`context` 包含：
+
+- `filepath`: 文件绝对路径。
+- `relativePath`: 文件相对路径。
+- `content`: 文件 markdown 内容。
+
+:::
+
+## 帮助函数 {#helper-functions}
 
 插件提供了一些内置的帮助函数，可用于向 `frontmatter` 中添加新的字段：
 

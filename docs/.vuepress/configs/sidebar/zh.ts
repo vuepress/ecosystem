@@ -4,43 +4,53 @@ export const sidebarZh: SidebarOptions = {
   '/zh/plugins/': [
     {
       text: '常用功能',
+      icon: 'sparkles',
       link: 'features/',
     },
     {
       text: 'Markdown',
+      icon: 'octicon:markdown-16',
       link: 'markdown/',
     },
     {
       text: '搜索',
+      icon: 'search',
       link: 'search/',
     },
     {
       text: '博客',
+      icon: 'la:blog',
       link: 'blog/',
     },
 
     {
       text: '分析统计',
+      icon: 'chart-no-axes-combined',
       link: 'analytics/',
     },
     {
       text: '搜索引擎优化',
+      icon: 'scan-search',
       link: 'seo/',
     },
     {
       text: '渐进式应用',
+      icon: 'layout-grid',
       link: 'pwa/',
     },
     {
       text: '主题开发',
+      icon: 'server-cog',
       link: 'development/',
     },
     {
       text: '工具',
+      icon: 'hammer',
       link: 'tools/',
     },
     {
       text: 'AI',
+      icon: 'eos-icons:ai',
       link: 'ai/',
     },
   ],
@@ -56,23 +66,43 @@ export const sidebarZh: SidebarOptions = {
     {
       text: '博客',
       icon: 'la:blog',
-      prefix: 'blog/',
-      link: 'blog/',
-      children: ['guide', 'config'],
+      link: 'blog',
     },
     {
       text: '评论',
       icon: 'message-circle-more',
       prefix: 'comment/',
       link: 'comment/',
-      children: ['guide', 'giscus/', 'waline/', 'artalk/', 'twikoo/'],
+      children: [
+        'guide',
+        {
+          text: 'Giscus',
+          icon: 'github',
+          link: 'giscus',
+        },
+        {
+          text: 'Waline',
+          icon: 'https://waline.js.org/favicon.ico',
+          prefix: 'waline/',
+          link: 'waline/',
+          children: ['', 'config'],
+        },
+        {
+          text: 'Artalk',
+          icon: 'https://artalk.js.org/favicon.png',
+          link: 'artalk',
+        },
+        {
+          text: 'Twikoo',
+          icon: 'https://twikoo.js.org/twikoo-logo-mini.png',
+          link: 'twikoo',
+        },
+      ],
     },
     {
       text: 'Feed',
       icon: 'rss',
-      prefix: 'feed/',
-      link: 'feed/',
-      children: ['guide', 'config', 'frontmatter', 'channel', 'getter'],
+      link: 'feed',
     },
   ],
 
@@ -85,9 +115,7 @@ export const sidebarZh: SidebarOptions = {
     {
       text: 'Sass Palette',
       icon: 'palette',
-      prefix: 'sass-palette/',
-      link: 'sass-palette/',
-      children: ['guide', 'config'],
+      link: 'sass-palette',
     },
     'theme-data',
     'toc',
@@ -151,11 +179,9 @@ export const sidebarZh: SidebarOptions = {
     {
       text: 'PWA',
       icon: 'layout-grid',
-      prefix: 'pwa/',
-      link: 'pwa/',
-      children: ['guide', 'config'],
+      link: 'pwa',
     },
-    '/plugins/pwa/remove-pwa',
+    '/zh/plugins/pwa/remove-pwa',
   ],
 
   '/zh/plugins/tools/': [
@@ -180,16 +206,12 @@ export const sidebarZh: SidebarOptions = {
     {
       text: '搜索引擎增强',
       icon: 'scan-search',
-      prefix: 'seo/',
-      link: 'seo/',
-      children: ['guide', 'config'],
+      link: 'seo',
     },
     {
       text: '站点地图',
       icon: 'network',
-      prefix: 'sitemap/',
-      link: 'sitemap/',
-      children: ['guide', 'config', 'frontmatter'],
+      link: 'sitemap',
     },
   ],
 

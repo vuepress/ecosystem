@@ -75,63 +75,29 @@ const readingTimeLocale = useReadingTimeLocale() // { time: "1 minute", words: "
 
 ## Options
 
-### wordPerMinute
+:::: fields
+@`wordPerMinute` type=number default=`300`
 
-- Type: `number`
-- Default: `300`
-- Details: Reading speed in words per minute.
+Reading speed in words per minute.
 
-### locales
+@`locales` type=`ReadingTimePluginLocaleConfig`
 
-- Type: `ReadingTimePluginLocaleConfig`
+Locale config for reading time text and word count text.
 
-  ```ts
-  interface ReadingTimePluginLocaleData {
-    /**
-     * Word template, `$word` will be automatically replaced by actual words
-     */
-    word: string
+See also: [Locales](../supported-locales.md).
 
-    /**
-     * Text for less than one minute
-     */
-    less1Minute: string
+@@`locales.<localePath>.word` type=string
 
-    /**
-     * Time template, `$time` will be automatically replaced by actual time
-     */
-    time: string
-  }
+Word template, `$word` will be automatically replaced by actual words.
 
-  interface ReadingTimePluginLocaleConfig {
-    [localePath: string]: Partial<ReadingTimePluginLocaleData>
-  }
-  ```
+@@`locales.<localePath>.less1Minute` type=string
 
-- Details: Locale config for reading time text and word count text.
+Text for less than one minute.
 
-::: details Built-in Supported Languages
+@@`locales.<localePath>.time` type=string
 
-- **Simplified Chinese** (zh-CN)
-- **Traditional Chinese** (zh-TW)
-- **English (United States)** (en-US)
-- **German** (de-DE)
-- **Russian** (ru-RU)
-- **Ukrainian** (uk-UA)
-- **Vietnamese** (vi-VN)
-- **Portuguese** (pt)
-- **Polish** (pl-PL)
-- **French** (fr-FR)
-- **Spanish** (es-ES)
-- **Slovak** (sk-SK)
-- **Japanese** (ja-JP)
-- **Turkish** (tr-TR)
-- **Korean** (ko-KR)
-- **Finnish** (fi-FI)
-- **Indonesian** (id-ID)
-- **Dutch** (nl-NL)
-
-:::
+Time template, `$time` will be automatically replaced by actual time.
+::::
 
 ## Client API
 

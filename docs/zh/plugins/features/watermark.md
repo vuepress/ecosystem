@@ -10,7 +10,7 @@ icon: droplet
 
 此插件可在页面中添加水印，你可以选择为全局页面或部分页面添加水印，还可以选择添加文字水印或图片水印。
 
-## 使用
+## 使用 {#usage}
 
 ```sh
 npm i -D @vuepress/plugin-watermark@next
@@ -31,51 +31,37 @@ export default {
 }
 ```
 
-## 配置项
+## 选项 {#options}
 
-### enabled
+::: fields
+@`enabled` type=`boolean | ((page: Page) => boolean)` default=`true`
 
-- 类型：`boolean | ((page: Page) => boolean)`
+指定哪些页面需要添加水印。
 
-- 默认值：`true`
+拥有 `true` 值的页面将会被添加水印。
 
-- 详情：
+@`watermarkOptions` type=`WatermarkPureOptions`
 
-  指定哪些页面需要添加水印。
+水印配置，全部可选项参见 [watermark-js-plus](https://zhensherlock.github.io/watermark-js-plus/zh/config/)。
 
-  拥有 `true` 值的页面将会被添加水印。
+@@`watermarkOptions.parent` type=string default=`'body'`
 
-### watermarkOptions
+添加水印的父元素选择器。
 
-- 类型：`WatermarkOptions`
+默认插入到 body 中，可以指定插入到页面的某个元素中。
 
-- 默认值：`undefined`
-
-- 详情：配置项请参考 [watermark-js-plus](https://zhensherlock.github.io/watermark-js-plus/zh/config/)。
-
-#### watermarkOptions.parent
-
-- 类型：`string`
-
-- 默认值：`'body'`
-
-- 详情：添加水印的父元素选择器。
-
-  默认插入到 body 中，可以指定插入到页面的某个元素中。
+:::
 
 ## Frontmatter
 
-### watermark
+::: fields
+@`watermark` type=`boolean | WatermarkPureOptions`
 
-- 类型：`boolean | WatermarkOptions`
+是否为当前页面添加水印，或当前页面的水印配置。
 
-- 详情：
+设置为 `true` 可启用水印；当水印全局启用时，设置为 `false` 可在当前页面禁用它。
 
-  当类型为 `boolean` 时，表示是否启用水印。
-
-  当类型为 `WatermarkOptions` 时，表示当前页面水印配置。
-
-  可以参考 [watermark-js-plus](https://zhensherlock.github.io/watermark-js-plus/zh/config/) 。
+全部可选项参见 [watermark-js-plus](https://zhensherlock.github.io/watermark-js-plus/zh/config/)。
 
 ```md
 ---
@@ -87,7 +73,9 @@ watermark:
 ---
 ```
 
-## 客户端配置
+:::
+
+## 客户端配置 {#client-config}
 
 ### defineWatermarkConfig(config)
 

@@ -10,7 +10,7 @@ icon: chart-column-stacked
 
 <!-- more -->
 
-## 安装
+## 安装 {#installation}
 
 你可以通过以下方式启用此功能：
 
@@ -27,7 +27,7 @@ export default {
 }
 ```
 
-## 语法
+## 语法 {#syntax}
 
 你可以插入 [PlantUML][] 支持的相同内容，例如：
 
@@ -37,7 +37,7 @@ export default {
 @enduml
 ```
 
-## 示例
+## 示例 {#demo}
 
 <!-- markdownlint-disable -->
 <!-- prettier-ignore-start -->

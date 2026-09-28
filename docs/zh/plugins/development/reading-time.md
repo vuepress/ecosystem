@@ -8,7 +8,7 @@ icon: book-open-text
 
 该插件通过分析你的页面内容，生成字数统计和预计阅读时间。
 
-## 使用方法
+## 使用方法 {#usage}
 
 ```bash
 npm i -D @vuepress/plugin-reading-time@next
@@ -26,7 +26,7 @@ export default {
 }
 ```
 
-## 页面数据（Node.js 端）
+## 页面数据（Node.js 端） {#page-data-node-js-side}
 
 初始化后，插件会计算每个页面的统计信息，并将它们注入到 `page.data.readingTime` 属性中。该对象包含：
 
@@ -52,7 +52,7 @@ export default {
 }
 ```
 
-## 组合式 API (客户端)
+## 组合式 API (客户端) {#composition-api-client-side}
 
 要在主题或组件中显示阅读时间信息，你可以使用客户端模块提供的组合式 API（Composables）。
 
@@ -73,67 +73,33 @@ const readingTimeLocale = useReadingTimeLocale() // { time: "1 minute", words: "
 </script>
 ```
 
-## 选项
+## 选项 {#options}
 
-### wordPerMinute
+:::: fields
+@`wordPerMinute` type=number default=`300`
 
-- 类型：`number`
-- 默认值：`300`
-- 详情：每分钟阅读的字数。
+每分钟阅读的字数。
 
-### locales
+@`locales` type=`ReadingTimePluginLocaleConfig`
 
-- 类型：`ReadingTimePluginLocaleConfig`
+阅读时间和字数文本的多语言配置。
 
-  ```ts
-  interface ReadingTimePluginLocaleData {
-    /**
-     * 字数模板，`$word` 会被自动替换为实际字数
-     */
-    word: string
+参考：[多语言配置](../supported-locales.md)。
 
-    /**
-     * 小于一分钟时的文本
-     */
-    less1Minute: string
+@@`locales.<localePath>.word` type=string
 
-    /**
-     * 时间模板，`$time` 会被自动替换为实际时间
-     */
-    time: string
-  }
+字数模板，`$word` 会被自动替换为实际字数。
 
-  interface ReadingTimePluginLocaleConfig {
-    [localePath: string]: Partial<ReadingTimePluginLocaleData>
-  }
-  ```
+@@`locales.<localePath>.less1Minute` type=string
 
-- 详情：阅读时间和字数文本的多语言配置。
+小于一分钟时的文本。
 
-::: details 内置支持语言
+@@`locales.<localePath>.time` type=string
 
-- **简体中文** (zh-CN)
-- **繁体中文** (zh-TW)
-- **英文(美国)** (en-US)
-- **德语** (de-DE)
-- **俄语** (ru-RU)
-- **乌克兰语** (uk-UA)
-- **越南语** (vi-VN)
-- **葡萄牙语** (pt)
-- **波兰语** (pl-PL)
-- **法语** (fr-FR)
-- **西班牙语** (es-ES)
-- **斯洛伐克** (sk-SK)
-- **日语** (ja-JP)
-- **土耳其语** (tr-TR)
-- **韩语** (ko-KR)
-- **芬兰语** (fi-FI)
-- **印尼语** (id-ID)
-- **荷兰语** (nl-NL)
+时间模板，`$time` 会被自动替换为实际时间。
+::::
 
-:::
-
-## 客户端 API
+## 客户端 API {#client-api}
 
 你可以从 `@vuepress/plugin-reading-time/client` 导入并使用这些 API：
 
@@ -169,7 +135,7 @@ interface ReadingTimeLocale {
 const useReadingTimeLocale: () => ComputedRef<ReadingTimeLocale>
 ```
 
-## 主题集成
+## 主题集成 {#theme-integration}
 
 对于插件和主题开发者，我们提供了一个编程式的 "Use API"。相比于直接在你的主题 `plugins` 数组中添加该插件，我们更推荐这种方式，因为它能处理注册顺序并防止重复注册。
 

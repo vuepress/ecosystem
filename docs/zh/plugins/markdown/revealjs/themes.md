@@ -2,7 +2,7 @@
 icon: palette
 ---
 
-# 幻灯片主题
+# 幻灯片主题 {#reveal-js-themes}
 
 ## `auto`
 

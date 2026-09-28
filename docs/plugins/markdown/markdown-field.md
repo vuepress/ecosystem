@@ -138,6 +138,8 @@ For more syntax details, see [@mdit/plugin-field](https://mdit-plugins.github.io
 
 ## Demo
 
+:::: preview
+
 ::: fields
 @`theme` type=ThemeConfig required default=`{ base: '/' }`
 
@@ -157,6 +159,8 @@ Deprecated field
 
 :::
 
+::::
+
 ## Options
 
 ::: fields
@@ -167,6 +171,8 @@ Whether to enable the `::: fields` container.
 @`locales` type=`MarkdownFieldPluginLocaleConfig`
 
 Locale config for badge texts, keyed by locale path (`/`, `/zh/`, ...).
+
+See also: [Locales](../supported-locales.md).
 
 @@`locales.<localePath>.default` type=string
 

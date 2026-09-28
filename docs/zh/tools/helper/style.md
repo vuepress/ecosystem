@@ -2,15 +2,15 @@
 icon: paintbrush-vertical
 ---
 
-# 样式
+# 样式 {#styles}
 
 提供了如下样式文件。
 
-## 规范化
+## 规范化 {#normalize}
 
 `@vuepress/helper/normalize.css` 是一个 CSS 文件，用于规范化浏览器的默认样式。推荐在社区主题中引入它。
 
-## 过渡
+## 过渡 {#transitions}
 
 `@vuepress/helper/transition/*.css` 是一组提供元素过渡效果的 CSS 文件集合，推荐在社区主题中按需导入使用。
 
