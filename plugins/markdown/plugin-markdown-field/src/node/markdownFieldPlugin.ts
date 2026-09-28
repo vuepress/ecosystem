@@ -14,6 +14,15 @@ declare module 'vuepress/markdown' {
   interface MarkdownOptions {
     field?: MarkdownFieldPluginOptions
   }
+
+  interface MarkdownEnv {
+    /**
+     * Ids of the fields in the current page
+     *
+     * 当前页面中所有字段的 id
+     */
+    markdownAnchors?: string[]
+  }
 }
 
 const PLUGIN_NAME = '@vuepress/plugin-markdown-field'

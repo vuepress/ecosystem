@@ -1066,12 +1066,19 @@ importers:
 
   plugins/markdown/plugin-links-check:
     dependencies:
+      '@types/markdown-it':
+        specifier: 'catalog:'
+        version: 14.2.0
       '@vuepress/helper':
         specifier: workspace:*
         version: link:../../../tools/helper
       vuepress:
         specifier: 'catalog:'
         version: 2.0.0-rc.31(64fe27a61b2d7fe5486fea782158c0c7)
+    devDependencies:
+      markdown-it:
+        specifier: 'catalog:'
+        version: 14.3.2
 
   plugins/markdown/plugin-markdown-chart:
     dependencies:

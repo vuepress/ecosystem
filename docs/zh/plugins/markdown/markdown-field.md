@@ -101,6 +101,8 @@ export default {
 
 数组和 Record 的占位符会从 id 中去除：`contributors.info[*].username` 得到 `#contributors-info-username`，`locales.<localePath>.title` 得到 `#locales-localepath-title`。
 
+字段 id 会被发布到 Markdown 环境变量中，以便指向它的链接可以被 [`@vuepress/plugin-links-check`](./links-check.md) 检查。
+
 ### 嵌套 {#nesting}
 
 字段可以嵌套以描述对象类型的字段。要在另一个字段内创建字段项目，每个嵌套级别将起始 `@` 增加一个。

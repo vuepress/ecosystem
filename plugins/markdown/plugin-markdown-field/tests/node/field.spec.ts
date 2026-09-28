@@ -192,6 +192,22 @@ Allow script execution
     )
   })
 
+  it('should publish field ids to the markdown env', () => {
+    const markdownIt = createMarkdownIt()
+    const env: Record<string, unknown> = {}
+
+    markdownIt.render(
+      `::: fields
+@\`theme\` type="ThemeConfig"
+Theme Config
+:::
+`,
+      env,
+    )
+
+    expect(env.markdownAnchors).toStrictEqual(['theme'])
+  })
+
   it('should strip array and record placeholders from field ids', () => {
     const markdownIt = createMarkdownIt()
 
