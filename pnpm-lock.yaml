@@ -1553,9 +1553,6 @@ importers:
       '@vueuse/core':
         specifier: 'catalog:'
         version: 15.0.0(vue@3.5.43(typescript@6.0.3))
-      ts-debounce:
-        specifier: ^5.0.1
-        version: 5.0.1
       vue:
         specifier: 'catalog:'
         version: 3.5.43(typescript@6.0.3)
@@ -10496,9 +10493,6 @@ packages:
 
   trough@2.2.0:
     resolution: {integrity: sha512-tmMpK00BjZiUyVyvrBK7knerNgmgvcV/KLVyuma/SC+TQN167GrMRciANTz09+k3zW8L8t60jWO1GpfkZdjTaw==}
-
-  ts-debounce@5.0.1:
-    resolution: {integrity: sha512-HzwqxastMnaSKu96T8S+fRUorxSptTawIc9004Fs6R9MduRo5IqOE6jS2RfJCl4DVwJvxdcYEXg8g5zQCQR0Ow==}
 
   ts-dedent@2.3.0:
     resolution: {integrity: sha512-JfJeIHke7y2egdGGgRAvpCwYFUsHlM2gPcrVOxFkznt/4uzQ7HFmvE63iFHVLBJNDuyDOQgijDK/tXH/f6Msjg==}
@@ -20479,8 +20473,6 @@ snapshots:
   trim-lines@3.0.1: {}
 
   trough@2.2.0: {}
-
-  ts-debounce@5.0.1: {}
 
   ts-dedent@2.3.0: {}
 

@@ -52,7 +52,6 @@
     "@docsearch/js": "^5.1.1",
     "@vuepress/helper": "workspace:*",
     "@vueuse/core": "catalog:",
-    "ts-debounce": "^5.0.1",
     "vue": "catalog:"
   },
   "devDependencies": {
