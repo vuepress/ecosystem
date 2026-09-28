@@ -105,9 +105,15 @@ console.log('main')
 
 没有 `title` 属性的代码块不会被加入文件树，也不会被展示。
 
-文件和文件夹会显示各自的图标。图标来自 <https://icon-sets.iconify.design/>，由 `@vuepress/plugin-icon` 提供的 `<VPIcon />` 渲染。当该插件未启用时，会改用内置的通用文件或文件夹图标。
+文件和文件夹会显示各自的图标。图标来自 <https://icon-sets.iconify.design/>，需要额外安装可选的 `@iconify-json/vscode-icons` 与 `iconify-icon`：
 
-图标表由 `@yutengjing/vscode-icons` **生成**，而不是手工维护，图标集未覆盖的部分由少量补丁填补。在升级图标集后，可以使用以下命令更新：
+```bash
+npm i -D @iconify-json/vscode-icons iconify-icon
+```
+
+只有站点实际展示的图标会被打包，因此图标集不会增大产物体积。未安装这些包时，会使用内置的文件与文件夹图标。
+
+图标表由 `@yutengjing/vscode-icons` 生成，图标集未覆盖的部分由少量补丁填补。在升级图标集后，可以使用以下命令更新：
 
 ```bash
 pnpm --filter @vuepress/plugin-markdown-file-tree generate:icons
@@ -200,5 +206,9 @@ createApp(App).mount('#app')
 @@`codeTree.height` type=`number | string` default=`'320px'`
 
 代码树的默认高度。数字会被视为像素值。
+
+@`icons` type=boolean default="安装可选的图标包时启用"
+
+是否展示每个文件与文件夹的图标。仅当安装了 `@iconify-json/vscode-icons` 与 `iconify-icon` 时才应启用，否则不会展示任何图标。
 
 :::

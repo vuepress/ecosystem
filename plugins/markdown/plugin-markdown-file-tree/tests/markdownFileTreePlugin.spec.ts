@@ -87,4 +87,25 @@ describe(prepareClientConfigFile, () => {
     expect(content).toContain("app.component('VPFileTreeNode'")
     expect(content).not.toContain("app.component('VPFileTree'")
   })
+
+  it('should register the file icons only when they are enabled', async () => {
+    const enabled = await prepareClientConfigFile(
+      createApp(),
+      { codeTree: true },
+      true,
+    )
+
+    expect(enabled).toContain(
+      "import { setupFileIcons } from '@temp/markdown-file-tree/iconify.js'",
+    )
+    expect(enabled).toContain('setupFileIcons()')
+
+    const disabled = await prepareClientConfigFile(
+      createApp(),
+      { codeTree: true },
+      false,
+    )
+
+    expect(disabled).not.toContain('setupFileIcons')
+  })
 })

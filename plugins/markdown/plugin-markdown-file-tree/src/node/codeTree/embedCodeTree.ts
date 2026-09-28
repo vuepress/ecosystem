@@ -359,7 +359,10 @@ const collectCodeFiles = (root: string, source: string): string[] =>
 export const embedCodeTree = (
   md: Markdown,
   app: App,
-  { height: defaultHeight = '320px' }: MarkdownCodeTreePluginOptions = {},
+  {
+    height: defaultHeight = '320px',
+    icons = true,
+  }: MarkdownCodeTreePluginOptions = {},
 ): void => {
   const NAME = 'code_tree_embed'
   const SYNTAX_PATTERN =
@@ -460,6 +463,7 @@ export const embedCodeTree = (
       height: resolveAttrs(info, 'height')?.trim() || defaultHeight,
       entry: resolveAttrs(info, 'entry')?.trim() ?? '',
       files: contents.map(({ file }) => file),
+      icons,
       // Render the code blocks with a fresh env, so that the embedded content
       // does not pollute the env of the current page
       content: md.render(

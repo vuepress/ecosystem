@@ -436,6 +436,9 @@ importers:
 
   e2e:
     dependencies:
+      '@iconify-json/vscode-icons':
+        specifier: ^1.2.81
+        version: 1.2.82
       '@videojs/html':
         specifier: 10.0.0-rc.4
         version: 10.0.0-rc.4(@videojs/dash-video@10.0.0-rc.4(@svta/cml-cta@1.0.6(@svta/cml-structured-field-values@1.1.3(@svta/cml-utils@1.5.0))(@svta/cml-utils@1.5.0))(@svta/cml-structured-field-values@1.1.3(@svta/cml-utils@1.5.0))(@svta/cml-utils@1.5.0))(@videojs/hlsjs-video@10.0.0-rc.4)(@videojs/spotify-audio@10.0.0-rc.4)(@videojs/tiktok-video@10.0.0-rc.4)(@videojs/twitch-video@10.0.0-rc.4)(@videojs/vimeo-video@10.0.0-rc.4)(@videojs/youtube-video@10.0.0-rc.4)(react@19.3.0)
@@ -502,6 +505,9 @@ importers:
       artplayer:
         specifier: ^5.4.0
         version: 5.4.0
+      iconify-icon:
+        specifier: ^3.0.3
+        version: 3.0.3
       sass-embedded:
         specifier: 'catalog:'
         version: 1.105.0
@@ -1202,6 +1208,12 @@ importers:
 
   plugins/markdown/plugin-markdown-file-tree:
     dependencies:
+      '@iconify/types':
+        specifier: ^2.0.0
+        version: 2.0.0
+      '@iconify/utils':
+        specifier: ^3.1.7
+        version: 3.1.7
       '@mdit/plugin-container':
         specifier: ^2.0.2
         version: 2.0.2(markdown-it@14.3.2)
@@ -1227,6 +1239,9 @@ importers:
       '@yutengjing/vscode-icons':
         specifier: ^0.1.1
         version: 0.1.1
+      iconify-icon:
+        specifier: ^3.0.3
+        version: 3.0.3
       markdown-it:
         specifier: 'catalog:'
         version: 14.3.2

@@ -214,15 +214,22 @@
   transition: color var(--vp-t-color);
 }
 
-.vp-file-tree-icon-fallback {
+/*
+ * The icon of a node, which is either the icon rendered by the Iconify web
+ * component, or the built-in icon when the optional icon set of the plugin is
+ * not installed.
+ *
+ * 节点的图标，由 Iconify Web 组件渲染的图标，或在插件的可选图标集未安装时使用的内置图标。
+ */
+.vp-file-tree-icon {
   display: inline-block;
   flex-shrink: 0;
-
   width: 1.2em;
   height: 1.2em;
+}
 
+.vp-file-tree-icon-fallback {
   background-color: currentcolor;
-
   mask: var(--icon) no-repeat;
   mask-size: 100% 100%;
 

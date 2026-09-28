@@ -27,7 +27,10 @@ import { hasMarker, resolveAttrs } from './utils.js'
  */
 export const codeTree = (
   md: Markdown,
-  { height: defaultHeight = '320px' }: MarkdownCodeTreePluginOptions = {},
+  {
+    height: defaultHeight = '320px',
+    icons = true,
+  }: MarkdownCodeTreePluginOptions = {},
 ): void => {
   /**
    * Collect the file path of every code block inside the container
@@ -95,6 +98,7 @@ export const codeTree = (
       height,
       entry: activeFile || entry,
       files,
+      icons,
       // The content is rendered by the container plugin itself
       autoClose: false,
     })

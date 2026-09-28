@@ -75,11 +75,13 @@ export const buildFileTree = (files: string[]): CodeTreeFileTreeNode[] => {
  *
  * @param nodes - File tree nodes / 文件树节点
  * @param level - Nesting level of the nodes / 节点的嵌套层级
+ * @param icons - Whether to resolve the icon of a node / 是否解析节点的图标
  * @returns Rendered tags / 渲染结果
  */
 export const renderFileTree = (
   nodes: CodeTreeFileTreeNode[],
   level = 0,
+  icons = true,
 ): string =>
   nodes
     .map(({ path, children }) => {
@@ -87,8 +89,10 @@ export const renderFileTree = (
       const filename = path.split('/').pop() ?? path
       // Folders of a code tree are expanded by default
       const expanded = type === 'folder' ? ' expanded' : ''
+      const icon = icons ? getFileIcon(path, type) : ''
+      const iconRendered = icon ? ` icon="${escapeAttr(icon)}"` : ''
 
-      return `<VPFileTreeNode type="${type}" filename="${escapeAttr(filename)}" filepath="${escapeAttr(path)}" :level="${level}"${expanded} icon="${escapeAttr(getFileIcon(path, type))}">${renderFileTree(children, level + 1)}</VPFileTreeNode>`
+      return `<VPFileTreeNode type="${type}" filename="${escapeAttr(filename)}" filepath="${escapeAttr(path)}" :level="${level}"${expanded}${iconRendered}>${renderFileTree(children, level + 1, icons)}</VPFileTreeNode>`
     })
     .join('')
 
@@ -139,6 +143,7 @@ export const renderCodeTree = ({
   entry,
   files,
   content = '',
+  icons = true,
   autoClose = true,
 }: {
   /**
@@ -168,6 +173,12 @@ export const renderCodeTree = ({
    */
   content?: string
   /**
+   * Whether to resolve the icon of a node
+   *
+   * 是否解析节点的图标
+   */
+  icons?: boolean
+  /**
    * Whether to append the closing tag
    *
    * The container syntax renders the closing tag on its own, while the embed
@@ -189,7 +200,7 @@ export const renderCodeTree = ({
     entry: active,
   })}>${
     fileTree.length
-      ? `<template #file-tree>${renderFileTree(fileTree)}</template>`
+      ? `<template #file-tree>${renderFileTree(fileTree, 0, icons)}</template>`
       : ''
   }${content}${autoClose ? '</VPCodeTree>' : ''}`
 }

@@ -45,12 +45,21 @@ test.describe('plugin-markdown-file-tree: file tree', () => {
     ).toHaveCount(5)
     await expect(fileTree.locator('.vp-file-tree-info.folder')).toHaveCount(6)
 
-    // Every node except the ellipsis placeholder has an icon, and the fallback
-    // icon matches the node type, since `@vuepress/plugin-icon` is not enabled
-    // in the e2e site.
+    // Every node except the ellipsis placeholder has an icon, and a folder
+    // uses another icon than a file
     await expect(
-      fileTree.locator('.vp-file-tree-info .vp-file-tree-icon-fallback'),
+      fileTree.locator('.vp-file-tree-info .vp-file-tree-icon'),
     ).toHaveCount(12)
+    await expect(
+      fileTree.locator(
+        '.vp-file-tree-info.folder > .vp-file-tree-icon[icon*="folder"]',
+      ),
+    ).toHaveCount(6)
+    await expect(
+      fileTree.locator(
+        '.vp-file-tree-info.file > .vp-file-tree-icon[icon*="file"]',
+      ),
+    ).toHaveCount(6)
     // An ellipsis placeholder has no icon
     await expect(fileTree.locator('.vp-file-tree-name.omit')).toHaveCount(2)
   })
