@@ -47,23 +47,23 @@ export default {
 
 参考：[Shiki > 双主题](https://shiki.tmrs.site/guide/dual-themes)。
 
-代码块的背景色取自主题，插件自行绘制的文字颜色也是如此 —— 语言标签、行号、折叠行与代码分组标签，它们分别由 `--code-c-bg`、`--code-c-text` 与 `--code-c-line-number` 提供：
+代码块的颜色来自主题。插件会自行绘制代码块中的少数部分 —— 语言标签、行号、折叠行与代码分组标签 —— 并以 CSS 变量的形式提供它们的颜色：
 
 ```css
-:root {
-  --code-c-bg: rgb(250 250 250);
-  --code-c-text: rgb(56 58 66);
-  --code-c-line-number: rgb(114 115 121);
+[data-theme='light'] {
+  --code-c-bg: #fafafa;
+  --code-c-text: #383a42;
+  --code-c-line-number: #727379;
 }
 
 [data-theme='dark'] {
-  --code-c-bg: rgb(40 44 52);
-  --code-c-text: rgb(171 178 191);
-  --code-c-line-number: rgb(140 147 158);
+  --code-c-bg: #282c34;
+  --code-c-text: #abb2bf;
+  --code-c-line-number: #8c939e;
 }
 ```
 
-当主题自身的前景色与其背景的对比度不足 4.5:1 时，前景色会被调整，因此这些文字始终清晰可读。
+在你自己的样式中覆盖它们即可自定义这些部分。
 
 ### 语言 {#languages}
 

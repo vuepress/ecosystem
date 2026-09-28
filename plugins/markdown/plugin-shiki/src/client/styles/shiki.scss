@@ -1,12 +1,12 @@
 :root {
   /*
-   * Fallback base color, used when the theme colors can not be resolved.
-   * The colors of the theme are declared by the plugin, which reads the
-   * background and the foreground of the theme and keeps the text above the
-   * minimum contrast.
+   * Fallback base color, used when the site does not import the styles of its
+   * theme. The colors of a theme are generated into `styles/<theme>.css` from
+   * the background and the foreground of the theme, and the generated text
+   * color is kept above the minimum contrast.
    *
-   * 兜底的基础颜色，在主题颜色无法解析时使用。主题颜色由插件声明，它会读取主题的
-   * 背景与前景颜色，并保证文字高于最低对比度。
+   * 兜底的基础颜色，在站点未导入其主题的样式时使用。主题颜色由主题的背景与前景颜色生成到
+   * `styles/<主题>.css`，生成的文字颜色会保持在最低对比度以上。
    */
   --code-c-text: #9e9e9e;
 
