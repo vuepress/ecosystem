@@ -47,8 +47,7 @@ export const markdownFileTreePlugin =
     // The icons are an optional enhancement, which needs the Iconify web
     // component and the icon set package, and the built-in icons are rendered
     // when either of them is missing
-    const icons =
-      codeTreeOptions.icons ?? options.icons ?? isFileIconEnhancementAvailable()
+    const icons = isFileIconEnhancementAvailable()
 
     // Skip every hook when neither feature is enabled
     if (!fileTreeEnabled && !codeTreeEnabled) return { name: PLUGIN_NAME }

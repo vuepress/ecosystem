@@ -105,19 +105,13 @@ console.log('main')
 
 Code blocks without a `title` attribute are not included in the file tree, and they are not displayed.
 
-Files and folders are displayed with their icons. The icons come from <https://icon-sets.iconify.design/> and require the optional `@iconify-json/vscode-icons` and `iconify-icon` packages:
+Files and folders are displayed with their icons. The icons come from <https://icon-sets.iconify.design/> and need the optional `@iconify-json/vscode-icons` and `iconify-icon` packages:
 
 ```bash
 npm i -D @iconify-json/vscode-icons iconify-icon
 ```
 
-Only the icons displayed by the site are bundled, so the icon set does not bloat the output. The built-in file and folder icons are used when the packages are not installed.
-
-The icon table is generated from `@yutengjing/vscode-icons`, and the gaps that the icon set does not cover are filled by a small overlay. To update it after bumping the icon set:
-
-```bash
-pnpm --filter @vuepress/plugin-markdown-file-tree generate:icons
-```
+Only the icons the site displays are bundled. The built-in file and folder icons are used when the packages are not installed.
 
 ### Embedding a directory
 
@@ -206,9 +200,5 @@ Whether to enable the code tree, which puts the code blocks of several files tog
 @@`codeTree.height` type=`number | string` default=`'320px'`
 
 The default height of the code tree. A number will be treated as pixels.
-
-@`icons` type=boolean default="Enabled when the optional iconify packages are installed"
-
-Whether to display the icon of every file and folder. Enable it only when the `@iconify-json/vscode-icons` and `iconify-icon` packages are installed, otherwise no icon is displayed.
 
 :::

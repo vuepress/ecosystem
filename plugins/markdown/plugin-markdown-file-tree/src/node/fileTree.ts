@@ -3,7 +3,7 @@ import type StateBlock from 'markdown-it/lib/rules_block/state_block.mjs'
 import type Token from 'markdown-it/lib/token.mjs'
 
 import { getFileIcon } from './fileIcons/index.js'
-import type { FileIconOptions } from './options.js'
+import type { FileIconOptions } from './fileIcons/types.js'
 import { parseFileTreeContent } from './parseFileTreeContent.js'
 import type { FileTreeNode } from './types.js'
 import { escapeAttr } from './utils.js'

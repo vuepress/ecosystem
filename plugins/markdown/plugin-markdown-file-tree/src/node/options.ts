@@ -1,32 +1,9 @@
 /**
- * Options of the icons of the files and the folders
- *
- * 文件与文件夹图标的选项
- */
-export interface FileIconOptions {
-  /**
-   * Whether to display the icon of every file and folder
-   *
-   * The icons are provided by the optional Iconify icon set of the plugin, so
-   * they are only resolved when the Iconify web component and the icon set
-   * package are installed, and the built-in file and folder icons are rendered
-   * otherwise.
-   *
-   * 是否展示每个文件与文件夹的图标
-   *
-   * 图标由插件的可选 Iconify 图标集提供，因此只有在 Iconify Web 组件与图标集包都安装时才会解析，否则渲染内置的文件与文件夹图标。
-   *
-   * @default true
-   */
-  icons?: boolean
-}
-
-/**
  * Options of the code tree
  *
  * 代码树的选项
  */
-export interface MarkdownCodeTreePluginOptions extends FileIconOptions {
+export interface MarkdownCodeTreePluginOptions {
   /**
    * Default height of the code tree
    *
@@ -46,7 +23,7 @@ export interface MarkdownCodeTreePluginOptions extends FileIconOptions {
  *
  * Markdown 文件树插件的选项
  */
-export interface MarkdownFileTreePluginOptions extends FileIconOptions {
+export interface MarkdownFileTreePluginOptions {
   /**
    * Whether to enable the file tree, which renders a directory structure from
    * Markdown unordered lists inside a `::: file-tree` container

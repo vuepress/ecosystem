@@ -2,6 +2,7 @@ import type { App } from 'vuepress/core'
 import type { Markdown, MarkdownEnv } from 'vuepress/markdown'
 import { fs, isChildPath, logger, path, tinyglobby } from 'vuepress/utils'
 
+import type { FileIconOptions } from '../fileIcons/types.js'
 import type { MarkdownCodeTreePluginOptions } from '../options.js'
 import { addPageDependency, renderCodeTree } from './renderCodeTree.js'
 import { resolveAttrs, sanitizeFilePath } from './utils.js'
@@ -362,7 +363,7 @@ export const embedCodeTree = (
   {
     height: defaultHeight = '320px',
     icons = true,
-  }: MarkdownCodeTreePluginOptions = {},
+  }: MarkdownCodeTreePluginOptions & FileIconOptions = {},
 ): void => {
   const NAME = 'code_tree_embed'
   const SYNTAX_PATTERN =

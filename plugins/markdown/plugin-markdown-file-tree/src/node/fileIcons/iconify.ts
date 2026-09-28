@@ -159,7 +159,7 @@ const reduceIconSet = async (
  * @returns Code of the generated entry / 生成入口的代码
  */
 const getFileIconCode = (set: IconifyJSON | null): string => `\
-import { addCollection } from "${getModulePath(ICONIFY_ICON, import.meta)}";
+import { addCollection } from ${JSON.stringify(getModulePath(ICONIFY_ICON, import.meta))};
 
 export const setupFileIcons = () => {
 ${
