@@ -79,14 +79,13 @@ We support the following comment services. Please refer to their respective guid
 
 ## Common Options
 
-### provider <Badge text="Plugin Option Only" type="warning"/>
+::: fields
+@`provider` type=`"Artalk" | "Giscus" | "Twikoo" | "Waline" | "None"` default=`"None"`
 
-- Type: `"Artalk" | "Giscus" | "Twikoo" | "Waline" | "None"`
-- Default: `"None"`
-- Details: The comment service provider to use.
+The comment service provider to use. <Badge text="Plugin Option Only" type="warning"/>
 
-### comment
+@`comment` type=boolean default=`true`
 
-- Type: `boolean`
-- Default: `true`
-- Details: Whether to enable the comment feature globally by default.
+Whether to enable the comment feature globally by default.
+
+:::

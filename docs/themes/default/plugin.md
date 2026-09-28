@@ -20,154 +20,69 @@ export default {
 }
 ```
 
-## themePlugins.activeHeaderLinks
+## themePlugins
 
-- Type: `boolean`
+:::: fields
+@`activeHeaderLinks` type=boolean default=`true`
 
-- Default: `true`
+Enable [@vuepress/plugin-active-header-links](../../plugins/development/active-header-links.md) or not.
 
-- Details:
+@`backToTop` type=`BackToTopPluginOptions | boolean` default=`true`
 
-  Enable [@vuepress/plugin-active-header-links](../../plugins/development/active-header-links.md) or not.
+Enable [@vuepress/plugin-back-to-top](../../plugins/features/back-to-top.md) or not.
 
-## themePlugins.backToTop
+Object value is supported as plugin options.
 
-- Type: `BackToTopPluginOptions | boolean`
+@`copyCode` type=`CopyCodePluginOptions | boolean` default=`true`
 
-- Default: `true`
+Enable [@vuepress/plugin-copy-code](../../plugins/features/copy-code.md) or not.
 
-- Details:
+Object value is supported as plugin options.
 
-  Enable [@vuepress/plugin-back-to-top](../../plugins/features/back-to-top.md) or not.
+@`git` type=`GitPluginOptions | boolean` default=`true`
 
-  Object value is supported as plugin options.
+Enable [@vuepress/plugin-git](../../plugins/development/git.md) or not.
 
-## themePlugins.container
+@`hint` type=`MarkdownHintPluginOptions | boolean` default=`true`
 
-- Type: `Record<ContainerType, boolean>`
+Enable [@vuepress/plugin-markdown-hint](../../plugins/markdown/markdown-hint.md) or not.
 
-- Details:
+See also: [Hint Containers](./markdown.md#hint-containers)
 
-  Enable custom containers that powered by [@vuepress/plugin-markdown-container](../../plugins/markdown/markdown-container.md) or not.
+@`linksCheck` type=`LinksCheckPluginOptions | boolean` default=`true`
 
-  `ContainerType` type is:
-  - `codeGroup`
-  - `codeGroupItem`
+Enable [@vuepress/plugin-links-check](../../plugins/markdown/links-check.md) or not.
 
-- Also see:
-  - [Default Theme > Markdown > Custom Containers](./markdown.md#custom-containers)
+Object value is supported as plugin options.
 
-## themePlugins.copyCode
+@`mediumZoom` type=boolean default=`true`
 
-- Type: `CopyCodePluginOptions | boolean`
+Enable [@vuepress/plugin-medium-zoom](../../plugins/features/medium-zoom.md) or not.
 
-- Default: `true`
+@`nprogress` type=boolean default=`true`
 
-- Details:
+Enable [@vuepress/plugin-nprogress](../../plugins/features/nprogress.md) or not.
 
-  Enable [@vuepress/plugin-copy-code](../../plugins/features/copy-code.md) or not.
+@`prismjs` type=`PrismjsPluginOptions | boolean` default=`true`
 
-  Object value is supported as plugin options.
+Enable [@vuepress/plugin-prismjs](../../plugins/markdown/prismjs.md) or not.
 
-## themePlugins.git
+@`seo` type=`Partial<SeoPluginOptions> | boolean` default=`true`
 
-- Type: `boolean`
+Enable [@vuepress/plugin-seo](../../plugins/seo/seo/README.md) or not.
 
-- Default: `true`
+Object value is supported as plugin options.
 
-- Details:
+@`sitemap` type=`Partial<SitemapPluginOptions> | boolean` default=`true`
 
-  Enable [@vuepress/plugin-git](../../plugins/development/git.md) or not.
+Enable [@vuepress/plugin-sitemap](../../plugins/seo/sitemap/README.md) or not.
 
-## themePlugins.hint
+Object value is supported as plugin options.
 
-- Type: `MarkdownHintPluginOptions | boolean`
+@`tab` type=`MarkdownTabPluginOptions | boolean` default=`true`
 
-- Default: `true`
+Enable [@vuepress/plugin-markdown-tab](../../plugins/markdown/markdown-tab.md) or not.
 
-- Details:
+See also: [Code Tabs](./markdown.md#code-tabs) and [Tabs](./markdown.md#tabs)
 
-  Enable [@vuepress/plugin-markdown-hint](../../plugins/markdown/markdown-hint.md) or not.
-
-- Also see:
-  - [Default Theme > Markdown > Hint Containers](./markdown.md#hint-containers)
-
-## themePlugins.linksCheck
-
-- Type: `LinksCheckPluginOptions | boolean`
-
-- Default: `true`
-
-- Details:
-
-  Enable [@vuepress/plugin-links-check](../../plugins/markdown/links-check.md) or not.
-
-  Object value is supported as plugin options.
-
-## themePlugins.mediumZoom
-
-- Type: `boolean`
-
-- Default: `true`
-
-- Details:
-
-  Enable [@vuepress/plugin-medium-zoom](../../plugins/features/medium-zoom.md) or not.
-
-## themePlugins.nprogress
-
-- Type: `boolean`
-
-- Default: `true`
-
-- Details:
-
-  Enable [@vuepress/plugin-nprogress](../../plugins/features/nprogress.md) or not.
-
-## themePlugins.prismjs
-
-- Type: `boolean`
-
-- Default: `true`
-
-- Details:
-
-  Enable [@vuepress/plugin-prismjs](../../plugins/markdown/prismjs.md) or not.
-
-## themePlugins.seo
-
-- Type: `SeoPluginOptions | boolean`
-
-- Default: `true`
-
-- Details:
-
-  Enable [@vuepress/plugin-seo](../../plugins/seo/seo/README.md) or not.
-
-  Object value is supported as plugin options.
-
-## themePlugins.sitemap
-
-- Type: `SitemapPluginOptions | boolean`
-
-- Default: `true`
-
-- Details:
-
-  Enable [@vuepress/plugin-sitemap](../../plugins/seo/sitemap/README.md) or not.
-
-  Object value is supported as plugin options.
-
-## themePlugins.tab
-
-- Type: `MarkdownTabPluginOptions | boolean`
-
-- Default: `true`
-
-- Details:
-
-  Enable [@vuepress/plugin-markdown-tab](../../plugins/markdown/markdown-tab.md) or not.
-
-- Also see:
-  - [Default Theme > Markdown > Code Tabs](./markdown.md#code-tabs)
-  - [Default Theme > Markdown > Tabs](./markdown.md#tabs)
+::::

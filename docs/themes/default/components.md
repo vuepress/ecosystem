@@ -8,31 +8,22 @@ icon: puzzle
 
 ## Badge <Badge text="badge" />
 
-- Props:
-  - type
-    - Type： `'tip' | 'warning' | 'danger' | 'important' | 'info' | 'note'`
-    - Default: `'tip'`
-  - text
-    - Type: `string`
-    - Default: `''`
-  - vertical
-    - Type: `'top' | 'middle' | 'bottom' | undefined`
-    - Default: `undefined`
+:::: fields
+@`type` type=`'tip' | 'warning' | 'danger' | 'important' | 'info' | 'note'` default=`'tip'`
 
-- Example:
+The type of the badge.
 
-**Input**
+@`text` type=string default=`''`
 
-```md
-- VuePress - <Badge type="tip" text="v2" vertical="top" />
-- VuePress - <Badge type="warning" text="v2" vertical="middle" />
-- VuePress - <Badge type="danger" text="v2" vertical="bottom" />
-- VuePress - <Badge type="important" text="v2" vertical="middle" />
-- VuePress - <Badge type="info" text="v2" vertical="middle" />
-- VuePress - <Badge type="note" text="v2" vertical="middle" />
-```
+The text of the badge.
 
-**Output**
+@`vertical` type=`'top' | 'middle' | 'bottom'` default=`undefined`
+
+The vertical align of the badge.
+
+::::
+
+::: preview
 
 - VuePress - <Badge type="tip" text="v2" vertical="top" />
 - VuePress - <Badge type="warning" text="v2" vertical="middle" />
@@ -40,3 +31,5 @@ icon: puzzle
 - VuePress - <Badge type="important" text="v2" vertical="middle" />
 - VuePress - <Badge type="info" text="v2" vertical="middle" />
 - VuePress - <Badge type="note" text="v2" vertical="middle" />
+
+:::

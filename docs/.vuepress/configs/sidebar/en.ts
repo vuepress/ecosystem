@@ -4,43 +4,53 @@ export const sidebarEn: SidebarOptions = {
   '/plugins/': [
     {
       text: 'Common Features',
+      icon: 'sparkles',
       link: 'features/',
     },
     {
       text: 'Markdown',
+      icon: 'octicon:markdown-16',
       link: 'markdown/',
     },
     {
       text: 'Content Search',
+      icon: 'search',
       link: 'search/',
     },
     {
       text: 'Blogging',
+      icon: 'la:blog',
       link: 'blog/',
     },
 
     {
       text: 'Analytics',
+      icon: 'chart-no-axes-combined',
       link: 'analytics/',
     },
     {
       text: 'SEO',
+      icon: 'scan-search',
       link: 'seo/',
     },
     {
       text: 'PWA',
+      icon: 'layout-grid',
       link: 'pwa/',
     },
     {
       text: 'Theme Development',
+      icon: 'server-cog',
       link: 'development/',
     },
     {
       text: 'Tools',
+      icon: 'hammer',
       link: 'tools/',
     },
     {
       text: 'AI',
+      icon: 'eos-icons:ai',
       link: 'ai/',
     },
   ],
@@ -65,14 +75,42 @@ export const sidebarEn: SidebarOptions = {
       icon: 'message-circle-more',
       prefix: 'comment/',
       link: 'comment/',
-      children: ['guide', 'giscus/', 'waline/', 'artalk/', 'twikoo/'],
+      children: [
+        'guide',
+        {
+          text: 'Giscus',
+          icon: 'github',
+          prefix: 'giscus/',
+          link: 'giscus/',
+          children: ['', 'config'],
+        },
+        {
+          text: 'Waline',
+          icon: 'https://waline.js.org/favicon.ico',
+          prefix: 'waline/',
+          link: 'waline/',
+          children: ['', 'config'],
+        },
+        {
+          text: 'Artalk',
+          icon: 'https://artalk.js.org/favicon.png',
+          prefix: 'artalk/',
+          link: 'artalk/',
+          children: ['', 'config'],
+        },
+        {
+          text: 'Twikoo',
+          icon: 'https://twikoo.js.org/twikoo-logo-mini.png',
+          prefix: 'twikoo/',
+          link: 'twikoo/',
+          children: ['', 'config'],
+        },
+      ],
     },
     {
       text: 'Feed',
       icon: 'rss',
-      prefix: 'feed/',
-      link: 'feed/',
-      children: ['guide', 'config', 'frontmatter', 'channel', 'getter'],
+      link: 'feed',
     },
   ],
 

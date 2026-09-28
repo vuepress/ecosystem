@@ -8,49 +8,34 @@ icon: languages
 
 如果你的站点是以英语以外的其他语言提供服务的，你应该为每个语言设置这些选项来提供翻译。
 
-## repoLabel
+## Options
 
-- 类型： `string`
+:::: fields
+@`repoLabel` type=string
 
-- 详情：
+项目仓库的标签。
 
-  项目仓库的标签。
+它将被用作 _仓库链接_ 的文字。_仓库链接_ 将会显示为导航栏的最后一个元素。
 
-  它将被用作 _仓库链接_ 的文字。_仓库链接_ 将会显示为导航栏的最后一个元素。
+如果你不明确指定该配置项，它将会根据 [repo](./config.md#repo) 配置项自动推断。
 
-  如果你不明确指定该配置项，它将会根据 [repo](./config.md#repo) 配置项自动推断。
+@`selectLanguageText` type=string
 
-## selectLanguageText
+_选择语言菜单_ 的文字。
 
-- 类型： `string`
+如果你在站点配置中设置了多个 [locales](./config.md#locales) ，那么 _选择语言菜单_ 就会显示在导航栏中仓库按钮的旁边。
 
-- 详情：
+@`selectLanguageAriaLabel` type=string
 
-  _选择语言菜单_ 的文字。
+_选择语言菜单_ 的 `aria-label` 属性。
 
-  如果你在站点配置中设置了多个 [locales](https://v2.vuepress.vuejs.org/zh/config.html#locales) ，那么 _选择语言菜单_ 就会显示在导航栏中仓库按钮的旁边。
+它主要是为了站点的可访问性 (a11y) 。
 
-## selectLanguageAriaLabel
+@`selectLanguageName` type=string default=`'English'`
 
-- 类型： `string`
+Locale 的语言名称。
 
-- 详情：
-
-  _选择语言菜单_ 的 `aria-label` 属性。
-
-  它主要是为了站点的可访问性 (a11y) 。
-
-## selectLanguageName
-
-- 类型： `string`
-
-- 详情：
-
-  Locale 的语言名称。
-
-  该配置项 **仅能在主题配置的 [locales](./config.md#locales) 的内部生效** 。它将被用作 locale 的语言名称，展示在 _选择语言菜单_ 内。
-
-- 示例：
+该配置项 **仅能在主题配置的 [locales](./config.md#locales) 的内部生效** 。它将被用作 locale 的语言名称，展示在 _选择语言菜单_ 内。
 
 ```ts title=".vuepress/config.ts"
 export default {
@@ -75,143 +60,76 @@ export default {
 }
 ```
 
-## navbarLabel
+@`navbarLabel` type=`string | null`
 
-- 类型：`null | string`
+导航栏中主导航 `aria-label` 属性的值。
 
-- 详情：
+@`pageNavbarLabel` type=`string | null`
 
-  导航栏中主导航 `aria-label` 属性的值。
+下一页/上一页导航 `aria-label` 属性的值。
 
-## pageNavbarLabel
+@`editLinkText` type=string default=`'Edit this page'`
 
-- 类型：`null | string`
+_编辑此页_ 链接的文字。
 
-- 详情：
+@`lastUpdatedText` type=string default=`'最近更新'`
 
-  下一页/上一页导航 `aria-label` 属性的值
+_最近更新时间戳_ 标签的文字。
 
-## editLinkText
+@`contributorsText` type=string default=`'Contributors'`
 
-- 类型： `string`
+_贡献者列表_ 标签的文字。
 
-- 默认值： `'Edit this page'`
+@`tip` type=string default=`'提示'`
 
-- 详情：
+提示 [提示容器](./markdown.md#提示容器) 的默认标题。
 
-  _编辑此页_ 链接的文字。
+@`warning` type=string default=`'注意'`
 
-## lastUpdatedText
+注意 [提示容器](./markdown.md#提示容器) 的默认标题。
 
-- 类型： `string`
+@`danger` type=string default=`'警告'`
 
-- 默认值： `'Last Updated'`
+警告 [提示容器](./markdown.md#提示容器) 的默认标题。
 
-- 详情：
+@`important` type=string default=`'重要'`
 
-  _最近更新时间戳_ 标签的文字。
+重要 [提示容器](./markdown.md#提示容器) 的默认标题。
 
-## contributorsText
+@`note` type=string default=`'注'`
 
-- 类型： `string`
+注 [提示容器](./markdown.md#提示容器) 的默认标题。
 
-- 默认值： `'Contributors'`
+@`notFound` type=`string[]` default=`['There's nothing here.', 'How did we get here?', 'That's a Four-Oh-Four.', 'Looks like we've got some broken links.']`
 
-- 详情：
+404 页面的提示信息。
 
-  _贡献者列表_ 标签的文字。
+当用户进入 404 页面时，会从数组中随机选取一条信息进行展示。
 
-## tip
+@`backToHome` type=string default=`'Take me home'`
 
-- 类型： `string`
+404 页面中 _返回首页_ 链接的文字。
 
-- 默认值： `'TIP'`
+@`toggleColorMode` type=string default=`'toggle color mode'`
 
-- 详情：
+切换颜色模式按钮的标题文字。
 
-  Tip [自定义容器](./markdown.md#自定义容器) 的默认标题。
+它主要是为了站点的可访问性 (a11y) 。
 
-## warning
+参考：[colorModeSwitch](./config.md#colormodeswitch)
 
-- 类型： `string`
+@`toggleSidebar` type=string default=`'toggle sidebar'`
 
-- 默认值： `'WARNING'`
+切换侧边栏按钮的标题文字。
 
-- 详情：
+它主要是为了站点的可访问性 (a11y) 。
 
-  Warning [自定义容器](./markdown.md#自定义容器) 的默认标题。
+@`prev` type=`string | false` default=`'Prev'`
 
-## danger
+上一页按钮的文字。设置为 `false` 时，将隐藏上一页按钮。
 
-- 类型： `string`
+@`next` type=`string | false` default=`'Next'`
 
-- 默认值： `'DANGER'`
+下一页按钮的文字。设置为 `false` 时，将隐藏下一页按钮。
 
-- 详情：
-
-  Danger [自定义容器](./markdown.md#自定义容器) 的默认标题。
-
-## notFound
-
-- 类型： `string[]`
-
-- 默认值： `['Not Found']`
-
-- 详情：
-
-  404 页面的提示信息。
-
-  当用户进入 404 页面时，会从数组中随机选取一条信息进行展示。
-
-## backToHome
-
-- 类型： `string`
-
-- 默认值： `'Back to home'`
-
-- 详情：
-
-  404 页面中 _返回首页_ 链接的文字。
-
-## toggleColorMode
-
-- 类型： `string`
-
-- 默认值： `'toggle color mode'`
-
-- 详情：
-
-  切换颜色模式按钮的标题文字。
-
-  它主要是为了站点的可访问性 (a11y) 。
-
-- 参考：
-  - [默认主题 > 配置 > colorModeSwitch](./config.md#colormodeswitch)
-
-## toggleSidebar
-
-- 类型： `string`
-
-- 默认值： `'toggle sidebar'`
-
-- 详情：
-
-  切换侧边栏按钮的标题文字。
-
-  它主要是为了站点的可访问性 (a11y) 。
-
-## prev
-
-- 类型： `string | false`
-- 默认值： `'Prev'`
-- 详情：
-
-  上一页按钮的文字。设置为 `false` 时，将隐藏上一页按钮。
-
-## next
-
-- 类型： `string | false`
-- 默认值： `'Next'`
-- 详情：
-
-  下一页按钮的文字。设置为 `false` 时，将隐藏下一页按钮。
+::::

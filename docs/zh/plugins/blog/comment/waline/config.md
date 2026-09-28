@@ -1,3 +1,7 @@
+---
+icon: settings-2
+---
+
 # Waline 选项
 
 ## 选项

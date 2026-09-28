@@ -79,14 +79,13 @@ defineArtalkConfig({
 
 ## 通用选项
 
-### provider <Badge text="仅限插件选项" type="warning"/>
+::: fields
+@`provider` type=`"Artalk" | "Giscus" | "Twikoo" | "Waline" | "None"` default=`"None"`
 
-- 类型：`"Artalk" | "Giscus" | "Twikoo" | "Waline" | "None"`
-- 默认值：`"None"`
-- 详情：要使用的评论服务提供商。
+要使用的评论服务提供商。 <Badge text="仅限插件选项" type="warning"/>
 
-### comment
+@`comment` type=boolean default=`true`
 
-- 类型：`boolean`
-- 默认值：`true`
-- 详情：是否默认在全局范围内启用评论功能。
+是否默认在全局范围内启用评论功能。
+
+:::

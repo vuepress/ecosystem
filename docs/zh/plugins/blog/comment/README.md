@@ -1,3 +1,7 @@
+---
+icon: message-circle-more
+---
+
 # comment
 
 <NpmBadge package="@vuepress/plugin-comment" />

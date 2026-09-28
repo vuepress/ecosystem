@@ -1,4 +1,8 @@
-# Waline Config
+---
+icon: settings-2
+---
+
+# Waline Options
 
 ## Options
 

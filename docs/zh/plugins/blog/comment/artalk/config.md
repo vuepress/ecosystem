@@ -1,3 +1,7 @@
+---
+icon: settings-2
+---
+
 # Artalk 选项
 
 ## 选项

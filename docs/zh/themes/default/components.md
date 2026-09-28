@@ -8,31 +8,22 @@ icon: puzzle
 
 ## Badge <Badge text="badge" />
 
-- Props:
-  - type
-    - 类型： `'tip' | 'warning' | 'danger' | 'important' | 'info' | 'note'`
-    - 默认值： `'tip'`
-  - text
-    - 类型： `string`
-    - 默认值： `''`
-  - vertical
-    - 类型： `'top' | 'middle' | 'bottom' | undefined`
-    - 默认值： `undefined`
+:::: fields
+@`type` type=`'tip' | 'warning' | 'danger' | 'important' | 'info' | 'note'` default=`'tip'`
 
-- 示例：
+徽章类型。
 
-**输入**
+@`text` type=string default=`''`
 
-```md
-- VuePress - <Badge type="tip" text="v2" vertical="top" />
-- VuePress - <Badge type="warning" text="v2" vertical="middle" />
-- VuePress - <Badge type="danger" text="v2" vertical="bottom" />
-- VuePress - <Badge type="important" text="v2" vertical="middle" />
-- VuePress - <Badge type="info" text="v2" vertical="middle" />
-- VuePress - <Badge type="note" text="v2" vertical="middle" />
-```
+徽章文字。
 
-**输出**
+@`vertical` type=`'top' | 'middle' | 'bottom'` default=`undefined`
+
+徽章的垂直对齐方式。
+
+::::
+
+::: preview
 
 - VuePress - <Badge type="tip" text="v2" vertical="top" />
 - VuePress - <Badge type="warning" text="v2" vertical="middle" />
@@ -40,3 +31,5 @@ icon: puzzle
 - VuePress - <Badge type="important" text="v2" vertical="middle" />
 - VuePress - <Badge type="info" text="v2" vertical="middle" />
 - VuePress - <Badge type="note" text="v2" vertical="middle" />
+
+:::
