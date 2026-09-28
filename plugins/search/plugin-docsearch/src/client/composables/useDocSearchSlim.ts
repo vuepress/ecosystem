@@ -1,5 +1,5 @@
 import type { DocSearchProps } from '@docsearch/js'
-import { debounce } from 'ts-debounce'
+import { useDebounceFn } from '@vueuse/core'
 import { useRouter } from 'vuepress/client'
 import { removeLeadingSlash, resolveRoutePathFromUrl } from 'vuepress/shared'
 
@@ -38,7 +38,7 @@ export const useDocSearchShim = (): Partial<DocSearchProps> => {
     // add search debounce
     transformSearchClient: (searchClient) => ({
       ...searchClient,
-      search: debounce(searchClient.search, 500),
+      search: useDebounceFn(searchClient.search, 500),
     }),
   }
 }
