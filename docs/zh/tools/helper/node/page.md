@@ -2,7 +2,7 @@
 icon: panel-top
 ---
 
-# 页面相关
+# 页面相关 {#page-related}
 
 页面常见信息生成器。
 

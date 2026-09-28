@@ -2,9 +2,9 @@
 icon: settings-2
 ---
 
-# 配置
+# 配置 {#config}
 
-## 基础配置
+## 基础配置 {#basic-config}
 
 :::: fields
 @`hostname` type=string
@@ -15,7 +15,7 @@ icon: settings-2
 
 多语言支持的各个语言 locales。
 
-所有在 [Locale 配置](#locale-配置) 章节内的配置项都可以在 locales 中使用。
+所有在 [Locale 配置](#locale-config) 章节内的配置项都可以在 locales 中使用。
 
 该配置项仅能在默认主题内生效，注意不要和 [站点配置](https://v2.vuepress.vuejs.org/zh/reference/config.html#locales) 中的 `locales` 混淆。
 
@@ -23,7 +23,7 @@ icon: settings-2
 
 ::::
 
-## Locale 配置
+## Locale 配置 {#locale-config}
 
 该章节内的配置项可以作为一般配置使用，也可以使用在 [locales](#locales) 内。
 

@@ -10,7 +10,7 @@ icon: columns-2
 
 该插件已经集成到默认主题中。
 
-## 使用
+## 使用 {#usage}
 
 ```bash
 npm i -D @vuepress/plugin-markdown-tab@next
@@ -31,7 +31,7 @@ export default {
 }
 ```
 
-## 选项卡指南
+## 选项卡指南 {#tabs-guide}
 
 你需要将选项卡包装在 `tabs` 容器中。
 
@@ -93,7 +93,7 @@ export default {
 
 你可以在每个选项卡中使用 Vue 语法和组件，并且你可以访问 `value` 和 `isActive`，表示选项卡的绑定值和选项卡是否处于激活状态。
 
-### 同步切换并保持选择
+### 同步切换并保持选择 {#switching-together-and-persisting-choice}
 
 如果你想让一些选项卡组一起切换，你可以使用相同的选项卡 ID 来绑定它们。针对每个选项卡 ID 的选择会被存储并进行持久化。
 
@@ -136,13 +136,13 @@ pnpm add -D vuepress
 
 ::::
 
-## 代码选项卡指南
+## 代码选项卡指南 {#code-tabs-guide}
 
-此功能和 [选项卡](#选项卡指南) 相同，但它是专门为代码块构建的。
+此功能和 [选项卡](#tabs-guide) 相同，但它是专门为代码块构建的。
 
 代码选项卡只会渲染 `@tab` 标记后的第一个代码块，其他 Markdown 内容将被忽略。
 
-## 案例
+## 案例 {#demo}
 
 :::: preview 选项卡
 
@@ -250,7 +250,7 @@ npm i -D @vuepress/plugin-markdown-tab
 
 ::::
 
-## 选项
+## 选项 {#options}
 
 ::: fields
 @`tabs` type=boolean
@@ -263,7 +263,7 @@ npm i -D @vuepress/plugin-markdown-tab
 
 :::
 
-## 样式
+## 样式 {#styles}
 
 你可以通过 CSS 变量自定义样式:
 

@@ -12,7 +12,7 @@ icon: database
 
 对于主题作者，该插件可以提供与 VuePress 及默认主题相同的多语言支持机制。但是如果你的主题不需要提供多语言支持，或者你想用自己的方式来实现多语言支持，那么你不需要使用该插件。
 
-## 使用方法
+## 使用方法 {#usage}
 
 ```bash
 npm i -D @vuepress/plugin-theme-data@next
@@ -30,7 +30,7 @@ export default {
 }
 ```
 
-## 选项
+## 选项 {#options}
 
 :::: fields
 @`themeData` type=ThemeData required

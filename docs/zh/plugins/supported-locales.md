@@ -2,11 +2,11 @@
 icon: languages
 ---
 
-# 多语言配置
+# 多语言配置 {#locales}
 
 所有官方插件都内置了多语言数据，因此插件的文本对下列语言已经开箱即用地翻译好了。只有在你想修改某个内置文本，或想翻译一个没有内置数据的语言时，才需要使用 `locales` 选项。
 
-## 支持的语言
+## 支持的语言 {#supported-languages}
 
 - **英文(美国)** (en-US)
 - **简体中文** (zh-CN)
@@ -37,7 +37,7 @@ icon: languages
 
 :::
 
-## 配置方式
+## 配置方式 {#configuration}
 
 多语言文本在两处配置，且它们使用的语言路径必须一致：
 
@@ -46,7 +46,7 @@ icon: languages
 
 对每个站点语言环境，插件会先按其 `lang` 查找内置数据，再把你的配置合并到内置数据之上。因此你只需要写出想修改的字段。
 
-### 覆盖内置文本
+### 覆盖内置文本 {#overriding-a-built-in-text}
 
 ```ts title=".vuepress/config.ts"
 import { examplePlugin } from '@vuepress/plugin-example'
@@ -76,7 +76,7 @@ export default {
 }
 ```
 
-### 添加不支持的语言
+### 添加不支持的语言 {#adding-an-unsupported-language}
 
 `lang` 没有内置数据的语言环境会回退到英文，并输出一条警告。要翻译它，请提供该语言的完整多语言数据：
 

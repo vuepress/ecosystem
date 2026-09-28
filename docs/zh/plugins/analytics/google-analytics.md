@@ -29,9 +29,9 @@ export default {
 }
 ```
 
-## 指南
+## 指南 {#guide}
 
-### 上报事件
+### 上报事件 {#reporting-events}
 
 Google Analytics 4 默认[自动收集多种事件](https://support.google.com/analytics/answer/9234069)，例如 `page_view`（页面浏览）、`first_visit`（首次访问）和 `scroll`（滚动）等。
 
@@ -39,7 +39,7 @@ Google Analytics 4 默认[自动收集多种事件](https://support.google.com/a
 
 如需更高级的追踪能力，该插件会在 `window` 对象上暴露全局 `gtag()` 函数。你可以利用该函数，基于用户在站点内的交互行为，通过编程方式上报[自定义事件](https://developers.google.com/analytics/devguides/collection/ga4/events)。
 
-## 选项
+## 选项 {#options}
 
 ::: fields
 @`id` type=string required

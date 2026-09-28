@@ -8,7 +8,7 @@ icon: https://twikoo.js.org/twikoo-logo-mini.png
 
 <!-- more -->
 
-## 使用
+## 使用 {#usage}
 
 ```bash
 npm i -D twikoo
@@ -29,7 +29,7 @@ export default {
 }
 ```
 
-### 部署后端
+### 部署后端 {#deploy-backend}
 
 请先按照 [官方文档](https://twikoo.js.org/backend.html) 部署好后端。
 
@@ -39,14 +39,14 @@ export default {
 
 :::
 
-## 选项
+## 选项 {#options}
 
 ::: fields
 @`envId` type=string required
 
 Vercel 地址或腾讯云环境 ID。
 
-参考：[部署后端](#部署后端)。
+参考：[部署后端](#deploy-backend)。
 
 @`region` type=string default=`'ap-shanghai'`
 
@@ -54,7 +54,7 @@ Vercel 地址或腾讯云环境 ID。
 
 :::
 
-## 客户端配置
+## 客户端配置 {#client-config}
 
 你可以使用 `defineTwikooConfig` 函数来配置 Twikoo：
 

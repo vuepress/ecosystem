@@ -8,7 +8,7 @@ icon: heading
 
 该插件会提供一个目录 (table-of-contents, TOC) 组件。
 
-## 使用方法
+## 使用方法 {#usage}
 
 ```bash
 npm i -D @vuepress/plugin-toc@next
@@ -26,7 +26,7 @@ export default {
 }
 ```
 
-## 与 Markdown 目录语法的区别
+## 与 Markdown 目录语法的区别 {#differences-with-markdown-toc-syntax}
 
 与 [Markdown 目录语法](https://vuejs.press/zh/guide/markdown.html#目录) 类似，该插件提供的目录组件可以直接在你的 Markdown 内容中使用：
 
@@ -49,7 +49,7 @@ Markdown 语法 `[[toc]]` 仅能在 Markdown 文件中使用。它是由 markdow
 
 因此，该插件对于主题开发者来说更为有用。
 
-## 选项
+## 选项 {#options}
 
 ::: fields
 @`componentName` type=string default=`'Toc'`
@@ -66,7 +66,7 @@ Markdown 语法 `[[toc]]` 仅能在 Markdown 文件中使用。它是由 markdow
 
 :::
 
-## 组件 Props
+## 组件 Props {#component-props}
 
 目录组件可以通过 Props 来进行自定义。
 

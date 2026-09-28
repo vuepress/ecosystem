@@ -10,7 +10,7 @@ icon: logos:google-marketing-platform
 
 该插件会引入 [Google 跟踪代码管理器](https://developers.google.com/tag-platform/tag-manager?hl=zh-cn)。
 
-## 使用方法
+## 使用方法 {#usage}
 
 ```bash
 npm i -D @vuepress/plugin-google-tag-manager@next
@@ -48,7 +48,7 @@ export default {
 
 :::
 
-## 选项
+## 选项 {#options}
 
 ::: fields
 @`id` type=string required

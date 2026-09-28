@@ -10,7 +10,7 @@ icon: package
 
 该插件简化了 [@mdit/plugin-container](https://mdit-plugins.github.io/container.html) 的使用方法，但同时也保留了其原本的能力。
 
-## 使用方法
+## 使用方法 {#usage}
 
 ```bash
 npm i -D @vuepress/plugin-markdown-container@next
@@ -28,7 +28,7 @@ export default {
 }
 ```
 
-## 容器语法
+## 容器语法 {#container-syntax}
 
 ```md
 ::: <type> [info]
@@ -44,7 +44,7 @@ export default {
 该插件可以被多次使用，以便支持不同类型的容器。
 :::
 
-## 选项
+## 选项 {#options}
 
 ::: fields
 @`type` type=string required
@@ -87,7 +87,7 @@ export default {
 
 一个用于渲染容器起始标签的函数。
 
-第一个参数是 [容器语法](#容器语法) 的 `info` 部分。
+第一个参数是 [容器语法](#container-syntax) 的 `info` 部分。
 
 如果你没有设置 [after](#after) 配置项，则该配置项也不会生效。
 
@@ -102,7 +102,7 @@ export default {
 
 一个用于渲染容器结束标签的函数。
 
-第一个参数是 [容器语法](#容器语法) 的 `info` 部分。
+第一个参数是 [容器语法](#container-syntax) 的 `info` 部分。
 
 如果你没有设置 [before](#before) 配置项，则该配置项也不会生效。
 

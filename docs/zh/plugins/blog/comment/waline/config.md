@@ -2,9 +2,9 @@
 icon: settings-2
 ---
 
-# Waline 选项
+# Waline 选项 {#waline-options}
 
-## 选项
+## 选项 {#options}
 
 ::: fields
 @`serverURL` type=string required
@@ -198,7 +198,7 @@ interface WalineLocales {
 
 :::
 
-## 插件配置
+## 插件配置 {#plugin-config}
 
 在插件中配置可序列化选项：
 
@@ -216,7 +216,7 @@ export default {
 }
 ```
 
-## 客户端配置
+## 客户端配置 {#client-config}
 
 使用 `defineWalineConfig` 配置选项：
 

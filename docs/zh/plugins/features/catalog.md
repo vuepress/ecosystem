@@ -8,7 +8,7 @@ icon: list-tree
 
 此插件可以自动生成目录页面，并提供目录组件。
 
-## 使用方法
+## 使用方法 {#usage}
 
 ```bash
 npm i -D @vuepress/plugin-catalog@next
@@ -26,9 +26,9 @@ export default {
 }
 ```
 
-## 指南
+## 指南 {#guide}
 
-### 目录信息
+### 目录信息 {#catalog-info}
 
 首先，你需要在路由元信息中设置目录信息：
 
@@ -61,7 +61,7 @@ defineCatalogInfoGetter((meta) => (meta.title ? { title: meta.title } : null))
 - `order`：目录顺序（可选）
 - `content`：目录内容组件（可选）
 
-### 通过 order 排序
+### 通过 order 排序 {#sorting-with-order}
 
 插件会按以下顺序通过 `order` 对页面进行排序：
 
@@ -83,7 +83,7 @@ order -2 的项目
 order -1 的项目
 ```
 
-## 选项
+## 选项 {#options}
 
 :::: fields
 @`level` type=`1 | 2 | 3` default=`3` built-in="仅限内置组件"
@@ -145,7 +145,7 @@ export default {
 空目录提示文字。
 ::::
 
-## 客户端选项
+## 客户端选项 {#client-options}
 
 ### defineCatalogInfoGetter
 
@@ -166,7 +166,7 @@ const defineCatalogInfoGetter: (options: CatalogInfoGetter) => void
 
 自定义如何从路由元信息中提取目录信息。
 
-## 组件
+## 组件 {#components}
 
 ### Catalog
 
@@ -182,7 +182,7 @@ const defineCatalogInfoGetter: (options: CatalogInfoGetter) => void
   - `index`：为目录项添加索引号，默认无标号
   - `hideHeading`：隐藏组件标题，默认显示 `目录` 标题
 
-## 样式
+## 样式 {#styles}
 
 你可以通过 CSS 变量来自定义目录样式：
 

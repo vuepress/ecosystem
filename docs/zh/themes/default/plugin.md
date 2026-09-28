@@ -2,7 +2,7 @@
 icon: unplug
 ---
 
-# 插件配置
+# 插件配置 {#plugins-config}
 
 你可以通过 `themePlugins` 设置默认主题使用的插件。
 
@@ -47,7 +47,7 @@ export default {
 
 是否启用 [@vuepress/plugin-markdown-hint](../../plugins/markdown/markdown-hint.md)。
 
-参考：[提示容器](./markdown.md#提示容器)
+参考：[提示容器](./markdown.md#hint-containers)
 
 @`linksCheck` type=`LinksCheckPluginOptions | boolean` default=`true`
 
@@ -83,6 +83,6 @@ export default {
 
 是否启用 [@vuepress/plugin-markdown-tab](../../plugins/markdown/markdown-tab.md)。
 
-参考：[代码选项卡](./markdown.md#代码选项卡) 与 [选项卡](./markdown.md#选项卡)
+参考：[代码选项卡](./markdown.md#code-tabs) 与 [选项卡](./markdown.md#tabs)
 
 ::::

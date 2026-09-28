@@ -27,7 +27,7 @@ icon: lucide:replace
 ::: important 插件不会修改源文件，仅在编译后的内容中进行替换
 :::
 
-## 使用方法
+## 使用方法 {#usage}
 
 ```sh
 npm i -D @vuepress/plugin-replace-assets@next
@@ -43,9 +43,9 @@ export default {
 }
 ```
 
-## 指南
+## 指南 {#guide}
 
-### 资源管理
+### 资源管理 {#assets-management}
 
 **你应该将资源存放在 [.vuepress/public](https://v2.vuepress.vuejs.org/zh/guide/assets.html#public-%E6%96%87%E4%BB%B6) 目录下**:
 
@@ -95,7 +95,7 @@ img.src = '/images/foo.jpg'
 :::warning 插件不支持识别 `'/images/' + 'foo.jpg'` 拼接的路径。
 :::
 
-### 内置资源匹配规则
+### 内置资源匹配规则 {#built-in-asset-matching-rules}
 
 为便于使用，插件提供了内置的资源匹配规则，你可以直接使用它们。
 
@@ -148,7 +148,7 @@ export default {
 }
 ```
 
-### 自定义资源匹配规则
+### 自定义资源匹配规则 {#custom-asset-matching-rules}
 
 你也可以自定义资源匹配规则：
 
@@ -205,7 +205,7 @@ export default {
 ::: important 所有匹配的资源地址都是以 `/` 开头。
 :::
 
-## 选项
+## 选项 {#options}
 
 `replaceAssetsPlugin` 接受配置对象、`Replacement`，或 `ReplacementRule | ReplacementRule[]`。
 
@@ -235,13 +235,13 @@ export default {
 
 内置的图片匹配规则，匹配查找 `^/images/` 开头的常见的图片路径。
 
-参考：[内置资源匹配规则](#内置资源匹配规则)。
+参考：[内置资源匹配规则](#built-in-asset-matching-rules)。
 
 @`media` type=`string | ((url: string) => string)`
 
 内置的媒体匹配规则，匹配查找 `^/medias/` 开头的常见的视频、音频等媒体路径。
 
-参考：[内置资源匹配规则](#内置资源匹配规则)。
+参考：[内置资源匹配规则](#built-in-asset-matching-rules)。
 
 @`all` type=`string | ((url: string) => string)`
 

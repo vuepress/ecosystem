@@ -8,7 +8,7 @@ icon: between-horizontal-end
 
 为你的 VuePress 站点添加 Markdown 导入功能。
 
-## 使用方法
+## 使用方法 {#usage}
 
 ```bash
 npm i -D @vuepress/plugin-markdown-include@next
@@ -26,7 +26,7 @@ export default {
 }
 ```
 
-## 语法
+## 语法 {#syntax}
 
 使用 `<!-- @include: filename -->` 导入文件。
 
@@ -315,7 +315,7 @@ int main() {
 
 ::::
 
-## 演示
+## 演示 {#demo}
 
 `<!-- @include: ./demo.snippet.md -->`:
 
@@ -329,7 +329,7 @@ int main() {
 
 <!-- @include: ./demo.snippet.md#snippet -->
 
-## 选项
+## 选项 {#options}
 
 ::: fields
 @`resolvePath` type=`(path: string, cwd: string | null) => string` default=`(path) => path`

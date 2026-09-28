@@ -10,7 +10,7 @@ icon: siren
 
 该插件已经集成到默认主题中。
 
-## 使用方法
+## 使用方法 {#usage}
 
 ```bash
 npm i -D @vuepress/plugin-markdown-hint@next
@@ -31,7 +31,7 @@ export default {
 }
 ```
 
-## 指南
+## 指南 {#guide}
 
 默认情况下，我们支持 `important`、`info`、`note`、`tip`、`warning`、`caution`、`details` 容器与 markdown 容器：
 
@@ -89,7 +89,7 @@ const a = 1
 > This is caution text
 ```
 
-## 选项
+## 选项 {#options}
 
 ::: fields
 @`hint` type=boolean default=`true`

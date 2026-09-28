@@ -16,7 +16,7 @@ icon: chart-no-axes-combined
 
 :::
 
-## 使用方法
+## 使用方法 {#usage}
 
 ```bash
 npm i -D @vuepress/plugin-baidu-analytics@next
@@ -34,9 +34,9 @@ export default {
 }
 ```
 
-## 指南
+## 指南 {#guide}
 
-### 事件追踪
+### 事件追踪 {#event-tracking}
 
 配置完成后，插件会自动在用户访问页面及路由切换时上报页面浏览（PV）事件。
 
@@ -48,7 +48,7 @@ window._hmt = window._hmt || []
 window._hmt.push(['_trackEvent', 'category', 'action', 'label', 'value'])
 ```
 
-## 选项
+## 选项 {#options}
 
 ::: fields
 @`id` type=string required

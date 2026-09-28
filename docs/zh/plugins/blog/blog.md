@@ -8,7 +8,7 @@ icon: la:blog
 
 为 VuePress 提供博客功能的插件，包括文章收集、分类、类型过滤和摘要生成。
 
-## 使用
+## 使用 {#usage}
 
 ```bash
 npm i -D @vuepress/plugin-blog@next
@@ -26,13 +26,13 @@ export default {
 }
 ```
 
-## 指南
+## 指南 {#guide}
 
-### 文章收集
+### 文章收集 {#article-collection}
 
 [filter](#filter) 选项决定哪些页面被视为博客文章。默认情况下，除首页外，所有由 Markdown 文件生成的页面都是文章。
 
-### 收集信息
+### 收集信息 {#gathering-info}
 
 [getInfo](#getinfo) 选项用于从页面中提取文章元数据。收集到的信息会被注入到路由元数据中，因此可以在客户端访问。
 
@@ -81,7 +81,7 @@ export default {
 
 :::
 
-### 分类与类型
+### 分类与类型 {#categories-and-types}
 
 插件会将文章组织为两种集合：
 
@@ -90,7 +90,7 @@ export default {
 
 你可以使用 [category](#category) 和 [type](#type) 选项进行配置。路由路径由键名和子项名称通过 [slugify](#slugify) 函数生成。
 
-#### Category 配置
+#### Category 配置 {#category-configuration}
 
 使用 [category](#category) 选项按标签对文章分组。例如，要根据 Frontmatter 中的 `tag` 对文章分组，在 `/tag/` 生成一个映射页面（使用 `TagMap` 布局），并在 `/tag/:tagName/` 列出每个标签的文章（使用 `TagList` 布局）：
 
@@ -120,7 +120,7 @@ export default {
 }
 ```
 
-#### Type 配置
+#### Type 配置 {#type-configuration}
 
 使用 [type](#type) 选项创建一个满足条件的文章列表。例如，要在 `/star/` 使用 `StarList` 布局列出星标文章（在 Frontmatter 中标记为 `star: true`）：
 
@@ -147,7 +147,7 @@ export default {
 }
 ```
 
-### 生成摘要
+### 生成摘要 {#generating-excerpt}
 
 摘要生成默认启用，它会生成一个用于展示文章简短预览的 HTML 片段。请注意以下限制：
 
@@ -158,7 +158,7 @@ export default {
 
 使用 [excerptFilter](#excerptfilter) 选项可以控制哪些页面生成摘要。例如，当 `frontmatter.description` 存在时，你可能更愿意直接用它作为摘要，因此可以让过滤函数对这些页面返回 `false`，跳过自动生成。
 
-### 多语言支持
+### 多语言支持 {#i18n-support}
 
 插件原生支持国际化，配置会自动应用于每个语言环境。例如，使用以下语言环境：
 
@@ -177,13 +177,13 @@ export default {
 
 插件会在生成 `/star/` 的同时生成 `/zh/star/`，并且每个路径只显示对应语言环境的文章。
 
-### 热重载
+### 热重载 {#hot-reload}
 
 在开发过程中，[hotReload](#hotreload) 选项会在文件变更时重建博客数据，使用 `--debug` 标志时默认启用。
 
 启用它可能会影响包含大量分类和类型的站点的性能，并且在编辑 Markdown 时减慢热更新速度。建议仅在积极添加或整理分类与标签时启用，或者通过检测页面数量来决定是否以编程方式启用。
 
-### 客户端使用
+### 客户端使用 {#client-side-usage}
 
 在页面生成过程中，插件会将当前页面的类型注入到 `frontmatter.blog` 中：
 
@@ -329,9 +329,9 @@ const stars = useBlogType('star')
 </template>
 ```
 
-参考：[组合式 API](#组合式-api)。
+参考：[组合式 API](#composables)。
 
-## 选项
+## 选项 {#options}
 
 ::: fields
 @`getInfo` type=`(page: Page) => Record<string, unknown>` default=`() => ({})`
@@ -340,19 +340,19 @@ const stars = useBlogType('star')
 
 提取的信息会被注入到路由元数据中，使其可以通过客户端组合式 API 访问。
 
-参考：[收集信息](#收集信息)。
+参考：[收集信息](#gathering-info)。
 
 @`filter` type=`(page: Page) => boolean` default=`(page) => Boolean(page.filePathRelative) && !page.frontmatter.home`
 
 用于确定哪些页面被视为博客文章的函数。
 
-参考：[文章收集](#文章收集)。
+参考：[文章收集](#article-collection)。
 
 @`category` type=`BlogCategoryOptions[]` default=`[]`
 
 博客分类配置，每一项按标签对文章分组，例如标签或分类。
 
-参考：[Category 配置](#category-配置)。
+参考：[Category 配置](#category-configuration)。
 
 @@`category[*].key` type=string required
 
@@ -394,7 +394,7 @@ const stars = useBlogType('star')
 
 博客类型配置，每一项收集满足条件的文章。
 
-参考：[Type 配置](#type-配置)。
+参考：[Type 配置](#type-configuration)。
 
 @@`type[*].key` type=string required
 
@@ -424,53 +424,53 @@ const stars = useBlogType('star')
 
 将字符串转换为 URL 友好的 slug 的函数，用于路由注册。
 
-参考：[分类与类型](#分类与类型)。
+参考：[分类与类型](#categories-and-types)。
 
 @`excerpt` type=boolean default=`true`
 
 是否为页面生成摘要。
 
-参考：[生成摘要](#生成摘要)。
+参考：[生成摘要](#generating-excerpt)。
 
 @`excerptSeparator` type=string default=`'<!-- more -->'`
 
 内容中用于手动定义摘要的分隔符。
 
-参考：[生成摘要](#生成摘要)。
+参考：[生成摘要](#generating-excerpt)。
 
 @`excerptLength` type=number default=`300`
 
 自动生成摘要的目标长度。
 
-参考：[生成摘要](#生成摘要)。
+参考：[生成摘要](#generating-excerpt)。
 
 @`excerptFilter` type=`(page: Page) => boolean` default="与 `filter` 选项相同"
 
 用于过滤需要生成摘要的页面的函数。
 
-参考：[生成摘要](#生成摘要)。
+参考：[生成摘要](#generating-excerpt)。
 
 @`isCustomElement` type=`(tagName: string) => boolean` default=`() => false`
 
 用于识别自定义元素的函数，以区别于摘要生成过程中会被剥离的未知标签。
 
-参考：[生成摘要](#生成摘要)。
+参考：[生成摘要](#generating-excerpt)。
 
 @`metaScope` type=string default=`'_blog'`
 
 [getInfo](#getinfo) 提取的信息注入到路由元数据的键名。
 
-参考：[收集信息](#收集信息)。
+参考：[收集信息](#gathering-info)。
 
 @`hotReload` type=boolean default="使用 `--debug` 标志时启用"
 
 是否在开发服务器中启用热重载。
 
-参考：[热重载](#热重载)。
+参考：[热重载](#hot-reload)。
 
 :::
 
-## 组合式 API
+## 组合式 API {#composables}
 
 可以通过 `@vuepress/plugin-blog/client` 导入以下组合式 API。
 
@@ -498,7 +498,7 @@ const useBlogType: <
 
 返回绑定到当前路由或指定 `key` 的类型数据。未提供 key 时，插件会从当前路由推断。
 
-### 返回类型
+### 返回类型 {#return-types}
 
 ```ts
 interface Article<

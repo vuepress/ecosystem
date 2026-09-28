@@ -8,9 +8,9 @@ icon: https://www.meilisearch.com/favicon.ico
 
 将 [MeiliSearch](https://www.meilisearch.com/) 集成到 VuePress 中，为你的文档网站提供搜索功能。
 
-## 指南
+## 指南 {#guide}
 
-### 安装 MeiliSearch
+### 安装 MeiliSearch {#setup-meilisearch}
 
 要免费使用 MeiliSearch，你需要在自己的服务器上自托管它，否则需要付费使用 MeiliSearch Cloud。
 
@@ -20,7 +20,7 @@ icon: https://www.meilisearch.com/favicon.ico
 
 :::
 
-#### 启动 MeiliSearch
+#### 启动 MeiliSearch {#starting-meilisearch}
 
 ::: tip
 
@@ -67,7 +67,7 @@ docker run -it --rm \
 
 :::
 
-#### 设置抓取器
+#### 设置抓取器 {#setting-up-the-scraper}
 
 ::: tip
 
@@ -181,7 +181,7 @@ docker run -t --rm \
 
 :::
 
-#### 设置插件
+#### 设置插件 {#setting-up-the-plugin}
 
 为了使插件正常工作，需要为插件生成一个仅限搜索的访问密钥。此密钥可以通过 MeiliSearch API 创建。
 你可以使用以下命令创建仅限搜索的访问密钥：
@@ -245,7 +245,7 @@ export default {
 }
 ```
 
-#### 使用 GitHub Actions 自动重新抓取
+#### 使用 GitHub Actions 自动重新抓取 {#automatic-re-scraping-with-github-actions}
 
 将你的抓取器配置文件放在项目中的某个位置。
 
@@ -332,7 +332,7 @@ jobs:
 
 :::
 
-## 选项
+## 选项 {#options}
 
 ::: fields
 @`host` type=string required
@@ -373,6 +373,6 @@ MeiliSearch API 的参数。
 
 :::
 
-## 组件
+## 组件 {#components}
 
 - SearchBox

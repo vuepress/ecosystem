@@ -8,7 +8,7 @@ icon: pilcrow-left
 
 此插件在配置的语言上设置文本方向为 RTL。
 
-## 使用方法
+## 使用方法 {#usage}
 
 ```bash
 npm i -D @vuepress/plugin-rtl@next
@@ -27,11 +27,11 @@ export default {
 }
 ```
 
-## 示例
+## 示例 {#demo}
 
 <ToggleRTLButton />
 
-## 选项
+## 选项 {#options}
 
 ::: fields
 @`locales` type=`string[]` default=`['/']`

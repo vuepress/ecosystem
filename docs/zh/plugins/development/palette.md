@@ -12,7 +12,7 @@ icon: palette
 
 对于主题作者，该插件可以为用户提供自定义样式的能力。
 
-## 使用方法
+## 使用方法 {#usage}
 
 ```bash
 npm i -D @vuepress/plugin-palette@next
@@ -30,13 +30,13 @@ export default {
 }
 ```
 
-## 调色板和样式
+## 调色板和样式 {#palette-and-style}
 
 该插件会提供一个 `@vuepress/plugin-palette/palette`（调色板文件），用于在你的主题样式中引入。
 
 调色板文件用于定义样式变量，因此它通常会在你主题样式的开头引入。举例来说，用户可以在调色板中定义 [CSS 变量](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties)、[SASS 变量](https://sass-lang.com/documentation/variables)、[LESS 变量](http://lesscss.org/features/#variables-feature)或 [Stylus 变量](https://stylus-lang.com/docs/variables.html)，然后你可以在你的主题样式中使用这些变量。
 
-## 教程
+## 教程 {#cookbook}
 
 在你的主题中使用该插件，假设你使用 SASS 作为 CSS 预处理器：
 
@@ -47,7 +47,7 @@ export default {
 }
 ```
 
-### 使用调色板
+### 使用调色板 {#usage-of-palette}
 
 在你主题需要使用对应变量的地方引入该插件的调色板文件，比如在 `Layout.vue` 中：
 
@@ -76,7 +76,7 @@ $color: red !default;
 $color: green;
 ```
 
-## 选项
+## 选项 {#options}
 
 ::: fields
 @`preset` type=`'css' | 'less' | 'sass' | 'stylus'` default=`'css'`

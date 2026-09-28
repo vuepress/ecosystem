@@ -10,7 +10,7 @@ icon: arrow-up-to-line
 
 该插件已经集成到默认主题中。
 
-## 使用方法
+## 使用方法 {#usage}
 
 ```bash
 npm i -D @vuepress/plugin-back-to-top@next
@@ -24,7 +24,7 @@ export default {
 }
 ```
 
-## 选项
+## 选项 {#options}
 
 ::: fields
 @`threshold` type=number default=`100`
@@ -47,7 +47,7 @@ export default {
 
 :::
 
-## 样式
+## 样式 {#styles}
 
 你可以通过 CSS 变量来自定义 _返回顶部_ 按钮的样式：
 

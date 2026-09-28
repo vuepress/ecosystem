@@ -8,7 +8,7 @@ icon: chart-no-axes-combined
 
 将 [Microsoft Clarity](https://clarity.microsoft.com/) 无缝集成到 VuePress 项目中。
 
-## 使用方法
+## 使用方法 {#usage}
 
 ```bash
 npm i -D @vuepress/plugin-clarity-analytics@next
@@ -26,9 +26,9 @@ export default {
 }
 ```
 
-## 指南
+## 指南 {#guide}
 
-### 功能介绍
+### 功能介绍 {#features}
 
 Microsoft Clarity 是一款免费且易用的行为分析工具，旨在帮助你深入了解用户如何与网站进行交互。本插件简化了集成流程，无需复杂的配置即可获取可付诸行动的洞察数据。
 
@@ -40,7 +40,7 @@ Microsoft Clarity 是一款免费且易用的行为分析工具，旨在帮助�
 
 如需了解更多功能详情，请参阅 [Clarity 功能概览](https://learn.microsoft.com/en-us/clarity/setup-and-installation/about-clarity#supported-features)。
 
-### 高级用法
+### 高级用法 {#advanced-usage}
 
 插件启用后，全局 `window` 对象上将暴露 `clarity()` 函数。你可以通过该函数调用 [Clarity Client API](https://learn.microsoft.com/en-us/clarity/setup-and-installation/clarity-api) 来处理高级任务，例如：
 
@@ -48,7 +48,7 @@ Microsoft Clarity 是一款免费且易用的行为分析工具，旨在帮助�
 - 追踪自定义事件 (Custom Events)。
 - 管理 Cookie 同意状态。
 
-## 选项
+## 选项 {#options}
 
 ::: fields
 @`id` type=string required

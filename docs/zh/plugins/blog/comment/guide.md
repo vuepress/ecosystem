@@ -3,13 +3,13 @@ icon: lightbulb
 layout: CommentPage
 ---
 
-# 指南
+# 指南 {#guide}
 
-## 配置
+## 配置 {#configuration}
 
 该插件通过插件选项和客户端配置文件提供灵活的配置方式。
 
-### 使用插件选项
+### 使用插件选项 {#using-plugin-options}
 
 ```ts title=".vuepress/config.ts"
 import { commentPlugin } from '@vuepress/plugin-comment'
@@ -24,7 +24,7 @@ export default {
 }
 ```
 
-### 使用客户端配置
+### 使用客户端配置 {#using-client-config}
 
 ```ts title=".vuepress/client.ts"
 import {
@@ -40,7 +40,7 @@ defineArtalkConfig({
 })
 ```
 
-### 配置逻辑
+### 配置逻辑 {#configuration-logic}
 
 为了确保最佳性能和正确的序列化，配置选项被拆分到了插件配置和客户端配置中：
 
@@ -48,7 +48,7 @@ defineArtalkConfig({
 
 - **客户端配置 (Client Config)**：动态选项（尤其是涉及函数或回调的选项）必须在此处设置。由于这些选项无法在主配置中序列化，客户端配置将作为运行时的入口点。
 
-## 组件用法
+## 组件用法 {#component-usage}
 
 该插件注册了一个全局的 `<CommentService />` 组件，你可以将其放置在布局的任何位置。
 
@@ -58,7 +58,7 @@ defineArtalkConfig({
 **对于主题开发者**：
 你应该直接在主题的布局文件中包含 `<CommentService />` 组件，以提供内置的评论支持。
 
-### 可见性与标识
+### 可见性与标识 {#visibility-identification}
 
 你可以控制评论区的显示状态，并自定义每个页面的唯一标识符：
 
@@ -66,7 +66,7 @@ defineArtalkConfig({
 - **单页开关**：使用 Frontmatter 中的 `comment` 键来启用或禁用特定页面的评论，该设置会覆盖全局设置。
 - **自定义标识符**：使用 Frontmatter 中的 `commentID` 键来定义页面评论的自定义标识符（例如在迁移文章或更改 URL 时）。
 
-## 可选服务商
+## 可选服务商 {#available-providers}
 
 我们支持以下评论服务。请参考各自的指南以获取设置详情：[Giscus](giscus.md)、[Waline](waline/README.md)、[Artalk](artalk.md) 和 [Twikoo](twikoo.md)。
 
@@ -77,7 +77,7 @@ defineArtalkConfig({
 
 :::
 
-## 通用选项
+## 通用选项 {#common-options}
 
 ::: fields
 @`provider` scope="仅限插件选项" type=`"Artalk" | "Giscus" | "Twikoo" | "Waline" | "None"` default=`"None"`

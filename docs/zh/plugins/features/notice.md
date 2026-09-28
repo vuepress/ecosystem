@@ -8,7 +8,7 @@ icon: bell
 
 你可以通过此插件添加通知弹窗。
 
-## 使用
+## 使用 {#usage}
 
 ```bash
 npm i -D @vuepress/plugin-notice@next
@@ -82,15 +82,15 @@ export default {
 }
 ```
 
-## 指南
+## 指南 {#guide}
 
-### 路径匹配
+### 路径匹配 {#path-matching}
 
 你可以为站点的不同路径设置多个通知。
 
 每个通知配置需要包含一个 `path` 或 `match` 选项，用于匹配路径。`path` 选项为字符串，匹配所有以此开头的路径，`match` 选项为正则表达式，用于测试页面路由路径。
 
-### 显示控制
+### 显示控制 {#display-control}
 
 默认情况下，每当用户进入网站时都会显示通知，如果用户关闭通知，该通知将在当前会话中保持关闭状态。
 
@@ -98,24 +98,24 @@ export default {
 
 另外，通知记忆是根据通知标题和通知内容来实现的，你可以设置 `key` 选项来使用你想要的键值，这样你就可以编辑通知而不会打扰已经确认过的用户。
 
-### 全屏模式
+### 全屏模式 {#fullscreen-mode}
 
 如果要显示全屏弹出窗口，可以在通知配置中使用 `fullscreen: true`。我们建议你将它与 `confirm: true` 一起使用。
 
 通知将显示在屏幕中央，其他地方将被模糊遮罩覆盖。
 
-### 关闭按钮
+### 关闭按钮 {#close-button}
 
 默认情况下，通知右侧会有一个关闭按钮，用户可以点击关闭。用户也可以通过点击遮罩来关闭全屏通知。
 
 但是，如果你希望用户确认通知，你可以设置 `confirm: true`，这样用户只能通过点击操作按钮来关闭通知。
 
-## 选项
+## 选项 {#options}
 
 ::: fields
 @`config` type=`NoticeOptions[]` required
 
-通知配置。每一项都需要一个 `path` 或 `match` 来决定通知出现在哪些页面，参见[路径匹配](#路径匹配)。
+通知配置。每一项都需要一个 `path` 或 `match` 来决定通知出现在哪些页面，参见[路径匹配](#path-matching)。
 
 @@`config[*].path` type=string
 
@@ -145,25 +145,25 @@ export default {
 
 通知键值，用于标识和存储通知的状态。
 
-参考：[显示控制](#显示控制)。
+参考：[显示控制](#display-control)。
 
 @@`config[*].showOnce` type=boolean
 
 是否只显示一次通知，而非每次访问都显示。
 
-参考：[显示控制](#显示控制)。
+参考：[显示控制](#display-control)。
 
 @@`config[*].confirm` type=boolean
 
 通知是否需要确认。
 
-参考：[关闭按钮](#关闭按钮)。
+参考：[关闭按钮](#close-button)。
 
 @@`config[*].fullscreen` type=boolean
 
 通知是否应该全屏显示。
 
-参考：[全屏模式](#全屏模式)。
+参考：[全屏模式](#fullscreen-mode)。
 
 @@`config[*].actions` type=`NoticeActionOption[]`
 

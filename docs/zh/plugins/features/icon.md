@@ -8,7 +8,7 @@ icon: fa6-solid:icons
 
 提供图标组件。
 
-## 使用
+## 使用 {#usage}
 
 ```bash
 npm i -D @vuepress/plugin-icon@next
@@ -26,9 +26,9 @@ export default {
 }
 ```
 
-## 指南
+## 指南 {#guide}
 
-### 图标语法
+### 图标语法 {#icon-syntax}
 
 在 Markdown 中，你可以使用 `::icon decorators... =size /color key=value complex-key="complex value"...::` 插入自定义图标。
 
@@ -50,7 +50,7 @@ export default {
 
 :::
 
-## 图标类型
+## 图标类型 {#icon-types}
 
 我们支持多种类型的图标：
 
@@ -80,7 +80,7 @@ export default {
 ::svg-spinners:180-ring:: <!-- svg-spinners:180-ring -->
 ```
 
-#### Iconify 离线使用
+#### Iconify 离线使用 {#offline-usage-for-iconify}
 
 默认情况下，图标从 Iconify API 加载。要改为本地打包，请设置 `offline` 选项，图标类型默认为 `iconify`。
 
@@ -160,7 +160,7 @@ export default {
 
 有关所有可用类的详细信息，请参见 <https://docs.fontawesome.com/web/style/styling>。
 
-#### Font Awesome 离线使用
+#### Font Awesome 离线使用 {#offline-usage-for-font-awesome}
 
 默认情况下，图标从 jsdelivr CDN 加载。要改为本地打包，请设置 `offline` 选项，并让 `assets` 选项包含 Font Awesome 资源，使图标类型为 `fontawesome`。
 
@@ -239,9 +239,9 @@ iconPlugin({ assets: 'fontawesome', offline: 'all' })
 
 每个设计师都可以将图标上传到 Iconfont 平台，用户可以从这些图标中创建项目。项目可以以各种格式使用。
 
-### 生成自己的 Iconfont 链接
+### 生成自己的 Iconfont 链接 {#generating-your-own-iconfont-links}
 
-#### 创建项目
+#### 创建项目 {#create-a-project}
 
 首先，你需要创建一个新项目来设置和管理你网站的图标：
 
@@ -252,7 +252,7 @@ iconPlugin({ assets: 'fontawesome', offline: 'all' })
 
 ![新项目](./assets/iconfont-new.png)
 
-#### 导入图标
+#### 导入图标 {#import-icon}
 
 搜索并找到你想要使用的图标，点击图标上的 "添加到图标库" 按钮。
 
@@ -260,13 +260,13 @@ iconPlugin({ assets: 'fontawesome', offline: 'all' })
 
 当你完成搜索后，点击右上角的 "添加到图库" 图标，点击下面的 "添加到项目"，选择你创建的项目然后确认。
 
-#### 编辑图标
+#### 编辑图标 {#edit-icon}
 
 在项目页面上，你可以编辑项目中的图标，包括调整位置、大小、旋转、颜色、Unicode 编码和字体类/符号。
 
 ![编辑图标](./assets/iconfont-edit.png)
 
-#### 生成链接
+#### 生成链接 {#generate-links}
 
 点击项目上方的 "字体类" 按钮，然后点击 "生成链接"。
 
@@ -280,7 +280,7 @@ iconPlugin({ assets: 'fontawesome', offline: 'all' })
 
 :::
 
-### 图片
+### 图片 {#images}
 
 任何图标类型都支持图像链接（不支持相对链接）。
 
@@ -294,7 +294,7 @@ iconPlugin({ assets: 'fontawesome', offline: 'all' })
 <VPIcon icon="/icon.png" /> <!-- ::/icon.png:: 是不被支持的，因为它会被解析为颜色 -->
 ```
 
-## 选项
+## 选项 {#options}
 
 :::: fields
 @`assets` type=`IconAsset` default=`'iconify'`
@@ -356,7 +356,7 @@ export default {
 
 图标在站点准备阶段检测，因此新增图标后需要重启开发服务器。
 
-参考：[Iconify 离线使用](#iconify-离线使用)与 [Font Awesome 离线使用](#font-awesome-离线使用)。
+参考：[Iconify 离线使用](#offline-usage-for-iconify)与 [Font Awesome 离线使用](#offline-usage-for-font-awesome)。
 
 ::: tip
 
@@ -426,7 +426,7 @@ extractIconsFromComponents(
 
 ::::
 
-## 组件属性
+## 组件属性 {#component-props}
 
 ### icon {#icon-prop}
 

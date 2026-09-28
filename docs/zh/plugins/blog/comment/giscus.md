@@ -8,7 +8,7 @@ Giscus 是一个基于 GitHub Discussions 的评论系统，启用简便。
 
 <!-- more -->
 
-## 使用
+## 使用 {#usage}
 
 请配置 `provider: "Giscus"`，并将从 [Giscus 页面](https://giscus.app/zh-CN) 获取的值传入 `repo`、`repoId`、`category` 和 `categoryId` 选项：
 
@@ -28,7 +28,7 @@ export default {
 }
 ```
 
-### 准备工作
+### 准备工作 {#preparation}
 
 1. 创建一个公开仓库，并开启评论区，作为评论存放的地点。
 1. 安装 [Giscus App](https://github.com/apps/giscus)，使其有权限访问对应仓库。
@@ -36,7 +36,7 @@ export default {
 
    填写仓库和 Discussion 分类，然后滚动到页面下方的“启用 giscus”部分，获取 `data-repo`、`data-repo-id`、`data-category` 和 `data-category-id` 四个属性。
 
-### 主题
+### 主题 {#theme}
 
 默认情况下，Giscus 使用 `light` 或 `dark` 主题（基于夜间模式状态）。
 
@@ -48,14 +48,14 @@ export default {
 
 如果你想在日间模式和夜间模式下自定义主题，可以设置 [lightTheme](#lighttheme) 和 [darkTheme](#darktheme) 选项，使用内置主题关键词或以 `https://` 开头的自定义 CSS 链接。
 
-## 选项
+## 选项 {#options}
 
 ::: fields
 @`repo` type=string required
 
 存放评论的仓库名称，格式为 `owner/repo`。
 
-参考：[准备工作](#准备工作)。
+参考：[准备工作](#preparation)。
 
 @`repoId` type=string required
 
@@ -120,7 +120,7 @@ export default {
 - `'purple_dark'`
 - `'transparent_dark'`
 
-参考：[主题](#主题)。
+参考：[主题](#theme)。
 
 @`darkTheme` type=GiscusTheme default=`'dark'`
 
@@ -128,11 +128,11 @@ export default {
 
 可用主题见 `lightTheme`。
 
-参考：[主题](#主题)。
+参考：[主题](#theme)。
 
 :::
 
-## 客户端配置
+## 客户端配置 {#client-config}
 
 你可以使用 `defineGiscusConfig` 函数来配置 Giscus：
 

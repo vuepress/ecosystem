@@ -8,7 +8,7 @@ icon: search
 
 为你的文档网站提供本地搜索能力。
 
-## 使用方法
+## 使用方法 {#usage}
 
 ```bash
 npm i -D @vuepress/plugin-search@next
@@ -26,15 +26,15 @@ export default {
 }
 ```
 
-## 指南
+## 指南 {#guide}
 
-### 本地搜索索引
+### 本地搜索索引 {#local-search-index}
 
 该插件会根据你的页面，在本地生成搜索索引，然后在用户访问站点时加载搜索索引文件。换句话说，这是一个轻量级的内置搜索能力，不会进行任何外部请求。
 
 然而，当你的站点包含大量页面时，搜索索引文件也会变得非常大，它可能会拖慢你的页面加载速度。在这种情况下，我们建议你使用更成熟的解决方案 - [docsearch](./docsearch.md) 。
 
-## 选项
+## 选项 {#options}
 
 ::: fields
 @`locales` type=`LocaleConfig<SearchPluginLocaleData>` default=`{}`
@@ -112,12 +112,12 @@ export default {
 
 :::
 
-## 样式
+## 样式 {#styles}
 
 你可以通过 CSS 变量来自定义搜索框的样式：
 
 @[code](@vuepress/plugin-search/src/client/styles/vars.css)
 
-## 组件
+## 组件 {#components}
 
 - SearchBox

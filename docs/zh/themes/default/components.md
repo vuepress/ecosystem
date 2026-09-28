@@ -2,7 +2,7 @@
 icon: puzzle
 ---
 
-# 内置组件
+# 内置组件 {#built-in-components}
 
 <NpmBadge package="@vuepress/theme-default" />
 

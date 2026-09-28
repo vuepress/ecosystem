@@ -8,7 +8,7 @@ icon: network
 
 为你的站点生成网站地图。
 
-## 使用
+## 使用 {#usage}
 
 ```bash
 npm i -D @vuepress/plugin-sitemap@next
@@ -30,20 +30,20 @@ export default {
 
 插件会使用来自 `@vuepress/plugin-git` 的最后更新时间，并根据多语言配置声明每个页面的其他语言版本地址。
 
-### 链接控制
+### 链接控制 {#link-control}
 
 默认情况下，除 404 页面外站点的所有链接都会被包含在网站地图中。
 
 - 使用 [extraUrls](#extraurls) 选项包含非 VuePress 生成的页面，通常是 public 目录下的文件；
 - 使用 [excludePaths](#excludepaths) 选项，或将页面的 `sitemap` Frontmatter 设置为 `false`，来排除页面。
 
-### 更新周期
+### 更新周期 {#update-frequency}
 
 页面默认的更新周期为 `daily`，可以通过 [changefreq](#changefreq) 选项修改，也可以通过页面的 `sitemap.changefreq` Frontmatter 单独设置。
 
 合法的周期为 `always`、`hourly`、`daily`、`weekly`、`monthly`、`yearly` 与 `never`。
 
-### 修改时间
+### 修改时间 {#modify-time}
 
 [modifyTimeGetter](#modifytimegetter) 选项以 ISO 字符串格式返回页面的最后修改时间，默认来自 `@vuepress/plugin-git`。
 
@@ -65,7 +65,7 @@ User-agent: *
 Allow: /
 ```
 
-## 选项
+## 选项 {#options}
 
 ::: fields
 @`hostname` type=string required
@@ -94,11 +94,11 @@ XSL 模板的内容，默认为内置的 `sitemap.xsl`。
 
 @`changefreq` type=`'always' | 'hourly' | 'daily' | 'weekly' | 'monthly' | 'yearly' | 'never'` default=`'daily'`
 
-页面默认的更新周期。参考：[更新周期](#更新周期)。
+页面默认的更新周期。参考：[更新周期](#update-frequency)。
 
 @`modifyTimeGetter` type=`(page: Page, app: App) => string`
 
-页面最后修改时间的获取器。参考：[修改时间](#修改时间)。
+页面最后修改时间的获取器。参考：[修改时间](#modify-time)。
 
 @`xmlNameSpace` type=`{ news: boolean; video: boolean; xhtml: boolean; image: boolean; custom?: string[] }`
 
@@ -143,6 +143,6 @@ XSL 模板的内容，默认为内置的 `sitemap.xsl`。
 
 :::
 
-## 相关
+## 相关 {#related}
 
 - [Sitemaps 协议](https://www.sitemaps.org/protocol.html)

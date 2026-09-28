@@ -6,7 +6,7 @@ icon: captions
 
 <NpmBadge package="@vuepress/theme-default" />
 
-## 所有页面
+## 所有页面 {#all-pages}
 
 本章节中的 Frontmatter 会在所有类型的页面中生效。
 
@@ -43,11 +43,11 @@ pageClass: custom-page-class
 }
 ```
 
-参考：[Style 文件](./styles.md#style-文件)
+参考：[Style 文件](./styles.md#style-file)
 
 :::
 
-## 首页
+## 首页 {#home-page}
 
 本章节中的 Frontmatter 只会在首页中生效。
 
@@ -56,7 +56,7 @@ pageClass: custom-page-class
 
 设定该页面是首页还是普通页面。
 
-如果你不设置该 Frontmatter 或将其设为 `false`，则该页面会是一个 [普通页面](#普通页面)。
+如果你不设置该 Frontmatter 或将其设为 `false`，则该页面会是一个 [普通页面](#normal-page)。
 
 ```md
 ---
@@ -161,7 +161,7 @@ features:
 
 :::
 
-## 普通页面
+## 普通页面 {#normal-page}
 
 本章节中的 Frontmatter 只会在普通页面中生效。
 

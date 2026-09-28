@@ -10,7 +10,7 @@ icon: chart-bar-increasing
 
 <!-- more -->
 
-## 安装
+## 安装 {#installation}
 
 在你的项目中安装 [Chart.js][]：
 
@@ -51,7 +51,7 @@ export default {
 }
 ```
 
-## 语法
+## 语法 {#syntax}
 
 ````md
 ::: chartjs 图表标题
@@ -73,7 +73,7 @@ export default {
 
 :::
 
-## 案例
+## 案例 {#demo}
 
 :::: preview 块状图
 
@@ -288,6 +288,6 @@ export default {
 
 ::::
 
-## 文档
+## 文档 {#docs}
 
 相关详情，详见 [Chart.js 文档](https://www.chartjs.org/docs/latest/).

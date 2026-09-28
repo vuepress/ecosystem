@@ -10,7 +10,7 @@ icon: video
 
 国内平台（腾讯、优酷、爱奇艺、芒果、搜狐）因试看限制与权限问题不提供嵌入，其中仅 B 站可用。
 
-## 使用
+## 使用 {#usage}
 
 ```bash
 npm i -D @vuepress/plugin-media@next
@@ -68,7 +68,7 @@ export default {
 
 :::
 
-## 链接语法
+## 链接语法 {#link-syntax}
 
 每个启用的组件都可以通过 `@[name ...props](link)` 语法使用，其中链接就是组件的资源地址。该语法必须独占一行。
 
@@ -100,7 +100,7 @@ props 会作为属性传给组件，因此只能是字符串或标志，不带�
 
 链接会成为组件的 `src`，只有 `bilibili` 例外，它的链接是 `bvid`，同时支持 `bilibili.com/video/BV…` 链接，链接中的 `p` 与 `t` 参数会成为 `page` 与 `time`。
 
-## 组件
+## 组件 {#components}
 
 ### ArtPlayer
 
@@ -447,7 +447,7 @@ Spotify 嵌入不接受音量或静音指令，因此组件没有 `muted` 属性
 <SpotifyPlayer src="https://open.spotify.com/track/4uLU6hMCjMI75M1A2tKUQC" />
 ```
 
-## 选项
+## 选项 {#options}
 
 ::: fields
 @`artplayer` type=`boolean | ArtPlayerOptions`

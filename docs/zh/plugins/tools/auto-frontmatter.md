@@ -14,7 +14,7 @@ icon: pajamas:insert
 ::: tip 插件仅处理 [源文件目录](https://v2.vuepress.vuejs.org/zh/guide/getting-started.html#%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84) 下的满足 [config.pagePatterns](https://v2.vuepress.vuejs.org/zh/reference/config.html#pagepatterns) 规则的 markdown 文件
 :::
 
-## 使用方法
+## 使用方法 {#usage}
 
 ```bash
 npm i -D @vuepress/plugin-auto-frontmatter@next
@@ -32,9 +32,9 @@ export default {
 }
 ```
 
-## 指南
+## 指南 {#guide}
 
-### 处理所有 markdown 文件
+### 处理所有 markdown 文件 {#process-all-markdown-files}
 
 直接传入 `AutoFrontmatterHandle` 函数，表示对所有的 markdown 文件进行处理：
 
@@ -53,7 +53,7 @@ export default {
 }
 ```
 
-### 配置生成规则
+### 配置生成规则 {#configuring-general-rules}
 
 使用 `AutoFrontmatterRule` 配置过滤规则和处理器，匹配文件的相对路径。
 
@@ -116,7 +116,7 @@ export default {
 }
 ```
 
-### 多个生成规则
+### 多个生成规则 {#multiple-general-rules}
 
 可以同时配置多个过滤规则和处理器，这样可以针对不同的目录下的文件进行不同的处理：
 
@@ -149,7 +149,7 @@ export default {
 }
 ```
 
-## 选项
+## 选项 {#options}
 
 `autoFrontmatterPlugin` 接受 frontmatter 处理函数、规则对象，或规则对象数组。
 
@@ -174,7 +174,7 @@ export default {
 
 :::
 
-## 帮助函数
+## 帮助函数 {#helper-functions}
 
 插件提供了一些内置的帮助函数，可用于向 `frontmatter` 中添加新的字段：
 

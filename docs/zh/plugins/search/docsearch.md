@@ -8,7 +8,7 @@ icon: https://docsearch.algolia.com/img/favicon.ico
 
 将 [Algolia DocSearch](https://docsearch.algolia.com/) 集成到 VuePress 中，为你的文档站点提供全文搜索功能。
 
-## 使用方法
+## 使用方法 {#usage}
 
 ```bash
 npm i -D @vuepress/plugin-docsearch@next
@@ -29,9 +29,9 @@ export default {
 }
 ```
 
-## 指南
+## 指南 {#guide}
 
-### 获取搜索索引
+### 获取搜索索引 {#get-search-index}
 
 在使用此插件之前，你需要准备好搜索索引。主要有两种方式：
 
@@ -176,7 +176,7 @@ new Crawler({
 如果你没有使用默认主题，或者在使用 DocSearch 时遇到问题，可以检查上面的爬虫配置示例。此外，你可以前往 [Algolia Crawler](https://crawler.algolia.com/admin/crawlers/)，使用项目侧边栏中的 "Editor" 面板来调试和编辑你的配置。
 :::
 
-## 选项
+## 选项 {#options}
 
 ::: fields
 @`appId` type=string required
@@ -237,11 +237,11 @@ DocSearch 团队提供的，或者你自己生成的搜索 API 密钥 (Search AP
 
 如果你认为 DocSearch 的默认样式与你的站点不兼容，或者你想完全自定义样式，可以将此选项设置为 `false`。
 
-**注意：** 禁用此选项后，你需要自行导入 DocSearch 的样式。同时，[样式](#样式) 章节中提到的 CSS 变量自定义也将失效。
+**注意：** 禁用此选项后，你需要自行导入 DocSearch 的样式。同时，[样式](#styles) 章节中提到的 CSS 变量自定义也将失效。
 
 :::
 
-## 客户端配置
+## 客户端配置 {#client-config}
 
 ### defineDocSearchConfig
 
@@ -267,12 +267,12 @@ const defineDocSearchConfig: (
 
 :::
 
-## 样式
+## 样式 {#styles}
 
 你可以通过 [@docsearch/css](https://docsearch.algolia.com/docs/styling) 提供的 CSS 变量来自定义样式。
 
 为了适配 VuePress 的默认主题，本插件覆盖了部分 CSS 变量。
 
-## 组件
+## 组件 {#components}
 
 - SearchBox

@@ -8,7 +8,7 @@ icon: scan-search
 
 通过向 `<head>` 注入标签，让你的站点支持[开放内容协议 OGP](https://ogp.me/)与 [JSON-LD 1.1](https://www.w3.org/TR/json-ld-api/)。
 
-## 使用
+## 使用 {#usage}
 
 ```bash
 npm i -D @vuepress/plugin-seo@next
@@ -28,7 +28,7 @@ export default {
 
 插件开箱即用，会读取站点配置与页面 Frontmatter，尽可能生成所需的标签。默认情况下，除首页外所有由 Markdown 文件生成的页面都被视为文章。
 
-### 默认的 OGP 生成逻辑
+### 默认的 OGP 生成逻辑 {#default-ogp-generation}
 
 以下 `<meta>` 标签会被注入 `<head>`：
 
@@ -38,7 +38,7 @@ export default {
 |      `og:site_name`      |                                     该语言的标题，回退到站点标题                                     |
 |        `og:title`        |                                             `page.title`                                             |
 |     `og:description`     |            `page.frontmatter.description`，未设置时由 `autoDescription` 根据页面内容生成             |
-|        `og:type`         |                        `"article"` 或 `"website"`，参考[页面类型](#页面类型)                         |
+|        `og:type`         |                      `"article"` 或 `"website"`，参考[页面类型](#article-type)                       |
 |        `og:image`        | `page.frontmatter.banner` \|\| `page.frontmatter.cover` \|\| 页面中的第一张图片 \|\| `fallBackImage` |
 |    `og:updated_time`     |                                     来自 `@vuepress/plugin-git`                                      |
 |       `og:locale`        |                                             `page.lang`                                              |
@@ -55,7 +55,7 @@ export default {
 
 只有取值存在的标签才会被注入，因此 `og:updated_time`、`article:tag` 以及来自 `restrictions` 和 `twitterID` 的标签在不可用时会被省略。
 
-### 默认的 JSON-LD 生成逻辑
+### 默认的 JSON-LD 生成逻辑 {#default-json-ld-generation}
 
 |     属性名      |                                   值                                   |
 | :-------------: | :--------------------------------------------------------------------: |
@@ -66,13 +66,13 @@ export default {
 | `dateModified`  |                      来自 `@vuepress/plugin-git`                       |
 |    `author`     |        `page.frontmatter.author` \|\| `author`，标记为 `Person`        |
 
-### 页面类型
+### 页面类型 {#article-type}
 
 `og:type` 标签与 JSON-LD 的 `@type` 均取决于页面是否为文章，你可以使用 [isArticle](#isarticle) 选项提供自己的判断逻辑。
 
 如果某个页面属于其他类型，例如图书、音乐，你可以通过修改 [ogp](#ogp) 与 [jsonLd](#jsonld) 对象来处理。
 
-### 自定义生成过程
+### 自定义生成过程 {#customizing-generation}
 
 [ogp](#ogp) 与 [jsonLd](#jsonld) 选项会收到默认对象，并返回修改后的对象。
 
@@ -87,13 +87,13 @@ seoPlugin({
 })
 ```
 
-### 规范链接
+### 规范链接 {#canonical-link}
 
 如果相同内容可以在不同 URL 下访问，你可能需要 [canonical](#canonical) 选项来声明首选地址。它接受一个会被添加到页面链接之前的字符串，或一个返回链接的函数。
 
 例如你的站点部署在 `example.com` 的 `docs` 目录下，并可通过 `http://example.com/docs/xxx`、`https://example.com/docs/xxx`、`http://www.example.com/docs/xxx` 与首选的 `https://www.example.com/docs/xxx` 访问，将 `canonical` 设置为 `https://www.example.com/docs/`，搜索引擎便知道应当收录哪个地址。
 
-### head 标签
+### head 标签 {#head-tags}
 
 你可以通过页面的 `head` Frontmatter 直接添加标签：
 
@@ -108,7 +108,7 @@ head:
 
 其他协议可以通过 [customHead](#customhead) 选项支持，它会修改页面的 head 标签配置。
 
-## 选项
+## 选项 {#options}
 
 ::: fields
 @`hostname` type=string required
@@ -139,7 +139,7 @@ type SeoAuthor = AuthorInfo | AuthorInfo[] | AuthorName | AuthorName[]
 
 页面的首选链接。
 
-参考：[规范链接](#规范链接)。
+参考：[规范链接](#canonical-link)。
 
 @`fallBackImage` type=string
 
@@ -157,25 +157,25 @@ type SeoAuthor = AuthorInfo | AuthorInfo[] | AuthorName | AuthorName[]
 
 用于判断页面是否为文章的函数。
 
-参考：[页面类型](#页面类型)。
+参考：[页面类型](#article-type)。
 
 @`ogp` type=`(ogp: SeoContent, page: Page, app: App) => SeoContent`
 
 自定义 OGP 生成器。
 
-参考：[自定义生成过程](#自定义生成过程)。
+参考：[自定义生成过程](#customizing-generation)。
 
 @`jsonLd` type=`(jsonLD: ArticleSchema | BlogPostingSchema | WebPageSchema, page: Page, app: App) => ArticleSchema | BlogPostingSchema | WebPageSchema`
 
 自定义 JSON-LD 生成器。
 
-参考：[自定义生成过程](#自定义生成过程)。
+参考：[自定义生成过程](#customizing-generation)。
 
 @`customHead` type=`(head: HeadConfig[], page: Page, app: App) => void`
 
 自定义 head 标签生成器。
 
-参考：[head 标签](#head-标签)。
+参考：[head 标签](#head-tags)。
 
 :::
 
@@ -188,7 +188,7 @@ type SeoAuthor = AuthorInfo | AuthorInfo[] | AuthorName | AuthorName[]
 
 :::
 
-## 相关
+## 相关 {#related}
 
 - [开放内容协议 OGP](https://ogp.me/)，生成的 `<meta>` 标签符合该协议。
 - [JSON-LD 1.1](https://www.w3.org/TR/json-ld-api/)，用于结构化数据。

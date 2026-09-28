@@ -10,7 +10,7 @@ icon: clipboard-copy
 
 该插件已集成到默认主题中。
 
-## 使用
+## 使用 {#usage}
 
 ```bash
 npm i -D @vuepress/plugin-copy-code@next
@@ -28,7 +28,7 @@ export default {
 }
 ```
 
-## 选项
+## 选项 {#options}
 
 :::: fields
 @`selector` type=`string[] | string` default=`'[vp-content] div[class*="language-"] pre'`
@@ -73,13 +73,13 @@ export default {
 
 ::::
 
-## 客户端配置
+## 客户端配置 {#client-config}
 
 ### defineCopyCodeConfig(config)
 
 - 类型：`(config: MaybeRefOrGetter<CopyCodeClientOptions>) => void`
 
-在客户端中定义额外的复制代码选项。此处接受插件的[全部选项](#选项)，且此处定义的选项会覆盖 Node 中定义的选项。
+在客户端中定义额外的复制代码选项。此处接受插件的[全部选项](#options)，且此处定义的选项会覆盖 Node 中定义的选项。
 
 通常来说，大部分选项应该在 Node 中定义，但存在一些特殊情况。例如你需要传入 `transform` 之类的回调函数（它无法在 Node 中声明），或者需要根据客户端环境来决定选项。
 
@@ -117,7 +117,7 @@ defineCopyCodeConfig({
   })
   ```
 
-## 样式
+## 样式 {#styles}
 
 你可以通过 CSS 变量来自定义*复制按钮*的样式：
 

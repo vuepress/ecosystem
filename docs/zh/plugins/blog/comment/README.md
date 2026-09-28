@@ -8,7 +8,7 @@ icon: message-circle-more
 
 VuePress 评论插件，支持多种评论服务。
 
-## 使用
+## 使用 {#usage}
 
 ```bash
 npm i -D @vuepress/plugin-comment@next
@@ -27,13 +27,13 @@ export default {
 }
 ```
 
-## 支持的服务商
+## 支持的服务商 {#supported-providers}
 
 - [Artalk](./artalk.md)
 - [Giscus](./giscus.md)
 - [Twikoo](./twikoo.md)
 - [Waline](./waline/)
 
-## 指南
+## 指南 {#guide}
 
 详细配置请查看[指南](./guide.md)。

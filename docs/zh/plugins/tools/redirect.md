@@ -8,7 +8,7 @@ icon: forward
 
 此插件提供页面与整站重定向功能。
 
-## 使用方法
+## 使用方法 {#usage}
 
 ```bash
 npm i -D @vuepress/plugin-redirect@next
@@ -26,9 +26,9 @@ export default {
 }
 ```
 
-## 指南
+## 指南 {#guide}
 
-### 设置重定向
+### 设置重定向 {#control-page-redirection}
 
 如果你改动了已有页面的地址，你可以在 Frontmatter 中使用 `redirectFrom` 选项设置重定向到此页面的地址，这样可以保证用户在访问旧链接时重定向到新的地址。
 
@@ -64,7 +64,7 @@ redirect({
 })
 ```
 
-### 自动多语言
+### 自动多语言 {#auto-locales}
 
 插件可以根据用户的语言首选项，自动将无多语言链接重定向到用户需要的多语言页面。为了实现这一点，你需要留空默认的语言目录 (`/`)，并在插件选项中设置 `autoLocale: true`。插件会自动根据用户语言跳转到对应的语言页面。
 
@@ -131,14 +131,14 @@ export default {
 
 :::
 
-### 自动切换语言
+### 自动切换语言 {#automatically-switch-languages}
 
 插件支持在多语言文档中，自动根据用户语言首选项，将链接切换到用户需要的多语言页面。为了实现这一点，你需要在插件选项中设置 `switchLocale`，它可以是以下两个值:
 
 - `direct`: 直接切换到用户语言首选项页面，而不询问
 - `modal`: 在用户语言首选项与当前页面语言不同时，弹出一个对话框询问用户是否切换语言
 
-### 自定义多语言配置
+### 自定义多语言配置 {#customizing-locale-settings}
 
 默认情况下，插件会从站点的多语言配置 `locales` 选项中，读取 `语言路径` 和 `lang` 生成多语言配置。有些时候，你可能希望多个语言命中同一个路径，这种情况下，你应该设置插件的 `localeConfig` 选项。
 
@@ -153,7 +153,7 @@ redirect({
 })
 ```
 
-### 重定向站点
+### 重定向站点 {#redirecting-sites}
 
 有时你可能会更改 `base` 或为你的站点使用新域名，因此你可能希望原始站点自动重定向到新站点。
 
@@ -185,20 +185,20 @@ Generate redirect site for current VuePress project
 
 默认情况下，插件将输出到源文件夹下的 `.vuepress/redirect` 目录。你应该将其上传到你的原始站点以提供重定向。
 
-## 选项
+## 选项 {#options}
 
 :::: fields
 @`config` type=`Record<string, string> | ((app: App) => Record<string, string>)`
 
 页面重定向映射。键名为重定向的源页面地址，键值为重定向的目标地址。
 
-参考：[设置重定向](#设置重定向)。
+参考：[设置重定向](#control-page-redirection)。
 
 @`autoLocale` type=boolean
 
 是否启用语言重定向。
 
-参考：[自动多语言](#自动多语言)。
+参考：[自动多语言](#auto-locales)。
 
 @`switchLocale` type=`'direct' | 'modal' | 'popup' | false` default=`false`
 
@@ -208,13 +208,13 @@ Generate redirect site for current VuePress project
 - `'popup'`: 显示一个弹窗让用户选择是否切换到新的语言环境。
 - `'modal'`: 显示一个全屏模态框让用户选择是否切换到新的语言环境。
 
-参考：[自动切换语言](#自动切换语言)。
+参考：[自动切换语言](#automatically-switch-languages)。
 
 @`localeConfig` type=`Record<string, string[] | string>`
 
 多语言语言配置。
 
-参考：[自定义多语言配置](#自定义多语言配置)。
+参考：[自定义多语言配置](#customizing-locale-settings)。
 
 @`localeFallback` type=boolean default=`true`
 
@@ -267,17 +267,17 @@ Generate redirect site for current VuePress project
 
 重定向到该页面的地址。
 
-参考：[设置重定向](#设置重定向)。
+参考：[设置重定向](#control-page-redirection)。
 
 @`redirectTo` type=string
 
 该页面重定向到的地址。
 
-参考：[设置重定向](#设置重定向)。
+参考：[设置重定向](#control-page-redirection)。
 
 :::
 
-## 样式
+## 样式 {#styles}
 
 你可以通过 CSS 变量来自定义重定向弹窗的样式：
 

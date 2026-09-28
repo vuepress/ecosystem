@@ -36,7 +36,7 @@ icon: chart-no-axes-combined
 
 <!-- more -->
 
-## 安装
+## 安装 {#installation}
 
 ::: code-tabs#shell
 
@@ -60,7 +60,7 @@ npm i -D @vuepress/plugin-markdown-chart@next
 
 :::
 
-## 使用
+## 使用 {#usage}
 
 ```ts
 import { markdownChartPlugin } from '@vuepress/plugin-markdown-chart'
@@ -85,7 +85,7 @@ export default {
 }
 ```
 
-## 可用图表
+## 可用图表 {#available-charts}
 
 - [Chart.js](./chartjs.md)
 - [ECharts](./echarts.md)
@@ -94,7 +94,7 @@ export default {
 - [Mermaid](./mermaid.md)
 - [PlantUML](./plantuml.md)
 
-## 选项
+## 选项 {#options}
 
 ::: fields
 @`chartjs` type=boolean

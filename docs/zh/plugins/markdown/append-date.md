@@ -8,7 +8,7 @@ icon: calendar
 
 该插件会基于 [@vuepress/plugin-git](../development/git.md) 为 frontmatter 追加写作日期。
 
-## 使用方法
+## 使用方法 {#usage}
 
 ```bash
 npm i -D @vuepress/plugin-append-date@next
@@ -22,7 +22,7 @@ export default {
 }
 ```
 
-## 选项
+## 选项 {#options}
 
 ::: fields
 @`key` type=string default=`"date"`

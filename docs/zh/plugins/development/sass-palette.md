@@ -21,7 +21,7 @@ icon: palette
 
 :::
 
-## 使用
+## 使用 {#usage}
 
 ```bash
 npm i -D @vuepress/plugin-sass-palette@next
@@ -43,9 +43,9 @@ export const yourPlugin = (options) => (app) => {
 }
 ```
 
-## 指南
+## 指南 {#guide}
 
-在使用本插件之前，你需要了解 [id](#id) 选项，以及三个核心概念：[配置](#配置)、[调色板](#调色板) 与 [生成器](#生成器)。
+在使用本插件之前，你需要了解 [id](#id) 选项，以及三个核心概念：[配置](#config)、[调色板](#palette) 与 [生成器](#generator)。
 
 ### Id
 
@@ -71,7 +71,7 @@ export const yourPlugin = (options) => (app) => {
 
   使用相同的 id 多次调用插件是安全的。
 
-### 配置
+### 配置 {#config}
 
 配置文件仅用于 **Sass 变量**，可以通过 `${id}-config` 模块使用。
 
@@ -103,7 +103,7 @@ $navbar-height: 3.5rem;
 
 :::
 
-### 调色板
+### 调色板 {#palette}
 
 调色板文件包含 **CSS 变量**，其中的每个变量都会被转换为 kebab-case 并注入根样式表。
 
@@ -156,7 +156,7 @@ $moveTransition: 'width 0.3s ease';
 
 调色板模块名为 `${id}-palette`，其中也包含生成器的值，并且与配置模块具有相同的导入限制。
 
-### 生成器
+### 生成器 {#generator}
 
 生成器文件用于基于调色板与配置中的变量 **生成衍生值**。其中的变量会像调色板一样被注入为 CSS 变量，也可以通过调色板模块访问。
 
@@ -182,11 +182,11 @@ $theme-color-light: (
 $code-c-bg: abc-config.$highlighter == 'shiki' ? #fff : #f8f8f8;
 ```
 
-### 助手函数
+### 助手函数 {#helper}
 
 插件内部的 Sass 函数通过 `@sass-palette/helper` 模块暴露。
 
-## 选项
+## 选项 {#options}
 
 ::: fields
 @`id` type=string required
@@ -199,35 +199,35 @@ $code-c-bg: abc-config.$highlighter == 'shiki' ? #fff : #f8f8f8;
 
 用户配置文件的路径，相对于源码目录。
 
-参考：[配置](#配置)。
+参考：[配置](#config)。
 
 @`defaultConfig` type=string default="@vuepress/plugin-sass-palette/styles/default/config.scss"
 
 默认配置文件的绝对路径。
 
-参考：[配置](#配置)。
+参考：[配置](#config)。
 
 @`palette` type=string default=`.vuepress/styles/${id}-palette.scss`
 
 用户调色板文件的路径，相对于源码目录。
 
-参考：[调色板](#调色板)。
+参考：[调色板](#palette)。
 
 @`defaultPalette` type=string
 
 默认调色板文件的绝对路径。
 
-参考：[调色板](#调色板)。
+参考：[调色板](#palette)。
 
 @`generator` type=string
 
 生成器文件的绝对路径。
 
-参考：[生成器](#生成器)。
+参考：[生成器](#generator)。
 
 :::
 
-## 别名
+## 别名 {#alias}
 
 可用的导入别名如下：
 

@@ -8,7 +8,7 @@ icon: search
 
 一个强大的客户端搜索插件，支持自定义索引和全文搜索。
 
-## 使用方法
+## 使用方法 {#usage}
 
 ```bash
 npm i -D @vuepress/plugin-slimsearch@next
@@ -26,9 +26,9 @@ export default {
 }
 ```
 
-## 指南
+## 指南 {#guide}
 
-### 搜索索引
+### 搜索索引 {#search-index}
 
 基于 [`slimsearch`](https://mister-hope.github.io/slimsearch/)，该插件能够提供超快的搜索体验，即使在大型站点上也是如此。
 
@@ -36,7 +36,7 @@ export default {
 
 如果要防止某个页面被索引，可以在其 Frontmatter 中设置 `search: false`。如果需要通过编程方式过滤页面（例如根据路径排除），可以使用 [`filter` 选项](#filter)。
 
-### 自定义字段
+### 自定义字段 {#custom-fields}
 
 无论你是主题开发者还是普通用户，通过 Frontmatter 或 `extendsPage` 生命周期为页面添加额外数据是很常见的，在大多数情况下，你可能也希望索引这些数据。
 
@@ -121,7 +121,7 @@ export default defineUserConfig({
 
 :::
 
-## 选项
+## 选项 {#options}
 
 :::: fields
 @`indexContent` type=boolean
@@ -134,7 +134,7 @@ export default defineUserConfig({
 
 :::
 
-参见：[搜索索引](#搜索索引)。
+参见：[搜索索引](#search-index)。
 
 @`preserveTags` type=`string[]` default=`[]`
 
@@ -154,7 +154,7 @@ export default defineUserConfig({
 
 自定义索引字段配置。
 
-参见：[自定义字段](#自定义字段)。
+参见：[自定义字段](#custom-fields)。
 
 @@`customFields[*].getter` type=`(page: Page) => string[] | string | null | undefined` required
 
@@ -236,7 +236,7 @@ export default defineUserConfig({
 
 用于创建索引的选项。
 
-参见：[自定义索引生成](#自定义索引生成)。
+参见：[自定义索引生成](#customize-index-generation)。
 
 @@`indexOptions.tokenize` type=`(text: string, fieldName?: string) => string[]`
 
@@ -330,9 +330,9 @@ export default defineUserConfig({
 
 :::
 
-## 进阶
+## 进阶 {#advanced}
 
-### 自定义索引生成
+### 自定义索引生成 {#customize-index-generation}
 
 你可以通过 `indexOptions` 和 `indexLocaleOptions` 自定义索引生成过程，以便获得更好的索引结果，并可针对每个语言环境单独设置。
 
@@ -348,7 +348,7 @@ export default defineUserConfig({
 
 :::
 
-### 使用 API
+### 使用 API {#using-with-api}
 
 如果你想访问搜索 API，你需要从 `@vuepress/plugin-slimsearch/client` 导入 `createSearchWorker` 函数：
 
@@ -377,7 +377,7 @@ all('key').then(({ suggestions, results }) => {
 terminate()
 ```
 
-### 开发服务器中的限制
+### 开发服务器中的限制 {#limitations-in-devserver}
 
 搜索服务由 Worker 提供支持，在开发模式下，我们无法像生产环境那样打包 Worker 文件。
 
@@ -385,7 +385,7 @@ terminate()
 
 为了获得更好的性能，在开发模式下添加/编辑/删除 Markdown 内容默认不会触发搜索索引的更新。如果你正在校对或优化搜索结果，可以通过设置 `hotReload: true` 选项来启用热重载。
 
-### 与服务端搜索对比
+### 与服务端搜索对比 {#comparing-with-server-search}
 
 客户端搜索具有无需后端服务且易于添加等优势，但你也应该了解其缺点。
 
@@ -402,7 +402,7 @@ terminate()
 
 特别地，[DocSearch](https://docsearch.algolia.com/) 是 Algolia 为开源项目提供的免费搜索服务。如果你正在创建开源项目文档或开源技术博客，你可以[申请使用](https://docsearch.algolia.com/apply/)，并使用 [`@vuepress/plugin-docsearch`](./docsearch.md) 插件来提供搜索功能。
 
-## 客户端配置
+## 客户端配置 {#client-config}
 
 ### defineSearchConfig
 
@@ -461,6 +461,6 @@ defineSearchConfig({
 })
 ```
 
-## 组件
+## 组件 {#components}
 
 - SearchBox

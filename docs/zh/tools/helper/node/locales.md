@@ -2,7 +2,7 @@
 icon: languages
 ---
 
-# 多语言相关
+# 多语言相关 {#locales-related}
 
 这些函数仅在 `@vuepress/helper` 中可用。
 

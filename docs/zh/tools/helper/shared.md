@@ -2,13 +2,13 @@
 icon: split
 ---
 
-# 共享方法
+# 共享方法 {#shared-methods}
 
 以下函数在 Node.js 和客户端上均可用。
 
 这些函数在 `@vuepress/helper`、`@vuepress/helper/client` 和 `@vuepress/helper/shared` 中都可用。
 
-## 数据相关
+## 数据相关 {#data-related}
 
 此方法在 MarkdownIt 插件中很有用。有些时候你可能需要在 Markdown 插件中生成组件，并将复杂的数据写入到组件属性中，一个通常做法是使用 `JSON.stringify` + `encodeURIComponent`，并在客户端 `decodeURIComponent` + `JSON.parse`。但如果内容包含很多特殊字符，转换结果会很长。
 
@@ -75,7 +75,7 @@ encodeURIComponent(content) // '%0A%7B%0A%20%20%22type%22%3A%20%22bar%22%2C%0A%2
 
 :::
 
-## 类型助手
+## 类型助手 {#type-helper}
 
 - `isDef(x)`: 判断 x 是否定义。
 - `isBoolean(x)`: 判断 x 是否为布尔值。
@@ -86,14 +86,14 @@ encodeURIComponent(content) // '%0A%7B%0A%20%20%22type%22%3A%20%22bar%22%2C%0A%2
 - `isFunction(x)`: 判断 x 是否为函数。
 - `isRegExp(x)`: 判断 x 是否为正则表达式
 
-## 字符串相关
+## 字符串相关 {#string-related}
 
 - `startsWith(a, b)`: 判断字符串 a 是否以指定字符串 b 开头
 - `endsWith(a, b)`: 判断字符串 a 是否以指定字符串 b 结尾
 
 当 a 不是字符串时返回 `false`
 
-## 对象相关
+## 对象相关 {#object-related}
 
 - `keys(x)`: 以数组形式返回对象 x 的键
 - `values(x)`: 以数组形式返回对象 x 的值
@@ -139,7 +139,7 @@ encodeURIComponent(content) // '%0A%7B%0A%20%20%22type%22%3A%20%22bar%22%2C%0A%2
 
   :::
 
-## 日期相关
+## 日期相关 {#date-related}
 
 - `getDate(x)`: 将输入 x 转换为日期，可以支持 Date，时间戳，日期字符串。日期字符串的支持度以环境的 `Date.parse` 支持度为准。当不能转换为日期时返回 `null`
 
@@ -184,7 +184,7 @@ encodeURIComponent(content) // '%0A%7B%0A%20%20%22type%22%3A%20%22bar%22%2C%0A%2
   // ]
   ```
 
-## 链接相关
+## 链接相关 {#link-related}
 
 - `isLinkHttp(x)`: x 是否是有效的 HTTP URL。
 - `isLinkWithProtocol(x)`: x 是否是有效的带有协议的 URL。

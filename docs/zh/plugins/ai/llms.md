@@ -8,7 +8,7 @@ icon: tabler:file-ai
 
 为你的站点添加 [llms.txt](https://llmstxt.org/)，提供对 LLM（大语言模型）友好的内容。
 
-## 使用方法 (Usage)
+## 使用方法 (Usage) {#usage}
 
 ```bash
 npm i -D @vuepress/plugin-llms@next
@@ -26,13 +26,13 @@ export default {
 }
 ```
 
-## 为什么需要 llms.txt？
+## 为什么需要 llms.txt？ {#why-llms-txt}
 
 大型语言模型（LLM）越来越依赖网络文档来回答用户提问和编写代码。然而，普通网站存在明显的局限性：上下文窗口（Context Window）有限，且充斥着导航栏、脚本和样式的原始 HTML 既浪费 Token 又难以解析。
 
 **llms.txt** 填补了这一空白。它为 AI Agent 创建了一个标准化的入口点，提供项目的简要摘要以及通往干净、专家级文档的直接链接。这对于开发工具文档尤为重要，能够确保 LLM 准确、无干扰地获取你的 API 和指南。
 
-### 插件概览
+### 插件概览 {#plugin-overview}
 
 该插件会自动将你的 VuePress 文档转换为针对机器阅读优化的结构化数据集。
 
@@ -51,7 +51,7 @@ export default {
 这些文件**仅在生产构建期间**（即运行 `vuepress build` 时）生成。它们将与你的 HTML 文件一起出现在 `.vuepress/dist` 目录中。
 :::
 
-## 输出文件
+## 输出文件 {#output-files}
 
 ### 1. `llms.txt`
 
@@ -130,13 +130,13 @@ description: ...
 ...
 ```
 
-### 3. 单页内容
+### 3. 单页内容 {#_3-individual-page-content}
 
 除了摘要文件外，插件还会为站点中的每个 HTML 页面生成纯净的 Markdown 文件。
 
 例如，如果你的站点有一个页面位于 `/guide/quick-start.html`，插件会生成对应的 `/guide/quick-start.md` 文件。这让 LLM 可以获取零 HTML 干扰的特定页面内容。
 
-## 选项 (Options)
+## 选项 (Options) {#options}
 
 ### llmsTxt
 
@@ -377,7 +377,7 @@ description: ...
   })
   ```
 
-## Frontmatter 配置
+## Frontmatter 配置 {#frontmatter}
 
 插件会读取 Markdown 文件中的以下 `frontmatter` 属性。
 
@@ -412,7 +412,7 @@ _建议：为每个页面编写清晰、简洁的描述，帮助 LLM 理解链�
 
 :::
 
-## 扩展标记 (Markup)
+## 扩展标记 (Markup) {#markup-extensions}
 
 ### `<llm-only>`
 
@@ -461,7 +461,7 @@ _建议：为每个页面编写清晰、简洁的描述，帮助 LLM 理解链�
 <llm-exclude>仅限人类阅读</llm-exclude>
 ```
 
-## 其他 (Others)
+## 其他 (Others) {#others}
 
 建议配置服务器重定向，以便 AI Agent 即使猜测 URL 结构也能通过 `.md` 或 `.txt` 扩展名可靠地访问文件。
 

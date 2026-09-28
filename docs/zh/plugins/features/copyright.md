@@ -8,7 +8,7 @@ icon: fa-regular:copyright
 
 此插件可以在访问者从你的站点复制内容时，自动追加版权信息，也可以禁止站点的复制或者选择。
 
-## 使用
+## 使用 {#usage}
 
 ```bash
 npm i -D @vuepress/plugin-copyright@next
@@ -26,9 +26,9 @@ export default {
 }
 ```
 
-## 指南
+## 指南 {#guide}
 
-### 启用版权信息
+### 启用版权信息 {#enabling-copyright}
 
 此插件**默认全局禁用**。你可以:
 
@@ -43,14 +43,14 @@ export default {
 
 插件会默认通过模板从作者、协议和页面链接生成版权信息，并在复制时追加。如果你认为这不够灵活，你可以设置 `copyrightGetter` 返回一个完全由你自定义的版权信息，或返回 null 以使用默认模板。
 
-### 禁用复制和选择
+### 禁用复制和选择 {#disabling-copy-and-selection}
 
 如果你希望禁止用户复制较长内容，你可以在插件选项中设置 `maxLength` 控制这个临界值，或在页面 frontmatter 中设置 `copy.maxLength`。
 
 - 如果你不希望用户复制你的整个站点或特定页面文字，你可以在插件选项中设置 `disableCopy` 或在页面 frontmatter 中设置 `copy.disableCopy` 来禁用复制。后者具有更高优先级。
 - 如果你不希望用户选择你的整个站点或特定页面文字，你可以在插件选项中设置 `disableSelection` 或在页面 frontmatter 中设置 `copy.disableSelection` 来禁用文字选择。后者具有更高优先级。
 
-## 选项
+## 选项 {#options}
 
 :::: fields
 @`author` type=string
@@ -92,19 +92,19 @@ export default {
 
 是否全局启用插件。
 
-参考：[启用版权信息](#启用版权信息)。
+参考：[启用版权信息](#enabling-copyright)。
 
 @`disableCopy` type=boolean
 
 是否禁用复制。
 
-参考：[禁用复制和选择](#禁用复制和选择)。
+参考：[禁用复制和选择](#disabling-copy-and-selection)。
 
 @`disableSelection` type=boolean
 
 是否禁用选择。
 
-参考：[禁用复制和选择](#禁用复制和选择)。
+参考：[禁用复制和选择](#disabling-copy-and-selection)。
 
 @`triggerLength` type=number default=`100`
 

@@ -8,7 +8,7 @@ icon: expand
 
 为 VuePress 添加基本的 GFM 支持，以及一些有用的功能。
 
-## 使用
+## 使用 {#usage}
 
 ```bash
 npm i -D @vuepress/plugin-markdown-ext@next
@@ -26,9 +26,9 @@ export default {
 }
 ```
 
-## 语法
+## 语法 {#syntax}
 
-### 脚注
+### 脚注 {#footnote}
 
 - 在 Markdown 中使用 `[^锚点文字]` 来定义脚注。
 
@@ -54,7 +54,7 @@ export default {
 
 :::
 
-### 任务列表
+### 任务列表 {#task-list}
 
 - 使用 `- [ ] 一些文字` 渲染一个未勾选的任务项
 - 使用 `- [x] 一些文字` 渲染一个勾选了的任务项 (我们也支持大写的 `X`)
@@ -66,7 +66,7 @@ export default {
 
 :::
 
-### 组件
+### 组件 {#component}
 
 你可以使用 component 代码块来在 Markdown 中添加组件。YAML 和 JSON 的数据格式均受支持:
 
@@ -118,7 +118,7 @@ type: tip
 
 ::::
 
-## 选项
+## 选项 {#options}
 
 ::: fields
 @`gfm` type=boolean

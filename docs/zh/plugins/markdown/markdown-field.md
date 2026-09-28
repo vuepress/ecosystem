@@ -8,7 +8,7 @@ icon: list-checks
 
 在 VuePress 站点中添加字段容器。
 
-## 使用
+## 使用 {#usage}
 
 ```bash
 npm i -D @vuepress/plugin-markdown-field@next
@@ -27,7 +27,7 @@ export default {
 }
 ```
 
-## 语法
+## 语法 {#syntax}
 
 你可以使用 `::: fields` 容器描述字段信息，包括字段名称、类型、是否必填、默认值等。
 
@@ -46,7 +46,7 @@ export default {
 :::
 ```
 
-### 字段名称
+### 字段名称 {#field-name}
 
 名称是一段行内代码，因此遵循行内代码语法，且必须在同一行闭合。这使得描述嵌套类型的路径可以直接书写，例如数组元素或 Record 的值：
 
@@ -63,9 +63,9 @@ export default {
 :::
 ```
 
-`[*]` 标记数组元素，`<key>` 标记 `Record` 的值。两者都会保留在渲染出的名称中，但在生成[字段 ID](#字段-id) 时会被去除。
+`[*]` 标记数组元素，`<key>` 标记 `Record` 的值。两者都会保留在渲染出的名称中，但在生成[字段 ID](#field-id) 时会被去除。
 
-### 属性
+### 属性 {#attributes}
 
 默认情况下，所有属性都允许并按原样显示。常见属性包括 `type`、`required`、`optional`、`default` 和 `deprecated`。
 
@@ -95,13 +95,13 @@ export default {
 :::
 ```
 
-### 字段 ID
+### 字段 ID {#field-id}
 
 每个字段项目都会根据其名称生成一个 `id`，以便你可以直接链接到它（例如 `#theme`）。该 id 使用与标题相同的 slugify 函数（`markdown.anchor.slugify`，回退到 `markdown.slugify`）生成，并在页面内保持唯一。
 
 数组和 Record 的占位符会从 id 中去除：`contributors.info[*].username` 得到 `#contributors-info-username`，`locales.<localePath>.title` 得到 `#locales-localepath-title`。
 
-### 嵌套
+### 嵌套 {#nesting}
 
 字段可以嵌套以描述对象类型的字段。要在另一个字段内创建字段项目，每个嵌套级别将起始 `@` 增加一个。
 
@@ -122,7 +122,7 @@ export default {
 :::
 ```
 
-### 转义
+### 转义 {#escaping}
 
 使用 `\` 转义 `@`，即可把类似标记的一行保留为内容：
 
@@ -136,7 +136,7 @@ export default {
 
 更多语法细节，请参考 [@mdit/plugin-field](https://mdit-plugins.github.io/zh/field.html)。
 
-## 演示
+## 演示 {#demo}
 
 :::: preview
 
@@ -161,7 +161,7 @@ export default {
 
 ::::
 
-## 选项
+## 选项 {#options}
 
 ::: fields
 @`fields` type=boolean

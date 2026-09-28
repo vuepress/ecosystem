@@ -10,7 +10,7 @@ icon: droplet
 
 此插件可在页面中添加水印，你可以选择为全局页面或部分页面添加水印，还可以选择添加文字水印或图片水印。
 
-## 使用
+## 使用 {#usage}
 
 ```sh
 npm i -D @vuepress/plugin-watermark@next
@@ -31,7 +31,7 @@ export default {
 }
 ```
 
-## 选项
+## 选项 {#options}
 
 ::: fields
 @`enabled` type=`boolean | ((page: Page) => boolean)` default=`true`
@@ -75,7 +75,7 @@ watermark:
 
 :::
 
-## 客户端配置
+## 客户端配置 {#client-config}
 
 ### defineWatermarkConfig(config)
 

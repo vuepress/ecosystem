@@ -10,7 +10,7 @@ icon: list-checks
 
 此插件已集成到默认主题中。
 
-## 使用
+## 使用 {#usage}
 
 ```bash
 npm i -D @vuepress/plugin-links-check@next
@@ -28,7 +28,7 @@ export default {
 }
 ```
 
-## 选项
+## 选项 {#options}
 
 ::: fields
 @`dev` type=boolean default=`true`

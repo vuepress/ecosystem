@@ -10,7 +10,7 @@ icon: presentation
 
 <!-- more -->
 
-## 使用
+## 使用 {#usage}
 
 ```bash
 npm i -D @vuepress/plugin-revealjs@next
@@ -28,7 +28,7 @@ export default {
 }
 ```
 
-## 幻灯片语法
+## 幻灯片语法 {#slide-syntax}
 
 - 使用 `---` 分割幻灯片
 - 使用 `--` 对幻灯片进行垂直分割
@@ -101,7 +101,7 @@ const add = (a, b) => {
 
 :::
 
-## 幻灯片布局
+## 幻灯片布局 {#slide-layout}
 
 默认情况下，插件会注册一个 `SlidePage` 布局来供你渲染幻灯片页面。
 
@@ -121,13 +121,13 @@ layout: SlidePage
 
 你可以通过插件选项中的 `layout` 来自定义此行为，比如使用 `false` 来禁用它或填入其他布局名称。
 
-## 演示
+## 演示 {#demo}
 
 请见 [幻灯片演示](demo.md)。
 
-## 自定义 Reveal.js
+## 自定义 Reveal.js {#customize-reveal-js}
 
-### 内置插件
+### 内置插件 {#built-in-plugins}
 
 你可以通过插件选项中的 `plugins` 启用 reveal.js 中的内置插件。它接受以下插件名称的数组:
 
@@ -143,7 +143,7 @@ layout: SlidePage
 
 :::
 
-### 高级配置
+### 高级配置 {#advanced-configuration}
 
 你也可以在[客户端配置文件][client-config]中导入并调用 `defineRevealJsConfig` 来自定义 reveal.js:
 
@@ -176,13 +176,13 @@ Reveal.js 还提供了[更多的插件](https://github.com/hakimel/reveal.js/wik
 
 :::
 
-### 页面级配置
+### 页面级配置 {#per-page-configuration}
 
 你也可以在 Frontmatter 设置 `revealJs` 以设置特定页面的 reveal.js 选项。
 
 Reveal.js 选项，请参见[reveal.js config](https://revealjs.com/config/)，Reveal.js 用法，请参阅 [reveal.js 文档](https://revealjs.com/)。
 
-## 选项
+## 选项 {#options}
 
 ::: fields
 @`plugins` type=`RevealJsPlugin[]`
@@ -203,7 +203,7 @@ Reveal.js 选项，请参见[reveal.js config](https://revealjs.com/config/)，R
 
 :::
 
-## 样式
+## 样式 {#styles}
 
 你可以通过 CSS 变量自定义样式：
 

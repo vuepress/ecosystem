@@ -14,7 +14,7 @@ icon: highlighter
 
 :::
 
-## 使用方法
+## 使用方法 {#usage}
 
 ```bash
 npm i -D @vuepress/plugin-shiki@next
@@ -33,9 +33,9 @@ export default {
 }
 ```
 
-## 指南
+## 指南 {#guide}
 
-### Shiki 主题
+### Shiki 主题 {#shiki-themes}
 
 使用 `theme` 设置单一主题，或使用 `themes` 为亮色和暗色模式分别设置主题。
 
@@ -47,13 +47,13 @@ export default {
 
 参考：[Shiki > 双主题](https://shiki.tmrs.site/guide/dual-themes)。
 
-### 语言
+### 语言 {#languages}
 
 插件会自动加载你的 Markdown 文件中使用的语言，因此 `langs` 只用于预加载额外语言，`langAlias` 用于添加自定义语言别名。
 
 参考：[Shiki > 语言](https://shiki.tmrs.site/languages)。
 
-### 行号
+### 行号 {#line-numbers}
 
 行号默认启用。你可以使用标记为单个代码块覆盖行号设置：
 
@@ -85,7 +85,7 @@ const line4 = 'This is line 4'
 
 你也可以将 `lineNumbers` 设置为数字，让只有行数足够的代码块才显示行号；或设置为 `'disable'` 完全关闭该标记。
 
-### 行高亮
+### 行高亮 {#highlight-lines}
 
 行高亮默认启用。在代码块的信息描述中添加行数标记即可高亮这些行：
 
@@ -110,7 +110,7 @@ export default defineUserConfig({
 
 :::
 
-### 折叠代码块
+### 折叠代码块 {#collapsed-lines}
 
 折叠代码块默认禁用。设置 `collapsedLines` 后即可启用，并使用标记控制单个代码块：
 
@@ -221,7 +221,7 @@ body > div {
 
 :::
 
-### 代码块标题
+### 代码块标题 {#code-block-title}
 
 代码块标题默认启用。在代码块信息描述中添加 `title="标题"` 即可在代码块上方显示标题栏。
 
@@ -235,17 +235,17 @@ console.log('hello')
 
 你可以向 `codeBlockTitle` 传入一个 `CodeBlockTitleRender` 函数来自定义标题的渲染方式。
 
-### 移除注释
+### 移除注释 {#remove-comments}
 
 启用 `removeComments` 可以从代码中移除注释。它通过检查语法标记的元数据来判断该标记是否为注释。
 
 参考：[Shiki > 移除注释](https://shiki.tmrs.site/packages/transformers#transformerremovecomments)。
 
-### 标记
+### 标记 {#notation}
 
 该插件支持与 [Shiki](https://shiki.style/packages/transformers) 相同的标记转换器。它们默认全部关闭，需要通过对应的配置项启用。
 
-#### 差异标记
+#### 差异标记 {#diff}
 
 启用 `notationDiff`，即可使用 `[!code ++]` 和 `[!code --]` 高亮新增和删除的行。
 
@@ -272,7 +272,7 @@ console.log('再见')
 </template>
 </VPPreview>
 
-#### 聚焦标记
+#### 聚焦标记 {#focus}
 
 启用 `notationFocus`，即可淡化除聚焦行以外的所有行，聚焦行使用 `[!code focus]` 标记。
 
@@ -299,7 +299,7 @@ console.log('未聚焦')
 </template>
 </VPPreview>
 
-#### 高亮标记
+#### 高亮标记 {#highlight}
 
 启用 `notationHighlight`，即可高亮使用 `[!code highlight]` 标记的行。
 
@@ -326,7 +326,7 @@ console.log('未高亮')
 </template>
 </VPPreview>
 
-#### 错误级别标记
+#### 错误级别标记 {#error-level}
 
 启用 `notationErrorLevel`，即可按级别为行着色，使用 `[!code warning]`、`[!code error]` 和 `[!code info]` 标记。
 
@@ -355,7 +355,7 @@ console.log('信息') // [!code info]
 </template>
 </VPPreview>
 
-#### 词高亮标记
+#### 词高亮标记 {#word-highlight}
 
 启用 `notationWordHighlight`，即可高亮指定的词。该标记必须单独写在一行。
 
@@ -395,7 +395,7 @@ console.log(msg) // 打印 你好世界
 
 :::
 
-### 渲染空白符
+### 渲染空白符 {#render-whitespace}
 
 空白符渲染默认禁用。设置 `whitespace` 后即可启用，并使用标记控制单个代码块：
 
@@ -454,7 +454,7 @@ with line break
 
 :::
 
-### Twoslash 支持
+### Twoslash 支持 {#twoslash-support}
 
 启用 `twoslash` 即可使用 [twoslash](https://github.com/twoslashes/twoslash) 为代码块提供类型信息。它会为代码添加类型提示、错误信息和补全，并在悬停时以弹窗形式展示。
 
@@ -477,20 +477,20 @@ console.log(a + b)
 
 参考：[Shiki > Twoslash](https://shiki.style/packages/twoslash)。
 
-## 选项
+## 选项 {#options}
 
 ::: fields
 @`langs` type=`ShikiLang[]`
 
 被 Shiki 解析的额外语言。
 
-参考：[语言](#语言)。
+参考：[语言](#languages)。
 
 @`langAlias` type=`{ [lang: string]: string }`
 
 自定义 Shiki 语言别名。
 
-参考：[语言](#语言)。
+参考：[语言](#languages)。
 
 @`theme` type=ShikiTheme default=`'nord'`
 
@@ -500,25 +500,25 @@ console.log(a + b)
 
 为亮色和暗色模式分别设置 Shiki 主题。两个主题的样式会分别通过 `--shiki-light` 和 `--shiki-dark` CSS 变量注入。
 
-参考：[Shiki 主题](#shiki-主题)。
+参考：[Shiki 主题](#shiki-themes)。
 
 @`lineNumbers` type=`boolean | number | 'disable'` default=`true`
 
 是否启用行号。数字表示代码块显示行号所需的最少行数，`'disable'` 表示完全关闭 `:line-numbers` 标记。
 
-参考：[行号](#行号)。
+参考：[行号](#line-numbers)。
 
 @`highlightLines` type=boolean default=`true`
 
 是否启用行数标记的行高亮。
 
-参考：[行高亮](#行高亮)。
+参考：[行高亮](#highlight-lines)。
 
 @`collapsedLines` type=`boolean | number | 'disable'` default=`'disable'`
 
 是否启用折叠代码块。数字表示开始折叠的行号，`true` 等同于 `15`。设置为 `false` 时支持 `:collapsed-lines` 标记，但默认不折叠任何代码块。
 
-参考：[折叠代码块](#折叠代码块)。
+参考：[折叠代码块](#collapsed-lines)。
 
 @`codeBlockTitle` type=`boolean | CodeBlockTitleRender` default=`true`
 
@@ -530,7 +530,7 @@ console.log(a + b)
 type CodeBlockTitleRender = (title: string, code: string) => string
 ```
 
-参考：[代码块标题](#代码块标题)。
+参考：[代码块标题](#code-block-title)。
 
 @`notationDiff` type=boolean default=`false`
 
@@ -552,19 +552,19 @@ type CodeBlockTitleRender = (title: string, code: string) => string
 
 是否启用词高亮标记转换器。
 
-参考：[标记](#标记)。
+参考：[标记](#notation)。
 
 @`removeComments` type=boolean default=`false`
 
 是否从代码中移除注释。
 
-参考：[移除注释](#移除注释)。
+参考：[移除注释](#remove-comments)。
 
 @`whitespace` type=`boolean | 'all' | 'boundary' | 'leading' | 'trailing'` default=`false`
 
 是否渲染空白符。`true` 表示启用该语法但默认不渲染任何空白符，`false` 表示完全关闭 `:whitespace` 标记。
 
-参考：[渲染空白符](#渲染空白符)。
+参考：[渲染空白符](#render-whitespace)。
 
 @`twoslash` type=`boolean | ShikiTwoslashOptions` default=`false`
 
@@ -592,11 +592,11 @@ interface ShikiTwoslashOptions extends TransformerTwoslashOptions {
 }
 ```
 
-参考：[Twoslash 支持](#twoslash-支持)。
+参考：[Twoslash 支持](#twoslash-support)。
 
 :::
 
-## 高级选项
+## 高级选项 {#advanced-options}
 
 ::: fields
 @`defaultLang` type=string default=`'plain'`

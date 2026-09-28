@@ -8,7 +8,7 @@ icon: puzzle
 
 根据组件文件或目录自动注册 Vue 组件。
 
-## 使用方法
+## 使用方法 {#usage}
 
 ```bash
 npm i -D @vuepress/plugin-register-components@next
@@ -26,9 +26,9 @@ export default {
 }
 ```
 
-## 指南
+## 指南 {#guide}
 
-### 从目录注册
+### 从目录注册 {#register-from-directory}
 
 将 `componentsDir` 设为组件目录的绝对路径。该目录下匹配 `componentsPatterns` 的文件会被自动注册为 Vue 组件，组件名称由 `getComponentName` 根据相对于 `componentsDir` 的文件路径生成。
 
@@ -56,7 +56,7 @@ app.component(
 )
 ```
 
-## 选项
+## 选项 {#options}
 
 ::: fields
 @`components` type=`Record<string, string>` default={}
@@ -101,7 +101,7 @@ export default {
 }
 ```
 
-参考：[从目录注册](#从目录注册)。
+参考：[从目录注册](#register-from-directory)。
 
 @`componentsPatterns` type=`string[]` default=`['**/*.vue']`
 

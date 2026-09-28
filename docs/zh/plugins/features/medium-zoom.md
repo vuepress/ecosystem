@@ -10,7 +10,7 @@ icon: fullscreen
 
 该插件已经集成到默认主题中。
 
-## 使用方法
+## 使用方法 {#usage}
 
 ```bash
 npm i -D @vuepress/plugin-medium-zoom@next
@@ -28,7 +28,7 @@ export default {
 }
 ```
 
-## 选项
+## 选项 {#options}
 
 ::: fields
 @`selector` type=string default=`'[vp-content] > img, [vp-content] :not(a) > img'`
@@ -43,7 +43,7 @@ medium-zoom 的配置项，参见 [medium-zoom > Options](https://github.com/fra
 
 :::
 
-## 样式
+## 样式 {#styles}
 
 你可以通过 [zoomOptions](#zoomoptions) 对大部分缩放样式进行自定义，该插件还提供了一些 CSS 变量用于补充自定义：
 

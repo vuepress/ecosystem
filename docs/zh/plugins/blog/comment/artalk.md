@@ -10,7 +10,7 @@ Artalk 是一款简洁的自托管评论系统，你可以在服务器上轻松�
 
 <!-- more -->
 
-## 使用
+## 使用 {#usage}
 
 ```bash
 npm i -D artalk
@@ -33,15 +33,15 @@ export default {
 
 Artalk 的选项继承自 [Artalk 配置](https://artalk.js.org/guide/frontend/config.html)，所有可序列化的选项都可以直接在插件选项中配置。
 
-### 部署服务端
+### 部署服务端 {#deploy-server}
 
 请参见 [Artalk 文档](https://artalk.js.org/guide/deploy.html)。
 
-### 夜间模式
+### 夜间模式 {#dark-mode}
 
 为了能使 Artalk 应用正确的主题，你需要通过 `<CommentService />` 的 `darkmode` 属性传入一个布尔值，代表当前是否开启夜间模式。插件会将其转发给 Artalk 的 `darkMode` 选项。
 
-## 选项
+## 选项 {#options}
 
 以下选项为插件的保留选项，会根据 VuePress 上下文自动推断：
 
@@ -66,11 +66,11 @@ Artalk 的选项继承自 [Artalk 配置](https://artalk.js.org/guide/frontend/c
 
 ::: tip
 
-`imgUploader` 和 `avatarURLBuilder` 这两个函数选项只能在[客户端配置](#客户端配置)中设置。
+`imgUploader` 和 `avatarURLBuilder` 这两个函数选项只能在[客户端配置](#client-config)中设置。
 
 :::
 
-## 客户端配置
+## 客户端配置 {#client-config}
 
 你可以使用 `defineArtalkConfig` 函数来配置 Artalk：
 

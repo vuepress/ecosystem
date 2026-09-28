@@ -8,7 +8,7 @@ icon: list-tree
 
 <!-- more -->
 
-## 安装
+## 安装 {#installation}
 
 在你的项目中安装 `markmap-lib`、`markmap-toolbar` 和 `markmap-view`：
 
@@ -51,7 +51,7 @@ export default {
 
 <!-- #region after -->
 
-## 语法
+## 语法 {#syntax}
 
 ````md
 ```markmap
@@ -61,7 +61,7 @@ export default {
 
 支持通过 Frontmatter 语法进行配置。
 
-## 案例
+## 案例 {#demo}
 
 ::: preview
 

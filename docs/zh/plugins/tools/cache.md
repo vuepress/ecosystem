@@ -11,7 +11,7 @@ icon: database-zap
 通过在首次启动 VuePress 开发服务时，对 `markdown render` 建立缓存，在二次启动时，直接读取缓存跳过
 不必要的 `markdown render` ，从而加快启动速度。
 
-## 使用方法
+## 使用方法 {#usage}
 
 ```bash
 npm i -D @vuepress/plugin-cache@next
@@ -38,7 +38,7 @@ export default {
 }
 ```
 
-## 选项
+## 选项 {#options}
 
 ::: fields
 @`type` type=`'filesystem' | 'memory'` default=`'memory'`

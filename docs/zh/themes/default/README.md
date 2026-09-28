@@ -2,11 +2,11 @@
 icon: palette
 ---
 
-# 默认主题
+# 默认主题 {#theme-default}
 
 <NpmBadge package="@vuepress/theme-default" />
 
-## 使用方法
+## 使用方法 {#usage}
 
 安装默认主题：
 

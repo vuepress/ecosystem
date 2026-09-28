@@ -8,7 +8,7 @@ icon: rss
 
 为你的 VuePress 站点生成 Feed。
 
-## 使用
+## 使用 {#usage}
 
 ```bash
 npm i -D @vuepress/plugin-feed@next
@@ -35,19 +35,19 @@ export default {
 
 `hostname` 选项是必须的，Feed 链接由它生成。
 
-### 可视化预览
+### 可视化预览 {#readable-preview}
 
 Atom 和 RSS Feed 内置了 XSL 模板，因此在浏览器中打开时会渲染为易于阅读的 HTML 页面。你可以查看本站的 [Atom](/zh/atom.xml) 和 [RSS](/zh/rss.xml) Feed 作为示例。
 
 如果你希望在开发服务器中预览 Feed，请设置 `devServer: true`；如果你的本地地址不是默认的 `http://localhost:{port}`，还需要配置 `devHostname`。
 
-### 频道信息
+### 频道信息 {#channel-metadata}
 
 `channel` 选项用于配置所有 Feed 共用的频道信息。推荐设置 `channel.pubDate`、`channel.ttl`、`channel.copyright` 和 `channel.author`。
 
-参考：[频道选项](#频道选项)。
+参考：[频道选项](#channel-options)。
 
-### 条目生成
+### 条目生成 {#item-generation}
 
 默认情况下，除首页外所有由 Markdown 文件生成的页面都会被添加到 Feed 中。你可以：
 
@@ -56,11 +56,11 @@ Atom 和 RSS Feed 内置了 XSL 模板，因此在浏览器中打开时会渲染
 
 条目默认按照 Git 中的页面创建时间排序，并在缺少创建时间时回退到 `date` Frontmatter。你需要启用 [@vuepress/plugin-git](../development/git.md) 才能获取创建时间，否则条目会遵循 VuePress 默认的页面顺序。
 
-### 多语言支持
+### 多语言支持 {#i18n}
 
 插件会为每种语言生成独立的 Feed，你可以通过 `locales` 选项为不同语言提供特定配置。
 
-## 选项
+## 选项 {#options}
 
 ::: fields
 @`hostname` type=string required
@@ -103,19 +103,19 @@ Feed 的图标，用作网站图标。
 
 用于对 Feed 条目排序的函数。
 
-参考：[条目生成](#条目生成)。
+参考：[条目生成](#item-generation)。
 
 @`channel` type=`Partial<FeedChannelOptions>`
 
 生成 Feed 的频道信息。
 
-参考：[频道选项](#频道选项)。
+参考：[频道选项](#channel-options)。
 
 @`getter` type=FeedGetter
 
 Feed 条目生成逻辑的控制器，默认使用内置的 getter。
 
-参考：[获取器选项](#获取器选项)。
+参考：[获取器选项](#getter-options)。
 
 @`devServer` type=boolean
 
@@ -159,7 +159,7 @@ RSS XSL 文件的输出文件名，相对于输出目录。
 
 :::
 
-## 频道选项
+## 频道选项 {#channel-options}
 
 :::: details
 
@@ -227,7 +227,7 @@ WebSub 的链接，请参阅 [WebSub](https://w3c.github.io/websub/#subscription
 
 ::::
 
-## 获取器选项
+## 获取器选项 {#getter-options}
 
 :::: details
 
@@ -334,11 +334,11 @@ interface FeedContributor {
 
 ## Frontmatter
 
-### 添加与移除
+### 添加与移除 {#inclusion-control}
 
 默认情况下，除首页外所有由 Markdown 文件生成的页面都会被添加到 Feed 中。在 Frontmatter 中设置 `feed: false` 可以移除某个页面。
 
-### 基础信息
+### 基础信息 {#standard-information}
 
 以下标准的 Frontmatter 属性会被自动读取。
 
@@ -373,7 +373,7 @@ interface FeedContributor {
 
 :::
 
-### Feed 选项
+### Feed 选项 {#feed-options}
 
 `feed` Frontmatter 用于覆盖上述标准属性，或提供 Feed 条目专用的字段。
 

@@ -10,7 +10,7 @@ icon: link-2
 
 该插件主要用于开发主题，并且已经集成到默认主题中。大部分情况下你不需要直接使用它。
 
-## 使用方法
+## 使用方法 {#usage}
 
 ```bash
 npm i -D @vuepress/plugin-active-header-links@next
@@ -28,7 +28,7 @@ export default {
 }
 ```
 
-## 选项
+## 选项 {#options}
 
 ::: fields
 @`headerLinkSelector` type=string default=`'a.vp-sidebar-item'`

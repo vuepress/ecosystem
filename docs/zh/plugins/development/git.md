@@ -12,7 +12,7 @@ icon: la:git-alt
 
 该插件主要用于主题开发，在大多数情况下你不需要直接使用它，而是通过主题配置来开启相关功能。
 
-## 使用方法
+## 使用方法 {#usage}
 
 ```bash
 npm i -D @vuepress/plugin-git@next
@@ -30,7 +30,7 @@ export default {
 }
 ```
 
-## Git 仓库
+## Git 仓库 {#git-repository}
 
 本插件要求你的项目必须在一个 [Git 仓库](https://git-scm.com/book/zh/v2/%E8%B5%B7%E6%AD%A5-%E8%8E%B7%E5%8F%96-Git-%E4%BB%93%E5%BA%93)中，以便它能从提交历史中收集信息。
 
@@ -40,7 +40,7 @@ export default {
 该插件会显著降低数据准备阶段的速度，特别是当你拥有大量页面时。你可以考虑在 `dev` 模式下禁用此插件，以获得更好的开发体验。
 :::
 
-## 选项
+## 选项 {#options}
 
 ::: fields
 @`createdTime` type=boolean default=`true`
@@ -195,7 +195,7 @@ gitInclude:
 
 :::
 
-## 组合式 API
+## 组合式 API {#composables}
 
 你可以从 `@vuepress/plugin-git/client` 导入以下组合式 API。
 
@@ -332,7 +332,7 @@ export const useLastUpdated: (
 ) => ComputedRef<LastUpdated | null>
 ```
 
-## 页面数据
+## 页面数据 {#page-data}
 
 该插件会向页面数据（Page Data）中添加一个 `git` 字段。
 

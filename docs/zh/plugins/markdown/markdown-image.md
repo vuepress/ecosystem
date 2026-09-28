@@ -8,7 +8,7 @@ icon: image
 
 向你的 Markdown 图像添加附加功能。
 
-## 使用方法
+## 使用方法 {#usage}
 
 ```bash
 npm i -D @vuepress/plugin-markdown-image@next
@@ -33,13 +33,13 @@ export default {
 }
 ```
 
-## 指南
+## 指南 {#guide}
 
-### 图片懒加载
+### 图片懒加载 {#image-lazyload}
 
 插件会通过原生 HTML5 功能启用图片的延迟加载，此功能仅在[支持 loading=lazy 属性](https://caniuse.com/loading-lazy-attr)的浏览器中生效。
 
-### 图片 ID 标记
+### 图片 ID 标记 {#image-mark}
 
 当你在插件选项中设置 `mark: true` 时，你可以通过 `#light` 和 `#dark` 标记图片，使得图片只在特定的模式显示。
 
@@ -52,7 +52,7 @@ export default {
 
 :::
 
-#### 高级用法
+#### 高级用法 {#advanced}
 
 你可以将对象传递给 `mark` 以配置 ID 标记，可用选项如下：
 
@@ -65,7 +65,7 @@ interface MarkdownItImgMarkOptions {
 }
 ```
 
-### 图片尺寸
+### 图片尺寸 {#image-size}
 
 当你在插件选项中设置 `size: true` 时，你可以在图片替代文字后面添加 `=widthxheight`，并用空格分隔。
 
@@ -85,7 +85,7 @@ interface MarkdownItImgMarkOptions {
 <img src="/example.bmp" alt="替代文字" height="300" />
 ```
 
-#### Obsidian 语法
+#### Obsidian 语法 {#obsidian-syntax}
 
 当你在插件选项中设置 `obsidianSize: true` 时，你可以在图片替代文字后面添加 `widthxheight`，并用 `|` 分隔。
 
@@ -112,7 +112,7 @@ interface MarkdownItImgMarkOptions {
 
 :::
 
-#### 旧语法 (已废弃)
+#### 旧语法 (已废弃) {#legacy-syntax-deprecated}
 
 ::: warning 这种语法可能会在 GitHub 等平台上导致渲染问题。
 :::
@@ -135,7 +135,7 @@ interface MarkdownItImgMarkOptions {
 <img src="/example.bmp" alt="替代文字" height="300" />
 ```
 
-### 图片展示
+### 图片展示 {#figure-display}
 
 有时，你可能希望为图像添加描述，并将其单独展示在上下文中，在这种情况下，你应该在插件选项中设置 `figure: true`。
 
@@ -155,7 +155,7 @@ interface MarkdownItImgMarkOptions {
 
 :::
 
-## 选项
+## 选项 {#options}
 
 ::: fields
 @`figure` type=`MarkdownItFigureOptions | boolean`

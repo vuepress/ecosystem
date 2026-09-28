@@ -8,7 +8,7 @@ icon: layout-grid
 
 将你的 VuePress 站点变成渐进式网络应用程序 (PWA)[^pwa-intro]。
 
-## 使用
+## 使用 {#usage}
 
 ```bash
 npm i -D @vuepress/plugin-pwa@next
@@ -54,9 +54,9 @@ export default {
 
     1. 每次用户重新打开网站时，Service Worker 会向自身注册时的地址发出校验命令，如果检测到新版本的 Service Worker，则会更新自身，并开始缓存注册在新 Service Worker 中的资源列表。成功获取内容更新后，Service Worker 将会触发 `update` 事件。可以通过此事件提示用户，比如将在右下角显示一个弹出窗口，提示用户新内容可用并允许用户触发更新。
 
-## 指南
+## 指南 {#guide}
 
-### 网络 App 清单
+### 网络 App 清单 {#web-app-manifests}
 
 为了使你的网站符合 PWA 的要求，一个网络 App 清单[^manifest]文件是必要的，并且你的 PWA 应满足可安装性[^installable]要求。
 
@@ -110,21 +110,21 @@ export default {
 
 此外，该插件默认不处理清单中的任何内容，而是按原样输出。这意味着，如果你计划部署到子目录，则应自行将 URL 前缀附加到自己的清单 URLs 中。如果你需要的所有内容都在 `base` 文件夹下，你可以在插件选项中设置 [`appendBase`](#appendbase) 为 `true` 让插件将 `base` 自动附加到任何地址。
 
-### 缓存控制
+### 缓存控制 {#cache-control}
 
 为了更好的控制 Service Worker 可以预缓存的内容，插件提供了相关的缓存控制选项。
 
-#### 默认缓存
+#### 默认缓存 {#default-cache}
 
 默认情况下插件会预缓存所有的 `js` 和 `css` 文件，但仅缓存主页和 404 页面的 HTML。插件同时还会缓存字体文件 (woff, woff2, eot, ttf, otf) 和 SVG 图标。
 
-#### 图片缓存
+#### 图片缓存 {#image-cache}
 
 如果你的站点只有少量重要图片，并希望它们在离线模式下显示，你可以通过设置 [`cacheImage`](#cacheimage) 为 `true` 来缓存站点图片。
 
 我们通过文件后缀名识别图片，任何以 `.png`, `.jpg`, `.jpeg`, `.gif`, `.bmp`, `.webp` 结尾的文件都会视为图片。
 
-#### HTML 缓存
+#### HTML 缓存 {#html-cache}
 
 当你网站体积不大，并且希望文档完全离线可用时，你可以通过设置 [`cacheHTML`](#cachehtml) 为 `true` 来缓存所有 HTML 页面。
 
@@ -148,7 +148,7 @@ VuePress 本质上是一个 SPA。这意味着你只需要缓存主页并从主�
 
 :::
 
-#### 大小控制
+#### 大小控制 {#size-control}
 
 为了防止在预缓存列表中包含大文件，任何 > 2 MB 的文件或 > 1 MB 的图片都将被忽略。你可以通过 [`maxSize`](#maxsize) 和 [`maxImageSize`](#maximagesize) 来自定义大小限制 (单位为 KB)。
 
@@ -156,7 +156,7 @@ VuePress 本质上是一个 SPA。这意味着你只需要缓存主页并从主�
 
 `maxImageSize` 不能大于 [`maxSize`](#maxsize)。
 
-### 更新控制
+### 更新控制 {#update-control}
 
 [`update`](#update) 选项控制用户如何接收更新，其默认值为 `"available"`。
 
@@ -174,7 +174,7 @@ VuePress 本质上是一个 SPA。这意味着你只需要缓存主页并从主�
 
 :::
 
-#### 更新提示弹窗
+#### 更新提示弹窗 {#popups}
 
 当检测到新内容 (检测到新的 Service Worker) 时，更新提示弹窗将会出现；当新内容就绪时，更新就绪弹窗将会出现。
 
@@ -208,11 +208,11 @@ import { PwaReadyPopup } from '@vuepress/plugin-pwa/client'
 </template>
 ```
 
-### 其他选项
+### 其他选项 {#other-options}
 
 插件还提供了其他 PWA 相关选项，比如微软磁贴图标与颜色设置，苹果图标 ([`apple`](#apple)) 等。如果你是一个高级用户，你也可以设置 [`generateSWConfig`](#generateswconfig) 来配置 `workbox-build`。
 
-## 选项
+## 选项 {#options}
 
 ::: fields
 @`serviceWorkerFilename` type=string default=`'service-worker.js'`
@@ -227,7 +227,7 @@ Service Worker 文件路径。
 
 将被解析为 `manifest.webmanifest` 的对象，该文件由插件生成并注入到每个页面。
 
-参考：[网络 App 清单](#网络-app-清单)。
+参考：[网络 App 清单](#web-app-manifests)。
 
 @`favicon` type=string
 
@@ -241,31 +241,31 @@ PWA 的主题色。
 
 允许缓存的最大大小 (以 KB 为单位)。
 
-参考：[大小控制](#大小控制)。
+参考：[大小控制](#size-control)。
 
 @`cacheHTML` type=boolean default=`false`
 
 是否缓存主页和 404 错误页之外的 HTML 文件。
 
-参考：[HTML 缓存](#html-缓存)。
+参考：[HTML 缓存](#html-cache)。
 
 @`cacheImage` type=boolean default=`false`
 
 是否缓存图片。
 
-参考：[图片缓存](#图片缓存)。
+参考：[图片缓存](#image-cache)。
 
 @`maxImageSize` type=number default=`1024`
 
 图片允许缓存的最大大小 (以 KB 为单位)。
 
-参考：[大小控制](#大小控制)。
+参考：[大小控制](#size-control)。
 
 @`update` type=`'available' | 'disable' | 'force' | 'hint'` default=`'available'`
 
 用户接收更新的方式。
 
-参考：[更新控制](#更新控制)。
+参考：[更新控制](#update-control)。
 
 @`apple` type=`ApplePwaOptions | false`
 
@@ -287,19 +287,19 @@ Safari 状态栏颜色。相关标签尚未标准化，你应该避免声明它�
 
 自定义的提示弹窗组件路径。
 
-参考：[更新提示弹窗](#更新提示弹窗)。
+参考：[更新提示弹窗](#popups)。
 
 @`readyComponent` type=string default=`'PwaReadyPopup'`
 
 自定义的更新弹窗组件路径。
 
-参考：[更新提示弹窗](#更新提示弹窗)。
+参考：[更新提示弹窗](#popups)。
 
 @`appendBase` type=boolean default=`false`
 
 是否为选项中所有绝对链接添加 base。
 
-参考：[网络 App 清单](#网络-app-清单)。
+参考：[网络 App 清单](#web-app-manifests)。
 
 @`generateSWConfig` type=`Partial<GenerateSWOptions>`
 
@@ -357,7 +357,7 @@ iOS 安装文字。
 
 :::
 
-## 组合式 API
+## 组合式 API {#composition-api}
 
 ### usePwaEvent
 
@@ -380,7 +380,7 @@ iOS 安装文字。
   }
   ```
 
-## 工具函数
+## 工具函数 {#utilities}
 
 ### forceUpdate
 
@@ -499,13 +499,13 @@ iOS 安装文字。
   }
   ```
 
-## 样式
+## 样式 {#styles}
 
 你可以通过 CSS 变量来自定义样式：
 
 @[code](@vuepress/plugin-pwa/src/client/styles/vars.css)
 
-## 相关阅读
+## 相关阅读 {#further-reading}
 
 更多内容，请详见:
 

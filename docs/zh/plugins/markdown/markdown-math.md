@@ -10,7 +10,7 @@ icon: sigma
 
 此插件允许你使用 `mathjax` 或 `katex` 在 Markdown 中渲染 $\TeX$ 内容。
 
-## 使用方法
+## 使用方法 {#usage}
 
 ```bash
 npm i -D @vuepress/plugin-markdown-math@next
@@ -32,7 +32,7 @@ export default {
 }
 ```
 
-## 格式
+## 格式 {#syntax}
 
 - 内联模式：`$xxx$`
 
@@ -73,7 +73,7 @@ $a=1$ 是一个 TeX 方程，而 $ a=1 $ 和 \$a=1$ 不是。
 
 ::::
 
-## 支持列表
+## 支持列表 {#support-list}
 
 TeX 教程:
 
@@ -91,7 +91,7 @@ Mathjax:
 
 - [支持的 TeX/LaTeX 命令](https://docs.mathjax.org/en/latest/input/tex/macros/index.html#tex-commands)
 
-## 选项
+## 选项 {#options}
 
 ::: fields
 @`type` type=`'katex' | 'mathjax'`
@@ -113,7 +113,7 @@ Mathjax:
 
 :::
 
-### 使用 KaTeX
+### 使用 KaTeX {#using-katex}
 
 使用 KaTeX 时，任何其他选项都将作为 `KatexOptions` 传递给 KaTeX。有关所有可用选项，请参阅 [KaTeX 文档](https://katex.org/docs/options.html)。
 
@@ -130,7 +130,7 @@ Mathjax:
 
 :::
 
-### 使用 MathJax
+### 使用 MathJax {#using-mathjax}
 
 使用 MathJax 时，你可以设置：
 

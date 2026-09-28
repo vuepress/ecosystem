@@ -8,7 +8,7 @@ icon: book-open-text
 
 该插件通过分析你的页面内容，生成字数统计和预计阅读时间。
 
-## 使用方法
+## 使用方法 {#usage}
 
 ```bash
 npm i -D @vuepress/plugin-reading-time@next
@@ -26,7 +26,7 @@ export default {
 }
 ```
 
-## 页面数据（Node.js 端）
+## 页面数据（Node.js 端） {#page-data-node-js-side}
 
 初始化后，插件会计算每个页面的统计信息，并将它们注入到 `page.data.readingTime` 属性中。该对象包含：
 
@@ -52,7 +52,7 @@ export default {
 }
 ```
 
-## 组合式 API (客户端)
+## 组合式 API (客户端) {#composition-api-client-side}
 
 要在主题或组件中显示阅读时间信息，你可以使用客户端模块提供的组合式 API（Composables）。
 
@@ -73,7 +73,7 @@ const readingTimeLocale = useReadingTimeLocale() // { time: "1 minute", words: "
 </script>
 ```
 
-## 选项
+## 选项 {#options}
 
 :::: fields
 @`wordPerMinute` type=number default=`300`
@@ -99,7 +99,7 @@ const readingTimeLocale = useReadingTimeLocale() // { time: "1 minute", words: "
 时间模板，`$time` 会被自动替换为实际时间。
 ::::
 
-## 客户端 API
+## 客户端 API {#client-api}
 
 你可以从 `@vuepress/plugin-reading-time/client` 导入并使用这些 API：
 
@@ -135,7 +135,7 @@ interface ReadingTimeLocale {
 const useReadingTimeLocale: () => ComputedRef<ReadingTimeLocale>
 ```
 
-## 主题集成
+## 主题集成 {#theme-integration}
 
 对于插件和主题开发者，我们提供了一个编程式的 "Use API"。相比于直接在你的主题 `plugins` 数组中添加该插件，我们更推荐这种方式，因为它能处理注册顺序并防止重复注册。
 

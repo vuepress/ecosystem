@@ -2,7 +2,7 @@
 icon: languages
 ---
 
-# 语言配置
+# 语言配置 {#locale-config}
 
 这些选项用于配置与语言相关的文本。
 
@@ -82,23 +82,23 @@ _贡献者列表_ 标签的文字。
 
 @`tip` type=string default=`'提示'`
 
-提示 [提示容器](./markdown.md#提示容器) 的默认标题。
+提示 [提示容器](./markdown.md#hint-containers) 的默认标题。
 
 @`warning` type=string default=`'注意'`
 
-注意 [提示容器](./markdown.md#提示容器) 的默认标题。
+注意 [提示容器](./markdown.md#hint-containers) 的默认标题。
 
 @`danger` type=string default=`'警告'`
 
-警告 [提示容器](./markdown.md#提示容器) 的默认标题。
+警告 [提示容器](./markdown.md#hint-containers) 的默认标题。
 
 @`important` type=string default=`'重要'`
 
-重要 [提示容器](./markdown.md#提示容器) 的默认标题。
+重要 [提示容器](./markdown.md#hint-containers) 的默认标题。
 
 @`note` type=string default=`'注'`
 
-注 [提示容器](./markdown.md#提示容器) 的默认标题。
+注 [提示容器](./markdown.md#hint-containers) 的默认标题。
 
 @`notFound` type=`string[]` default=`['There's nothing here.', 'How did we get here?', 'That's a Four-Oh-Four.', 'Looks like we've got some broken links.']`
 

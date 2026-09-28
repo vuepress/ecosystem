@@ -8,7 +8,7 @@ icon: paint-bucket
 
 在 VuePress 站点中为内容添加样式。
 
-## 使用方法
+## 使用方法 {#usage}
 
 ```bash
 npm i -D @vuepress/plugin-markdown-stylize@next
@@ -26,9 +26,9 @@ export default {
 }
 ```
 
-## 语法
+## 语法 {#syntax}
 
-### 对齐内容
+### 对齐内容 {#align-content}
 
 你可以使用 `left` `center` `right` `justify` 来对齐文本。
 
@@ -52,7 +52,7 @@ export default {
 
 ::::
 
-### 添加属性
+### 添加属性 {#appending-attributes}
 
 你可以使用语法 `{attrs}` 来为 Markdown 元素添加属性。
 
@@ -84,7 +84,7 @@ export default {
 
 完整的示例请参考 [@mdit/plugin-attrs](https://mdit-plugins.github.io/zh/attrs.html#demo)。
 
-### 高亮内容
+### 高亮内容 {#highlighting-content}
 
 你可以使用 `== ==` 来通过 `<mark>` 标记内容。请注意标记两侧需要有空格。
 
@@ -94,7 +94,7 @@ VuePress ==非常== 强大!
 
 :::
 
-### 添加布局
+### 添加布局 {#adding-layouts}
 
 你可以使用 `@flexs`/`@flex`、`@grids`/`@grid` 和 `@columns`/`@column` 配合 `@end` 来为内容添加布局：
 
@@ -103,13 +103,13 @@ VuePress ==非常== 强大!
 @flexs gap-4 items-center
 @flex.flex-demo flex-1
 
-### 左列
+### 左列 {#left-column}
 
 此内容会增长以填充可用空间。
 
 @flex.flex-demo
 
-### 右列
+### 右列 {#right-column}
 
 此内容使用其自然宽度。
 
@@ -119,7 +119,7 @@ VuePress ==非常== 强大!
 
 语法请参阅 [@mdit/plugin-layout](https://mdit-plugins.github.io/zh/layout.html#格式)。
 
-### 创建剧透
+### 创建剧透 {#creating-spoilers}
 
 你可以使用 `!! !!` 标记剧透文字。请注意标记两侧需要有空格。
 
@@ -129,7 +129,7 @@ VuePress !!非常强大!!。
 
 :::
 
-### 创建步骤
+### 创建步骤 {#creating-steps}
 
 你可以使用 `::: steps` 容器来将内容划分为递进的步骤展示。使用有序列表（或无序列表）来表示步骤，并且可以在容器内使用任意 Markdown 语法。
 
@@ -171,7 +171,7 @@ VuePress !!非常强大!!。
 
 ::::
 
-### 上下标
+### 上下标 {#superscript-and-subscript}
 
 你可以使用 `^` 来标记上标，`~` 来标记下标。
 
@@ -185,7 +185,7 @@ H~2~O 是液体，2^10^ 是 1024.
 
 :::
 
-### 创建自己的样式化
+### 创建自己的样式化 {#create-your-own-stylize-rules}
 
 `custom` 选项接收一个数组，其中每个元素接受 2 个选项：
 
@@ -250,7 +250,7 @@ export default {
 
 同时，你也可以在 frontmatter 中通过 `stylize` 选项来自定义此页面额外的匹配标记的函数。
 
-## 选项
+## 选项 {#options}
 
 ::: fields
 @`align` type=boolean

@@ -8,7 +8,7 @@ icon: image-play
 
 此插件使用 PhotoSwipe 提供图片画廊功能，允许用户在优雅的全屏灯箱中查看图片，支持缩放、导航和分享功能。
 
-## 使用方法
+## 使用方法 {#usage}
 
 ```bash
 npm i -D @vuepress/plugin-photo-swipe@next
@@ -26,9 +26,9 @@ export default {
 }
 ```
 
-## 指南
+## 指南 {#guide}
 
-### 预览模式
+### 预览模式 {#preview-mode}
 
 在图片预览模式中，你可以:
 
@@ -46,7 +46,7 @@ export default {
 
 :::
 
-## 选项
+## 选项 {#options}
 
 :::: fields
 @`selector` type=`string | string[]` default=`'[vp-content] :not(a) > img:not([no-view])'`
@@ -108,7 +108,7 @@ export default {
 
 :::
 
-## 客户端配置
+## 客户端配置 {#client-config}
 
 ### definePhotoSwipeConfig
 
@@ -184,7 +184,7 @@ onUnmounted(() => {
 
 :::
 
-## 样式
+## 样式 {#styles}
 
 你可以通过 CSS 变量自定义样式：
 
