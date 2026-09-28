@@ -4,9 +4,7 @@ This document provides guidance for AI agents working on the **VuePress Ecosyste
 
 ## Content Rules
 
-- Target developers: concise, clear, essential information only
-- Focus on essential information developers need to understand and implement features
-- No typos or grammar errors
+Concise, clear, essential information only, with no typos or grammar errors.
 
 ## Repository Overview
 
@@ -91,9 +89,9 @@ tsdown.config.ts   # Per-package tsdown build config (imports tsdownConfig from 
 package.json
 ```
 
-All source files are in `src/`. Compiled output goes to `dist/` (git-ignored).
+All source files are in `src/`.
 
-Plugins that must inject client-side styles or register components **conditionally** based on options use a `src/node/prepareClientConfigFile.ts` that generates a client config at build time. It returns `app.writeTemp('<plugin>/config.js', ...)` and the plugin exposes it via `clientConfigFile: () => prepareClientConfigFile(app, options)`. This is required when the set of imports depends on options (e.g. only import a style when the matching option is enabled) — a static `src/client/config.ts` is used instead when the config is always the same.
+Plugins that must inject client-side styles or register components **conditionally** based on options use a `src/node/prepareClientConfigFile.ts` that generates a client config at build time. It returns `app.writeTemp('<plugin>/config.js', ...)` and the plugin exposes it via `clientConfigFile: () => prepareClientConfigFile(app, options)`. This is required when the set of imports depends on options (e.g. only import a style when the matching option is enabled); otherwise use a static `src/client/config.ts`.
 
 ## Coding Standards
 
@@ -213,10 +211,10 @@ The documentation site lives in `docs/` and is built with VuePress. Each plugin 
 
 - Consistent with code behaviors
 - Chinese/English content must be consistent in structure and content
-- Make content concise and clear, remove unnecessary words, avoid redundancy, prefer shorter if possible
+- Keep content concise and clear, prefer shorter over longer
 - Use "你" instead of "您" in Chinese
-- Ignore any errors with `@[code ...` as they are VuePress code import grammar, which is not standard.
-- Ignore any errors with VuePress components in markdown.
+- Ignore errors from the `@[code ...` import grammar, which is not standard markdown.
+- Ignore errors from VuePress components in markdown, which are valid in VuePress but not standard markdown.
 - Always keep a blank line before a container closing marker (`:::`, `::::`). Without it oxfmt treats the marker as a list continuation and drops it, leaving the container unclosed.
 - Do not repeat the built-in locale data of a plugin in its documentation. Link to [Locales](docs/plugins/supported-locales.md) instead.
 
@@ -258,6 +256,88 @@ Rules:
 - **Endonyms**: the value of a `name` field is the language's own name, from the table above.
 - **Translation quality**: translate the meaning and the tone of the English entry. Keep it concise; UI text should be no longer than needed. Do not translate product names (`VuePress`, `Markdown`, `Reveal.js`, ...).
 - **Docs**: `docs/plugins/supported-locales.md` (and its Chinese counterpart) is the single place that lists the languages. Plugin pages must link to it instead of repeating the list.
+
+### Page Structure
+
+Feature descriptions and option references are separated, so that the options section stays short:
+
+- `## Usage`: install command and a minimal config example.
+- `## Guide`: one `###` section per feature, explaining what it does and how to use it, with syntax examples and `::: preview` demos. This is where behavior, syntax markers and caveats belong.
+- `## Options`: only what each option configures, its type and its default. Link to the matching guide section with `See also: [Title](#anchor).` / `参考：[标题](#锚点)。` instead of repeating the explanation.
+
+### Options Documentation Format
+
+Options are documented with the `::: fields` container provided by `@vuepress/plugin-markdown-field`, not with `###` headings and `- Type:` lists.
+
+```md
+## Options
+
+::: fields
+@`optionName` type=boolean default=`true`
+
+Whether to enable this feature.
+
+@`requiredOption` type=string required
+
+The required configuration.
+
+@`optionWithNonStandardDefault` type=number default=`100`
+
+Custom timeout value.
+
+@`objectOption` type=`SomeOptions | boolean`
+
+Whether to enable this feature. You can also pass an object to configure it.
+
+@@`objectOption.child` type=string
+
+A child option of `objectOption`.
+
+:::
+```
+
+**Field items**
+
+- A field item is a line starting with `@` followed by an inline code (the name, closed on the same line), then its attributes.
+- The content after the marker, until the next field item or the closing marker, is the description. It supports full markdown, including lists, code fences and containers.
+- Sub-options of an object option are nested by adding one more `@`: `` @@`parent.child` ``. Nesting is also used to expand a type definition instead of pasting a TypeScript interface in a code fence.
+- When a path goes into an array of objects, append `[*]` to every indexed level so it reads as a member type rather than a single value, e.g. `` @@`contributors.info[*].username` `` for `contributors.info: ContributorInfo[]`, or `` @@@`config[*].actions[*].text` `` for `config: NoticeOptions[]` with `actions: NoticeActionOption[]`.
+- When a path goes into a `Record<string, T>`, use a placeholder for the key, e.g. `` @@`locales.<localePath>.title` `` for `locales: LocaleConfig<...>`, where the key is a locale path (`/`, `/zh/`, ...). `LocaleConfig<T>` and `ExactLocaleConfig<T>` are both `Record<string, T>`, so they always need this level.
+- Content that applies to the parent option as a whole — a list of accepted values, a note about the option group — belongs right after the parent field's own description, **before** the first sub-field. After the last sub-field it reads as if it belonged to that sub-option.
+- Each field item gets a unique `id` from its name, so it can be linked to directly. Ids already used by headings are reserved first, so avoid naming a guide heading the same as an option (its id would get a `-1` suffix). `[*]` and `<...>` are stripped when generating the id.
+
+**Descriptions**
+
+- State the unit whenever the value is not unitless, e.g. `delay` in milliseconds, `offset` in pixels, a size in pixels, a duration in seconds. Write it in the sentence rather than in the type, e.g. `The delay in milliseconds of the debounced scroll event listener.`
+
+**Attributes**
+
+- `type`: the option type. Always rendered as inline code.
+- `default`: the default value. Rendered as inline code **only when wrapped in backticks**, and as plain text otherwise.
+- `required`, `optional`, `deprecated`: rendered as badges. A deprecated field's name is colored red and struck through.
+- Any other attribute is rendered as a `Name: value` badge, which is useful for marking conditional support, e.g. `gfm=Yes`.
+
+**Attribute values**
+
+An unquoted value ends at the first whitespace, so values containing spaces must be quoted. Prefer the shortest form that parses correctly:
+
+- Unquoted when the value has no whitespace and no quote, e.g. `type=boolean`, `default=true`, `default={}`.
+- Backticks for literal values, especially `default`, so that they render as inline code and no escaping is applied, e.g. `` default=`'nord'` ``, `` type=`boolean | 'error'` ``.
+- Double quotes for descriptive text, which renders as plain text and supports escaping with `\`, e.g. `default="Determined by the theme, set it explicitly to override"`.
+
+**Defaults**
+
+- Include `default` when the value is not the expected/obvious one.
+- Omit `default` when it is expected/obvious: `boolean` options defaulting to `false`, `string` options defaulting to `''`, and `object` options defaulting to `undefined`.
+- A multi-line default cannot be written as an attribute. Describe it in the field content instead, e.g. `Its default value is:` followed by a code fence.
+
+**Escaping**
+
+- To keep a marker-like line as content, escape the `@`: `` \@`not-a-field` ``.
+
+**Containers inside fields**
+
+- Use one more colon for the fields container when it contains a `:::` container, e.g. `:::: fields` with `::: tip` inside, closed by `::::`.
 
 ## CI
 
