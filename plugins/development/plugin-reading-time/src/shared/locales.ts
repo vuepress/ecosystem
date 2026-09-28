@@ -12,11 +12,11 @@ export interface ReadingTimePluginLocaleData {
   word: string
 
   /**
-   * Text for less than one minute
+   * Text for sub-minute reading time
    *
-   * 小于一分钟文字
+   * 阅读时间不足一分钟时的文本
    */
-  less1Minute: string
+  subMinute: string
 
   /**
    * Time template

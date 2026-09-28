@@ -9,7 +9,7 @@ export const readingTimeLocaleInfo: DefaultLocaleInfo<ReadingTimePluginLocaleDat
       ['en', 'en-US'],
       {
         word: 'About $word words',
-        less1Minute: 'Less than 1 minute',
+        subMinute: 'Less than 1 minute',
         time: 'About $time min',
       },
     ],
@@ -17,7 +17,7 @@ export const readingTimeLocaleInfo: DefaultLocaleInfo<ReadingTimePluginLocaleDat
       ['zh', 'zh-CN', 'zh-Hans'],
       {
         word: '约 $word 字',
-        less1Minute: '小于 1 分钟',
+        subMinute: '小于 1 分钟',
         time: '大约 $time 分钟',
       },
     ],
@@ -25,7 +25,7 @@ export const readingTimeLocaleInfo: DefaultLocaleInfo<ReadingTimePluginLocaleDat
       ['zh-TW', 'zh-Hant'],
       {
         word: '約 $word 字',
-        less1Minute: '小於 1 分鐘',
+        subMinute: '小於 1 分鐘',
         time: '大約 $time 分鐘',
       },
     ],
@@ -33,7 +33,7 @@ export const readingTimeLocaleInfo: DefaultLocaleInfo<ReadingTimePluginLocaleDat
       ['de', 'de-DE'],
       {
         word: 'Ungefähr $word Wörter',
-        less1Minute: 'Weniger als eine Minute',
+        subMinute: 'Weniger als eine Minute',
         time: 'Ungefähr $time min',
       },
     ],
@@ -41,7 +41,7 @@ export const readingTimeLocaleInfo: DefaultLocaleInfo<ReadingTimePluginLocaleDat
       ['de-AT'],
       {
         word: 'Ungefähr $word Wörter',
-        less1Minute: 'Weniger als eine Minute',
+        subMinute: 'Weniger als eine Minute',
         time: 'Ungefähr $time min',
       },
     ],
@@ -49,7 +49,7 @@ export const readingTimeLocaleInfo: DefaultLocaleInfo<ReadingTimePluginLocaleDat
       ['vi', 'vi-VN'],
       {
         word: 'Khoảng $word từ',
-        less1Minute: 'Ít hơn 1 phút',
+        subMinute: 'Ít hơn 1 phút',
         time: 'Khoảng $time phút',
       },
     ],
@@ -57,7 +57,7 @@ export const readingTimeLocaleInfo: DefaultLocaleInfo<ReadingTimePluginLocaleDat
       ['uk'],
       {
         word: 'Про $word слова',
-        less1Minute: 'Менше 1 хвилини',
+        subMinute: 'Менше 1 хвилини',
         time: 'Приблизно $time хв',
       },
     ],
@@ -65,7 +65,7 @@ export const readingTimeLocaleInfo: DefaultLocaleInfo<ReadingTimePluginLocaleDat
       ['ru', 'ru-RU'],
       {
         word: 'Около $word слов',
-        less1Minute: 'Меньше 1 минуты',
+        subMinute: 'Меньше 1 минуты',
         time: 'Около $time мин',
       },
     ],
@@ -73,7 +73,7 @@ export const readingTimeLocaleInfo: DefaultLocaleInfo<ReadingTimePluginLocaleDat
       ['pt', 'pt-PT'],
       {
         word: 'Cerca de $word palavras',
-        less1Minute: 'Menos de 1 minuto',
+        subMinute: 'Menos de 1 minuto',
         time: 'Cerca de $time min',
       },
     ],
@@ -81,7 +81,7 @@ export const readingTimeLocaleInfo: DefaultLocaleInfo<ReadingTimePluginLocaleDat
       ['pt-BR'],
       {
         word: 'Aproximadamente $word palavras',
-        less1Minute: 'Menos de 1 minuto',
+        subMinute: 'Menos de 1 minuto',
         time: 'Aproximadamente $time min',
       },
     ],
@@ -89,7 +89,7 @@ export const readingTimeLocaleInfo: DefaultLocaleInfo<ReadingTimePluginLocaleDat
       ['pl', 'pl-PL'],
       {
         word: 'Około $word słów',
-        less1Minute: 'Mniej niż 1 minuta',
+        subMinute: 'Mniej niż 1 minuta',
         time: 'Około $time minut',
       },
     ],
@@ -97,7 +97,7 @@ export const readingTimeLocaleInfo: DefaultLocaleInfo<ReadingTimePluginLocaleDat
       ['sk', 'sk-SK'],
       {
         word: 'Okolo $word slov',
-        less1Minute: 'Menej ako 1 minúta',
+        subMinute: 'Menej ako 1 minúta',
         time: 'Okolo $time minút',
       },
     ],
@@ -105,7 +105,7 @@ export const readingTimeLocaleInfo: DefaultLocaleInfo<ReadingTimePluginLocaleDat
       ['fr', 'fr-FR'],
       {
         word: 'Environ $word mots',
-        less1Minute: 'Moins de 1 minute',
+        subMinute: 'Moins de 1 minute',
         time: 'Environ $time min',
       },
     ],
@@ -113,7 +113,7 @@ export const readingTimeLocaleInfo: DefaultLocaleInfo<ReadingTimePluginLocaleDat
       ['es', 'es-ES'],
       {
         word: 'Alrededor de $word palabras',
-        less1Minute: 'Menos de 1 minuto',
+        subMinute: 'Menos de 1 minuto',
         time: 'Alrededor de $time min',
       },
     ],
@@ -121,31 +121,31 @@ export const readingTimeLocaleInfo: DefaultLocaleInfo<ReadingTimePluginLocaleDat
       ['it', 'it-IT'],
       {
         word: 'Circa $word parole',
-        less1Minute: 'Meno di 1 minuto',
+        subMinute: 'Meno di 1 minuto',
         time: 'Circa $time min',
       },
     ],
     [
       ['ja', 'ja-JP'],
-      { word: '$word字程度', less1Minute: '1分以内', time: '約$time分' },
+      { word: '$word字程度', subMinute: '1分以内', time: '約$time分' },
     ],
     [
       ['tr', 'tr-TR'],
       {
         word: 'Yaklaşık $word kelime',
-        less1Minute: '1 dakikadan az',
+        subMinute: '1 dakikadan az',
         time: 'Yaklaşık $time dakika',
       },
     ],
     [
       ['ko', 'ko-KR'],
-      { word: '약 $word 단어', less1Minute: '1분 미만', time: '약 $time 분' },
+      { word: '약 $word 단어', subMinute: '1분 미만', time: '약 $time 분' },
     ],
     [
       ['fi', 'fi-FI'],
       {
         word: 'Noin $word sanaa',
-        less1Minute: 'Alle minuutin',
+        subMinute: 'Alle minuutin',
         time: 'Noin $time minuuttia',
       },
     ],
@@ -153,7 +153,7 @@ export const readingTimeLocaleInfo: DefaultLocaleInfo<ReadingTimePluginLocaleDat
       ['hu', 'hu-HU'],
       {
         word: 'Körülbelül $word szó',
-        less1Minute: 'Kevesebb, mint 1 perc',
+        subMinute: 'Kevesebb, mint 1 perc',
         time: 'Körülbelül $time perc',
       },
     ],
@@ -161,7 +161,7 @@ export const readingTimeLocaleInfo: DefaultLocaleInfo<ReadingTimePluginLocaleDat
       ['id', 'id-ID'],
       {
         word: 'Sekitar $word kata',
-        less1Minute: 'Kurang dari 1 menit',
+        subMinute: 'Kurang dari 1 menit',
         time: 'Sekitar $time menit',
       },
     ],
@@ -169,7 +169,7 @@ export const readingTimeLocaleInfo: DefaultLocaleInfo<ReadingTimePluginLocaleDat
       ['nl', 'nl-NL'],
       {
         word: 'Ongeveer $word woorden',
-        less1Minute: 'Minder dan 1 minuut',
+        subMinute: 'Minder dan 1 minuut',
         time: 'Ongeveer $time minuten',
       },
     ],

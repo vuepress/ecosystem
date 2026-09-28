@@ -90,9 +90,9 @@ const readingTimeLocale = useReadingTimeLocale() // { time: "1 minute", words: "
 
 字数模板，`$word` 会被自动替换为实际字数。
 
-@@`locales.<localePath>.less1Minute` type=string
+@@`locales.<localePath>.subMinute` type=string
 
-小于一分钟时的文本。
+阅读时间不足一分钟时的文本。
 
 @@`locales.<localePath>.time` type=string
 

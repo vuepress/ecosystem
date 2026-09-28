@@ -12,7 +12,7 @@ import type {
  *   getReadingTimeLocale(
  *     { minutes: 2.5, words: 500 },
  *     {
- *       less1Minute: 'Less than 1 min',
+ *       subMinute: 'Less than 1 min',
  *       word: '$word words',
  *       time: '$time min',
  *     },
@@ -28,12 +28,12 @@ export const getReadingTimeLocale = (
   locale: ReadingTimePluginLocaleData,
 ): { time: string; words: string } => {
   const { minutes, words } = readingTime
-  const { less1Minute, word, time } = locale
+  const { subMinute, word, time } = locale
 
   return {
     time:
       minutes < 1
-        ? less1Minute
+        ? subMinute
         : time.replace('$time', Math.round(minutes).toString()),
     words: word.replace('$word', words.toString()),
   }

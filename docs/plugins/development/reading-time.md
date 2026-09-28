@@ -90,9 +90,9 @@ See also: [Locales](../supported-locales.md).
 
 Word template, `$word` will be automatically replaced by actual words.
 
-@@`locales.<localePath>.less1Minute` type=string
+@@`locales.<localePath>.subMinute` type=string
 
-Text for less than one minute.
+Text for sub-minute reading time.
 
 @@`locales.<localePath>.time` type=string
 
