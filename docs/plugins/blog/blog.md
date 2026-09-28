@@ -83,68 +83,49 @@ export default {
 
 ### Categories and Types
 
-The plugin organizes articles into two kinds of collections:
-
-- **Category**: groups articles by a label, such as a tag or a category.
-- **Type**: collects articles matching a condition, such as starred posts.
+The plugin organizes articles into two kinds of collections: **categories**, which group articles by a label such as a tag, and **types**, which collect the articles matching a condition such as starred posts.
 
 Configure them with the [category](#category) and [type](#type) options. The route paths are generated from the keys and the item names with the [slugify](#slugify) function.
 
 #### Category Configuration
 
-Use the [category](#category) option to group articles by a label. For example, to group articles by the `tag` frontmatter, generate a map page at `/tag/` with the `TagMap` layout, and list the articles of each tag at `/tag/:tagName/` with the `TagList` layout:
+To group articles by the `tag` frontmatter, generate a map page at `/tag/` with the `TagMap` layout, and list the articles of each tag at `/tag/:tagName/` with the `TagList` layout:
 
-```ts title="theme entrance"
-import { blogPlugin } from '@vuepress/plugin-blog'
-
-export default {
-  name: 'vuepress-theme-xxx',
-  plugins: [
-    blogPlugin({
-      // other options ...
-      category: [
-        {
-          key: 'tag',
-          getter: ({ frontmatter }) => frontmatter.tag || [],
-          path: '/tag/',
-          layout: 'TagMap',
-          frontmatter: () => ({ title: 'Tag page' }),
-          itemPath: '/tag/:name/',
-          itemLayout: 'TagList',
-          itemFrontmatter: (name) => ({ title: `Tag ${name}` }),
-        },
-      ],
-    }),
-    // other plugins ...
+```ts
+blogPlugin({
+  // other options ...
+  category: [
+    {
+      key: 'tag',
+      getter: ({ frontmatter }) => frontmatter.tag || [],
+      path: '/tag/',
+      layout: 'TagMap',
+      frontmatter: () => ({ title: 'Tag page' }),
+      itemPath: '/tag/:name/',
+      itemLayout: 'TagList',
+      itemFrontmatter: (name) => ({ title: `Tag ${name}` }),
+    },
   ],
-}
+})
 ```
 
 #### Type Configuration
 
-Use the [type](#type) option to create a list of articles matching a condition. For example, to list the starred articles (marked with `star: true` in the frontmatter) at `/star/` with the `StarList` layout:
+To list the starred articles (marked with `star: true` in the frontmatter) at `/star/` with the `StarList` layout:
 
-```ts title="theme entrance"
-import { blogPlugin } from '@vuepress/plugin-blog'
-
-export default {
-  name: 'vuepress-theme-xxx',
-  plugins: [
-    blogPlugin({
-      // other options ...
-      type: [
-        {
-          key: 'star',
-          filter: ({ frontmatter }) => frontmatter.star,
-          path: '/star/',
-          layout: 'StarList',
-          frontmatter: () => ({ title: 'Star page' }),
-        },
-      ],
-    }),
-    // other plugins ...
+```ts
+blogPlugin({
+  // other options ...
+  type: [
+    {
+      key: 'star',
+      filter: ({ frontmatter }) => frontmatter.star,
+      path: '/star/',
+      layout: 'StarList',
+      frontmatter: () => ({ title: 'Star page' }),
+    },
   ],
-}
+})
 ```
 
 ### Generating Excerpt
@@ -187,6 +168,8 @@ Enabling it may impact performance on sites with many categories and types, and 
 
 During page generation, the plugin injects the type of the current page into `frontmatter.blog`:
 
+::: details Frontmatter types
+
 ```ts
 interface BlogCategoryFrontmatterOptions {
   /** Current page type */
@@ -205,11 +188,13 @@ interface BlogTypeFrontmatterOptions {
 }
 ```
 
-Use the [useBlogCategory](#useblogcategory) and [useBlogType](#useblogtype) composables to get the data bound to the current route, or pass a specific key to get the data of that key. Based on the configurations above, here is how to access the `tag` and `star` data:
+:::
 
-`TagMap` layout:
+Use the [useBlogCategory](#useblogcategory) and [useBlogType](#useblogtype) composables to get the data bound to the current route, or pass a specific key to get the data of that key:
 
-```vue
+::: code-tree title="Theme layouts" entry="layouts/TagMap.vue"
+
+```vue title="layouts/TagMap.vue"
 <script setup lang="ts">
 import { useBlogCategory } from '@vuepress/plugin-blog/client'
 import { RouteLink } from 'vuepress/client'
@@ -234,9 +219,7 @@ const categoryMap = useBlogCategory('tag')
 </template>
 ```
 
-`TagList` layout:
-
-```vue
+```vue title="layouts/TagList.vue"
 <script setup lang="ts">
 import { useBlogCategory } from '@vuepress/plugin-blog/client'
 import { RouteLink } from 'vuepress/client'
@@ -293,9 +276,7 @@ const categoryMap = useBlogCategory('tag')
 </template>
 ```
 
-`StarList` layout:
-
-```vue
+```vue title="layouts/StarList.vue"
 <script setup lang="ts">
 import { useBlogType } from '@vuepress/plugin-blog/client'
 
@@ -330,6 +311,8 @@ const stars = useBlogType('star')
   <div v-else>No articles found.</div>
 </template>
 ```
+
+:::
 
 See also: [Composables](#composables).
 

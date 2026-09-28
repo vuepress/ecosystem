@@ -34,10 +34,14 @@ Style 文件的路径是 `.vuepress/styles/index.scss` 。
 
 你也可以利用它来覆盖默认主题的预定义 CSS 变量。
 
-::: details 点击查看 CSS 变量
-@[code](@vuepress/theme-default/src/client/styles/vars.scss)
-:::
+:::: code-tabs
 
-::: details 点击查看暗黑模式 CSS 变量
+@tab 亮色
+
+@[code](@vuepress/theme-default/src/client/styles/vars.scss)
+
+@tab 暗色
+
 @[code](@vuepress/theme-default/src/client/styles/vars-dark.scss)
-:::
+
+::::

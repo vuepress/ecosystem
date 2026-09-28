@@ -79,9 +79,6 @@ export default {
 
 一个函数，用于判断一个页面是否应该被包含在搜索索引中。
 
-- 返回 `true` 来包含该页面。
-- 返回 `false` 来排除该页面。
-
 ```ts title=".vuepress/config.ts"
 export default {
   plugins: [

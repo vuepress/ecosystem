@@ -83,68 +83,49 @@ export default {
 
 ### 分类与类型 {#categories-and-types}
 
-插件会将文章组织为两种集合：
-
-- **Category (分类)**：按标签对文章分组，例如标签或分类。
-- **Type (类型)**：收集满足条件的文章，例如星标文章。
+插件会将文章组织为两种集合：**分类 (Category)** 按标签对文章分组，**类型 (Type)** 收集满足条件的文章。
 
 你可以使用 [category](#category) 和 [type](#type) 选项进行配置。路由路径由键名和子项名称通过 [slugify](#slugify) 函数生成。
 
 #### Category 配置 {#category-configuration}
 
-使用 [category](#category) 选项按标签对文章分组。例如，要根据 Frontmatter 中的 `tag` 对文章分组，在 `/tag/` 生成一个映射页面（使用 `TagMap` 布局），并在 `/tag/:tagName/` 列出每个标签的文章（使用 `TagList` 布局）：
+要根据 Frontmatter 中的 `tag` 对文章分组，在 `/tag/` 生成一个映射页面（使用 `TagMap` 布局），并在 `/tag/:tagName/` 列出每个标签的文章（使用 `TagList` 布局）：
 
-```ts title="主题入口"
-import { blogPlugin } from '@vuepress/plugin-blog'
-
-export default {
-  name: 'vuepress-theme-xxx',
-  plugins: [
-    blogPlugin({
-      // 其他选项 ...
-      category: [
-        {
-          key: 'tag',
-          getter: ({ frontmatter }) => frontmatter.tag || [],
-          path: '/tag/',
-          layout: 'TagMap',
-          frontmatter: () => ({ title: '标签页' }),
-          itemPath: '/tag/:name/',
-          itemLayout: 'TagList',
-          itemFrontmatter: (name) => ({ title: `标签 ${name}` }),
-        },
-      ],
-    }),
-    // 其他插件 ...
+```ts
+blogPlugin({
+  // 其他选项 ...
+  category: [
+    {
+      key: 'tag',
+      getter: ({ frontmatter }) => frontmatter.tag || [],
+      path: '/tag/',
+      layout: 'TagMap',
+      frontmatter: () => ({ title: '标签页' }),
+      itemPath: '/tag/:name/',
+      itemLayout: 'TagList',
+      itemFrontmatter: (name) => ({ title: `标签 ${name}` }),
+    },
   ],
-}
+})
 ```
 
 #### Type 配置 {#type-configuration}
 
-使用 [type](#type) 选项创建一个满足条件的文章列表。例如，要在 `/star/` 使用 `StarList` 布局列出星标文章（在 Frontmatter 中标记为 `star: true`）：
+要在 `/star/` 使用 `StarList` 布局列出星标文章（在 Frontmatter 中标记为 `star: true`）：
 
-```ts title="主题入口"
-import { blogPlugin } from '@vuepress/plugin-blog'
-
-export default {
-  name: 'vuepress-theme-xxx',
-  plugins: [
-    blogPlugin({
-      // 其他选项 ...
-      type: [
-        {
-          key: 'star',
-          filter: ({ frontmatter }) => frontmatter.star,
-          path: '/star/',
-          layout: 'StarList',
-          frontmatter: () => ({ title: '星标页面' }),
-        },
-      ],
-    }),
-    // 其他插件 ...
+```ts
+blogPlugin({
+  // 其他选项 ...
+  type: [
+    {
+      key: 'star',
+      filter: ({ frontmatter }) => frontmatter.star,
+      path: '/star/',
+      layout: 'StarList',
+      frontmatter: () => ({ title: '星标页面' }),
+    },
   ],
-}
+})
 ```
 
 ### 生成摘要 {#generating-excerpt}
@@ -181,11 +162,13 @@ export default {
 
 在开发过程中，[hotReload](#hotreload) 选项会在文件变更时重建博客数据，使用 `--debug` 标志时默认启用。
 
-启用它可能会影响包含大量分类和类型的站点的性能，并且在编辑 Markdown 时减慢热更新速度。建议仅在积极添加或整理分类与标签时启用，或者通过检测页面数量来决定是否以编程方式启用。
+启用它可能会影响包含大量分类和类型的站点的性能，并减慢 Markdown 的热更新速度。建议仅在积极整理分类与标签时启用，或根据页面数量以编程方式决定。
 
 ### 客户端使用 {#client-side-usage}
 
 在页面生成过程中，插件会将当前页面的类型注入到 `frontmatter.blog` 中：
+
+::: details Frontmatter 类型
 
 ```ts
 interface BlogCategoryFrontmatterOptions {
@@ -205,11 +188,13 @@ interface BlogTypeFrontmatterOptions {
 }
 ```
 
-使用 [useBlogCategory](#useblogcategory) 和 [useBlogType](#useblogtype) 组合式 API 可以获取绑定到当前路由的数据，或者传入特定的键名来获取该键名的数据。基于上面的配置，以下是获取 `tag` 和 `star` 数据的方法：
+:::
 
-`TagMap` 布局：
+使用 [useBlogCategory](#useblogcategory) 和 [useBlogType](#useblogtype) 组合式 API 可以获取绑定到当前路由的数据，或者传入特定的键名来获取该键名的数据：
 
-```vue
+::: code-tree title="主题布局" entry="layouts/TagMap.vue"
+
+```vue title="layouts/TagMap.vue"
 <script setup lang="ts">
 import { useBlogCategory } from '@vuepress/plugin-blog/client'
 import { RouteLink } from 'vuepress/client'
@@ -234,9 +219,7 @@ const categoryMap = useBlogCategory('tag')
 </template>
 ```
 
-`TagList` 布局：
-
-```vue
+```vue title="layouts/TagList.vue"
 <script setup lang="ts">
 import { useBlogCategory } from '@vuepress/plugin-blog/client'
 import { RouteLink } from 'vuepress/client'
@@ -291,9 +274,7 @@ const categoryMap = useBlogCategory('tag')
 </template>
 ```
 
-`StarList` 布局：
-
-```vue
+```vue title="layouts/StarList.vue"
 <script setup lang="ts">
 import { useBlogType } from '@vuepress/plugin-blog/client'
 
@@ -328,6 +309,8 @@ const stars = useBlogType('star')
   <div v-else>这里没有文章。</div>
 </template>
 ```
+
+:::
 
 参考：[组合式 API](#composables)。
 

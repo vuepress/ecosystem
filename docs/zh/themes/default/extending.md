@@ -24,9 +24,11 @@ VuePress 默认主题有着大量的用户，因此我们对它进行了一些�
 
 在它们的帮助下，你可以很容易地添加或替换内容。下面通过一个示例来介绍一下如何使用布局插槽来继承默认主题。
 
-首先，创建一个客户端配置文件 `.vuepress/client.ts` ：
+创建一个客户端配置文件和一个本地布局，并在前者中注册该布局：
 
-```ts title=".vuepress/client.ts"
+::: code-tree title=".vuepress" entry="client.ts"
+
+```ts title="client.ts"
 import { defineClientConfig } from 'vuepress/client'
 import Layout from './layouts/Layout.vue'
 
@@ -37,9 +39,7 @@ export default defineClientConfig({
 })
 ```
 
-接下来，创建 `.vuepress/layouts/Layout.vue` ，并使用由默认主题的 `Layout` 布局提供的插槽：
-
-```vue
+```vue title="layouts/Layout.vue"
 <script setup>
 import ParentLayout from '@vuepress/theme-default/layouts/Layout.vue'
 </script>
@@ -58,6 +58,8 @@ import ParentLayout from '@vuepress/theme-default/layouts/Layout.vue'
 }
 </style>
 ```
+
+:::
 
 此时默认的 `Layout` 布局已经被你的本地布局覆盖，将会在除了首页外的所有页面添加一个自定义的页脚：
 
