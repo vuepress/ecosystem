@@ -24,7 +24,18 @@ export interface CachePluginOptions {
   /**
    * Whether to enable the cache in CI environment.
    *
+   * 是否在 CI 环境中启用缓存。
+   *
    * @default false
+   */
+  enableInCI?: boolean
+
+  /**
+   * @deprecated Use `enableInCI` instead.
+   *
+   * Whether to enable the cache in CI environment.
+   *
+   * 是否在 CI 环境中启用缓存。
    */
   enableInCi?: boolean
 }
@@ -36,13 +47,15 @@ export interface CachePluginOptions {
  */
 export const cachePlugin = ({
   type,
-  enableInCi = false,
+  // oxlint-disable-next-line typescript/no-deprecated
+  enableInCi,
+  enableInCI = enableInCi ?? false,
 }: CachePluginOptions = {}): Plugin => {
   const plugin: Plugin = {
     name: '@vuepress/plugin-cache',
   }
 
-  if (ci.isCI && !enableInCi) return plugin
+  if (ci.isCI && !enableInCI) return plugin
 
   return {
     ...plugin,

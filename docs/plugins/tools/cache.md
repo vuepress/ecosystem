@@ -47,10 +47,14 @@ Cache type.
 - `'memory'`: Use memory cache. It can achieve optimal optimization effects, but as the project scales up, it occupies more memory, suitable for projects with fewer pages.
 - `'filesystem'`: Use file system cache, for complex projects with many pages, it is recommended.
 
-@`enableInCi` type=boolean
+@`enableInCI` type=boolean
 
 Whether to enable the cache in CI environment.
 
 In most cases, the cache plugin could slow down the speed in CI.
+
+@`enableInCi` type=boolean deprecated
+
+Deprecated, use `enableInCI` instead.
 
 :::

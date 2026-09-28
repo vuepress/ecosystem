@@ -48,10 +48,14 @@ export default {
 - `'memory'`: 内存缓存，可以获得最佳的优化效果，但随着项目规模增长，内存占用更多，适合页面较少的项目。
 - `'filesystem'`: 文件系统缓存，对于包含许多页面的复杂项目，建议使用。
 
-@`enableInCi` type=boolean
+@`enableInCI` type=boolean
 
 在 CI 环境中是否启用缓存。
 
 在大多数情况下，缓存插件可能会减慢 CI 的速度。
+
+@`enableInCi` type=boolean deprecated
+
+已废弃，请使用 `enableInCI`。
 
 :::
