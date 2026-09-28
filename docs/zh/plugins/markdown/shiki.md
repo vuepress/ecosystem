@@ -47,6 +47,22 @@ export default {
 
 参考：[Shiki > 双主题](https://shiki.tmrs.site/guide/dual-themes)。
 
+代码块的背景色与基础文字色也取自主题，因此 `--code-c-bg`、`--code-c-text` 与 `--code-c-line-number` 始终与主题一致，且文字与背景的对比度始终不低于 4.5:1：
+
+```css
+:root {
+  --code-c-bg: rgb(250 250 250);
+  --code-c-text: rgb(56 58 66);
+  --code-c-line-number: rgb(114 115 121);
+}
+
+[data-theme='dark'] {
+  --code-c-bg: rgb(40 44 52);
+  --code-c-text: rgb(171 178 191);
+  --code-c-line-number: rgb(140 147 158);
+}
+```
+
 ### 语言 {#languages}
 
 插件会自动加载你的 Markdown 文件中使用的语言，因此 `langs` 只用于预加载额外语言，`langAlias` 用于添加自定义语言别名。

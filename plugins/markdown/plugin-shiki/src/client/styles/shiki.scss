@@ -1,5 +1,13 @@
 :root {
-  // base color
+  /*
+   * Fallback base color, used when the theme colors can not be resolved.
+   * The colors of the theme are declared by the plugin, which reads the
+   * background and the foreground of the theme and keeps the text above the
+   * minimum contrast.
+   *
+   * 兜底的基础颜色，在主题颜色无法解析时使用。主题颜色由插件声明，它会读取主题的
+   * 背景与前景颜色，并保证文字高于最低对比度。
+   */
   --code-c-text: #9e9e9e;
 
   // highlight

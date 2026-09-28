@@ -2,12 +2,14 @@ import { getModulePath } from '@vuepress/helper'
 import type { App } from 'vuepress'
 
 import type { ShikiPluginOptions } from './options.js'
+import type { CodeThemeColors } from './themeColors.js'
+import { getCodeThemeColorsCss } from './themeColors.js'
 import { PLUGIN_NAME } from './utils.js'
 
 const resolve = (module: string): string => getModulePath(module, import.meta)
 
 // oxlint-disable-next-line max-lines-per-function, complexity, max-statements
-export const prepareClientConfigFile = (
+export const prepareClientConfigFile = async (
   app: App,
   {
     lineNumbers = true,
@@ -22,11 +24,23 @@ export const prepareClientConfigFile = (
     whitespace,
     twoslash,
   }: ShikiPluginOptions,
+  colors: { dark: CodeThemeColors | null; light: CodeThemeColors | null },
 ): Promise<string> => {
   const imports: string[] = [
     `import "${resolve('@vuepress/highlighter-helper/styles/base.css')}"`,
     `import "${resolve(`${PLUGIN_NAME}/shiki.css`)}"`,
   ]
+
+  // The base colors of the code blocks are resolved from the themes of the
+  // highlighter, so they are written to the temp folder instead of being part
+  // of the styles of the plugin. The import comes after `shiki.css`, which
+  // holds the fallback colors.
+  const css = getCodeThemeColorsCss(colors)
+
+  if (css) {
+    await app.writeTemp('shiki/theme-colors.css', css)
+    imports.push(`import "@temp/shiki/theme-colors.css"`)
+  }
 
   const enhances: string[] = []
   const setups: string[] = []

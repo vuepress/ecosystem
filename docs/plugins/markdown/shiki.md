@@ -47,6 +47,22 @@ With `themes`, both themes are injected into code blocks as `--shiki-light` and 
 
 See also: [Shiki > Dual Themes](https://shiki.style/guide/dual-themes).
 
+The background and the base text color of the code blocks are taken from the theme as well, so `--code-c-bg`, `--code-c-text` and `--code-c-line-number` always match the theme, and the text always reaches a contrast ratio of at least 4.5:1 against the background:
+
+```css
+:root {
+  --code-c-bg: rgb(250 250 250);
+  --code-c-text: rgb(56 58 66);
+  --code-c-line-number: rgb(114 115 121);
+}
+
+[data-theme='dark'] {
+  --code-c-bg: rgb(40 44 52);
+  --code-c-text: rgb(171 178 191);
+  --code-c-line-number: rgb(140 147 158);
+}
+```
+
 ### Languages
 
 The plugin automatically loads the languages used in your markdown files, so `langs` is only needed to preload extra languages, and `langAlias` to add custom language aliases.

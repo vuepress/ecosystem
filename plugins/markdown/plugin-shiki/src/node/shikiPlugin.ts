@@ -23,6 +23,8 @@ import {
 } from './markdown/index.js'
 import type { ShikiPluginOptions } from './options.js'
 import { prepareClientConfigFile } from './prepareClientConfigFile.js'
+import type { CodeThemeColors } from './themeColors.js'
+import { resolveCodeThemeColors } from './themeColors.js'
 import { TWOSLASH_RE, logger } from './utils.js'
 
 /**
@@ -73,6 +75,24 @@ export const shikiPlugin =
     /** Whether to enable the `v-pre` configuration of the code block */
     let enableVPre = true
 
+    /**
+     * Base colors of the code blocks of the themes
+     *
+     * They are resolved together with the highlighter, which reads the
+     * background and the foreground of a theme. The `extendsMarkdown` hook runs
+     * before `clientConfigFile`, which needs the colors to write them to the
+     * temp folder.
+     *
+     * 主题中代码块的基础颜色
+     *
+     * 它们与高亮器一同解析，后者会读取主题的背景与前景颜色。`extendsMarkdown` 钩子在 `clientConfigFile`
+     * 之前运行，而后者的写入临时目录需要这些颜色。
+     */
+    let codeThemeColors: {
+      dark: CodeThemeColors | null
+      light: CodeThemeColors | null
+    } = { dark: null, light: null }
+
     return {
       name: '@vuepress/plugin-shiki',
 
@@ -97,6 +117,8 @@ export const shikiPlugin =
         const markdownFilePathGetter = createMarkdownFilePathGetter(md)
         const { highlighter, loadLang, extraTransformers } =
           await createShikiHighlighter(app, shikiOptions, enableVPre)
+
+        codeThemeColors = resolveCodeThemeColors(highlighter, shikiOptions)
 
         md.options.highlight = getHighLightFunction(
           highlighter,
@@ -125,6 +147,7 @@ export const shikiPlugin =
         }
       },
 
-      clientConfigFile: () => prepareClientConfigFile(app, shikiOptions),
+      clientConfigFile: () =>
+        prepareClientConfigFile(app, shikiOptions, codeThemeColors),
     }
   }
