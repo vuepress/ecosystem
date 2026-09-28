@@ -29,9 +29,9 @@ export default {
 
 ## 支持的服务商
 
-- [Artalk](./artalk/)
-- [Giscus](./giscus/)
-- [Twikoo](./twikoo/)
+- [Artalk](./artalk.md)
+- [Giscus](./giscus.md)
+- [Twikoo](./twikoo.md)
 - [Waline](./waline/)
 
 ## 指南

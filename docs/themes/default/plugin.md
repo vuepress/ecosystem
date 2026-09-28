@@ -69,13 +69,13 @@ Enable [@vuepress/plugin-prismjs](../../plugins/markdown/prismjs.md) or not.
 
 @`seo` type=`Partial<SeoPluginOptions> | boolean` default=`true`
 
-Enable [@vuepress/plugin-seo](../../plugins/seo/seo/README.md) or not.
+Enable [@vuepress/plugin-seo](../../plugins/seo/seo.md) or not.
 
 Object value is supported as plugin options.
 
 @`sitemap` type=`Partial<SitemapPluginOptions> | boolean` default=`true`
 
-Enable [@vuepress/plugin-sitemap](../../plugins/seo/sitemap/README.md) or not.
+Enable [@vuepress/plugin-sitemap](../../plugins/seo/sitemap.md) or not.
 
 Object value is supported as plugin options.
 

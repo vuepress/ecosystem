@@ -68,7 +68,7 @@ You can control the visibility of the comment section and customize the unique i
 
 ## Available Providers
 
-We support the following comment services. Please refer to their respective guides for setup details: [Giscus](giscus/README.md), [Waline](waline/README.md), [Artalk](artalk/README.md), and [Twikoo](twikoo/README.md).
+We support the following comment services. Please refer to their respective guides for setup details: [Giscus](giscus.md), [Waline](waline/README.md), [Artalk](artalk.md), and [Twikoo](twikoo.md).
 
 ::: tip Recommendations
 
@@ -80,9 +80,9 @@ We support the following comment services. Please refer to their respective guid
 ## Common Options
 
 ::: fields
-@`provider` type=`"Artalk" | "Giscus" | "Twikoo" | "Waline" | "None"` default=`"None"`
+@`provider` scope="Plugin Option Only" type=`"Artalk" | "Giscus" | "Twikoo" | "Waline" | "None"` default=`"None"`
 
-The comment service provider to use. <Badge text="Plugin Option Only" type="warning"/>
+The comment service provider to use.
 
 @`comment` type=boolean default=`true`
 

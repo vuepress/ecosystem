@@ -68,7 +68,7 @@ defineArtalkConfig({
 
 ## 可选服务商
 
-我们支持以下评论服务。请参考各自的指南以获取设置详情：[Giscus](giscus/README.md)、[Waline](waline/README.md)、[Artalk](artalk/README.md) 和 [Twikoo](twikoo/README.md)。
+我们支持以下评论服务。请参考各自的指南以获取设置详情：[Giscus](giscus.md)、[Waline](waline/README.md)、[Artalk](artalk.md) 和 [Twikoo](twikoo.md)。
 
 ::: tip 推荐
 
@@ -80,9 +80,9 @@ defineArtalkConfig({
 ## 通用选项
 
 ::: fields
-@`provider` type=`"Artalk" | "Giscus" | "Twikoo" | "Waline" | "None"` default=`"None"`
+@`provider` scope="仅限插件选项" type=`"Artalk" | "Giscus" | "Twikoo" | "Waline" | "None"` default=`"None"`
 
-要使用的评论服务提供商。 <Badge text="仅限插件选项" type="warning"/>
+要使用的评论服务提供商。
 
 @`comment` type=boolean default=`true`
 

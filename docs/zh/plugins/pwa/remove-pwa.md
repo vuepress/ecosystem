@@ -10,7 +10,7 @@ icon: trash-2
 
 ::: tip 如果你启用过 PWA，为什么需要这个插件？
 
-PWA 插件，如 [`@vuepress/plugin-pwa`](./pwa/README.md) 会注册 service worker 到你的站点，使其可以被缓存并离线访问。
+PWA 插件，如 [`@vuepress/plugin-pwa`](./pwa.md) 会注册 service worker 到你的站点，使其可以被缓存并离线访问。
 
 如果你删除 PWA 插件，旧的 service worker 仍会存在，但它无法获得更新，因为没有可更新的新 service worker。用户将继续使用你网站的旧版本。
 

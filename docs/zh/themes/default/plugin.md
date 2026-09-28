@@ -69,13 +69,13 @@ export default {
 
 @`seo` type=`Partial<SeoPluginOptions> | boolean` default=`true`
 
-是否启用 [@vuepress/plugin-seo](../../plugins/seo/seo/README.md)。
+是否启用 [@vuepress/plugin-seo](../../plugins/seo/seo.md)。
 
 支持对象格式以作为插件选项。
 
 @`sitemap` type=`Partial<SitemapPluginOptions> | boolean` default=`true`
 
-是否启用 [@vuepress/plugin-sitemap](../../plugins/seo/sitemap/README.md)。
+是否启用 [@vuepress/plugin-sitemap](../../plugins/seo/sitemap.md)。
 
 支持对象格式以作为插件选项。
 

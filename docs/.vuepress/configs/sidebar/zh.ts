@@ -66,9 +66,7 @@ export const sidebarZh: SidebarOptions = {
     {
       text: '博客',
       icon: 'la:blog',
-      prefix: 'blog/',
-      link: 'blog/',
-      children: ['guide', 'config'],
+      link: 'blog',
     },
     {
       text: '评论',
@@ -80,9 +78,7 @@ export const sidebarZh: SidebarOptions = {
         {
           text: 'Giscus',
           icon: 'github',
-          prefix: 'giscus/',
-          link: 'giscus/',
-          children: ['', 'config'],
+          link: 'giscus',
         },
         {
           text: 'Waline',
@@ -94,16 +90,12 @@ export const sidebarZh: SidebarOptions = {
         {
           text: 'Artalk',
           icon: 'https://artalk.js.org/favicon.png',
-          prefix: 'artalk/',
-          link: 'artalk/',
-          children: ['', 'config'],
+          link: 'artalk',
         },
         {
           text: 'Twikoo',
           icon: 'https://twikoo.js.org/twikoo-logo-mini.png',
-          prefix: 'twikoo/',
-          link: 'twikoo/',
-          children: ['', 'config'],
+          link: 'twikoo',
         },
       ],
     },
@@ -123,9 +115,7 @@ export const sidebarZh: SidebarOptions = {
     {
       text: 'Sass Palette',
       icon: 'palette',
-      prefix: 'sass-palette/',
-      link: 'sass-palette/',
-      children: ['guide', 'config'],
+      link: 'sass-palette',
     },
     'theme-data',
     'toc',
@@ -189,11 +179,9 @@ export const sidebarZh: SidebarOptions = {
     {
       text: 'PWA',
       icon: 'layout-grid',
-      prefix: 'pwa/',
-      link: 'pwa/',
-      children: ['guide', 'config'],
+      link: 'pwa',
     },
-    '/plugins/pwa/remove-pwa',
+    '/zh/plugins/pwa/remove-pwa',
   ],
 
   '/zh/plugins/tools/': [
@@ -218,16 +206,12 @@ export const sidebarZh: SidebarOptions = {
     {
       text: '搜索引擎增强',
       icon: 'scan-search',
-      prefix: 'seo/',
-      link: 'seo/',
-      children: ['guide', 'config'],
+      link: 'seo',
     },
     {
       text: '站点地图',
       icon: 'network',
-      prefix: 'sitemap/',
-      link: 'sitemap/',
-      children: ['guide', 'config', 'frontmatter'],
+      link: 'sitemap',
     },
   ],
 

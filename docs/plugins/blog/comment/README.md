@@ -29,9 +29,9 @@ export default {
 
 ## Supported Providers
 
-- [Artalk](./artalk/)
-- [Giscus](./giscus/)
-- [Twikoo](./twikoo/)
+- [Artalk](./artalk.md)
+- [Giscus](./giscus.md)
+- [Twikoo](./twikoo.md)
 - [Waline](./waline/)
 
 ## Guide

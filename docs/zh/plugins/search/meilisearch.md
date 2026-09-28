@@ -114,7 +114,7 @@ docker pull jqiue/docs-scraper:latest
 ```
 
 - `index_uid` 应为你的索引分配一个唯一名称，用于搜索。
-- `start_urls` 和 `sitemap_urls`（可选）应根据要抓取的网站进行自定义。我们建议与 [`@vuepress/plugin-sitemap`](../seo/sitemap/README.md) 插件一起使用并提供对应的 `sitemap.xml` URL。
+- `start_urls` 和 `sitemap_urls`（可选）应根据要抓取的网站进行自定义。我们建议与 [`@vuepress/plugin-sitemap`](../seo/sitemap.md) 插件一起使用并提供对应的 `sitemap.xml` URL。
 - `selectors` 字段可以根据第三方主题 DOM 结构进行自定义。
 - 你可以根据需要向 `custom_settings` 中添加新字段。
 

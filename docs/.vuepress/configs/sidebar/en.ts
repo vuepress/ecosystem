@@ -66,9 +66,7 @@ export const sidebarEn: SidebarOptions = {
     {
       text: 'Blog',
       icon: 'la:blog',
-      prefix: 'blog/',
-      link: 'blog/',
-      children: ['guide', 'config'],
+      link: 'blog',
     },
     {
       text: 'Comment',
@@ -80,9 +78,7 @@ export const sidebarEn: SidebarOptions = {
         {
           text: 'Giscus',
           icon: 'github',
-          prefix: 'giscus/',
-          link: 'giscus/',
-          children: ['', 'config'],
+          link: 'giscus',
         },
         {
           text: 'Waline',
@@ -94,16 +90,12 @@ export const sidebarEn: SidebarOptions = {
         {
           text: 'Artalk',
           icon: 'https://artalk.js.org/favicon.png',
-          prefix: 'artalk/',
-          link: 'artalk/',
-          children: ['', 'config'],
+          link: 'artalk',
         },
         {
           text: 'Twikoo',
           icon: 'https://twikoo.js.org/twikoo-logo-mini.png',
-          prefix: 'twikoo/',
-          link: 'twikoo/',
-          children: ['', 'config'],
+          link: 'twikoo',
         },
       ],
     },
@@ -123,9 +115,7 @@ export const sidebarEn: SidebarOptions = {
     {
       text: 'Sass Palette',
       icon: 'palette',
-      prefix: 'sass-palette/',
-      link: 'sass-palette/',
-      children: ['guide', 'config'],
+      link: 'sass-palette',
     },
     'theme-data',
     'toc',
@@ -189,9 +179,7 @@ export const sidebarEn: SidebarOptions = {
     {
       text: 'PWA',
       icon: 'layout-grid',
-      prefix: 'pwa/',
-      link: 'pwa/',
-      children: ['guide', 'config'],
+      link: 'pwa',
     },
     '/plugins/pwa/remove-pwa',
   ],
@@ -218,16 +206,12 @@ export const sidebarEn: SidebarOptions = {
     {
       text: 'SEO',
       icon: 'scan-search',
-      prefix: 'seo/',
-      link: 'seo/',
-      children: ['guide', 'config'],
+      link: 'seo',
     },
     {
       text: 'Sitemap',
       icon: 'network',
-      prefix: 'sitemap/',
-      link: 'sitemap/',
-      children: ['guide', 'config', 'frontmatter'],
+      link: 'sitemap',
     },
   ],
 

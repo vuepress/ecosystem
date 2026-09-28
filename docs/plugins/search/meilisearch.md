@@ -114,7 +114,7 @@ Then, create a **correct configuration file** for the scraper. Here, we provide 
 ```
 
 - `index_uid` should be a unique name for your index, which will be used to search.
-- `start_urls` and `sitemap_urls` (optional) shall be customized according to the website to be scraped. We recommend using it with [`@vuepress/plugin-sitemap`](../seo/sitemap/README.md) plugin and providing the corresponding `sitemap.xml` URL.
+- `start_urls` and `sitemap_urls` (optional) shall be customized according to the website to be scraped. We recommend using it with [`@vuepress/plugin-sitemap`](../seo/sitemap.md) plugin and providing the corresponding `sitemap.xml` URL.
 - `selectors` field can be customized according to third-party theme DOM structure.
 - You can add new fields to `custom_settings` according to your needs.
 
