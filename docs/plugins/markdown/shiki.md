@@ -47,7 +47,7 @@ With `themes`, both themes are injected into code blocks as `--shiki-light` and 
 
 See also: [Shiki > Dual Themes](https://shiki.style/guide/dual-themes).
 
-The background and the base text color of the code blocks are taken from the theme as well, so `--code-c-bg`, `--code-c-text` and `--code-c-line-number` always match the theme, and the text always reaches a contrast ratio of at least 4.5:1 against the background:
+The background of the code blocks is taken from the theme, and so are the colors of the text the plugin draws itself — the language label, the line numbers, the collapsed lines and the code group tabs, which `--code-c-bg`, `--code-c-text` and `--code-c-line-number` hold:
 
 ```css
 :root {
@@ -62,6 +62,8 @@ The background and the base text color of the code blocks are taken from the the
   --code-c-line-number: rgb(140 147 158);
 }
 ```
+
+A theme whose own foreground does not reach a contrast of 4.5:1 against its background has its foreground adjusted, so those texts stay readable.
 
 ### Languages
 

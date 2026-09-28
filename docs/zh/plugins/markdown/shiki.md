@@ -47,7 +47,7 @@ export default {
 
 参考：[Shiki > 双主题](https://shiki.tmrs.site/guide/dual-themes)。
 
-代码块的背景色与基础文字色也取自主题，因此 `--code-c-bg`、`--code-c-text` 与 `--code-c-line-number` 始终与主题一致，且文字与背景的对比度始终不低于 4.5:1：
+代码块的背景色取自主题，插件自行绘制的文字颜色也是如此 —— 语言标签、行号、折叠行与代码分组标签，它们分别由 `--code-c-bg`、`--code-c-text` 与 `--code-c-line-number` 提供：
 
 ```css
 :root {
@@ -62,6 +62,8 @@ export default {
   --code-c-line-number: rgb(140 147 158);
 }
 ```
+
+当主题自身的前景色与其背景的对比度不足 4.5:1 时，前景色会被调整，因此这些文字始终清晰可读。
 
 ### 语言 {#languages}
 

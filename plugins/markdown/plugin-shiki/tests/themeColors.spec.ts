@@ -4,6 +4,7 @@ import { describe, expect, it } from 'vitest'
 import {
   MIN_TEXT_CONTRAST,
   ensureContrast,
+  formatColor,
   getCodeThemeColorsCss,
   getContrastRatio,
   getLuminance,
@@ -99,6 +100,40 @@ describe(ensureContrast, () => {
       MIN_TEXT_CONTRAST,
     )
     expect(result[0]).toBeGreaterThan(128)
+  })
+
+  it('should reach the ratio on a midtone background', () => {
+    // a midtone background can only be reached by one of the two endpoints,
+    // the other one stays below the ratio no matter how far it is pushed
+    for (const background of [
+      [179, 179, 179],
+      [128, 128, 128],
+      [90, 90, 90],
+      [200, 200, 200],
+    ] as [number, number, number][]) {
+      for (const text of [
+        [128, 128, 128],
+        [200, 200, 200],
+        [60, 60, 67],
+      ] as [number, number, number][]) {
+        const result = ensureContrast(text, background)
+
+        expect(getContrastRatio(result, background)).toBeGreaterThanOrEqual(
+          MIN_TEXT_CONTRAST,
+        )
+      }
+    }
+  })
+
+  it('should keep the contrast of the original color when it already reaches the ratio', () => {
+    // `#8a8a8a` on `#b3b3b3` is below the ratio, and only black can reach it
+    const result = ensureContrast([138, 138, 138], [179, 179, 179])
+
+    expect(getContrastRatio(result, [179, 179, 179])).toBeGreaterThanOrEqual(
+      MIN_TEXT_CONTRAST,
+    )
+    // the result is darker, a lighter color could never reach the ratio
+    expect(getLuminance(result)).toBeLessThan(getLuminance([179, 179, 179]))
   })
 
   it('should keep the hue as much as possible', () => {
@@ -261,24 +296,86 @@ describe(getCodeThemeColorsCss, () => {
     expect(css).toContain("[data-theme='dark'] {")
     expect(css).not.toContain(':root {')
   })
+
+  it('should not fake the dark mode from the light theme', () => {
+    // the dark mode falls back to the inline background of the code block when
+    // its own colors are unknown, a light background must not mask it
+    const css = getCodeThemeColorsCss({ light, dark: null })
+
+    expect(css).toContain(':root {')
+    expect(css).not.toContain('data-theme')
+  })
 })
 
 describe('shiki themes', () => {
-  it('should resolve the colors of every bundled theme', async () => {
-    // a smoke test over the bundled themes: the colors of a theme are always
-    // resolvable, so the generated CSS never falls back to the hardcoded color
-    const names = bundledThemesInfo.map(({ id }) => id).slice(0, 20)
+  it('should keep every bundled theme above the minimum contrast', async () => {
+    // the promise only holds if it holds for every theme, and only a few
+    // themes are below the ratio themselves, so the adjustment has to be
+    // exercised over the full list
+    const names = bundledThemesInfo.map(({ id }) => id)
     const highlighter = await createHighlighter({ langs: [], themes: names })
     const colors = names.map((name) =>
       getThemeColors(highlighter.getTheme(name)),
     )
     const unresolved = names.filter((_name, index) => colors[index] == null)
-    const ratios = colors.map((item) =>
+    const textRatios = colors.map((item) =>
       getContrastRatio(parseColor(item!.text)!, parseColor(item!.bg)!),
+    )
+    const lineRatios = colors.map((item) =>
+      getContrastRatio(parseColor(item!.lineNumber)!, parseColor(item!.bg)!),
     )
 
     expect(unresolved).toStrictEqual([])
-    // no bundled theme produces text that is hard to read
-    expect(Math.min(...ratios)).toBeGreaterThanOrEqual(MIN_TEXT_CONTRAST)
+    expect(Math.min(...textRatios)).toBeGreaterThanOrEqual(MIN_TEXT_CONTRAST)
+    expect(Math.min(...lineRatios)).toBeGreaterThanOrEqual(MIN_TEXT_CONTRAST)
+  })
+
+  it('should adjust only the themes that need it', async () => {
+    const names = bundledThemesInfo.map(({ id }) => id)
+    const highlighter = await createHighlighter({ langs: [], themes: names })
+    const lowContrast = names.filter((name) => {
+      const theme = highlighter.getTheme(name)
+
+      return (
+        getContrastRatio(parseColor(theme.fg)!, parseColor(theme.bg)!) <
+        MIN_TEXT_CONTRAST
+      )
+    })
+    const adjusted = names.filter((name) => {
+      const theme = highlighter.getTheme(name)
+      const colors = getThemeColors(theme)!
+
+      return colors.text !== formatColor(parseColor(theme.fg)!)
+    })
+
+    // the two themes below the ratio themselves are pushed to it
+    expect(lowContrast).toStrictEqual([
+      'material-theme-lighter',
+      'solarized-light',
+    ])
+    // the translucent foregrounds of the other two are composited
+    expect(adjusted).toStrictEqual([
+      'material-theme-lighter',
+      'solarized-light',
+      'vitesse-black',
+      'vitesse-dark',
+    ])
+  })
+
+  it('should composite a translucent foreground over the background', async () => {
+    // `vitesse-*` themes use a translucent foreground, which is composited
+    // before the contrast is measured
+    const highlighter = await createHighlighter({
+      langs: [],
+      themes: ['vitesse-black'],
+    })
+    const theme = highlighter.getTheme('vitesse-black')
+    const colors = getThemeColors(theme)!
+
+    expect(theme.fg).toHaveLength(9)
+    expect(colors.text).not.toBe(formatColor(parseColor(theme.fg)!))
+    expect(
+      getContrastRatio(parseColor(colors.text)!, parseColor(colors.bg)!),
+    ).toBeGreaterThanOrEqual(MIN_TEXT_CONTRAST)
   })
 })

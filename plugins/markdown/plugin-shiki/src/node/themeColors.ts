@@ -185,15 +185,116 @@ export const formatColor = ([red, green, blue]: Rgb): string =>
   `rgb(${red} ${green} ${blue})`
 
 /**
+ * Blend a color over a background
+ *
+ * 将颜色与背景混合
+ *
+ * @param rgb - SRGB channels of the color / 颜色的 sRGB 通道
+ * @param background - SRGB channels of the background / 背景的 sRGB 通道
+ * @param alpha - Alpha of the color / 颜色的 alpha
+ * @returns The blended color / 混合后的颜色
+ */
+const blend = (rgb: Rgb, background: Rgb, alpha: number): Rgb =>
+  rgb.map((channel, index) =>
+    Math.round(channel * alpha + background[index] * (1 - alpha)),
+  ) as Rgb
+
+/**
+ * Mix a color towards a target by an amount
+ *
+ * 将颜色按指定比例向目标颜色混合
+ *
+ * @param rgb - SRGB channels of the color / 颜色的 sRGB 通道
+ * @param target - SRGB channels of the target / 目标颜色的 sRGB 通道
+ * @param amount - Mixing amount in `[0, 1]` / `[0, 1]` 范围内的混合比例
+ * @returns The mixed color / 混合后的颜色
+ */
+const mix = (rgb: Rgb, target: Rgb, amount: number): Rgb =>
+  rgb.map((channel, index) =>
+    Math.round(channel + (target[index] - channel) * amount),
+  ) as Rgb
+
+/**
+ * Get the alpha channel of a color
+ *
+ * 获取颜色的 alpha 通道
+ *
+ * @param color - A color / 颜色
+ * @returns The alpha in `[0, 1]`, `1` when there is none / `[0, 1]` 范围内的 alpha，
+ *   无 alpha 时为 `1`
+ */
+const parseColorAlpha = (color: string): number => {
+  const hex = /^#(?<digits>[\da-f]{4}|[\da-f]{8})$/iu.exec(color.trim())
+
+  if (hex) {
+    const { digits } = hex.groups!
+    const value =
+      digits.length === 4 ? `${digits[3]}${digits[3]}` : digits.slice(6)
+
+    return Number.parseInt(value, 16) / 255
+  }
+
+  const alpha = /\/\s*(?<alpha>[\d.]+)%?\s*\)/u.exec(color.trim())
+  // `rgba(r, g, b, a)` keeps the alpha as the fourth channel
+  const legacy = /^rgba\([^)]*,(?<alpha>[\d.]+)\s*\)$/u.exec(color.trim())
+  const match = alpha ?? legacy
+
+  if (!match || match.groups?.alpha === undefined) return 1
+
+  const value = Number(match.groups.alpha)
+
+  if (Number.isNaN(value)) return 1
+
+  return Math.min(1, Math.max(0, alpha ? value / 100 : value))
+}
+
+/**
+ * Find the smallest mixing amount towards a target that reaches the ratio
+ *
+ * 求出朝目标颜色混合并达到该对比度的最小比例
+ *
+ * @param rgb - SRGB channels of the color / 颜色的 sRGB 通道
+ * @param target - SRGB channels of the target / 目标颜色的 sRGB 通道
+ * @param background - SRGB channels of the background / 背景的 sRGB 通道
+ * @param ratio - Expected contrast ratio / 期望的对比度
+ * @returns The smallest mixing amount that reaches the ratio, or `null` when
+ *   the target does not reach it at all / 达到该对比度的最小混合比例，目标完全无法 达到时为 `null`
+ */
+const findMixAmount = (
+  rgb: Rgb,
+  target: Rgb,
+  background: Rgb,
+  ratio: number,
+): number | null => {
+  if (getContrastRatio(target, background) < ratio) return null
+
+  let low = 0
+  let high = 1
+
+  // the ratio of a color mixed towards a pure endpoint is monotonic once the
+  // original color is below the ratio, so bisection finds the boundary
+  for (let step = 0; step < 20; step++) {
+    const middle = (low + high) / 2
+
+    if (getContrastRatio(mix(rgb, target, middle), background) >= ratio)
+      high = middle
+    else low = middle
+  }
+
+  return high
+}
+
+/**
  * Get a color that reaches a contrast ratio against a background
  *
- * The color is moved towards black or white, depending on the background, by
- * the smallest amount that reaches the ratio, so that the hue is kept as much
- * as possible.
+ * The color is moved towards black or white, whichever reaches the ratio with
+ * the smallest change. A midtone background can only be reached by one of the
+ * two, so both are tried, and the one with the better contrast is used when
+ * neither of them reaches the ratio at all.
  *
  * 获取与背景达到指定对比度的颜色
  *
- * 颜色会沿着背景的明暗方向朝黑或白移动，移动量为达到该对比度的最小值，以尽可能保留色相。
+ * 颜色会朝黑或白中变化最小的方向移动。中灰背景可能只有其中一个方向能达到，因此两者都会 尝试；两者都无法达到时，使用对比度更高的一个。
  *
  * @param rgb - SRGB channels of the color / 颜色的 sRGB 通道
  * @param background - SRGB channels of the background / 背景的 sRGB 通道
@@ -208,43 +309,33 @@ export const ensureContrast = (
 ): Rgb => {
   if (getContrastRatio(rgb, background) >= ratio) return rgb
 
-  // a light background needs a darker color, and a dark one needs a lighter
-  const target: Rgb =
-    getLuminance(background) >= 0.5 ? [0, 0, 0] : [255, 255, 255]
-  const mix = (amount: number): Rgb =>
-    rgb.map((channel, index) =>
-      Math.round(channel + (target[index] - channel) * amount),
-    ) as Rgb
+  const endpoints: Rgb[] = [
+    [255, 255, 255],
+    [0, 0, 0],
+  ]
+  const candidates = endpoints
+    .map((target) => ({
+      amount: findMixAmount(rgb, target, background, ratio),
+      target,
+    }))
+    .filter(
+      (candidate): candidate is { amount: number; target: Rgb } =>
+        candidate.amount != null,
+    )
 
-  let low = 0
-  let high = 1
-
-  // the contrast is monotonic in the amount, so the smallest amount that
-  // reaches the ratio is found by bisection
-  for (let step = 0; step < 20; step++) {
-    const middle = (low + high) / 2
-
-    if (getContrastRatio(mix(middle), background) >= ratio) high = middle
-    else low = middle
+  // neither endpoint reaches the ratio, so the better one is used
+  if (candidates.length === 0) {
+    return getContrastRatio(endpoints[0], background) >=
+      getContrastRatio(endpoints[1], background)
+      ? endpoints[0]
+      : endpoints[1]
   }
 
-  return mix(high)
-}
+  // the smallest change keeps the color as close to the original as possible
+  const best = candidates.reduce((a, b) => (b.amount < a.amount ? b : a))
 
-/**
- * Blend a color over a background
- *
- * 将颜色与背景混合
- *
- * @param rgb - SRGB channels of the color / 颜色的 sRGB 通道
- * @param background - SRGB channels of the background / 背景的 sRGB 通道
- * @param alpha - Alpha of the color / 颜色的 alpha
- * @returns The blended color / 混合后的颜色
- */
-const blend = (rgb: Rgb, background: Rgb, alpha: number): Rgb =>
-  rgb.map((channel, index) =>
-    Math.round(channel * alpha + background[index] * (1 - alpha)),
-  ) as Rgb
+  return mix(rgb, best.target, best.amount)
+}
 
 /**
  * Get the line number color of a theme
@@ -304,7 +395,13 @@ export const getThemeColors = (
 
   if (!background || !foreground) return null
 
-  const text = ensureContrast(foreground, background)
+  // a translucent foreground is composited over the background, which is the
+  // color that is actually rendered
+  const alpha = parseColorAlpha(theme.fg)
+  const text = ensureContrast(
+    alpha === 1 ? foreground : blend(foreground, background, alpha),
+    background,
+  )
 
   return {
     bg: formatColor(background),
@@ -372,7 +469,8 @@ export const getCodeThemeColorsCss = (colors: {
   --code-c-bg: ${theme.bg};
   --code-c-line-number: ${theme.lineNumber};`
 
-  // a single theme is used by both modes (the two colors are the same)
+  // a single theme is used by both modes (the two colors are the same), so the
+  // declaration on the root element covers both of them
   if (light && dark && light.bg === dark.bg && light.text === dark.text)
     return `:root {\n${declarations(light)}\n}\n`
 
@@ -380,10 +478,9 @@ export const getCodeThemeColorsCss = (colors: {
 
   if (light) rules.push(`:root {\n${declarations(light)}\n}`)
 
-  const darkTheme = dark ?? light
-
-  if (darkTheme)
-    rules.push(`[data-theme='dark'] {\n${declarations(darkTheme)}\n}`)
+  // only the available mode is declared, so that the inline background of the
+  // code block is kept when the colors of a mode can not be resolved
+  if (dark) rules.push(`[data-theme='dark'] {\n${declarations(dark)}\n}`)
 
   return `${rules.join('\n')}\n`
 }
