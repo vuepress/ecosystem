@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.137](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.136...v2.0.0-rc.137) (2026-09-28)
+
+### Bug Fixes
+
+- **deps:** update videojs to v10.0.0-rc.3 ([#888](https://github.com/vuepress/ecosystem/issues/888)) ([5189a27](https://github.com/vuepress/ecosystem/commit/5189a2778c61427ecc10eb26cd7421516babcdf2))
+- **deps:** update videojs to v10.0.0-rc.4 ([#917](https://github.com/vuepress/ecosystem/issues/917)) ([c056dff](https://github.com/vuepress/ecosystem/commit/c056dff493cb4a4a4ceb935b9c7f225be140492f))
+
 # [2.0.0-rc.136](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.135...v2.0.0-rc.136) (2026-09-25)
 
 ### Bug Fixes

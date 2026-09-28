@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.137](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.136...v2.0.0-rc.137) (2026-09-28)
+
+### Features
+
+- complete locale data for every plugin ([#918](https://github.com/vuepress/ecosystem/issues/918)) ([d876f56](https://github.com/vuepress/ecosystem/commit/d876f560f81ec5abf687116f672b16f66cb9f787))
+
 # [2.0.0-rc.136](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.135...v2.0.0-rc.136) (2026-09-25)
 
 **Note:** Version bump only for package @vuepress/plugin-docsearch

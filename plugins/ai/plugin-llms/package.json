@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-llms",
-  "version": "2.0.0-rc.135",
+  "version": "2.0.0-rc.137",
   "description": "VuePress plugin - llms.txt",
   "keywords": [
     "AI",

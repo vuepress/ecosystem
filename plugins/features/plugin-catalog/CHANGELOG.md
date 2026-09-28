@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.137](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.136...v2.0.0-rc.137) (2026-09-28)
+
+### Features
+
+- complete locale data for every plugin ([#918](https://github.com/vuepress/ecosystem/issues/918)) ([d876f56](https://github.com/vuepress/ecosystem/commit/d876f560f81ec5abf687116f672b16f66cb9f787))
+- **plugin-catalog:** pass app to frontmatter getter ([#920](https://github.com/vuepress/ecosystem/issues/920)) ([234acf7](https://github.com/vuepress/ecosystem/commit/234acf749ee5b70df2ab99348918e531e32ac04b))
+
 # [2.0.0-rc.135](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.134...v2.0.0-rc.135) (2026-09-24)
 
 **Note:** Version bump only for package @vuepress/plugin-catalog
