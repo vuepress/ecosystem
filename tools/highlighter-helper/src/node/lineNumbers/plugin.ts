@@ -26,6 +26,8 @@ export const lineNumbers = (
     resolveLineNumbers: customResolveLineNumbers,
   }: MarkdownItLineNumbersOptions = {},
 ): void => {
+  if (lineNumberOptions === 'disable') return
+
   const rawFence = md.renderer.rules.fence!
 
   md.renderer.rules.fence = (...args): string => {
