@@ -35,6 +35,33 @@ describe('markdown image plugin', () => {
     }
   })
 
+  it('forwards the figure options to the figure plugin', async () => {
+    const app = await createTestApp({
+      plugins: [
+        markdownImagePlugin({ figure: { focusable: false, linkImage: false } }),
+      ],
+    })
+
+    try {
+      const standalone = app.markdown.render('![alt](a.png "the title")', {})
+
+      expect(standalone).toContain('<figure>')
+      // the option disables the focusable figure
+      expect(standalone).not.toContain('tabindex')
+
+      // the option keeps a linked image as a link instead of a figure
+      const linked = app.markdown.render(
+        '[![alt](a.png)](https://example.com)',
+        {},
+      )
+
+      expect(linked).not.toContain('<figure>')
+      expect(linked).toContain('href="https://example.com"')
+    } finally {
+      app.cleanup()
+    }
+  })
+
   it('enables native lazy loading', async () => {
     const app = await createTestApp({
       plugins: [markdownImagePlugin({ lazyload: true })],

@@ -174,6 +174,27 @@ describe('photo swipe client config', () => {
     expect(mocks.instances[0].options.bgOpacity).toBe(0.8)
   })
 
+  it('should warn instead of rejecting when an image cannot be decoded', async () => {
+    await setup()
+    resetState()
+
+    const decode = vi.spyOn(HTMLImageElement.prototype, 'decode')
+    decode.mockRejectedValue(new Error('broken'))
+
+    const warn = vi.spyOn(console, 'warn').mockImplementation(() => {})
+
+    try {
+      await openPhotoSwipe()
+
+      expect(warn).toHaveBeenCalledWith(
+        expect.stringContaining('Image decoding failed'),
+      )
+    } finally {
+      decode.mockResolvedValue(undefined)
+      warn.mockRestore()
+    }
+  })
+
   it('should not open PhotoSwipe when the frontmatter disables it', async () => {
     await setup()
     resetState()

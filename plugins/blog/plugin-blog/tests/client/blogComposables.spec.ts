@@ -245,6 +245,28 @@ describe('blog type composable', () => {
     }
   })
 
+  it('should report the frontmatter key when it is not configured', async () => {
+    typesMap.article = { '/': { path: '/article/', indexes: [] } }
+
+    const { useBlogType } = await loadComposables()
+    const probe = createTypeProbe(useBlogType)
+    const restore = stubClientDefines(await getBlogDefines())
+
+    try {
+      await expect(
+        renderVuePress({
+          content: probe,
+          page: {
+            frontmatter: { blog: { key: 'missing', type: 'type' } },
+            path: '/',
+          },
+        }),
+      ).rejects.toThrow('useBlogType: key missing is invalid')
+    } finally {
+      restore()
+    }
+  })
+
   it('should update when navigating to a page of another type', async () => {
     typesMap.article = { '/': { path: '/article/', indexes: [0] } }
     typesMap.archive = { '/': { path: '/archive/', indexes: [1] } }

@@ -29,13 +29,19 @@ describe('resolve repo link', () => {
     )
   })
 
-  it('should keep the slug for the providers without a known host', () => {
+  it('should build a gitlab link from a repo slug', () => {
     expect(resolveRepoLink('vuepress/ecosystem', 'gitlab')).toBe(
-      'vuepress/ecosystem',
+      'https://gitlab.com/vuepress/ecosystem',
     )
+  })
+
+  it('should build a bitbucket link from a repo slug', () => {
     expect(resolveRepoLink('vuepress/ecosystem', 'bitbucket')).toBe(
-      'vuepress/ecosystem',
+      'https://bitbucket.org/vuepress/ecosystem',
     )
+  })
+
+  it('should keep the slug when the provider has no known host', () => {
     expect(resolveRepoLink('vuepress/ecosystem')).toBe('vuepress/ecosystem')
     expect(resolveRepoLink('vuepress/ecosystem', null)).toBe(
       'vuepress/ecosystem',

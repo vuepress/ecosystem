@@ -86,4 +86,43 @@ describe('reveal.js options', () => {
 
     expect(wrapper.find('.hash').text()).toBe('true')
   })
+
+  it('should react to a ref source', async () => {
+    const source = ref<RevealJsOptions>({ hash: false })
+
+    defineRevealJsConfig(source)
+
+    const wrapper = await mountVuePress({
+      clientConfigs: [clientConfig],
+      rootComponent: Probe,
+    })
+
+    expect(wrapper.find('.hash').text()).toBe('false')
+
+    source.value = { hash: true }
+
+    await flushPromises()
+
+    expect(wrapper.find('.hash').text()).toBe('true')
+  })
+
+  it('should stop the previous reactive source when reconfigured', async () => {
+    const source = ref<RevealJsOptions>({ hash: false })
+
+    defineRevealJsConfig((): RevealJsOptions => source.value)
+    defineRevealJsConfig({ keyboard: true })
+
+    const wrapper = await mountVuePress({
+      clientConfigs: [clientConfig],
+      rootComponent: Probe,
+    })
+
+    source.value = { hash: true }
+
+    await flushPromises()
+
+    // the later plain object wins, the previous getter must not write again
+    expect(wrapper.find('.hash').text()).toBe('undefined')
+    expect(wrapper.find('.keyboard').text()).toBe('true')
+  })
 })

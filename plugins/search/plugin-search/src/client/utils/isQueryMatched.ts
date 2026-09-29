@@ -16,7 +16,8 @@ export const isQueryMatched = (query: string, toMatch: string[]): boolean => {
 
   if (nonASCIIRegExp.test(query)) {
     // if the query has non-ASCII chars, treat as other languages
-    return words.some((word) => toMatchStr.toLowerCase().includes(word))
+    // every word must be found, consistent with the ASCII branch below
+    return words.every((word) => toMatchStr.toLowerCase().includes(word))
   }
 
   // if the query only has ASCII chars, treat as English

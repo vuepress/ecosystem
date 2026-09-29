@@ -94,17 +94,59 @@ describe('copyright client config', () => {
 
       const { setData } = dispatchCopy(context.appElement)
 
+      // the copyright is appended as an `<hr>` and a `.copyright` block, and
+      // the line breaks of the copyright text become `<br>`
       expect(setData).toHaveBeenCalledWith(
         'text/html',
-        expect.stringContaining('Copyright by Alice'),
-      )
-      expect(setData).toHaveBeenCalledWith(
-        'text/html',
-        expect.stringContaining('License under MIT'),
+        expect.stringMatching(
+          /<hr><div class="copyright">Copyright by Alice<br>License under MIT<br>/u,
+        ),
       )
       expect(setData).toHaveBeenCalledWith(
         'text/plain',
-        expect.stringContaining('------'),
+        expect.stringContaining(
+          'Hello world\n------\nCopyright by Alice\nLicense under MIT',
+        ),
+      )
+    } finally {
+      cleanupCopyright(context)
+    }
+  })
+
+  it('should not throw when the copy event has no selection', async () => {
+    const context = await mountCopyright({
+      author: 'Alice',
+      global: true,
+      triggerLength: 1,
+    })
+
+    try {
+      window.getSelection()!.removeAllRanges()
+
+      const { setData } = dispatchCopy(context.appElement)
+
+      expect(setData).not.toHaveBeenCalled()
+    } finally {
+      cleanupCopyright(context)
+    }
+  })
+
+  it('should append the copyright when the selection reaches the trigger length', async () => {
+    // "Hello world" is 11 characters long
+    const context = await mountCopyright({
+      author: 'Alice',
+      global: true,
+      triggerLength: 11,
+    })
+
+    try {
+      selectContent(context.wrapper.find('.content').element)
+
+      const { setData } = dispatchCopy(context.appElement)
+
+      expect(setData).toHaveBeenCalledWith(
+        'text/html',
+        expect.stringContaining('Copyright by Alice'),
       )
     } finally {
       cleanupCopyright(context)
@@ -115,7 +157,7 @@ describe('copyright client config', () => {
     const context = await mountCopyright({
       author: 'Alice',
       global: true,
-      triggerLength: 100,
+      triggerLength: 12,
     })
 
     try {

@@ -48,7 +48,7 @@ describe('resolve image info', () => {
     decode.mockRestore()
   })
 
-  it('should load a linked image anonymously', async () => {
+  it('should load a linked image without forcing a CORS request', async () => {
     const decode = vi
       .spyOn(HTMLImageElement.prototype, 'decode')
       .mockResolvedValue(undefined)
@@ -64,10 +64,11 @@ describe('resolve image info', () => {
       alt: '',
     })
 
-    // the element created for the link must be requested anonymously
+    // a cross-origin image without CORS headers must still load, so the
+    // element must not be requested anonymously
     const image = info.element as HTMLImageElement
 
-    expect(image.crossOrigin).toBe('anonymous')
+    expect(image.crossOrigin).not.toBe('anonymous')
     expect(image.src).toBe('https://example.com/linked.png')
 
     decode.mockRestore()

@@ -19,7 +19,6 @@ export const useUmamiAnalytics = ({
   id,
   domains,
   autoTrack,
-  cache,
   hostUrl,
 }: UmamiOptions): void => {
   // avoid duplicated import
@@ -31,7 +30,6 @@ export const useUmamiAnalytics = ({
   script.dataset.websiteId = id
 
   if (autoTrack === false) script.dataset.autoTrack = 'false'
-  if (cache) script.dataset.cache = 'true'
   if (domains) script.dataset.domains = domains.join(',')
   if (hostUrl) script.dataset.hostUrl = hostUrl
 

@@ -1,4 +1,4 @@
-import { isArray, isString } from '@vuepress/helper'
+import { isArray } from '@vuepress/helper'
 
 import type { IconType } from '../shared/index.js'
 import type { IconAsset, IconPluginOptions } from './options.js'
@@ -13,20 +13,30 @@ export const isFontAwesomeLink = (link: string): boolean =>
 const isIconFontLink = (link: string): boolean =>
   /^(?:https:)?\/\/at\.alicdn\.com\/t\//u.test(link)
 
+const isFontAwesomeAsset = (asset: string): boolean =>
+  asset === 'fontawesome' ||
+  asset === 'fontawesome-with-brands' ||
+  isFontAwesomeLink(asset)
+
+const isIconFontAsset = (asset: string): boolean => isIconFontLink(asset)
+
+const isIconifyAsset = (asset: string): boolean =>
+  asset === 'iconify' || isIconifyLink(asset)
+
 export const isFontAwesomeAssets = (assets: IconAsset): boolean =>
   isArray(assets)
-    ? assets.every((link) => isFontAwesomeLink(link))
-    : assets === 'fontawesome' ||
-      assets === 'fontawesome-with-brands' ||
-      isFontAwesomeLink(assets)
+    ? assets.every((asset) => isFontAwesomeAsset(asset))
+    : isFontAwesomeAsset(assets)
 
 export const isIconFontAssets = (assets: IconAsset): boolean =>
   isArray(assets)
-    ? assets.every((link) => isIconFontLink(link))
-    : isIconFontLink(assets)
+    ? assets.every((asset) => isIconFontAsset(asset))
+    : isIconFontAsset(assets)
 
 export const isIconifyAssets = (assets: IconAsset): boolean =>
-  isString(assets) && (isIconifyLink(assets) || assets === 'iconify')
+  isArray(assets)
+    ? assets.every((asset) => isIconifyAsset(asset))
+    : isIconifyAsset(assets)
 
 export const getAssetsType = ({
   assets = 'iconify',

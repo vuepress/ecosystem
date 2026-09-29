@@ -29,7 +29,16 @@ const getMarkdownInfo = async (
 }> => {
   const filepath = path.join(cwd, relativePath)
   const raw = await fs.promises.readFile(filepath, 'utf-8')
-  const { data, content } = matter(raw)
+  /**
+   * `gray-matter` caches the parsed result by the body content and returns the
+   * same `data` object for files sharing the same body. As the plugin mutates
+   * `data` in place, the cache would leak the generated frontmatter between
+   * files. Passing an options object opts out of the cache.
+   *
+   * `gray-matter` 会按正文内容缓存解析结果，正文相同的文件会拿到同一个 `data` 对象。由于插件会原地修改
+   * `data`，缓存会导致生成的前置数据在文件之间串用。 传入选项对象即可跳过缓存。
+   */
+  const { data, content } = matter(raw, {})
   return {
     data,
     context: {

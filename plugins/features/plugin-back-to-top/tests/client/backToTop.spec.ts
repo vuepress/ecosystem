@@ -74,6 +74,16 @@ describe('back to top button', () => {
     expect(button.attributes('aria-label')).toBe('Back to top')
   })
 
+  it('should render the button only after the threshold is exceeded', async () => {
+    const mounted = await mountBackToTop()
+
+    await scrollTo(100)
+    expect(mounted.find('.vp-back-to-top-button').exists()).toBe(false)
+
+    await scrollTo(101)
+    expect(mounted.find('.vp-back-to-top-button').exists()).toBe(true)
+  })
+
   it('should scroll to the top when the button is clicked', async () => {
     const scrollToSpy = vi
       .spyOn(window, 'scrollTo')
@@ -99,7 +109,14 @@ describe('back to top button', () => {
 
     await scrollTo(150)
 
-    expect(mounted.find('.vp-scroll-progress').exists()).toBe(true)
+    const progress = mounted.find('.vp-scroll-progress')
+
+    expect(progress.exists()).toBe(true)
+    expect(progress.attributes('role')).toBe('progressbar')
+    // the progressbar must not reference a label that does not exist
+    expect(progress.attributes('aria-labelledby')).toBeUndefined()
+    expect(Number(progress.attributes('aria-valuenow'))).not.toBeNaN()
+    expect(progress.find('circle').attributes('stroke-dasharray')).toBeDefined()
   })
 
   it('should not render the scroll progress when it is disabled', async () => {

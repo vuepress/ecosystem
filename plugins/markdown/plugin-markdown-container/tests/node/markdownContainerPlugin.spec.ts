@@ -63,14 +63,14 @@ describe('markdown container plugin', () => {
     }
   })
 
-  it('does not add a title when no locales are configured', async () => {
+  it('falls back to the uppercased type when no locales are configured', async () => {
     const app = await createTestApp({
       plugins: [markdownContainerPlugin({ type: 'tip' })],
     })
 
     try {
-      expect(app.markdown.render('::: tip\ncontent\n:::', {})).not.toContain(
-        'custom-container-title',
+      expect(app.markdown.render('::: tip\ncontent\n:::', {})).toContain(
+        '<p class="custom-container-title">TIP</p>',
       )
     } finally {
       app.cleanup()

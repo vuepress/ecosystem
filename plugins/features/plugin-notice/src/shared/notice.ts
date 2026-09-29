@@ -130,6 +130,7 @@ export type NoticeAttrOptions =
     > & {
       noticeKey?: string
       match: string
+      matchFlags: string
     })
   | (Omit<NoticePathOptions, 'contentFile' | 'contentType' | 'key'> & {
       noticeKey?: string

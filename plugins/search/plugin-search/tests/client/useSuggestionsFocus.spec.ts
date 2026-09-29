@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { ref } from 'vue'
+import { nextTick, ref } from 'vue'
 
 import { useSuggestionsFocus } from '../../src/client/composables/useSuggestionsFocus.js'
 
@@ -29,5 +29,20 @@ describe('suggestion focus', () => {
 
     focusPrev()
     expect(focusIndex.value).toBe(1)
+  })
+
+  it('should reset the focus when the suggestion list changes', async () => {
+    const suggestions = ref([1, 2, 3])
+    const { focusIndex, focusNext } = useSuggestionsFocus(suggestions)
+
+    focusNext()
+    expect(focusIndex.value).toBe(1)
+
+    // the focused suggestion no longer exists, so the focus must go back to the
+    // first one instead of pointing out of range
+    suggestions.value = [1]
+    await nextTick()
+
+    expect(focusIndex.value).toBe(0)
   })
 })

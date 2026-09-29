@@ -34,6 +34,12 @@ describe('query matching', () => {
     expect(isQueryMatched('英文', ['这是一段中文内容'])).toBe(false)
   })
 
+  it('should require every word of a non-ASCII query to match', () => {
+    // `内容` is present but `英文` is not, so the query must not match
+    expect(isQueryMatched('英文 内容', ['这是一段中文内容'])).toBe(false)
+    expect(isQueryMatched('中文 内容', ['这是一段中文内容'])).toBe(true)
+  })
+
   it('should escape regular expression characters of the query', () => {
     expect(isQueryMatched('a.b', ['a.b'])).toBe(true)
     // the dot must not act as a wildcard

@@ -1,7 +1,22 @@
+import path from 'node:path'
+
 import { createTestApp } from '@vuepress/test-utils'
 import { describe, expect, it } from 'vitest'
 
 import { markdownIncludePlugin } from '../../src/node/index.js'
+
+/**
+ * Resolve an include path relative to a `nested` folder next to the importer
+ *
+ * 相对于导入者的 `nested` 文件夹解析导入路径
+ *
+ * @param filePath - The include path in the markdown / markdown 中的导入路径
+ * @param cwd - The directory of the importing file, or `null` / 导入文件所在目录，或
+ *   `null`
+ * @returns The resolved absolute path / 解析后的绝对路径
+ */
+const resolveNestedPath = (filePath: string, cwd: string | null): string =>
+  path.resolve(cwd ?? '', 'nested', filePath)
 
 describe('markdown include plugin', () => {
   it('includes a file with the comment syntax', async () => {
@@ -87,6 +102,79 @@ describe('markdown include plugin', () => {
       expect(html).toContain('line3')
       expect(html).not.toContain('line1')
       expect(html).not.toContain('line4')
+    } finally {
+      app.cleanup()
+    }
+  })
+
+  it('includes the lines from the given start to the end of the file', async () => {
+    const app = await createTestApp({
+      plugins: [markdownIncludePlugin({})],
+      files: {
+        'index.md': '',
+        'snippet.md': 'line1\nline2\nline3\nline4\n',
+      },
+    })
+
+    try {
+      const html = app.markdown.render('<!-- @include: snippet.md{3-} -->', {
+        filePath: `${app.dir.source()}/index.md`,
+        filePathRelative: 'index.md',
+      })
+
+      expect(html).toContain('line3')
+      expect(html).toContain('line4')
+      expect(html).not.toContain('line1')
+      expect(html).not.toContain('line2')
+    } finally {
+      app.cleanup()
+    }
+  })
+
+  it('includes the lines from the start of the file to the given end', async () => {
+    const app = await createTestApp({
+      plugins: [markdownIncludePlugin({})],
+      files: {
+        'index.md': '',
+        'snippet.md': 'line1\nline2\nline3\nline4\n',
+      },
+    })
+
+    try {
+      const html = app.markdown.render('<!-- @include: snippet.md{-2} -->', {
+        filePath: `${app.dir.source()}/index.md`,
+        filePathRelative: 'index.md',
+      })
+
+      expect(html).toContain('line1')
+      expect(html).toContain('line2')
+      expect(html).not.toContain('line3')
+      expect(html).not.toContain('line4')
+    } finally {
+      app.cleanup()
+    }
+  })
+
+  it('resolves the include path with the resolvePath option', async () => {
+    const app = await createTestApp({
+      plugins: [
+        markdownIncludePlugin({
+          resolvePath: resolveNestedPath,
+        }),
+      ],
+      files: {
+        'index.md': '',
+        'nested/snippet.md': 'nested content\n',
+      },
+    })
+
+    try {
+      const html = app.markdown.render('<!-- @include: snippet.md -->', {
+        filePath: `${app.dir.source()}/index.md`,
+        filePathRelative: 'index.md',
+      })
+
+      expect(html).toContain('nested content')
     } finally {
       app.cleanup()
     }

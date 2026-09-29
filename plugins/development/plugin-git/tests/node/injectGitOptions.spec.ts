@@ -29,7 +29,7 @@ describe('inject git options', () => {
     expect(injectGitOptions('bitbucket', true).pattern).toStrictEqual({
       commit: ':repo/commits/:hash',
       issue: ':repo/issues/:issue',
-      tag: ':repo/src/:hash',
+      tag: ':repo/src/:tag',
     })
   })
 

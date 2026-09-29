@@ -103,6 +103,21 @@ describe('docsearch plugin', () => {
     }
   })
 
+  it('should be a no-op when the required options are missing', async () => {
+    const app = await createTestApp({
+      plugins: [docsearchPlugin({})],
+    })
+
+    try {
+      const defines = await collectClientDefines(app)
+
+      expect(defines).not.toHaveProperty('__DOCSEARCH_OPTIONS__')
+      expect(defines).not.toHaveProperty('__DOCSEARCH_INDEX_BASE__')
+    } finally {
+      app.cleanup()
+    }
+  })
+
   it('should register the search box and inject the styles by default', async () => {
     const app = await createTestApp({})
 

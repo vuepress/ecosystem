@@ -101,6 +101,34 @@ describe('regular tabs', () => {
   })
 })
 
+const SyncTabsHost = defineComponent({
+  name: 'SyncTabsHost',
+  setup: (): (() => VNode) => () =>
+    h('div', [
+      h(VPTabs, { data: tabData, tabId: 'tabs-sync' }, tabsSlots),
+      h(VPTabs, { data: tabData, tabId: 'tabs-sync' }, tabsSlots),
+    ]),
+})
+
+describe('regular tabs group', () => {
+  it('should sync the selected tab across the instances of the same group', async () => {
+    const wrapper = await mountVuePress({ rootComponent: SyncTabsHost })
+    const groups = wrapper.findAll('.vp-tabs')
+
+    expect(groups).toHaveLength(2)
+    expect(groups[0].findAll('.vp-tab-nav')[0].classes()).toContain('active')
+    expect(groups[1].findAll('.vp-tab-nav')[0].classes()).toContain('active')
+
+    await groups[0].findAll('.vp-tab-nav')[1].trigger('click')
+    await flushPromises()
+
+    expect(groups[1].findAll('.vp-tab-nav')[1].classes()).toContain('active')
+    expect(groups[1].findAll('.vp-tab-nav')[0].classes()).not.toContain(
+      'active',
+    )
+  })
+})
+
 const CodeTabsHost = defineComponent({
   name: 'CodeTabsHost',
   setup: (): (() => VNode) => () =>

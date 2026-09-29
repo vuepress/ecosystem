@@ -77,6 +77,24 @@ describe('notice component', () => {
     expect(wrapper.find('.vp-notice-wrapper').exists()).toBe(true)
   })
 
+  it('should keep the flags of the regexp', async () => {
+    const wrapper = await mountNotice(
+      [{ match: /^\/GUIDE\//iu, title: 'Notice Title', content: 'Content' }],
+      { route: '/guide/intro/' },
+    )
+
+    expect(wrapper.find('.vp-notice-wrapper').exists()).toBe(true)
+  })
+
+  it('should not match a route that only differs in case for a case-sensitive regexp', async () => {
+    const wrapper = await mountNotice(
+      [{ match: /^\/GUIDE\//u, title: 'Notice Title', content: 'Content' }],
+      { route: '/guide/intro/' },
+    )
+
+    expect(wrapper.find('.vp-notice-wrapper').exists()).toBe(false)
+  })
+
   it('should close the notice and remember it in the session storage', async () => {
     const wrapper = await mountNotice([
       { path: '/', title: 'Notice Title', content: 'Notice Content' },

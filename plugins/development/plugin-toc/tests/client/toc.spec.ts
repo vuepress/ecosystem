@@ -129,6 +129,46 @@ describe('toc component', () => {
     expect(html.match(/active/gu)).toHaveLength(2)
     expect(html).toContain('href="#sub"')
   })
+
+  it('should mark every ancestor of an active deeply nested header', async () => {
+    const deepHeaders: PageHeader[] = [
+      {
+        children: [
+          {
+            children: [
+              {
+                children: [],
+                level: 4,
+                link: '#deep',
+                slug: 'deep',
+                title: 'Deep',
+              },
+            ],
+            level: 3,
+            link: '#mid',
+            slug: 'mid',
+            title: 'Mid',
+          },
+        ],
+        level: 2,
+        link: '#top',
+        slug: 'top',
+        title: 'Top',
+      },
+    ]
+
+    const client = await createTestClient({
+      page: { path: '/guide/', title: 'Guide' },
+      rootComponent: createTocProbe({ headers: deepHeaders }),
+    })
+
+    await client.router.push('/guide/#deep')
+
+    const html = await client.renderToString()
+
+    // the deep link, its parent and its grandparent are all marked as active
+    expect(html.match(/vuepress-toc-link active/gu)).toHaveLength(3)
+  })
 })
 
 describe('toc client config', () => {

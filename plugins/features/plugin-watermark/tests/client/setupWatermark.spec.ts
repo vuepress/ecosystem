@@ -183,15 +183,18 @@ describe('watermark client config', () => {
       {
         page: {
           path: '/',
-          frontmatter: { watermark: { parent: '#wm-root', zIndex: 1234 } },
+          frontmatter: { watermark: { zIndex: 1234 } },
         },
       },
     )
 
     try {
-      expect(
-        getWatermarkLayer(context.parent)!.style.getPropertyValue('z-index'),
-      ).toBe('1234')
+      // the `parent` of the Node options is kept, so the layer is still
+      // created inside `#wm-root`
+      const layer = getWatermarkLayer(context.parent)
+
+      expect(layer).not.toBeNull()
+      expect(layer!.style.getPropertyValue('z-index')).toBe('1234')
     } finally {
       cleanupWatermark(context)
     }

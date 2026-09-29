@@ -70,7 +70,6 @@ describe('umami analytics client config', () => {
       expect(script).not.toBeNull()
       expect(script?.getAttribute('src')).toBe('https://us.umami.is/script.js')
       expect(script?.dataset.autoTrack).toBeUndefined()
-      expect(script?.dataset.cache).toBeUndefined()
       expect(script?.dataset.domains).toBeUndefined()
       expect(script?.dataset.hostUrl).toBeUndefined()
     })
@@ -80,7 +79,6 @@ describe('umami analytics client config', () => {
     await runWithPlugin(
       {
         autoTrack: false,
-        cache: true,
         domains: ['example.com', 'docs.example.com'],
         hostUrl: 'https://umami.example.com',
         id: UMM_ID,
@@ -95,7 +93,6 @@ describe('umami analytics client config', () => {
         expect(script?.getAttribute('src')).toBe(UMM_LINK)
         expect(script?.dataset.websiteId).toBe(UMM_ID)
         expect(script?.dataset.autoTrack).toBe('false')
-        expect(script?.dataset.cache).toBe('true')
         expect(script?.dataset.domains).toBe('example.com,docs.example.com')
         expect(script?.dataset.hostUrl).toBe('https://umami.example.com')
       },

@@ -212,6 +212,33 @@ describe('search box', () => {
     expect(wrapper.find('.suggestions').exists()).toBe(false)
   })
 
+  it('should navigate to the first suggestion after the list shrinks', async () => {
+    const client = await createTestClient({
+      page: { path: '/' },
+      rootComponent: createSearchBox({}),
+      routes: { '/guide/': {} },
+      site,
+    })
+    const wrapper = await client.mount()
+    const input = wrapper.find('input')
+
+    await input.trigger('focus')
+    // `g` matches several suggestions, so the focus can move away from the first
+    await input.setValue('g')
+    await flushPromises()
+    await input.trigger('keydown', { key: 'ArrowDown' })
+
+    // `guide` only matches a single suggestion, the stale focus index must reset
+    await input.setValue('guide')
+    await flushPromises()
+    expect(wrapper.findAll('.suggestion')).toHaveLength(1)
+
+    await input.trigger('keydown', { key: 'Enter' })
+    await flushPromises()
+
+    expect(client.router.currentRoute.value.path).toBe('/guide/')
+  })
+
   it('should focus the input when a hotkey is pressed', async () => {
     const wrapper = await mountSearchBox({ hotKeys: ['s'] })
     const input = wrapper.find('input')

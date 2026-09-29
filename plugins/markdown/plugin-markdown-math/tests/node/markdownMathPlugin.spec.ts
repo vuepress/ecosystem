@@ -53,6 +53,83 @@ describe('markdown math plugin', () => {
     }
   })
 
+  it('does not render escaped or spaced dollars as math', async () => {
+    const app = await createTestApp({
+      plugins: [markdownMathPlugin({ type: 'katex' })],
+    })
+
+    try {
+      // a `$` preceded by a backslash is escaped
+      expect(app.markdown.render(String.raw`\$a=1$`, {})).not.toContain(
+        'class="katex"',
+      )
+      expect(app.markdown.render(String.raw`\$a=1$`, {})).toContain('$a=1$')
+
+      // a `$` surrounded by spaces is not a delimiter
+      expect(app.markdown.render('$ a=1 $', {})).not.toContain('class="katex"')
+      expect(app.markdown.render('$ a=1 $', {})).toContain('$ a=1 $')
+
+      // while a plain equation is rendered
+      expect(app.markdown.render('$a=1$', {})).toContain('class="katex"')
+    } finally {
+      app.cleanup()
+    }
+  })
+
+  it('only enables the dollar delimiters by default', async () => {
+    const app = await createTestApp({
+      plugins: [markdownMathPlugin({ type: 'katex' })],
+    })
+
+    try {
+      expect(app.markdown.render('inline $a^2$ end', {})).toContain(
+        'class="katex"',
+      )
+      // the bracket syntax stays literal with the default delimiters
+      const bracket = app.markdown.render(String.raw`inline \(a^2\) end`, {})
+
+      expect(bracket).not.toContain('class="katex"')
+      expect(bracket).toContain('inline (a^2) end')
+    } finally {
+      app.cleanup()
+    }
+  })
+
+  it('uses the bracket delimiters when delimiters is brackets', async () => {
+    const app = await createTestApp({
+      plugins: [markdownMathPlugin({ type: 'katex', delimiters: 'brackets' })],
+    })
+
+    try {
+      expect(app.markdown.render(String.raw`inline \(a^2\) end`, {})).toContain(
+        'class="katex"',
+      )
+      // the dollar syntax is disabled
+      expect(app.markdown.render('inline $a^2$ end', {})).toContain(
+        'inline $a^2$ end',
+      )
+    } finally {
+      app.cleanup()
+    }
+  })
+
+  it('enables both syntaxes when delimiters is all', async () => {
+    const app = await createTestApp({
+      plugins: [markdownMathPlugin({ type: 'katex', delimiters: 'all' })],
+    })
+
+    try {
+      expect(app.markdown.render('inline $a^2$ end', {})).toContain(
+        'class="katex"',
+      )
+      expect(app.markdown.render(String.raw`inline \(a^2\) end`, {})).toContain(
+        'class="katex"',
+      )
+    } finally {
+      app.cleanup()
+    }
+  })
+
   it('renders an error span for malformed input instead of throwing', async () => {
     const app = await createTestApp({
       plugins: [markdownMathPlugin({ type: 'katex' })],

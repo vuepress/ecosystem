@@ -151,14 +151,18 @@ describe('git contributors component', () => {
       { contributors: true },
       async ({ components, renderVuePress }) => {
         const html = await renderVuePress({
-          page: { data: { git: { contributors } }, path: '/', title: 'Home' },
+          page: {
+            data: { git: { contributors: [contributors[1]] } },
+            path: '/',
+            title: 'Home',
+          },
           rootComponent: components.GitContributors,
           site: { lang: 'en-US', title: 'Site' },
         })
 
-        expect(html).toContain(
-          '<span target="_blank" rel="noreferrer" class="vp-contributor">',
-        )
+        expect(html).toContain('Bob')
+        // no contributor link is rendered when the contributor has no url
+        expect(html).not.toMatch(/<a [^>]*class="vp-contributor"/u)
       },
     )
   })
@@ -265,8 +269,14 @@ describe('git changelog component', () => {
         })
 
         expect(html).toContain('vp-changelog-item-tag')
-        expect(html).toContain('class="vp-changelog-tag"')
         expect(html).toContain('v1.0.0')
+        // the release tag links to the tag url built from the pattern
+        expect(html).toMatch(
+          new RegExp(
+            `<a [^>]*href="${REPO_URL}/releases/tag/v1\\.0\\.0"[^>]*>`,
+            'u',
+          ),
+        )
       },
     )
   })
@@ -381,6 +391,21 @@ describe('git last updated composable', () => {
       async ({ composables, renderVuePress }) => {
         const html = await renderVuePress({
           page: { data: { git: {} }, path: '/', title: 'Home' },
+          rootComponent: createProbe(composables.useLastUpdated),
+          site: { lang: 'en-US', title: 'Site' },
+        })
+
+        expect(html).toContain('none')
+      },
+    )
+  })
+
+  it('should expose nothing when the changelog is empty', async () => {
+    await withGitClient(
+      { contributors: false },
+      async ({ composables, renderVuePress }) => {
+        const html = await renderVuePress({
+          page: { data: { git: { changelog: [] } }, path: '/', title: 'Home' },
           rootComponent: createProbe(composables.useLastUpdated),
           site: { lang: 'en-US', title: 'Site' },
         })

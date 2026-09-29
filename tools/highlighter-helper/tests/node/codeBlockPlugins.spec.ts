@@ -124,6 +124,18 @@ describe(lineNumbers, () => {
     expect(html).not.toContain('line-numbers-mode')
   })
 
+  it('completely disables line numbers when the option is `disable`', () => {
+    const md = createHighlighterMarkdown()
+
+    md.use(lineNumbers, { lineNumbers: 'disable' })
+
+    // even a code block that explicitly asks for line numbers is left untouched
+    const html = md.render('```js :line-numbers\nconst a = 1\n```', {})
+
+    expect(html).not.toContain('line-numbers-mode')
+    expect(html).not.toContain('line-numbers')
+  })
+
   it('honors a custom resolve function', () => {
     const md = createHighlighterMarkdown()
 

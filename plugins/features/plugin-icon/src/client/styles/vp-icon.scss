@@ -28,7 +28,7 @@
   }
 
   &:is(i) {
-    vertical-align: var(--icon-vertical-align);
+    vertical-align: var(--icon-vertical-align, -0.125em);
   }
 
   &:not(i) {

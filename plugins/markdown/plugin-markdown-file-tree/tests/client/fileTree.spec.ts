@@ -25,6 +25,24 @@ const IconNodeHost = createHost(() =>
   }),
 )
 
+/**
+ * Read the indentation offset of a rendered file tree node
+ *
+ * 读取渲染后的文件树节点的缩进偏移
+ *
+ * @param element - The rendered file tree info element / 渲染出的文件树信息元素
+ * @returns The numeric indentation offset / 数值化的缩进偏移
+ */
+const readFileTreeLevel = (element: {
+  attributes: (name: string) => string | undefined
+}): number => {
+  const style = element.attributes('style') ?? ''
+
+  return Number(
+    /--file-tree-level:\s*(?<level>-?\d+)/u.exec(style)?.groups?.level ?? '0',
+  )
+}
+
 const createChildNode = (): VNode =>
   h(VPFileTreeNode, { filename: 'App.vue', level: 1, type: 'file' })
 
@@ -86,10 +104,22 @@ describe('file tree node', () => {
     expect(html).not.toContain('vp-file-tree-icon-fallback')
   })
 
-  it('should offset the node by its level', async () => {
-    const html = await renderVuePress({ rootComponent: FolderHost })
+  it('should indent a nested node more than a top-level node', async () => {
+    const Host = createHost(() =>
+      h('div', [
+        h(VPFileTreeNode, { filename: 'root', type: 'file' }),
+        h(VPFileTreeNode, { filename: 'nested', level: 2, type: 'file' }),
+      ]),
+    )
 
-    expect(html).toContain('--file-tree-level:-1')
+    const wrapper = await mountVuePress({ rootComponent: Host })
+    const infos = wrapper.findAll('.vp-file-tree-info')
+
+    // the top-level node is not offset, a deeper node is offset further
+    expect(readFileTreeLevel(infos[0])).toBe(0)
+    expect(readFileTreeLevel(infos[1])).toBeLessThan(
+      readFileTreeLevel(infos[0]),
+    )
   })
 
   it('should keep a folder collapsed by default', async () => {

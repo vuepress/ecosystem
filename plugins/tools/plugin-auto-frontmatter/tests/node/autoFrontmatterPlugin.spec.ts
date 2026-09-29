@@ -159,6 +159,33 @@ describe(autoFrontmatterPlugin, () => {
     }
   })
 
+  it('should generate the frontmatter independently for files with the same body', async () => {
+    const app = await createTestApp({
+      files: {
+        'one.md': '# Same body',
+        'two.md': '# Same body',
+      },
+      plugins: [
+        autoFrontmatterPlugin((data, context): AutoFrontmatterData => {
+          addTitleByFilename(data, context)
+          return data
+        }),
+      ],
+      prepare: true,
+    })
+
+    try {
+      await expect(readSourceFile(app.dir.source(), 'one.md')).resolves.toBe(
+        '---\ntitle: one\n---\n# Same body',
+      )
+      await expect(readSourceFile(app.dir.source(), 'two.md')).resolves.toBe(
+        '---\ntitle: two\n---\n# Same body',
+      )
+    } finally {
+      app.cleanup()
+    }
+  })
+
   it('should generate a short permalink with the configured format', async () => {
     const app = await createTestApp({
       files: { 'theta.md': '# Theta' },
