@@ -107,13 +107,13 @@ console.log('main')
 
 Code blocks without a `title` attribute are not included in the file tree, and they are not displayed.
 
-Files and folders are displayed with their icons. The icons come from <https://icon-sets.iconify.design/> and are rendered by `<VPIcon />` provided by `@vuepress/plugin-icon`. When that plugin is not enabled, a generic file or folder icon is used instead.
-
-The icon table is **generated** from `@yutengjing/vscode-icons` instead of being maintained by hand, and the gaps that the icon set does not cover are filled by a small overlay. To update it after bumping the icon set:
+Files and folders are displayed with their icons. The icons come from <https://icon-sets.iconify.design/> and need the optional `@iconify-json/vscode-icons` and `iconify-icon` packages:
 
 ```bash
-pnpm --filter @vuepress/plugin-markdown-file-tree generate:icons
+npm i -D @iconify-json/vscode-icons iconify-icon
 ```
+
+Only the icons the site displays are bundled. The built-in file and folder icons are used when the packages are not installed.
 
 ### Embedding a directory
 

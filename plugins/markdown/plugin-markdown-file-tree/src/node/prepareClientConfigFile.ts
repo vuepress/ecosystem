@@ -11,14 +11,27 @@ import type { MarkdownFileTreePluginOptions } from './options.js'
  *
  * @param app - VuePress app instance / VuePress 应用实例
  * @param options - Plugin options / 插件选项
+ * @param icons - Whether the file icons are rendered, which requires the
+ *   optional Iconify icon set / 是否渲染文件图标，需要可选的 Iconify 图标集
  * @returns Path of the generated client config file / 生成的客户端配置文件的路径
  */
 export const prepareClientConfigFile = (
   app: App,
   { fileTree = false, codeTree = false }: MarkdownFileTreePluginOptions,
+  icons = false,
 ): Promise<string> => {
   const imports = new Set<string>()
+  const setups = new Set<string>()
   const registrations = new Set<string>()
+
+  // The file icons are registered before the components are mounted, so that
+  // they render without the Iconify API
+  if (icons) {
+    imports.add(
+      `import { setupFileIcons } from '@temp/markdown-file-tree/iconify.js'`,
+    )
+    setups.add('setupFileIcons()')
+  }
 
   // The file tree node is shared by both features
   if (fileTree || codeTree) {
@@ -42,6 +55,10 @@ export const prepareClientConfigFile = (
     registrations.add(`app.component('VPCodeTree', VPCodeTree)`)
   }
 
+  const enhanceBody = [...setups, ...registrations]
+    .map((line) => `    ${line}`)
+    .join('\n')
+
   return app.writeTemp(
     'markdown-file-tree/config.js',
     `\
@@ -50,7 +67,7 @@ ${[...imports].join('\n')}
 
 export default defineClientConfig({
   enhance({ app }) {
-    ${[...registrations].join('\n    ')}
+${enhanceBody}
   },
 })
 `,

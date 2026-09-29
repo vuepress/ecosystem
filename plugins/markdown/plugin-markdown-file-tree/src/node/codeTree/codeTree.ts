@@ -3,6 +3,7 @@ import type { RendererRule } from 'markdown-it'
 import type Token from 'markdown-it/lib/token.mjs'
 import type { Markdown } from 'vuepress/markdown'
 
+import type { FileIconOptions } from '../fileIcons/types.js'
 import type { MarkdownCodeTreePluginOptions } from '../options.js'
 import { renderCodeTree } from './renderCodeTree.js'
 import { hasMarker, resolveAttrs } from './utils.js'
@@ -27,7 +28,10 @@ import { hasMarker, resolveAttrs } from './utils.js'
  */
 export const codeTree = (
   md: Markdown,
-  { height: defaultHeight = '320px' }: MarkdownCodeTreePluginOptions = {},
+  {
+    height: defaultHeight = '320px',
+    icons = true,
+  }: MarkdownCodeTreePluginOptions & FileIconOptions = {},
 ): void => {
   /**
    * Collect the file path of every code block inside the container
@@ -95,6 +99,7 @@ export const codeTree = (
       height,
       entry: activeFile || entry,
       files,
+      icons,
       // The content is rendered by the container plugin itself
       autoClose: false,
     })

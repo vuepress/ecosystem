@@ -214,6 +214,20 @@ A nested container.
     )
   })
 
+  it('should not resolve the icons when they are disabled', () => {
+    const content = `\
+::: code-tree
+\`\`\`ts title="src/index.ts"
+\`\`\`
+:::
+`
+    const result = new MarkdownIt()
+      .use(codeTree, { icons: false })
+      .render(content)
+
+    expect(result).not.toContain('icon=')
+  })
+
   it('should work with the code block title of the highlighter', () => {
     // The client relies on the markup rendered by the highlighter, which wraps
     // the code block with a `.code-block-with-title` element.

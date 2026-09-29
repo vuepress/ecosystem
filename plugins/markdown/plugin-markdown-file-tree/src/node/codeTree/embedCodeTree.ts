@@ -2,6 +2,7 @@ import type { App } from 'vuepress/core'
 import type { Markdown, MarkdownEnv } from 'vuepress/markdown'
 import { fs, isChildPath, logger, path, tinyglobby } from 'vuepress/utils'
 
+import type { FileIconOptions } from '../fileIcons/types.js'
 import type { MarkdownCodeTreePluginOptions } from '../options.js'
 import { addPageDependency, renderCodeTree } from './renderCodeTree.js'
 import { resolveAttrs, sanitizeFilePath } from './utils.js'
@@ -359,7 +360,10 @@ const collectCodeFiles = (root: string, source: string): string[] =>
 export const embedCodeTree = (
   md: Markdown,
   app: App,
-  { height: defaultHeight = '320px' }: MarkdownCodeTreePluginOptions = {},
+  {
+    height: defaultHeight = '320px',
+    icons = true,
+  }: MarkdownCodeTreePluginOptions & FileIconOptions = {},
 ): void => {
   const NAME = 'code_tree_embed'
   const SYNTAX_PATTERN =
@@ -460,6 +464,7 @@ export const embedCodeTree = (
       height: resolveAttrs(info, 'height')?.trim() || defaultHeight,
       entry: resolveAttrs(info, 'entry')?.trim() ?? '',
       files: contents.map(({ file }) => file),
+      icons,
       // Render the code blocks with a fresh env, so that the embedded content
       // does not pollute the env of the current page
       content: md.render(

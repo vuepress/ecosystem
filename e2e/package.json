@@ -15,6 +15,7 @@
     "e2e:dev-webpack": "cross-env E2E_COMMAND=dev E2E_BUNDLER=webpack playwright test"
   },
   "dependencies": {
+    "@iconify-json/vscode-icons": "^1.2.81",
     "@videojs/html": "10.0.0-rc.4",
     "@vuepress/bundler-vite": "catalog:",
     "@vuepress/bundler-webpack": "catalog:",
@@ -37,6 +38,7 @@
     "@vuepress/plugin-watermark": "workspace:*",
     "@vuepress/theme-default": "workspace:*",
     "artplayer": "^5.4.0",
+    "iconify-icon": "^3.0.3",
     "sass-embedded": "catalog:",
     "sass-loader": "catalog:",
     "vue": "catalog:",

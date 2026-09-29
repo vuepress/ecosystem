@@ -76,20 +76,19 @@ test.describe('plugin-markdown-file-tree: code tree', () => {
 
     const codeTree = page.locator('.vp-code-tree').first()
 
-    // Every node has an icon, and the fallback icon matches the node type,
-    // since `@vuepress/plugin-icon` is not enabled in the e2e site.
+    // Every node has an icon, and a folder uses another icon than a file
     await expect(
       codeTree.locator(
-        '.vp-file-tree-info.folder > .vp-file-tree-icon-fallback.folder',
+        '.vp-file-tree-info.folder > .vp-file-tree-icon[icon*="folder"]',
       ),
     ).toHaveCount(2)
     await expect(
       codeTree.locator(
-        '.vp-file-tree-info.file > .vp-file-tree-icon-fallback.file',
+        '.vp-file-tree-info.file > .vp-file-tree-icon[icon*="file"]',
       ),
     ).toHaveCount(4)
     await expect(
-      codeTree.locator('.vp-file-tree-info .vp-file-tree-icon-fallback'),
+      codeTree.locator('.vp-file-tree-info .vp-file-tree-icon'),
     ).toHaveCount(6)
   })
 
@@ -152,7 +151,7 @@ test.describe('plugin-markdown-file-tree: code tree', () => {
 
     // The icon of every node is resolved from its file name
     await expect(
-      codeTree.locator('.vp-file-tree-icon-fallback.file'),
+      codeTree.locator('.vp-file-tree-icon[icon*="file"]'),
     ).toHaveCount(3)
   })
 

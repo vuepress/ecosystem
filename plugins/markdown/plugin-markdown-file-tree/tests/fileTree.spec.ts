@@ -106,4 +106,19 @@ describe(fileTree, () => {
     expect(result).toContain('filename="…"')
     expect(result).toMatchSnapshot()
   })
+
+  it('should not resolve the icons when they are disabled', () => {
+    const content = `
+::: file-tree
+- file1.ts
+- folder
+  - file2.ts
+:::
+`
+    const result = new MarkdownIt()
+      .use(fileTree, { icons: false })
+      .render(content)
+
+    expect(result).not.toContain('icon=')
+  })
 })

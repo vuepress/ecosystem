@@ -1,9 +1,15 @@
+import { addCustomElement, addViteSsrNoExternal } from '@vuepress/helper'
 import type { App, Plugin } from 'vuepress/core'
 
 import { codeTree as codeTreePlugin } from './codeTree/codeTree.js'
 import { embedCodeTree } from './codeTree/embedCodeTree.js'
 import type { CodeTreeEnv } from './codeTree/renderCodeTree.js'
 import { PLUGIN_NAME } from './constants.js'
+import {
+  ICONIFY_ICON,
+  isFileIconEnhancementAvailable,
+  prepareFileIconEntry,
+} from './fileIcons/iconify.js'
 import { fileTree as fileTreePlugin } from './fileTree.js'
 import type { MarkdownFileTreePluginOptions } from './options.js'
 import { prepareClientConfigFile } from './prepareClientConfigFile.js'
@@ -38,6 +44,10 @@ export const markdownFileTreePlugin =
     const codeTreeEnabled = Boolean(options.codeTree)
     const codeTreeOptions =
       typeof options.codeTree === 'object' ? options.codeTree : {}
+    // The icons are an optional enhancement, which needs the Iconify web
+    // component and the icon set package, and the built-in icons are rendered
+    // when either of them is missing
+    const icons = isFileIconEnhancementAvailable()
 
     // Skip every hook when neither feature is enabled
     if (!fileTreeEnabled && !codeTreeEnabled) return { name: PLUGIN_NAME }
@@ -46,15 +56,15 @@ export const markdownFileTreePlugin =
       name: PLUGIN_NAME,
 
       extendsMarkdown: (md) => {
-        if (fileTreeEnabled) md.use(fileTreePlugin)
+        if (fileTreeEnabled) md.use(fileTreePlugin, { icons })
 
         if (codeTreeEnabled) {
-          md.use(codeTreePlugin, codeTreeOptions)
-          md.use(embedCodeTree, app, codeTreeOptions)
+          md.use(codeTreePlugin, { ...codeTreeOptions, icons })
+          md.use(embedCodeTree, app, { ...codeTreeOptions, icons })
         }
       },
 
-      clientConfigFile: () => prepareClientConfigFile(app, options),
+      clientConfigFile: () => prepareClientConfigFile(app, options, icons),
     }
 
     // Only the embedded code tree reads files from the source directory
@@ -63,6 +73,19 @@ export const markdownFileTreePlugin =
         const { codeTreeFiles = [] } = page.markdownEnv as CodeTreeEnv
 
         if (codeTreeFiles.length) page.deps.push(...codeTreeFiles)
+      }
+    }
+
+    if (icons) {
+      plugin.extendsBundlerOptions = (bundlerOptions) => {
+        // The icons are registered by the generated entry, which imports the
+        // Iconify web component, so it has to be bundled by the SSR build
+        addViteSsrNoExternal(bundlerOptions, app, [ICONIFY_ICON])
+        addCustomElement(bundlerOptions, app, ICONIFY_ICON)
+      }
+
+      plugin.onPrepared = async () => {
+        await prepareFileIconEntry(app)
       }
     }
 

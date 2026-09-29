@@ -1,13 +1,5 @@
-import { hasGlobalComponent } from '@vuepress/helper/client'
 import type { PropType, SlotsType, VNode } from 'vue'
-import {
-  computed,
-  defineComponent,
-  h,
-  inject,
-  ref,
-  resolveComponent,
-} from 'vue'
+import { computed, defineComponent, h, inject, ref } from 'vue'
 
 import { activeFileKey } from '../utils.js'
 
@@ -98,13 +90,13 @@ export const VPFileTreeNode = defineComponent({
     /**
      * Icon of the file or the folder
      *
-     * Resolved by the plugin at build time. It is rendered by the global icon
-     * component, and falls back to the built-in icon when the icon component
-     * does not exist.
+     * Resolved by the plugin at build time. The icon is provided by the
+     * optional Iconify icon set of the plugin, and it is empty when the icon
+     * set is not installed, in which case the built-in icon is rendered.
      *
      * 文件或文件夹的图标
      *
-     * 由插件在构建时解析。它会被全局图标组件渲染，当图标组件不存在时回退到内置图标。
+     * 由插件在构建时解析。图标由插件的可选 Iconify 图标集提供，未安装图标集时为空，此时渲染内置图标。
      */
     icon: {
       type: String,
@@ -120,9 +112,6 @@ export const VPFileTreeNode = defineComponent({
   setup(props, { slots }) {
     const activeFile = inject(activeFileKey, ref(''))
     const active = ref(props.expanded)
-    // `VPIcon` is registered by `@vuepress/plugin-icon`
-    const hasIconComponent = hasGlobalComponent('VPIcon')
-
     const isFolder = computed(() => props.type === 'folder')
     const isOmit = computed(
       () => props.filename === '…' || props.filename === '...',
@@ -149,23 +138,35 @@ export const VPFileTreeNode = defineComponent({
       }
     }
 
-    const renderIcon = (): VNode => {
-      if (props.icon !== '' && hasIconComponent) {
-        return h(resolveComponent('VPIcon'), {
-          icon: props.icon,
-          size: 16,
-          sizing: 'both',
-        })
-      }
-
-      return h('span', {
-        class: [
-          'vp-file-tree-icon-fallback',
-          props.type,
-          isFolder.value && active.value ? 'expanded' : '',
-        ],
-      })
-    }
+    /**
+     * Render the icon of the node
+     *
+     * The icon is provided by the optional Iconify icon set of the plugin, and
+     * the built-in icon is rendered when the icon set is not installed.
+     *
+     * 渲染节点的图标
+     *
+     * 图标由插件的可选 Iconify 图标集提供，未安装图标集时渲染内置图标。
+     *
+     * @returns Rendered icon / 渲染结果
+     */
+    const renderIcon = (): VNode =>
+      props.icon === ''
+        ? h('span', {
+            class: [
+              'vp-file-tree-icon',
+              'vp-file-tree-icon-fallback',
+              props.type,
+              isFolder.value && active.value ? 'expanded' : '',
+            ],
+          })
+        : h('iconify-icon', {
+            'class': 'vp-file-tree-icon',
+            'icon': props.icon,
+            'width': '1.2em',
+            'height': '1.2em',
+            'aria-hidden': 'true',
+          })
 
     return (): VNode =>
       h('div', { 'class': 'vp-file-tree-node', 'data-title': props.filename }, [
