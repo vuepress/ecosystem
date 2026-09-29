@@ -47,6 +47,24 @@ export default {
 
 参考：[Shiki > 双主题](https://shiki.tmrs.site/guide/dual-themes)。
 
+代码块的颜色来自主题。插件会自行绘制代码块中的少数部分 —— 语言标签、行号、折叠行与代码分组标签 —— 并以 CSS 变量的形式提供它们的颜色：
+
+```css
+[data-theme='light'] {
+  --code-c-bg: #fafafa;
+  --code-c-text: #383a42;
+  --code-c-line-number: #727379;
+}
+
+[data-theme='dark'] {
+  --code-c-bg: #282c34;
+  --code-c-text: #abb2bf;
+  --code-c-line-number: #8c939e;
+}
+```
+
+在你自己的样式中覆盖它们即可自定义这些部分。
+
 ### 语言 {#languages}
 
 插件会自动加载你的 Markdown 文件中使用的语言，因此 `langs` 只用于预加载额外语言，`langAlias` 用于添加自定义语言别名。

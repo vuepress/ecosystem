@@ -170,6 +170,13 @@ ${defaultValue}\
 
       slugs[slug] = true
       token.attrSet('id', slug)
+
+      // Publish the id, so that other plugins (e.g. the links check plugin) can
+      // resolve links pointing to it
+      const env = state.env as MarkdownEnv
+
+      env.markdownAnchors ??= []
+      env.markdownAnchors.push(slug)
     }
   })
 }

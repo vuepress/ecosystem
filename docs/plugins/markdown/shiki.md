@@ -47,6 +47,24 @@ With `themes`, both themes are injected into code blocks as `--shiki-light` and 
 
 See also: [Shiki > Dual Themes](https://shiki.style/guide/dual-themes).
 
+The code block colors come from the theme. The plugin draws a few parts of a code block itself — the language label, the line numbers, the collapsed lines and the code group tabs — and exposes their colors as CSS variables:
+
+```css
+[data-theme='light'] {
+  --code-c-bg: #fafafa;
+  --code-c-text: #383a42;
+  --code-c-line-number: #727379;
+}
+
+[data-theme='dark'] {
+  --code-c-bg: #282c34;
+  --code-c-text: #abb2bf;
+  --code-c-line-number: #8c939e;
+}
+```
+
+Override them in your own stylesheet to customize those parts.
+
 ### Languages
 
 The plugin automatically loads the languages used in your markdown files, so `langs` is only needed to preload extra languages, and `langAlias` to add custom language aliases.

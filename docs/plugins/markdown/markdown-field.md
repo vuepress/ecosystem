@@ -101,6 +101,8 @@ Each field item gets an `id` generated from its name, so that you can link to it
 
 Array and record placeholders are stripped from the id: `contributors.info[*].username` gets `#contributors-info-username`, and `locales.<localePath>.title` gets `#locales-localepath-title`.
 
+Field ids are published to the markdown env, so that the links pointing to them can be checked by [`@vuepress/plugin-links-check`](./links-check.md).
+
 ### Nesting
 
 Fields can be nested to describe fields of an object type. To create a field item inside another field, increase the starting `@` by one for each level of nesting.
