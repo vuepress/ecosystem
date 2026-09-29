@@ -96,7 +96,7 @@ export const setupCopyright = (
   const onCopy = (event: ClipboardEvent): void => {
     const selection = getSelection()
 
-    if (selection) {
+    if (selection && selection.rangeCount > 0) {
       const textRange = selection.getRangeAt(0)
 
       if (enabled.value) {
@@ -122,7 +122,7 @@ export const setupCopyright = (
             event.clipboardData.setData(
               'text/html',
               `${node.innerHTML}<hr><div class="copyright">${copyright.replaceAll(
-                String.raw`\n`,
+                '\n',
                 '<br>',
               )}</div>`,
             )
