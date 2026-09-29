@@ -307,6 +307,8 @@ iconPlugin({ assets: 'fontawesome', offline: 'all' })
 - `fontawesome`：仅限 Font Awesome 免费图标
 - `fontawesome-with-brands`：Font Awesome 免费图标和品牌图标
 
+关键字用于确定图标类型，只能使用一个。要加载额外的资源，请改为传入链接数组，因为数组内不会识别关键字。
+
 @`type` type=`IconType`
 
 图标的类型，默认从 `assets` 中推断，并回退到 `unknown`。
