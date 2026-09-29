@@ -53,12 +53,6 @@ Whether to track pageviews and events automatically.
 
 Set this to `false` if you wish to disable automatic data collection and rely solely on manual tracking functions.
 
-@`cache` type=boolean
-
-Whether to cache the tracking script to improve its performance.
-
-**Note:** This feature utilizes Session Storage. Depending on your region's regulations, you may need to disclose this usage to your visitors.
-
 @`domains` type=`string[]`
 
 A list of allowed domains. Tracking will only occur when the site is accessed via these specific domains.
