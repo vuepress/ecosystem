@@ -121,23 +121,32 @@ export interface ParsedIndexId {
  * Parse the page id and the extra info out of an index id.
  *
  * An index id is either a page id (`0`), a section of a page (`0#anchor`) or a
- * custom field of a page (`0@0`).
+ * custom field of a page (`0@0`). Only the first separator is structural, so
+ * the rest of the id is kept as is: an anchor may itself contain `#` or `@`,
+ * e.g. an explicit heading id such as `{#a@b}`.
  *
  * 从索引 id 中解析出页面 id 与附加信息。
  *
- * 索引 id 可能是页面 id（`0`）、页面段落（`0#anchor`）或页面自定义字段（`0@0`）。
+ * 索引 id 可能是页面 id（`0`）、页面段落（`0#anchor`）或页面自定义字段（`0@0`）。只有第一个分隔符是结构性的，
+ * 其余部分会被原样保留：锚点本身可能包含 `#` 或 `@`，例如显式标题 id `{#a@b}`。
  *
  * @example
  *   import { parseIndexId } from '@vuepress/search-helper/shared'
  *
  *   parseIndexId('0#anchor') // { pageId: 0, info: 'anchor' }
  *   parseIndexId('0@1') // { pageId: 0, info: '1' }
+ *   parseIndexId('0#a@b') // { pageId: 0, info: 'a@b' }
  *
  * @param id - Index id 索引 id
  * @returns Parsed index id 解析后的索引 id
  */
 export const parseIndexId = (id: string): ParsedIndexId => {
-  const [pageIndex, info = ''] = id.split(/[#@]/u)
+  const separatorIndex = id.search(/[#@]/u)
 
-  return { pageId: Number(pageIndex), info }
+  return separatorIndex === -1
+    ? { pageId: Number(id), info: '' }
+    : {
+        pageId: Number(id.slice(0, separatorIndex)),
+        info: id.slice(separatorIndex + 1),
+      }
 }
