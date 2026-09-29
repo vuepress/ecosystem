@@ -271,5 +271,10 @@ export const sidebarZh: SidebarOptions = {
         'style',
       ],
     },
+    {
+      text: '@vuepress/test-utils',
+      icon: 'flask',
+      link: 'test-utils/',
+    },
   ],
 }
