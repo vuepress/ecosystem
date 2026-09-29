@@ -124,6 +124,71 @@ restore()
 
 :::
 
+### 为生成的模块打桩
+
+VuePress 会在构建期生成插件引用的客户端模块：`@internal/*` 模块，以及由生成的客户端配置创建的 `@temp/*` 模块（如 `@vuepress/plugin-revealjs` 的 `@temp/revealjs/index.js`）。它们在单元测试中并不存在，因此引用它们的模块完全无法导入。`stubModule()` 会注册这类模块的导出值并使其可解析，在 `node` 与 `happy-dom` 环境下均可工作。
+
+```ts
+import { stubModule, stubTempModule } from '@vuepress/test-utils'
+
+const restoreNotice = stubModule('@internal/noticeOptions', {
+  NOTICE_OPTIONS: [{ path: '/', title: 'Notice' }],
+})
+const restoreReveal = stubTempModule('revealjs', {
+  useRevealJs: () => Promise.resolve([Reveal]),
+})
+
+vi.resetModules()
+const { useNoticeOptions } =
+  await import('../src/client/composables/useNoticeOptions.js')
+
+restoreNotice()
+restoreReveal()
+```
+
+`stubTempModule(name, ...)` 是 `stubModule('@temp/<name>/index.js', ...)` 的快捷方式。任意模块 id 都可以打桩，包括仅在构建期存在的子路径别名，如 `@vuepress/plugin-comment` 的 `@vuepress/plugin-comment/service`。
+
+模块 id 会映射到临时目录中的一个生成文件：把 id 追加到该目录，当 id 不以 `.js` 结尾时补上 `.js` 扩展名。id、导出名与引用它的模块都必须与真实生成模块一致。由于生成模块会重新导出它们，导出名只支持标识符与 `default`。
+
+::: warning
+
+Vite 在模块被转换时解析导入，而这发生在测试运行之前。因此引用被打桩模块的模块必须在 `stubModule()` 之后动态导入，若它可能已被缓存还需配合 `vi.resetModules()`。静态导入的模块无法被打桩。
+
+:::
+
+对于必须静态导入的模块，请在仓库配置中通过 `vuepressTestPlugin()` 的 `resolve` 选项注册别名：
+
+```ts title="vitest.config.ts"
+const CLIENT_ALIASES: Record<string, string> = {
+  // 由插件在构建期创建的子路径别名
+  '@vuepress/plugin-comment/service':
+    './plugins/blog/plugin-comment/src/client/components/WalineComment.js',
+}
+
+export default defineConfig({
+  plugins: [vuepressTestPlugin({ resolve: (id) => CLIENT_ALIASES[id] })],
+})
+```
+
+### 测试颜色模式
+
+`setColorMode()` 会伪造 `@vuepress/theme-default` 用来解析夜间模式的两处来源：`(prefers-color-scheme: dark)` 媒体查询与 `vuepress-color-scheme` 本地存储键，同时设置 `<html>` 上的 `data-theme`。其他媒体查询会转发给真实的 `window.matchMedia()`。
+
+```ts
+// @vitest-environment happy-dom
+import { setColorMode } from '@vuepress/test-utils/client'
+
+const restore = setColorMode('dark')
+
+const wrapper = await mountVuePress({ rootComponent: MyComponent })
+
+expect(wrapper.find('.my-button').classes()).toContain('dark')
+
+restore()
+```
+
+传入 `{ storage: 'auto' }` 可在媒体查询仍报告夜间模式的同时把存储值保持为 `auto`，从而覆盖 `useDarkMode()` 的 `prefers-color-scheme` 分支。
+
 ### 测试 Node 侧代码
 
 `createTestApp()` 使用临时 source 目录、空主题与空 bundler 构建 VuePress app，因此无需真实站点即可测试插件钩子、页面解析与 markdown 扩展。
@@ -166,7 +231,22 @@ app.cleanup()
 
 @`resolve` type=`(id: string) => string | undefined`
 
-解析 `resolve.alias` 无法表达的模块 id，如 `@vuepress/theme-default` 的 `@theme/*`。它会对每次导入调用，需返回文件路径或 `undefined`。
+解析 `resolve.alias` 无法表达的模块 id，如 `@vuepress/theme-default` 的 `@theme/*`，或仅在构建期存在的子路径别名（如 `@vuepress/plugin-comment/service`）。它会对每次导入调用，需返回文件路径或 `undefined`。通过 `stubModule()` 注册的模块会先于它被解析。
+
+::::
+
+### setColorMode options
+
+由 `setColorMode()` 使用。
+
+:::: fields
+@`storageKey` type=string default=`'vuepress-color-scheme'`
+
+保存颜色模式的本地存储键。
+
+@`storage` type=`'auto' | 'light' | 'dark'`
+
+存储在 `storageKey` 下的值。默认为 `colorMode` 参数。
 
 ::::
 

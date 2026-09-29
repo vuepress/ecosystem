@@ -33,3 +33,12 @@ export const TEST_CLIENT_CONFIGS_KEY = '__VUEPRESS_TEST_CLIENT_CONFIGS__'
  * @internal
  */
 export const TEST_THEME_DATA_KEY = '__VUEPRESS_TEST_THEME_DATA__'
+
+/**
+ * Global key of the values of the stubbed generated modules
+ *
+ * 被 stub 的生成模块的值的全局键
+ *
+ * @internal
+ */
+export const TEST_MODULES_KEY = '__VUEPRESS_TEST_MODULES__'

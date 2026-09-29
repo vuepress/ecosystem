@@ -124,6 +124,71 @@ A module that reads a define at module scope must be imported after `stubClientD
 
 :::
 
+### Stubbing generated modules
+
+VuePress generates the client modules that a plugin imports at build time: the `@internal/*` modules, and the `@temp/*` modules created by a generated client config (e.g. `@temp/revealjs/index.js` of `@vuepress/plugin-revealjs`). They do not exist in a unit test, so a module that imports them cannot be imported at all. `stubModule()` registers the exports of such a module and makes it resolvable, in both the `node` and the `happy-dom` environment.
+
+```ts
+import { stubModule, stubTempModule } from '@vuepress/test-utils'
+
+const restoreNotice = stubModule('@internal/noticeOptions', {
+  NOTICE_OPTIONS: [{ path: '/', title: 'Notice' }],
+})
+const restoreReveal = stubTempModule('revealjs', {
+  useRevealJs: () => Promise.resolve([Reveal]),
+})
+
+vi.resetModules()
+const { useNoticeOptions } =
+  await import('../src/client/composables/useNoticeOptions.js')
+
+restoreNotice()
+restoreReveal()
+```
+
+`stubTempModule(name, ...)` is a shortcut for `stubModule('@temp/<name>/index.js', ...)`. Any module id can be stubbed, including a sub-path alias that only exists at build time, such as `@vuepress/plugin-comment/service` of `@vuepress/plugin-comment`.
+
+The module id is mapped to a generated file in a temporary directory: the id is appended to that directory, and a `.js` extension is added when the id does not end with `.js`. The id, the export names and the module that imports them must match the real generated module. Only identifiers and `default` are supported as export names, because the generated module re-exports them.
+
+::: warning
+
+Vite resolves imports when a module is transformed, which happens before the test runs. The module that imports the stubbed module must therefore be imported dynamically after `stubModule()`, with `vi.resetModules()` when it may already be cached. A statically imported module cannot be stubbed.
+
+:::
+
+For a module that must be imported statically, register the alias in the repo config with the `resolve` option of `vuepressTestPlugin()`:
+
+```ts title="vitest.config.ts"
+const CLIENT_ALIASES: Record<string, string> = {
+  // A sub-path alias created by a plugin at build time
+  '@vuepress/plugin-comment/service':
+    './plugins/blog/plugin-comment/src/client/components/WalineComment.js',
+}
+
+export default defineConfig({
+  plugins: [vuepressTestPlugin({ resolve: (id) => CLIENT_ALIASES[id] })],
+})
+```
+
+### Testing the color mode
+
+`setColorMode()` stubs the two things that `@vuepress/theme-default` reads to resolve the dark mode: the `(prefers-color-scheme: dark)` media query and the `vuepress-color-scheme` local storage key. It also sets `data-theme` on `<html>`. All other media queries are forwarded to the real `window.matchMedia()`.
+
+```ts
+// @vitest-environment happy-dom
+import { setColorMode } from '@vuepress/test-utils/client'
+
+const restore = setColorMode('dark')
+
+const wrapper = await mountVuePress({ rootComponent: MyComponent })
+
+expect(wrapper.find('.my-button').classes()).toContain('dark')
+
+restore()
+```
+
+Pass `{ storage: 'auto' }` to keep the stored value at `auto` while the media query still reports dark, which exercises the `prefers-color-scheme` branch of `useDarkMode()`.
+
 ### Testing Node side code
 
 `createTestApp()` builds a VuePress app with a temporary source directory, an empty theme and an empty bundler, so that the plugin hooks, the page resolution and the markdown extensions can be tested without a real site.
@@ -166,7 +231,22 @@ The value of `__VUEPRESS_VERSION__`. It is read from the installed `vuepress` pa
 
 @`resolve` type=`(id: string) => string | undefined`
 
-Resolve the module ids that `resolve.alias` cannot express, e.g. `@theme/*` of `@vuepress/theme-default`. It is called for every import, and should return the file path or `undefined`.
+Resolve the module ids that `resolve.alias` cannot express, e.g. `@theme/*` of `@vuepress/theme-default`, or a sub-path alias that only exists at build time such as `@vuepress/plugin-comment/service`. It is called for every import, and should return the file path or `undefined`. A module registered with `stubModule()` is resolved before it is called.
+
+::::
+
+### setColorMode options
+
+Used by `setColorMode()`.
+
+:::: fields
+@`storageKey` type=string default=`'vuepress-color-scheme'`
+
+The local storage key that holds the color mode.
+
+@`storage` type=`'auto' | 'light' | 'dark'`
+
+The value to store under `storageKey`. It defaults to the `colorMode` argument.
 
 ::::
 
