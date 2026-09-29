@@ -69,7 +69,6 @@ export const BackToTop = defineComponent({
                       {
                         'class': 'vp-scroll-progress',
                         'role': 'progressbar',
-                        'aria-labelledby': 'loadinglabel',
                         'aria-valuenow': progress.value,
                       },
                       h(
