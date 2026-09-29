@@ -4,12 +4,39 @@
   /* Matches the height of the code block title bar, which the toggle aligns to */
   --vp-code-tree-title-height: 41px;
   --vp-code-tree-toggle-width: 36px;
-  --vp-code-tree-c-bg: var(--vp-c-bg-alt);
-  --vp-code-tree-c-text: var(--vp-c-text);
-  --vp-code-tree-c-text-mute: var(--vp-c-text-mute);
-  --vp-code-tree-c-border: var(--vp-c-divider);
-  --vp-code-tree-c-hover-bg: var(--vp-c-control-hover);
+
+  /*
+   * The panel follows the colors of the code blocks, so that it never clashes
+   * with them, even when the code blocks do not follow the light and dark
+   * themes. The colors are the code block colors the highlighter declares for
+   * the theme of the site, with the site colors as their fallback.
+   *
+   * 面板跟随代码块的颜色，因此即使代码块不跟随明暗主题，也不会产生割裂。颜色取自高亮器为
+   * 站点所用主题声明的代码块颜色，兜底为站点颜色。
+   */
+  --vp-code-tree-c-bg: var(--code-c-bg, var(--vp-c-bg-alt));
+  --vp-code-tree-c-text: var(--code-c-text, var(--vp-c-text));
+  --vp-code-tree-c-text-mute: var(
+    --code-c-line-number,
+    var(--code-c-text, var(--vp-c-text-mute))
+  );
+  --vp-code-tree-c-border: var(--code-c-highlight-bg, var(--vp-c-divider));
+  --vp-code-tree-c-hover-bg: var(
+    --code-c-highlight-bg,
+    var(--vp-c-control-hover)
+  );
   --vp-code-tree-c-mask-bg: rgb(0 0 0 / 50%);
+
+  /* The file tree inside the panel follows the code block colors as well */
+  --vp-file-tree-c-bg: var(--vp-code-tree-c-bg);
+  --vp-file-tree-c-text: var(--vp-code-tree-c-text);
+  --vp-file-tree-c-text-mute: var(--vp-code-tree-c-text-mute);
+  --vp-file-tree-c-comment-text: var(--vp-code-tree-c-text-mute);
+  --vp-file-tree-c-border: var(--vp-code-tree-c-border);
+  --vp-file-tree-c-bg-hover: var(--vp-code-tree-c-hover-bg);
+
+  /* The title bar of a code block follows the code block colors as well */
+  --code-title-c-text: var(--vp-code-tree-c-text);
 
   position: relative;
 
@@ -24,6 +51,9 @@
   border-radius: 8px;
 
   background-color: var(--vp-code-tree-c-bg);
+
+  /* File names, comments and the code block titles inherit it */
+  color: var(--vp-code-tree-c-text);
 
   transition:
     border-color var(--vp-t-color),

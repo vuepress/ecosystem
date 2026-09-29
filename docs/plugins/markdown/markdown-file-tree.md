@@ -79,6 +79,8 @@ The following syntax can be used to customize the appearance of the file tree:
 
 In Markdown, use the `::: code-tree` container to display the code blocks of several files together with a file tree, so that the structure of a small template is clear at a glance.
 
+The panel follows the colors of the code blocks, so that it stays consistent with them even when the code blocks do not follow the light and dark themes. It reuses the code block CSS variables the highlighter declares (`--code-c-bg`, `--code-c-text`, `--code-c-line-number` and `--code-c-highlight-bg`) with the site colors as their fallbacks, so overriding them restyles the panel as well.
+
 ### Syntax
 
 Wrap several code blocks in a `::: code-tree` container, and add a `title="filepath"` attribute to a code block to declare the file it belongs to.
