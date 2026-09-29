@@ -22,7 +22,7 @@ export const getType = (
   const result = type.map(
     ({
       key,
-      sorter = (): number => -1,
+      sorter,
       // oxlint-disable-next-line typescript/no-useless-default-assignment
       filter = (): boolean => true,
       path = '/:key/',
@@ -43,12 +43,14 @@ export const getType = (
           : ''
 
         // get type indexes
+        const matchedPages = pages.filter((page) => filter(page))
+
+        // keep the original order when no sorter is given
+        if (sorter) matchedPages.sort(sorter)
+
         const indexes = store.addItems(
           // get page paths
-          pages
-            .filter((page) => filter(page))
-            .sort(sorter)
-            .map(({ path: itemPagePath }) => itemPagePath),
+          matchedPages.map(({ path: itemPagePath }) => itemPagePath),
         )
 
         if (pagePath) {

@@ -227,7 +227,7 @@ export interface BlogPluginOptions extends Pick<
    *
    * 将字符串转换为 URL 友好格式的函数
    *
-   * @default (name) => name.replace(/ _/g, "-").toLowerCase()
+   * @default (name) => name.replaceAll(/[ _]/gu, '-').replaceAll(/[:?*|\\/<>]/gu, '').toLowerCase()
    */
   slugify?: (name: string) => string
 
