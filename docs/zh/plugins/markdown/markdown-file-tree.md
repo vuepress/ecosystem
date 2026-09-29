@@ -79,6 +79,8 @@ export default {
 
 在 Markdown 中，使用 `::: code-tree` 容器将多个文件的代码块与文件树一起展示，让小型模板的结构一目了然。
 
+面板的颜色跟随代码块，因此即使代码块不跟随明暗主题，风格也不会割裂。它复用高亮器为代码块声明的 CSS 变量（`--code-c-bg`、`--code-c-text`、`--code-c-line-number` 和 `--code-c-highlight-bg`），并以站点颜色兜底，因此覆盖这些变量也会一并改变面板的样式。
+
 ### 语法 {#syntax-1}
 
 将多个代码块包裹在 `::: code-tree` 容器中，并为代码块添加 `title="filepath"` 属性来声明它所属的文件。
