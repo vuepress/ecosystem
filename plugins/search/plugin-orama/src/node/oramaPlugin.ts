@@ -119,6 +119,7 @@ export const oramaPlugin =
             options,
             context,
             newPage as Page<{ excerpt?: string }>,
+            oldPage,
           )
         }
       },
