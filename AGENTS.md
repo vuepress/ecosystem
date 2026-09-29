@@ -194,6 +194,21 @@ All packages use a shared `tsdownConfig` factory defined in `scripts/tsdown.ts`:
 - Vitest aliases resolve `@vuepress/<plugin-name>` directly to the TypeScript source so you do not need to build before unit testing an individual package.
 - Time-sensitive tests should be run with `TZ=Etc/UTC` (already set by the `test:unit` script).
 
+### Writing a unit test
+
+`vuepress/client` cannot be imported on its own, because it reads generated modules and compile-time defines at module scope. `@vuepress/test-utils` makes it importable: its Vite plugin (`vuepressTestPlugin()`) is installed in the root `vitest.config.ts`, so it applies to every unit test.
+
+- `renderVuePress()` renders the client app to a string and works in the `node` environment. `mountVuePress()` mounts it with `@vue/test-utils` and needs a DOM, so put `// @vitest-environment happy-dom` as the very first line of the file, before every import, or Vitest does not read it. Both accept `content` (the page chunk), `rootComponent` (render a single component without a layout) and `clientConfigs` (the plugin and theme client configs). Use `renderVuePress()` when the test does not interact with the DOM.
+- Node helpers are exported from `@vuepress/test-utils`: `createTestApp()` builds an app with a temporary source directory, an empty theme and an empty bundler; `createTestMarkdown()` and `createTestPage()` cover the markdown and page sides; `mockLogger()` silences the logs and returns spies.
+- Plugin options reach the client through `define` globals rather than props. Read them from the real plugin with `collectClientDefines(app)` and apply them with `stubClientDefines(defines)`.
+- Generated modules (`@internal/*`, `@temp/*`) and sub-path aliases that only exist at build time (e.g. `@vuepress/plugin-comment/service`) do not exist in a unit test. Register them with `stubModule()` or `stubTempModule()`, or map them in the `resolve` option of `vuepressTestPlugin()` when they must be imported statically.
+- Test the dark mode with `setColorMode()` from `@vuepress/test-utils/client`, which stubs the `(prefers-color-scheme: dark)` media query and the `vuepress-color-scheme` storage key.
+- Vite resolves imports when a module is transformed, which happens before the test runs. A module that reads a define, a generated module or the color mode at module scope must be imported dynamically after the stub, with `vi.resetModules()` when it may already be cached.
+
+### What to assert
+
+Assert the observable behavior and the design intent, not the current implementation. A test that merely restates the implementation passes even when the implementation is wrong. Prefer the public API and the rendered output, and verify that a new test fails before committing it.
+
 ## Adding or Modifying Packages
 
 1. Create the package directory under the appropriate `plugins/<category>/`, `themes/`, or `tools/` subfolder.
