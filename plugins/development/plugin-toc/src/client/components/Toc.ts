@@ -44,6 +44,21 @@ export interface TocProps {
   renderOptions: TocRenderOptions
 }
 
+/**
+ * Check whether a hash matches any descendant header
+ *
+ * 检查哈希是否匹配任一后代标题
+ *
+ * @param headers - Headers to check / 要检查的标题
+ * @param hash - Route hash to match / 要匹配的路由哈希
+ * @returns Whether a descendant header matches / 是否有后代标题匹配
+ */
+const hasActiveDescendant = (headers: PageHeader[], hash: string): boolean =>
+  headers.some(
+    (header) =>
+      `#${header.slug}` === hash || hasActiveDescendant(header.children, hash),
+  )
+
 const renderLink = (
   header: PageHeader,
   options: Required<TocRenderOptions>,
@@ -59,7 +74,7 @@ const renderLink = (
   // add active class if any sub-header hash is matched
   if (
     options.linkChildrenActiveClass &&
-    header.children.some((item) => `#${item.slug}` === route.hash)
+    hasActiveDescendant(header.children, route.hash)
   )
     linkClass.push(options.linkChildrenActiveClass)
 
