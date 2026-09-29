@@ -13,6 +13,7 @@ import { blogPlugin } from '@vuepress/plugin-blog'
 import { catalogPlugin } from '@vuepress/plugin-catalog'
 import { copyrightPlugin } from '@vuepress/plugin-copyright'
 import { feedPlugin } from '@vuepress/plugin-feed'
+import { flexsearchPlugin } from '@vuepress/plugin-flexsearch'
 import { markdownFileTreePlugin } from '@vuepress/plugin-markdown-file-tree'
 import { mediaPlugin } from '@vuepress/plugin-media'
 import { noticePlugin } from '@vuepress/plugin-notice'
@@ -263,6 +264,7 @@ export default defineUserConfig({
       json: true,
       rss: true,
     }),
+    flexsearchPlugin(),
     markdownFileTreePlugin({
       codeTree: true,
       fileTree: true,

@@ -33,7 +33,6 @@ export const oramaPlugin =
       name: PLUGIN_NAME,
 
       define: {
-        __ORAMA_SUGGESTION__: options.suggestion ?? true,
         __ORAMA_CUSTOM_FIELDS__: fromEntries(
           options.customFields
             ?.map(({ formatter }, index) =>
@@ -48,6 +47,7 @@ export const oramaPlugin =
           default: searchLocaleInfo,
         }),
         __ORAMA_OPTIONS__: {
+          suggestion: options.suggestion ?? true,
           searchDelay: options.searchDelay ?? 150,
           suggestDelay: options.suggestDelay ?? 0,
           queryHistoryCount: options.queryHistoryCount ?? 5,

@@ -136,7 +136,7 @@ See also: [Search Index](#search-index).
 
 Tags whose inner content should be preserved when the surrounding tag would otherwise be skipped by the indexer.
 
-The indexer only traverses a built-in whitelist of standard HTML tags when extracting text content. Unknown or custom tags (including many Vue components) are skipped by default, which also drops their children from the index. Some tags such as `script`, `style`, `pre`, or `code` also have their contents excluded on purpose.
+The indexer only traverses a built-in whitelist of standard HTML tags when extracting text content, and the code inside `pre` and `code` blocks is indexed. Unknown or custom tags (including many Vue components) are skipped by default, which also drops their children from the index, and the contents of tags such as `script` or `style` are excluded on purpose.
 
 By listing a tag name in `preserveTags`, you tell the indexer to keep and traverse that tag's child text even if the tag itself is not part of the default traversal set. Tag names are matched in lowercase.
 
@@ -401,7 +401,7 @@ terminate()
 
 The search service runs in a Web Worker. In development mode, we cannot bundle the worker file like in production.
 
-To load search indexes in the dev server, we use a modern Service Worker with `type: "module"`. If you want to test search functionality locally, please ensure your browser supports ES Module Workers (see [CanIUse](https://caniuse.com/mdn-api_worker_worker_ecmascript_modules)).
+To load search indexes in the dev server, we use a modern Web Worker with `type: "module"`. If you want to test search functionality locally, please ensure your browser supports ES Module Workers (see [CanIUse](https://caniuse.com/mdn-api_worker_worker_ecmascript_modules)).
 
 For performance reasons, adding, editing, or deleting Markdown content will **not** trigger a search index update in development mode by default. If you are refining search results, you can enable hot reloading by setting `hotReload: true`.
 

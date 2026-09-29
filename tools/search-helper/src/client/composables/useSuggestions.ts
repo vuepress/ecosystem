@@ -4,10 +4,9 @@ import type { Ref } from 'vue'
 import { onMounted, onUnmounted, ref } from 'vue'
 import { useData } from 'vuepress/client'
 
+import { getSearchClientConfig } from '../define.js'
 import { useSearchOptions } from '../helpers/index.js'
 import { createSearchWorker } from '../utils/index.js'
-
-declare const __SLIMSEARCH_SUGGESTION__: boolean
 
 export interface SuggestionsRef {
   enabled: boolean
@@ -16,8 +15,11 @@ export interface SuggestionsRef {
 
 export const useSuggestions = (queries: Ref<string[]>): SuggestionsRef => {
   const suggestions = ref<string[]>([])
+  // The flag is resolved by the plugin on the node side, so that every plugin
+  // can enable or disable suggestions with its own option
+  const { suggestion = true } = getSearchClientConfig().options
 
-  if (__SLIMSEARCH_SUGGESTION__) {
+  if (suggestion) {
     const { page, routeLocale } = useData()
     const searchOptions = useSearchOptions()
 
@@ -66,7 +68,7 @@ export const useSuggestions = (queries: Ref<string[]>): SuggestionsRef => {
   }
 
   return {
-    enabled: __SLIMSEARCH_SUGGESTION__,
+    enabled: suggestion,
     suggestions,
   }
 }

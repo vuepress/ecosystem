@@ -34,7 +34,6 @@ export const slimsearchPlugin =
       name: PLUGIN_NAME,
 
       define: {
-        __SLIMSEARCH_SUGGESTION__: options.suggestion ?? true,
         __SLIMSEARCH_CUSTOM_FIELDS__: fromEntries(
           options.customFields
             ?.map(({ formatter }, index) =>
@@ -49,6 +48,7 @@ export const slimsearchPlugin =
           default: searchLocaleInfo,
         }),
         __SLIMSEARCH_OPTIONS__: {
+          suggestion: options.suggestion ?? true,
           searchDelay: options.searchDelay ?? 150,
           suggestDelay: options.suggestDelay ?? 0,
           queryHistoryCount: options.queryHistoryCount ?? 5,

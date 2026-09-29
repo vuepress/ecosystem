@@ -24,6 +24,7 @@
     "@vuepress/plugin-copy-code": "workspace:*",
     "@vuepress/plugin-copyright": "workspace:*",
     "@vuepress/plugin-feed": "workspace:*",
+    "@vuepress/plugin-flexsearch": "workspace:*",
     "@vuepress/plugin-markdown-file-tree": "workspace:*",
     "@vuepress/plugin-media": "workspace:*",
     "@vuepress/plugin-notice": "workspace:*",
