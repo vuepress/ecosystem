@@ -6,7 +6,9 @@ export default [
     'client/config',
     'client/index',
     'client/shims.d',
-    'worker/dev',
+    // The dev worker is resolved against `import.meta.url` of the client
+    // config, so it has to be emitted next to it
+    { 'client/worker/dev': './src/worker/dev.ts' },
   ]),
   tsdownConfig('worker/build', {
     dts: false,

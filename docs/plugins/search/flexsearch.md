@@ -1,0 +1,486 @@
+---
+icon: search
+---
+
+# FlexSearch
+
+<NpmBadge package="@vuepress/plugin-flexsearch" />
+
+A powerful client-side search plugin featuring custom indexing and full-text search support, powered by [FlexSearch](https://github.com/nextapps-de/flexsearch).
+
+## Usage
+
+```bash
+npm i -D @vuepress/plugin-flexsearch@next
+```
+
+```ts title=".vuepress/config.ts"
+import { flexsearchPlugin } from '@vuepress/plugin-flexsearch'
+
+export default {
+  plugins: [
+    flexsearchPlugin({
+      // options
+    }),
+  ],
+}
+```
+
+## Guide
+
+### Search Index
+
+Powered by [FlexSearch](https://github.com/nextapps-de/flexsearch), this plugin provides fast search capabilities, even for large documentation sites.
+
+By default, the plugin indexes only headings, article excerpts, and any custom fields you configure. If you wish to index the full content of your pages, set `indexContent: true` in the plugin options.
+
+Every word of a query must be found in the same indexed part of a page — its title, one of its sections, or one of its custom fields — but the words may be spread over the fields of that part, so a query combining a word of a section heading with a word of its content still matches. A word also matches every indexed word that starts with it, so `vuep` matches `VuePress`.
+
+To exclude a specific page from the index, set `search: false` in its frontmatter. For programmatic filtering (e.g., excluding pages based on paths), use the [`filter` option](#filter).
+
+### Custom Fields
+
+Whether you are a theme developer or a user, it is common to attach extra metadata to pages via frontmatter or the `extendsPage` lifecycle hook. You can add this data to the search index using the `customFields` option.
+
+The `customFields` option accepts an array of configuration objects. Each object consists of two parts:
+
+- `getter`: A function that receives the `page` object and returns the value to be indexed. It can return a string, an array of strings, or `null`/`undefined` if the field is missing.
+- `formatter`: A string or object defining how the item appears in search results. The placeholder `$content` is replaced by the value returned by the `getter`. If your site supports multiple languages, you can provide an object mapping locale paths to format strings.
+
+::: tip Example: Adding Author to Index
+
+Suppose you define an author in your frontmatter:
+
+```md
+---
+author: Your name
+---
+
+Your Markdown content...
+```
+
+You can add this author information to the search index like this:
+
+```ts title=".vuepress/config.ts"
+import { flexsearchPlugin } from '@vuepress/plugin-flexsearch'
+
+export default {
+  plugins: [
+    flexsearchPlugin({
+      customFields: [
+        {
+          getter: (page) => page.frontmatter.author,
+          formatter: 'Author: $content',
+        },
+      ],
+    }),
+  ],
+}
+```
+
+:::
+
+::: tip Example: Adding Update Time
+
+Suppose you are using the `@vuepress/plugin-git` plugin and host Chinese docs under `/zh/` and English docs under `/`.
+
+You can index the last updated time with locale-specific formatting:
+
+```ts title=".vuepress/config.ts"
+import { flexsearchPlugin } from '@vuepress/plugin-flexsearch'
+import { defineUserConfig } from 'vuepress'
+
+export default defineUserConfig({
+  // Assuming the following locale config
+  locales: {
+    '/': {
+      lang: 'en-US',
+    },
+    '/zh/': {
+      lang: 'zh-CN',
+    },
+  },
+
+  plugins: [
+    flexsearchPlugin({
+      customFields: [
+        {
+          getter: (page) => page.data.git?.updateTime.toLocaleString(),
+          formatter: {
+            '/': 'Update time: $content',
+            '/zh/': '更新时间：$content',
+          },
+        },
+      ],
+    }),
+  ],
+})
+```
+
+:::
+
+## Options
+
+:::: fields
+@`indexContent` type=boolean
+
+Whether to index the full content of pages.
+
+::: tip
+
+By default, only page headings, excerpts, and custom fields are indexed. Set this to `true` only if you need to search the entire body text of your pages.
+
+:::
+
+See also: [Search Index](#search-index).
+
+@`preserveTags` type=`string[]` default=`[]`
+
+Tags whose inner content should be preserved when the surrounding tag would otherwise be skipped by the indexer.
+
+The indexer only traverses a built-in whitelist of standard HTML tags when extracting text content, and the code inside `pre` and `code` blocks is indexed. Unknown or custom tags (including many Vue components) are skipped by default, which also drops their children from the index, and the contents of tags such as `script` or `style` are excluded on purpose.
+
+By listing a tag name in `preserveTags`, you tell the indexer to keep and traverse that tag's child text even if the tag itself is not part of the default traversal set. Tag names are matched in lowercase.
+
+For custom Vue components that render slot content by default (like `<human-only>contents</human-only>`), you can add their tag names to this option to preserve their content in the search index.
+
+@`suggestion` type=boolean default=`true`
+
+Whether to display search suggestions while typing.
+
+@`customFields` type=`CustomFieldOptions[]`
+
+Configuration for indexing custom fields.
+
+See also: [Custom Fields](#custom-fields).
+
+@@`customFields[*].getter` type=`(page: Page) => string[] | string | null | undefined` required
+
+A function that receives the `page` object and returns the value to be indexed. It can return a string, an array of strings, or `null`/`undefined` if the field is missing.
+
+@@`customFields[*].formatter` type=`Record<string, string> | string` default=`'$content'`
+
+How the item appears in search results. The placeholder `$content` is replaced by the value returned by the `getter`. If your site supports multiple languages, provide an object mapping locale paths to format strings.
+
+@`hotKeys` type=`(KeyOptions | string)[]` default=`[{ key: 'k', ctrl: true }, { key: '/', ctrl: true }]`
+
+Specify the [event.key](http://keycode.info/) for hotkeys. Pressing these keys will focus the search input. Set to an empty array `[]` to disable hotkeys.
+
+@@`hotKeys[*].key` type=string required
+
+Value of `event.key` to trigger the hot key.
+
+@@`hotKeys[*].ctrl` type=boolean
+
+Whether to press `event.ctrlKey` at the same time.
+
+@@`hotKeys[*].shift` type=boolean
+
+Whether to press `event.shiftKey` at the same time.
+
+@@`hotKeys[*].alt` type=boolean
+
+Whether to press `event.altKey` at the same time.
+
+@@`hotKeys[*].meta` type=boolean
+
+Whether to press `event.metaKey` at the same time.
+
+@`queryHistoryCount` type=number default=`5`
+
+The maximum number of search query history items to store. Set to `0` to disable.
+
+@`resultHistoryCount` type=number default=`5`
+
+The maximum number of matched result history items to store. Set to `0` to disable.
+
+@`searchDelay` type=number default=`150`
+
+The delay (in milliseconds) before starting a search after input.
+
+::: note
+
+Client-side searching on sites with massive content can be resource-intensive. You may need to increase this value to ensure the user has finished typing before the search triggers.
+
+:::
+
+@`suggestDelay` type=number default=`0`
+
+The delay (in milliseconds) before providing auto suggestions after input.
+
+@`filter` type=`(page: Page) => boolean` default=`() => true`
+
+A function to filter which pages are included in the index.
+
+@`sortStrategy` type=`'max' | 'total'` default=`'max'`
+
+The strategy used to sort search results. When multiple results match, `max` places pages with the highest single-match score first, and `total` places pages with the highest cumulative score first.
+
+@`worker` type=string default=`'flexsearch.worker.js'`
+
+The filename for the output Worker script.
+
+@`hotReload` type=boolean default="Same as the --debug flag status"
+
+Whether to enable hot reloading of the search index in the development server.
+
+::: note
+
+It is disabled by default because rebuilding the index on every file change can severely impact performance on large sites.
+
+:::
+
+@`indexOptions` type=FlexSearchIndexOptions
+
+Options passed to FlexSearch during index creation.
+
+See also: [Customize Index Generation](#customize-index-generation).
+
+@@`indexOptions.tokenize` type=`'strict' | 'exact' | 'default' | 'tolerant' | 'forward' | 'reverse' | 'bidirectional' | 'full'` default=`'forward'`
+
+How the words of a page are indexed. `forward` also indexes every prefix of a word, which is what makes partial words match and what the suggestions rely on, while `strict` only matches whole words and produces a much smaller index.
+
+@@`indexOptions.resolution` type=number default=`9`
+
+The maximum number of scoring slots the content is divided into. A lower value reduces the size of the index, but also makes the relevance order of the results less precise.
+
+@`indexLocaleOptions` type=`Record<string, FlexSearchIndexOptions>`
+
+Options for index creation per locale. The object keys should correspond to the locale path.
+
+@`locales` type=`LocaleConfig<SearchLocaleData>`
+
+Multilingual configuration for the search UI. Any text used by the search UI can be overridden per locale path.
+
+See also: [Locales](../supported-locales.md).
+
+@@`locales.<localePath>.placeholder` type=string
+
+Search box placeholder.
+
+@@`locales.<localePath>.search` type=string
+
+Search text label.
+
+@@`locales.<localePath>.clear` type=string
+
+Clear search text label.
+
+@@`locales.<localePath>.remove` type=string
+
+Remove current item label.
+
+@@`locales.<localePath>.searching` type=string
+
+Searching status text.
+
+@@`locales.<localePath>.cancel` type=string
+
+Cancel text label.
+
+@@`locales.<localePath>.defaultTitle` type=string
+
+Default title.
+
+@@`locales.<localePath>.select` type=string
+
+Select hint.
+
+@@`locales.<localePath>.navigate` type=string
+
+Navigate hint.
+
+@@`locales.<localePath>.autocomplete` type=string
+
+Autocomplete hint.
+
+@@`locales.<localePath>.exit` type=string
+
+Close hint.
+
+@@`locales.<localePath>.loading` type=string
+
+Loading hint.
+
+@@`locales.<localePath>.queryHistory` type=string
+
+Search query history title.
+
+@@`locales.<localePath>.resultHistory` type=string
+
+Search result history title.
+
+@@`locales.<localePath>.emptyHistory` type=string
+
+Empty history hint.
+
+@@`locales.<localePath>.emptyResult` type=string
+
+Empty result hint.
+::::
+
+## Frontmatter
+
+::: fields
+@`search` type=boolean default=`true`
+
+Whether to include this page in the search index.
+
+:::
+
+## Advanced
+
+### Tokenization
+
+Each locale index is tokenized with the tokenizer of its own language, which is
+detected from the `lang` of the locale.
+
+Words are segmented with [`Intl.Segmenter`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Intl/Segmenter), which is why languages that are not separated by whitespace (Chinese, Japanese, Korean, Thai, ...) are segmented into words instead of characters. Tokens are lowercased, and the diacritics of their accented letters are folded, so that `VuePress` matches `vuepress` and `Café` matches `cafe`. Letters that do not fold into an ASCII letter are kept as they are, since folding them would change how their text is segmented into words.
+
+Prefix search is enabled, so a query word also matches the indexed words that start with it, e.g. `vuep` matches `VuePress`. It is also what the suggestions are built from, so setting [`indexOptions.tokenize`](#indexoptions-tokenize) to `strict` disables both of them.
+
+::: note
+
+Every word of the query must be found in the same indexed part of a page, and no stop-words are removed, so adding a very common word to a query can filter out relevant pages.
+
+:::
+
+::: warning Browser support
+
+On browsers without `Intl.Segmenter` (Chrome < 87, Edge < 87, Safari < 14.1 and Firefox < 125), the words of the languages that are not separated by whitespace are split into single characters instead. They are still matched as prefixes, so the search keeps working, but the results can be incomplete. Languages separated by whitespace are not affected.
+
+:::
+
+### Customize Index Generation
+
+You can customize the index generation process using `indexOptions` and `indexLocaleOptions`. This allows you to fine-tune indexing results globally or for specific locales.
+
+Setting [`tokenize`](#indexoptions-tokenize) to `strict` disables prefix search and indexes whole words only, which can reduce the size of the index a lot on sites with long words.
+
+### Using with API
+
+To access the search functionality programmatically, import the `createSearchWorker` function from `@vuepress/plugin-flexsearch/client`:
+
+```ts
+import { createSearchWorker } from '@vuepress/plugin-flexsearch/client'
+import { defineClientConfig } from 'vuepress/client'
+
+const { all, suggest, search, terminate } = createSearchWorker()
+
+// Suggest terms based on input
+suggest('key').then((suggestions) => {
+  // Handle search suggestions
+})
+
+// Search for content
+search('keyword').then((results) => {
+  // Handle search results
+})
+
+// Get both suggestions and results
+all('key').then(({ suggestions, results }) => {
+  // Handle suggestions and results
+})
+
+// Terminate the worker when no longer needed
+terminate()
+```
+
+### Limitations in DevServer
+
+The search service runs in a Web Worker. In development mode, we cannot bundle the worker file like in production.
+
+To load search indexes in the dev server, we use a modern Web Worker with `type: "module"`. If you want to test search functionality locally, please ensure your browser supports ES Module Workers (see [CanIUse](https://caniuse.com/mdn-api_worker_worker_ecmascript_modules)).
+
+For performance reasons, adding, editing, or deleting Markdown content will **not** trigger a search index update in development mode by default. If you are refining search results, you can enable hot reloading by setting `hotReload: true`.
+
+### Comparing with Server-Search
+
+Client-side search offers benefits like zero backend dependencies and ease of integration, but it also comes with trade-offs.
+
+::: warning Disadvantages
+
+1. **Build Time:** Indexes are generated during the build, which increases deployment time and the size of the output bundle.
+1. **Bandwidth:** Users must download the search index before they can search. The more content you have, the larger the index file, which consumes more bandwidth.
+1. **Latency:** Users must wait for the index to be downloaded and parsed locally. This initial load can be slower than a direct API request to a server-side search engine.
+1. **Device Performance:** Since the search logic runs on the user's device, speed is dependent on their hardware capabilities.
+
+:::
+
+If you are building a very large site, it is recommended to use a dedicated search service provider like [Algolia](https://www.algolia.com/), or host an open-source search crawler on your own server. This approach is more scalable as users only send search queries over the network rather than downloading the entire dataset.
+
+Notably, [DocSearch](https://docsearch.algolia.com/) is a free service by Algolia for open-source projects. If you maintain open-source documentation or a technical blog, you can [apply for it](https://docsearch.algolia.com/apply/) and use the [`@vuepress/plugin-docsearch`](./docsearch.md) plugin.
+
+## Client Config
+
+### defineSearchConfig
+
+Customize [search options](https://github.com/nextapps-de/flexsearch/blob/master/doc/document-search.md) of FlexSearch. Accepts a plain object, a ref, or a getter function.
+
+Since searching is performed inside a Web Worker, you cannot pass function-typed options directly to FlexSearch.
+
+The search options are grouped by the locale they apply to:
+
+```ts
+interface SearchLocaleOptions extends WorkerSearchOptions {
+  /** A function to split the query into words */
+  querySplitter?: (query: string, lang: string) => Promise<string[]>
+
+  /** A function to filter suggestions */
+  suggestionsFilter?: (
+    suggestions: string[],
+    query: string,
+    locale: string,
+    pageData: PageData,
+  ) => string[]
+
+  /** A function to filter search results */
+  resultsFilter?: (
+    results: SearchResult[],
+    query: string,
+    locale: string,
+    pageData: PageData,
+  ) => SearchResult[]
+}
+
+interface SearchOptions extends SearchLocaleOptions {
+  /** Setting different options per locale */
+  locales?: Record<string, SearchLocaleOptions>
+}
+
+export const defineSearchConfig: (
+  options: MaybeRefOrGetter<SearchOptions>,
+) => void
+```
+
+The `cache` option of FlexSearch is passed to it as-is, while its `limit`, `offset` and `suggest` are reimplemented by the plugin, since it searches the words of a query separately:
+
+- `limit` and `offset` paginate the merged results, not the results of each field.
+- `suggest` makes the last word of the query optional, so a query that does not match anything still returns the pages matching its previous words. It is the option of a search, and it is unrelated to the [`suggestion` option](#suggestion) of the plugin, which only controls whether the search box displays suggestions while typing.
+- `resolution` is not available, since it is a per-search scoring option that the plugin replaces with its own scoring.
+
+Two more options are available:
+
+- `properties`: the fields of a page to search in. It defaults to every field, and accepts `'*'` for the same behavior. Only the fields of the index (`h`, `t` and `c`) are accepted, so `'id'` is ignored instead of searched. It also restricts the fields the suggestions are collected from.
+- `boost`: the relevance boost of each field. It defaults to `{ c: 4, h: 2, t: 1 }`. The given object replaces the default one instead of being merged with it, so passing `{ h: 5 }` also lowers the boost of `c` from `4` to `1` — spread the default value to only change one field. FlexSearch does not score its results, so the score of a result is derived from the boosts of the fields that matched it and from its rank in each of them.
+
+The query is split with the [`querySplitter`](#definesearchconfig) of the client config before it is sent to the worker, so the words that are searched are the ones it returns.
+
+```ts title=".vuepress/client.ts"
+import { defineSearchConfig } from '@vuepress/plugin-flexsearch/client'
+
+defineSearchConfig({
+  // global search options here
+  properties: ['h', 't'],
+
+  locales: {
+    '/zh/': {
+      // set different options for Chinese
+    },
+  },
+})
+```
+
+## Components
+
+- SearchBox

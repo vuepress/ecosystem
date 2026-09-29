@@ -8,6 +8,19 @@ import type {
 
 /** Options of the search client. 搜索客户端的选项。 */
 export interface SearchClientOptions {
+  /**
+   * Whether provide auto suggestions while typing
+   *
+   * It is resolved by the plugin on the node side, because the search box is
+   * shared by every search plugin.
+   *
+   * 是否在输入时提供自动建议
+   *
+   * 它由插件在 node 侧解析，因为搜索框为所有搜索插件共用。
+   *
+   * @default true
+   */
+  suggestion?: boolean
   /** Delay to start searching after input 结束输入到开始搜索的延时 */
   searchDelay: number
   /** Delay to start auto-suggesting after input 结束输入到开始自动建议的延时 */

@@ -200,6 +200,7 @@ export const sidebarEn: SidebarOptions = {
     'search',
     'slimsearch',
     'orama',
+    'flexsearch',
   ],
 
   '/plugins/seo/': [

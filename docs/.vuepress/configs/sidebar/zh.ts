@@ -200,6 +200,7 @@ export const sidebarZh: SidebarOptions = {
     'search',
     'slimsearch',
     'orama',
+    'flexsearch',
   ],
 
   '/zh/plugins/seo/': [

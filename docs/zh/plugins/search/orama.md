@@ -403,7 +403,7 @@ terminate()
 
 搜索服务由 Worker 提供支持，在开发模式下，我们无法像生产环境那样打包 Worker 文件。
 
-为了在开发模式下加载搜索索引，我们使用了 `type: "module"` 的现代 Service Worker。因此，如果你想在 DevServer 中尝试搜索，请确保你使用的浏览器支持该特性（查看 [CanIUse](https://caniuse.com/mdn-api_worker_worker_ecmascript_modules) 了解支持详情）。
+为了在开发模式下加载搜索索引，我们使用了 `type: "module"` 的现代 Web Worker。因此，如果你想在 DevServer 中尝试搜索，请确保你使用的浏览器支持该特性（查看 [CanIUse](https://caniuse.com/mdn-api_worker_worker_ecmascript_modules) 了解支持详情）。
 
 为了获得更好的性能，在开发模式下添加/编辑/删除 Markdown 内容默认不会触发搜索索引的更新。如果你正在校对或优化搜索结果，可以通过设置 `hotReload: true` 选项来启用热重载。
 

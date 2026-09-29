@@ -466,6 +466,9 @@ importers:
       '@vuepress/plugin-feed':
         specifier: workspace:*
         version: link:../plugins/blog/plugin-feed
+      '@vuepress/plugin-flexsearch':
+        specifier: workspace:*
+        version: link:../plugins/search/plugin-flexsearch
       '@vuepress/plugin-markdown-file-tree':
         specifier: workspace:*
         version: link:../plugins/markdown/plugin-markdown-file-tree
@@ -1594,6 +1597,27 @@ importers:
       algoliasearch:
         specifier: ^5.59.0
         version: 5.59.0
+
+  plugins/search/plugin-flexsearch:
+    dependencies:
+      '@vuepress/helper':
+        specifier: workspace:*
+        version: link:../../../tools/helper
+      '@vuepress/search-helper':
+        specifier: workspace:*
+        version: link:../../../tools/search-helper
+      '@vueuse/core':
+        specifier: 'catalog:'
+        version: 15.0.0(vue@3.5.43(typescript@6.0.3))
+      flexsearch:
+        specifier: ^0.8.212
+        version: 0.8.212
+      vue:
+        specifier: 'catalog:'
+        version: 3.5.43(typescript@6.0.3)
+      vuepress:
+        specifier: 'catalog:'
+        version: 2.0.0-rc.31(64fe27a61b2d7fe5486fea782158c0c7)
 
   plugins/search/plugin-meilisearch:
     dependencies:
@@ -7316,6 +7340,9 @@ packages:
 
   flatted@3.4.4:
     resolution: {integrity: sha512-5+ybhBZANEJxaH3X5evAFatUxLfEHSr7n6kYJ+1Qd0mUqr4eu9gIf6GDbWHf8RJijHrjjO8G+la14SlL2SeS1Q==}
+
+  flexsearch@0.8.212:
+    resolution: {integrity: sha512-wSyJr1GUWoOOIISRu+X2IXiOcVfg9qqBRyCPRUdLMIGJqPzMo+jMRlvE83t14v1j0dRMEaBbER/adQjp6Du2pw==}
 
   floating-vue@5.4.0:
     resolution: {integrity: sha512-hb5y5N8sXs9Dy4iZfWBKLzf3FkUkqhbkQREhRulAEvIihMlSGxc/7pXGrIDetoqXm/RRHNVjvN6lql9IhMM+tQ==}
@@ -17030,6 +17057,8 @@ snapshots:
   flat@5.0.2: {}
 
   flatted@3.4.4: {}
+
+  flexsearch@0.8.212: {}
 
   floating-vue@5.4.0(vue@3.5.43(typescript@6.0.3)):
     dependencies:

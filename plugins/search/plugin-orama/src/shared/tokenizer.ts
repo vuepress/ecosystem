@@ -1,6 +1,12 @@
 import { components } from '@orama/orama'
 import type { DefaultTokenizer, Tokenizer } from '@orama/orama'
-import { foldDiacritics } from '@vuepress/search-helper/shared'
+import {
+  FALLBACK_LANGUAGE,
+  createSegmenter,
+  foldDiacritics,
+  isSegmenterAvailable,
+  segmentWords,
+} from '@vuepress/search-helper/shared'
 
 import { TOKENIZER_LANGUAGES, getOramaLanguage } from './language.js'
 
@@ -32,9 +38,6 @@ export interface SearchTokenizer extends Tokenizer {
   stopWords?: string[]
 }
 
-/** Language tag used when the locale language is missing or unusable. */
-const FALLBACK_LANGUAGE = 'en'
-
 /**
  * Orama language used by the normalizer.
  *
@@ -53,31 +56,6 @@ const NORMALIZER_LANGUAGE = 'english'
  * 匹配可组成单词的字符的正则。
  */
 const WORD_CHAR_REGEXP = /[\p{L}\p{N}]/u
-
-/**
- * Regex matching a word, used when word segmentation is unavailable.
- *
- * Apostrophes are kept, since word segmentation does not split them either
- * (`don't` is a single word).
- *
- * 匹配单词的正则，在无法进行分词时使用。
- *
- * 撇号会被保留，因为分词同样不会将其拆分（`don't` 是一个单词）。
- */
-const WORD_REGEXP = /[\p{L}\p{N}'’]+/gu
-
-/**
- * Regex matching the characters of the scripts that are not separated by
- * whitespace, which are split character by character.
- *
- * Covers Thai, Lao, Tibetan, Myanmar, Khmer, Japanese kana, Han and Hangul.
- *
- * 匹配不以空格分词的语言文字所对应的字符，它们会被逐字拆分。
- *
- * 覆盖泰文、老挝文、藏文、缅甸文、高棉文、日文假名、汉字与谚文。
- */
-const UNSEPARATED_CHARS_REGEXP =
-  /(?<unseparated>[\u0E00-\u0E7F\u0E80-\u0EFF\u0F00-\u0FFF\u1000-\u109F\u1100-\u11FF\u1780-\u17FF\u3040-\u30FF\u3400-\u4DBF\u4E00-\u9FFF\uAC00-\uD7AF\uF900-\uFAFF])/gu
 
 /**
  * Loaders of the tokenizers provided by `@orama/tokenizers`.
@@ -102,22 +80,6 @@ const TOKENIZER_LOADERS: Record<
 
 /** Already loaded official tokenizers. 已加载的官方分词器。 */
 const tokenizerFactories = new Map<string, TokenizerFactory>()
-
-/**
- * Whether `Intl.Segmenter` is available.
- *
- * It is available in Chrome 87+, Edge 87+, Safari 14.1+ and Firefox 125+, and
- * it is required by `@orama/tokenizers`.
- *
- * `Intl.Segmenter` 是否可用。
- *
- * 它在 Chrome 87+、Edge 87+、Safari 14.1+ 与 Firefox 125+ 中可用，且是 `@orama/tokenizers`
- * 的必需项。
- *
- * @returns Whether `Intl.Segmenter` is available `Intl.Segmenter` 是否可用
- */
-export const isSegmenterAvailable = (): boolean =>
-  typeof Intl?.Segmenter === 'function'
 
 /**
  * Load the official tokenizers required by the given languages.
@@ -166,28 +128,6 @@ export const preloadTokenizers = async (
       }
     }),
   )
-}
-
-/**
- * Create an `Intl.Segmenter` for the given language.
- *
- * @param language - Language tag 语言标签
- * @returns Segmenter, or `null` when unavailable 分词器，不可用时返回 `null`
- */
-const createSegmenter = (language: string): Intl.Segmenter | null => {
-  if (!isSegmenterAvailable()) return null
-
-  for (const tag of [language, FALLBACK_LANGUAGE]) {
-    if (!tag) continue
-
-    try {
-      return new Intl.Segmenter(tag, { granularity: 'word' })
-    } catch {
-      // Ignore invalid tags and try the next candidate
-    }
-  }
-
-  return null
 }
 
 /**
@@ -262,19 +202,6 @@ const createSegmenterTokenizer = (
   const segmenter = createSegmenter(language)
   const normalizer = createNormalizer(stopWords)
 
-  const segmentText = (text: string): string[] => {
-    if (segmenter) {
-      return [...segmenter.segment(text)]
-        .filter(({ isWordLike }) => isWordLike)
-        .map(({ segment }) => segment)
-    }
-
-    // Fall back to a regex based splitter when `Intl.Segmenter` is missing
-    return (text.match(WORD_REGEXP) ?? []).flatMap((word) =>
-      word.split(UNSEPARATED_CHARS_REGEXP),
-    )
-  }
-
   return {
     language: language || FALLBACK_LANGUAGE,
     normalizationCache: normalizer.normalizationCache,
@@ -286,7 +213,7 @@ const createSegmenterTokenizer = (
       return [
         ...new Set(
           foldTokens(
-            segmentText(raw)
+            segmentWords(raw, segmenter)
               .map((token) => token.toLowerCase().trim())
               .filter((token) => token && WORD_CHAR_REGEXP.test(token))
               // Stop-words and diacritics are handled by Orama itself

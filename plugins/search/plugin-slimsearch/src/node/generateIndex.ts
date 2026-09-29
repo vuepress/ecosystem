@@ -1,5 +1,9 @@
 import { entries } from '@vuepress/helper'
-import { collectPageIndex, getLocaleLanguage } from '@vuepress/search-helper'
+import {
+  collectPageIndex,
+  createWordTokenizer,
+  getLocaleLanguage,
+} from '@vuepress/search-helper'
 import type { PathStore } from '@vuepress/search-helper'
 import { addAllAsync, createIndex } from 'slimsearch'
 import type { App } from 'vuepress/core'
@@ -40,17 +44,13 @@ export const getSearchIndexStore = async (
 
   await Promise.all(
     entries(indexesByLocale).map(async ([localePath, indexes]) => {
-      const tokenizer = new Intl.Segmenter(getLocaleLanguage(app, localePath), {
-        granularity: 'word',
-      })
+      // The same tokenizer has to be used for the index and the queries, see
+      // the `createWordTokenizer` helper
+      const tokenize = createWordTokenizer(getLocaleLanguage(app, localePath))
 
       const index: SearchIndex = createIndex<string, IndexItem, IndexItem>({
         tokenize: (text, fieldName) =>
-          fieldName === 'id'
-            ? [text]
-            : [...tokenizer.segment(text)]
-                .map(({ segment }) => segment)
-                .filter((word) => word.trim()),
+          fieldName === 'id' ? [text] : tokenize(text),
         ...options.indexOptions,
         ...options.indexLocaleOptions?.[localePath],
         ...INDEX_FIELD_CONFIG,

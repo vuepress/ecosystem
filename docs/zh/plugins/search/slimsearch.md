@@ -336,7 +336,7 @@ export default defineUserConfig({
 
 你可以通过 `indexOptions` 和 `indexLocaleOptions` 自定义索引生成过程，以便获得更好的索引结果，并可针对每个语言环境单独设置。
 
-目前我们使用 `Intl.Segmenter` API 在构建搜索索引时进行分词。这在大多数语言中效果良好，但为了获得更高的准确性，你可能希望通过 `tokenize` 选项自定义分词过程。
+目前我们使用 `Intl.Segmenter` API 在构建搜索索引时进行分词。词条会被转换为小写并折叠其字母的变音符号，因此 `VuePress` 能匹配 `vuepress`，`Café` 能匹配 `cafe`。这在大多数语言中效果良好，但为了获得更高的准确性，你可能希望通过 `tokenize` 选项自定义分词过程。
 
 当你提供自定义 `tokenize`（或 `processTerm`）时，需设置 [`querySplitter`](#definesearchconfig) 选项，使其以相同的方式拆分单词，否则查询将无法匹配索引。
 
@@ -381,7 +381,7 @@ terminate()
 
 搜索服务由 Worker 提供支持，在开发模式下，我们无法像生产环境那样打包 Worker 文件。
 
-为了在开发模式下加载搜索索引，我们使用了 `type: "module"` 的现代 Service Worker。因此，如果你想在 DevServer 中尝试搜索，请确保你使用的浏览器支持该特性（查看 [CanIUse](https://caniuse.com/mdn-api_worker_worker_ecmascript_modules) 了解支持详情）。
+为了在开发模式下加载搜索索引，我们使用了 `type: "module"` 的现代 Web Worker。因此，如果你想在 DevServer 中尝试搜索，请确保你使用的浏览器支持该特性（查看 [CanIUse](https://caniuse.com/mdn-api_worker_worker_ecmascript_modules) 了解支持详情）。
 
 为了获得更好的性能，在开发模式下添加/编辑/删除 Markdown 内容默认不会触发搜索索引的更新。如果你正在校对或优化搜索结果，可以通过设置 `hotReload: true` 选项来启用热重载。
 
