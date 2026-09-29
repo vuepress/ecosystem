@@ -219,6 +219,6 @@ const option = {
       {},
     )
 
-    expect(result).toMatch('')
+    expect(result).toBe('')
   })
 })
