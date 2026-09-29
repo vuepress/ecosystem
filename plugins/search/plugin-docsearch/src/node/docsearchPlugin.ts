@@ -1,10 +1,13 @@
-import { getFullLocaleConfig } from '@vuepress/helper'
+import { Logger, getFullLocaleConfig } from '@vuepress/helper'
 import type { Plugin } from 'vuepress/core'
+import { colors } from 'vuepress/utils'
 
 import { docSearchLocaleInfo } from './locales.js'
 import type { DocSearchPluginOptions } from './options.js'
 import { prepareClientConfig } from './prepareClientConfig.js'
 import { PLUGIN_NAME } from './utils.js'
+
+const logger = new Logger(PLUGIN_NAME)
 
 /**
  * DocSearch plugin
@@ -39,22 +42,32 @@ export const docsearchPlugin = ({
   indexBase,
   locales = {},
   ...options
-}: DocSearchPluginOptions = {}): Plugin => ({
-  name: PLUGIN_NAME,
+}: DocSearchPluginOptions = {}): Plugin => {
+  if (!options.appId || !options.apiKey || !options.indices) {
+    logger.error(
+      `${colors.cyan('appId')}, ${colors.cyan('apiKey')} and ${colors.cyan('indices')} options are required!`,
+    )
 
-  define: (app) => ({
-    __DOCSEARCH_INDEX_BASE__: indexBase || app.siteData.base,
-    __DOCSEARCH_OPTIONS__: {
-      ...options,
-      locales: getFullLocaleConfig({
-        app,
-        default: docSearchLocaleInfo,
-        name: PLUGIN_NAME,
-        // @ts-expect-error: outer object of deep locales can be optional in docsearch
-        config: locales,
-      }),
-    },
-  }),
+    return { name: PLUGIN_NAME }
+  }
 
-  clientConfigFile: (app) => prepareClientConfig(app, injectStyles),
-})
+  return {
+    name: PLUGIN_NAME,
+
+    define: (app) => ({
+      __DOCSEARCH_INDEX_BASE__: indexBase || app.siteData.base,
+      __DOCSEARCH_OPTIONS__: {
+        ...options,
+        locales: getFullLocaleConfig({
+          app,
+          default: docSearchLocaleInfo,
+          name: PLUGIN_NAME,
+          // @ts-expect-error: outer object of deep locales can be optional in docsearch
+          config: locales,
+        }),
+      },
+    }),
+
+    clientConfigFile: (app) => prepareClientConfig(app, injectStyles),
+  }
+}
