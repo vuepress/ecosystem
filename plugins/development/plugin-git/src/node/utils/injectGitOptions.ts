@@ -25,7 +25,7 @@ const PATTERN_PRESET: Record<KnownGitProvider, GitUrlPattern> = {
   },
   bitbucket: {
     issue: ':repo/issues/:issue',
-    tag: ':repo/src/:hash',
+    tag: ':repo/src/:tag',
     commit: ':repo/commits/:hash',
   },
 }

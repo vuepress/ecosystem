@@ -57,7 +57,16 @@ export const GitChangelog = defineComponent({
         'li',
         { class: 'vp-changelog-item-tag' },
         h('div', [
-          h('a', { class: 'vp-changelog-tag' }, h('code', item.tag)),
+          h(
+            item.tagUrl ? 'a' : 'span',
+            {
+              class: 'vp-changelog-tag',
+              href: item.tagUrl,
+              target: '_blank',
+              rel: 'noreferrer',
+            },
+            h('code', item.tag),
+          ),
           h(
             'span',
             { 'class': 'vp-changelog-date', 'data-allow-mismatch': '' },
