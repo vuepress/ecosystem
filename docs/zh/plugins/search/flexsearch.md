@@ -461,8 +461,8 @@ FlexSearch 自身的 `cache` 选项会原样传递给它，而它的 `limit`、`
 
 此外还提供两个选项：
 
-- `properties`: 需要搜索的页面字段。默认为所有字段，也可以设置为 `'*'` 以表示相同的行为。只接受索引中存在的字段（`h`、`t` 与 `c`），因此 `'id'` 会被忽略而不会被搜索。它同时也会限制收集建议时所使用的字段。
-- `boost`: 各个字段的相关度权重，默认为 `{ c: 4, h: 2, t: 1 }`。传入的对象会整体替换默认值而不是与它合并，因此传 `{ h: 5 }` 也会把 `c` 的权重从 `4` 降到 `1`，只想改一个字段时需要展开默认值。FlexSearch 不会为其结果评分，因此结果的分数由其命中的各个字段的权重以及它在每个字段中的排名推导而来。
+- `properties`: 需要搜索的页面字段。默认为所有字段，也可以设置为 `'*'` 以表示相同的行为。只接受索引中存在的字段（`heading`、`text` 与 `customFields`），因此 `'id'` 会被忽略而不会被搜索。它同时也会限制收集建议时所使用的字段。
+- `boost`: 各个字段的相关度权重，默认为 `{ customFields: 4, heading: 2, text: 1 }`。传入的对象会整体替换默认值而不是与它合并，因此传 `{ heading: 5 }` 也会把 `customFields` 的权重从 `4` 降到 `1`，只想改一个字段时需要展开默认值。FlexSearch 不会为其结果评分，因此结果的分数由其命中的各个字段的权重以及它在每个字段中的排名推导而来。
 
 查询在发往工作线程之前会先用客户端配置中的 [`querySplitter`](#definesearchconfig) 进行拆分，因此实际被搜索的单词由它决定。
 
@@ -471,7 +471,7 @@ import { defineSearchConfig } from '@vuepress/plugin-flexsearch/client'
 
 defineSearchConfig({
   // 在此处设置全局搜索选项
-  properties: ['h', 't'],
+  properties: ['heading', 'text'],
 
   locales: {
     '/zh/': {

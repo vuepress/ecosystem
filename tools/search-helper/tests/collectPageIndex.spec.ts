@@ -105,7 +105,7 @@ describe(collectPageIndex, () => {
 
     const items = indexesByLocale['/']
 
-    expect(items).toContainEqual({ id: '0', h: '/kept.html' })
+    expect(items).toContainEqual({ id: '0', heading: '/kept.html' })
     expect(items.some(({ id }) => id === '0#a')).toBe(true)
   })
 })

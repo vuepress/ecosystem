@@ -11,18 +11,18 @@ import { getSearchResults } from '../src/worker/utils/getSearchResults.js'
 const docs: IndexItem[] = [
   {
     id: '0',
-    h: 'Hello world',
-    t: ['The quick brown fox jumps over the lazy dog'],
+    heading: 'Hello world',
+    text: ['The quick brown fox jumps over the lazy dog'],
   },
   {
     id: '0#section1',
-    h: 'Installation guide',
-    t: ['Step by step instructions'],
+    heading: 'Installation guide',
+    text: ['Step by step instructions'],
   },
-  { id: '0@0', c: ['author: mr-hope'] },
-  { id: '1', h: '你好世界', t: ['这是一段中文内容，用于测试搜索'] },
-  { id: '2', h: 'VuePress plugin', t: ['Search plugin for VuePress'] },
-  { id: '2@0', c: ['tag: search'] },
+  { id: '0@0', customFields: ['author: mr-hope'] },
+  { id: '1', heading: '你好世界', text: ['这是一段中文内容，用于测试搜索'] },
+  { id: '2', heading: 'VuePress plugin', text: ['Search plugin for VuePress'] },
+  { id: '2@0', customFields: ['tag: search'] },
 ]
 
 const createSearchIndex = (): SearchIndex<string, IndexItem, IndexItem> =>

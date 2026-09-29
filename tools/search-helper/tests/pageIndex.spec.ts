@@ -102,7 +102,7 @@ describe(generatePageIndex, () => {
     expect(result).toMatchSnapshot('default')
 
     const text = (
-      result.find((item): item is SectionIndexItem => 't' in item)?.[
+      result.find((item): item is SectionIndexItem => 'text' in item)?.[
         TEXT_INDEX_ID
       ] ?? []
     ).join('')

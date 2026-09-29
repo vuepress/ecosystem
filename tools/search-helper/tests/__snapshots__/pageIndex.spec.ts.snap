@@ -3,9 +3,9 @@
 exports[`generatePageIndex > should generate full index 1`] = `
 [
   {
-    "h": "",
+    "heading": "",
     "id": "0",
-    "t": [
+    "text": [
       "Text 1.",
       "Text 2 with , , , and . , , , and .",
       "Text 11 with , , , and .",
@@ -17,17 +17,17 @@ exports[`generatePageIndex > should generate full index 1`] = `
 exports[`generatePageIndex > should generate full index 2`] = `
 [
   {
-    "h": "Demo Page",
+    "heading": "Demo Page",
     "id": "1",
-    "t": [
+    "text": [
       "Here is article excerpt.",
       "const a = 1",
     ],
   },
   {
-    "h": "Content",
+    "heading": "Content",
     "id": "1#content",
-    "t": [
+    "text": [
       "Here is main content of article.",
       "A",
       "B",
@@ -36,9 +36,9 @@ exports[`generatePageIndex > should generate full index 2`] = `
     ],
   },
   {
-    "h": "Title with Special Characters #@%/",
+    "heading": "Title with Special Characters #@%/",
     "id": "1#title-with-special-characters",
-    "t": [
+    "text": [
       "Content with regexp sequence 'a$' test.",
     ],
   },
@@ -48,48 +48,48 @@ exports[`generatePageIndex > should generate full index 2`] = `
 exports[`generatePageIndex > should generate full index 3`] = `
 [
   {
-    "h": "Heading 1",
+    "heading": "Heading 1",
     "id": "2",
   },
   {
-    "h": "Heading 2",
+    "heading": "Heading 2",
     "id": "2#heading-2",
   },
   {
-    "h": "Heading 3",
+    "heading": "Heading 3",
     "id": "2#heading-3",
   },
   {
-    "h": "Heading 4",
+    "heading": "Heading 4",
     "id": "2#heading-4",
   },
   {
-    "h": "Heading 5",
+    "heading": "Heading 5",
     "id": "2#heading-5",
   },
   {
-    "h": "Heading 6",
+    "heading": "Heading 6",
     "id": "2#heading-6",
   },
   {
-    "h": "Text",
+    "heading": "Text",
     "id": "2#text",
-    "t": [
+    "text": [
       "This sentence has bold, italic and delete style text.",
     ],
   },
   {
-    "h": "Paragraph",
+    "heading": "Paragraph",
     "id": "2#paragraph",
-    "t": [
+    "text": [
       "This is a paragraph.",
       "This is another paragraph.",
     ],
   },
   {
-    "h": "Line Break",
+    "heading": "Line Break",
     "id": "2#line-break",
-    "t": [
+    "text": [
       "I would like to line break at this point",
       "::: tip",
       "In codes above, two spaces are behind at.",
@@ -97,22 +97,22 @@ exports[`generatePageIndex > should generate full index 3`] = `
     ],
   },
   {
-    "h": "Blockquotes",
+    "heading": "Blockquotes",
     "id": "2#blockquotes",
-    "t": [
+    "text": [
       "Blockquotes can also be nested...",
       "...by using greater-than signs right next to each other...",
       "...or with spaces between arrows.",
     ],
   },
   {
-    "h": "List",
+    "heading": "List",
     "id": "2#list",
   },
   {
-    "h": "Unordered List",
+    "heading": "Unordered List",
     "id": "2#unordered-list",
-    "t": [
+    "text": [
       "Create a list by starting a line with -",
       "Make sub-lists by indenting 2 spaces:",
       "Marker character change forces new list start:",
@@ -124,42 +124,42 @@ exports[`generatePageIndex > should generate full index 3`] = `
     ],
   },
   {
-    "h": "Ordered List",
+    "heading": "Ordered List",
     "id": "2#ordered-list",
-    "t": [
+    "text": [
       "Lorem ipsum dolor sit amet",
       "Consectetur adipiscing elit line break line break again",
       "Integer molestie lorem at massa",
     ],
   },
   {
-    "h": "HR",
+    "heading": "HR",
     "id": "2#hr",
   },
   {
-    "h": "Link",
+    "heading": "Link",
     "id": "2#link",
-    "t": [
+    "text": [
       "Home page using absolute path",
       "Home page using relative path",
     ],
   },
   {
-    "h": "Image",
+    "heading": "Image",
     "id": "2#image",
   },
   {
-    "h": "Emoji",
+    "heading": "Emoji",
     "id": "2#emoji",
-    "t": [
+    "text": [
       "Classic:",
       "😉 😢 😆 😋",
     ],
   },
   {
-    "h": "Tables",
+    "heading": "Tables",
     "id": "2#tables",
-    "t": [
+    "text": [
       "center",
       "right",
       "left",
@@ -175,9 +175,9 @@ exports[`generatePageIndex > should generate full index 3`] = `
     ],
   },
   {
-    "h": "Codes",
+    "heading": "Codes",
     "id": "2#codes",
-    "t": [
+    "text": [
       "Inline Code: code",
       "Block code:",
       "Sample text here...",
@@ -191,9 +191,9 @@ exports[`generatePageIndex > should generate full index 3`] = `
 exports[`generatePageIndex > should generate full index 4`] = `
 [
   {
-    "h": "",
+    "heading": "",
     "id": "3",
-    "t": [
+    "text": [
       "Inline , , , and mixed together.",
       "Normal content",
       "Some badges: .",
@@ -206,9 +206,9 @@ exports[`generatePageIndex > should generate full index 4`] = `
 exports[`generatePageIndex > should generate full index 5`] = `
 [
   {
-    "h": "Tag Test",
+    "heading": "Tag Test",
     "id": "4",
-    "t": [
+    "text": [
       "Markdown content.",
     ],
   },
@@ -218,9 +218,9 @@ exports[`generatePageIndex > should generate full index 5`] = `
 exports[`generatePageIndex > should generate full index 6`] = `
 [
   {
-    "h": "",
+    "heading": "",
     "id": "5",
-    "t": [
+    "text": [
       "Markdown content.",
     ],
   },
@@ -230,9 +230,9 @@ exports[`generatePageIndex > should generate full index 6`] = `
 exports[`generatePageIndex > should generate full index 7`] = `
 [
   {
-    "h": "西游记第一回",
+    "heading": "西游记第一回",
     "id": "6",
-    "t": [
+    "text": [
       "灵根育孕源流出 心性修持大道生",
       "诗曰：",
       "混沌未分天地乱，茫茫渺渺无人见。",
@@ -309,9 +309,9 @@ exports[`generatePageIndex > should generate full index 7`] = `
 exports[`generatePageIndex > should generate full index 8`] = `
 [
   {
-    "h": "",
+    "heading": "",
     "id": "7",
-    "t": [
+    "text": [
       "404 Not Found",
     ],
   },
@@ -321,7 +321,7 @@ exports[`generatePageIndex > should generate full index 8`] = `
 exports[`generatePageIndex > should generate index 1`] = `
 [
   {
-    "h": "",
+    "heading": "",
     "id": "0",
   },
 ]
@@ -330,18 +330,18 @@ exports[`generatePageIndex > should generate index 1`] = `
 exports[`generatePageIndex > should generate index 2`] = `
 [
   {
-    "h": "Demo Page",
+    "heading": "Demo Page",
     "id": "1",
-    "t": [
+    "text": [
       "Here is article excerpt.",
     ],
   },
   {
-    "h": "Content",
+    "heading": "Content",
     "id": "1#content",
   },
   {
-    "h": "Title with Special Characters #@%/",
+    "heading": "Title with Special Characters #@%/",
     "id": "1#title-with-special-characters",
   },
 ]
@@ -350,79 +350,79 @@ exports[`generatePageIndex > should generate index 2`] = `
 exports[`generatePageIndex > should generate index 3`] = `
 [
   {
-    "h": "Heading 1",
+    "heading": "Heading 1",
     "id": "2",
   },
   {
-    "h": "Heading 2",
+    "heading": "Heading 2",
     "id": "2#heading-2",
   },
   {
-    "h": "Heading 3",
+    "heading": "Heading 3",
     "id": "2#heading-3",
   },
   {
-    "h": "Heading 4",
+    "heading": "Heading 4",
     "id": "2#heading-4",
   },
   {
-    "h": "Heading 5",
+    "heading": "Heading 5",
     "id": "2#heading-5",
   },
   {
-    "h": "Heading 6",
+    "heading": "Heading 6",
     "id": "2#heading-6",
   },
   {
-    "h": "Text",
+    "heading": "Text",
     "id": "2#text",
   },
   {
-    "h": "Paragraph",
+    "heading": "Paragraph",
     "id": "2#paragraph",
   },
   {
-    "h": "Line Break",
+    "heading": "Line Break",
     "id": "2#line-break",
   },
   {
-    "h": "Blockquotes",
+    "heading": "Blockquotes",
     "id": "2#blockquotes",
   },
   {
-    "h": "List",
+    "heading": "List",
     "id": "2#list",
   },
   {
-    "h": "Unordered List",
+    "heading": "Unordered List",
     "id": "2#unordered-list",
   },
   {
-    "h": "Ordered List",
+    "heading": "Ordered List",
     "id": "2#ordered-list",
   },
   {
-    "h": "HR",
+    "heading": "HR",
     "id": "2#hr",
   },
   {
-    "h": "Link",
+    "heading": "Link",
     "id": "2#link",
   },
   {
-    "h": "Image",
+    "heading": "Image",
     "id": "2#image",
   },
   {
-    "h": "Emoji",
+    "heading": "Emoji",
     "id": "2#emoji",
   },
   {
-    "h": "Tables",
+    "heading": "Tables",
     "id": "2#tables",
   },
   {
-    "h": "Codes",
+    "heading": "Codes",
     "id": "2#codes",
   },
 ]
@@ -431,7 +431,7 @@ exports[`generatePageIndex > should generate index 3`] = `
 exports[`generatePageIndex > should generate index 4`] = `
 [
   {
-    "h": "",
+    "heading": "",
     "id": "3",
   },
 ]
@@ -440,7 +440,7 @@ exports[`generatePageIndex > should generate index 4`] = `
 exports[`generatePageIndex > should generate index 5`] = `
 [
   {
-    "h": "Tag Test",
+    "heading": "Tag Test",
     "id": "4",
   },
 ]
@@ -449,7 +449,7 @@ exports[`generatePageIndex > should generate index 5`] = `
 exports[`generatePageIndex > should generate index 6`] = `
 [
   {
-    "h": "",
+    "heading": "",
     "id": "5",
   },
 ]
@@ -458,7 +458,7 @@ exports[`generatePageIndex > should generate index 6`] = `
 exports[`generatePageIndex > should generate index 7`] = `
 [
   {
-    "h": "西游记第一回",
+    "heading": "西游记第一回",
     "id": "6",
   },
 ]
@@ -467,7 +467,7 @@ exports[`generatePageIndex > should generate index 7`] = `
 exports[`generatePageIndex > should generate index 8`] = `
 [
   {
-    "h": "",
+    "heading": "",
     "id": "7",
   },
 ]
@@ -476,9 +476,9 @@ exports[`generatePageIndex > should generate index 8`] = `
 exports[`generatePageIndex > should preserve content inside custom tags with preserveTags > not preserve 1`] = `
 [
   {
-    "h": "",
+    "heading": "",
     "id": "0",
-    "t": [
+    "text": [
       "Inline , , , and mixed together.",
       "Normal content",
       "Some badges: .",
@@ -491,9 +491,9 @@ exports[`generatePageIndex > should preserve content inside custom tags with pre
 exports[`generatePageIndex > should preserve content inside custom tags with preserveTags > preserve 1`] = `
 [
   {
-    "h": "",
+    "heading": "",
     "id": "0",
-    "t": [
+    "text": [
       "Human readable content",
       "Human readable content",
       "Inline , ,",
@@ -514,9 +514,9 @@ exports[`generatePageIndex > should preserve content inside custom tags with pre
 exports[`generatePageIndex > should remove custom tags by default > default 1`] = `
 [
   {
-    "h": "",
+    "heading": "",
     "id": "0",
-    "t": [
+    "text": [
       "Text 1.",
       "Text 2 with , , , and . , , , and .",
       "Text 11 with , , , and .",
@@ -528,7 +528,7 @@ exports[`generatePageIndex > should remove custom tags by default > default 1`] 
 exports[`generatePageIndex > should support customFields 1`] = `
 [
   {
-    "h": "",
+    "heading": "",
     "id": "0",
   },
 ]
@@ -537,22 +537,22 @@ exports[`generatePageIndex > should support customFields 1`] = `
 exports[`generatePageIndex > should support customFields 2`] = `
 [
   {
-    "h": "Demo Page",
+    "heading": "Demo Page",
     "id": "1",
-    "t": [
+    "text": [
       "Here is article excerpt.",
     ],
   },
   {
-    "h": "Content",
+    "heading": "Content",
     "id": "1#content",
   },
   {
-    "h": "Title with Special Characters #@%/",
+    "heading": "Title with Special Characters #@%/",
     "id": "1#title-with-special-characters",
   },
   {
-    "c": [
+    "customFields": [
       "Demo",
     ],
     "id": "1@0",
@@ -563,79 +563,79 @@ exports[`generatePageIndex > should support customFields 2`] = `
 exports[`generatePageIndex > should support customFields 3`] = `
 [
   {
-    "h": "Heading 1",
+    "heading": "Heading 1",
     "id": "2",
   },
   {
-    "h": "Heading 2",
+    "heading": "Heading 2",
     "id": "2#heading-2",
   },
   {
-    "h": "Heading 3",
+    "heading": "Heading 3",
     "id": "2#heading-3",
   },
   {
-    "h": "Heading 4",
+    "heading": "Heading 4",
     "id": "2#heading-4",
   },
   {
-    "h": "Heading 5",
+    "heading": "Heading 5",
     "id": "2#heading-5",
   },
   {
-    "h": "Heading 6",
+    "heading": "Heading 6",
     "id": "2#heading-6",
   },
   {
-    "h": "Text",
+    "heading": "Text",
     "id": "2#text",
   },
   {
-    "h": "Paragraph",
+    "heading": "Paragraph",
     "id": "2#paragraph",
   },
   {
-    "h": "Line Break",
+    "heading": "Line Break",
     "id": "2#line-break",
   },
   {
-    "h": "Blockquotes",
+    "heading": "Blockquotes",
     "id": "2#blockquotes",
   },
   {
-    "h": "List",
+    "heading": "List",
     "id": "2#list",
   },
   {
-    "h": "Unordered List",
+    "heading": "Unordered List",
     "id": "2#unordered-list",
   },
   {
-    "h": "Ordered List",
+    "heading": "Ordered List",
     "id": "2#ordered-list",
   },
   {
-    "h": "HR",
+    "heading": "HR",
     "id": "2#hr",
   },
   {
-    "h": "Link",
+    "heading": "Link",
     "id": "2#link",
   },
   {
-    "h": "Image",
+    "heading": "Image",
     "id": "2#image",
   },
   {
-    "h": "Emoji",
+    "heading": "Emoji",
     "id": "2#emoji",
   },
   {
-    "h": "Tables",
+    "heading": "Tables",
     "id": "2#tables",
   },
   {
-    "h": "Codes",
+    "heading": "Codes",
     "id": "2#codes",
   },
 ]
@@ -644,7 +644,7 @@ exports[`generatePageIndex > should support customFields 3`] = `
 exports[`generatePageIndex > should support customFields 4`] = `
 [
   {
-    "h": "",
+    "heading": "",
     "id": "3",
   },
 ]
@@ -653,11 +653,11 @@ exports[`generatePageIndex > should support customFields 4`] = `
 exports[`generatePageIndex > should support customFields 5`] = `
 [
   {
-    "h": "Tag Test",
+    "heading": "Tag Test",
     "id": "4",
   },
   {
-    "c": [
+    "customFields": [
       "markdown",
     ],
     "id": "4@0",
@@ -668,11 +668,11 @@ exports[`generatePageIndex > should support customFields 5`] = `
 exports[`generatePageIndex > should support customFields 6`] = `
 [
   {
-    "h": "",
+    "heading": "",
     "id": "5",
   },
   {
-    "c": [
+    "customFields": [
       "markdown",
     ],
     "id": "5@0",
@@ -683,7 +683,7 @@ exports[`generatePageIndex > should support customFields 6`] = `
 exports[`generatePageIndex > should support customFields 7`] = `
 [
   {
-    "h": "西游记第一回",
+    "heading": "西游记第一回",
     "id": "6",
   },
 ]
@@ -692,7 +692,7 @@ exports[`generatePageIndex > should support customFields 7`] = `
 exports[`generatePageIndex > should support customFields 8`] = `
 [
   {
-    "h": "",
+    "heading": "",
     "id": "7",
   },
 ]
@@ -701,9 +701,9 @@ exports[`generatePageIndex > should support customFields 8`] = `
 exports[`generatePageIndex > should support customFields with full index 1`] = `
 [
   {
-    "h": "",
+    "heading": "",
     "id": "0",
-    "t": [
+    "text": [
       "Text 1.",
       "Text 2 with , , , and . , , , and .",
       "Text 11 with , , , and .",
@@ -715,17 +715,17 @@ exports[`generatePageIndex > should support customFields with full index 1`] = `
 exports[`generatePageIndex > should support customFields with full index 2`] = `
 [
   {
-    "h": "Demo Page",
+    "heading": "Demo Page",
     "id": "1",
-    "t": [
+    "text": [
       "Here is article excerpt.",
       "const a = 1",
     ],
   },
   {
-    "h": "Content",
+    "heading": "Content",
     "id": "1#content",
-    "t": [
+    "text": [
       "Here is main content of article.",
       "A",
       "B",
@@ -734,14 +734,14 @@ exports[`generatePageIndex > should support customFields with full index 2`] = `
     ],
   },
   {
-    "h": "Title with Special Characters #@%/",
+    "heading": "Title with Special Characters #@%/",
     "id": "1#title-with-special-characters",
-    "t": [
+    "text": [
       "Content with regexp sequence 'a$' test.",
     ],
   },
   {
-    "c": [
+    "customFields": [
       "Demo",
     ],
     "id": "1@0",
@@ -752,48 +752,48 @@ exports[`generatePageIndex > should support customFields with full index 2`] = `
 exports[`generatePageIndex > should support customFields with full index 3`] = `
 [
   {
-    "h": "Heading 1",
+    "heading": "Heading 1",
     "id": "2",
   },
   {
-    "h": "Heading 2",
+    "heading": "Heading 2",
     "id": "2#heading-2",
   },
   {
-    "h": "Heading 3",
+    "heading": "Heading 3",
     "id": "2#heading-3",
   },
   {
-    "h": "Heading 4",
+    "heading": "Heading 4",
     "id": "2#heading-4",
   },
   {
-    "h": "Heading 5",
+    "heading": "Heading 5",
     "id": "2#heading-5",
   },
   {
-    "h": "Heading 6",
+    "heading": "Heading 6",
     "id": "2#heading-6",
   },
   {
-    "h": "Text",
+    "heading": "Text",
     "id": "2#text",
-    "t": [
+    "text": [
       "This sentence has bold, italic and delete style text.",
     ],
   },
   {
-    "h": "Paragraph",
+    "heading": "Paragraph",
     "id": "2#paragraph",
-    "t": [
+    "text": [
       "This is a paragraph.",
       "This is another paragraph.",
     ],
   },
   {
-    "h": "Line Break",
+    "heading": "Line Break",
     "id": "2#line-break",
-    "t": [
+    "text": [
       "I would like to line break at this point",
       "::: tip",
       "In codes above, two spaces are behind at.",
@@ -801,22 +801,22 @@ exports[`generatePageIndex > should support customFields with full index 3`] = `
     ],
   },
   {
-    "h": "Blockquotes",
+    "heading": "Blockquotes",
     "id": "2#blockquotes",
-    "t": [
+    "text": [
       "Blockquotes can also be nested...",
       "...by using greater-than signs right next to each other...",
       "...or with spaces between arrows.",
     ],
   },
   {
-    "h": "List",
+    "heading": "List",
     "id": "2#list",
   },
   {
-    "h": "Unordered List",
+    "heading": "Unordered List",
     "id": "2#unordered-list",
-    "t": [
+    "text": [
       "Create a list by starting a line with -",
       "Make sub-lists by indenting 2 spaces:",
       "Marker character change forces new list start:",
@@ -828,42 +828,42 @@ exports[`generatePageIndex > should support customFields with full index 3`] = `
     ],
   },
   {
-    "h": "Ordered List",
+    "heading": "Ordered List",
     "id": "2#ordered-list",
-    "t": [
+    "text": [
       "Lorem ipsum dolor sit amet",
       "Consectetur adipiscing elit line break line break again",
       "Integer molestie lorem at massa",
     ],
   },
   {
-    "h": "HR",
+    "heading": "HR",
     "id": "2#hr",
   },
   {
-    "h": "Link",
+    "heading": "Link",
     "id": "2#link",
-    "t": [
+    "text": [
       "Home page using absolute path",
       "Home page using relative path",
     ],
   },
   {
-    "h": "Image",
+    "heading": "Image",
     "id": "2#image",
   },
   {
-    "h": "Emoji",
+    "heading": "Emoji",
     "id": "2#emoji",
-    "t": [
+    "text": [
       "Classic:",
       "😉 😢 😆 😋",
     ],
   },
   {
-    "h": "Tables",
+    "heading": "Tables",
     "id": "2#tables",
-    "t": [
+    "text": [
       "center",
       "right",
       "left",
@@ -879,9 +879,9 @@ exports[`generatePageIndex > should support customFields with full index 3`] = `
     ],
   },
   {
-    "h": "Codes",
+    "heading": "Codes",
     "id": "2#codes",
-    "t": [
+    "text": [
       "Inline Code: code",
       "Block code:",
       "Sample text here...",
@@ -895,9 +895,9 @@ exports[`generatePageIndex > should support customFields with full index 3`] = `
 exports[`generatePageIndex > should support customFields with full index 4`] = `
 [
   {
-    "h": "",
+    "heading": "",
     "id": "3",
-    "t": [
+    "text": [
       "Inline , , , and mixed together.",
       "Normal content",
       "Some badges: .",
@@ -910,14 +910,14 @@ exports[`generatePageIndex > should support customFields with full index 4`] = `
 exports[`generatePageIndex > should support customFields with full index 5`] = `
 [
   {
-    "h": "Tag Test",
+    "heading": "Tag Test",
     "id": "4",
-    "t": [
+    "text": [
       "Markdown content.",
     ],
   },
   {
-    "c": [
+    "customFields": [
       "markdown",
     ],
     "id": "4@0",
@@ -928,14 +928,14 @@ exports[`generatePageIndex > should support customFields with full index 5`] = `
 exports[`generatePageIndex > should support customFields with full index 6`] = `
 [
   {
-    "h": "",
+    "heading": "",
     "id": "5",
-    "t": [
+    "text": [
       "Markdown content.",
     ],
   },
   {
-    "c": [
+    "customFields": [
       "markdown",
     ],
     "id": "5@0",
@@ -946,9 +946,9 @@ exports[`generatePageIndex > should support customFields with full index 6`] = `
 exports[`generatePageIndex > should support customFields with full index 7`] = `
 [
   {
-    "h": "西游记第一回",
+    "heading": "西游记第一回",
     "id": "6",
-    "t": [
+    "text": [
       "灵根育孕源流出 心性修持大道生",
       "诗曰：",
       "混沌未分天地乱，茫茫渺渺无人见。",
@@ -1025,9 +1025,9 @@ exports[`generatePageIndex > should support customFields with full index 7`] = `
 exports[`generatePageIndex > should support customFields with full index 8`] = `
 [
   {
-    "h": "",
+    "heading": "",
     "id": "7",
-    "t": [
+    "text": [
       "404 Not Found",
     ],
   },

@@ -89,10 +89,14 @@ export const getSuggestions = (
     limit: SUGGESTION_COUNT,
   })) {
     const fields = [
-      ...(searchedFields.includes(HEADING_INDEX_ID) ? [document.h] : []),
-      ...(searchedFields.includes(TEXT_INDEX_ID) ? (document.t ?? []) : []),
+      ...(searchedFields.includes(HEADING_INDEX_ID)
+        ? [document[HEADING_INDEX_ID]]
+        : []),
+      ...(searchedFields.includes(TEXT_INDEX_ID)
+        ? (document[TEXT_INDEX_ID] ?? [])
+        : []),
       ...(searchedFields.includes(CUSTOM_FIELDS_INDEX_ID)
-        ? (document.c ?? [])
+        ? (document[CUSTOM_FIELDS_INDEX_ID] ?? [])
         : []),
     ]
 

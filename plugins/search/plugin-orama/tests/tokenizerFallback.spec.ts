@@ -83,8 +83,8 @@ describe('when `Intl.Segmenter` is not available', () => {
 
   it('should still build a searchable index', async () => {
     const docs: IndexItem[] = [
-      { id: '0', h: '中文内容测试' },
-      { id: '1', h: 'Hello World' },
+      { id: '0', heading: '中文内容测试' },
+      { id: '1', heading: 'Hello World' },
     ]
     const index = createIndex('zh-CN')
 
@@ -101,7 +101,7 @@ describe('when `Intl.Segmenter` is not available', () => {
   it('should restore an index that tokenizes queries identically', async () => {
     const index = createIndex('zh-CN')
 
-    await insertMultiple(index, [{ id: '0', h: '中文内容测试' }])
+    await insertMultiple(index, [{ id: '0', heading: '中文内容测试' }])
 
     const restored = decodeIndex(encodeIndex(index))
 

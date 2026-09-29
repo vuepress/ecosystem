@@ -30,7 +30,7 @@ export type WorkerSearchOptions = Pick<
    *
    * 搜索属性的相关度权重
    *
-   * @default { c: 4, h: 2, t: 1 }
+   * @default { customFields: 4, heading: 2, text: 1 }
    */
   boost?: Record<string, number>
 

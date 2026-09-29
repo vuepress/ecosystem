@@ -163,8 +163,8 @@ describe(createTokenizer, () => {
 describe('search with the out-of-the-box tokenizer', () => {
   it('should match Chinese words', async () => {
     const index = await createSearchableIndex('zh-CN', [
-      { id: '0', h: '这是一个中文的测试' },
-      { id: '1', h: '中文分词插件' },
+      { id: '0', heading: '这是一个中文的测试' },
+      { id: '1', heading: '中文分词插件' },
     ])
 
     expect(countResults(index, '中文')).toBe(2)
@@ -173,7 +173,7 @@ describe('search with the out-of-the-box tokenizer', () => {
 
   it('should match Chinese words character by character', async () => {
     const index = await createSearchableIndex('zh-CN', [
-      { id: '0', h: '中文内容测试' },
+      { id: '0', heading: '中文内容测试' },
     ])
 
     // Word segmentation is not perfect, but adjacent characters are indexed as
@@ -184,7 +184,7 @@ describe('search with the out-of-the-box tokenizer', () => {
 
   it('should remove Chinese stop-words', async () => {
     const index = await createSearchableIndex('zh-CN', [
-      { id: '0', h: '这是一个中文的测试' },
+      { id: '0', heading: '这是一个中文的测试' },
     ])
 
     expect(countResults(index, '的')).toBe(0)
@@ -192,7 +192,7 @@ describe('search with the out-of-the-box tokenizer', () => {
 
   it('should match Latin words inside Chinese content', async () => {
     const index = await createSearchableIndex('zh-CN', [
-      { id: '0', h: 'VuePress 插件文档' },
+      { id: '0', heading: 'VuePress 插件文档' },
     ])
 
     expect(countResults(index, 'VuePress')).toBe(1)
@@ -202,7 +202,7 @@ describe('search with the out-of-the-box tokenizer', () => {
 
   it('should match English words regardless of their case', async () => {
     const index = await createSearchableIndex('en-US', [
-      { id: '0', h: 'The VuePress Plugin' },
+      { id: '0', heading: 'The VuePress Plugin' },
     ])
 
     expect(countResults(index, 'vuepress')).toBe(1)
@@ -212,7 +212,7 @@ describe('search with the out-of-the-box tokenizer', () => {
 
   it('should remove English stop-words', async () => {
     const index = await createSearchableIndex('en-US', [
-      { id: '0', h: 'The VuePress Plugin' },
+      { id: '0', heading: 'The VuePress Plugin' },
     ])
 
     expect(countResults(index, 'the')).toBe(0)
@@ -220,7 +220,7 @@ describe('search with the out-of-the-box tokenizer', () => {
 
   it('should match accented words without their diacritics', async () => {
     const index = await createSearchableIndex('fr-FR', [
-      { id: '0', h: 'Le Café à Paris' },
+      { id: '0', heading: 'Le Café à Paris' },
     ])
 
     expect(countResults(index, 'cafe')).toBe(1)
@@ -229,7 +229,7 @@ describe('search with the out-of-the-box tokenizer', () => {
 
   it('should match Japanese words', async () => {
     const index = await createSearchableIndex('ja-JP', [
-      { id: '0', h: 'これは日本語のテストです' },
+      { id: '0', heading: 'これは日本語のテストです' },
     ])
 
     expect(countResults(index, '日本語')).toBe(1)
@@ -238,7 +238,7 @@ describe('search with the out-of-the-box tokenizer', () => {
 
   it('should match Korean words', async () => {
     const index = await createSearchableIndex('ko-KR', [
-      { id: '0', h: '한국어 검색 테스트' },
+      { id: '0', heading: '한국어 검색 테스트' },
     ])
 
     expect(countResults(index, '한국어')).toBe(1)
@@ -248,7 +248,9 @@ describe('search with the out-of-the-box tokenizer', () => {
 
 describe('serialization of the tokenizer', () => {
   it('should embed the language and the stop-words', async () => {
-    const index = await createSearchableIndex('zh-CN', [{ id: '0', h: '中文' }])
+    const index = await createSearchableIndex('zh-CN', [
+      { id: '0', heading: '中文' },
+    ])
 
     const serialized = serializeIndex(index)
 
@@ -258,7 +260,7 @@ describe('serialization of the tokenizer', () => {
 
   it('should leave out the stop-words when there are none', async () => {
     const index = await createSearchableIndex('ko-KR', [
-      { id: '0', h: '한국어' },
+      { id: '0', heading: '한국어' },
     ])
 
     expect(serializeIndex(index)).not.toHaveProperty('stopWords')
@@ -271,7 +273,7 @@ describe('serialization of the tokenizer', () => {
     const indexes = await Promise.all(
       languages.map((language) =>
         createSearchableIndex(language, [
-          { id: '0', h: '这是一个中文的测试 VuePress Plugin' },
+          { id: '0', heading: '这是一个中文的测试 VuePress Plugin' },
         ]),
       ),
     )
@@ -289,7 +291,7 @@ describe('serialization of the tokenizer', () => {
 
   it('should keep the stop-words of a restored index', async () => {
     const index = await createSearchableIndex('zh-CN', [
-      { id: '0', h: '这是一个中文的测试' },
+      { id: '0', heading: '这是一个中文的测试' },
     ])
     const restored = decodeIndex(encodeIndex(index))
 
@@ -322,7 +324,7 @@ describe('custom tokenizer', () => {
       tokenizer: createCharTokenizer,
     })
 
-    await insertMultiple(index, [{ id: '0', h: '上海交通大学' }])
+    await insertMultiple(index, [{ id: '0', heading: '上海交通大学' }])
 
     return index
   }

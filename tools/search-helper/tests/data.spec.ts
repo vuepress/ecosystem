@@ -7,9 +7,12 @@ import {
 } from '../src/shared/data.js'
 import type { IndexItem } from '../src/shared/data.js'
 
-const pageItem: IndexItem = { id: '0', h: 'Title' }
-const sectionItem: IndexItem = { id: '0#anchor', h: 'Title' }
-const customFieldItem: IndexItem = { id: '0@1', c: ['author: Mr.Hope'] }
+const pageItem: IndexItem = { id: '0', heading: 'Title' }
+const sectionItem: IndexItem = { id: '0#anchor', heading: 'Title' }
+const customFieldItem: IndexItem = {
+  id: '0@1',
+  customFields: ['author: Mr.Hope'],
+}
 
 describe(parseIndexId, () => {
   it('should parse a page id', () => {

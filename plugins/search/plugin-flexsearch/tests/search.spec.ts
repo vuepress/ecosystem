@@ -13,26 +13,26 @@ import { getSuggestions } from '../src/worker/utils/getSuggestions.js'
 const items: SearchIndexItem[] = [
   {
     id: '0',
-    h: 'Hello world',
-    t: ['The quick brown fox jumps over the lazy dog'],
+    heading: 'Hello world',
+    text: ['The quick brown fox jumps over the lazy dog'],
   },
   {
     id: '0#section1',
-    h: 'Installation guide',
-    t: ['Step by step instructions'],
+    heading: 'Installation guide',
+    text: ['Step by step instructions'],
   },
-  { id: '0@0', c: ['author: mr-hope'] },
-  { id: '1', h: '你好世界', t: ['这是一段中文内容，用于测试搜索'] },
+  { id: '0@0', customFields: ['author: mr-hope'] },
+  { id: '1', heading: '你好世界', text: ['这是一段中文内容，用于测试搜索'] },
   {
     id: '2',
-    h: 'VuePress plugin',
-    t: ['Search plugin for VuePress'],
-    c: ['tag: search'],
+    heading: 'VuePress plugin',
+    text: ['Search plugin for VuePress'],
+    customFields: ['tag: search'],
   },
   // `alpha` only appears in the heading of the first one, while `bravo` only
   // appears in the content of both of them, and `charlie` appears in neither
-  { id: '3', h: 'Alpha heading', t: ['bravo content'] },
-  { id: '4', h: 'Alpha bravo', t: ['nothing here'] },
+  { id: '3', heading: 'Alpha heading', text: ['bravo content'] },
+  { id: '4', heading: 'Alpha bravo', text: ['nothing here'] },
 ]
 
 const createTestIndex = (lang = 'en'): SearchIndex => {
@@ -103,9 +103,18 @@ describe('createIndex and its search helpers', () => {
 
     // `common` matches every document, while `rare` only matches the last one,
     // which is also the least relevant one for `common`
-    for (let i = 0; i < 300; i += 1)
-      index.add({ id: String(i), h: `Document ${i}`, t: ['common word'] })
-    index.add({ id: '300', h: 'Rare document', t: ['common rare word'] })
+    for (let i = 0; i < 300; i += 1) {
+      index.add({
+        id: String(i),
+        heading: `Document ${i}`,
+        text: ['common word'],
+      })
+    }
+    index.add({
+      id: '300',
+      heading: 'Rare document',
+      text: ['common rare word'],
+    })
 
     // The hits of a term are not truncated by `limit`, otherwise the document
     // would be dropped from the intersection
@@ -128,8 +137,13 @@ describe('createIndex and its search helpers', () => {
   it('should paginate a suggestion query', () => {
     const index = createIndex('en')
 
-    for (let i = 0; i < 30; i += 1)
-      index.add({ id: String(i), h: `Document ${i}`, t: ['shared keyword'] })
+    for (let i = 0; i < 30; i += 1) {
+      index.add({
+        id: String(i),
+        heading: `Document ${i}`,
+        text: ['shared keyword'],
+      })
+    }
 
     // The optional term of a suggestion query must not bound the results,
     // otherwise an offset beyond its own limit would return nothing
@@ -170,7 +184,7 @@ describe('createIndex and its search helpers', () => {
     ).toHaveLength(0)
     // The other properties are still searched
     expect(
-      getSearchResults('hello', index, { properties: ['id', 'h'] }),
+      getSearchResults('hello', index, { properties: ['id', 'heading'] }),
     ).toHaveLength(1)
   })
 
@@ -179,10 +193,10 @@ describe('createIndex and its search helpers', () => {
 
     // `hello` only appears in the heading of the first document
     expect(
-      getSearchResults('hello', index, { properties: ['t'] }),
+      getSearchResults('hello', index, { properties: ['text'] }),
     ).toHaveLength(0)
     expect(
-      getSearchResults('hello', index, { properties: ['h'] }),
+      getSearchResults('hello', index, { properties: ['heading'] }),
     ).toHaveLength(1)
     expect(getSearchResults('hello', index, { properties: '*' })).toHaveLength(
       1,
@@ -209,9 +223,14 @@ describe('createIndex and its search helpers', () => {
   it('should apply limit and offset to the merged results', () => {
     const index = createIndex('en')
 
-    for (let i = 0; i < 3; i += 1)
+    for (let i = 0; i < 3; i += 1) {
       // The term matches both the heading and the content of every document
-      index.add({ id: String(i), h: 'shared keyword', t: ['shared keyword'] })
+      index.add({
+        id: String(i),
+        heading: 'shared keyword',
+        text: ['shared keyword'],
+      })
+    }
 
     expect(getSearchResults('shared', index)).toHaveLength(3)
     expect(getSearchResults('shared', index, { limit: 2 })).toHaveLength(2)
