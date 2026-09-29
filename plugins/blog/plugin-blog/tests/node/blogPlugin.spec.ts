@@ -100,6 +100,51 @@ describe('blog plugin', () => {
     }
   })
 
+  it('should keep the original page order when no sorter is given', async () => {
+    const app = await createTestApp({
+      files: {
+        'README.md': '# Home',
+        'posts/a.md': '---\ntitle: A\ncategory:\n  - foo\n---\n# A',
+        'posts/b.md': '---\ntitle: B\ncategory:\n  - foo\n---\n# B',
+        'posts/c.md': '---\ntitle: C\ncategory:\n  - foo\n---\n# C',
+      },
+      plugins: [
+        blogPlugin({
+          filter: (page): boolean => page.path.startsWith('/posts/'),
+          category: [
+            {
+              getter: getCategories,
+              itemPath: '/category/:name/',
+              key: 'category',
+              path: '/category/',
+            },
+          ],
+          type: [
+            {
+              filter: (page): boolean => page.path.startsWith('/posts/'),
+              key: 'article',
+              path: '/article/',
+            },
+          ],
+        }),
+      ],
+      prepare: true,
+    })
+
+    try {
+      const stored = readStore(app.dir.temp('blog/store.js'))
+
+      // The store indexes follow the page order the plugin collected them in.
+      expect(Object.values(stored)).toStrictEqual([
+        '/posts/a.html',
+        '/posts/b.html',
+        '/posts/c.html',
+      ])
+    } finally {
+      app.cleanup()
+    }
+  })
+
   it('should generate an excerpt only for the filtered pages', async () => {
     const app = await createTestApp({
       files: {

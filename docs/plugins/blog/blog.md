@@ -349,7 +349,7 @@ A function to get the categories of a page.
 
 @@`category[*].sorter` type=`(pageA: Page, pageB: Page) => number`
 
-A function to sort the pages of the same category.
+A function to sort the pages of the same category. By default, the pages keep their original order.
 
 @@`category[*].path` type=`string | false` default=`'/:key/'`
 
@@ -391,7 +391,7 @@ A function to determine whether a page belongs to this type.
 
 @@`type[*].sorter` type=`(pageA: Page, pageB: Page) => number`
 
-A function to sort the pages of this type.
+A function to sort the pages of this type. By default, the pages keep their original order.
 
 @@`type[*].path` type=`string | false` default=`'/:key/'`
 

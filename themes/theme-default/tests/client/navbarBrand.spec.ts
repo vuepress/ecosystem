@@ -1,5 +1,9 @@
-import { mountVuePress, renderVuePress } from '@vuepress/test-utils/client'
 // @vitest-environment happy-dom
+import {
+  mountVuePress,
+  renderVuePress,
+  setColorMode,
+} from '@vuepress/test-utils/client'
 import { describe, expect, it } from 'vitest'
 
 import themeDataClientConfig from '../../../../plugins/development/plugin-theme-data/src/client/config.js'
@@ -85,7 +89,62 @@ describe('theme navbar brand', () => {
     expect(html).not.toContain('logo-dark.png')
   })
 
-  it('should render the light logo in the DOM when dark mode is disabled', async () => {
+  it('should render the dark logo when dark mode is enabled', async () => {
+    const restore = setColorMode('dark')
+
+    try {
+      const wrapper = await mountVuePress({
+        clientConfigs,
+        rootComponent: VPNavbarBrand,
+        site: { title: 'My Site' },
+        themeData: {
+          locales: {
+            '/': {
+              colorModeSwitch: true,
+              logo: '/logo.png',
+              logoDark: '/logo-dark.png',
+            },
+          },
+        },
+      })
+
+      expect(wrapper.find('img.vp-site-logo').attributes('src')).toBe(
+        '/logo-dark.png',
+      )
+    } finally {
+      restore()
+    }
+  })
+
+  it('should render the light logo when the color mode switch is disabled', async () => {
+    const restore = setColorMode('dark')
+
+    try {
+      const wrapper = await mountVuePress({
+        clientConfigs,
+        rootComponent: VPNavbarBrand,
+        site: { title: 'My Site' },
+        themeData: {
+          locales: {
+            '/': {
+              colorMode: 'light',
+              colorModeSwitch: false,
+              logo: '/logo.png',
+              logoDark: '/logo-dark.png',
+            },
+          },
+        },
+      })
+
+      expect(wrapper.find('img.vp-site-logo').attributes('src')).toBe(
+        '/logo.png',
+      )
+    } finally {
+      restore()
+    }
+  })
+
+  it('should render the dark logo when the color mode is forced to dark', async () => {
     const wrapper = await mountVuePress({
       clientConfigs,
       rootComponent: VPNavbarBrand,
@@ -93,15 +152,18 @@ describe('theme navbar brand', () => {
       themeData: {
         locales: {
           '/': {
+            colorMode: 'dark',
+            colorModeSwitch: false,
             logo: '/logo.png',
             logoDark: '/logo-dark.png',
-            toggleColorMode: false,
           },
         },
       },
     })
 
-    expect(wrapper.find('img.vp-site-logo').attributes('src')).toBe('/logo.png')
+    expect(wrapper.find('img.vp-site-logo').attributes('src')).toBe(
+      '/logo-dark.png',
+    )
   })
 
   it('should hide the site name from screen readers when the logo alt matches it', async () => {

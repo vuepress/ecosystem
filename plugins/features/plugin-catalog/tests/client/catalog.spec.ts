@@ -6,7 +6,7 @@ import {
 import type { TestClientOptions } from '@vuepress/test-utils/client'
 import { createTestClient, getRoutesState } from '@vuepress/test-utils/client'
 import { describe, expect, it } from 'vitest'
-import type { VNode } from 'vue'
+import type { Component, VNode } from 'vue'
 import { defineComponent, h } from 'vue'
 
 import Catalog from '../../src/client/components/Catalog.js'
@@ -51,6 +51,14 @@ const site = {
     '/zh/': { lang: 'zh-CN', title: '我的站点' },
   },
   title: 'My Site',
+}
+
+// Assert that the given paths are rendered in the given order.
+const assertOrdered = (html: string, paths: string[]): void => {
+  const positions = paths.map((path) => html.indexOf(`href="${path}"`))
+
+  expect(positions.every((position) => position >= 0)).toBe(true)
+  expect([...positions].sort((a, b) => a - b)).toStrictEqual(positions)
 }
 
 describe('catalog component', () => {
@@ -264,21 +272,103 @@ describe('catalog component', () => {
       const restore = stubClientDefines(await collectClientDefines(app))
 
       try {
-        defineCatalogInfoGetter((meta) => ({ title: String(meta.custom) }))
+        const ContentProbe = defineComponent({
+          name: 'ContentProbe',
+          setup: (): (() => VNode) => () =>
+            h('span', { class: 'custom-content' }, 'Custom content'),
+        })
+
+        defineCatalogInfoGetter((meta) => ({
+          title: String(meta.custom),
+          order: meta.order as number | undefined,
+          content: meta.content as Component | undefined,
+        }))
 
         const html = await renderCatalog(
           {},
           {
-            metas: { '/guide/a/': { custom: 'Custom' } },
+            metas: {
+              '/guide/a/': {
+                content: ContentProbe,
+                custom: 'Custom A',
+                order: 2,
+              },
+              '/guide/b/': { custom: 'Custom B', order: 1 },
+            },
             page: { path: '/guide/', title: 'Guide' },
-            routes: { '/guide/a/': {} },
+            routes: { '/guide/a/': {}, '/guide/b/': {} },
             site,
           },
         )
 
         // the default getter reads `meta.title`, which is absent here
-        expect(html).toContain('Custom')
+        expect(html).toContain('Custom B')
         expect(html).not.toContain('vp-empty-catalog')
+        // the documented `order` is honoured
+        assertOrdered(html, ['/guide/b/', '/guide/a/'])
+        // the documented `content` is rendered instead of the title
+        expect(html).toContain('custom-content')
+        expect(html).not.toContain('Custom A')
+      } finally {
+        restore()
+      }
+    } finally {
+      app.cleanup()
+    }
+  })
+
+  it('should sort the items by order as documented', async () => {
+    const app = await createTestApp({
+      locales: { '/': { lang: 'en-US' } },
+      plugins: [catalogPlugin()],
+    })
+
+    try {
+      const restore = stubClientDefines(await collectClientDefines(app))
+
+      try {
+        defineCatalogInfoGetter((meta) => ({
+          title: String(meta.title),
+          order: meta.order as number | undefined,
+        }))
+
+        const html = await renderCatalog(
+          {},
+          {
+            metas: {
+              '/guide/no-1/': { title: 'NoOrder-1' },
+              '/guide/p1/': { order: 1, title: 'P1' },
+              '/guide/p2/': { order: 2, title: 'P2' },
+              '/guide/n10/': { order: -10, title: 'N-10' },
+              '/guide/n1/': { order: -1, title: 'N-1' },
+              '/guide/no-2/': { title: 'NoOrder-2' },
+            },
+            page: { path: '/guide/', title: 'Guide' },
+            routes: {
+              '/guide/no-1/': {},
+              '/guide/p1/': {},
+              '/guide/p2/': {},
+              '/guide/n10/': {},
+              '/guide/n1/': {},
+              '/guide/no-2/': {},
+            },
+            site,
+          },
+        )
+
+        // every catalog item is rendered
+        expect(html).not.toContain('vp-empty-catalog')
+
+        // positive orders ascending, then pages without an order, then
+        // negative orders ascending
+        assertOrdered(html, [
+          '/guide/p1/',
+          '/guide/p2/',
+          '/guide/no-1/',
+          '/guide/no-2/',
+          '/guide/n10/',
+          '/guide/n1/',
+        ])
       } finally {
         restore()
       }

@@ -37,7 +37,8 @@ describe(parseIndexId, () => {
 
   it('should only split on the first separator', () => {
     // Anchors may contain `#` or `@` characters
-    expect(parseIndexId('0#a@b')).toStrictEqual({ pageId: 0, info: 'a' })
+    expect(parseIndexId('0#a@b')).toStrictEqual({ pageId: 0, info: 'a@b' })
+    expect(parseIndexId('0#a#b')).toStrictEqual({ pageId: 0, info: 'a#b' })
   })
 })
 

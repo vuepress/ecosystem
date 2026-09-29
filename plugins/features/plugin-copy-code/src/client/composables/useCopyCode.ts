@@ -111,7 +111,7 @@ export const useCopyCode = ({
 
   const copyContent = async (
     codeContainer: HTMLDivElement,
-    codeContent: HTMLPreElement,
+    codeContent: HTMLElement,
     button: HTMLButtonElement,
   ): Promise<void> => {
     const { duration, ignoreSelector, transform } = options.value
@@ -149,17 +149,24 @@ export const useCopyCode = ({
     (event) => {
       const el = event.target as HTMLElement
 
-      if (
-        enabled.value &&
-        el.matches('div[class*="language-"] > button.vp-copy-code-button')
-      ) {
-        const codeContainer = el.parentElement as HTMLDivElement | null
-        const preBlock = el.nextElementSibling as HTMLPreElement | null
+      if (!enabled.value || !el.matches('button.vp-copy-code-button')) return
 
-        if (!codeContainer || !preBlock) return
+      const codeContainer = el.parentElement as HTMLDivElement | null
+      const codeBlock = el.nextElementSibling as HTMLElement | null
 
-        void copyContent(codeContainer, preBlock, el as HTMLButtonElement)
-      }
+      // The button is inserted right before the matched code block, so the
+      // `copy-code` attribute ensures the button belongs to this plugin.
+      if (!codeContainer || !codeBlock?.hasAttribute('copy-code')) return
+
+      // If the configured selector matches a wrapper instead of the `<pre>`
+      // element itself, look for the `<pre>` inside it.
+      const preBlock = codeBlock.matches('pre')
+        ? codeBlock
+        : codeBlock.querySelector('pre')
+
+      if (!preBlock) return
+
+      void copyContent(codeContainer, preBlock, el as HTMLButtonElement)
     },
     { passive: true },
   )
