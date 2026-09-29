@@ -148,11 +148,18 @@ export const usePhotoSwipe = ({
     })
 
     void images.map((image, imageIndex) =>
-      resolveImageInfoFromElement(image).then((data) => {
-        if (photoSwipeId !== id) return
-        dataSource.splice(imageIndex, 1, data)
-        photoSwipe?.refreshSlideContent(imageIndex)
-      }),
+      (async (): Promise<void> => {
+        try {
+          const data = await resolveImageInfoFromElement(image)
+
+          if (photoSwipeId !== id) return
+          dataSource.splice(imageIndex, 1, data)
+          photoSwipe?.refreshSlideContent(imageIndex)
+        } catch (err) {
+          // oxlint-disable-next-line no-console
+          console.warn(`[photo-swipe]: ${String(err)}`)
+        }
+      })(),
     )
   }
 

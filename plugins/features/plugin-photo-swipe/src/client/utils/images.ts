@@ -24,7 +24,7 @@ export const resolveImageInfoFromLink = async (
   imageLink: string,
 ): Promise<SlideData> => {
   const el = new Image()
-  el.crossOrigin = 'anonymous'
+
   el.src = imageLink
 
   return resolveImageInfoFromElement(el)

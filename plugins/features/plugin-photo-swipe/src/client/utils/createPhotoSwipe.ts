@@ -48,10 +48,17 @@ const getDataSource = (
   }))
 
   imageLinks.forEach((link, index) => {
-    void resolveImageInfoFromLink(link).then((data) => {
-      dataSource.splice(index, 1, data)
-      photoswipe?.refreshSlideContent(index)
-    })
+    void (async (): Promise<void> => {
+      try {
+        const data = await resolveImageInfoFromLink(link)
+
+        dataSource.splice(index, 1, data)
+        photoswipe?.refreshSlideContent(index)
+      } catch (err) {
+        // oxlint-disable-next-line no-console
+        console.warn(`[photo-swipe]: ${String(err)}`)
+      }
+    })()
   })
 
   return dataSource
