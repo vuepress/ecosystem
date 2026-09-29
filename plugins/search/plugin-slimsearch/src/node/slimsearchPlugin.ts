@@ -119,6 +119,7 @@ export const slimsearchPlugin =
             options,
             context,
             newPage as Page<{ excerpt?: string }>,
+            oldPage,
           )
         }
       },

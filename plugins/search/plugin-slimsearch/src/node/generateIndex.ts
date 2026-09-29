@@ -17,6 +17,34 @@ import type {
 import type { SlimSearchPluginOptions } from './options.js'
 
 /**
+ * Create the SlimSearch index of a locale.
+ *
+ * 创建某个语言环境的 SlimSearch 索引。
+ *
+ * @param app - VuePress app VuePress 应用实例
+ * @param options - Plugin options 插件选项
+ * @param localePath - Path of the locale 语言环境的路径
+ * @returns SlimSearch index 该语言环境的 SlimSearch 索引
+ */
+export const createLocaleIndex = (
+  app: App,
+  options: SlimSearchPluginOptions,
+  localePath: string,
+): SearchIndex => {
+  // The same tokenizer has to be used for the index and the queries, see
+  // the `createWordTokenizer` helper
+  const tokenize = createWordTokenizer(getLocaleLanguage(app, localePath))
+
+  return createIndex<string, IndexItem, IndexItem>({
+    tokenize: (text, fieldName) =>
+      fieldName === 'id' ? [text] : tokenize(text),
+    ...options.indexOptions,
+    ...options.indexLocaleOptions?.[localePath],
+    ...INDEX_FIELD_CONFIG,
+  })
+}
+
+/**
  * Create the SlimSearch index of every locale.
  *
  * 创建各语言环境的 SlimSearch 索引。
@@ -44,17 +72,7 @@ export const getSearchIndexStore = async (
 
   await Promise.all(
     entries(indexesByLocale).map(async ([localePath, indexes]) => {
-      // The same tokenizer has to be used for the index and the queries, see
-      // the `createWordTokenizer` helper
-      const tokenize = createWordTokenizer(getLocaleLanguage(app, localePath))
-
-      const index: SearchIndex = createIndex<string, IndexItem, IndexItem>({
-        tokenize: (text, fieldName) =>
-          fieldName === 'id' ? [text] : tokenize(text),
-        ...options.indexOptions,
-        ...options.indexLocaleOptions?.[localePath],
-        ...INDEX_FIELD_CONFIG,
-      })
+      const index = createLocaleIndex(app, options, localePath)
 
       await addAllAsync(index, indexes)
 
