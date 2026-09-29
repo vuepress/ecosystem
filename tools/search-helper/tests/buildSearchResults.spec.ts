@@ -8,14 +8,14 @@ describe(buildSearchResults, () => {
   it('should group hits by page and use the page document title', () => {
     const results = buildSearchResults({
       hits: [
-        { id: '0', score: 5, document: { id: '0', h: 'Hello world' } },
+        { id: '0', score: 5, document: { id: '0', heading: 'Hello world' } },
         {
           id: '0#install',
           score: 3,
           document: {
             id: '0#install',
-            h: 'Hello install',
-            t: ['Hello there'],
+            heading: 'Hello install',
+            text: ['Hello there'],
           },
         },
       ],
@@ -35,8 +35,12 @@ describe(buildSearchResults, () => {
   it('should add the custom field index to the matched item', () => {
     const results = buildSearchResults({
       hits: [
-        { id: '0', score: 5, document: { id: '0', h: 'Hello world' } },
-        { id: '0@1', score: 2, document: { id: '0@1', c: ['author: hello'] } },
+        { id: '0', score: 5, document: { id: '0', heading: 'Hello world' } },
+        {
+          id: '0@1',
+          score: 2,
+          document: { id: '0@1', customFields: ['author: hello'] },
+        },
       ],
       displayTerms: ['hello'],
       getPageTitle,
@@ -50,7 +54,13 @@ describe(buildSearchResults, () => {
 
   it('should highlight the matched content', () => {
     const results = buildSearchResults({
-      hits: [{ id: '0', score: 1, document: { id: '0', h: 'Hello world' } }],
+      hits: [
+        {
+          id: '0',
+          score: 1,
+          document: { id: '0', heading: 'Hello world' },
+        },
+      ],
       displayTerms: ['hello'],
       getPageTitle,
     })
@@ -67,7 +77,7 @@ describe(buildSearchResults, () => {
           id: '0',
           score: 1,
           terms: ['world'],
-          document: { id: '0', h: 'Hello world' },
+          document: { id: '0', heading: 'Hello world' },
         },
       ],
       displayTerms: ['hello'],
@@ -81,7 +91,13 @@ describe(buildSearchResults, () => {
 
   it('should drop pages without matched content', () => {
     const results = buildSearchResults({
-      hits: [{ id: '0', score: 1, document: { id: '0', h: 'Nothing' } }],
+      hits: [
+        {
+          id: '0',
+          score: 1,
+          document: { id: '0', heading: 'Nothing' },
+        },
+      ],
       displayTerms: ['hello'],
       getPageTitle,
     })
@@ -95,7 +111,7 @@ describe(buildSearchResults, () => {
         {
           id: '3#install',
           score: 1,
-          document: { id: '3#install', h: 'Hello install' },
+          document: { id: '3#install', heading: 'Hello install' },
         },
       ],
       displayTerms: ['hello'],
@@ -108,10 +124,10 @@ describe(buildSearchResults, () => {
   it('should sort results by the highest score when the strategy is `max`', () => {
     const results = buildSearchResults({
       hits: [
-        { id: '0', score: 9, document: { id: '0', h: 'Hello alpha' } },
-        { id: '0#a', score: 1, document: { id: '0#a', h: 'Hello' } },
-        { id: '1', score: 6, document: { id: '1', h: 'Hello beta' } },
-        { id: '1#a', score: 6, document: { id: '1#a', h: 'Hello' } },
+        { id: '0', score: 9, document: { id: '0', heading: 'Hello alpha' } },
+        { id: '0#a', score: 1, document: { id: '0#a', heading: 'Hello' } },
+        { id: '1', score: 6, document: { id: '1', heading: 'Hello beta' } },
+        { id: '1#a', score: 6, document: { id: '1#a', heading: 'Hello' } },
       ],
       displayTerms: ['hello'],
       getPageTitle,
@@ -127,10 +143,10 @@ describe(buildSearchResults, () => {
   it('should sort results by the total score when the strategy is `total`', () => {
     const results = buildSearchResults({
       hits: [
-        { id: '0', score: 9, document: { id: '0', h: 'Hello alpha' } },
-        { id: '0#a', score: 1, document: { id: '0#a', h: 'Hello' } },
-        { id: '1', score: 6, document: { id: '1', h: 'Hello beta' } },
-        { id: '1#a', score: 6, document: { id: '1#a', h: 'Hello' } },
+        { id: '0', score: 9, document: { id: '0', heading: 'Hello alpha' } },
+        { id: '0#a', score: 1, document: { id: '0#a', heading: 'Hello' } },
+        { id: '1', score: 6, document: { id: '1', heading: 'Hello beta' } },
+        { id: '1#a', score: 6, document: { id: '1#a', heading: 'Hello' } },
       ],
       displayTerms: ['hello'],
       getPageTitle,
@@ -149,7 +165,7 @@ describe(buildSearchResults, () => {
         {
           id: '0',
           score: 1,
-          document: { id: '0', h: 'Hello', t: ['Nothing here'] },
+          document: { id: '0', heading: 'Hello', text: ['Nothing here'] },
         },
       ],
       displayTerms: ['missing'],

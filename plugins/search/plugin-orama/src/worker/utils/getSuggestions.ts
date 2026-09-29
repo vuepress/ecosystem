@@ -88,7 +88,11 @@ export const getSuggestions = (
 
   ;(results as { hits: { document: IndexItemDocument }[] }).hits.forEach(
     ({ document }) => {
-      const fields = [document.h, ...(document.t ?? []), ...(document.c ?? [])]
+      const fields = [
+        document[HEADING_INDEX_ID],
+        ...(document[TEXT_INDEX_ID] ?? []),
+        ...(document[CUSTOM_FIELDS_INDEX_ID] ?? []),
+      ]
 
       fields.forEach((field) => {
         if (!field) return

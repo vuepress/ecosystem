@@ -461,8 +461,8 @@ The `cache` option of FlexSearch is passed to it as-is, while its `limit`, `offs
 
 Two more options are available:
 
-- `properties`: the fields of a page to search in. It defaults to every field, and accepts `'*'` for the same behavior. Only the fields of the index (`h`, `t` and `c`) are accepted, so `'id'` is ignored instead of searched. It also restricts the fields the suggestions are collected from.
-- `boost`: the relevance boost of each field. It defaults to `{ c: 4, h: 2, t: 1 }`. The given object replaces the default one instead of being merged with it, so passing `{ h: 5 }` also lowers the boost of `c` from `4` to `1` — spread the default value to only change one field. FlexSearch does not score its results, so the score of a result is derived from the boosts of the fields that matched it and from its rank in each of them.
+- `properties`: the fields of a page to search in. It defaults to every field, and accepts `'*'` for the same behavior. Only the fields of the index (`heading`, `text` and `customFields`) are accepted, so `'id'` is ignored instead of searched. It also restricts the fields the suggestions are collected from.
+- `boost`: the relevance boost of each field. It defaults to `{ customFields: 4, heading: 2, text: 1 }`. The given object replaces the default one instead of being merged with it, so passing `{ heading: 5 }` also lowers the boost of `customFields` from `4` to `1` — spread the default value to only change one field. FlexSearch does not score its results, so the score of a result is derived from the boosts of the fields that matched it and from its rank in each of them.
 
 The query is split with the [`querySplitter`](#definesearchconfig) of the client config before it is sent to the worker, so the words that are searched are the ones it returns.
 
@@ -471,7 +471,7 @@ import { defineSearchConfig } from '@vuepress/plugin-flexsearch/client'
 
 defineSearchConfig({
   // global search options here
-  properties: ['h', 't'],
+  properties: ['heading', 'text'],
 
   locales: {
     '/zh/': {

@@ -3,21 +3,21 @@
  *
  * 索引中页面 / 段落标题的字段。
  */
-export const HEADING_INDEX_ID = 'h'
+export const HEADING_INDEX_ID = 'heading'
 
 /**
  * Field of the text content in the index.
  *
  * 索引中正文内容的字段。
  */
-export const TEXT_INDEX_ID = 't'
+export const TEXT_INDEX_ID = 'text'
 
 /**
  * Field of the custom fields in the index.
  *
  * 索引中自定义字段的字段。
  */
-export const CUSTOM_FIELDS_INDEX_ID = 'c'
+export const CUSTOM_FIELDS_INDEX_ID = 'customFields'
 
 /**
  * Properties that can be searched.
