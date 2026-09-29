@@ -105,26 +105,81 @@ export interface DevContext {
 }
 
 /**
+ * Remove the search index of a single page in dev mode.
+ *
+ * 在开发模式下移除单个页面的搜索索引。
+ *
+ * @param app - VuePress app VuePress 应用实例
+ * @param context - Dev context 开发环境上下文
+ * @param page - The page to remove 需要移除的页面
+ */
+export const removeSearchIndex = async (
+  app: App,
+  { searchIndexStore, store, indexesByPage }: DevContext,
+  page: Page<{ excerpt?: string }>,
+): Promise<void> => {
+  const { pathLocale } = page
+  const ids = indexesByPage.get(page.path) ?? []
+
+  indexesByPage.delete(page.path)
+  store.deletePath(page.path)
+
+  const localeSearchIndex = searchIndexStore[pathLocale]
+
+  // The locale has no index when none of its pages is indexed, so there is
+  // nothing to remove and no temp chunk to rewrite
+  if (!localeSearchIndex) return
+
+  await removeMultiple(localeSearchIndex, ids)
+
+  await writeDevFiles(
+    app,
+    searchIndexStore,
+    store,
+    pathLocale,
+    localeSearchIndex,
+  )
+}
+
+/**
  * Update the search index of a single page in dev mode.
  *
  * The index ids of a page are tracked in `indexesByPage`, so that its stale
  * documents can be removed before the new ones are added.
  *
+ * The documents of the previous revision are keyed by its own path and locale,
+ * both of which change together with the path, so they are removed through
+ * `oldPage` when it is provided.
+ *
  * 在开发模式下更新单个页面的搜索索引。
  *
  * 页面的索引 id 会被记录在 `indexesByPage` 中，从而可以在添加新文档之前移除其过期文档。
  *
+ * 页面上一版本的文档以该版本自身的路径和语言环境为键，而两者都会随路径一起变化，因此在提供 `oldPage` 时会先移除它们。
+ *
+ * @default null
  * @param app - VuePress app VuePress 应用实例
  * @param options - Plugin options 插件选项
  * @param context - Dev context 开发环境上下文
  * @param page - The page to update 需要更新的页面
+ * @param oldPage - Previous revision of the page, `null` when the page is
+ *   created 页面的上一版本，页面被创建时为 `null`
  */
 export const updateSearchIndex = async (
   app: App,
   options: OramaPluginOptions,
-  { searchIndexStore, store, indexesByPage }: DevContext,
+  context: DevContext,
   page: Page<{ excerpt?: string }>,
+  oldPage?: Page<{ excerpt?: string }> | null,
 ): Promise<void> => {
+  const { searchIndexStore, store, indexesByPage } = context
+
+  if (
+    oldPage &&
+    (oldPage.path !== page.path || oldPage.pathLocale !== page.pathLocale)
+  )
+    await removeSearchIndex(app, context, oldPage)
+
   const pageIndexes = generatePageIndex(page, store, options)
   const { pathLocale } = page
 
@@ -143,37 +198,6 @@ export const updateSearchIndex = async (
   )
 
   await insertMultiple(localeSearchIndex, pageIndexes)
-
-  await writeDevFiles(
-    app,
-    searchIndexStore,
-    store,
-    pathLocale,
-    localeSearchIndex,
-  )
-}
-
-/**
- * Remove the search index of a single page in dev mode.
- *
- * 在开发模式下移除单个页面的搜索索引。
- *
- * @param app - VuePress app VuePress 应用实例
- * @param context - Dev context 开发环境上下文
- * @param page - The page to remove 需要移除的页面
- */
-export const removeSearchIndex = async (
-  app: App,
-  { searchIndexStore, store, indexesByPage }: DevContext,
-  page: Page<{ excerpt?: string }>,
-): Promise<void> => {
-  const { pathLocale } = page
-  const localeSearchIndex = searchIndexStore[pathLocale]
-
-  await removeMultiple(localeSearchIndex, indexesByPage.get(page.path) ?? [])
-
-  indexesByPage.delete(page.path)
-  store.deletePath(page.path)
 
   await writeDevFiles(
     app,
