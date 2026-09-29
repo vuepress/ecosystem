@@ -52,7 +52,7 @@ export const getRedirectBehaviorConfig = (
   return {
     config,
     autoLocale: options.autoLocale ?? false,
-    defaultLocale: options.defaultLocale || keys(config).pop()!,
+    defaultLocale: options.defaultLocale || keys(config)[0],
     localeFallback: options.localeFallback ?? true,
     defaultBehavior:
       options.defaultBehavior &&
