@@ -1,6 +1,8 @@
 import type { Page } from '@playwright/test'
 import { expect, test } from '@playwright/test'
 
+import { BASE } from '../../utils/env.js'
+
 /**
  * Open the search box and search for a query, waiting for its results.
  *
@@ -44,7 +46,7 @@ test.describe('plugin-flexsearch', () => {
     await search(page, 'watermark')
 
     await expect(
-      page.locator('.vp-search-record a[href="/watermark/"]'),
+      page.locator(`.vp-search-record a[href="${BASE}watermark/"]`),
     ).toHaveCount(1)
   })
 
@@ -54,7 +56,9 @@ test.describe('plugin-flexsearch', () => {
     await search(page, 'disabled watermark')
 
     await expect(
-      page.locator('.vp-search-record a[href="/watermark/disabled.html"]'),
+      page.locator(
+        `.vp-search-record a[href="${BASE}watermark/disabled.html"]`,
+      ),
     ).toHaveCount(1)
 
     await page.locator('.vp-search-input').fill('disabled zzzznotaword')
@@ -66,5 +70,10 @@ test.describe('plugin-flexsearch', () => {
     await page.goto('zh/')
 
     await search(page, '主页')
+
+    // The Chinese locale has its own index
+    await expect(
+      page.locator(`.vp-search-record a[href="${BASE}zh/"]`).first(),
+    ).toBeVisible()
   })
 })
