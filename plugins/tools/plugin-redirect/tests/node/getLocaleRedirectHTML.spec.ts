@@ -28,8 +28,10 @@ const buildHTML = (options: Partial<RedirectBehaviorConfig> = {}): string =>
     '/',
   )
 
+// the generated HTML always uses a lowercase `<script>`, the `i` flag only
+// keeps static analysis (CodeQL `js/bad-tag-filter`) from flagging this helper
 const extractScript = (html: string): string =>
-  /<script>(?<code>[\s\S]+?)<\/script>/u.exec(html)!.groups!.code
+  /<script>(?<code>[\s\S]+?)<\/script>/iu.exec(html)!.groups!.code
 
 const redirectTo = (
   html: string,
