@@ -409,7 +409,7 @@ Videos are played by the TikTok player and controlled by the Video.js skin, so t
 
 Embed Spotify tracks, episodes, albums, playlists, shows, and artists with the Spotify player.
 
-- `src`: Spotify URL, URI, or entity id
+- `src`: Spotify URL or URI
 - `title`: Player title, defaults to `A Spotify player`
 - `width`: Component width, defaults to `100%`
 - `height`: Component height
@@ -429,7 +429,7 @@ Play Spotify tracks, episodes, albums, playlists, shows, and artists with [Video
 
 Requires `@videojs/html` and `@videojs/spotify-audio` to be installed, which provides the [`spotify-audio`](https://videojs.org/docs/framework/html/reference/spotify-audio) element.
 
-- `src`: Spotify URL, URI, or entity id
+- `src`: Spotify URL or URI
 - `autoplay`: Whether to autoplay
 - `loop`: Whether to restart the audio when it ends
 - `config`: Spotify embed options, see `SpotifyEngineConfig`
