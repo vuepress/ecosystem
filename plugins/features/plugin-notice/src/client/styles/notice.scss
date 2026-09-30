@@ -28,10 +28,12 @@
   }
 
   &.fullscreen {
-    top: 50vh;
-    right: 50vw;
-    left: unset;
-    transform: translate(50%, -50%);
+    // Center the notice with the layout instead of a transform, so that the
+    // open and close animations are free to use `transform` themselves.
+    inset: 0;
+    height: fit-content;
+    max-height: 100%;
+    margin: auto;
   }
 }
 
