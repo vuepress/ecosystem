@@ -1691,9 +1691,6 @@ importers:
       '@vuepress/helper':
         specifier: workspace:*
         version: link:../../../tools/helper
-      chokidar:
-        specifier: 'catalog:'
-        version: 5.0.0
       vue:
         specifier: 'catalog:'
         version: 3.5.43(typescript@6.0.3)

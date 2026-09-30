@@ -34,6 +34,12 @@ This plugin will generate search index from your pages locally, and load the sea
 
 However, when your site has a large number of pages, the size of search index file would be very large, which could slow down the page loading speed. In this case, we recommend you to use a more professional solution - [docsearch](./docsearch.md).
 
+### Dev Server
+
+In the development server, the search index is kept in memory, so that editing a page only updates the entry of that page instead of rebuilding the whole index.
+
+For performance reasons, adding, editing, or deleting Markdown content will **not** trigger a search index update by default. If you are refining search results, you can enable hot reloading by setting `hotReload: true`.
+
 ## Options
 
 ::: fields
@@ -106,6 +112,12 @@ export default {
   ],
 }
 ```
+
+@`hotReload` type=boolean default="Same as the --debug flag status"
+
+Whether to update the search index when markdown files change in the development server.
+
+See also: [Dev Server](#dev-server).
 
 :::
 
