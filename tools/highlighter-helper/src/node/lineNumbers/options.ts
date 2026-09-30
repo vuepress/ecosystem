@@ -21,7 +21,7 @@ export interface MarkdownItLineNumbersOptions {
    * - 如果是 `false`，不全局启用行号，但你可以为单个代码块使用 `:line-numbers` 启用
    * - 如果是 `'disable'`，完全禁用行号
    *
-   * @default 'disable'
+   * @default true
    */
   lineNumbers?: boolean | number | 'disable'
 
