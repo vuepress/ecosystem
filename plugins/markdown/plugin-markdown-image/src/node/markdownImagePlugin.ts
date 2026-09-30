@@ -1,4 +1,4 @@
-import { figure } from '@mdit/plugin-figure'
+import { figure as figurePlugin } from '@mdit/plugin-figure'
 import { imgLazyload } from '@mdit/plugin-img-lazyload'
 import { imgMark } from '@mdit/plugin-img-mark'
 import { imgSize, legacyImgSize, obsidianImgSize } from '@mdit/plugin-img-size'
@@ -41,9 +41,9 @@ export const markdownImagePlugin =
       name: PLUGIN_NAME,
 
       extendsMarkdown: (md) => {
-        const { mark } = opts
+        const { figure, mark } = opts
 
-        if (opts.figure) md.use(figure)
+        if (figure) md.use(figurePlugin, isPlainObject(figure) ? figure : {})
         if (opts.lazyload) md.use(imgLazyload)
         if (opts.size) md.use(imgSize)
         // oxlint-disable-next-line typescript/no-deprecated
