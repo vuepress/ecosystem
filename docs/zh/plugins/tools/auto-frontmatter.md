@@ -265,6 +265,111 @@ date: 2025-01-01 11:11:11
 ---
 ```
 
+### `createPermalink(options)`
+
+```ts
+interface PermalinkOptions {
+  /**
+   * 派生永久链接值的算法
+   * @default 'crc32'
+   */
+  algorithm?: 'crc16' | 'crc32' | 'md5' | 'sha1' | 'sha256' | 'nanoid'
+
+  /**
+   * 数值哈希的编码方式，仅对 `crc16` 与 `crc32` 生效
+   * @default 'hex'
+   */
+  encoding?: 'hex' | 'dec'
+
+  /**
+   * 永久链接种子的来源
+   * @default 'path'
+   */
+  source?: 'path' | 'content'
+
+  /**
+   * 保留的生成值字符数，`0` 表示不截断
+   * @default 8
+   */
+  length?: number
+
+  /**
+   * 永久链接前缀
+   * @default '/'
+   */
+  prefix?: string
+
+  /**
+   * 永久链接后缀
+   * @default '.html'
+   */
+  suffix?: string
+
+  /**
+   * 是否覆盖已有的永久链接
+   * @default false
+   */
+  force?: boolean
+
+  /**
+   * 已被使用、不可再生成的永久链接
+   */
+  reserved?: Iterable<string>
+}
+
+function createPermalink(options?: PermalinkOptions): PermalinkHandle
+```
+
+创建一个从文件派生永久链接的处理器，类似 hexo 的 `abbrlink`。
+
+该值由文件路径（或内容）派生而来，而不是随机的，因此是稳定且可复现的。处理器还会维护已用永久链接的登记表：处理文件前，插件会把 frontmatter 中已存在的永久链接全部保留，发生冲突时会在种子上追加计数器，直到值唯一。
+
+```ts title=".vuepress/config.ts"
+import {
+  autoFrontmatterPlugin,
+  createPermalink,
+} from '@vuepress/plugin-auto-frontmatter'
+
+export default {
+  plugins: [
+    autoFrontmatterPlugin({
+      filter: 'posts/**/*.md', // [!code hl]
+      handle: createPermalink({ prefix: '/posts/', source: 'path' }),
+    }),
+  ],
+}
+```
+
+**输出**：
+
+```md title="docs/posts/hello.md"
+---
+permalink: /posts/3f6a1b2c.html
+---
+```
+
+::: tip `source`
+
+- `path`：永久链接只取决于文件路径，因此修改标题或正文都不会破坏链接。
+- `content`：永久链接取决于不含 frontmatter 的正文，因此内容一变链接就会失效。
+
+:::
+
+::: tip `algorithm` 与 `encoding`
+
+- `crc16` / `crc32` 生成较短的校验和，最适合做短链接。
+- `md5` / `sha1` / `sha256` 生成更长的哈希。
+- `nanoid` 生成随机字符串，**不可复现**，仅为兼容而保留。
+- 校验和会补零以保持长度稳定，因此 `length` 只会截断它：`crc16` 为 4 位十六进制或 5 位十进制，`crc32` 为 8 位或 10 位。
+- `encoding: 'dec'` 仅对 `crc16` 与 `crc32` 生效，其他算法始终使用十六进制。
+- `nanoid` 始终生成恰好 `length` 个字符，因此对它而言 `length: 0` 会回退为 8。
+
+:::
+
+::: warning
+frontmatter 中带有 `permalink: null` 的页面不会被改动，因为 `null` 是告诉 VuePress 该页面没有永久链接的方式。
+:::
+
 ### `addShortPermalink(data, options)`
 
 ```ts
@@ -318,3 +423,7 @@ export default {
 permalink: /abcd1234.html
 ---
 ```
+
+::: warning
+该值是随机的，一旦 frontmatter 丢失就无法复现，也无法保证两个文件得到不同的永久链接。请改用 `createPermalink`。
+:::
