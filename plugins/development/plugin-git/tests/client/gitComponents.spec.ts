@@ -297,6 +297,25 @@ describe('git changelog component', () => {
     )
   })
 
+  it('should render plain tags and hashes without link attributes', async () => {
+    await withGitClient(
+      // no url pattern, so neither the tag nor the commit gets a link
+      { changelog: { repoUrl: REPO_URL }, contributors: false },
+      async ({ components, renderVuePress }) => {
+        const html = await renderVuePress({
+          page: { data: { git: { changelog } }, path: '/', title: 'Home' },
+          rootComponent: components.GitChangelog,
+          site: { lang: 'en-US', title: 'Site' },
+        })
+
+        expect(html).toContain('<span class="vp-changelog-tag"')
+        expect(html).toContain('<span class="vp-changelog-hash"')
+        expect(html).not.toContain('target="_blank"')
+        expect(html).not.toMatch(/<span [^>]*href/u)
+      },
+    )
+  })
+
   it('should render nothing when the page has no changelog', async () => {
     await withGitClient(
       { changelog: CHANGELOG_OPTIONS, contributors: false },

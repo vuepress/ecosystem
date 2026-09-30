@@ -13,6 +13,22 @@ import { VPHeader } from './VPHeader.js'
 import '../styles/vars.css'
 import '../styles/changelog.scss'
 
+/**
+ * Resolve the attributes of a changelog link
+ *
+ * Returns nothing when there is no url, so the element falls back to a plain
+ * `span` without link attributes
+ *
+ * 解析变更日志链接的属性
+ *
+ * 没有链接时返回空对象，元素回退为不带链接属性的 `span`
+ *
+ * @param url - The link url / 链接地址
+ * @returns The link attributes, or an empty object / 链接属性，无链接时为空对象
+ */
+const resolveLinkAttrs = (url?: string): Record<string, string> =>
+  url ? { href: url, target: '_blank', rel: 'noreferrer' } : {}
+
 export const GitChangelog = defineComponent({
   name: 'GitChangelog',
 
@@ -59,12 +75,7 @@ export const GitChangelog = defineComponent({
         h('div', [
           h(
             item.tagUrl ? 'a' : 'span',
-            {
-              class: 'vp-changelog-tag',
-              href: item.tagUrl,
-              target: '_blank',
-              rel: 'noreferrer',
-            },
+            { class: 'vp-changelog-tag', ...resolveLinkAttrs(item.tagUrl) },
             h('code', item.tag),
           ),
           h(
@@ -89,12 +100,7 @@ export const GitChangelog = defineComponent({
       h('li', { class: 'vp-changelog-item-commit' }, [
         h(
           item.commitUrl ? 'a' : 'span',
-          {
-            class: 'vp-changelog-hash',
-            href: item.commitUrl,
-            target: '_blank',
-            rel: 'noreferrer',
-          },
+          { class: 'vp-changelog-hash', ...resolveLinkAttrs(item.commitUrl) },
           [h('code', item.hash.slice(0, 5))],
         ),
         h('span', { class: 'vp-changelog-divider' }, '-'),
