@@ -35,6 +35,25 @@ interface CatalogData extends CatalogInfo {
   children?: CatalogData[]
 }
 
+/**
+ * Get the sort group index of a catalog order
+ *
+ * Positive orders come first, then pages without an order, then negative
+ * orders.
+ *
+ * 获取目录顺序的排序分组序号
+ *
+ * 正数顺序在前，其次是不带顺序的页面，最后是负数顺序。
+ *
+ * @param order - Catalog order / 目录顺序
+ * @returns Group index / 分组序号
+ */
+const getOrderGroup = (order: number | undefined): number => {
+  if (!isNumber(order) || order === 0) return 1
+
+  return order > 0 ? 0 : 2
+}
+
 export default defineComponent({
   name: 'Catalog',
 
@@ -150,33 +169,18 @@ export default defineComponent({
 
             if (level) return level
 
-            // infoA order is absent
-            if (!isNumber(orderA)) {
-              // infoB order is absent
-              if (!isNumber(orderB))
-                // compare title
-                return titleA.localeCompare(titleB)
+            // positive orders come first, then pages without an order, then
+            // negative orders
+            const group = getOrderGroup(orderA) - getOrderGroup(orderB)
 
-              // infoB order is present
-              return orderB
-            }
+            if (group) return group
 
-            // infoB order is absent
-            if (!isNumber(orderB)) return orderA
+            // within the same group, orders are sorted ascending, and pages
+            // without an order are sorted by title
+            if (isNumber(orderA) && isNumber(orderB) && orderA !== orderB)
+              return orderA - orderB
 
-            // now we are sure both order exist
-
-            // infoA order is positive
-            if (orderA > 0) {
-              if (orderB > 0) return orderA - orderB
-
-              return -1
-            }
-
-            // both order are negative
-            if (orderB < 0) return orderA - orderB
-
-            return 1
+            return titleA.localeCompare(titleB)
           },
         )
         .forEach((info) => {
