@@ -255,6 +255,6 @@ const config = {
       {},
     )
 
-    expect(result).toMatch('')
+    expect(result).toBe('')
   })
 })
