@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest'
 
 import {
+  INDEX_ID_SEPARATOR,
   createIndex,
   decodeIndex,
   encodeIndex,
@@ -17,11 +18,11 @@ const docs: IndexItemDocument[] = [
     text: ['The quick brown fox jumps over the lazy dog'],
   },
   {
-    id: '0#section1',
+    id: `0${INDEX_ID_SEPARATOR}#section1`,
     heading: 'Installation guide',
     text: ['Step by step instructions'],
   },
-  { id: '0@0', customFields: ['author: mr-hope'] },
+  { id: `0${INDEX_ID_SEPARATOR}@0`, customFields: ['author: mr-hope'] },
   { id: '1', heading: '你好世界', text: ['这是一段中文内容，用于测试搜索'] },
   {
     id: '2',

@@ -9,6 +9,7 @@ import type { PhotoSwipePluginLocaleData } from '../../shared/index.js'
 import { usePhotoSwipeOptions } from '../helpers/index.js'
 import type { PhotoSwipeBehaviorOptions } from '../typings.js'
 import {
+  createErrorPlaceholder,
   LOADING_ICON,
   resolveImageInfoFromElement,
   setupPhotoSwipe,
@@ -39,6 +40,46 @@ export interface UsePhotoSwipeOptions extends PhotoSwipeBehaviorOptions {
     string,
     Record<`${keyof PhotoSwipePluginLocaleData}Title`, string>
   >
+}
+
+/**
+ * Replace the loading placeholder of each image with the resolved image data
+ *
+ * 将每张图片的加载占位替换为解析后的图片数据
+ *
+ * @param photoSwipe - PhotoSwipe instance / PhotoSwipe 实例
+ * @param images - Image elements to resolve / 待解析的图片元素
+ * @param dataSource - Slide data to update / 待更新的幻灯片数据
+ * @param isCurrent - Whether the instance is still the active one / 实例是否仍为当前实例
+ */
+const resolveSlideData = (
+  photoSwipe: PhotoSwipe,
+  images: HTMLImageElement[],
+  dataSource: SlideData[],
+  isCurrent: () => boolean,
+): void => {
+  void images.map((image, imageIndex) =>
+    (async (): Promise<void> => {
+      try {
+        const data = await resolveImageInfoFromElement(image)
+
+        if (!isCurrent()) return
+        dataSource.splice(imageIndex, 1, data)
+        photoSwipe.refreshSlideContent(imageIndex)
+      } catch (err) {
+        // oxlint-disable-next-line no-console
+        console.warn(`[photo-swipe]: ${String(err)}`)
+
+        if (!isCurrent()) return
+        dataSource.splice(
+          imageIndex,
+          1,
+          createErrorPlaceholder(photoSwipe.options.errorMsg),
+        )
+        photoSwipe.refreshSlideContent(imageIndex)
+      }
+    })(),
+  )
 }
 
 /**
@@ -89,6 +130,8 @@ export const usePhotoSwipe = ({
   const options = computed(() => ({
     ...photoSwipeOptions.value,
     ...locale.value,
+    // fall back to the localized message when the user does not set one
+    errorMsg: photoSwipeOptions.value.errorMsg ?? locale.value.errorMsgTitle,
     download,
     fullscreen,
     scrollToClose,
@@ -147,13 +190,7 @@ export const usePhotoSwipe = ({
       photoSwipeId = 0
     })
 
-    void images.map((image, imageIndex) =>
-      resolveImageInfoFromElement(image).then((data) => {
-        if (photoSwipeId !== id) return
-        dataSource.splice(imageIndex, 1, data)
-        photoSwipe?.refreshSlideContent(imageIndex)
-      }),
-    )
+    resolveSlideData(photoSwipe, images, dataSource, () => photoSwipeId === id)
   }
 
   useEventListener('click', initPhotoSwipe, { passive: true })

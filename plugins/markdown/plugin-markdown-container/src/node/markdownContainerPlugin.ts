@@ -81,13 +81,14 @@ export const markdownContainerPlugin = ({
         // resolve info (title)
         let info = token.info.trim().slice(type.length).trim()
 
-        if (!info && locales) {
+        if (!info) {
           // locale
           const { filePathRelative } = env
           const relativePath = ensureLeadingSlash(filePathRelative ?? '')
 
-          const localePath = resolveLocalePath(locales, relativePath)
-          const localeData = locales[localePath] ?? {}
+          const localeData = locales
+            ? (locales[resolveLocalePath(locales, relativePath)] ?? {})
+            : {}
 
           info = localeData.defaultInfo || type.toUpperCase()
         }

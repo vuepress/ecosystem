@@ -1,4 +1,3 @@
-import { isPlainObject } from '@vuepress/helper/client'
 import { computed } from 'vue'
 import type { ClientConfig } from 'vuepress/client'
 import { defineClientConfig, useFrontmatter } from 'vuepress/client'
@@ -18,12 +17,7 @@ const clientConfig: ClientConfig = defineClientConfig({
 
   setup() {
     const frontmatter = useFrontmatter<WatermarkPluginFrontmatter>()
-    const watermarkOptions = useWatermarkOptions(
-      computed(() => {
-        const { watermark } = frontmatter.value
-        return isPlainObject(watermark) ? {} : __WM_OPTIONS__
-      }),
-    )
+    const watermarkOptions = useWatermarkOptions(__WM_OPTIONS__)
 
     const enabled = computed(() => {
       const { watermark } = frontmatter.value

@@ -14,12 +14,15 @@ const RE_CLEAN_REFS = /[()]/gu
 const parseTagName = (refs: string): string | null => {
   if (!refs) return null
 
-  const tags = refs
+  // `refs` is the raw `%d` value, e.g. `(HEAD -> main, tag: v1.0.0, origin/main)`.
+  // The tag is not necessarily the first ref, so look for the one holding it.
+  const tagRef = refs
     .replace(RE_CLEAN_REFS, '')
     .split(',')
     .map((tag) => tag.trim())
+    .find((tag) => tag.startsWith('tag:'))
 
-  return tags[0]?.includes('tag:') ? tags[0].replace('tag:', '').trim() : ''
+  return tagRef ? tagRef.replace('tag:', '').trim() : ''
 }
 
 /**

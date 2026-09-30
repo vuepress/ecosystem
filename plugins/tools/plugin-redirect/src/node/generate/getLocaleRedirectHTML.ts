@@ -28,7 +28,7 @@ export const getLocaleRedirectHTML = (
     const defaultLocale = ${
       availableLocales.includes(defaultLocale)
         ? JSON.stringify(defaultLocale)
-        : 'availableLocales.pop()'
+        : 'availableLocales[0]'
     };
     const defaultBehavior = ${JSON.stringify(defaultBehavior)}
 

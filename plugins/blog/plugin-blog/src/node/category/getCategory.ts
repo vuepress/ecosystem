@@ -43,7 +43,7 @@ export const getCategory = (
     ({
       key,
       getter,
-      sorter = (): number => -1,
+      sorter,
       path = '/:key/',
       layout = 'Layout',
       frontmatter = (): Record<string, string> => ({}),
@@ -140,8 +140,11 @@ export const getCategory = (
         }
 
         for (const [category, categoryPages] of entries(pageMapStore)) {
+          // keep the original order when no sorter is given
+          if (sorter) categoryPages.sort(sorter)
+
           map[category].indexes = store.addItems(
-            categoryPages.sort(sorter).map(({ path: pagePath }) => pagePath),
+            categoryPages.map(({ path: pagePath }) => pagePath),
           )
         }
 

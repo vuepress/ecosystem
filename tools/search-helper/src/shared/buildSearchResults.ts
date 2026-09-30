@@ -5,6 +5,7 @@ import {
   CUSTOM_FIELDS_INDEX_ID,
   HEADING_INDEX_ID,
   TEXT_INDEX_ID,
+  parseIndexId,
 } from './data.js'
 import { getMatchedContent } from './getMatchedContent.js'
 import type {
@@ -116,10 +117,9 @@ export const buildSearchResults = ({
   const resultMap: ResultMap = {}
 
   hits.forEach(({ id, score, document, terms = displayTerms }) => {
-    const isCustomField = id.includes('@')
-    const isSection = id.includes('#')
-    const [pageIndex, info] = id.split(/[#@]/u)
-    const pageId = Number(pageIndex)
+    const { pageId, kind, info } = parseIndexId(id)
+    const isCustomField = kind === 'customField'
+    const isSection = kind === 'section'
 
     // oxlint-disable-next-line no-multi-assign
     const { contents } = (resultMap[pageId] ??= {

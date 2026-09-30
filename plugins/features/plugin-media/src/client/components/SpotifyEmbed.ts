@@ -38,9 +38,9 @@ export const SpotifyEmbed = defineComponent({
 
   props: {
     /**
-     * Spotify URL, URI, or entity id
+     * Spotify URL or URI
      *
-     * Spotify 链接、URI 或实体 ID
+     * Spotify 链接或 URI
      */
     src: {
       type: String,

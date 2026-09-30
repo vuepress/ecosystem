@@ -15,7 +15,7 @@ export interface ActiveHeaderLinksPluginOptions {
    * If a header anchor does not have a corresponding header link, this plugin
    * won't change the route hash to that anchor when scrolling to it.
    *
-   * @default 'a.sidebar-item'
+   * @default 'a.vp-sidebar-item'
    */
   headerLinkSelector?: string
 

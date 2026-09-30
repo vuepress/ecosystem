@@ -15,6 +15,7 @@ export const getNoticeOptions = (
           ? {
               ...item,
               match: item.match.source,
+              matchFlags: item.match.flags,
               noticeKey: key,
             }
           : { ...item, noticeKey: key },

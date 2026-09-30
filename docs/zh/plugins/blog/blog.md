@@ -347,7 +347,7 @@ const stars = useBlogType('star')
 
 @@`category[*].sorter` type=`(pageA: Page, pageB: Page) => number`
 
-同一分类下页面的排序函数。
+同一分类下页面的排序函数。默认情况下，页面保持原始顺序。
 
 @@`category[*].path` type=`string | false` default=`'/:key/'`
 
@@ -389,7 +389,7 @@ const stars = useBlogType('star')
 
 @@`type[*].sorter` type=`(pageA: Page, pageB: Page) => number`
 
-该类型下页面的排序函数。
+该类型下页面的排序函数。默认情况下，页面保持原始顺序。
 
 @@`type[*].path` type=`string | false` default=`'/:key/'`
 

@@ -43,20 +43,6 @@ export interface UmamiOptions {
   autoTrack?: boolean
 
   /**
-   * Enable data caching
-   *
-   * 启用数据缓存
-   *
-   * Cache data to improve tracking script performance. Uses session storage and
-   * may require user notification.
-   *
-   * 缓存数据以提高追踪脚本性能。 使用会话存储，可能需要通知用户。
-   *
-   * @default false
-   */
-  cache?: boolean
-
-  /**
    * Restrict tracking to specific domains
    *
    * 限制追踪到特定域名

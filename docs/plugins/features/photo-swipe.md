@@ -95,6 +95,10 @@ Label text of the previous image button.
 
 Label text of the next image button.
 
+@@`locales.<localePath>.errorMsg` type=string
+
+Message shown when an image fails to load.
+
 ::::
 
 ## Frontmatter
@@ -180,7 +184,7 @@ Close the PhotoSwipe instance.
 
 @`destroy` type=`() => void`
 
-Release the listeners of the state. Call it when the state is no longer needed, e.g. when the component that holds it is unmounted.
+Destroy the PhotoSwipe instance created by the state and release its listeners. Call it when the state is no longer needed, e.g. when the component that holds it is unmounted.
 
 :::
 

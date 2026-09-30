@@ -107,6 +107,19 @@ describe(fileTree, () => {
     expect(result).toMatchSnapshot()
   })
 
+  it('should treat a `...` child as a placeholder', () => {
+    const content = `
+::: file-tree
+- folder
+  - ...
+:::
+`
+    const result = markdownIt.render(content)
+    expect(result).toContain('filename="..."')
+    // the folder only holds a placeholder, so it is treated as empty
+    expect(result).toContain(' empty')
+  })
+
   it('should not resolve the icons when they are disabled', () => {
     const content = `
 ::: file-tree

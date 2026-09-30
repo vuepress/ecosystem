@@ -5,6 +5,7 @@ import { path } from 'vuepress/utils'
 
 import { collectPageIndex } from '../src/node/collectPageIndex.js'
 import { PathStore } from '../src/node/pathStore.js'
+import { INDEX_ID_SEPARATOR } from '../src/shared/data.js'
 import { emptyTheme } from './__fixtures__/theme/empty.js'
 
 const app = createBuildApp({
@@ -106,6 +107,6 @@ describe(collectPageIndex, () => {
     const items = indexesByLocale['/']
 
     expect(items).toContainEqual({ id: '0', heading: '/kept.html' })
-    expect(items.some(({ id }) => id === '0#a')).toBe(true)
+    expect(items.some(({ id }) => id === `0${INDEX_ID_SEPARATOR}#a`)).toBe(true)
   })
 })

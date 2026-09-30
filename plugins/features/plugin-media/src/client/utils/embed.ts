@@ -351,7 +351,7 @@ export const getTikTokEmbedUrl = (src: string): string | null => {
  *     'https://open.spotify.com/track/4uLU6hMCjMI75M1A2tKUQC?theme=0',
  *   ) // 'https://open.spotify.com/embed/track/4uLU6hMCjMI75M1A2tKUQC?theme=0'
  *
- * @param src - Spotify URL, URI, or entity id / Spotify 链接、URI 或实体 ID
+ * @param src - Spotify URL or URI / Spotify 链接或 URI
  * @returns Embed URL / 嵌入链接
  */
 export const getSpotifyEmbedUrl = (src: string): string | null => {

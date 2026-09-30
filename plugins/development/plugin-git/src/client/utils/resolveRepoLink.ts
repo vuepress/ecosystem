@@ -19,7 +19,11 @@ export const resolveRepoLink = (
 
   if (provider === 'github') return `https://github.com/${link}`
 
+  if (provider === 'gitlab') return `https://gitlab.com/${link}`
+
   if (provider === 'gitee') return `https://gitee.com/${link}`
+
+  if (provider === 'bitbucket') return `https://bitbucket.org/${link}`
 
   return link
 }

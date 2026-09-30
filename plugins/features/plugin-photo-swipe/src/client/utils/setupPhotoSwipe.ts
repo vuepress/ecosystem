@@ -64,6 +64,9 @@ export const setupPhotoSwipe = (
         order: 8,
         isButton: true,
         tagName: 'a',
+        // keep the class given by PhotoSwipe, and add a class of our own to
+        // style the disabled state
+        className: 'pswp__button--download photo-swipe-download',
 
         // SVG with outline
         html: {
@@ -79,7 +82,17 @@ export const setupPhotoSwipe = (
           el.setAttribute('rel', 'noopener')
 
           photoSwipe.on('change', () => {
-            el.setAttribute('href', photoSwipe.currSlide!.data.src!)
+            const { src } = photoSwipe.currSlide!.data
+
+            // the current slide may not have a source, e.g. the image failed
+            // to load and an error placeholder is displayed instead
+            if (src) {
+              el.setAttribute('href', src)
+              el.removeAttribute('aria-disabled')
+            } else {
+              el.removeAttribute('href')
+              el.setAttribute('aria-disabled', 'true')
+            }
           })
         },
       })

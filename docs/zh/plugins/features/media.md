@@ -411,7 +411,7 @@ Twitch 在链接未表态时会自动播放，而浏览器会阻止这种自动�
 
 使用 Spotify 播放器嵌入 Spotify 单曲、单集、专辑、播放列表、节目与艺人。
 
-- `src`：Spotify 链接、URI 或实体 ID
+- `src`：Spotify 链接或 URI
 - `title`：播放器标题，默认为 `A Spotify player`
 - `width`：组件宽度，默认为 `100%`
 - `height`：组件高度
@@ -431,7 +431,7 @@ Twitch 在链接未表态时会自动播放，而浏览器会阻止这种自动�
 
 需要安装 `@videojs/html` 与 `@videojs/spotify-audio`，后者提供 [`spotify-audio`](https://videojs.org/docs/framework/html/reference/spotify-audio) 元素。
 
-- `src`：Spotify 链接、URI 或实体 ID
+- `src`：Spotify 链接或 URI
 - `autoplay`：是否自动播放
 - `loop`：音频结束后是否重新播放
 - `config`：Spotify 嵌入选项，参见 `SpotifyEngineConfig`
