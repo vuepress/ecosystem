@@ -57,8 +57,40 @@ const getMarkdownInfo = async (
   }
 }
 
-/** Matches the first line of a top level mapping entry */
-const TOP_LEVEL_KEY = /^(?![#\s])(?<key>[^:]+?)\s*:(?:\s|$)/u
+/**
+ * Get the key of a top level mapping entry
+ *
+ * 获取顶层映射条目的键
+ *
+ * The line is parsed by hand instead of with a regular expression: a pattern
+ * like `/^(?![#\s])(?<key>[^:]+?)\s*:(?:\s|$)/u` is ambiguous, because both
+ * `[^:]+?` and `\s*` can match whitespace, so a line made of many tabs and no
+ * colon makes the engine backtrack over every split point (quadratic time).
+ *
+ * 该行通过手工解析而非正则表达式：像 `/^(?![#\s])(?<key>[^:]+?)\s*:(?:\s|$)/u` 这样的模式存在歧义，因为
+ * `[^:]+?` 与 `\s*` 都能匹配空白，所以一行由大量制表符组成且不含冒号时，引擎会在每个切分点回溯（平方级耗时）。
+ *
+ * @param line - Line of the frontmatter / frontmatter 的行
+ * @returns The key of the entry, `null` when the line is not a top level entry
+ *   / 条目的键，该行不是顶层条目时为 `null`
+ */
+const getTopLevelKey = (line: string): string | null => {
+  // indented lines are continuations of the previous entry
+  if (/^\s/u.test(line)) return null
+
+  const index = line.indexOf(':')
+
+  if (index <= 0) return null
+
+  const key = line.slice(0, index).trimEnd()
+
+  if (key === '') return null
+
+  const rest = line.slice(index + 1)
+
+  // `key: value` or `key:`
+  return rest === '' || /^\s/u.test(rest) ? key : null
+}
 
 interface FrontmatterBlock {
   /** Comment lines that document the entry */
@@ -94,7 +126,7 @@ const groupFrontmatterBlocks = (lines: string[]): FrontmatterBlock[] => {
       continue
     }
 
-    const key = TOP_LEVEL_KEY.exec(line)?.groups?.key ?? null
+    const key = getTopLevelKey(line)
 
     if (key == null && blocks.length > 0) {
       // a continuation line of the previous entry

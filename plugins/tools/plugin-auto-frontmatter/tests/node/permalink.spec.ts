@@ -5,7 +5,10 @@ import { describe, expect, it } from 'vitest'
 import { fs } from 'vuepress/utils'
 
 import { autoFrontmatterPlugin } from '../../src/node/autoFrontmatterPlugin.js'
-import { generateFileListFrontmatter } from '../../src/node/generateFrontmatter.js'
+import {
+  generateFileListFrontmatter,
+  patchFrontmatter,
+} from '../../src/node/generateFrontmatter.js'
 import {
   createPermalink,
   isPermalinkHandle,
@@ -447,31 +450,6 @@ describe(createPermalink, () => {
     }
   })
 
-  it('should keep the trailing comments at the end', async () => {
-    const app = await createTestApp({
-      files: {
-        'trailing.md': '---\ntitle: Hello\n# end of file\n---\n# Body',
-      },
-      plugins: [
-        autoFrontmatterPlugin({
-          filter: '**/*.md',
-          handle: createPermalink(),
-        }),
-      ],
-      prepare: true,
-    })
-
-    try {
-      await expect(
-        readSourceFile(app.dir.source(), 'trailing.md'),
-      ).resolves.toMatch(
-        /^---\ntitle: Hello\npermalink: \/[0-9a-f]{8}\.html\n# end of file\n---\n# Body$/u,
-      )
-    } finally {
-      app.cleanup()
-    }
-  })
-
   it('should fall back to 8 characters for an invalid length', () => {
     const data: AutoFrontmatterData = {}
     createPermalink({ length: -1 })(data, createContext('a.md', 'foo'))
@@ -523,5 +501,51 @@ describe(createPermalink, () => {
     } finally {
       app.cleanup()
     }
+  })
+
+  it('should keep the trailing comments at the end', async () => {
+    const app = await createTestApp({
+      files: {
+        'trailing.md': '---\ntitle: Hello\n# end of file\n---\n# Body',
+      },
+      plugins: [
+        autoFrontmatterPlugin({
+          filter: '**/*.md',
+          handle: createPermalink(),
+        }),
+      ],
+      prepare: true,
+    })
+
+    try {
+      await expect(
+        readSourceFile(app.dir.source(), 'trailing.md'),
+      ).resolves.toMatch(
+        /^---\ntitle: Hello\npermalink: \/[0-9a-f]{8}\.html\n# end of file\n---\n# Body$/u,
+      )
+    } finally {
+      app.cleanup()
+    }
+  })
+
+  it('should parse a line with many tabs in linear time', () => {
+    /*
+     * A key pattern like `/^(?![#\s])(?<key>[^:]+?)\s*:(?:\s|$)/u` is ambiguous
+     * (both `[^:]+?` and `\s*` match whitespace), so a line made of many tabs
+     * and no colon makes it backtrack over every split point. This input takes
+     * seconds with such a pattern and is instant with a linear parse.
+     */
+    const matterText = `\ntitle: Hello\na${'\t'.repeat(100_000)}`
+
+    const start = performance.now()
+    const result = patchFrontmatter(
+      matterText,
+      { title: 'Hello' },
+      { title: 'Hello', permalink: '/x.html' },
+    )
+    const duration = performance.now() - start
+
+    expect(result).toContain('permalink: /x.html')
+    expect(duration).toBeLessThan(2000)
   })
 })
