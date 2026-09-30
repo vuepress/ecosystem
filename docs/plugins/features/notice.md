@@ -110,6 +110,10 @@ By default, there is a close button on the right side of the notice, allowing us
 
 However, if you want users to acknowledge the notice, set `confirm: true` so users can only close the notice by clicking action buttons.
 
+### Animation
+
+The notice pops out when it is displayed and pops back in when it is closed. In fullscreen mode, the notice stays centered on the screen while the mask fades in and out.
+
 ## Options
 
 ::: fields

@@ -1,20 +1,14 @@
 import { isLinkAbsolute, isLinkHttp, startsWith } from '@vuepress/helper/client'
 import { watchImmediate } from '@vueuse/core'
 import type { VNode } from 'vue'
-import {
-  TransitionGroup,
-  computed,
-  defineComponent,
-  h,
-  onMounted,
-  ref,
-} from 'vue'
+import { Transition, computed, defineComponent, h, onMounted, ref } from 'vue'
 import { useRoutePath, useRouter } from 'vuepress/client'
 
 import { useNoticeOptions } from '../composables/index.js'
 import { CloseIcon } from './CloseIcon.js'
 
-import '@vuepress/helper/transition/fade-in-up.css'
+import '@vuepress/helper/transition/fade-in-scale-up.css'
+import '@vuepress/helper/transition/fade-in.css'
 import '../styles/notice.scss'
 
 export const Notice = defineComponent({
@@ -86,58 +80,58 @@ export const Notice = defineComponent({
       })
     })
 
-    return (): VNode =>
-      h(TransitionGroup, { name: 'fade-in-up' }, () =>
+    return (): VNode | VNode[] => [
+      // The mask only fades, so that it always covers the whole viewport
+      h(Transition, { name: 'fade-in' }, () =>
+        matchedConfig.value?.fullscreen && isVisible.value
+          ? h('div', {
+              class: 'vp-notice-mask',
+              onClick: () => {
+                if (!matchedConfig.value!.confirm) closeModal()
+              },
+            })
+          : null,
+      ),
+      // The notice pops out on open and pops in on close
+      h(Transition, { name: 'fade-in-scale-up' }, () =>
         matchedConfig.value && isVisible.value
-          ? [
-              matchedConfig.value.fullscreen
-                ? h('div', {
-                    key: 'mask',
-                    class: 'vp-notice-mask',
-                    onClick: () => {
-                      if (!matchedConfig.value!.confirm) closeModal()
-                    },
-                  })
-                : null,
-              h(
-                'div',
-                {
-                  key: 'popup',
-                  class: [
-                    'vp-notice-wrapper',
-                    { fullscreen: matchedConfig.value.fullscreen },
-                  ],
-                },
-                [
-                  h('header', { class: 'vp-notice-title' }, [
-                    matchedConfig.value.confirm
-                      ? null
-                      : h(CloseIcon, { onClick: closeModal }),
-                    h('span', { innerHTML: matchedConfig.value.title }),
-                  ]),
-                  h('div', {
-                    class: 'vp-notice-content',
-                    innerHTML: matchedConfig.value.content,
-                  }),
-                  h(
-                    'div',
-                    { class: 'vp-notice-footer' },
-                    matchedConfig.value.actions.map(
-                      ({ text, link, type = '' }) =>
-                        h('button', {
-                          type: 'button',
-                          class: ['vp-notice-footer-action', type],
-                          onClick: () => {
-                            footerAction(link)
-                          },
-                          innerHTML: text,
-                        }),
-                    ),
-                  ),
+          ? h(
+              'div',
+              {
+                class: [
+                  'vp-notice-wrapper',
+                  { fullscreen: matchedConfig.value.fullscreen },
                 ],
-              ),
-            ]
-          : [],
-      )
+              },
+              [
+                h('header', { class: 'vp-notice-title' }, [
+                  matchedConfig.value.confirm
+                    ? null
+                    : h(CloseIcon, { onClick: closeModal }),
+                  h('span', { innerHTML: matchedConfig.value.title }),
+                ]),
+                h('div', {
+                  class: 'vp-notice-content',
+                  innerHTML: matchedConfig.value.content,
+                }),
+                h(
+                  'div',
+                  { class: 'vp-notice-footer' },
+                  matchedConfig.value.actions.map(({ text, link, type = '' }) =>
+                    h('button', {
+                      type: 'button',
+                      class: ['vp-notice-footer-action', type],
+                      onClick: () => {
+                        footerAction(link)
+                      },
+                      innerHTML: text,
+                    }),
+                  ),
+                ),
+              ],
+            )
+          : null,
+      ),
+    ]
   },
 })
