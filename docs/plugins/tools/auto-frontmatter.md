@@ -264,6 +264,111 @@ date: 2025-01-01 11:11:11
 ---
 ```
 
+### `createPermalink(options)`
+
+```ts
+interface PermalinkOptions {
+  /**
+   * Algorithm used to derive the permalink value
+   * @default 'crc32'
+   */
+  algorithm?: 'crc16' | 'crc32' | 'md5' | 'sha1' | 'sha256' | 'nanoid'
+
+  /**
+   * Encoding of a numeric hash, only applies to `crc16` and `crc32`
+   * @default 'hex'
+   */
+  encoding?: 'hex' | 'dec'
+
+  /**
+   * Source used as the seed of the permalink
+   * @default 'path'
+   */
+  source?: 'path' | 'content'
+
+  /**
+   * Amount of characters kept from the generated value, `0` keeps all
+   * @default 8
+   */
+  length?: number
+
+  /**
+   * Prefix of the permalink
+   * @default '/'
+   */
+  prefix?: string
+
+  /**
+   * Suffix of the permalink
+   * @default '.html'
+   */
+  suffix?: string
+
+  /**
+   * Whether to overwrite existing permalinks
+   * @default false
+   */
+  force?: boolean
+
+  /**
+   * Permalinks that are already used and must not be generated again
+   */
+  reserved?: Iterable<string>
+}
+
+function createPermalink(options?: PermalinkOptions): PermalinkHandle
+```
+
+Create a handler that derives a permalink from the file, similar to hexo's `abbrlink`.
+
+The value is derived from the file path (or the content) instead of being random, so it is stable and reproducible. The handler also keeps a registry of used permalinks: before handling the files, the plugin reserves every permalink already written in the frontmatter, and a conflicting value gets an extra counter appended to its seed until it is unique.
+
+```ts title=".vuepress/config.ts"
+import {
+  autoFrontmatterPlugin,
+  createPermalink,
+} from '@vuepress/plugin-auto-frontmatter'
+
+export default {
+  plugins: [
+    autoFrontmatterPlugin({
+      filter: 'posts/**/*.md', // [!code hl]
+      handle: createPermalink({ prefix: '/posts/', source: 'path' }),
+    }),
+  ],
+}
+```
+
+**Output**:
+
+```md title="docs/posts/hello.md"
+---
+permalink: /posts/3f6a1b2c.html
+---
+```
+
+::: tip `source`
+
+- `path`: the permalink only depends on the file path, so rewriting the title or the body never breaks the link.
+- `content`: the permalink depends on the body without the frontmatter, so any content change breaks the link.
+
+:::
+
+::: tip `algorithm` and `encoding`
+
+- `crc16` / `crc32` produce a short checksum, which fits a short link best.
+- `md5` / `sha1` / `sha256` produce a longer hash.
+- `nanoid` produces a random string, which is **not** reproducible, and is kept for compatibility only.
+- A checksum is zero padded to keep a stable length, so `length` only truncates it: `crc16` is 4 hex characters or 5 digits, `crc32` is 8 or 10.
+- `encoding: 'dec'` only applies to `crc16` and `crc32`, every other algorithm uses hex.
+- `nanoid` always generates exactly `length` characters, so `length: 0` falls back to 8 for it.
+
+:::
+
+::: warning
+A page with `permalink: null` is left untouched, because `null` is how VuePress is told that the page has no permalink.
+:::
+
 ### `addShortPermalink(data, options)`
 
 ```ts
@@ -317,3 +422,7 @@ export default {
 permalink: /abcd1234.html
 ---
 ```
+
+::: warning
+The value is random, so it cannot be reproduced once the frontmatter is lost, and it cannot guarantee that two files get different permalinks. Use `createPermalink` instead.
+:::
