@@ -40,4 +40,11 @@ export interface PhotoSwipePluginLocaleData {
    * 下一张图片按钮标签文字
    */
   arrowNext: string
+
+  /**
+   * Message shown when an image fails to load
+   *
+   * 图片加载失败时显示的文字
+   */
+  errorMsg: string
 }

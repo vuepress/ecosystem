@@ -4,6 +4,7 @@ import type { SlideData } from 'photoswipe'
 
 import type { PhotoSwipeOptions } from '../helpers/index.js'
 import type { PhotoSwipeBehaviorOptions } from '../typings.js'
+import { createErrorPlaceholder } from './errorPlaceholder.js'
 import { resolveImageInfoFromLink } from './images.js'
 import { LOADING_ICON } from './loadingIcon.js'
 import { setupPhotoSwipe } from './setupPhotoSwipe.js'
@@ -48,10 +49,24 @@ const getDataSource = (
   }))
 
   imageLinks.forEach((link, index) => {
-    void resolveImageInfoFromLink(link).then((data) => {
-      dataSource.splice(index, 1, data)
-      photoswipe?.refreshSlideContent(index)
-    })
+    void (async (): Promise<void> => {
+      try {
+        const data = await resolveImageInfoFromLink(link)
+
+        dataSource.splice(index, 1, data)
+        photoswipe?.refreshSlideContent(index)
+      } catch (err) {
+        // oxlint-disable-next-line no-console
+        console.warn(`[photo-swipe]: ${String(err)}`)
+
+        dataSource.splice(
+          index,
+          1,
+          createErrorPlaceholder(photoswipe?.options.errorMsg),
+        )
+        photoswipe?.refreshSlideContent(index)
+      }
+    })()
   })
 
   return dataSource
@@ -94,6 +109,11 @@ export const createPhotoSwipe = async (
   )
   let currentPhotoSwipe: PhotoSwipe | null = null
 
+  // close the current image on scrolling, the same as the composable
+  const stopScrollListener = useEventListener('wheel', () => {
+    if (scrollToClose) currentPhotoSwipe?.close()
+  })
+
   return {
     open: (index: number): void => {
       currentPhotoSwipe = new PhotoSwipe({
@@ -121,8 +141,10 @@ export const createPhotoSwipe = async (
       currentPhotoSwipe?.close()
     },
 
-    destroy: useEventListener('wheel', () => {
-      currentPhotoSwipe?.close()
-    }),
+    destroy: (): void => {
+      currentPhotoSwipe?.destroy()
+      currentPhotoSwipe = null
+      stopScrollListener()
+    },
   }
 }

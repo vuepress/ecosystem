@@ -95,6 +95,10 @@ export default {
 
 下一张图片按钮标签文字。
 
+@@`locales.<localePath>.errorMsg` type=string
+
+图片加载失败时显示的文字。
+
 ::::
 
 ## Frontmatter
@@ -180,7 +184,7 @@ onUnmounted(() => {
 
 @`destroy` type=`() => void`
 
-释放该状态的监听器。当不再需要该状态时调用它，例如持有它的组件卸载时。
+销毁该状态创建的 PhotoSwipe 实例并释放其监听器。当不再需要该状态时调用它，例如持有它的组件卸载时。
 
 :::
 
