@@ -20,8 +20,8 @@ export interface SearchPluginOptions {
   /**
    * Specify the [event.key](http://keycode.info/) of the hotkeys
    *
-   * When hotkeys are pressed, the search box input will be focused.
-   * Set to an empty array to disable hotkeys.
+   * When hotkeys are pressed, the search box input will be focused. Set to an
+   * empty array to disable hotkeys.
    *
    * 指定热键的 [event.key](http://keycode.info/)
    *

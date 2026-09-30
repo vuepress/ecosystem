@@ -1,5 +1,5 @@
 import { getFullLocaleConfig } from '@vuepress/helper'
-import type { Plugin } from 'vuepress/core'
+import type { PluginObject } from 'vuepress/core'
 import { path } from 'vuepress/utils'
 
 import type { SearchIndex } from '../shared/index.js'
@@ -22,7 +22,7 @@ export const searchPlugin = ({
   isSearchable = () => true,
   getExtraFields = () => [],
   hotReload,
-}: SearchPluginOptions = {}): Plugin => {
+}: SearchPluginOptions = {}): PluginObject => {
   // keep the index in memory so that a single page can be updated without
   // rebuilding the whole index
   const searchIndex: SearchIndex = []
