@@ -50,6 +50,8 @@ export default defineHopeConfig(
       'typescript/prefer-nullish-coalescing': 'off',
       // we often check other types
       'typescript/strict-boolean-expressions': 'off',
+      // FIXME: https://github.com/oxc-project/oxc/issues/27155
+      'typescript/no-generated-empty-object-type': 'off',
 
       // disabled due to performance consideration
       'unicorn/prefer-code-point': 'off',

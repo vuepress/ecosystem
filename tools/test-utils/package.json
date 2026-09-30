@@ -50,7 +50,7 @@
   },
   "dependencies": {
     "vue": "catalog:",
-    "vue-router": "^5.2.0"
+    "vue-router": "^5.3.1"
   },
   "peerDependencies": {
     "@vue/test-utils": "^2.5.1",
