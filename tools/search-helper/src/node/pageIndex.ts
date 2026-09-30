@@ -6,6 +6,7 @@ import type { Page } from 'vuepress/core'
 import {
   CUSTOM_FIELDS_INDEX_ID,
   HEADING_INDEX_ID,
+  INDEX_ID_SEPARATOR,
   TEXT_INDEX_ID,
 } from '../shared/index.js'
 import type {
@@ -144,7 +145,7 @@ export const generatePageIndex = (
           else foundFirstHeader = true
 
           sectionIndex = {
-            id: `${pageId}#${id}`,
+            id: `${pageId}${INDEX_ID_SEPARATOR}#${id}`,
             [HEADING_INDEX_ID]: header,
           }
         } else if (header) {
@@ -221,7 +222,7 @@ export const generatePageIndex = (
   // Add custom fields
   entries(customFields).forEach(([customField, values]) => {
     results.push({
-      id: `${pageId}@${customField}` as CustomFieldIndexId,
+      id: `${pageId}${INDEX_ID_SEPARATOR}@${customField}` as CustomFieldIndexId,
       [CUSTOM_FIELDS_INDEX_ID]: values,
     })
   })

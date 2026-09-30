@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest'
 
 import { buildSearchResults } from '../src/shared/buildSearchResults.js'
+import { INDEX_ID_SEPARATOR } from '../src/shared/data.js'
 
 const getPageTitle = (): undefined => undefined
 
@@ -10,10 +11,10 @@ describe(buildSearchResults, () => {
       hits: [
         { id: '0', score: 5, document: { id: '0', heading: 'Hello world' } },
         {
-          id: '0#install',
+          id: `0${INDEX_ID_SEPARATOR}#install`,
           score: 3,
           document: {
-            id: '0#install',
+            id: `0${INDEX_ID_SEPARATOR}#install`,
             heading: 'Hello install',
             text: ['Hello there'],
           },
@@ -37,9 +38,12 @@ describe(buildSearchResults, () => {
       hits: [
         { id: '0', score: 5, document: { id: '0', heading: 'Hello world' } },
         {
-          id: '0@1',
+          id: `0${INDEX_ID_SEPARATOR}@1`,
           score: 2,
-          document: { id: '0@1', customFields: ['author: hello'] },
+          document: {
+            id: `0${INDEX_ID_SEPARATOR}@1`,
+            customFields: ['author: hello'],
+          },
         },
       ],
       displayTerms: ['hello'],
@@ -49,6 +53,31 @@ describe(buildSearchResults, () => {
     expect(results[0].contents).toMatchObject([
       { type: 'title', id: 0 },
       { type: 'customField', id: 0, index: '1' },
+    ])
+  })
+
+  it('should treat an anchor holding a kind marker as a section', () => {
+    const results = buildSearchResults({
+      hits: [
+        { id: '0', score: 5, document: { id: '0', heading: 'Hello world' } },
+        {
+          id: `0${INDEX_ID_SEPARATOR}#a@b`,
+          score: 2,
+          document: {
+            id: `0${INDEX_ID_SEPARATOR}#a@b`,
+            heading: 'Hello anchor',
+            text: ['Hello there'],
+          },
+        },
+      ],
+      displayTerms: ['hello'],
+      getPageTitle,
+    })
+
+    expect(results[0].contents).toMatchObject([
+      { type: 'title', id: 0 },
+      { type: 'heading', id: 0, anchor: 'a@b' },
+      { type: 'text', id: 0, anchor: 'a@b' },
     ])
   })
 
@@ -109,9 +138,12 @@ describe(buildSearchResults, () => {
     const results = buildSearchResults({
       hits: [
         {
-          id: '3#install',
+          id: `3${INDEX_ID_SEPARATOR}#install`,
           score: 1,
-          document: { id: '3#install', heading: 'Hello install' },
+          document: {
+            id: `3${INDEX_ID_SEPARATOR}#install`,
+            heading: 'Hello install',
+          },
         },
       ],
       displayTerms: ['hello'],
@@ -125,9 +157,17 @@ describe(buildSearchResults, () => {
     const results = buildSearchResults({
       hits: [
         { id: '0', score: 9, document: { id: '0', heading: 'Hello alpha' } },
-        { id: '0#a', score: 1, document: { id: '0#a', heading: 'Hello' } },
+        {
+          id: `0${INDEX_ID_SEPARATOR}#a`,
+          score: 1,
+          document: { id: `0${INDEX_ID_SEPARATOR}#a`, heading: 'Hello' },
+        },
         { id: '1', score: 6, document: { id: '1', heading: 'Hello beta' } },
-        { id: '1#a', score: 6, document: { id: '1#a', heading: 'Hello' } },
+        {
+          id: `1${INDEX_ID_SEPARATOR}#a`,
+          score: 6,
+          document: { id: `1${INDEX_ID_SEPARATOR}#a`, heading: 'Hello' },
+        },
       ],
       displayTerms: ['hello'],
       getPageTitle,
@@ -144,9 +184,17 @@ describe(buildSearchResults, () => {
     const results = buildSearchResults({
       hits: [
         { id: '0', score: 9, document: { id: '0', heading: 'Hello alpha' } },
-        { id: '0#a', score: 1, document: { id: '0#a', heading: 'Hello' } },
+        {
+          id: `0${INDEX_ID_SEPARATOR}#a`,
+          score: 1,
+          document: { id: `0${INDEX_ID_SEPARATOR}#a`, heading: 'Hello' },
+        },
         { id: '1', score: 6, document: { id: '1', heading: 'Hello beta' } },
-        { id: '1#a', score: 6, document: { id: '1#a', heading: 'Hello' } },
+        {
+          id: `1${INDEX_ID_SEPARATOR}#a`,
+          score: 6,
+          document: { id: `1${INDEX_ID_SEPARATOR}#a`, heading: 'Hello' },
+        },
       ],
       displayTerms: ['hello'],
       getPageTitle,

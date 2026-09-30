@@ -26,7 +26,7 @@ exports[`generatePageIndex > should generate full index 2`] = `
   },
   {
     "heading": "Content",
-    "id": "1#content",
+    "id": "1<nul>#content",
     "text": [
       "Here is main content of article.",
       "A",
@@ -37,7 +37,7 @@ exports[`generatePageIndex > should generate full index 2`] = `
   },
   {
     "heading": "Title with Special Characters #@%/",
-    "id": "1#title-with-special-characters",
+    "id": "1<nul>#title-with-special-characters",
     "text": [
       "Content with regexp sequence 'a$' test.",
     ],
@@ -53,34 +53,34 @@ exports[`generatePageIndex > should generate full index 3`] = `
   },
   {
     "heading": "Heading 2",
-    "id": "2#heading-2",
+    "id": "2<nul>#heading-2",
   },
   {
     "heading": "Heading 3",
-    "id": "2#heading-3",
+    "id": "2<nul>#heading-3",
   },
   {
     "heading": "Heading 4",
-    "id": "2#heading-4",
+    "id": "2<nul>#heading-4",
   },
   {
     "heading": "Heading 5",
-    "id": "2#heading-5",
+    "id": "2<nul>#heading-5",
   },
   {
     "heading": "Heading 6",
-    "id": "2#heading-6",
+    "id": "2<nul>#heading-6",
   },
   {
     "heading": "Text",
-    "id": "2#text",
+    "id": "2<nul>#text",
     "text": [
       "This sentence has bold, italic and delete style text.",
     ],
   },
   {
     "heading": "Paragraph",
-    "id": "2#paragraph",
+    "id": "2<nul>#paragraph",
     "text": [
       "This is a paragraph.",
       "This is another paragraph.",
@@ -88,7 +88,7 @@ exports[`generatePageIndex > should generate full index 3`] = `
   },
   {
     "heading": "Line Break",
-    "id": "2#line-break",
+    "id": "2<nul>#line-break",
     "text": [
       "I would like to line break at this point",
       "::: tip",
@@ -98,7 +98,7 @@ exports[`generatePageIndex > should generate full index 3`] = `
   },
   {
     "heading": "Blockquotes",
-    "id": "2#blockquotes",
+    "id": "2<nul>#blockquotes",
     "text": [
       "Blockquotes can also be nested...",
       "...by using greater-than signs right next to each other...",
@@ -107,11 +107,11 @@ exports[`generatePageIndex > should generate full index 3`] = `
   },
   {
     "heading": "List",
-    "id": "2#list",
+    "id": "2<nul>#list",
   },
   {
     "heading": "Unordered List",
-    "id": "2#unordered-list",
+    "id": "2<nul>#unordered-list",
     "text": [
       "Create a list by starting a line with -",
       "Make sub-lists by indenting 2 spaces:",
@@ -125,7 +125,7 @@ exports[`generatePageIndex > should generate full index 3`] = `
   },
   {
     "heading": "Ordered List",
-    "id": "2#ordered-list",
+    "id": "2<nul>#ordered-list",
     "text": [
       "Lorem ipsum dolor sit amet",
       "Consectetur adipiscing elit line break line break again",
@@ -134,11 +134,11 @@ exports[`generatePageIndex > should generate full index 3`] = `
   },
   {
     "heading": "HR",
-    "id": "2#hr",
+    "id": "2<nul>#hr",
   },
   {
     "heading": "Link",
-    "id": "2#link",
+    "id": "2<nul>#link",
     "text": [
       "Home page using absolute path",
       "Home page using relative path",
@@ -146,11 +146,11 @@ exports[`generatePageIndex > should generate full index 3`] = `
   },
   {
     "heading": "Image",
-    "id": "2#image",
+    "id": "2<nul>#image",
   },
   {
     "heading": "Emoji",
-    "id": "2#emoji",
+    "id": "2<nul>#emoji",
     "text": [
       "Classic:",
       "😉 😢 😆 😋",
@@ -158,7 +158,7 @@ exports[`generatePageIndex > should generate full index 3`] = `
   },
   {
     "heading": "Tables",
-    "id": "2#tables",
+    "id": "2<nul>#tables",
     "text": [
       "center",
       "right",
@@ -176,7 +176,7 @@ exports[`generatePageIndex > should generate full index 3`] = `
   },
   {
     "heading": "Codes",
-    "id": "2#codes",
+    "id": "2<nul>#codes",
     "text": [
       "Inline Code: code",
       "Block code:",
@@ -338,11 +338,11 @@ exports[`generatePageIndex > should generate index 2`] = `
   },
   {
     "heading": "Content",
-    "id": "1#content",
+    "id": "1<nul>#content",
   },
   {
     "heading": "Title with Special Characters #@%/",
-    "id": "1#title-with-special-characters",
+    "id": "1<nul>#title-with-special-characters",
   },
 ]
 `;
@@ -355,75 +355,75 @@ exports[`generatePageIndex > should generate index 3`] = `
   },
   {
     "heading": "Heading 2",
-    "id": "2#heading-2",
+    "id": "2<nul>#heading-2",
   },
   {
     "heading": "Heading 3",
-    "id": "2#heading-3",
+    "id": "2<nul>#heading-3",
   },
   {
     "heading": "Heading 4",
-    "id": "2#heading-4",
+    "id": "2<nul>#heading-4",
   },
   {
     "heading": "Heading 5",
-    "id": "2#heading-5",
+    "id": "2<nul>#heading-5",
   },
   {
     "heading": "Heading 6",
-    "id": "2#heading-6",
+    "id": "2<nul>#heading-6",
   },
   {
     "heading": "Text",
-    "id": "2#text",
+    "id": "2<nul>#text",
   },
   {
     "heading": "Paragraph",
-    "id": "2#paragraph",
+    "id": "2<nul>#paragraph",
   },
   {
     "heading": "Line Break",
-    "id": "2#line-break",
+    "id": "2<nul>#line-break",
   },
   {
     "heading": "Blockquotes",
-    "id": "2#blockquotes",
+    "id": "2<nul>#blockquotes",
   },
   {
     "heading": "List",
-    "id": "2#list",
+    "id": "2<nul>#list",
   },
   {
     "heading": "Unordered List",
-    "id": "2#unordered-list",
+    "id": "2<nul>#unordered-list",
   },
   {
     "heading": "Ordered List",
-    "id": "2#ordered-list",
+    "id": "2<nul>#ordered-list",
   },
   {
     "heading": "HR",
-    "id": "2#hr",
+    "id": "2<nul>#hr",
   },
   {
     "heading": "Link",
-    "id": "2#link",
+    "id": "2<nul>#link",
   },
   {
     "heading": "Image",
-    "id": "2#image",
+    "id": "2<nul>#image",
   },
   {
     "heading": "Emoji",
-    "id": "2#emoji",
+    "id": "2<nul>#emoji",
   },
   {
     "heading": "Tables",
-    "id": "2#tables",
+    "id": "2<nul>#tables",
   },
   {
     "heading": "Codes",
-    "id": "2#codes",
+    "id": "2<nul>#codes",
   },
 ]
 `;
@@ -545,17 +545,17 @@ exports[`generatePageIndex > should support customFields 2`] = `
   },
   {
     "heading": "Content",
-    "id": "1#content",
+    "id": "1<nul>#content",
   },
   {
     "heading": "Title with Special Characters #@%/",
-    "id": "1#title-with-special-characters",
+    "id": "1<nul>#title-with-special-characters",
   },
   {
     "customFields": [
       "Demo",
     ],
-    "id": "1@0",
+    "id": "1<nul>@0",
   },
 ]
 `;
@@ -568,75 +568,75 @@ exports[`generatePageIndex > should support customFields 3`] = `
   },
   {
     "heading": "Heading 2",
-    "id": "2#heading-2",
+    "id": "2<nul>#heading-2",
   },
   {
     "heading": "Heading 3",
-    "id": "2#heading-3",
+    "id": "2<nul>#heading-3",
   },
   {
     "heading": "Heading 4",
-    "id": "2#heading-4",
+    "id": "2<nul>#heading-4",
   },
   {
     "heading": "Heading 5",
-    "id": "2#heading-5",
+    "id": "2<nul>#heading-5",
   },
   {
     "heading": "Heading 6",
-    "id": "2#heading-6",
+    "id": "2<nul>#heading-6",
   },
   {
     "heading": "Text",
-    "id": "2#text",
+    "id": "2<nul>#text",
   },
   {
     "heading": "Paragraph",
-    "id": "2#paragraph",
+    "id": "2<nul>#paragraph",
   },
   {
     "heading": "Line Break",
-    "id": "2#line-break",
+    "id": "2<nul>#line-break",
   },
   {
     "heading": "Blockquotes",
-    "id": "2#blockquotes",
+    "id": "2<nul>#blockquotes",
   },
   {
     "heading": "List",
-    "id": "2#list",
+    "id": "2<nul>#list",
   },
   {
     "heading": "Unordered List",
-    "id": "2#unordered-list",
+    "id": "2<nul>#unordered-list",
   },
   {
     "heading": "Ordered List",
-    "id": "2#ordered-list",
+    "id": "2<nul>#ordered-list",
   },
   {
     "heading": "HR",
-    "id": "2#hr",
+    "id": "2<nul>#hr",
   },
   {
     "heading": "Link",
-    "id": "2#link",
+    "id": "2<nul>#link",
   },
   {
     "heading": "Image",
-    "id": "2#image",
+    "id": "2<nul>#image",
   },
   {
     "heading": "Emoji",
-    "id": "2#emoji",
+    "id": "2<nul>#emoji",
   },
   {
     "heading": "Tables",
-    "id": "2#tables",
+    "id": "2<nul>#tables",
   },
   {
     "heading": "Codes",
-    "id": "2#codes",
+    "id": "2<nul>#codes",
   },
 ]
 `;
@@ -660,7 +660,7 @@ exports[`generatePageIndex > should support customFields 5`] = `
     "customFields": [
       "markdown",
     ],
-    "id": "4@0",
+    "id": "4<nul>@0",
   },
 ]
 `;
@@ -675,7 +675,7 @@ exports[`generatePageIndex > should support customFields 6`] = `
     "customFields": [
       "markdown",
     ],
-    "id": "5@0",
+    "id": "5<nul>@0",
   },
 ]
 `;
@@ -724,7 +724,7 @@ exports[`generatePageIndex > should support customFields with full index 2`] = `
   },
   {
     "heading": "Content",
-    "id": "1#content",
+    "id": "1<nul>#content",
     "text": [
       "Here is main content of article.",
       "A",
@@ -735,7 +735,7 @@ exports[`generatePageIndex > should support customFields with full index 2`] = `
   },
   {
     "heading": "Title with Special Characters #@%/",
-    "id": "1#title-with-special-characters",
+    "id": "1<nul>#title-with-special-characters",
     "text": [
       "Content with regexp sequence 'a$' test.",
     ],
@@ -744,7 +744,7 @@ exports[`generatePageIndex > should support customFields with full index 2`] = `
     "customFields": [
       "Demo",
     ],
-    "id": "1@0",
+    "id": "1<nul>@0",
   },
 ]
 `;
@@ -757,34 +757,34 @@ exports[`generatePageIndex > should support customFields with full index 3`] = `
   },
   {
     "heading": "Heading 2",
-    "id": "2#heading-2",
+    "id": "2<nul>#heading-2",
   },
   {
     "heading": "Heading 3",
-    "id": "2#heading-3",
+    "id": "2<nul>#heading-3",
   },
   {
     "heading": "Heading 4",
-    "id": "2#heading-4",
+    "id": "2<nul>#heading-4",
   },
   {
     "heading": "Heading 5",
-    "id": "2#heading-5",
+    "id": "2<nul>#heading-5",
   },
   {
     "heading": "Heading 6",
-    "id": "2#heading-6",
+    "id": "2<nul>#heading-6",
   },
   {
     "heading": "Text",
-    "id": "2#text",
+    "id": "2<nul>#text",
     "text": [
       "This sentence has bold, italic and delete style text.",
     ],
   },
   {
     "heading": "Paragraph",
-    "id": "2#paragraph",
+    "id": "2<nul>#paragraph",
     "text": [
       "This is a paragraph.",
       "This is another paragraph.",
@@ -792,7 +792,7 @@ exports[`generatePageIndex > should support customFields with full index 3`] = `
   },
   {
     "heading": "Line Break",
-    "id": "2#line-break",
+    "id": "2<nul>#line-break",
     "text": [
       "I would like to line break at this point",
       "::: tip",
@@ -802,7 +802,7 @@ exports[`generatePageIndex > should support customFields with full index 3`] = `
   },
   {
     "heading": "Blockquotes",
-    "id": "2#blockquotes",
+    "id": "2<nul>#blockquotes",
     "text": [
       "Blockquotes can also be nested...",
       "...by using greater-than signs right next to each other...",
@@ -811,11 +811,11 @@ exports[`generatePageIndex > should support customFields with full index 3`] = `
   },
   {
     "heading": "List",
-    "id": "2#list",
+    "id": "2<nul>#list",
   },
   {
     "heading": "Unordered List",
-    "id": "2#unordered-list",
+    "id": "2<nul>#unordered-list",
     "text": [
       "Create a list by starting a line with -",
       "Make sub-lists by indenting 2 spaces:",
@@ -829,7 +829,7 @@ exports[`generatePageIndex > should support customFields with full index 3`] = `
   },
   {
     "heading": "Ordered List",
-    "id": "2#ordered-list",
+    "id": "2<nul>#ordered-list",
     "text": [
       "Lorem ipsum dolor sit amet",
       "Consectetur adipiscing elit line break line break again",
@@ -838,11 +838,11 @@ exports[`generatePageIndex > should support customFields with full index 3`] = `
   },
   {
     "heading": "HR",
-    "id": "2#hr",
+    "id": "2<nul>#hr",
   },
   {
     "heading": "Link",
-    "id": "2#link",
+    "id": "2<nul>#link",
     "text": [
       "Home page using absolute path",
       "Home page using relative path",
@@ -850,11 +850,11 @@ exports[`generatePageIndex > should support customFields with full index 3`] = `
   },
   {
     "heading": "Image",
-    "id": "2#image",
+    "id": "2<nul>#image",
   },
   {
     "heading": "Emoji",
-    "id": "2#emoji",
+    "id": "2<nul>#emoji",
     "text": [
       "Classic:",
       "😉 😢 😆 😋",
@@ -862,7 +862,7 @@ exports[`generatePageIndex > should support customFields with full index 3`] = `
   },
   {
     "heading": "Tables",
-    "id": "2#tables",
+    "id": "2<nul>#tables",
     "text": [
       "center",
       "right",
@@ -880,7 +880,7 @@ exports[`generatePageIndex > should support customFields with full index 3`] = `
   },
   {
     "heading": "Codes",
-    "id": "2#codes",
+    "id": "2<nul>#codes",
     "text": [
       "Inline Code: code",
       "Block code:",
@@ -920,7 +920,7 @@ exports[`generatePageIndex > should support customFields with full index 5`] = `
     "customFields": [
       "markdown",
     ],
-    "id": "4@0",
+    "id": "4<nul>@0",
   },
 ]
 `;
@@ -938,7 +938,7 @@ exports[`generatePageIndex > should support customFields with full index 6`] = `
     "customFields": [
       "markdown",
     ],
-    "id": "5@0",
+    "id": "5<nul>@0",
   },
 ]
 `;
