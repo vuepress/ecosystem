@@ -22,7 +22,7 @@ export type RevealJsOptionsRef = Ref<RevealJsOptions>
 
 const revealOptions: RevealJsOptionsRef = ref({})
 
-let stopOptionsWatcher: (() => void) | undefined
+let stopOptionsWatcher: (() => void) | null = null
 
 const revealJsSymbol: InjectionKey<RevealJsOptionsRef> = Symbol(
   __VUEPRESS_DEV__ ? 'revealjs' : '',
@@ -49,7 +49,7 @@ export const defineRevealJsConfig = (
 ): void => {
   // a previous reactive source must no longer write the store
   stopOptionsWatcher?.()
-  stopOptionsWatcher = undefined
+  stopOptionsWatcher = null
 
   if (isRef(options)) {
     stopOptionsWatcher = watchImmediate(
