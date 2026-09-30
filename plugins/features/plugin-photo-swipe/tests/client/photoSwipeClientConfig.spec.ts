@@ -16,6 +16,7 @@ import { photoSwipePlugin } from '../../src/node/index.js'
 
 interface PhotoSwipeInstance {
   options: Record<string, unknown>
+  refreshSlideContent: (index: number) => void
 }
 
 const mocks = vi.hoisted(() => ({ instances: [] as PhotoSwipeInstance[] }))
@@ -178,6 +179,8 @@ describe('photo swipe client config', () => {
     await setup()
     resetState()
 
+    definePhotoSwipeConfig({ errorMsg: 'The image is broken' })
+
     const decode = vi.spyOn(HTMLImageElement.prototype, 'decode')
     decode.mockRejectedValue(new Error('broken'))
 
@@ -189,6 +192,19 @@ describe('photo swipe client config', () => {
       expect(warn).toHaveBeenCalledWith(
         expect.stringContaining('Image decoding failed'),
       )
+
+      const [instance] = mocks.instances
+      const dataSource = instance.options.dataSource as { html?: string }[]
+
+      // the failed images are replaced with the error placeholder
+      expect(dataSource[0].html).toBe(
+        '<div class="photo-swipe-error"><div class="pswp__error-msg">The image is broken</div></div>',
+      )
+      expect(dataSource[1].html).toBe(
+        '<div class="photo-swipe-error"><div class="pswp__error-msg">The image is broken</div></div>',
+      )
+      expect(instance.refreshSlideContent).toHaveBeenCalledWith(0)
+      expect(instance.refreshSlideContent).toHaveBeenCalledWith(1)
     } finally {
       decode.mockResolvedValue(undefined)
       warn.mockRestore()

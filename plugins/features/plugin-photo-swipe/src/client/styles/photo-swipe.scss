@@ -7,6 +7,15 @@
   justify-content: center;
 }
 
+.photo-swipe-error {
+  position: absolute;
+  inset: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .photo-swipe-bullets-indicator {
   position: absolute;
   bottom: 30px;
@@ -35,4 +44,10 @@
     width: 30px;
     background: var(--photo-swipe-c-bullet-active);
   }
+}
+
+// the current slide has nothing to download, e.g. the image failed to load
+.photo-swipe-download[aria-disabled='true'] {
+  opacity: 0.5;
+  pointer-events: none;
 }

@@ -4,6 +4,7 @@ import type { SlideData } from 'photoswipe'
 
 import type { PhotoSwipeOptions } from '../helpers/index.js'
 import type { PhotoSwipeBehaviorOptions } from '../typings.js'
+import { createErrorPlaceholder } from './errorPlaceholder.js'
 import { resolveImageInfoFromLink } from './images.js'
 import { LOADING_ICON } from './loadingIcon.js'
 import { setupPhotoSwipe } from './setupPhotoSwipe.js'
@@ -57,6 +58,13 @@ const getDataSource = (
       } catch (err) {
         // oxlint-disable-next-line no-console
         console.warn(`[photo-swipe]: ${String(err)}`)
+
+        dataSource.splice(
+          index,
+          1,
+          createErrorPlaceholder(photoswipe?.options.errorMsg),
+        )
+        photoswipe?.refreshSlideContent(index)
       }
     })()
   })

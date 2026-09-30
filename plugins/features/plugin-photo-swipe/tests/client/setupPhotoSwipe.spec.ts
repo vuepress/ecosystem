@@ -12,7 +12,7 @@ interface RegisteredElement {
 
 interface PhotoSwipeStub {
   currIndex: number
-  currSlide: { data: { src: string } }
+  currSlide: { data: { src?: string } }
   close: Mock<() => void>
   destroy: Mock<() => void>
   getNumItems: Mock<() => number>
@@ -111,6 +111,27 @@ describe('setup photo swipe', () => {
     photoSwipe.emit('change')
 
     expect(link.getAttribute('href')).toBe('https://example.com/next.png')
+  })
+
+  it('should drop the download link when the current slide has no source', () => {
+    const photoSwipe = createPhotoSwipeStub()
+
+    photoSwipe.setup({ download: true, fullscreen: false })
+
+    const element = photoSwipe.elements.find(({ name }) => name === 'download')!
+    const link = document.createElement('a')
+
+    element.onInit!(link)
+
+    photoSwipe.emit('change')
+    expect(link.getAttribute('href')).toBe('https://example.com/a.png')
+
+    // the image of the slide failed to load and an error placeholder is shown
+    photoSwipe.stub.currSlide.data = {}
+    photoSwipe.emit('change')
+
+    expect(link.hasAttribute('href')).toBe(false)
+    expect(link.getAttribute('aria-disabled')).toBe('true')
   })
 
   it('should render one bullet per image and highlight the current one', () => {
