@@ -109,9 +109,14 @@ export interface IconScan {
 /**
  * Icon asset type
  *
+ * An array only combines the extra asset links, the icon type itself is picked
+ * with a single keyword.
+ *
  * 图标资源类型
+ *
+ * 数组仅用于组合额外的资源链接，图标类型由单个关键字确定。
  */
-export type IconAsset = (BuiltInIcon | IconLink)[] | BuiltInIcon | IconLink
+export type IconAsset = IconLink[] | BuiltInIcon | IconLink
 
 /**
  * Options for icon plugin

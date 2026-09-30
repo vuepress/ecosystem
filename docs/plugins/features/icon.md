@@ -307,6 +307,8 @@ The following keywords are supported and you may use other CDN links or even you
 - `fontawesome`: Font Awesome free icons only
 - `fontawesome-with-brands`: Font Awesome free icons and brand icons
 
+Only one keyword may be used, as the keyword picks the icon type. To load extra assets, pass an array of links instead, since a keyword is not recognized inside an array.
+
 @`type` type=`IconType`
 
 Type of the icon, which is inferred from `assets` by default, and falls back to `unknown`.

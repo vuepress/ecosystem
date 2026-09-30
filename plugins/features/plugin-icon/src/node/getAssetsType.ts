@@ -13,6 +13,9 @@ export const isFontAwesomeLink = (link: string): boolean =>
 const isIconFontLink = (link: string): boolean =>
   /^(?:https:)?\/\/at\.alicdn\.com\/t\//u.test(link)
 
+// An array only combines the extra asset links, the icon type itself is picked
+// with a single keyword, so the keywords are not recognized inside an array and
+// `fontawesome` and `fontawesome-with-brands` can never be used together.
 export const isFontAwesomeAssets = (assets: IconAsset): boolean =>
   isArray(assets)
     ? assets.every((link) => isFontAwesomeLink(link))
