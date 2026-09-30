@@ -4,6 +4,9 @@ export default [
   tsdownConfig([
     'node/index',
     'client/config',
+    // The dev config creates the worker with `new Worker(new URL(...))`,
+    // which must not be analyzed by production builds
+    { 'client/config.dev': './src/client/config.dev.ts' },
     'client/index',
     'client/shims.d',
     // The dev worker is resolved against `import.meta.url` of the client

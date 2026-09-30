@@ -25,7 +25,10 @@ import { injectSearchConfig } from './helpers/index.js'
  *     locales: __ORAMA_LOCALES__,
  *     customFieldConfig: __ORAMA_CUSTOM_FIELDS__,
  *     store,
- *     devWorker: new URL('worker/dev.js', import.meta.url),
+ *     createDevWorker: () =>
+ *       new Worker(new URL('worker/dev.js', import.meta.url), {
+ *         type: 'module',
+ *       }),
  *   })
  *
  * @param config - Config of the search client 搜索客户端的配置

@@ -55,16 +55,17 @@ export interface SearchClientConfig {
   /** Path store, which maps the page id to its path 路径存储，将页面 id 映射到其路径 */
   store: Record<number, string>
   /**
-   * URL of the search worker in dev server
+   * Factory of the search worker in dev server
    *
-   * It is resolved by the plugin, so that the relative path of the worker can
-   * be resolved against the plugin itself.
+   * It is provided by the plugin with the `new Worker(new URL(...))` syntax, so
+   * that the bundler can analyze the expression and resolve the imports inside
+   * the worker.
    *
-   * 开发服务器中搜索工作线程的 URL
+   * 开发服务器中搜索工作线程的工厂
    *
-   * 它由插件解析，以便工作线程的相对路径能够相对插件本身解析。
+   * 它由插件以 `new Worker(new URL(...))` 语法提供，以便打包器能分析该表达式并解析工作线程内部的导入。
    */
-  devWorker?: URL
+  createDevWorker?: () => Worker
 
   /**
    * Engine specific default search options of a locale

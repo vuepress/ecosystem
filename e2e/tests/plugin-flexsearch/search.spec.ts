@@ -1,17 +1,7 @@
 import type { Page } from '@playwright/test'
 import { expect, test } from '@playwright/test'
 
-import { BASE, BUNDLER, IS_DEV } from '../../utils/env.js'
-
-// The dev worker is referenced with `new URL('worker/dev.js', import.meta.url)`,
-// which the webpack bundler treats as a plain asset: the emitted file keeps its
-// bare imports (`@temp/...`, `@vuepress/...`), which a module worker can not
-// resolve. The production worker is a self-contained script, so it works with
-// both bundlers.
-test.skip(
-  IS_DEV && BUNDLER !== 'vite',
-  'The dev search worker is only supported by the vite bundler',
-)
+import { BASE } from '../../utils/env.js'
 
 /**
  * Open the search box and search for a query, waiting for its results.
