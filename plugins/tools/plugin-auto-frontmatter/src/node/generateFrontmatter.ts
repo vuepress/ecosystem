@@ -29,7 +29,13 @@ const getMarkdownInfo = async (
 }> => {
   const filepath = path.join(cwd, relativePath)
   const raw = await fs.promises.readFile(filepath, 'utf-8')
-  const { data, content } = matter(raw)
+  /*
+   * `gray-matter` caches the parsed result by the body content and returns the
+   * same `data` object for files sharing the same body. As the plugin mutates
+   * `data` in place, the cache would leak the generated frontmatter between
+   * files. Passing an options object opts out of the cache.
+   */
+  const { data, content } = matter(raw, {})
   return {
     data,
     context: {
