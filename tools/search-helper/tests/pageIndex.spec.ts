@@ -6,8 +6,8 @@ import type { Bundler, Page } from 'vuepress/core'
 import { createBuildApp } from 'vuepress/core'
 import { path } from 'vuepress/utils'
 
-import { TEXT_INDEX_ID } from '../src/node/index.js'
-import type { SectionIndexItem } from '../src/node/index.js'
+import { INDEX_ID_SEPARATOR, TEXT_INDEX_ID } from '../src/node/index.js'
+import type { IndexItem, SectionIndexItem } from '../src/node/index.js'
 import { generatePageIndex } from '../src/node/pageIndex.js'
 import { PathStore } from '../src/node/pathStore.js'
 import { emptyTheme } from './__fixtures__/theme/empty.js'
@@ -21,6 +21,25 @@ const app = createBuildApp({
 // oxlint-disable-next-line node/no-top-level-await
 await app.init()
 
+/**
+ * Replace the NUL separator of the index ids with a readable placeholder.
+ *
+ * A raw NUL character would make Git treat the snapshot file as binary. The
+ * separator itself is asserted by the `data` unit tests.
+ *
+ * 把索引 id 的 NUL 分隔符替换为可读的占位符。
+ *
+ * 裸 NUL 字符会让 Git 把快照文件当成二进制文件。分隔符本身由 `data` 单元测试断言。
+ *
+ * @param items - Index items 索引项
+ * @returns Index items with placeholder ids 占位符 id 的索引项
+ */
+const normalizeIndexIds = (items: IndexItem[]): unknown[] =>
+  items.map((item) => ({
+    ...item,
+    id: item.id.replaceAll(INDEX_ID_SEPARATOR, '<nul>'),
+  }))
+
 describe(generatePageIndex, () => {
   it('should generate index', () => {
     const store = new PathStore()
@@ -30,7 +49,9 @@ describe(generatePageIndex, () => {
         length: 0,
       })
 
-      expect(generatePageIndex(page, store)).toMatchSnapshot()
+      expect(
+        normalizeIndexIds(generatePageIndex(page, store)),
+      ).toMatchSnapshot()
     })
   })
 
@@ -43,9 +64,11 @@ describe(generatePageIndex, () => {
       })
 
       expect(
-        generatePageIndex(page, store, {
-          indexContent: true,
-        }),
+        normalizeIndexIds(
+          generatePageIndex(page, store, {
+            indexContent: true,
+          }),
+        ),
       ).toMatchSnapshot()
     })
   })
@@ -59,14 +82,16 @@ describe(generatePageIndex, () => {
       })
 
       expect(
-        generatePageIndex(page, store, {
-          customFields: [
-            {
-              getter: ({ frontmatter }: Page): string[] | string | null =>
-                (frontmatter.tag as string[] | string) || null,
-            },
-          ],
-        }),
+        normalizeIndexIds(
+          generatePageIndex(page, store, {
+            customFields: [
+              {
+                getter: ({ frontmatter }: Page): string[] | string | null =>
+                  (frontmatter.tag as string[] | string) || null,
+              },
+            ],
+          }),
+        ),
       ).toMatchSnapshot()
     })
   })
@@ -76,15 +101,17 @@ describe(generatePageIndex, () => {
 
     app.pages.forEach((page) => {
       expect(
-        generatePageIndex(page, store, {
-          customFields: [
-            {
-              getter: ({ frontmatter }: Page): string[] | string | null =>
-                (frontmatter.tag as string[] | string) || null,
-            },
-          ],
-          indexContent: true,
-        }),
+        normalizeIndexIds(
+          generatePageIndex(page, store, {
+            customFields: [
+              {
+                getter: ({ frontmatter }: Page): string[] | string | null =>
+                  (frontmatter.tag as string[] | string) || null,
+              },
+            ],
+            indexContent: true,
+          }),
+        ),
       ).toMatchSnapshot()
     })
   })
@@ -99,7 +126,7 @@ describe(generatePageIndex, () => {
       indexContent: true,
     })
 
-    expect(result).toMatchSnapshot('default')
+    expect(normalizeIndexIds(result)).toMatchSnapshot('default')
 
     const text = (
       result.find((item): item is SectionIndexItem => 'text' in item)?.[
@@ -142,8 +169,10 @@ describe(generatePageIndex, () => {
       preserveTags: ['human-only', 'badge', 'donate-info'],
     })
 
-    expect(resultWithoutPreserve).toMatchSnapshot('not preserve')
-    expect(resultWithPreserve).toMatchSnapshot('preserve')
+    expect(normalizeIndexIds(resultWithoutPreserve)).toMatchSnapshot(
+      'not preserve',
+    )
+    expect(normalizeIndexIds(resultWithPreserve)).toMatchSnapshot('preserve')
 
     const textWithoutPreserve = JSON.stringify(resultWithoutPreserve)
     const textWithPreserve = JSON.stringify(resultWithPreserve)
