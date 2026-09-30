@@ -24,26 +24,26 @@
     "type:check": "tsc --noEmit"
   },
   "devDependencies": {
-    "@lerna-lite/cli": "^5.6.1",
-    "@lerna-lite/publish": "^5.6.1",
+    "@lerna-lite/cli": "^5.6.2",
+    "@lerna-lite/publish": "^5.6.2",
     "@tsdown/css": "^0.23.0",
     "@types/node": "^22.20.4",
     "@types/webpack-env": "^1.18.8",
     "@vitejs/plugin-vue": "^6.0.9",
-    "@vitest/coverage-istanbul": "^5.0.1",
+    "@vitest/coverage-istanbul": "^5.0.2",
     "@vue/test-utils": "^2.5.1",
     "@vuepress/test-utils": "workspace:*",
     "cross-env": "^10.1.0",
-    "cssnano": "^9.0.5",
+    "cssnano": "^9.1.1",
     "happy-dom": "^20.14.5",
     "html-minifier-terser": "^7.2.0",
     "husky": "^9.1.7",
     "lightningcss": "^1.33.0",
     "nano-staged": "^1.0.2",
     "oxc-config-hope": "^0.3.14",
-    "oxfmt": "^0.70.0",
-    "oxlint": "^1.85.0",
-    "oxlint-tsgolint": "^7.0.2002",
+    "oxfmt": "^0.71.0",
+    "oxlint": "^1.86.0",
+    "oxlint-tsgolint": "^7.0.2003",
     "picocolors": "^1.1.1",
     "postcss-html": "^2.0.0",
     "publint": "^0.3.24",
@@ -58,8 +58,8 @@
     "typescript": "^6.0.3",
     "uglify-js": "^3.19.3",
     "unrun": "^0.3.1",
-    "vite": "^8.3.0",
-    "vitest": "^5.0.1",
+    "vite": "^8.3.1",
+    "vitest": "^5.0.2",
     "vuepress": "catalog:"
   },
   "nano-staged": {
@@ -70,7 +70,7 @@
   "devEngines": {
     "packageManager": {
       "name": "pnpm",
-      "version": "12.5.1",
+      "version": "12.8.1",
       "onFail": "download"
     },
     "runtime": {
