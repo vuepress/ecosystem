@@ -1,6 +1,7 @@
 import {
   addViteOptimizeDepsInclude,
   addViteSsrNoExternal,
+  chainWebpack,
   fromEntries,
   getFullLocaleConfig,
 } from '@vuepress/helper'
@@ -60,7 +61,10 @@ export const flexsearchPlugin =
         },
       },
 
-      clientConfigFile: `${CLIENT_FOLDER}config.js`,
+      clientConfigFile: () =>
+        app.env.isDev
+          ? `${CLIENT_FOLDER}config.dev.js`
+          : `${CLIENT_FOLDER}config.js`,
 
       extendsBundlerOptions: (bundlerOptions: unknown) => {
         addViteOptimizeDepsInclude(bundlerOptions, app, 'flexsearch', true)
@@ -69,6 +73,19 @@ export const flexsearchPlugin =
           'fflate',
           'flexsearch',
         ])
+        // The ESM build of flexsearch contains bare `import.meta.dirname`,
+        // which webpack does not rewrite, so a classic worker can not parse
+        // it. Resolve flexsearch to its classic build under webpack instead.
+        // `process.getBuiltinModule` keeps a static `node:module` import out
+        // of the bundle, which a browser worker could not resolve.
+        chainWebpack(bundlerOptions, app, (config) => {
+          const { createRequire } = process.getBuiltinModule('node:module')
+
+          config.resolve.alias.set(
+            'flexsearch$',
+            createRequire(import.meta.url).resolve('flexsearch'),
+          )
+        })
       },
 
       onInitialized: () => {

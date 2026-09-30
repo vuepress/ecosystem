@@ -74,16 +74,14 @@ export interface SearchWorker {
 const ERR_MSG = 'Canceled because of new search request.'
 
 export const createSearchWorker = (): SearchWorker => {
-  const { devWorker, options } = getSearchClientConfig()
+  const { createDevWorker, options } = getSearchClientConfig()
 
-  const worker = new Worker(
-    // FIXME: Currently rolldown does not respect `import.meta.url` here. Might need another fix in the future.
-    // See https://github.com/rolldown/rolldown/issues/9180
-    __VUEPRESS_DEV__ && devWorker
-      ? devWorker
-      : `${__VUEPRESS_BASE__}${options.worker}`,
-    __VUEPRESS_DEV__ ? { type: 'module' } : {},
-  )
+  // In dev the plugin creates the worker with `new Worker(new URL(...))`,
+  // so that the bundler can analyze it and resolve the worker imports
+  const worker =
+    __VUEPRESS_DEV__ && createDevWorker
+      ? createDevWorker()
+      : new Worker(`${__VUEPRESS_BASE__}${options.worker}`)
 
   const states: Record<'all' | 'search' | 'suggest', PromiseItem | null> = {
     suggest: null,

@@ -61,7 +61,10 @@ export const slimsearchPlugin =
         },
       },
 
-      clientConfigFile: `${CLIENT_FOLDER}config.js`,
+      clientConfigFile: () =>
+        app.env.isDev
+          ? `${CLIENT_FOLDER}config.dev.js`
+          : `${CLIENT_FOLDER}config.js`,
 
       extendsBundlerOptions: (bundlerOptions: unknown) => {
         addViteOptimizeDepsInclude(bundlerOptions, app, 'slimsearch', true)
