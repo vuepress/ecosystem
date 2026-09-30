@@ -234,6 +234,7 @@ interface KeyOptions {
   ctrl?: boolean
   shift?: boolean
   alt?: boolean
+  meta?: boolean
 }
 ```
 
