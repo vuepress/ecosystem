@@ -51,7 +51,7 @@ export const useBlogType = <
     }
 
     if (!(mapKey in typeMapRef.value))
-      throw new Error(`useBlogType: key ${key} is invalid`)
+      throw new Error(`useBlogType: key ${mapKey} is invalid`)
 
     const configMap = typeMapRef.value[mapKey][routeLocale.value]
     const result: BlogTypeData<Info> = {
