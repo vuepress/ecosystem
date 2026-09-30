@@ -18,6 +18,7 @@ export const photoSwipeLocaleInfo: DefaultLocaleInfo<PhotoSwipePluginLocaleData>
         zoom: 'Zoom in/out',
         arrowPrev: 'Prev (Arrow Left)',
         arrowNext: 'Next (Arrow Right)',
+        errorMsg: 'The image cannot be loaded',
       },
     ],
     [
@@ -29,6 +30,7 @@ export const photoSwipeLocaleInfo: DefaultLocaleInfo<PhotoSwipePluginLocaleData>
         zoom: '缩放',
         arrowPrev: '上一个 (左箭头)',
         arrowNext: '下一个 (右箭头)',
+        errorMsg: '图片无法加载',
       },
     ],
     [
@@ -40,6 +42,7 @@ export const photoSwipeLocaleInfo: DefaultLocaleInfo<PhotoSwipePluginLocaleData>
         zoom: '縮放',
         arrowPrev: '上一個 (左箭頭)',
         arrowNext: '下一個 (右箭頭)',
+        errorMsg: '圖片無法載入',
       },
     ],
     [
@@ -51,6 +54,7 @@ export const photoSwipeLocaleInfo: DefaultLocaleInfo<PhotoSwipePluginLocaleData>
         zoom: 'Rein / rauszoomen',
         arrowPrev: 'Zurück (Pfeil links)',
         arrowNext: 'Weiter (Pfeil rechts)',
+        errorMsg: 'Das Bild kann nicht geladen werden',
       },
     ],
     [
@@ -62,6 +66,7 @@ export const photoSwipeLocaleInfo: DefaultLocaleInfo<PhotoSwipePluginLocaleData>
         zoom: 'Rein / rauszoomen',
         arrowPrev: 'Zurück (Pfeil links)',
         arrowNext: 'Weiter (Pfeil rechts)',
+        errorMsg: 'Das Bild kann nicht geladen werden',
       },
     ],
     [
@@ -73,6 +78,7 @@ export const photoSwipeLocaleInfo: DefaultLocaleInfo<PhotoSwipePluginLocaleData>
         zoom: 'Phóng to / thu nhỏ',
         arrowPrev: 'Trước (Mũi tên trái)',
         arrowNext: 'Tiếp theo (Mũi tên Phải)',
+        errorMsg: 'Không thể tải hình ảnh',
       },
     ],
     [
@@ -84,6 +90,7 @@ export const photoSwipeLocaleInfo: DefaultLocaleInfo<PhotoSwipePluginLocaleData>
         zoom: 'Збільшити/Зменшити',
         arrowPrev: 'Попередня (Стрілка вліво)',
         arrowNext: 'Далі (стрілка вправо)',
+        errorMsg: 'Не вдалося завантажити зображення',
       },
     ],
     [
@@ -95,6 +102,7 @@ export const photoSwipeLocaleInfo: DefaultLocaleInfo<PhotoSwipePluginLocaleData>
         zoom: 'Увеличить/Уменьшить',
         arrowPrev: 'Предыдущая (Стрелка влево)',
         arrowNext: 'Следующая (Стрелка вправо)',
+        errorMsg: 'Не удалось загрузить изображение',
       },
     ],
     [
@@ -106,6 +114,7 @@ export const photoSwipeLocaleInfo: DefaultLocaleInfo<PhotoSwipePluginLocaleData>
         zoom: 'Aproximar/afastar',
         arrowPrev: 'Anterior (Seta esquerda)',
         arrowNext: 'Seguinte (Seta direita)',
+        errorMsg: 'Não foi possível carregar a imagem',
       },
     ],
     [
@@ -117,6 +126,7 @@ export const photoSwipeLocaleInfo: DefaultLocaleInfo<PhotoSwipePluginLocaleData>
         zoom: 'Aproximar mais/menos',
         arrowPrev: 'Anterior (Seta Esquerda)',
         arrowNext: 'Próximo (Seta Direita)',
+        errorMsg: 'Não foi possível carregar a imagem',
       },
     ],
     [
@@ -128,6 +138,7 @@ export const photoSwipeLocaleInfo: DefaultLocaleInfo<PhotoSwipePluginLocaleData>
         zoom: 'Powiększ/pomniejsz',
         arrowPrev: 'Poprzedni (strzałka w lewo)',
         arrowNext: 'Następny (strzałka w prawo)',
+        errorMsg: 'Nie można wczytać obrazu',
       },
     ],
     [
@@ -139,6 +150,7 @@ export const photoSwipeLocaleInfo: DefaultLocaleInfo<PhotoSwipePluginLocaleData>
         zoom: 'Priblíž/Oddial',
         arrowPrev: 'Predošlí (šípka doľava)',
         arrowNext: 'Nasledujúci (šípka doprava)',
+        errorMsg: 'Obrázok sa nepodarilo načítať',
       },
     ],
     [
@@ -150,6 +162,7 @@ export const photoSwipeLocaleInfo: DefaultLocaleInfo<PhotoSwipePluginLocaleData>
         zoom: 'Zoom avant/arrière',
         arrowPrev: 'Précédent (Flèche gauche)',
         arrowNext: 'Suivant (Flèche droite)',
+        errorMsg: "Impossible de charger l'image",
       },
     ],
     [
@@ -161,6 +174,7 @@ export const photoSwipeLocaleInfo: DefaultLocaleInfo<PhotoSwipePluginLocaleData>
         zoom: 'Acercar/Alejar',
         arrowPrev: 'Anterior (Flecha izquierda)',
         arrowNext: 'Siguiente (Flecha derecha)',
+        errorMsg: 'No se puede cargar la imagen',
       },
     ],
     [
@@ -172,6 +186,7 @@ export const photoSwipeLocaleInfo: DefaultLocaleInfo<PhotoSwipePluginLocaleData>
         zoom: 'Ingrandisci/riduci',
         arrowPrev: 'Precedente (Freccia sinistra)',
         arrowNext: 'Successivo (Freccia destra)',
+        errorMsg: "Impossibile caricare l'immagine",
       },
     ],
     [
@@ -183,6 +198,7 @@ export const photoSwipeLocaleInfo: DefaultLocaleInfo<PhotoSwipePluginLocaleData>
         zoom: '拡大・縮小',
         arrowPrev: '前へ（左矢印）',
         arrowNext: '次へ（右矢印）',
+        errorMsg: '画像を読み込めません',
       },
     ],
     [
@@ -194,6 +210,7 @@ export const photoSwipeLocaleInfo: DefaultLocaleInfo<PhotoSwipePluginLocaleData>
         zoom: 'Yakınlaştır/Uzaklaştır',
         arrowPrev: 'Önceki (Sol ok)',
         arrowNext: 'Sonraki (Sağ ok)',
+        errorMsg: 'Görsel yüklenemiyor',
       },
     ],
     [
@@ -205,6 +222,7 @@ export const photoSwipeLocaleInfo: DefaultLocaleInfo<PhotoSwipePluginLocaleData>
         zoom: '확대/축소',
         arrowPrev: '이전 (왼쪽 화살표)',
         arrowNext: '다음 (오른쪽 화살표)',
+        errorMsg: '이미지를 불러올 수 없습니다',
       },
     ],
     [
@@ -216,6 +234,7 @@ export const photoSwipeLocaleInfo: DefaultLocaleInfo<PhotoSwipePluginLocaleData>
         zoom: 'Lähennä/Työnnä',
         arrowPrev: 'Edellinen (Vasen nuoli)',
         arrowNext: 'Seuraava (Oikea nuoli)',
+        errorMsg: 'Kuvaa ei voi ladata',
       },
     ],
     [
@@ -227,6 +246,7 @@ export const photoSwipeLocaleInfo: DefaultLocaleInfo<PhotoSwipePluginLocaleData>
         zoom: 'Nagyítás/kicsinyítés',
         arrowPrev: 'Előző (Balra nyíl)',
         arrowNext: 'Következő (Jobbra nyíl)',
+        errorMsg: 'A kép nem tölthető be',
       },
     ],
     [
@@ -238,6 +258,7 @@ export const photoSwipeLocaleInfo: DefaultLocaleInfo<PhotoSwipePluginLocaleData>
         zoom: 'Perbesar/Perkecil',
         arrowPrev: 'Sebelumnya (Panah kiri)',
         arrowNext: 'Selanjutnya (Panah kanan)',
+        errorMsg: 'Gambar tidak dapat dimuat',
       },
     ],
     [
@@ -249,6 +270,7 @@ export const photoSwipeLocaleInfo: DefaultLocaleInfo<PhotoSwipePluginLocaleData>
         zoom: 'In-/uitzoomen',
         arrowPrev: 'Vorige (Pijl Links)',
         arrowNext: 'Volgende (Pijl Rechts)',
+        errorMsg: 'De afbeelding kan niet worden geladen',
       },
     ],
   ]

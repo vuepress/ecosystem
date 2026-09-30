@@ -109,6 +109,11 @@ export const createPhotoSwipe = async (
   )
   let currentPhotoSwipe: PhotoSwipe | null = null
 
+  // close the current image on scrolling, the same as the composable
+  const stopScrollListener = useEventListener('wheel', () => {
+    if (scrollToClose) currentPhotoSwipe?.close()
+  })
+
   return {
     open: (index: number): void => {
       currentPhotoSwipe = new PhotoSwipe({
@@ -136,8 +141,10 @@ export const createPhotoSwipe = async (
       currentPhotoSwipe?.close()
     },
 
-    destroy: useEventListener('wheel', () => {
-      currentPhotoSwipe?.close()
-    }),
+    destroy: (): void => {
+      currentPhotoSwipe?.destroy()
+      currentPhotoSwipe = null
+      stopScrollListener()
+    },
   }
 }

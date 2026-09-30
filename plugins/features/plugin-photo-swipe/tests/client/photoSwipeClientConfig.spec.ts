@@ -175,11 +175,9 @@ describe('photo swipe client config', () => {
     expect(mocks.instances[0].options.bgOpacity).toBe(0.8)
   })
 
-  it('should warn instead of rejecting when an image cannot be decoded', async () => {
+  it('should show the localized error message when an image cannot be decoded', async () => {
     await setup()
     resetState()
-
-    definePhotoSwipeConfig({ errorMsg: 'The image is broken' })
 
     const decode = vi.spyOn(HTMLImageElement.prototype, 'decode')
     decode.mockRejectedValue(new Error('broken'))
@@ -196,15 +194,44 @@ describe('photo swipe client config', () => {
       const [instance] = mocks.instances
       const dataSource = instance.options.dataSource as { html?: string }[]
 
-      // the failed images are replaced with the error placeholder
+      // the failed images are replaced with the error placeholder, using the
+      // message of the resolved locale
+      expect(instance.options.errorMsg).toBe('The image cannot be loaded')
       expect(dataSource[0].html).toBe(
-        '<div class="photo-swipe-error"><div class="pswp__error-msg">The image is broken</div></div>',
+        '<div class="photo-swipe-error"><div class="pswp__error-msg">The image cannot be loaded</div></div>',
       )
       expect(dataSource[1].html).toBe(
-        '<div class="photo-swipe-error"><div class="pswp__error-msg">The image is broken</div></div>',
+        '<div class="photo-swipe-error"><div class="pswp__error-msg">The image cannot be loaded</div></div>',
       )
       expect(instance.refreshSlideContent).toHaveBeenCalledWith(0)
       expect(instance.refreshSlideContent).toHaveBeenCalledWith(1)
+    } finally {
+      decode.mockResolvedValue(undefined)
+      warn.mockRestore()
+    }
+  })
+
+  it('should prefer the error message defined on the client', async () => {
+    await setup()
+    resetState()
+
+    definePhotoSwipeConfig({ errorMsg: 'The image is broken' })
+
+    const decode = vi.spyOn(HTMLImageElement.prototype, 'decode')
+    decode.mockRejectedValue(new Error('broken'))
+
+    const warn = vi.spyOn(console, 'warn').mockImplementation(() => {})
+
+    try {
+      await openPhotoSwipe()
+
+      const [instance] = mocks.instances
+      const dataSource = instance.options.dataSource as { html?: string }[]
+
+      expect(instance.options.errorMsg).toBe('The image is broken')
+      expect(dataSource[1].html).toBe(
+        '<div class="photo-swipe-error"><div class="pswp__error-msg">The image is broken</div></div>',
+      )
     } finally {
       decode.mockResolvedValue(undefined)
       warn.mockRestore()

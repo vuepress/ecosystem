@@ -130,6 +130,8 @@ export const usePhotoSwipe = ({
   const options = computed(() => ({
     ...photoSwipeOptions.value,
     ...locale.value,
+    // fall back to the localized message when the user does not set one
+    errorMsg: photoSwipeOptions.value.errorMsg ?? locale.value.errorMsgTitle,
     download,
     fullscreen,
     scrollToClose,

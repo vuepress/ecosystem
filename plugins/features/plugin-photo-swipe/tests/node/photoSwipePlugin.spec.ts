@@ -19,6 +19,9 @@ describe('photo swipe plugin', () => {
       expect(defines.__PS_LOCALES__).toMatchObject({
         '/': { closeTitle: 'Close', downloadTitle: 'Download Image' },
       })
+      expect(defines.__PS_LOCALES__).toMatchObject({
+        '/': { errorMsgTitle: 'The image cannot be loaded' },
+      })
     } finally {
       app.cleanup()
     }
@@ -32,7 +35,9 @@ describe('photo swipe plugin', () => {
           download: false,
           fullscreen: false,
           scrollToClose: false,
-          locales: { '/': { close: 'Fermer' } },
+          locales: {
+            '/': { close: 'Fermer', errorMsg: 'Échec de chargement' },
+          },
         }),
       ],
     })
@@ -45,7 +50,7 @@ describe('photo swipe plugin', () => {
       expect(defines.__PS_FULLSCREEN__).toBe(false)
       expect(defines.__PS_SCROLL_TO_CLOSE__).toBe(false)
       expect(defines.__PS_LOCALES__).toMatchObject({
-        '/': { closeTitle: 'Fermer' },
+        '/': { closeTitle: 'Fermer', errorMsgTitle: 'Échec de chargement' },
       })
     } finally {
       app.cleanup()
