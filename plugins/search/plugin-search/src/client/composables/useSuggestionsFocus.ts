@@ -1,5 +1,5 @@
 import type { Ref } from 'vue'
-import { ref } from 'vue'
+import { ref, watch } from 'vue'
 
 export const useSuggestionsFocus = (
   suggestions: Ref<unknown[]>,
@@ -17,6 +17,12 @@ export const useSuggestionsFocus = (
     if (focusIndex.value > 0) focusIndex.value -= 1
     else focusIndex.value = suggestions.value.length - 1
   }
+
+  // reset the focus when the suggestion list changes, otherwise the index may
+  // point to a suggestion that no longer exists
+  watch(suggestions, () => {
+    focusIndex.value = 0
+  })
 
   return {
     focusIndex,
