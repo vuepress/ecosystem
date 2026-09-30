@@ -97,6 +97,63 @@ describe('redirect plugin defines', () => {
   })
 })
 
+describe('auto locale root home page', () => {
+  it('creates the root home page in the dev server', async () => {
+    const app = await createTestApp({
+      init: false,
+      locales,
+      plugins: [redirectPlugin({ autoLocale: true })],
+    })
+
+    try {
+      app.env.isDev = true
+      await app.init()
+
+      expect(app.pages.map(({ path }) => path)).toContain('/')
+    } finally {
+      app.cleanup()
+    }
+  })
+
+  it('keeps the root path empty for the build output', async () => {
+    const app = await createTestApp({
+      files: { 'zh/README.md': '# 首页' },
+      init: false,
+      locales,
+      plugins: [redirectPlugin({ autoLocale: true })],
+    })
+
+    try {
+      app.env.isBuild = true
+      await app.init()
+
+      expect(app.pages.map(({ path }) => path)).not.toContain('/')
+    } finally {
+      app.cleanup()
+    }
+  })
+
+  it('respects the root home page provided by the user', async () => {
+    const app = await createTestApp({
+      files: { 'README.md': '# Home' },
+      init: false,
+      locales,
+      plugins: [redirectPlugin({ autoLocale: true })],
+    })
+
+    try {
+      app.env.isDev = true
+      await app.init()
+
+      const rootPage = app.pages.find(({ path }) => path === '/')!
+
+      expect(rootPage.filePathRelative).toBe('README.md')
+    } finally {
+      app.cleanup()
+    }
+  })
+})
+
 describe('redirect map', () => {
   it('resolves the map from the frontmatter and the config option', async () => {
     const app = await createTestApp({
