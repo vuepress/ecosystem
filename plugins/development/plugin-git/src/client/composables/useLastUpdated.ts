@@ -61,7 +61,7 @@ export const useLastUpdated = (
     if (!toValue(enabled)) return null
 
     const timeStamp =
-      page.value.git?.updatedTime ?? page.value.git?.changelog?.[0].time
+      page.value.git?.updatedTime ?? page.value.git?.changelog?.[0]?.time
 
     if (!timeStamp) return null
 
