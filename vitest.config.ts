@@ -106,6 +106,16 @@ export default defineConfig({
       provider: 'istanbul',
       reporter: ['clover', 'json', 'lcov', 'text'],
     },
+    environmentOptions: {
+      happyDOM: {
+        settings: {
+          // No test loads external scripts, and happy-dom reports every
+          // tracking script appended to the head as an error with a stack
+          // trace, so treat the disabled loading as a success instead
+          handleDisabledFileLoadingAsSuccess: true,
+        },
+      },
+    },
     include: [
       'plugins/**/tests/**/*.spec.ts',
       'themes/**/tests/**/*.spec.ts',
