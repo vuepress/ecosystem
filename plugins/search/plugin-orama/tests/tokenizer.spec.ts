@@ -308,7 +308,6 @@ describe('custom tokenizer', () => {
       .toLowerCase()
       .split(/\s+/u)
       .flatMap((word) =>
-        // oxlint-disable-next-line unicorn/prefer-spread
         /[\u3400-\u9FFF]/u.test(word) ? word.split('') : [word],
       )
       .filter(Boolean)

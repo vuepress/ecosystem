@@ -1,10 +1,20 @@
 name: release
 
 on:
-  push:
-    tags:
-      - 'v*'
   workflow_dispatch:
+    inputs:
+      dryrun:
+        type: boolean
+        description: Dry-Run
+      prerelease:
+        type: boolean
+        description: Force prerelease
+      graduate:
+        type: boolean
+        description: Force Conventional Graduate
+      publish_only:
+        type: boolean
+        description: 'Skip running `lerna version` and run publish-only retry (useful to retry failed publish)'
 
 permissions:
   contents: write
@@ -12,9 +22,16 @@ permissions:
 
 jobs:
   release:
+    name: Publish packages
     runs-on: ubuntu-latest
 
     steps:
+      - name: Check if user is allowed to push new release
+        if: ${{ github.actor != 'Mister-Hope' }}
+        run: |
+          echo "You are not allowed to push new release."
+          exit 1
+
       - name: Checkout
         uses: actions/checkout@v7
         with:
@@ -23,27 +40,39 @@ jobs:
       - name: Setup pnpm
         uses: pnpm/setup@v3
         with:
-          runtime: node@^24.18.0
+          runtime: node@^24.20.0
 
-      - name: Install deps
+      - name: Install Deps
         run: pnpm ci
 
-      - name: Build Project
+      - name: Build project
         run: pnpm run bundle
 
-      - name: Publish packages
-        run: pnpm run release:publish
+      - name: Linting check
+        run: pnpm lint:check
 
-      - name: Create release
-        if: ${{ github.event_name != 'workflow_dispatch' }}
-        id: release_tag
-        uses: yyx990803/release-tag@master
+      - name: Test check
+        run: pnpm test
+
+      - name: Config git
+        run: |
+          git config --global user.name "${{ github.actor }}"
+          git config --global user.email "${{ github.actor }}@users.noreply.github.com"
+
+      - name: Lerna Version${{ inputs.dryrun == true && ' with dry run' || '' }}
+        if: ${{ inputs.publish_only != true }}
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          tag_name: ${{ github.ref }}
-          body: |
-            Please refer to [CHANGELOG.md](https://github.com/${{ github.repository }}/blob/main/CHANGELOG.md) for details.
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          pnpm exec lerna version ${{ inputs.dryrun == true && '--dry-run' || '' }} ${{ inputs.graduate == true && '--conventional-graduate' || inputs.prerelease == true && '--conventional-prerelease' || '' }} --yes
+
+      - name: Publish packages${{ inputs.dryrun == true && ' with dry run' || '' }}
+        run: |
+          pnpm exec lerna publish --dist-tag next from-package --force-publish --yes${{ inputs.dryrun == true && ' --dry-run' || '' }}
+
+      - name: Sync npmmirror
+        if: ${{ inputs.dryrun != true }}
+        run: pnpm exec unrun scripts/syncNpmmirror.ts
 
   deploy-docs:
     name: Deploy ecosystem docs to Netlify

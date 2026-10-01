@@ -19,7 +19,7 @@ catalog:
   sass-loader: ^17.0.1
   vue: ^3.5.43
   vuepress: 2.0.0-rc.31
-cleanupUnusedCatalogs: true
+catalogPrune: true
 
 allowBuilds:
   '@parcel/watcher': true
@@ -33,19 +33,22 @@ peerDependencyRules:
 
 minimumReleaseAgeExclude:
   - '@mdit/*'
+  - '@mr-hope/*'
   - '@oxfmt/*'
   - '@oxlint/*'
+  - '@vitest/*'
   - '@vue/*'
   - '@vuepress/*'
-  - '@vitest/*'
-  - oxc-config-hope
-  - oxfmt
-  - oxlint
-  - vite
-  - vitest
-  - vue
-  - vuepress
-  - stylelint-config-hope
+  - '@waline/*'
+  - 'oxc-config-hope'
+  - 'oxfmt'
+  - 'oxlint'
+  - 'stylelint-config-hope'
+  - 'vite'
+  - 'vitest'
+  - 'vue'
+  - 'vuepress'
 minimumReleaseAgeExcludePrune: true
 trustPolicy: no-downgrade
 trustPolicyIgnoreAfter: 720
+trustPolicyExcludePrune: true

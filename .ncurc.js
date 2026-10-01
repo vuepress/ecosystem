@@ -1,15 +1,18 @@
 const coolDownExcludePrefixes = [
   '@mdit/',
+  '@mr-hope/',
   '@oxfmt/',
   '@oxlint/',
+  '@vitest/',
   '@vue/',
   '@vuepress/',
-  '@vitest/',
+  '@waline/',
 ]
 const coolDownExcludePackages = new Set([
   'oxc-config-hope',
   'oxfmt',
   'oxlint',
+  'stylelint-config-hope',
   'vite',
   'vitest',
   'vue',
@@ -18,10 +21,10 @@ const coolDownExcludePackages = new Set([
 
 export default {
   peer: true,
-  cooldown: (name) => {
+  cooldown: (pkg) => {
     if (
-      coolDownExcludePrefixes.some((item) => name.startsWith(item)) ||
-      coolDownExcludePackages.has(name)
+      coolDownExcludePrefixes.some((prefix) => pkg.startsWith(prefix)) ||
+      coolDownExcludePackages.has(pkg)
     )
       return 0
 
