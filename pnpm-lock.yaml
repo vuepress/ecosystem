@@ -187,7 +187,7 @@ catalogs:
       version: 1.105.0
     sass-embedded:
       specifier: ^1.105.0
-      version: 1.105.0
+      version: 1.105.1
     sass-loader:
       specifier: ^17.0.1
       version: 17.0.1
@@ -216,7 +216,7 @@ importers:
         version: 0.1.1
       '@tsdown/css':
         specifier: ^0.23.0
-        version: 0.23.0(jiti@2.7.0)(postcss@8.5.28)(sass-embedded@1.105.0)(sass@1.105.0)(tsdown@0.23.0)(yaml@2.9.1)
+        version: 0.23.0(jiti@2.7.0)(postcss@8.5.28)(sass-embedded@1.105.1)(sass@1.105.0)(tsdown@0.23.0)(yaml@2.9.1)
       '@types/node':
         specifier: ^22.20.4
         version: 22.20.4
@@ -225,7 +225,7 @@ importers:
         version: 1.18.8
       '@vitejs/plugin-vue':
         specifier: ^6.0.9
-        version: 6.0.9(vite@8.3.1(@types/node@22.20.4)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.105.0)(sass@1.105.0)(terser@5.51.2)(yaml@2.9.1))(vue@3.5.43(typescript@6.0.3))
+        version: 6.0.9(vite@8.3.1(@types/node@22.20.4)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.105.1)(sass@1.105.0)(terser@5.51.2)(yaml@2.9.1))(vue@3.5.43(typescript@6.0.3))
       '@vitest/coverage-istanbul':
         specifier: ^5.0.3
         version: 5.0.3(vitest@5.0.3)
@@ -282,7 +282,7 @@ importers:
         version: 6.1.3
       sass-embedded:
         specifier: 'catalog:'
-        version: 1.105.0
+        version: 1.105.1
       serve:
         specifier: ^14.2.6
         version: 14.2.6(supports-color@10.2.2)
@@ -312,13 +312,13 @@ importers:
         version: 0.3.1(synckit@0.11.13)
       vite:
         specifier: ^8.3.1
-        version: 8.3.1(@types/node@22.20.4)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.105.0)(sass@1.105.0)(terser@5.51.2)(yaml@2.9.1)
+        version: 8.3.1(@types/node@22.20.4)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.105.1)(sass@1.105.0)(terser@5.51.2)(yaml@2.9.1)
       vitest:
         specifier: ^5.0.3
-        version: 5.0.3(@opentelemetry/api@1.9.1)(@types/node@22.20.4)(@vitest/coverage-istanbul@5.0.3)(happy-dom@20.14.5)(vite@8.3.1(@types/node@22.20.4)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.105.0)(sass@1.105.0)(terser@5.51.2)(yaml@2.9.1))
+        version: 5.0.3(@opentelemetry/api@1.9.1)(@types/node@22.20.4)(@vitest/coverage-istanbul@5.0.3)(happy-dom@20.14.5)(vite@8.3.1(@types/node@22.20.4)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.105.1)(sass@1.105.0)(terser@5.51.2)(yaml@2.9.1))
       vuepress:
         specifier: 'catalog:'
-        version: 2.0.0-rc.31(ac961c14951e031d178d90973a181b6d)
+        version: 2.0.0-rc.31(7c99ccd39eba81cca5e5e7e3b0e6f91b)
 
   docs:
     dependencies:
@@ -327,10 +327,10 @@ importers:
         version: 4.1.3
       '@vuepress/bundler-vite':
         specifier: 'catalog:'
-        version: 2.0.0-rc.31(@types/node@22.20.4)(@vue/compiler-sfc@3.5.43)(esbuild@0.28.2)(jiti@2.7.0)(rollup@4.63.4)(sass-embedded@1.105.0)(sass@1.105.0)(supports-color@10.2.2)(terser@5.51.2)(typescript@6.0.3)(webpack@5.111.1(clean-css@5.3.3)(cssnano@9.1.2(postcss@8.5.28))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.28)(svgo@4.1.0)(uglify-js@3.19.3))(yaml@2.9.1)
+        version: 2.0.0-rc.31(@types/node@22.20.4)(@vue/compiler-sfc@3.5.43)(esbuild@0.28.2)(jiti@2.7.0)(rollup@4.63.4)(sass-embedded@1.105.1)(sass@1.105.0)(supports-color@10.2.2)(terser@5.51.2)(typescript@6.0.3)(webpack@5.111.1(clean-css@5.3.3)(cssnano@9.1.2(postcss@8.5.28))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.28)(svgo@4.1.0)(uglify-js@3.19.3))(yaml@2.9.1)
       '@vuepress/bundler-webpack':
         specifier: 'catalog:'
-        version: 2.0.0-rc.31(patch_hash=04b94fa0b74e570a10fc5281985904559acafc30087e7d0c1a55cf60d7fed589)(@vue/compiler-sfc@3.5.43)(clean-css@5.3.3)(cssnano@9.1.2(postcss@8.5.28))(csso@5.0.5)(debug@4.4.3(supports-color@10.2.2))(esbuild@0.28.2)(html-minifier-terser@7.2.0)(rolldown@1.2.9)(rollup@4.63.4)(supports-color@10.2.2)(svgo@4.1.0)(typescript@6.0.3)(uglify-js@3.19.3)(vite@8.3.1(@types/node@22.20.4)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.105.0)(sass@1.105.0)(terser@5.51.2)(yaml@2.9.1))
+        version: 2.0.0-rc.31(patch_hash=04b94fa0b74e570a10fc5281985904559acafc30087e7d0c1a55cf60d7fed589)(@vue/compiler-sfc@3.5.43)(clean-css@5.3.3)(cssnano@9.1.2(postcss@8.5.28))(csso@5.0.5)(debug@4.4.3(supports-color@10.2.2))(esbuild@0.28.2)(html-minifier-terser@7.2.0)(rolldown@1.2.9)(rollup@4.63.4)(supports-color@10.2.2)(svgo@4.1.0)(typescript@6.0.3)(uglify-js@3.19.3)(vite@8.3.1(@types/node@22.20.4)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.105.1)(sass@1.105.0)(terser@5.51.2)(yaml@2.9.1))
       '@vuepress/helper':
         specifier: workspace:*
         version: link:../tools/helper
@@ -438,16 +438,16 @@ importers:
         version: 0.18.9
       sass-embedded:
         specifier: 'catalog:'
-        version: 1.105.0
+        version: 1.105.1
       sass-loader:
         specifier: 'catalog:'
-        version: 17.0.1(sass-embedded@1.105.0)(sass@1.105.0)(webpack@5.111.1(clean-css@5.3.3)(cssnano@9.1.2(postcss@8.5.28))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.28)(svgo@4.1.0)(uglify-js@3.19.3))
+        version: 17.0.1(sass-embedded@1.105.1)(sass@1.105.0)(webpack@5.111.1(clean-css@5.3.3)(cssnano@9.1.2(postcss@8.5.28))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.28)(svgo@4.1.0)(uglify-js@3.19.3))
       vue:
         specifier: 'catalog:'
         version: 3.5.43(typescript@6.0.3)
       vuepress:
         specifier: 'catalog:'
-        version: 2.0.0-rc.31(ac961c14951e031d178d90973a181b6d)
+        version: 2.0.0-rc.31(7c99ccd39eba81cca5e5e7e3b0e6f91b)
 
   e2e:
     dependencies:
@@ -459,10 +459,10 @@ importers:
         version: 10.0.0-rc.4(@videojs/dash-video@10.0.0-rc.4(@svta/cml-cta@1.0.6(@svta/cml-structured-field-values@1.1.3(@svta/cml-utils@1.5.0))(@svta/cml-utils@1.5.0))(@svta/cml-structured-field-values@1.1.3(@svta/cml-utils@1.5.0))(@svta/cml-utils@1.5.0))(@videojs/hlsjs-video@10.0.0-rc.4)(@videojs/spotify-audio@10.0.0-rc.4)(@videojs/tiktok-video@10.0.0-rc.4)(@videojs/twitch-video@10.0.0-rc.4)(@videojs/vimeo-video@10.0.0-rc.4)(@videojs/youtube-video@10.0.0-rc.4)(react@19.3.0)
       '@vuepress/bundler-vite':
         specifier: 'catalog:'
-        version: 2.0.0-rc.31(@types/node@22.20.4)(@vue/compiler-sfc@3.5.43)(esbuild@0.28.2)(jiti@2.7.0)(rollup@4.63.4)(sass-embedded@1.105.0)(sass@1.105.0)(supports-color@10.2.2)(terser@5.51.2)(typescript@6.0.3)(webpack@5.111.1(clean-css@5.3.3)(cssnano@9.1.2(postcss@8.5.28))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.28)(svgo@4.1.0)(uglify-js@3.19.3))(yaml@2.9.1)
+        version: 2.0.0-rc.31(@types/node@22.20.4)(@vue/compiler-sfc@3.5.43)(esbuild@0.28.2)(jiti@2.7.0)(rollup@4.63.4)(sass-embedded@1.105.1)(sass@1.105.0)(supports-color@10.2.2)(terser@5.51.2)(typescript@6.0.3)(webpack@5.111.1(clean-css@5.3.3)(cssnano@9.1.2(postcss@8.5.28))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.28)(svgo@4.1.0)(uglify-js@3.19.3))(yaml@2.9.1)
       '@vuepress/bundler-webpack':
         specifier: 'catalog:'
-        version: 2.0.0-rc.31(patch_hash=04b94fa0b74e570a10fc5281985904559acafc30087e7d0c1a55cf60d7fed589)(@vue/compiler-sfc@3.5.43)(clean-css@5.3.3)(cssnano@9.1.2(postcss@8.5.28))(csso@5.0.5)(debug@4.4.3(supports-color@10.2.2))(esbuild@0.28.2)(html-minifier-terser@7.2.0)(rolldown@1.2.9)(rollup@4.63.4)(supports-color@10.2.2)(svgo@4.1.0)(typescript@6.0.3)(uglify-js@3.19.3)(vite@8.3.1(@types/node@22.20.4)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.105.0)(sass@1.105.0)(terser@5.51.2)(yaml@2.9.1))
+        version: 2.0.0-rc.31(patch_hash=04b94fa0b74e570a10fc5281985904559acafc30087e7d0c1a55cf60d7fed589)(@vue/compiler-sfc@3.5.43)(clean-css@5.3.3)(cssnano@9.1.2(postcss@8.5.28))(csso@5.0.5)(debug@4.4.3(supports-color@10.2.2))(esbuild@0.28.2)(html-minifier-terser@7.2.0)(rolldown@1.2.9)(rollup@4.63.4)(supports-color@10.2.2)(svgo@4.1.0)(typescript@6.0.3)(uglify-js@3.19.3)(vite@8.3.1(@types/node@22.20.4)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.105.1)(sass@1.105.0)(terser@5.51.2)(yaml@2.9.1))
       '@vuepress/plugin-auto-frontmatter':
         specifier: workspace:*
         version: link:../plugins/tools/plugin-auto-frontmatter
@@ -528,16 +528,16 @@ importers:
         version: 3.0.3
       sass-embedded:
         specifier: 'catalog:'
-        version: 1.105.0
+        version: 1.105.1
       sass-loader:
         specifier: 'catalog:'
-        version: 17.0.1(sass-embedded@1.105.0)(sass@1.105.0)(webpack@5.111.1(clean-css@5.3.3)(cssnano@9.1.2(postcss@8.5.28))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.28)(svgo@4.1.0)(uglify-js@3.19.3))
+        version: 17.0.1(sass-embedded@1.105.1)(sass@1.105.0)(webpack@5.111.1(clean-css@5.3.3)(cssnano@9.1.2(postcss@8.5.28))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.28)(svgo@4.1.0)(uglify-js@3.19.3))
       vue:
         specifier: 'catalog:'
         version: 3.5.43(typescript@6.0.3)
       vuepress:
         specifier: 'catalog:'
-        version: 2.0.0-rc.31(ac961c14951e031d178d90973a181b6d)
+        version: 2.0.0-rc.31(7c99ccd39eba81cca5e5e7e3b0e6f91b)
     devDependencies:
       '@playwright/test':
         specifier: ^1.63.0
@@ -577,7 +577,7 @@ importers:
         version: 5.1.0
       vuepress:
         specifier: 'catalog:'
-        version: 2.0.0-rc.31(ac961c14951e031d178d90973a181b6d)
+        version: 2.0.0-rc.31(7c99ccd39eba81cca5e5e7e3b0e6f91b)
     devDependencies:
       '@types/byte-size':
         specifier: ^8.1.2
@@ -605,7 +605,7 @@ importers:
         version: 3.5.43(typescript@6.0.3)
       vuepress:
         specifier: 'catalog:'
-        version: 2.0.0-rc.31(ac961c14951e031d178d90973a181b6d)
+        version: 2.0.0-rc.31(7c99ccd39eba81cca5e5e7e3b0e6f91b)
 
   plugins/analytics/plugin-clarity-analytics:
     dependencies:
@@ -617,13 +617,13 @@ importers:
         version: 3.5.43(typescript@6.0.3)
       vuepress:
         specifier: 'catalog:'
-        version: 2.0.0-rc.31(ac961c14951e031d178d90973a181b6d)
+        version: 2.0.0-rc.31(7c99ccd39eba81cca5e5e7e3b0e6f91b)
 
   plugins/analytics/plugin-google-analytics:
     dependencies:
       vuepress:
         specifier: 'catalog:'
-        version: 2.0.0-rc.31(ac961c14951e031d178d90973a181b6d)
+        version: 2.0.0-rc.31(7c99ccd39eba81cca5e5e7e3b0e6f91b)
 
   plugins/analytics/plugin-umami-analytics:
     dependencies:
@@ -635,7 +635,7 @@ importers:
         version: 3.5.43(typescript@6.0.3)
       vuepress:
         specifier: 'catalog:'
-        version: 2.0.0-rc.31(ac961c14951e031d178d90973a181b6d)
+        version: 2.0.0-rc.31(7c99ccd39eba81cca5e5e7e3b0e6f91b)
 
   plugins/blog/plugin-blog:
     dependencies:
@@ -647,7 +647,7 @@ importers:
         version: 3.5.43(typescript@6.0.3)
       vuepress:
         specifier: 'catalog:'
-        version: 2.0.0-rc.31(ac961c14951e031d178d90973a181b6d)
+        version: 2.0.0-rc.31(7c99ccd39eba81cca5e5e7e3b0e6f91b)
 
   plugins/blog/plugin-comment:
     dependencies:
@@ -674,7 +674,7 @@ importers:
         version: 3.5.43(typescript@6.0.3)
       vuepress:
         specifier: 'catalog:'
-        version: 2.0.0-rc.31(ac961c14951e031d178d90973a181b6d)
+        version: 2.0.0-rc.31(7c99ccd39eba81cca5e5e7e3b0e6f91b)
 
   plugins/blog/plugin-feed:
     dependencies:
@@ -683,7 +683,7 @@ importers:
         version: link:../../../tools/helper
       vuepress:
         specifier: 'catalog:'
-        version: 2.0.0-rc.31(ac961c14951e031d178d90973a181b6d)
+        version: 2.0.0-rc.31(7c99ccd39eba81cca5e5e7e3b0e6f91b)
       xml-js:
         specifier: ^1.6.11
         version: 1.6.11
@@ -702,7 +702,7 @@ importers:
         version: 3.5.43(typescript@6.0.3)
       vuepress:
         specifier: 'catalog:'
-        version: 2.0.0-rc.31(ac961c14951e031d178d90973a181b6d)
+        version: 2.0.0-rc.31(7c99ccd39eba81cca5e5e7e3b0e6f91b)
 
   plugins/development/plugin-git:
     dependencies:
@@ -729,7 +729,7 @@ importers:
         version: 3.5.43(typescript@6.0.3)
       vuepress:
         specifier: 'catalog:'
-        version: 2.0.0-rc.31(ac961c14951e031d178d90973a181b6d)
+        version: 2.0.0-rc.31(7c99ccd39eba81cca5e5e7e3b0e6f91b)
 
   plugins/development/plugin-palette:
     dependencies:
@@ -741,7 +741,7 @@ importers:
         version: 5.0.0
       vuepress:
         specifier: 'catalog:'
-        version: 2.0.0-rc.31(ac961c14951e031d178d90973a181b6d)
+        version: 2.0.0-rc.31(7c99ccd39eba81cca5e5e7e3b0e6f91b)
 
   plugins/development/plugin-reading-time:
     dependencies:
@@ -753,7 +753,7 @@ importers:
         version: 3.5.43(typescript@6.0.3)
       vuepress:
         specifier: 'catalog:'
-        version: 2.0.0-rc.31(ac961c14951e031d178d90973a181b6d)
+        version: 2.0.0-rc.31(7c99ccd39eba81cca5e5e7e3b0e6f91b)
 
   plugins/development/plugin-rtl:
     dependencies:
@@ -768,7 +768,7 @@ importers:
         version: 3.5.43(typescript@6.0.3)
       vuepress:
         specifier: 'catalog:'
-        version: 2.0.0-rc.31(ac961c14951e031d178d90973a181b6d)
+        version: 2.0.0-rc.31(7c99ccd39eba81cca5e5e7e3b0e6f91b)
 
   plugins/development/plugin-sass-palette:
     dependencies:
@@ -783,20 +783,20 @@ importers:
         version: 1.105.0
       sass-embedded:
         specifier: ^1.97.3
-        version: 1.105.0
+        version: 1.105.1
       sass-loader:
         specifier: 'catalog:'
-        version: 17.0.1(sass-embedded@1.105.0)(sass@1.105.0)(webpack@5.111.1(clean-css@5.3.3)(cssnano@9.1.2(postcss@8.5.28))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.28)(svgo@4.1.0)(uglify-js@3.19.3))
+        version: 17.0.1(sass-embedded@1.105.1)(sass@1.105.0)(webpack@5.111.1(clean-css@5.3.3)(cssnano@9.1.2(postcss@8.5.28))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.28)(svgo@4.1.0)(uglify-js@3.19.3))
       vuepress:
         specifier: 'catalog:'
-        version: 2.0.0-rc.31(ac961c14951e031d178d90973a181b6d)
+        version: 2.0.0-rc.31(7c99ccd39eba81cca5e5e7e3b0e6f91b)
     devDependencies:
       '@vuepress/bundler-vite':
         specifier: 'catalog:'
-        version: 2.0.0-rc.31(@types/node@22.20.4)(@vue/compiler-sfc@3.5.43)(esbuild@0.28.2)(jiti@2.7.0)(rollup@4.63.4)(sass-embedded@1.105.0)(sass@1.105.0)(supports-color@10.2.2)(terser@5.51.2)(typescript@6.0.3)(webpack@5.111.1(clean-css@5.3.3)(cssnano@9.1.2(postcss@8.5.28))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.28)(svgo@4.1.0)(uglify-js@3.19.3))(yaml@2.9.1)
+        version: 2.0.0-rc.31(@types/node@22.20.4)(@vue/compiler-sfc@3.5.43)(esbuild@0.28.2)(jiti@2.7.0)(rollup@4.63.4)(sass-embedded@1.105.1)(sass@1.105.0)(supports-color@10.2.2)(terser@5.51.2)(typescript@6.0.3)(webpack@5.111.1(clean-css@5.3.3)(cssnano@9.1.2(postcss@8.5.28))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.28)(svgo@4.1.0)(uglify-js@3.19.3))(yaml@2.9.1)
       '@vuepress/bundler-webpack':
         specifier: 'catalog:'
-        version: 2.0.0-rc.31(patch_hash=04b94fa0b74e570a10fc5281985904559acafc30087e7d0c1a55cf60d7fed589)(@vue/compiler-sfc@3.5.43)(clean-css@5.3.3)(cssnano@9.1.2(postcss@8.5.28))(csso@5.0.5)(debug@4.4.3(supports-color@10.2.2))(esbuild@0.28.2)(html-minifier-terser@7.2.0)(rolldown@1.2.9)(rollup@4.63.4)(supports-color@10.2.2)(svgo@4.1.0)(typescript@6.0.3)(uglify-js@3.19.3)(vite@8.3.1(@types/node@22.20.4)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.105.0)(sass@1.105.0)(terser@5.51.2)(yaml@2.9.1))
+        version: 2.0.0-rc.31(patch_hash=04b94fa0b74e570a10fc5281985904559acafc30087e7d0c1a55cf60d7fed589)(@vue/compiler-sfc@3.5.43)(clean-css@5.3.3)(cssnano@9.1.2(postcss@8.5.28))(csso@5.0.5)(debug@4.4.3(supports-color@10.2.2))(esbuild@0.28.2)(html-minifier-terser@7.2.0)(rolldown@1.2.9)(rollup@4.63.4)(supports-color@10.2.2)(svgo@4.1.0)(typescript@6.0.3)(uglify-js@3.19.3)(vite@8.3.1(@types/node@22.20.4)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.105.1)(sass@1.105.0)(terser@5.51.2)(yaml@2.9.1))
 
   plugins/development/plugin-theme-data:
     dependencies:
@@ -808,7 +808,7 @@ importers:
         version: 3.5.43(typescript@6.0.3)
       vuepress:
         specifier: 'catalog:'
-        version: 2.0.0-rc.31(ac961c14951e031d178d90973a181b6d)
+        version: 2.0.0-rc.31(7c99ccd39eba81cca5e5e7e3b0e6f91b)
 
   plugins/development/plugin-toc:
     dependencies:
@@ -820,10 +820,10 @@ importers:
         version: 3.5.43(typescript@6.0.3)
       vue-router:
         specifier: ^5.3.1
-        version: 5.3.1(@vue/compiler-sfc@3.5.43)(esbuild@0.28.2)(rolldown@1.2.9)(rollup@4.63.4)(vite@8.3.1(@types/node@22.20.4)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.105.0)(sass@1.105.0)(terser@5.51.2)(yaml@2.9.1))(vue@3.5.43(typescript@6.0.3))(webpack@5.111.1(clean-css@5.3.3)(cssnano@9.1.2(postcss@8.5.28))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.28)(svgo@4.1.0)(uglify-js@3.19.3))
+        version: 5.3.1(@vue/compiler-sfc@3.5.43)(esbuild@0.28.2)(rolldown@1.2.9)(rollup@4.63.4)(vite@8.3.1(@types/node@22.20.4)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.105.1)(sass@1.105.0)(terser@5.51.2)(yaml@2.9.1))(vue@3.5.43(typescript@6.0.3))(webpack@5.111.1(clean-css@5.3.3)(cssnano@9.1.2(postcss@8.5.28))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.28)(svgo@4.1.0)(uglify-js@3.19.3))
       vuepress:
         specifier: 'catalog:'
-        version: 2.0.0-rc.31(ac961c14951e031d178d90973a181b6d)
+        version: 2.0.0-rc.31(7c99ccd39eba81cca5e5e7e3b0e6f91b)
 
   plugins/features/plugin-back-to-top:
     dependencies:
@@ -838,7 +838,7 @@ importers:
         version: 3.5.43(typescript@6.0.3)
       vuepress:
         specifier: 'catalog:'
-        version: 2.0.0-rc.31(ac961c14951e031d178d90973a181b6d)
+        version: 2.0.0-rc.31(7c99ccd39eba81cca5e5e7e3b0e6f91b)
 
   plugins/features/plugin-catalog:
     dependencies:
@@ -850,7 +850,7 @@ importers:
         version: 3.5.43(typescript@6.0.3)
       vuepress:
         specifier: 'catalog:'
-        version: 2.0.0-rc.31(ac961c14951e031d178d90973a181b6d)
+        version: 2.0.0-rc.31(7c99ccd39eba81cca5e5e7e3b0e6f91b)
 
   plugins/features/plugin-copy-code:
     dependencies:
@@ -865,7 +865,7 @@ importers:
         version: 3.5.43(typescript@6.0.3)
       vuepress:
         specifier: 'catalog:'
-        version: 2.0.0-rc.31(ac961c14951e031d178d90973a181b6d)
+        version: 2.0.0-rc.31(7c99ccd39eba81cca5e5e7e3b0e6f91b)
 
   plugins/features/plugin-copyright:
     dependencies:
@@ -880,7 +880,7 @@ importers:
         version: 3.5.43(typescript@6.0.3)
       vuepress:
         specifier: 'catalog:'
-        version: 2.0.0-rc.31(ac961c14951e031d178d90973a181b6d)
+        version: 2.0.0-rc.31(7c99ccd39eba81cca5e5e7e3b0e6f91b)
 
   plugins/features/plugin-icon:
     dependencies:
@@ -916,7 +916,7 @@ importers:
         version: 3.5.43(typescript@6.0.3)
       vuepress:
         specifier: 'catalog:'
-        version: 2.0.0-rc.31(ac961c14951e031d178d90973a181b6d)
+        version: 2.0.0-rc.31(7c99ccd39eba81cca5e5e7e3b0e6f91b)
     devDependencies:
       '@iconify-json/lucide':
         specifier: ^1.2.137
@@ -986,7 +986,7 @@ importers:
         version: 3.5.43(typescript@6.0.3)
       vuepress:
         specifier: 'catalog:'
-        version: 2.0.0-rc.31(ac961c14951e031d178d90973a181b6d)
+        version: 2.0.0-rc.31(7c99ccd39eba81cca5e5e7e3b0e6f91b)
     devDependencies:
       '@types/markdown-it':
         specifier: 'catalog:'
@@ -1008,7 +1008,7 @@ importers:
         version: 3.5.43(typescript@6.0.3)
       vuepress:
         specifier: 'catalog:'
-        version: 2.0.0-rc.31(ac961c14951e031d178d90973a181b6d)
+        version: 2.0.0-rc.31(7c99ccd39eba81cca5e5e7e3b0e6f91b)
 
   plugins/features/plugin-notice:
     dependencies:
@@ -1026,7 +1026,7 @@ importers:
         version: 3.5.43(typescript@6.0.3)
       vuepress:
         specifier: 'catalog:'
-        version: 2.0.0-rc.31(ac961c14951e031d178d90973a181b6d)
+        version: 2.0.0-rc.31(7c99ccd39eba81cca5e5e7e3b0e6f91b)
 
   plugins/features/plugin-nprogress:
     dependencies:
@@ -1038,7 +1038,7 @@ importers:
         version: 3.5.43(typescript@6.0.3)
       vuepress:
         specifier: 'catalog:'
-        version: 2.0.0-rc.31(ac961c14951e031d178d90973a181b6d)
+        version: 2.0.0-rc.31(7c99ccd39eba81cca5e5e7e3b0e6f91b)
 
   plugins/features/plugin-photo-swipe:
     dependencies:
@@ -1056,7 +1056,7 @@ importers:
         version: 3.5.43(typescript@6.0.3)
       vuepress:
         specifier: 'catalog:'
-        version: 2.0.0-rc.31(ac961c14951e031d178d90973a181b6d)
+        version: 2.0.0-rc.31(7c99ccd39eba81cca5e5e7e3b0e6f91b)
 
   plugins/features/plugin-watermark:
     dependencies:
@@ -1071,7 +1071,7 @@ importers:
         version: 3.5.43(typescript@6.0.3)
       vuepress:
         specifier: 'catalog:'
-        version: 2.0.0-rc.31(ac961c14951e031d178d90973a181b6d)
+        version: 2.0.0-rc.31(7c99ccd39eba81cca5e5e7e3b0e6f91b)
       watermark-js-plus:
         specifier: ^1.6.6
         version: 1.6.6
@@ -1086,7 +1086,7 @@ importers:
         version: link:../../development/plugin-git
       vuepress:
         specifier: 'catalog:'
-        version: 2.0.0-rc.31(ac961c14951e031d178d90973a181b6d)
+        version: 2.0.0-rc.31(7c99ccd39eba81cca5e5e7e3b0e6f91b)
 
   plugins/markdown/plugin-links-check:
     dependencies:
@@ -1098,7 +1098,7 @@ importers:
         version: link:../../../tools/helper
       vuepress:
         specifier: 'catalog:'
-        version: 2.0.0-rc.31(ac961c14951e031d178d90973a181b6d)
+        version: 2.0.0-rc.31(7c99ccd39eba81cca5e5e7e3b0e6f91b)
     devDependencies:
       markdown-it:
         specifier: 'catalog:'
@@ -1144,7 +1144,7 @@ importers:
         version: 3.5.43(typescript@6.0.3)
       vuepress:
         specifier: 'catalog:'
-        version: 2.0.0-rc.31(ac961c14951e031d178d90973a181b6d)
+        version: 2.0.0-rc.31(7c99ccd39eba81cca5e5e7e3b0e6f91b)
     devDependencies:
       '@types/markdown-it':
         specifier: 'catalog:'
@@ -1166,7 +1166,7 @@ importers:
         version: 14.2.0
       vuepress:
         specifier: 'catalog:'
-        version: 2.0.0-rc.31(ac961c14951e031d178d90973a181b6d)
+        version: 2.0.0-rc.31(7c99ccd39eba81cca5e5e7e3b0e6f91b)
     devDependencies:
       markdown-it:
         specifier: 'catalog:'
@@ -1197,7 +1197,7 @@ importers:
         version: 3.0.0(@types/markdown-it@14.2.0)(markdown-it@14.3.2)
       vuepress:
         specifier: 'catalog:'
-        version: 2.0.0-rc.31(ac961c14951e031d178d90973a181b6d)
+        version: 2.0.0-rc.31(7c99ccd39eba81cca5e5e7e3b0e6f91b)
     devDependencies:
       '@types/js-yaml':
         specifier: ^4.0.9
@@ -1225,7 +1225,7 @@ importers:
         version: link:../../../tools/helper
       vuepress:
         specifier: 'catalog:'
-        version: 2.0.0-rc.31(ac961c14951e031d178d90973a181b6d)
+        version: 2.0.0-rc.31(7c99ccd39eba81cca5e5e7e3b0e6f91b)
     devDependencies:
       markdown-it:
         specifier: 'catalog:'
@@ -1253,7 +1253,7 @@ importers:
         version: 3.5.43(typescript@6.0.3)
       vuepress:
         specifier: 'catalog:'
-        version: 2.0.0-rc.31(ac961c14951e031d178d90973a181b6d)
+        version: 2.0.0-rc.31(7c99ccd39eba81cca5e5e7e3b0e6f91b)
     devDependencies:
       '@iconify-json/vscode-icons':
         specifier: ^1.2.83
@@ -1290,7 +1290,7 @@ importers:
         version: 15.0.0(vue@3.5.43(typescript@6.0.3))
       vuepress:
         specifier: 'catalog:'
-        version: 2.0.0-rc.31(ac961c14951e031d178d90973a181b6d)
+        version: 2.0.0-rc.31(7c99ccd39eba81cca5e5e7e3b0e6f91b)
     devDependencies:
       markdown-it:
         specifier: 'catalog:'
@@ -1318,7 +1318,7 @@ importers:
         version: link:../../../tools/helper
       vuepress:
         specifier: 'catalog:'
-        version: 2.0.0-rc.31(ac961c14951e031d178d90973a181b6d)
+        version: 2.0.0-rc.31(7c99ccd39eba81cca5e5e7e3b0e6f91b)
 
   plugins/markdown/plugin-markdown-include:
     dependencies:
@@ -1333,7 +1333,7 @@ importers:
         version: link:../../../tools/helper
       vuepress:
         specifier: 'catalog:'
-        version: 2.0.0-rc.31(ac961c14951e031d178d90973a181b6d)
+        version: 2.0.0-rc.31(7c99ccd39eba81cca5e5e7e3b0e6f91b)
 
   plugins/markdown/plugin-markdown-math:
     dependencies:
@@ -1360,7 +1360,7 @@ importers:
         version: 3.5.43(typescript@6.0.3)
       vuepress:
         specifier: 'catalog:'
-        version: 2.0.0-rc.31(ac961c14951e031d178d90973a181b6d)
+        version: 2.0.0-rc.31(7c99ccd39eba81cca5e5e7e3b0e6f91b)
     devDependencies:
       markdown-it:
         specifier: 'catalog:'
@@ -1388,7 +1388,7 @@ importers:
         version: 3.5.43(typescript@6.0.3)
       vuepress:
         specifier: 'catalog:'
-        version: 2.0.0-rc.31(ac961c14951e031d178d90973a181b6d)
+        version: 2.0.0-rc.31(7c99ccd39eba81cca5e5e7e3b0e6f91b)
     devDependencies:
       markdown-it:
         specifier: 'catalog:'
@@ -1431,7 +1431,7 @@ importers:
         version: link:../../../tools/helper
       vuepress:
         specifier: 'catalog:'
-        version: 2.0.0-rc.31(ac961c14951e031d178d90973a181b6d)
+        version: 2.0.0-rc.31(7c99ccd39eba81cca5e5e7e3b0e6f91b)
     devDependencies:
       markdown-it:
         specifier: 'catalog:'
@@ -1456,7 +1456,7 @@ importers:
         version: 3.5.43(typescript@6.0.3)
       vuepress:
         specifier: 'catalog:'
-        version: 2.0.0-rc.31(ac961c14951e031d178d90973a181b6d)
+        version: 2.0.0-rc.31(7c99ccd39eba81cca5e5e7e3b0e6f91b)
     devDependencies:
       markdown-it:
         specifier: 'catalog:'
@@ -1475,7 +1475,7 @@ importers:
         version: 1.30.0
       vuepress:
         specifier: 'catalog:'
-        version: 2.0.0-rc.31(ac961c14951e031d178d90973a181b6d)
+        version: 2.0.0-rc.31(7c99ccd39eba81cca5e5e7e3b0e6f91b)
     devDependencies:
       '@types/markdown-it':
         specifier: 'catalog:'
@@ -1509,7 +1509,7 @@ importers:
         version: 3.5.43(typescript@6.0.3)
       vuepress:
         specifier: 'catalog:'
-        version: 2.0.0-rc.31(ac961c14951e031d178d90973a181b6d)
+        version: 2.0.0-rc.31(7c99ccd39eba81cca5e5e7e3b0e6f91b)
     devDependencies:
       markdown-it:
         specifier: 'catalog:'
@@ -1537,7 +1537,7 @@ importers:
         version: 0.11.13
       vuepress:
         specifier: 'catalog:'
-        version: 2.0.0-rc.31(ac961c14951e031d178d90973a181b6d)
+        version: 2.0.0-rc.31(7c99ccd39eba81cca5e5e7e3b0e6f91b)
     devDependencies:
       '@types/culori':
         specifier: ^4.0.1
@@ -1574,7 +1574,7 @@ importers:
         version: 3.5.43(typescript@6.0.3)
       vuepress:
         specifier: 'catalog:'
-        version: 2.0.0-rc.31(ac961c14951e031d178d90973a181b6d)
+        version: 2.0.0-rc.31(7c99ccd39eba81cca5e5e7e3b0e6f91b)
       workbox-build:
         specifier: ^7.4.1
         version: 7.4.1(supports-color@10.2.2)
@@ -1583,7 +1583,7 @@ importers:
     dependencies:
       vuepress:
         specifier: 'catalog:'
-        version: 2.0.0-rc.31(ac961c14951e031d178d90973a181b6d)
+        version: 2.0.0-rc.31(7c99ccd39eba81cca5e5e7e3b0e6f91b)
 
   plugins/search/plugin-docsearch:
     dependencies:
@@ -1604,7 +1604,7 @@ importers:
         version: 3.5.43(typescript@6.0.3)
       vuepress:
         specifier: 'catalog:'
-        version: 2.0.0-rc.31(ac961c14951e031d178d90973a181b6d)
+        version: 2.0.0-rc.31(7c99ccd39eba81cca5e5e7e3b0e6f91b)
     devDependencies:
       '@docsearch/react':
         specifier: ^5.1.1
@@ -1632,7 +1632,7 @@ importers:
         version: 3.5.43(typescript@6.0.3)
       vuepress:
         specifier: 'catalog:'
-        version: 2.0.0-rc.31(ac961c14951e031d178d90973a181b6d)
+        version: 2.0.0-rc.31(7c99ccd39eba81cca5e5e7e3b0e6f91b)
 
   plugins/search/plugin-meilisearch:
     dependencies:
@@ -1653,7 +1653,7 @@ importers:
         version: 3.5.43(typescript@6.0.3)
       vuepress:
         specifier: 'catalog:'
-        version: 2.0.0-rc.31(ac961c14951e031d178d90973a181b6d)
+        version: 2.0.0-rc.31(7c99ccd39eba81cca5e5e7e3b0e6f91b)
 
   plugins/search/plugin-orama:
     dependencies:
@@ -1683,7 +1683,7 @@ importers:
         version: 3.5.43(typescript@6.0.3)
       vuepress:
         specifier: 'catalog:'
-        version: 2.0.0-rc.31(ac961c14951e031d178d90973a181b6d)
+        version: 2.0.0-rc.31(7c99ccd39eba81cca5e5e7e3b0e6f91b)
     devDependencies:
       domhandler:
         specifier: ^6.0.1
@@ -1699,7 +1699,7 @@ importers:
         version: 3.5.43(typescript@6.0.3)
       vuepress:
         specifier: 'catalog:'
-        version: 2.0.0-rc.31(ac961c14951e031d178d90973a181b6d)
+        version: 2.0.0-rc.31(7c99ccd39eba81cca5e5e7e3b0e6f91b)
 
   plugins/search/plugin-slimsearch:
     dependencies:
@@ -1723,7 +1723,7 @@ importers:
         version: 3.5.43(typescript@6.0.3)
       vuepress:
         specifier: 'catalog:'
-        version: 2.0.0-rc.31(ac961c14951e031d178d90973a181b6d)
+        version: 2.0.0-rc.31(7c99ccd39eba81cca5e5e7e3b0e6f91b)
     devDependencies:
       domhandler:
         specifier: ^6.0.1
@@ -1736,7 +1736,7 @@ importers:
         version: link:../../../tools/helper
       vuepress:
         specifier: 'catalog:'
-        version: 2.0.0-rc.31(ac961c14951e031d178d90973a181b6d)
+        version: 2.0.0-rc.31(7c99ccd39eba81cca5e5e7e3b0e6f91b)
     devDependencies:
       '@vuepress/plugin-git':
         specifier: workspace:*
@@ -1752,7 +1752,7 @@ importers:
         version: 9.0.1
       vuepress:
         specifier: 'catalog:'
-        version: 2.0.0-rc.31(ac961c14951e031d178d90973a181b6d)
+        version: 2.0.0-rc.31(7c99ccd39eba81cca5e5e7e3b0e6f91b)
     devDependencies:
       '@vuepress/plugin-git':
         specifier: workspace:*
@@ -1783,7 +1783,7 @@ importers:
         version: 4.0.7
       vuepress:
         specifier: 'catalog:'
-        version: 2.0.0-rc.31(ac961c14951e031d178d90973a181b6d)
+        version: 2.0.0-rc.31(7c99ccd39eba81cca5e5e7e3b0e6f91b)
     devDependencies:
       '@types/js-yaml':
         specifier: ^4.0.9
@@ -1802,13 +1802,13 @@ importers:
         version: 11.5.3
       vuepress:
         specifier: 'catalog:'
-        version: 2.0.0-rc.31(ac961c14951e031d178d90973a181b6d)
+        version: 2.0.0-rc.31(7c99ccd39eba81cca5e5e7e3b0e6f91b)
 
   plugins/tools/plugin-google-tag-manager:
     dependencies:
       vuepress:
         specifier: 'catalog:'
-        version: 2.0.0-rc.31(ac961c14951e031d178d90973a181b6d)
+        version: 2.0.0-rc.31(7c99ccd39eba81cca5e5e7e3b0e6f91b)
 
   plugins/tools/plugin-redirect:
     dependencies:
@@ -1826,7 +1826,7 @@ importers:
         version: 3.5.43(typescript@6.0.3)
       vuepress:
         specifier: 'catalog:'
-        version: 2.0.0-rc.31(ac961c14951e031d178d90973a181b6d)
+        version: 2.0.0-rc.31(7c99ccd39eba81cca5e5e7e3b0e6f91b)
 
   plugins/tools/plugin-register-components:
     dependencies:
@@ -1838,7 +1838,7 @@ importers:
         version: 4.0.7
       vuepress:
         specifier: 'catalog:'
-        version: 2.0.0-rc.31(ac961c14951e031d178d90973a181b6d)
+        version: 2.0.0-rc.31(7c99ccd39eba81cca5e5e7e3b0e6f91b)
     devDependencies:
       '@types/picomatch':
         specifier: ^4.0.3
@@ -1854,10 +1854,10 @@ importers:
         version: 1.4.2
       unplugin:
         specifier: ^3.4.0
-        version: 3.4.0(esbuild@0.28.2)(rolldown@1.2.9)(rollup@4.63.4)(vite@8.3.1(@types/node@22.20.4)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.105.0)(sass@1.105.0)(terser@5.51.2)(yaml@2.9.1))(webpack@5.111.1(clean-css@5.3.3)(cssnano@9.1.2(postcss@8.5.28))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.28)(svgo@4.1.0)(uglify-js@3.19.3))
+        version: 3.4.0(esbuild@0.28.2)(rolldown@1.2.9)(rollup@4.63.4)(vite@8.3.1(@types/node@22.20.4)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.105.1)(sass@1.105.0)(terser@5.51.2)(yaml@2.9.1))(webpack@5.111.1(clean-css@5.3.3)(cssnano@9.1.2(postcss@8.5.28))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.28)(svgo@4.1.0)(uglify-js@3.19.3))
       vuepress:
         specifier: 'catalog:'
-        version: 2.0.0-rc.31(ac961c14951e031d178d90973a181b6d)
+        version: 2.0.0-rc.31(7c99ccd39eba81cca5e5e7e3b0e6f91b)
     devDependencies:
       webpack:
         specifier: ^5.111.1
@@ -1918,16 +1918,16 @@ importers:
         version: 1.105.0
       sass-embedded:
         specifier: 'catalog:'
-        version: 1.105.0
+        version: 1.105.1
       sass-loader:
         specifier: 'catalog:'
-        version: 17.0.1(sass-embedded@1.105.0)(sass@1.105.0)(webpack@5.111.1(clean-css@5.3.3)(cssnano@9.1.2(postcss@8.5.28))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.28)(svgo@4.1.0)(uglify-js@3.19.3))
+        version: 17.0.1(sass-embedded@1.105.1)(sass@1.105.0)(webpack@5.111.1(clean-css@5.3.3)(cssnano@9.1.2(postcss@8.5.28))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.28)(svgo@4.1.0)(uglify-js@3.19.3))
       vue:
         specifier: 'catalog:'
         version: 3.5.43(typescript@6.0.3)
       vuepress:
         specifier: 'catalog:'
-        version: 2.0.0-rc.31(ac961c14951e031d178d90973a181b6d)
+        version: 2.0.0-rc.31(7c99ccd39eba81cca5e5e7e3b0e6f91b)
 
   tools/create-vuepress:
     dependencies:
@@ -1946,16 +1946,16 @@ importers:
         version: link:../../themes/theme-default
       sass-embedded:
         specifier: 'catalog:'
-        version: 1.105.0
+        version: 1.105.1
       sass-loader:
         specifier: 'catalog:'
-        version: 17.0.1(sass-embedded@1.105.0)(sass@1.105.0)(webpack@5.111.1(clean-css@5.3.3)(cssnano@9.1.2(postcss@8.5.28))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.28)(svgo@4.1.0)(uglify-js@3.19.3))
+        version: 17.0.1(sass-embedded@1.105.1)(sass@1.105.0)(webpack@5.111.1(clean-css@5.3.3)(cssnano@9.1.2(postcss@8.5.28))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.28)(svgo@4.1.0)(uglify-js@3.19.3))
       vue:
         specifier: 'catalog:'
         version: 3.5.43(typescript@6.0.3)
       vuepress:
         specifier: 'catalog:'
-        version: 2.0.0-rc.31(ac961c14951e031d178d90973a181b6d)
+        version: 2.0.0-rc.31(7c99ccd39eba81cca5e5e7e3b0e6f91b)
 
   tools/helper:
     dependencies:
@@ -1979,23 +1979,23 @@ importers:
         version: 3.5.43(typescript@6.0.3)
       vuepress:
         specifier: 'catalog:'
-        version: 2.0.0-rc.31(ac961c14951e031d178d90973a181b6d)
+        version: 2.0.0-rc.31(7c99ccd39eba81cca5e5e7e3b0e6f91b)
     devDependencies:
       '@types/connect':
         specifier: ^3.4.38
         version: 3.4.38
       '@vuepress/bundler-vite':
         specifier: 'catalog:'
-        version: 2.0.0-rc.31(@types/node@22.20.4)(@vue/compiler-sfc@3.5.43)(esbuild@0.28.2)(jiti@2.7.0)(rollup@4.63.4)(sass-embedded@1.105.0)(sass@1.105.0)(supports-color@10.2.2)(terser@5.51.2)(typescript@6.0.3)(webpack@5.111.1(clean-css@5.3.3)(cssnano@9.1.2(postcss@8.5.28))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.28)(svgo@4.1.0)(uglify-js@3.19.3))(yaml@2.9.1)
+        version: 2.0.0-rc.31(@types/node@22.20.4)(@vue/compiler-sfc@3.5.43)(esbuild@0.28.2)(jiti@2.7.0)(rollup@4.63.4)(sass-embedded@1.105.1)(sass@1.105.0)(supports-color@10.2.2)(terser@5.51.2)(typescript@6.0.3)(webpack@5.111.1(clean-css@5.3.3)(cssnano@9.1.2(postcss@8.5.28))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.28)(svgo@4.1.0)(uglify-js@3.19.3))(yaml@2.9.1)
       '@vuepress/bundler-webpack':
         specifier: 'catalog:'
-        version: 2.0.0-rc.31(patch_hash=04b94fa0b74e570a10fc5281985904559acafc30087e7d0c1a55cf60d7fed589)(@vue/compiler-sfc@3.5.43)(clean-css@5.3.3)(cssnano@9.1.2(postcss@8.5.28))(csso@5.0.5)(debug@4.4.3(supports-color@10.2.2))(esbuild@0.28.2)(html-minifier-terser@7.2.0)(rolldown@1.2.9)(rollup@4.63.4)(supports-color@10.2.2)(svgo@4.1.0)(typescript@6.0.3)(uglify-js@3.19.3)(vite@8.3.1(@types/node@22.20.4)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.105.0)(sass@1.105.0)(terser@5.51.2)(yaml@2.9.1))
+        version: 2.0.0-rc.31(patch_hash=04b94fa0b74e570a10fc5281985904559acafc30087e7d0c1a55cf60d7fed589)(@vue/compiler-sfc@3.5.43)(clean-css@5.3.3)(cssnano@9.1.2(postcss@8.5.28))(csso@5.0.5)(debug@4.4.3(supports-color@10.2.2))(esbuild@0.28.2)(html-minifier-terser@7.2.0)(rolldown@1.2.9)(rollup@4.63.4)(supports-color@10.2.2)(svgo@4.1.0)(typescript@6.0.3)(uglify-js@3.19.3)(vite@8.3.1(@types/node@22.20.4)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.105.1)(sass@1.105.0)(terser@5.51.2)(yaml@2.9.1))
       domhandler:
         specifier: ^6.0.1
         version: 6.0.1
       vite:
         specifier: ^8.3.1
-        version: 8.3.1(@types/node@22.20.4)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.105.0)(sass@1.105.0)(terser@5.51.2)(yaml@2.9.1)
+        version: 8.3.1(@types/node@22.20.4)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.105.1)(sass@1.105.0)(terser@5.51.2)(yaml@2.9.1)
 
   tools/highlighter-helper:
     dependencies:
@@ -2007,7 +2007,7 @@ importers:
         version: 15.0.0(vue@3.5.43(typescript@6.0.3))
       vuepress:
         specifier: 'catalog:'
-        version: 2.0.0-rc.31(ac961c14951e031d178d90973a181b6d)
+        version: 2.0.0-rc.31(7c99ccd39eba81cca5e5e7e3b0e6f91b)
 
   tools/search-helper:
     dependencies:
@@ -2025,7 +2025,7 @@ importers:
         version: 3.5.43(typescript@6.0.3)
       vuepress:
         specifier: 'catalog:'
-        version: 2.0.0-rc.31(ac961c14951e031d178d90973a181b6d)
+        version: 2.0.0-rc.31(7c99ccd39eba81cca5e5e7e3b0e6f91b)
     devDependencies:
       domhandler:
         specifier: ^6.0.1
@@ -2062,7 +2062,7 @@ importers:
         version: 3.5.43(typescript@6.0.3)
       vuepress:
         specifier: 'catalog:'
-        version: 2.0.0-rc.31(ac961c14951e031d178d90973a181b6d)
+        version: 2.0.0-rc.31(7c99ccd39eba81cca5e5e7e3b0e6f91b)
     devDependencies:
       '@types/hast':
         specifier: ^3.0.5
@@ -2084,10 +2084,10 @@ importers:
         version: 3.5.43(typescript@6.0.3)
       vue-router:
         specifier: ^5.3.1
-        version: 5.3.1(@vue/compiler-sfc@3.5.43)(esbuild@0.28.2)(rolldown@1.2.9)(rollup@4.63.4)(vite@8.3.1(@types/node@22.20.4)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.105.0)(sass@1.105.0)(terser@5.51.2)(yaml@2.9.1))(vue@3.5.43(typescript@6.0.3))(webpack@5.111.1(clean-css@5.3.3)(cssnano@9.1.2(postcss@8.5.28))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.28)(svgo@4.1.0)(uglify-js@3.19.3))
+        version: 5.3.1(@vue/compiler-sfc@3.5.43)(esbuild@0.28.2)(rolldown@1.2.9)(rollup@4.63.4)(vite@8.3.1(@types/node@22.20.4)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.105.1)(sass@1.105.0)(terser@5.51.2)(yaml@2.9.1))(vue@3.5.43(typescript@6.0.3))(webpack@5.111.1(clean-css@5.3.3)(cssnano@9.1.2(postcss@8.5.28))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.28)(svgo@4.1.0)(uglify-js@3.19.3))
       vuepress:
         specifier: 'catalog:'
-        version: 2.0.0-rc.31(ac961c14951e031d178d90973a181b6d)
+        version: 2.0.0-rc.31(7c99ccd39eba81cca5e5e7e3b0e6f91b)
 
   tools/vp-update:
     dependencies:
@@ -9965,120 +9965,120 @@ packages:
   safer-buffer@2.1.2:
     resolution: {integrity: sha512-YZo3K82SD7Riyi0E1EQPojLz7kpepnSQI9IyPbHHg1XXXevb5dJI7tpyN2ADxGcQbHG7vcyRHk0cbwqcQriUtg==}
 
-  sass-embedded-all-unknown@1.105.0:
-    resolution: {integrity: sha512-+nLT5FtIqB5uDTqvpOi0RR7sT6eZFuE1EKgchg4kpGa3TrKfoinpBoqHzNi9jIJqVaP+AEEXavTolsUHVXR8wg==}
+  sass-embedded-all-unknown@1.105.1:
+    resolution: {integrity: sha512-kN0G03K9KoUbSf72t7ZvxAudcB4Wbf0M0XFaPc1gaF94jEPUb0xLCQUIPIDPH2Kx8vpYZ/GzzgF7USsB6rUYfw==}
     cpu: ['!arm', '!arm64', '!riscv64', '!x64']
 
-  sass-embedded-android-arm64@1.105.0:
-    resolution: {integrity: sha512-lJzSYBBkl27KCAglQ2J2kYj6q0cxZP6n90XXH2SwAX6eFfYPhZTSbjcOf940pfEmxVq3W9HmyvhdU9FDz+lSBQ==}
+  sass-embedded-android-arm64@1.105.1:
+    resolution: {integrity: sha512-lWnIFmW3gL4ZDfZgjeUfxazmA0zlwSS/ADe2q9XmP0W2UfM9kuvrXdWvp6KjZOCv0CrTYVQMrIUj8Of1L2M24Q==}
     engines: {node: '>=14.0.0'}
     cpu: [arm64]
     os: [android]
 
-  sass-embedded-android-arm@1.105.0:
-    resolution: {integrity: sha512-U64yUn0Gq/iHc9l0MBkrNtHgw7dLBEWGYTOvaD3OhQQv/2GG2Xj/63F5QN8VDPKZZQL43RRiHVX7AbAW3atsLQ==}
+  sass-embedded-android-arm@1.105.1:
+    resolution: {integrity: sha512-WYltUXkUP9jDaUq4uUiLgZXyYO5c72sa/TvpO4E2MMRdS+WJWgrPUDyvO+DpMR9gKWIm0QQ5cCEYnPDgovjVJw==}
     engines: {node: '>=14.0.0'}
     cpu: [arm]
     os: [android]
 
-  sass-embedded-android-riscv64@1.105.0:
-    resolution: {integrity: sha512-QtGPt15dx6bWhnqqDZ5kmj8UmYVMkGCGgSRwa3johwioqqTf+kkomyqNod9ILiXAI4PVIZ4le+9HQwfjwOmUkQ==}
+  sass-embedded-android-riscv64@1.105.1:
+    resolution: {integrity: sha512-lWity0qhyQyPgkHUfZz+4IeD0r6mcAqG9KzOwVSjUrcSR9xAfWFKYAtHTA05R28ymyXf2Sf2+XfNV7YkxLgkUQ==}
     engines: {node: '>=14.0.0'}
     cpu: [riscv64]
     os: [android]
 
-  sass-embedded-android-x64@1.105.0:
-    resolution: {integrity: sha512-5+IO3LTvYLV06QX8CMCGkhby9uMzV3rcR6WPSW4H7ueGqJGQ2VUNuQG44q9GIs6+Ss06Zz5wgiohyYICdI6Cpw==}
+  sass-embedded-android-x64@1.105.1:
+    resolution: {integrity: sha512-FRGZuIZ9eS3qutYPFqz8u12Ti9ccyWKWb7F7rKRI1BkIEmLZV1rC862dUGnTV2d9Tk9qbSAXL71t8alUR+fzIA==}
     engines: {node: '>=14.0.0'}
     cpu: [x64]
     os: [android]
 
-  sass-embedded-darwin-arm64@1.105.0:
-    resolution: {integrity: sha512-pdBHxweZVa10ACFOGbrcejHhHDXxuJOu31HAc5/Hcw0cZGm4H2J/gF+6mTttjZqhjCIAQFiGR9Y6cQHt39NtGA==}
+  sass-embedded-darwin-arm64@1.105.1:
+    resolution: {integrity: sha512-75qVpHj0qwJKWOo+ZA5NPVFnOGfRrUiBdnLR0dPqsvzp3acvb5gBevptqTtJjVWubpYRIjcRdDDjmeWoXnfacQ==}
     engines: {node: '>=14.0.0'}
     cpu: [arm64]
     os: [darwin]
 
-  sass-embedded-darwin-x64@1.105.0:
-    resolution: {integrity: sha512-AS4Inw2bIntl9y1AbfoRwJLCAXqRAIvjl5iuQsKF/SSHvAf6feuKnUsxLBqFoT1/Ohr6eZte48qyth8XZ7DRQQ==}
+  sass-embedded-darwin-x64@1.105.1:
+    resolution: {integrity: sha512-5TV8xyZrOO89ky752favkTuyz9O2hOB2aMoiUpMTk0rFr+UVANcXdIrEvJ9WKoqTHaszim7un3jADumunpW7zQ==}
     engines: {node: '>=14.0.0'}
     cpu: [x64]
     os: [darwin]
 
-  sass-embedded-linux-arm64@1.105.0:
-    resolution: {integrity: sha512-vwLA8YYmrYm+ro5EQkvqwf3qEsxfjNf5Wx0W1wTCLq3fqQbynR2qc5siVxxNKJ6lHKUAxDMPtJ8lwdPYkeW0Uw==}
+  sass-embedded-linux-arm64@1.105.1:
+    resolution: {integrity: sha512-arALlVQkXjxN1RPaQR41vbDYXrTIdXwPtEzBWRkOg7FdIN/dSohY8ik96M6M3MSc+niV/UIC7BO47PcspzJGpw==}
     engines: {node: '>=14.0.0'}
     cpu: [arm64]
     os: [linux]
     libc: glibc
 
-  sass-embedded-linux-arm@1.105.0:
-    resolution: {integrity: sha512-YlE2SVdlDpYKOchX69DORYyBL/jctibVrYLUvG+5JITkhajsWOG0RPr4aZHeBQScnkj1UoPOReFp9wxjoej4eA==}
+  sass-embedded-linux-arm@1.105.1:
+    resolution: {integrity: sha512-Ng9GWIF6heTrwc9r/FFY9oUSoaylV2zcS296Qo2re3tJfLMWR37O2JUMyzPT+vtkRs8k3JOE6jTFVlXYnz4EAA==}
     engines: {node: '>=14.0.0'}
     cpu: [arm]
     os: [linux]
     libc: glibc
 
-  sass-embedded-linux-musl-arm64@1.105.0:
-    resolution: {integrity: sha512-Y2Dxx6fDlAewr9Mmb8yezeaWczuF4H0FjbpdGjdzGeWcslokB357yAD2Rd6bi0IHXcQpQ8hRHnQujdJC+dbpSg==}
+  sass-embedded-linux-musl-arm64@1.105.1:
+    resolution: {integrity: sha512-KizYVR3d70U67iLgKdF+HCKBdQYUxYiv0YWCS3zl6GwNGIbGXlkOtnjxus41CKTA4oOK0KsSus9P5zwhOBjiYA==}
     engines: {node: '>=14.0.0'}
     cpu: [arm64]
     os: [linux]
     libc: musl
 
-  sass-embedded-linux-musl-arm@1.105.0:
-    resolution: {integrity: sha512-0ihXQb6YN8xWWSxtFUOEFrsAB/qYGPcHq0n8BDxuQUIopDdjBYPfhM92ySpggsJaEceGY8OSlj6voYbo2BmW5A==}
+  sass-embedded-linux-musl-arm@1.105.1:
+    resolution: {integrity: sha512-7u932XawHxGZvuYV4pOqcCvQi05yMONDmNDxVNh8Q7KmpytQP7mnyxBOYWStiw/p665AVL6BYGe7WY/vzCcWGw==}
     engines: {node: '>=14.0.0'}
     cpu: [arm]
     os: [linux]
     libc: musl
 
-  sass-embedded-linux-musl-riscv64@1.105.0:
-    resolution: {integrity: sha512-ga/t+kLxkYFqTSstgGuTqhg9Wgwj2stfe4gqYk4YV/Q5AVi6ij9a0N/nsFU6eP9sNWW61zH7HDK/NTt+IR8PLw==}
+  sass-embedded-linux-musl-riscv64@1.105.1:
+    resolution: {integrity: sha512-gs84BgRBVNMX5fHRU3wxc3HuJjl0dUmZFpcVIaDDEVhnp5oXFLQp+gEu0xBBAurTzCHVpPU6GlGK6B1gRKmbhg==}
     engines: {node: '>=14.0.0'}
     cpu: [riscv64]
     os: [linux]
     libc: musl
 
-  sass-embedded-linux-musl-x64@1.105.0:
-    resolution: {integrity: sha512-Pk5WXQyg3lsklItY69qL39j7Nzm8T/W9Cm2jho2h/ZSH0NDxNoDBlKunxiCOdjPEQMhtzXhI0KQN3wgkbfPlWg==}
+  sass-embedded-linux-musl-x64@1.105.1:
+    resolution: {integrity: sha512-jFSRc1BSoCo0bw6GXmBWQMzdj0FBl2FTKSRqQSye3vmlI9O466DwBK4OQL9HRp6MGdY9IQFFMZLPZo5LJWIPsQ==}
     engines: {node: '>=14.0.0'}
     cpu: [x64]
     os: [linux]
     libc: musl
 
-  sass-embedded-linux-riscv64@1.105.0:
-    resolution: {integrity: sha512-LM6wuR0PoJjBz7iO9XRjRnyliWK46d8NnJrPI/uOr4ONT64xtk7yZzSl9ZpVgoEVhkJbBOK3p+AgTEBGi1xvdQ==}
+  sass-embedded-linux-riscv64@1.105.1:
+    resolution: {integrity: sha512-tkZs6OvA+omJgSf8EaPQavq6M7bJNLm88eKt3yzYnBy0dVGMao4+lyRb/EnsgIq2R/B2lhxUHhSVNWAcY5bgXw==}
     engines: {node: '>=14.0.0'}
     cpu: [riscv64]
     os: [linux]
     libc: glibc
 
-  sass-embedded-linux-x64@1.105.0:
-    resolution: {integrity: sha512-1hsXWE1lxGqk1WHPT019y4+CU6JTrKtyQqTNOrvhsOb8OLZMrcfbViL65aU7qxfSzaYvGxT27d9qsZwQ63CCyA==}
+  sass-embedded-linux-x64@1.105.1:
+    resolution: {integrity: sha512-YF4OyymSlm26OcdPovIZL1blzjTxf5yN/rzgTmoGqAjEk57+yIuYo+7jBCgSQZFov8Rn4uHhZT+u0cpzxNFMRg==}
     engines: {node: '>=14.0.0'}
     cpu: [x64]
     os: [linux]
     libc: glibc
 
-  sass-embedded-unknown-all@1.105.0:
-    resolution: {integrity: sha512-Bvipiu2fsTa6Xz1vJGNojFwgUeRmMOEeJmg1GjzYYe9dTqe94ookSF7CVlq9Naa5DT2jKtb9BKjwYv49j7c6hw==}
+  sass-embedded-unknown-all@1.105.1:
+    resolution: {integrity: sha512-bd2zDf+MdoPdRDH1awSQ+IL67vHvCbiKsWJ95XchPg3I67zQlXjTSf9KqRiE6twjNT1fRV82JUKoc0Hf6CUmfQ==}
     os: ['!android', '!darwin', '!linux', '!win32']
 
-  sass-embedded-win32-arm64@1.105.0:
-    resolution: {integrity: sha512-zLh4GujaEa6njnjGqsThLhIK5Hy7Wp/8Xwt0DZ1Q5mfpW8Qp1vvV6J6J7sKeHmp5kav7rYr8bTX0LCoFwqIgGQ==}
+  sass-embedded-win32-arm64@1.105.1:
+    resolution: {integrity: sha512-Zpp/RWYL8ZzpLzBrs+/UVMEHOHx7sw4nlq2R52dKQ0qv/0V8oKemAy41PZyLir3c+S2C+YViYyfnFfQLRTAzuA==}
     engines: {node: '>=14.0.0'}
     cpu: [arm64]
     os: [win32]
 
-  sass-embedded-win32-x64@1.105.0:
-    resolution: {integrity: sha512-nY9vFO9eM03o00I6bAGE/NkSDfBuIdB3tRuRyzw9jC5syYQunnCZ1GduBNDTOQlYncoNz0JQQNTe79DyjqeChg==}
+  sass-embedded-win32-x64@1.105.1:
+    resolution: {integrity: sha512-DM8EkMDzEsxnYoy11nyA5I4jr8lOV1TVQ/drNYvFQA9undiMzZD+7SkRA0OnCrgD1uCT+uRArCHSpNiiYVks+g==}
     engines: {node: '>=14.0.0'}
     cpu: [x64]
     os: [win32]
 
-  sass-embedded@1.105.0:
-    resolution: {integrity: sha512-5tctFPV7AvCT2bhXAUH+5ro074g7HjYlXsGR1VkCMdoXMchoSYTpPraDuRX7LAIFwyJAESTRGfaNd15eAxdQ+w==}
+  sass-embedded@1.105.1:
+    resolution: {integrity: sha512-9tKxXG4rq+oGTZUlQehWZwHxBTL80EiB8IWk9AEqz8uOqg910t88JIYbN92eMCxokQ5vrYSQxg15bh0o/3hh3w==}
     engines: {node: '>=20.19.0'}
     hasBin: true
 
@@ -10102,6 +10102,11 @@ packages:
 
   sass@1.105.0:
     resolution: {integrity: sha512-4EjSuRTyG8M4yRXXY1PT9OUV5zz23xBxJkbIAprohKHqf6HOU4MCpE3U3vAC+iO1gxobBjESNbcj8rYAQZWnyA==}
+    engines: {node: '>=20.19.0'}
+    hasBin: true
+
+  sass@1.105.1:
+    resolution: {integrity: sha512-1CnAWPyrrnVQzXGB/DUep1vYCKCm1CIBr+YxjjiW6wk9qtzemnGP4qicH56T2F9S4Hjtv/Ne3jDz8JqfdDU4oA==}
     engines: {node: '>=20.19.0'}
     hasBin: true
 
@@ -14491,7 +14496,7 @@ snapshots:
       magic-string: 0.30.21
       string.prototype.matchall: 4.1.0
 
-  '@tsdown/css@0.23.0(jiti@2.7.0)(postcss@8.5.28)(sass-embedded@1.105.0)(sass@1.105.0)(tsdown@0.23.0)(yaml@2.9.1)':
+  '@tsdown/css@0.23.0(jiti@2.7.0)(postcss@8.5.28)(sass-embedded@1.105.1)(sass@1.105.0)(tsdown@0.23.0)(yaml@2.9.1)':
     dependencies:
       lightningcss: 1.33.0
       postcss-load-config: 6.0.1(jiti@2.7.0)(postcss@8.5.28)(yaml@2.9.1)
@@ -14500,7 +14505,7 @@ snapshots:
     optionalDependencies:
       postcss: 8.5.28
       sass: 1.105.0
-      sass-embedded: 1.105.0
+      sass-embedded: 1.105.1
     transitivePeerDependencies:
       - jiti
       - tsx
@@ -14950,10 +14955,10 @@ snapshots:
       weakmap-polyfill: 2.0.4
     optional: true
 
-  '@vitejs/plugin-vue@6.0.9(vite@8.3.1(@types/node@22.20.4)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.105.0)(sass@1.105.0)(terser@5.51.2)(yaml@2.9.1))(vue@3.5.43(typescript@6.0.3))':
+  '@vitejs/plugin-vue@6.0.9(vite@8.3.1(@types/node@22.20.4)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.105.1)(sass@1.105.0)(terser@5.51.2)(yaml@2.9.1))(vue@3.5.43(typescript@6.0.3))':
     dependencies:
       '@rolldown/pluginutils': 1.0.1
-      vite: 8.3.1(@types/node@22.20.4)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.105.0)(sass@1.105.0)(terser@5.51.2)(yaml@2.9.1)
+      vite: 8.3.1(@types/node@22.20.4)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.105.1)(sass@1.105.0)(terser@5.51.2)(yaml@2.9.1)
       vue: 3.5.43(typescript@6.0.3)
 
   '@vitest/coverage-istanbul@5.0.3(vitest@5.0.3)':
@@ -14967,7 +14972,7 @@ snapshots:
       magicast: 0.5.5
       obug: 2.2.1
       tinyrainbow: 3.1.1
-      vitest: 5.0.3(@opentelemetry/api@1.9.1)(@types/node@22.20.4)(@vitest/coverage-istanbul@5.0.3)(happy-dom@20.14.5)(vite@8.3.1(@types/node@22.20.4)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.105.0)(sass@1.105.0)(terser@5.51.2)(yaml@2.9.1))
+      vitest: 5.0.3(@opentelemetry/api@1.9.1)(@types/node@22.20.4)(@vitest/coverage-istanbul@5.0.3)(happy-dom@20.14.5)(vite@8.3.1(@types/node@22.20.4)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.105.1)(sass@1.105.0)(terser@5.51.2)(yaml@2.9.1))
 
   '@vitest/istanbul-lib-coverage@1.0.1': {}
 
@@ -14989,14 +14994,14 @@ snapshots:
       '@vitest/istanbul-lib-coverage': 1.0.1
       obug: 2.2.1
 
-  '@vitest/mocker@5.0.3(vite@8.3.1(@types/node@22.20.4)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.105.0)(sass@1.105.0)(terser@5.51.2)(yaml@2.9.1))':
+  '@vitest/mocker@5.0.3(vite@8.3.1(@types/node@22.20.4)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.105.1)(sass@1.105.0)(terser@5.51.2)(yaml@2.9.1))':
     dependencies:
       '@jridgewell/trace-mapping': 0.3.31
       '@vitest/spy': 5.0.3
       estree-walker: 3.0.3
       magic-string: 1.4.2
     optionalDependencies:
-      vite: 8.3.1(@types/node@22.20.4)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.105.0)(sass@1.105.0)(terser@5.51.2)(yaml@2.9.1)
+      vite: 8.3.1(@types/node@22.20.4)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.105.1)(sass@1.105.0)(terser@5.51.2)(yaml@2.9.1)
 
   '@vitest/spy@5.0.3': {}
 
@@ -15106,12 +15111,12 @@ snapshots:
     optionalDependencies:
       '@vue/server-renderer': 3.5.43
 
-  '@vuepress/bundler-vite@2.0.0-rc.31(@types/node@22.20.4)(@vue/compiler-sfc@3.5.43)(esbuild@0.28.2)(jiti@2.7.0)(rollup@4.63.4)(sass-embedded@1.105.0)(sass@1.105.0)(supports-color@10.2.2)(terser@5.51.2)(typescript@6.0.3)(webpack@5.111.1(clean-css@5.3.3)(cssnano@9.1.2(postcss@8.5.28))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.28)(svgo@4.1.0)(uglify-js@3.19.3))(yaml@2.9.1)':
+  '@vuepress/bundler-vite@2.0.0-rc.31(@types/node@22.20.4)(@vue/compiler-sfc@3.5.43)(esbuild@0.28.2)(jiti@2.7.0)(rollup@4.63.4)(sass-embedded@1.105.1)(sass@1.105.0)(supports-color@10.2.2)(terser@5.51.2)(typescript@6.0.3)(webpack@5.111.1(clean-css@5.3.3)(cssnano@9.1.2(postcss@8.5.28))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.28)(svgo@4.1.0)(uglify-js@3.19.3))(yaml@2.9.1)':
     dependencies:
-      '@vitejs/plugin-vue': 6.0.9(vite@8.3.1(@types/node@22.20.4)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.105.0)(sass@1.105.0)(terser@5.51.2)(yaml@2.9.1))(vue@3.5.43(typescript@6.0.3))
-      '@vuepress/bundlerutils': 2.0.0-rc.31(@vue/compiler-sfc@3.5.43)(esbuild@0.28.2)(rolldown@1.2.9)(rollup@4.63.4)(supports-color@10.2.2)(typescript@6.0.3)(vite@8.3.1(@types/node@22.20.4)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.105.0)(sass@1.105.0)(terser@5.51.2)(yaml@2.9.1))(webpack@5.111.1(clean-css@5.3.3)(cssnano@9.1.2(postcss@8.5.28))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.28)(svgo@4.1.0)(uglify-js@3.19.3))
-      '@vuepress/client': 2.0.0-rc.31(@vue/compiler-sfc@3.5.43)(esbuild@0.28.2)(rolldown@1.2.9)(rollup@4.63.4)(typescript@6.0.3)(vite@8.3.1(@types/node@22.20.4)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.105.0)(sass@1.105.0)(terser@5.51.2)(yaml@2.9.1))(webpack@5.111.1(clean-css@5.3.3)(cssnano@9.1.2(postcss@8.5.28))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.28)(svgo@4.1.0)(uglify-js@3.19.3))
-      '@vuepress/core': 2.0.0-rc.31(@vue/compiler-sfc@3.5.43)(esbuild@0.28.2)(rolldown@1.2.9)(rollup@4.63.4)(supports-color@10.2.2)(typescript@6.0.3)(vite@8.3.1(@types/node@22.20.4)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.105.0)(sass@1.105.0)(terser@5.51.2)(yaml@2.9.1))(webpack@5.111.1(clean-css@5.3.3)(cssnano@9.1.2(postcss@8.5.28))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.28)(svgo@4.1.0)(uglify-js@3.19.3))
+      '@vitejs/plugin-vue': 6.0.9(vite@8.3.1(@types/node@22.20.4)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.105.1)(sass@1.105.0)(terser@5.51.2)(yaml@2.9.1))(vue@3.5.43(typescript@6.0.3))
+      '@vuepress/bundlerutils': 2.0.0-rc.31(@vue/compiler-sfc@3.5.43)(esbuild@0.28.2)(rolldown@1.2.9)(rollup@4.63.4)(supports-color@10.2.2)(typescript@6.0.3)(vite@8.3.1(@types/node@22.20.4)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.105.1)(sass@1.105.0)(terser@5.51.2)(yaml@2.9.1))(webpack@5.111.1(clean-css@5.3.3)(cssnano@9.1.2(postcss@8.5.28))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.28)(svgo@4.1.0)(uglify-js@3.19.3))
+      '@vuepress/client': 2.0.0-rc.31(@vue/compiler-sfc@3.5.43)(esbuild@0.28.2)(rolldown@1.2.9)(rollup@4.63.4)(typescript@6.0.3)(vite@8.3.1(@types/node@22.20.4)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.105.1)(sass@1.105.0)(terser@5.51.2)(yaml@2.9.1))(webpack@5.111.1(clean-css@5.3.3)(cssnano@9.1.2(postcss@8.5.28))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.28)(svgo@4.1.0)(uglify-js@3.19.3))
+      '@vuepress/core': 2.0.0-rc.31(@vue/compiler-sfc@3.5.43)(esbuild@0.28.2)(rolldown@1.2.9)(rollup@4.63.4)(supports-color@10.2.2)(typescript@6.0.3)(vite@8.3.1(@types/node@22.20.4)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.105.1)(sass@1.105.0)(terser@5.51.2)(yaml@2.9.1))(webpack@5.111.1(clean-css@5.3.3)(cssnano@9.1.2(postcss@8.5.28))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.28)(svgo@4.1.0)(uglify-js@3.19.3))
       '@vuepress/shared': 2.0.0-rc.31
       '@vuepress/utils': 2.0.0-rc.31(supports-color@10.2.2)
       autoprefixer: 10.6.1(postcss@8.5.28)
@@ -15119,9 +15124,9 @@ snapshots:
       postcss: 8.5.28
       postcss-load-config: 6.0.1(jiti@2.7.0)(postcss@8.5.28)(yaml@2.9.1)
       rolldown: 1.2.9
-      vite: 8.3.1(@types/node@22.20.4)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.105.0)(sass@1.105.0)(terser@5.51.2)(yaml@2.9.1)
+      vite: 8.3.1(@types/node@22.20.4)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.105.1)(sass@1.105.0)(terser@5.51.2)(yaml@2.9.1)
       vue: 3.5.43(typescript@6.0.3)
-      vue-router: 5.3.1(@vue/compiler-sfc@3.5.43)(esbuild@0.28.2)(rolldown@1.2.9)(rollup@4.63.4)(vite@8.3.1(@types/node@22.20.4)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.105.0)(sass@1.105.0)(terser@5.51.2)(yaml@2.9.1))(vue@3.5.43(typescript@6.0.3))(webpack@5.111.1(clean-css@5.3.3)(cssnano@9.1.2(postcss@8.5.28))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.28)(svgo@4.1.0)(uglify-js@3.19.3))
+      vue-router: 5.3.1(@vue/compiler-sfc@3.5.43)(esbuild@0.28.2)(rolldown@1.2.9)(rollup@4.63.4)(vite@8.3.1(@types/node@22.20.4)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.105.1)(sass@1.105.0)(terser@5.51.2)(yaml@2.9.1))(vue@3.5.43(typescript@6.0.3))(webpack@5.111.1(clean-css@5.3.3)(cssnano@9.1.2(postcss@8.5.28))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.28)(svgo@4.1.0)(uglify-js@3.19.3))
     transitivePeerDependencies:
       - '@farmfe/core'
       - '@pinia/colada'
@@ -15148,13 +15153,13 @@ snapshots:
       - webpack
       - yaml
 
-  '@vuepress/bundler-webpack@2.0.0-rc.31(patch_hash=04b94fa0b74e570a10fc5281985904559acafc30087e7d0c1a55cf60d7fed589)(@vue/compiler-sfc@3.5.43)(clean-css@5.3.3)(cssnano@9.1.2(postcss@8.5.28))(csso@5.0.5)(debug@4.4.3(supports-color@10.2.2))(esbuild@0.28.2)(html-minifier-terser@7.2.0)(rolldown@1.2.9)(rollup@4.63.4)(supports-color@10.2.2)(svgo@4.1.0)(typescript@6.0.3)(uglify-js@3.19.3)(vite@8.3.1(@types/node@22.20.4)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.105.0)(sass@1.105.0)(terser@5.51.2)(yaml@2.9.1))':
+  '@vuepress/bundler-webpack@2.0.0-rc.31(patch_hash=04b94fa0b74e570a10fc5281985904559acafc30087e7d0c1a55cf60d7fed589)(@vue/compiler-sfc@3.5.43)(clean-css@5.3.3)(cssnano@9.1.2(postcss@8.5.28))(csso@5.0.5)(debug@4.4.3(supports-color@10.2.2))(esbuild@0.28.2)(html-minifier-terser@7.2.0)(rolldown@1.2.9)(rollup@4.63.4)(supports-color@10.2.2)(svgo@4.1.0)(typescript@6.0.3)(uglify-js@3.19.3)(vite@8.3.1(@types/node@22.20.4)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.105.1)(sass@1.105.0)(terser@5.51.2)(yaml@2.9.1))':
     dependencies:
       '@types/express': 4.17.25
       '@types/webpack-env': 1.18.8
-      '@vuepress/bundlerutils': 2.0.0-rc.31(@vue/compiler-sfc@3.5.43)(esbuild@0.28.2)(rolldown@1.2.9)(rollup@4.63.4)(supports-color@10.2.2)(typescript@6.0.3)(vite@8.3.1(@types/node@22.20.4)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.105.0)(sass@1.105.0)(terser@5.51.2)(yaml@2.9.1))(webpack@5.111.1(clean-css@5.3.3)(cssnano@9.1.2(postcss@8.5.28))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.28)(svgo@4.1.0)(uglify-js@3.19.3))
-      '@vuepress/client': 2.0.0-rc.31(@vue/compiler-sfc@3.5.43)(esbuild@0.28.2)(rolldown@1.2.9)(rollup@4.63.4)(typescript@6.0.3)(vite@8.3.1(@types/node@22.20.4)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.105.0)(sass@1.105.0)(terser@5.51.2)(yaml@2.9.1))(webpack@5.111.1(clean-css@5.3.3)(cssnano@9.1.2(postcss@8.5.28))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.28)(svgo@4.1.0)(uglify-js@3.19.3))
-      '@vuepress/core': 2.0.0-rc.31(@vue/compiler-sfc@3.5.43)(esbuild@0.28.2)(rolldown@1.2.9)(rollup@4.63.4)(supports-color@10.2.2)(typescript@6.0.3)(vite@8.3.1(@types/node@22.20.4)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.105.0)(sass@1.105.0)(terser@5.51.2)(yaml@2.9.1))(webpack@5.111.1(clean-css@5.3.3)(cssnano@9.1.2(postcss@8.5.28))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.28)(svgo@4.1.0)(uglify-js@3.19.3))
+      '@vuepress/bundlerutils': 2.0.0-rc.31(@vue/compiler-sfc@3.5.43)(esbuild@0.28.2)(rolldown@1.2.9)(rollup@4.63.4)(supports-color@10.2.2)(typescript@6.0.3)(vite@8.3.1(@types/node@22.20.4)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.105.1)(sass@1.105.0)(terser@5.51.2)(yaml@2.9.1))(webpack@5.111.1(clean-css@5.3.3)(cssnano@9.1.2(postcss@8.5.28))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.28)(svgo@4.1.0)(uglify-js@3.19.3))
+      '@vuepress/client': 2.0.0-rc.31(@vue/compiler-sfc@3.5.43)(esbuild@0.28.2)(rolldown@1.2.9)(rollup@4.63.4)(typescript@6.0.3)(vite@8.3.1(@types/node@22.20.4)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.105.1)(sass@1.105.0)(terser@5.51.2)(yaml@2.9.1))(webpack@5.111.1(clean-css@5.3.3)(cssnano@9.1.2(postcss@8.5.28))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.28)(svgo@4.1.0)(uglify-js@3.19.3))
+      '@vuepress/core': 2.0.0-rc.31(@vue/compiler-sfc@3.5.43)(esbuild@0.28.2)(rolldown@1.2.9)(rollup@4.63.4)(supports-color@10.2.2)(typescript@6.0.3)(vite@8.3.1(@types/node@22.20.4)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.105.1)(sass@1.105.0)(terser@5.51.2)(yaml@2.9.1))(webpack@5.111.1(clean-css@5.3.3)(cssnano@9.1.2(postcss@8.5.28))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.28)(svgo@4.1.0)(uglify-js@3.19.3))
       '@vuepress/shared': 2.0.0-rc.31
       '@vuepress/utils': 2.0.0-rc.31(supports-color@10.2.2)
       autoprefixer: 10.6.1(postcss@8.5.28)
@@ -15171,7 +15176,7 @@ snapshots:
       style-loader: 4.0.0(webpack@5.111.1(clean-css@5.3.3)(cssnano@9.1.2(postcss@8.5.28))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.28)(svgo@4.1.0)(uglify-js@3.19.3))
       vue: 3.5.43(typescript@6.0.3)
       vue-loader: 17.4.2(@vue/compiler-sfc@3.5.43)(vue@3.5.43(typescript@6.0.3))(webpack@5.111.1(clean-css@5.3.3)(cssnano@9.1.2(postcss@8.5.28))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.28)(svgo@4.1.0)(uglify-js@3.19.3))
-      vue-router: 5.3.1(@vue/compiler-sfc@3.5.43)(esbuild@0.28.2)(rolldown@1.2.9)(rollup@4.63.4)(vite@8.3.1(@types/node@22.20.4)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.105.0)(sass@1.105.0)(terser@5.51.2)(yaml@2.9.1))(vue@3.5.43(typescript@6.0.3))(webpack@5.111.1(clean-css@5.3.3)(cssnano@9.1.2(postcss@8.5.28))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.28)(svgo@4.1.0)(uglify-js@3.19.3))
+      vue-router: 5.3.1(@vue/compiler-sfc@3.5.43)(esbuild@0.28.2)(rolldown@1.2.9)(rollup@4.63.4)(vite@8.3.1(@types/node@22.20.4)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.105.1)(sass@1.105.0)(terser@5.51.2)(yaml@2.9.1))(vue@3.5.43(typescript@6.0.3))(webpack@5.111.1(clean-css@5.3.3)(cssnano@9.1.2(postcss@8.5.28))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.28)(svgo@4.1.0)(uglify-js@3.19.3))
       webpack: 5.111.1(clean-css@5.3.3)(cssnano@9.1.2(postcss@8.5.28))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.28)(svgo@4.1.0)(uglify-js@3.19.3)
       webpack-dev-server: 5.2.6(debug@4.4.3(supports-color@10.2.2))(supports-color@10.2.2)(webpack@5.111.1(clean-css@5.3.3)(cssnano@9.1.2(postcss@8.5.28))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.28)(svgo@4.1.0)(uglify-js@3.19.3))
       webpack-merge: 6.0.1
@@ -15210,15 +15215,15 @@ snapshots:
       - vite
       - webpack-cli
 
-  '@vuepress/bundlerutils@2.0.0-rc.31(@vue/compiler-sfc@3.5.43)(esbuild@0.28.2)(rolldown@1.2.9)(rollup@4.63.4)(supports-color@10.2.2)(typescript@6.0.3)(vite@8.3.1(@types/node@22.20.4)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.105.0)(sass@1.105.0)(terser@5.51.2)(yaml@2.9.1))(webpack@5.111.1(clean-css@5.3.3)(cssnano@9.1.2(postcss@8.5.28))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.28)(svgo@4.1.0)(uglify-js@3.19.3))':
+  '@vuepress/bundlerutils@2.0.0-rc.31(@vue/compiler-sfc@3.5.43)(esbuild@0.28.2)(rolldown@1.2.9)(rollup@4.63.4)(supports-color@10.2.2)(typescript@6.0.3)(vite@8.3.1(@types/node@22.20.4)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.105.1)(sass@1.105.0)(terser@5.51.2)(yaml@2.9.1))(webpack@5.111.1(clean-css@5.3.3)(cssnano@9.1.2(postcss@8.5.28))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.28)(svgo@4.1.0)(uglify-js@3.19.3))':
     dependencies:
-      '@vuepress/client': 2.0.0-rc.31(@vue/compiler-sfc@3.5.43)(esbuild@0.28.2)(rolldown@1.2.9)(rollup@4.63.4)(typescript@6.0.3)(vite@8.3.1(@types/node@22.20.4)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.105.0)(sass@1.105.0)(terser@5.51.2)(yaml@2.9.1))(webpack@5.111.1(clean-css@5.3.3)(cssnano@9.1.2(postcss@8.5.28))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.28)(svgo@4.1.0)(uglify-js@3.19.3))
-      '@vuepress/core': 2.0.0-rc.31(@vue/compiler-sfc@3.5.43)(esbuild@0.28.2)(rolldown@1.2.9)(rollup@4.63.4)(supports-color@10.2.2)(typescript@6.0.3)(vite@8.3.1(@types/node@22.20.4)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.105.0)(sass@1.105.0)(terser@5.51.2)(yaml@2.9.1))(webpack@5.111.1(clean-css@5.3.3)(cssnano@9.1.2(postcss@8.5.28))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.28)(svgo@4.1.0)(uglify-js@3.19.3))
+      '@vuepress/client': 2.0.0-rc.31(@vue/compiler-sfc@3.5.43)(esbuild@0.28.2)(rolldown@1.2.9)(rollup@4.63.4)(typescript@6.0.3)(vite@8.3.1(@types/node@22.20.4)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.105.1)(sass@1.105.0)(terser@5.51.2)(yaml@2.9.1))(webpack@5.111.1(clean-css@5.3.3)(cssnano@9.1.2(postcss@8.5.28))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.28)(svgo@4.1.0)(uglify-js@3.19.3))
+      '@vuepress/core': 2.0.0-rc.31(@vue/compiler-sfc@3.5.43)(esbuild@0.28.2)(rolldown@1.2.9)(rollup@4.63.4)(supports-color@10.2.2)(typescript@6.0.3)(vite@8.3.1(@types/node@22.20.4)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.105.1)(sass@1.105.0)(terser@5.51.2)(yaml@2.9.1))(webpack@5.111.1(clean-css@5.3.3)(cssnano@9.1.2(postcss@8.5.28))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.28)(svgo@4.1.0)(uglify-js@3.19.3))
       '@vuepress/markdown': 2.0.0-rc.31(supports-color@10.2.2)
       '@vuepress/shared': 2.0.0-rc.31
       '@vuepress/utils': 2.0.0-rc.31(supports-color@10.2.2)
       vue: 3.5.43(typescript@6.0.3)
-      vue-router: 5.3.1(@vue/compiler-sfc@3.5.43)(esbuild@0.28.2)(rolldown@1.2.9)(rollup@4.63.4)(vite@8.3.1(@types/node@22.20.4)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.105.0)(sass@1.105.0)(terser@5.51.2)(yaml@2.9.1))(vue@3.5.43(typescript@6.0.3))(webpack@5.111.1(clean-css@5.3.3)(cssnano@9.1.2(postcss@8.5.28))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.28)(svgo@4.1.0)(uglify-js@3.19.3))
+      vue-router: 5.3.1(@vue/compiler-sfc@3.5.43)(esbuild@0.28.2)(rolldown@1.2.9)(rollup@4.63.4)(vite@8.3.1(@types/node@22.20.4)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.105.1)(sass@1.105.0)(terser@5.51.2)(yaml@2.9.1))(vue@3.5.43(typescript@6.0.3))(webpack@5.111.1(clean-css@5.3.3)(cssnano@9.1.2(postcss@8.5.28))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.28)(svgo@4.1.0)(uglify-js@3.19.3))
     transitivePeerDependencies:
       - '@farmfe/core'
       - '@pinia/colada'
@@ -15236,9 +15241,9 @@ snapshots:
       - vite
       - webpack
 
-  '@vuepress/cli@2.0.0-rc.31(@vue/compiler-sfc@3.5.43)(esbuild@0.28.2)(rollup@4.63.4)(supports-color@10.2.2)(typescript@6.0.3)(vite@8.3.1(@types/node@22.20.4)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.105.0)(sass@1.105.0)(terser@5.51.2)(yaml@2.9.1))(webpack@5.111.1(clean-css@5.3.3)(cssnano@9.1.2(postcss@8.5.28))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.28)(svgo@4.1.0)(uglify-js@3.19.3))':
+  '@vuepress/cli@2.0.0-rc.31(@vue/compiler-sfc@3.5.43)(esbuild@0.28.2)(rollup@4.63.4)(supports-color@10.2.2)(typescript@6.0.3)(vite@8.3.1(@types/node@22.20.4)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.105.1)(sass@1.105.0)(terser@5.51.2)(yaml@2.9.1))(webpack@5.111.1(clean-css@5.3.3)(cssnano@9.1.2(postcss@8.5.28))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.28)(svgo@4.1.0)(uglify-js@3.19.3))':
     dependencies:
-      '@vuepress/core': 2.0.0-rc.31(@vue/compiler-sfc@3.5.43)(esbuild@0.28.2)(rolldown@1.2.9)(rollup@4.63.4)(supports-color@10.2.2)(typescript@6.0.3)(vite@8.3.1(@types/node@22.20.4)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.105.0)(sass@1.105.0)(terser@5.51.2)(yaml@2.9.1))(webpack@5.111.1(clean-css@5.3.3)(cssnano@9.1.2(postcss@8.5.28))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.28)(svgo@4.1.0)(uglify-js@3.19.3))
+      '@vuepress/core': 2.0.0-rc.31(@vue/compiler-sfc@3.5.43)(esbuild@0.28.2)(rolldown@1.2.9)(rollup@4.63.4)(supports-color@10.2.2)(typescript@6.0.3)(vite@8.3.1(@types/node@22.20.4)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.105.1)(sass@1.105.0)(terser@5.51.2)(yaml@2.9.1))(webpack@5.111.1(clean-css@5.3.3)(cssnano@9.1.2(postcss@8.5.28))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.28)(svgo@4.1.0)(uglify-js@3.19.3))
       '@vuepress/shared': 2.0.0-rc.31
       '@vuepress/utils': 2.0.0-rc.31(supports-color@10.2.2)
       cac: 7.0.0
@@ -15261,13 +15266,13 @@ snapshots:
       - vite
       - webpack
 
-  '@vuepress/client@2.0.0-rc.31(@vue/compiler-sfc@3.5.43)(esbuild@0.28.2)(rolldown@1.2.9)(rollup@4.63.4)(typescript@6.0.3)(vite@8.3.1(@types/node@22.20.4)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.105.0)(sass@1.105.0)(terser@5.51.2)(yaml@2.9.1))(webpack@5.111.1(clean-css@5.3.3)(cssnano@9.1.2(postcss@8.5.28))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.28)(svgo@4.1.0)(uglify-js@3.19.3))':
+  '@vuepress/client@2.0.0-rc.31(@vue/compiler-sfc@3.5.43)(esbuild@0.28.2)(rolldown@1.2.9)(rollup@4.63.4)(typescript@6.0.3)(vite@8.3.1(@types/node@22.20.4)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.105.1)(sass@1.105.0)(terser@5.51.2)(yaml@2.9.1))(webpack@5.111.1(clean-css@5.3.3)(cssnano@9.1.2(postcss@8.5.28))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.28)(svgo@4.1.0)(uglify-js@3.19.3))':
     dependencies:
       '@vue/devtools-api': 8.2.1
       '@vue/devtools-kit': 8.2.1
       '@vuepress/shared': 2.0.0-rc.31
       vue: 3.5.43(typescript@6.0.3)
-      vue-router: 5.3.1(@vue/compiler-sfc@3.5.43)(esbuild@0.28.2)(rolldown@1.2.9)(rollup@4.63.4)(vite@8.3.1(@types/node@22.20.4)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.105.0)(sass@1.105.0)(terser@5.51.2)(yaml@2.9.1))(vue@3.5.43(typescript@6.0.3))(webpack@5.111.1(clean-css@5.3.3)(cssnano@9.1.2(postcss@8.5.28))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.28)(svgo@4.1.0)(uglify-js@3.19.3))
+      vue-router: 5.3.1(@vue/compiler-sfc@3.5.43)(esbuild@0.28.2)(rolldown@1.2.9)(rollup@4.63.4)(vite@8.3.1(@types/node@22.20.4)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.105.1)(sass@1.105.0)(terser@5.51.2)(yaml@2.9.1))(vue@3.5.43(typescript@6.0.3))(webpack@5.111.1(clean-css@5.3.3)(cssnano@9.1.2(postcss@8.5.28))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.28)(svgo@4.1.0)(uglify-js@3.19.3))
     transitivePeerDependencies:
       - '@farmfe/core'
       - '@pinia/colada'
@@ -15284,9 +15289,9 @@ snapshots:
       - vite
       - webpack
 
-  '@vuepress/core@2.0.0-rc.31(@vue/compiler-sfc@3.5.43)(esbuild@0.28.2)(rolldown@1.2.9)(rollup@4.63.4)(supports-color@10.2.2)(typescript@6.0.3)(vite@8.3.1(@types/node@22.20.4)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.105.0)(sass@1.105.0)(terser@5.51.2)(yaml@2.9.1))(webpack@5.111.1(clean-css@5.3.3)(cssnano@9.1.2(postcss@8.5.28))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.28)(svgo@4.1.0)(uglify-js@3.19.3))':
+  '@vuepress/core@2.0.0-rc.31(@vue/compiler-sfc@3.5.43)(esbuild@0.28.2)(rolldown@1.2.9)(rollup@4.63.4)(supports-color@10.2.2)(typescript@6.0.3)(vite@8.3.1(@types/node@22.20.4)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.105.1)(sass@1.105.0)(terser@5.51.2)(yaml@2.9.1))(webpack@5.111.1(clean-css@5.3.3)(cssnano@9.1.2(postcss@8.5.28))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.28)(svgo@4.1.0)(uglify-js@3.19.3))':
     dependencies:
-      '@vuepress/client': 2.0.0-rc.31(@vue/compiler-sfc@3.5.43)(esbuild@0.28.2)(rolldown@1.2.9)(rollup@4.63.4)(typescript@6.0.3)(vite@8.3.1(@types/node@22.20.4)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.105.0)(sass@1.105.0)(terser@5.51.2)(yaml@2.9.1))(webpack@5.111.1(clean-css@5.3.3)(cssnano@9.1.2(postcss@8.5.28))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.28)(svgo@4.1.0)(uglify-js@3.19.3))
+      '@vuepress/client': 2.0.0-rc.31(@vue/compiler-sfc@3.5.43)(esbuild@0.28.2)(rolldown@1.2.9)(rollup@4.63.4)(typescript@6.0.3)(vite@8.3.1(@types/node@22.20.4)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.105.1)(sass@1.105.0)(terser@5.51.2)(yaml@2.9.1))(webpack@5.111.1(clean-css@5.3.3)(cssnano@9.1.2(postcss@8.5.28))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.28)(svgo@4.1.0)(uglify-js@3.19.3))
       '@vuepress/markdown': 2.0.0-rc.31(supports-color@10.2.2)
       '@vuepress/shared': 2.0.0-rc.31
       '@vuepress/utils': 2.0.0-rc.31(supports-color@10.2.2)
@@ -15704,8 +15709,8 @@ snapshots:
 
   autoprefixer@10.6.1(postcss@8.5.28):
     dependencies:
-      browserslist: 4.29.1
-      caniuse-lite: 1.0.30001810
+      browserslist: 4.29.3
+      caniuse-lite: 1.0.30001814
       fraction.js: 5.3.4
       picocolors: 1.1.1
       postcss: 8.5.28
@@ -15912,8 +15917,8 @@ snapshots:
 
   caniuse-api@3.0.0:
     dependencies:
-      browserslist: 4.29.1
-      caniuse-lite: 1.0.30001810
+      browserslist: 4.29.3
+      caniuse-lite: 1.0.30001814
       lodash.memoize: 4.1.2
       lodash.uniq: 4.5.0
 
@@ -16325,7 +16330,7 @@ snapshots:
 
   cssnano-preset-default@7.0.17(postcss@8.5.28):
     dependencies:
-      browserslist: 4.29.1
+      browserslist: 4.29.3
       css-declaration-sorter: 7.4.0(postcss@8.5.28)
       cssnano-utils: 5.0.3(postcss@8.5.28)
       postcss: 8.5.28
@@ -19181,7 +19186,7 @@ snapshots:
   postcss-colormin@7.0.10(postcss@8.5.28):
     dependencies:
       '@colordx/core': 5.8.0
-      browserslist: 4.29.1
+      browserslist: 4.29.3
       caniuse-api: 3.0.0
       postcss: 8.5.28
       postcss-value-parser: 4.2.0
@@ -19197,7 +19202,7 @@ snapshots:
 
   postcss-convert-values@7.0.12(postcss@8.5.28):
     dependencies:
-      browserslist: 4.29.1
+      browserslist: 4.29.3
       postcss: 8.5.28
       postcss-value-parser: 4.2.0
 
@@ -19284,7 +19289,7 @@ snapshots:
 
   postcss-merge-rules@7.0.11(postcss@8.5.28):
     dependencies:
-      browserslist: 4.29.1
+      browserslist: 4.29.3
       caniuse-api: 3.0.0
       cssnano-utils: 5.0.3(postcss@8.5.28)
       postcss: 8.5.28
@@ -19325,7 +19330,7 @@ snapshots:
 
   postcss-minify-params@7.0.9(postcss@8.5.28):
     dependencies:
-      browserslist: 4.29.1
+      browserslist: 4.29.3
       cssnano-utils: 5.0.3(postcss@8.5.28)
       postcss: 8.5.28
       postcss-value-parser: 4.2.0
@@ -19338,7 +19343,7 @@ snapshots:
 
   postcss-minify-selectors@7.1.2(postcss@8.5.28):
     dependencies:
-      browserslist: 4.29.1
+      browserslist: 4.29.3
       caniuse-api: 3.0.0
       cssesc: 3.0.0
       postcss: 8.5.28
@@ -19435,7 +19440,7 @@ snapshots:
 
   postcss-normalize-unicode@7.0.9(postcss@8.5.28):
     dependencies:
-      browserslist: 4.29.1
+      browserslist: 4.29.3
       postcss: 8.5.28
       postcss-value-parser: 4.2.0
 
@@ -19481,7 +19486,7 @@ snapshots:
 
   postcss-reduce-initial@7.0.9(postcss@8.5.28):
     dependencies:
-      browserslist: 4.29.1
+      browserslist: 4.29.3
       caniuse-api: 3.0.0
       postcss: 8.5.28
 
@@ -19948,65 +19953,65 @@ snapshots:
 
   safer-buffer@2.1.2: {}
 
-  sass-embedded-all-unknown@1.105.0:
+  sass-embedded-all-unknown@1.105.1:
     dependencies:
-      sass: 1.105.0
+      sass: 1.105.1
     optional: true
 
-  sass-embedded-android-arm64@1.105.0:
+  sass-embedded-android-arm64@1.105.1:
     optional: true
 
-  sass-embedded-android-arm@1.105.0:
+  sass-embedded-android-arm@1.105.1:
     optional: true
 
-  sass-embedded-android-riscv64@1.105.0:
+  sass-embedded-android-riscv64@1.105.1:
     optional: true
 
-  sass-embedded-android-x64@1.105.0:
+  sass-embedded-android-x64@1.105.1:
     optional: true
 
-  sass-embedded-darwin-arm64@1.105.0:
+  sass-embedded-darwin-arm64@1.105.1:
     optional: true
 
-  sass-embedded-darwin-x64@1.105.0:
+  sass-embedded-darwin-x64@1.105.1:
     optional: true
 
-  sass-embedded-linux-arm64@1.105.0:
+  sass-embedded-linux-arm64@1.105.1:
     optional: true
 
-  sass-embedded-linux-arm@1.105.0:
+  sass-embedded-linux-arm@1.105.1:
     optional: true
 
-  sass-embedded-linux-musl-arm64@1.105.0:
+  sass-embedded-linux-musl-arm64@1.105.1:
     optional: true
 
-  sass-embedded-linux-musl-arm@1.105.0:
+  sass-embedded-linux-musl-arm@1.105.1:
     optional: true
 
-  sass-embedded-linux-musl-riscv64@1.105.0:
+  sass-embedded-linux-musl-riscv64@1.105.1:
     optional: true
 
-  sass-embedded-linux-musl-x64@1.105.0:
+  sass-embedded-linux-musl-x64@1.105.1:
     optional: true
 
-  sass-embedded-linux-riscv64@1.105.0:
+  sass-embedded-linux-riscv64@1.105.1:
     optional: true
 
-  sass-embedded-linux-x64@1.105.0:
+  sass-embedded-linux-x64@1.105.1:
     optional: true
 
-  sass-embedded-unknown-all@1.105.0:
+  sass-embedded-unknown-all@1.105.1:
     dependencies:
-      sass: 1.105.0
+      sass: 1.105.1
     optional: true
 
-  sass-embedded-win32-arm64@1.105.0:
+  sass-embedded-win32-arm64@1.105.1:
     optional: true
 
-  sass-embedded-win32-x64@1.105.0:
+  sass-embedded-win32-x64@1.105.1:
     optional: true
 
-  sass-embedded@1.105.0:
+  sass-embedded@1.105.1:
     dependencies:
       '@bufbuild/protobuf': 2.15.0
       colorjs.io: 0.7.1
@@ -20016,32 +20021,41 @@ snapshots:
       sync-child-process: 1.0.2
       varint: 6.0.0
     optionalDependencies:
-      sass-embedded-all-unknown: 1.105.0
-      sass-embedded-android-arm: 1.105.0
-      sass-embedded-android-arm64: 1.105.0
-      sass-embedded-android-riscv64: 1.105.0
-      sass-embedded-android-x64: 1.105.0
-      sass-embedded-darwin-arm64: 1.105.0
-      sass-embedded-darwin-x64: 1.105.0
-      sass-embedded-linux-arm: 1.105.0
-      sass-embedded-linux-arm64: 1.105.0
-      sass-embedded-linux-musl-arm: 1.105.0
-      sass-embedded-linux-musl-arm64: 1.105.0
-      sass-embedded-linux-musl-riscv64: 1.105.0
-      sass-embedded-linux-musl-x64: 1.105.0
-      sass-embedded-linux-riscv64: 1.105.0
-      sass-embedded-linux-x64: 1.105.0
-      sass-embedded-unknown-all: 1.105.0
-      sass-embedded-win32-arm64: 1.105.0
-      sass-embedded-win32-x64: 1.105.0
+      sass-embedded-all-unknown: 1.105.1
+      sass-embedded-android-arm: 1.105.1
+      sass-embedded-android-arm64: 1.105.1
+      sass-embedded-android-riscv64: 1.105.1
+      sass-embedded-android-x64: 1.105.1
+      sass-embedded-darwin-arm64: 1.105.1
+      sass-embedded-darwin-x64: 1.105.1
+      sass-embedded-linux-arm: 1.105.1
+      sass-embedded-linux-arm64: 1.105.1
+      sass-embedded-linux-musl-arm: 1.105.1
+      sass-embedded-linux-musl-arm64: 1.105.1
+      sass-embedded-linux-musl-riscv64: 1.105.1
+      sass-embedded-linux-musl-x64: 1.105.1
+      sass-embedded-linux-riscv64: 1.105.1
+      sass-embedded-linux-x64: 1.105.1
+      sass-embedded-unknown-all: 1.105.1
+      sass-embedded-win32-arm64: 1.105.1
+      sass-embedded-win32-x64: 1.105.1
 
-  sass-loader@17.0.1(sass-embedded@1.105.0)(sass@1.105.0)(webpack@5.111.1(clean-css@5.3.3)(cssnano@9.1.2(postcss@8.5.28))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.28)(svgo@4.1.0)(uglify-js@3.19.3)):
+  sass-loader@17.0.1(sass-embedded@1.105.1)(sass@1.105.0)(webpack@5.111.1(clean-css@5.3.3)(cssnano@9.1.2(postcss@8.5.28))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.28)(svgo@4.1.0)(uglify-js@3.19.3)):
     optionalDependencies:
       sass: 1.105.0
-      sass-embedded: 1.105.0
+      sass-embedded: 1.105.1
       webpack: 5.111.1(clean-css@5.3.3)(cssnano@9.1.2(postcss@8.5.28))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.28)(svgo@4.1.0)(uglify-js@3.19.3)
 
   sass@1.105.0:
+    dependencies:
+      chokidar: 5.0.0
+      immutable: 5.1.9
+      source-map-js: 1.2.1
+    optionalDependencies:
+      '@parcel/watcher': 2.6.0
+    optional: true
+
+  sass@1.105.1:
     dependencies:
       chokidar: 5.0.0
       immutable: 5.1.9
@@ -20471,7 +20485,7 @@ snapshots:
 
   stylehacks@7.0.11(postcss@8.5.28):
     dependencies:
-      browserslist: 4.29.1
+      browserslist: 4.29.3
       postcss: 8.5.28
       postcss-selector-parser: 7.1.6
 
@@ -20751,7 +20765,7 @@ snapshots:
       unconfig-core: 7.5.0
       verkit: 0.4.1
     optionalDependencies:
-      '@tsdown/css': 0.23.0(jiti@2.7.0)(postcss@8.5.28)(sass-embedded@1.105.0)(sass@1.105.0)(tsdown@0.23.0)(yaml@2.9.1)
+      '@tsdown/css': 0.23.0(jiti@2.7.0)(postcss@8.5.28)(sass-embedded@1.105.1)(sass@1.105.0)(tsdown@0.23.0)(yaml@2.9.1)
       publint: 0.3.24
       typescript: 6.0.3
       unrun: 0.3.1(synckit@0.11.13)
@@ -20939,7 +20953,7 @@ snapshots:
       pathe: 2.0.3
       picomatch: 4.0.7
 
-  unplugin@3.4.0(esbuild@0.28.2)(rolldown@1.2.9)(rollup@4.63.4)(vite@8.3.1(@types/node@22.20.4)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.105.0)(sass@1.105.0)(terser@5.51.2)(yaml@2.9.1))(webpack@5.111.1(clean-css@5.3.3)(cssnano@9.1.2(postcss@8.5.28))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.28)(svgo@4.1.0)(uglify-js@3.19.3)):
+  unplugin@3.4.0(esbuild@0.28.2)(rolldown@1.2.9)(rollup@4.63.4)(vite@8.3.1(@types/node@22.20.4)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.105.1)(sass@1.105.0)(terser@5.51.2)(yaml@2.9.1))(webpack@5.111.1(clean-css@5.3.3)(cssnano@9.1.2(postcss@8.5.28))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.28)(svgo@4.1.0)(uglify-js@3.19.3)):
     dependencies:
       '@jridgewell/remapping': 2.3.5
       picomatch: 4.0.7
@@ -20948,7 +20962,7 @@ snapshots:
       esbuild: 0.28.2
       rolldown: 1.2.9
       rollup: 4.63.4
-      vite: 8.3.1(@types/node@22.20.4)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.105.0)(sass@1.105.0)(terser@5.51.2)(yaml@2.9.1)
+      vite: 8.3.1(@types/node@22.20.4)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.105.1)(sass@1.105.0)(terser@5.51.2)(yaml@2.9.1)
       webpack: 5.111.1(clean-css@5.3.3)(cssnano@9.1.2(postcss@8.5.28))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.28)(svgo@4.1.0)(uglify-js@3.19.3)
 
   unrun@0.3.1(synckit@0.11.13):
@@ -21019,7 +21033,7 @@ snapshots:
       '@types/unist': 3.0.3
       vfile-message: 4.0.3
 
-  vite@8.3.1(@types/node@22.20.4)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.105.0)(sass@1.105.0)(terser@5.51.2)(yaml@2.9.1):
+  vite@8.3.1(@types/node@22.20.4)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.105.1)(sass@1.105.0)(terser@5.51.2)(yaml@2.9.1):
     dependencies:
       lightningcss: 1.33.0
       picomatch: 4.0.7
@@ -21032,14 +21046,14 @@ snapshots:
       fsevents: 2.3.3
       jiti: 2.7.0
       sass: 1.105.0
-      sass-embedded: 1.105.0
+      sass-embedded: 1.105.1
       terser: 5.51.2
       yaml: 2.9.1
 
-  vitest@5.0.3(@opentelemetry/api@1.9.1)(@types/node@22.20.4)(@vitest/coverage-istanbul@5.0.3)(happy-dom@20.14.5)(vite@8.3.1(@types/node@22.20.4)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.105.0)(sass@1.105.0)(terser@5.51.2)(yaml@2.9.1)):
+  vitest@5.0.3(@opentelemetry/api@1.9.1)(@types/node@22.20.4)(@vitest/coverage-istanbul@5.0.3)(happy-dom@20.14.5)(vite@8.3.1(@types/node@22.20.4)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.105.1)(sass@1.105.0)(terser@5.51.2)(yaml@2.9.1)):
     dependencies:
       '@types/chai': 5.2.3
-      '@vitest/mocker': 5.0.3(vite@8.3.1(@types/node@22.20.4)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.105.0)(sass@1.105.0)(terser@5.51.2)(yaml@2.9.1))
+      '@vitest/mocker': 5.0.3(vite@8.3.1(@types/node@22.20.4)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.105.1)(sass@1.105.0)(terser@5.51.2)(yaml@2.9.1))
       chai: 6.2.2
       es-module-lexer: 2.3.2
       expect-type: 1.4.0
@@ -21050,7 +21064,7 @@ snapshots:
       tinybench: 6.1.4
       tinyexec: 1.3.1
       tinyglobby: 0.2.17
-      vite: 8.3.1(@types/node@22.20.4)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.105.0)(sass@1.105.0)(terser@5.51.2)(yaml@2.9.1)
+      vite: 8.3.1(@types/node@22.20.4)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.105.1)(sass@1.105.0)(terser@5.51.2)(yaml@2.9.1)
       why-is-node-running: 3.2.1
     optionalDependencies:
       '@opentelemetry/api': 1.9.1
@@ -21072,7 +21086,7 @@ snapshots:
       '@vue/compiler-sfc': 3.5.43
       vue: 3.5.43(typescript@6.0.3)
 
-  vue-router@5.3.1(@vue/compiler-sfc@3.5.43)(esbuild@0.28.2)(rolldown@1.2.9)(rollup@4.63.4)(vite@8.3.1(@types/node@22.20.4)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.105.0)(sass@1.105.0)(terser@5.51.2)(yaml@2.9.1))(vue@3.5.43(typescript@6.0.3))(webpack@5.111.1(clean-css@5.3.3)(cssnano@9.1.2(postcss@8.5.28))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.28)(svgo@4.1.0)(uglify-js@3.19.3)):
+  vue-router@5.3.1(@vue/compiler-sfc@3.5.43)(esbuild@0.28.2)(rolldown@1.2.9)(rollup@4.63.4)(vite@8.3.1(@types/node@22.20.4)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.105.1)(sass@1.105.0)(terser@5.51.2)(yaml@2.9.1))(vue@3.5.43(typescript@6.0.3))(webpack@5.111.1(clean-css@5.3.3)(cssnano@9.1.2(postcss@8.5.28))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.28)(svgo@4.1.0)(uglify-js@3.19.3)):
     dependencies:
       '@vue-macros/common': 3.1.4(vue@3.5.43(typescript@6.0.3))
       '@vue/devtools-api': 8.2.1
@@ -21088,12 +21102,12 @@ snapshots:
       picomatch: 4.0.7
       scule: 1.3.0
       tinyglobby: 0.2.17
-      unplugin: 3.4.0(esbuild@0.28.2)(rolldown@1.2.9)(rollup@4.63.4)(vite@8.3.1(@types/node@22.20.4)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.105.0)(sass@1.105.0)(terser@5.51.2)(yaml@2.9.1))(webpack@5.111.1(clean-css@5.3.3)(cssnano@9.1.2(postcss@8.5.28))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.28)(svgo@4.1.0)(uglify-js@3.19.3))
+      unplugin: 3.4.0(esbuild@0.28.2)(rolldown@1.2.9)(rollup@4.63.4)(vite@8.3.1(@types/node@22.20.4)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.105.1)(sass@1.105.0)(terser@5.51.2)(yaml@2.9.1))(webpack@5.111.1(clean-css@5.3.3)(cssnano@9.1.2(postcss@8.5.28))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.28)(svgo@4.1.0)(uglify-js@3.19.3))
       unplugin-utils: 0.3.2
       vue: 3.5.43(typescript@6.0.3)
     optionalDependencies:
       '@vue/compiler-sfc': 3.5.43
-      vite: 8.3.1(@types/node@22.20.4)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.105.0)(sass@1.105.0)(terser@5.51.2)(yaml@2.9.1)
+      vite: 8.3.1(@types/node@22.20.4)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.105.1)(sass@1.105.0)(terser@5.51.2)(yaml@2.9.1)
     transitivePeerDependencies:
       - '@farmfe/core'
       - '@rsbuild/core'
@@ -21115,18 +21129,18 @@ snapshots:
     optionalDependencies:
       typescript: 6.0.3
 
-  vuepress@2.0.0-rc.31(ac961c14951e031d178d90973a181b6d):
+  vuepress@2.0.0-rc.31(7c99ccd39eba81cca5e5e7e3b0e6f91b):
     dependencies:
-      '@vuepress/cli': 2.0.0-rc.31(@vue/compiler-sfc@3.5.43)(esbuild@0.28.2)(rollup@4.63.4)(supports-color@10.2.2)(typescript@6.0.3)(vite@8.3.1(@types/node@22.20.4)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.105.0)(sass@1.105.0)(terser@5.51.2)(yaml@2.9.1))(webpack@5.111.1(clean-css@5.3.3)(cssnano@9.1.2(postcss@8.5.28))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.28)(svgo@4.1.0)(uglify-js@3.19.3))
-      '@vuepress/client': 2.0.0-rc.31(@vue/compiler-sfc@3.5.43)(esbuild@0.28.2)(rolldown@1.2.9)(rollup@4.63.4)(typescript@6.0.3)(vite@8.3.1(@types/node@22.20.4)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.105.0)(sass@1.105.0)(terser@5.51.2)(yaml@2.9.1))(webpack@5.111.1(clean-css@5.3.3)(cssnano@9.1.2(postcss@8.5.28))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.28)(svgo@4.1.0)(uglify-js@3.19.3))
-      '@vuepress/core': 2.0.0-rc.31(@vue/compiler-sfc@3.5.43)(esbuild@0.28.2)(rolldown@1.2.9)(rollup@4.63.4)(supports-color@10.2.2)(typescript@6.0.3)(vite@8.3.1(@types/node@22.20.4)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.105.0)(sass@1.105.0)(terser@5.51.2)(yaml@2.9.1))(webpack@5.111.1(clean-css@5.3.3)(cssnano@9.1.2(postcss@8.5.28))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.28)(svgo@4.1.0)(uglify-js@3.19.3))
+      '@vuepress/cli': 2.0.0-rc.31(@vue/compiler-sfc@3.5.43)(esbuild@0.28.2)(rollup@4.63.4)(supports-color@10.2.2)(typescript@6.0.3)(vite@8.3.1(@types/node@22.20.4)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.105.1)(sass@1.105.0)(terser@5.51.2)(yaml@2.9.1))(webpack@5.111.1(clean-css@5.3.3)(cssnano@9.1.2(postcss@8.5.28))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.28)(svgo@4.1.0)(uglify-js@3.19.3))
+      '@vuepress/client': 2.0.0-rc.31(@vue/compiler-sfc@3.5.43)(esbuild@0.28.2)(rolldown@1.2.9)(rollup@4.63.4)(typescript@6.0.3)(vite@8.3.1(@types/node@22.20.4)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.105.1)(sass@1.105.0)(terser@5.51.2)(yaml@2.9.1))(webpack@5.111.1(clean-css@5.3.3)(cssnano@9.1.2(postcss@8.5.28))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.28)(svgo@4.1.0)(uglify-js@3.19.3))
+      '@vuepress/core': 2.0.0-rc.31(@vue/compiler-sfc@3.5.43)(esbuild@0.28.2)(rolldown@1.2.9)(rollup@4.63.4)(supports-color@10.2.2)(typescript@6.0.3)(vite@8.3.1(@types/node@22.20.4)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.105.1)(sass@1.105.0)(terser@5.51.2)(yaml@2.9.1))(webpack@5.111.1(clean-css@5.3.3)(cssnano@9.1.2(postcss@8.5.28))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.28)(svgo@4.1.0)(uglify-js@3.19.3))
       '@vuepress/markdown': 2.0.0-rc.31(supports-color@10.2.2)
       '@vuepress/shared': 2.0.0-rc.31
       '@vuepress/utils': 2.0.0-rc.31(supports-color@10.2.2)
       vue: 3.5.43(typescript@6.0.3)
     optionalDependencies:
-      '@vuepress/bundler-vite': 2.0.0-rc.31(@types/node@22.20.4)(@vue/compiler-sfc@3.5.43)(esbuild@0.28.2)(jiti@2.7.0)(rollup@4.63.4)(sass-embedded@1.105.0)(sass@1.105.0)(supports-color@10.2.2)(terser@5.51.2)(typescript@6.0.3)(webpack@5.111.1(clean-css@5.3.3)(cssnano@9.1.2(postcss@8.5.28))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.28)(svgo@4.1.0)(uglify-js@3.19.3))(yaml@2.9.1)
-      '@vuepress/bundler-webpack': 2.0.0-rc.31(patch_hash=04b94fa0b74e570a10fc5281985904559acafc30087e7d0c1a55cf60d7fed589)(@vue/compiler-sfc@3.5.43)(clean-css@5.3.3)(cssnano@9.1.2(postcss@8.5.28))(csso@5.0.5)(debug@4.4.3(supports-color@10.2.2))(esbuild@0.28.2)(html-minifier-terser@7.2.0)(rolldown@1.2.9)(rollup@4.63.4)(supports-color@10.2.2)(svgo@4.1.0)(typescript@6.0.3)(uglify-js@3.19.3)(vite@8.3.1(@types/node@22.20.4)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.105.0)(sass@1.105.0)(terser@5.51.2)(yaml@2.9.1))
+      '@vuepress/bundler-vite': 2.0.0-rc.31(@types/node@22.20.4)(@vue/compiler-sfc@3.5.43)(esbuild@0.28.2)(jiti@2.7.0)(rollup@4.63.4)(sass-embedded@1.105.1)(sass@1.105.0)(supports-color@10.2.2)(terser@5.51.2)(typescript@6.0.3)(webpack@5.111.1(clean-css@5.3.3)(cssnano@9.1.2(postcss@8.5.28))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.28)(svgo@4.1.0)(uglify-js@3.19.3))(yaml@2.9.1)
+      '@vuepress/bundler-webpack': 2.0.0-rc.31(patch_hash=04b94fa0b74e570a10fc5281985904559acafc30087e7d0c1a55cf60d7fed589)(@vue/compiler-sfc@3.5.43)(clean-css@5.3.3)(cssnano@9.1.2(postcss@8.5.28))(csso@5.0.5)(debug@4.4.3(supports-color@10.2.2))(esbuild@0.28.2)(html-minifier-terser@7.2.0)(rolldown@1.2.9)(rollup@4.63.4)(supports-color@10.2.2)(svgo@4.1.0)(typescript@6.0.3)(uglify-js@3.19.3)(vite@8.3.1(@types/node@22.20.4)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.105.1)(sass@1.105.0)(terser@5.51.2)(yaml@2.9.1))
     transitivePeerDependencies:
       - '@farmfe/core'
       - '@pinia/colada'
@@ -21232,7 +21246,7 @@ snapshots:
       '@webassemblyjs/ast': 1.14.1
       '@webassemblyjs/wasm-edit': 1.14.1
       '@webassemblyjs/wasm-parser': 1.14.1
-      browserslist: 4.29.1
+      browserslist: 4.29.3
       chrome-trace-event: 1.0.4
       enhanced-resolve: 5.25.1
       es-module-lexer: 2.3.2
