@@ -27,7 +27,9 @@ export const mediaPlugin = (options: MediaPluginOptions = {}): Plugin => {
 
     onPrepared: async (app) => {
       await Promise.all([
-        prepareArtPlayerEntry(app, Boolean(options.artplayer)),
+        // A disabled or missing Artplayer must not be resolved, so the entry is
+        // driven by the components that survived the availability check
+        prepareArtPlayerEntry(app, components.includes('ArtPlayer')),
         prepareVideoJsEntry(app, options),
       ])
     },
