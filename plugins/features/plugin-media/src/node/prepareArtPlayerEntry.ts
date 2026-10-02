@@ -38,14 +38,29 @@ const getUsedLangs = (app: App): string[] => {
  * 生成 Artplayer 入口文件，将核心包与站点用到的语言包打包在一起
  *
  * @param app - VuePress app / VuePress 应用
- * @param enabled - Whether Artplayer is enabled / 是否启用 Artplayer
+ * @param enabled - Whether Artplayer is enabled and installed / 是否启用且已安装
+ *   Artplayer
  * @returns Path of the generated entry / 生成入口文件路径
  */
 export const prepareArtPlayerEntry = (
   app: App,
   enabled: boolean,
 ): Promise<string> => {
-  const langs = enabled ? getUsedLangs(app) : []
+  // `artplayer` is an optional peer, so it must never be resolved when it is
+  // disabled or missing. An Artplayer-free entry keeps the module resolvable
+  // for the components that are still enabled.
+  if (!enabled) {
+    return app.writeTemp(
+      'media/artplayer.js',
+      `\
+export default undefined;
+
+export const i18n = {};
+`,
+    )
+  }
+
+  const langs = getUsedLangs(app)
 
   const localeImports = langs
     .map(
