@@ -16,7 +16,7 @@
   },
   "dependencies": {
     "@iconify-json/vscode-icons": "^1.2.83",
-    "@videojs/html": "10.0.0-rc.4",
+    "@videojs/html": "10.0.0",
     "@vuepress/bundler-vite": "catalog:",
     "@vuepress/bundler-webpack": "catalog:",
     "@vuepress/plugin-auto-frontmatter": "workspace:*",
