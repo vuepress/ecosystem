@@ -1528,7 +1528,7 @@ importers:
         version: link:../../../tools/highlighter-helper
       nanoid:
         specifier: ^6.0.1
-        version: 6.0.1
+        version: 6.0.2
       shiki:
         specifier: ^4.4.3
         version: 4.4.3
@@ -1774,7 +1774,7 @@ importers:
         version: 5.4.2
       nanoid:
         specifier: ^6.0.1
-        version: 6.0.1
+        version: 6.0.2
       p-map:
         specifier: ^7.0.8
         version: 7.0.8
@@ -8850,8 +8850,8 @@ packages:
     engines: {node: ^10 || ^12 || ^13.7 || ^14 || >=15.0.1}
     hasBin: true
 
-  nanoid@6.0.1:
-    resolution: {integrity: sha512-3wVS3i51pE2pi1k5FFL/95BGfVS0kSsvDVuGXHOtxox/TywUmtgq+3qiTOTbs9J7KfHaXPiN171k/A6dBnaXFw==}
+  nanoid@6.0.2:
+    resolution: {integrity: sha512-hIvVOb9Qr1p/9CNNLOe0OlWvgx/ziTsVwKN/GDSsuArN2K0wDiafP3s0SWmsm7o2BdnyS8Z9Z64NFBUbn6ziBg==}
     engines: {node: ^22 || ^24 || >=26}
     hasBin: true
 
@@ -18764,7 +18764,7 @@ snapshots:
 
   nanoid@3.3.19: {}
 
-  nanoid@6.0.1: {}
+  nanoid@6.0.2: {}
 
   native-promise-only@0.8.1:
     optional: true
