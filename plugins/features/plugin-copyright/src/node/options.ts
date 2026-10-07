@@ -15,12 +15,12 @@ export interface CopyrightPluginOptions extends CopyrightPluginSharedOptions {
    * @param page - Page object / 页面对象
    */
   authorGetter?: <
-    ExtraPageData extends Record<string, unknown> = Record<never, never>,
+    ExtraPageData extends Record<string, unknown> = Record<string, never>,
     ExtraPageFrontmatter extends Record<string, unknown> = Record<
       string,
       unknown
     >,
-    ExtraPageFields extends Record<string, unknown> = Record<never, never>,
+    ExtraPageFields extends Record<string, unknown> = Record<string, never>,
   >(
     page: Page<ExtraPageData, ExtraPageFrontmatter, ExtraPageFields>,
   ) => string | null
@@ -33,12 +33,12 @@ export interface CopyrightPluginOptions extends CopyrightPluginSharedOptions {
    * @param page - Page object / 页面对象
    */
   licenseGetter?: <
-    ExtraPageData extends Record<string, unknown> = Record<never, never>,
+    ExtraPageData extends Record<string, unknown> = Record<string, never>,
     ExtraPageFrontmatter extends Record<string, unknown> = Record<
       string,
       unknown
     >,
-    ExtraPageFields extends Record<string, unknown> = Record<never, never>,
+    ExtraPageFields extends Record<string, unknown> = Record<string, never>,
   >(
     page: Page<ExtraPageData, ExtraPageFrontmatter, ExtraPageFields>,
   ) => string | null
@@ -51,12 +51,12 @@ export interface CopyrightPluginOptions extends CopyrightPluginSharedOptions {
    * @param page - Page object / 页面对象
    */
   copyrightGetter?: <
-    ExtraPageData extends Record<string, unknown> = Record<never, never>,
+    ExtraPageData extends Record<string, unknown> = Record<string, never>,
     ExtraPageFrontmatter extends Record<string, unknown> = Record<
       string,
       unknown
     >,
-    ExtraPageFields extends Record<string, unknown> = Record<never, never>,
+    ExtraPageFields extends Record<string, unknown> = Record<string, never>,
   >(
     page: Page<ExtraPageData, ExtraPageFrontmatter, ExtraPageFields>,
   ) => string | null

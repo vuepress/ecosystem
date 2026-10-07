@@ -39,6 +39,7 @@ Pass directly to the `AutoFrontmatterHandle` function, indicating processing for
 
 ```ts title=".vuepress/config.ts"
 import path from 'node:path'
+
 import { autoFrontmatterPlugin } from '@vuepress/plugin-auto-frontmatter'
 
 export default {
@@ -60,6 +61,7 @@ The `filter` parameter accepts one or more glob strings, using [picomatch](https
 
 ```ts title=".vuepress/config.ts"
 import path from 'node:path'
+
 import { autoFrontmatterPlugin } from '@vuepress/plugin-auto-frontmatter'
 
 export default {
@@ -79,6 +81,7 @@ If you need to exclude files, you can pass a glob string starting with `!` to th
 
 ```ts title=".vuepress/config.ts"
 import path from 'node:path'
+
 import { autoFrontmatterPlugin } from '@vuepress/plugin-auto-frontmatter'
 
 export default {
@@ -99,6 +102,7 @@ export default {
 
 ```ts title=".vuepress/config.ts"
 import path from 'node:path'
+
 import { autoFrontmatterPlugin } from '@vuepress/plugin-auto-frontmatter'
 
 export default {
@@ -121,6 +125,7 @@ You can configure multiple filter rules and handle functions, allowing different
 
 ```ts title=".vuepress/config.ts"
 import path from 'node:path'
+
 import { autoFrontmatterPlugin } from '@vuepress/plugin-auto-frontmatter'
 
 export default {
@@ -190,6 +195,7 @@ Add title based on filename:
 
 ```ts title=".vuepress/config.ts"
 import path from 'node:path'
+
 import {
   addTitleByFilename,
   autoFrontmatterPlugin,
@@ -219,13 +225,15 @@ title: guide
 interface AddCreateDateOptions {
   /**
    * The frontmatter key name used when adding time
-   * @default "date"
+   *
+   * @default 'date'
    */
   key?: string
 
   /**
    * Date format used when adding time
-   * @default "date"
+   *
+   * @default 'date'
    */
   format?: 'date' | 'full' | 'time'
 }
@@ -241,6 +249,7 @@ Add date based on file creation time. This function will first attempt to read t
 
 ```ts title=".vuepress/config.ts"
 import path from 'node:path'
+
 import {
   addCreateDate,
   autoFrontmatterPlugin,
@@ -270,49 +279,54 @@ date: 2025-01-01 11:11:11
 interface PermalinkOptions {
   /**
    * Algorithm used to derive the permalink value
+   *
    * @default 'crc32'
    */
   algorithm?: 'crc16' | 'crc32' | 'md5' | 'sha1' | 'sha256' | 'nanoid'
 
   /**
    * Encoding of a numeric hash, only applies to `crc16` and `crc32`
+   *
    * @default 'hex'
    */
   encoding?: 'hex' | 'dec'
 
   /**
    * Source used as the seed of the permalink
+   *
    * @default 'path'
    */
   source?: 'path' | 'content'
 
   /**
    * Amount of characters kept from the generated value, `0` keeps all
+   *
    * @default 8
    */
   length?: number
 
   /**
    * Prefix of the permalink
+   *
    * @default '/'
    */
   prefix?: string
 
   /**
    * Suffix of the permalink
+   *
    * @default '.html'
    */
   suffix?: string
 
   /**
    * Whether to overwrite existing permalinks
+   *
    * @default false
    */
   force?: boolean
 
-  /**
-   * Permalinks that are already used and must not be generated again
-   */
+  /** Permalinks that are already used and must not be generated again */
   reserved?: Iterable<string>
 }
 
@@ -375,16 +389,19 @@ A page with `permalink: null` is left untouched, because `null` is how VuePress 
 interface AddShortPermalinkOptions {
   /**
    * Use `nanoid` to generate a random character length
+   *
    * @default 8
    */
   length?: number
   /**
-   * add a prefix
+   * Add a prefix
+   *
    * @default `/`
    */
   prefix?: string
   /**
-   * add a suffix
+   * Add a suffix
+   *
    * @default `.html`
    */
   suffix?: string
@@ -400,6 +417,7 @@ Using `nanoid` to generate random characters as permalink:
 
 ```ts title=".vuepress/config.ts"
 import path from 'node:path'
+
 import {
   addShortPermalink,
   autoFrontmatterPlugin,

@@ -499,9 +499,7 @@ interface BlogCategoryData<
   /** 分类路径 */
   path: string
 
-  /**
-   * 仅当当前路由匹配特定的子项路径时可用
-   */
+  /** 仅当当前路由匹配特定的子项路径时可用 */
   currentItems?: Article<Info>[]
 
   /** 分类映射 */

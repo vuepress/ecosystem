@@ -138,7 +138,7 @@ export interface GetHeadersOptions {
    *
    * The Array of `CSS Selector`
    *
-   * @default []
+   * @default [ ]
    */
   ignore?: string[]
   /**
@@ -146,8 +146,11 @@ export interface GetHeadersOptions {
    *
    * - `false`: No headers.
    * - `number`: only headings of that level will be displayed.
-   * - `[number, number]: headings level tuple, where the first number should be less than the second number, for example, `[2, 4]` which means all headings from `<h2>` to `<h4>` will be displayed.
-   * - `deep`: same as `[2, 6]`, which means all headings from `<h2>` to `<h6>` will be displayed.
+   * - `[number, number]: headings level tuple, where the first number should be
+   *   less than the second number, for example, `[2, 4]`which means all
+   *   headings from`<h2>`to`<h4>` will be displayed.
+   * - `deep`: same as `[2, 6]`, which means all headings from `<h2>` to `<h6>`
+   *   will be displayed.
    *
    * @default 2
    */
@@ -165,9 +168,7 @@ interface PageHeader {
    * `1` to `6` for `<h1>` to `<h6>`
    */
   level: number
-  /**
-   * The title of the header
-   */
+  /** The title of the header */
   title: string
   /**
    * The slug of the header
@@ -181,9 +182,7 @@ interface PageHeader {
    * Typically using `#${slug}` as the anchor hash
    */
   link: string
-  /**
-   * The children of the header
-   */
+  /** The children of the header */
   children: MarkdownItHeader[]
 }
 
@@ -363,13 +362,9 @@ Provides fade-in transition effects when block-level elements expand, supporting
 
 ```ts
 interface FadeInExpandTransitionProps {
-  /**
-   * Whether to group transitions
-   */
+  /** Whether to group transitions */
   group?: boolean
-  /**
-   * Transition mode
-   */
+  /** Transition mode */
   mode?: 'default' | 'in-out' | 'out-in'
 
   /**

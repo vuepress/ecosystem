@@ -592,18 +592,18 @@ Whether to enable [twoslash](https://github.com/twoslashes/twoslash).
 interface ShikiTwoslashOptions extends TransformerTwoslashOptions {
   /**
    * Requires adding `twoslash` to the code block explicitly to run twoslash
+   *
    * @default true
    */
   explicitTrigger?: RegExp | boolean
 
-  /**
-   * twoslash options
-   */
+  /** Twoslash options */
   twoslashOptions?: TransformerTwoslashOptions['twoslashOptions'] &
     VueSpecificOptions
 
   /**
    * The options for caching resolved types
+   *
    * @default true
    */
   typesCache?: TwoslashTypesCache | boolean
