@@ -212,9 +212,9 @@ The primary author of the channel.
 interface FeedAuthor {
   name?: string
   email?: string
-  /** json feed only */
+  /** Json feed only */
   url?: string
-  /** json feed only */
+  /** Json feed only */
   avatar?: string
 }
 ```
@@ -262,9 +262,9 @@ Get the authors of the feed item. Return an empty array when there is no author.
 interface FeedAuthor {
   name?: string
   email?: string
-  /** json feed only */
+  /** Json feed only */
   url?: string
-  /** json feed only */
+  /** Json feed only */
   avatar?: string
 }
 ```
@@ -276,9 +276,9 @@ Get the categories of the feed item.
 ```ts
 interface FeedCategory {
   name: string
-  /** rss format only */
+  /** Rss format only */
   domain?: string
-  /** atom format only */
+  /** Atom format only */
   scheme?: string
 }
 ```
@@ -290,9 +290,9 @@ Get the enclosure of the feed item.
 ```ts
 interface FeedEnclosure {
   url: string
-  /** should be a standard MIME type, rss format only */
+  /** Should be a standard MIME type, rss format only */
   type: string
-  /** rss format only */
+  /** Rss format only */
   length?: number
 }
 ```
@@ -317,9 +317,9 @@ Get the contributors of the feed item. Return an empty array when there is no co
 interface FeedContributor {
   name?: string
   email?: string
-  /** json feed only */
+  /** Json feed only */
   url?: string
-  /** json feed only */
+  /** Json feed only */
   avatar?: string
 }
 ```
@@ -406,9 +406,9 @@ The authors of the feed item.
 interface FeedAuthor {
   name?: string
   email?: string
-  /** json feed only */
+  /** Json feed only */
   url?: string
-  /** json feed only */
+  /** Json feed only */
   avatar?: string
 }
 ```
@@ -421,9 +421,9 @@ The contributors of the feed item.
 interface FeedContributor {
   name?: string
   email?: string
-  /** json feed only */
+  /** Json feed only */
   url?: string
-  /** json feed only */
+  /** Json feed only */
   avatar?: string
 }
 ```
@@ -435,9 +435,9 @@ The categories of the feed item.
 ```ts
 interface FeedCategory {
   name: string
-  /** rss format only */
+  /** Rss format only */
   domain?: string
-  /** atom format only */
+  /** Atom format only */
   scheme?: string
 }
 ```

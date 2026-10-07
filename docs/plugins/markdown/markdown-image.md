@@ -58,9 +58,9 @@ You can pass an object to `mark` to config ID marks, available options are:
 
 ```ts
 interface ImageMarkOptions {
-  /** lightmode only IDs */
+  /** Lightmode only IDs */
   light?: string[]
-  /** darkmode only IDs */
+  /** Darkmode only IDs */
   dark?: string[]
 }
 ```

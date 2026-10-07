@@ -100,8 +100,8 @@ Plugins that must inject client-side styles or register components **conditional
 - **Relative imports must use `.js` extension** even though the source files are `.ts`:
 
   ```ts
-  import { foo } from './utils.js' // ✅
   import { foo } from './utils' // ❌
+  import { foo } from './utils.js' // ✅
   ```
 
 - **No cross-folder imports** between `client`, `node`, and `shared`:
@@ -148,11 +148,11 @@ Plugins that must inject client-side styles or register components **conditional
  *
  * （可选）中文详细描述
  *
- * @param paramName - English description / 中文描述
- *
- * @default defaultValue
  * @example
  *   // Example code in TypeScript
+ *
+ * @default defaultValue
+ * @param paramName - English description / 中文描述
  */
 ```
 

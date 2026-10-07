@@ -592,18 +592,18 @@ type CodeBlockTitleRender = (title: string, code: string) => string
 interface ShikiTwoslashOptions extends TransformerTwoslashOptions {
   /**
    * 是否需要显式地将 `twoslash` 添加到代码块中以运行 twoslash
+   *
    * @default true
    */
   explicitTrigger?: RegExp | boolean
 
-  /**
-   * twoslash 配置
-   */
+  /** Twoslash 配置 */
   twoslashOptions?: TransformerTwoslashOptions['twoslashOptions'] &
     VueSpecificOptions
 
   /**
    * 缓存解析后类型
+   *
    * @default true
    */
   typesCache?: TwoslashTypesCache | boolean

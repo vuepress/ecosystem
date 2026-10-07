@@ -3,9 +3,9 @@ import type { PageExcerptOptions } from '@vuepress/helper'
 import type { Page } from 'vuepress/core'
 
 export interface BlogCategoryOptions<
-  ExtraPageData extends Record<any, any> = Record<never, never>,
+  ExtraPageData extends Record<any, any> = Record<string, unknown>,
   ExtraPageFrontmatter extends Record<any, any> = Record<string, unknown>,
-  ExtraPageFields extends Record<any, any> = Record<never, never>,
+  ExtraPageFields extends Record<any, any> = Record<string, unknown>,
 > {
   /**
    * Unique category name
@@ -96,9 +96,9 @@ export interface BlogCategoryOptions<
 }
 
 export interface BlogTypeOptions<
-  ExtraPageData extends Record<any, any> = Record<never, never>,
+  ExtraPageData extends Record<any, any> = Record<string, unknown>,
   ExtraPageFrontmatter extends Record<any, any> = Record<string, unknown>,
-  ExtraPageFields extends Record<any, any> = Record<never, never>,
+  ExtraPageFields extends Record<any, any> = Record<string, unknown>,
 > {
   /**
    * Unique type name
@@ -171,12 +171,12 @@ export interface BlogPluginOptions extends Pick<
    * 从页面中提取文章信息的函数
    */
   getInfo?: <
-    ExtraPageData extends Record<string, unknown> = Record<never, never>,
+    ExtraPageData extends Record<string, unknown> = Record<string, unknown>,
     ExtraPageFrontmatter extends Record<string, unknown> = Record<
       string,
       unknown
     >,
-    ExtraPageFields extends Record<string, unknown> = Record<never, never>,
+    ExtraPageFields extends Record<string, unknown> = Record<string, unknown>,
   >(
     page: Page<ExtraPageData, ExtraPageFrontmatter, ExtraPageFields>,
   ) => Record<string, unknown>
@@ -189,12 +189,12 @@ export interface BlogPluginOptions extends Pick<
    * @default (page) => Boolean(page.filePathRelative) && !page.frontmatter.home
    */
   filter?: <
-    ExtraPageData extends Record<string, unknown> = Record<never, never>,
+    ExtraPageData extends Record<string, unknown> = Record<string, unknown>,
     ExtraPageFrontmatter extends Record<string, unknown> = Record<
       string,
       unknown
     >,
-    ExtraPageFields extends Record<string, unknown> = Record<never, never>,
+    ExtraPageFields extends Record<string, unknown> = Record<string, unknown>,
   >(
     page: Page<ExtraPageData, ExtraPageFrontmatter, ExtraPageFields>,
   ) => boolean
@@ -273,12 +273,12 @@ export interface BlogPluginOptions extends Pick<
    * @default options.filter
    */
   excerptFilter?: <
-    ExtraPageData extends Record<string, unknown> = Record<never, never>,
+    ExtraPageData extends Record<string, unknown> = Record<string, unknown>,
     ExtraPageFrontmatter extends Record<string, unknown> = Record<
       string,
       unknown
     >,
-    ExtraPageFields extends Record<string, unknown> = Record<never, never>,
+    ExtraPageFields extends Record<string, unknown> = Record<string, unknown>,
   >(
     page: Page<ExtraPageData, ExtraPageFrontmatter, ExtraPageFields>,
   ) => boolean

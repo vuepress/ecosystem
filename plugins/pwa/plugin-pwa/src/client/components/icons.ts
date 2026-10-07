@@ -9,7 +9,7 @@ interface SVGWrapperProps {
 
 const SVGWrapper: FunctionalComponent<
   SVGWrapperProps,
-  Record<never, never>,
+  Record<string, never>,
   { default: () => VNode | VNode[] }
 > = ({ name = '', color = 'currentColor' }, { slots }) =>
   h(

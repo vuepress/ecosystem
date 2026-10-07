@@ -9,7 +9,7 @@ import type { FunctionalComponent, VNode } from 'vue'
  * @returns Default slot content
  */
 export const RenderDefault: FunctionalComponent<
-  Record<never, never>,
-  Record<never, never>,
+  Record<string, never>,
+  Record<string, never>,
   { default: () => VNode | VNode[] | null }
 > = (_props, { slots }) => slots.default()

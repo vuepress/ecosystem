@@ -207,67 +207,49 @@ Provides custom variables or getter functions for the [`llmsTxtTemplate`](#llmst
 You can use this to inject static strings or dynamically generated content.
 
 ```ts
-/**
- * Link extension options for generated links
- */
+/** Link extension options for generated links */
 export type LinkExtension = '.html' | '.md'
 
-/**
- * Page with additional LLM-friendly content
- */
+/** Page with additional LLM-friendly content */
 export interface LLMPage extends Page {
   /**
    * The page's Markdown content
    *
-   * @example '# Guide\n\nA guide'
+   * @example
+   *   '# Guide\n\nA guide'
    */
   markdown: string
 
   /**
    * The page's excerpt
    *
-   * @example 'Introduction to the guide'
+   * @example
+   *   'Introduction to the guide'
    */
   excerpt: string
 }
 
-/**
- * State object for LLM text generation
- */
+/** State object for LLM text generation */
 export interface LLMState {
-  /**
-   * VuePress app instance
-   */
+  /** VuePress app instance */
   app: App
 
-  /**
-   * Site base URL
-   */
+  /** Site base URL */
   base: string
 
-  /**
-   * Optional domain to prepend to URLs
-   */
+  /** Optional domain to prepend to URLs */
   domain?: string
 
-  /**
-   * Link extension for generated links
-   */
+  /** Link extension for generated links */
   linkExtension?: LinkExtension
 
-  /**
-   * The path of the current locale.
-   */
+  /** The path of the current locale. */
   currentLocale: string
 
-  /**
-   * Current site locale data
-   */
+  /** Current site locale data */
   siteLocale: SiteLocaleData
 
-  /**
-   * Whether to generate llms.txt files for all locales.
-   */
+  /** Whether to generate llms.txt files for all locales. */
   allLocales: boolean
 }
 

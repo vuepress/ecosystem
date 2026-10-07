@@ -501,9 +501,7 @@ interface BlogCategoryData<
   /** Category path */
   path: string
 
-  /**
-   * Available only when the current route matches a specific item path
-   */
+  /** Available only when the current route matches a specific item path */
   currentItems?: Article<Info>[]
 
   /** Category map */

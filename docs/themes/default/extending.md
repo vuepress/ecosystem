@@ -30,6 +30,7 @@ Create a client config file and a local layout, and register the layout in the f
 
 ```ts title="client.ts"
 import { defineClientConfig } from 'vuepress/client'
+
 import Layout from './layouts/Layout.vue'
 
 export default defineClientConfig({

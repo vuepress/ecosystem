@@ -30,6 +30,7 @@ VuePress 默认主题有着大量的用户，因此我们对它进行了一些�
 
 ```ts title="client.ts"
 import { defineClientConfig } from 'vuepress/client'
+
 import Layout from './layouts/Layout.vue'
 
 export default defineClientConfig({

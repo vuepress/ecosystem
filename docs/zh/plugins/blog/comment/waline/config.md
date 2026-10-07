@@ -21,29 +21,17 @@ Waline 的服务端地址。
 type WalineEmojiPresets = `http://${string}` | `https://${string}`
 
 interface WalineEmojiInfo {
-  /**
-   * 选项卡上的 Emoji 名称
-   */
+  /** 选项卡上的 Emoji 名称 */
   name: string
-  /**
-   * 所在文件夹链接
-   */
+  /** 所在文件夹链接 */
   folder?: string
-  /**
-   * Emoji 通用路径前缀
-   */
+  /** Emoji 通用路径前缀 */
   prefix?: string
-  /**
-   * Emoji 图片的类型，会作为文件扩展名使用
-   */
+  /** Emoji 图片的类型，会作为文件扩展名使用 */
   type?: string
-  /**
-   * 选项卡显示的 Emoji 图标
-   */
+  /** 选项卡显示的 Emoji 图标 */
   icon: string
-  /**
-   * Emoji 图片列表
-   */
+  /** Emoji 图片列表 */
   items: string[]
 }
 ```
@@ -120,9 +108,7 @@ interface WalineEmojiInfo {
 
 ```ts
 interface WalineSearchImageData extends Record<string, unknown> {
-  /**
-   * 图片链接
-   */
+  /** 图片链接 */
   src: string
 
   /**
@@ -145,9 +131,7 @@ interface WalineSearchImageData extends Record<string, unknown> {
 type WalineSearchResult = WalineSearchImageData[]
 
 interface WalineSearchOptions {
-  /**
-   * 搜索操作
-   */
+  /** 搜索操作 */
   search: (word: string) => Promise<WalineSearchResult>
 
   /**
