@@ -53,7 +53,7 @@
     "@vuepress/highlighter-helper": "workspace:*",
     "nanoid": "^6.0.1",
     "shiki": "^4.4.3",
-    "synckit": "^0.11.13"
+    "synckit": "^0.12.0"
   },
   "devDependencies": {
     "@types/culori": "^4.0.1",
