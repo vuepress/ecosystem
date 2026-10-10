@@ -1,5 +1,5 @@
 :root {
-  --message-offset: calc(var(--vp-header-offset, 3.6rem) + 1rem);
+  --message-offset: calc(var(--header-offset, 3.6rem) + 1rem);
   --message-timing-duration: 0.3s;
   --message-timing-function: ease-in-out;
   --message-gap: 0.5rem;
