@@ -1262,8 +1262,8 @@ importers:
         specifier: workspace:*
         version: link:../../../tools/highlighter-helper
       '@yutengjing/vscode-icons':
-        specifier: ^0.1.1
-        version: 0.1.1
+        specifier: ^0.2.0
+        version: 0.2.0
       iconify-icon:
         specifier: ^3.0.3
         version: 3.0.3
@@ -6007,8 +6007,8 @@ packages:
   '@yuku-toolchain/types@0.10.2':
     resolution: {integrity: sha512-sSeo4SSSToiS+sSD+bwn/s94EEcaLJ7tG5LCp8gFYC1G5VzxzX7fqB6m9RU1yMD8KTpu6zdU/I1NlQf8hVBJ9Q==}
 
-  '@yutengjing/vscode-icons@0.1.1':
-    resolution: {integrity: sha512-SAg4IBCFF0oA9KzioowXnec9zwbOgpfDKaXuCKfdwYt+HF+qlLihTlelMRMiB2BoqbxtREXwTMnhsxb/fAmIMQ==}
+  '@yutengjing/vscode-icons@0.2.0':
+    resolution: {integrity: sha512-tMZHR72fTyIsmjFBb7Qzo7/8HkpzrzQz7lg1kxl8XwbQMX0IIXr3aS7d2JI4PNNY4jZIJyDVhV5byUNkFJrR4Q==}
     engines: {node: '>=20.0.0'}
 
   '@zeit/schemas@2.36.0':
@@ -15540,7 +15540,7 @@ snapshots:
 
   '@yuku-toolchain/types@0.10.2': {}
 
-  '@yutengjing/vscode-icons@0.1.1': {}
+  '@yutengjing/vscode-icons@0.2.0': {}
 
   '@zeit/schemas@2.36.0': {}
 
