@@ -40,6 +40,7 @@ export default {
 
 ```ts title=".vuepress/config.ts"
 import path from 'node:path'
+
 import { autoFrontmatterPlugin } from '@vuepress/plugin-auto-frontmatter'
 
 export default {
@@ -61,6 +62,7 @@ export default {
 
 ```ts title=".vuepress/config.ts"
 import path from 'node:path'
+
 import { autoFrontmatterPlugin } from '@vuepress/plugin-auto-frontmatter'
 
 export default {
@@ -80,6 +82,7 @@ export default {
 
 ```ts title=".vuepress/config.ts"
 import path from 'node:path'
+
 import { autoFrontmatterPlugin } from '@vuepress/plugin-auto-frontmatter'
 
 export default {
@@ -100,6 +103,7 @@ export default {
 
 ```ts title=".vuepress/config.ts"
 import path from 'node:path'
+
 import { autoFrontmatterPlugin } from '@vuepress/plugin-auto-frontmatter'
 
 export default {
@@ -122,6 +126,7 @@ export default {
 
 ```ts title=".vuepress/config.ts"
 import path from 'node:path'
+
 import { autoFrontmatterPlugin } from '@vuepress/plugin-auto-frontmatter'
 
 export default {
@@ -191,6 +196,7 @@ function addTitleByFilename(
 
 ```ts title=".vuepress/config.ts"
 import path from 'node:path'
+
 import {
   addTitleByFilename,
   autoFrontmatterPlugin,
@@ -220,13 +226,15 @@ title: guide
 interface AddCreateDateOptions {
   /**
    * 添加时间时使用的 frontmatter 键名
-   * @default "date"
+   *
+   * @default 'date'
    */
   key?: string
 
   /**
    * 添加时间时使用的日期格式
-   * @default "date"
+   *
+   * @default 'date'
    */
   format?: 'date' | 'full' | 'time'
 }
@@ -242,6 +250,7 @@ function addCreateDate(
 
 ```ts title=".vuepress/config.ts"
 import path from 'node:path'
+
 import {
   addCreateDate,
   autoFrontmatterPlugin,
@@ -271,49 +280,54 @@ date: 2025-01-01 11:11:11
 interface PermalinkOptions {
   /**
    * 派生永久链接值的算法
+   *
    * @default 'crc32'
    */
   algorithm?: 'crc16' | 'crc32' | 'md5' | 'sha1' | 'sha256' | 'nanoid'
 
   /**
    * 数值哈希的编码方式，仅对 `crc16` 与 `crc32` 生效
+   *
    * @default 'hex'
    */
   encoding?: 'hex' | 'dec'
 
   /**
    * 永久链接种子的来源
+   *
    * @default 'path'
    */
   source?: 'path' | 'content'
 
   /**
    * 保留的生成值字符数，`0` 表示不截断
+   *
    * @default 8
    */
   length?: number
 
   /**
    * 永久链接前缀
+   *
    * @default '/'
    */
   prefix?: string
 
   /**
    * 永久链接后缀
+   *
    * @default '.html'
    */
   suffix?: string
 
   /**
    * 是否覆盖已有的永久链接
+   *
    * @default false
    */
   force?: boolean
 
-  /**
-   * 已被使用、不可再生成的永久链接
-   */
+  /** 已被使用、不可再生成的永久链接 */
   reserved?: Iterable<string>
 }
 
@@ -376,16 +390,19 @@ frontmatter 中带有 `permalink: null` 的页面不会被改动，因为 `null`
 interface AddShortPermalinkOptions {
   /**
    * 使用 `nanoid` 生成随机字符长度
+   *
    * @default 8
    */
   length?: number
   /**
    * 前缀
+   *
    * @default `/`
    */
   prefix?: string
   /**
    * 后缀
+   *
    * @default `.html`
    */
   suffix?: string
@@ -401,6 +418,7 @@ function addShortPermalink(
 
 ```ts title=".vuepress/config.ts"
 import path from 'node:path'
+
 import {
   addShortPermalink,
   autoFrontmatterPlugin,

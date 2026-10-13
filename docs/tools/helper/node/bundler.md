@@ -150,6 +150,7 @@ useCustomDevServer(bundlerOptions, app, {
   ::: tip
 
   If a package meets one of the following conditions, you should consider adding it here.
+
   - It's in CJS format
   - It's dependencies include CJS package
   - It's dynamically imported via `import()`

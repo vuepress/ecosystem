@@ -16,12 +16,12 @@ export interface FeedGetter {
    * 项目标题获取器
    */
   title?: <
-    ExtraPageData extends Record<string, unknown> = Record<never, never>,
+    ExtraPageData extends Record<string, unknown> = Record<string, never>,
     ExtraPageFrontmatter extends Record<string, unknown> = Record<
       string,
       unknown
     >,
-    ExtraPageFields extends Record<string, unknown> = Record<never, never>,
+    ExtraPageFields extends Record<string, unknown> = Record<string, never>,
   >(
     page: Page<
       ExtraPageData,
@@ -37,12 +37,12 @@ export interface FeedGetter {
    * 项目链接获取器
    */
   link?: <
-    ExtraPageData extends Record<string, unknown> = Record<never, never>,
+    ExtraPageData extends Record<string, unknown> = Record<string, never>,
     ExtraPageFrontmatter extends Record<string, unknown> = Record<
       string,
       unknown
     >,
-    ExtraPageFields extends Record<string, unknown> = Record<never, never>,
+    ExtraPageFields extends Record<string, unknown> = Record<string, never>,
   >(
     page: Page<
       ExtraPageData,
@@ -58,12 +58,12 @@ export interface FeedGetter {
    * 项目描述获取器
    */
   description?: <
-    ExtraPageData extends Record<string, unknown> = Record<never, never>,
+    ExtraPageData extends Record<string, unknown> = Record<string, never>,
     ExtraPageFrontmatter extends Record<string, unknown> = Record<
       string,
       unknown
     >,
-    ExtraPageFields extends Record<string, unknown> = Record<never, never>,
+    ExtraPageFields extends Record<string, unknown> = Record<string, never>,
   >(
     page: Page<
       ExtraPageData,
@@ -79,12 +79,12 @@ export interface FeedGetter {
    * 项目摘要获取器
    */
   excerpt?: <
-    ExtraPageData extends Record<string, unknown> = Record<never, never>,
+    ExtraPageData extends Record<string, unknown> = Record<string, never>,
     ExtraPageFrontmatter extends Record<string, unknown> = Record<
       string,
       unknown
     >,
-    ExtraPageFields extends Record<string, unknown> = Record<never, never>,
+    ExtraPageFields extends Record<string, unknown> = Record<string, never>,
   >(
     page: Page<
       ExtraPageData,
@@ -100,12 +100,12 @@ export interface FeedGetter {
    * 项目内容获取器
    */
   content?: <
-    ExtraPageData extends Record<string, unknown> = Record<never, never>,
+    ExtraPageData extends Record<string, unknown> = Record<string, never>,
     ExtraPageFrontmatter extends Record<string, unknown> = Record<
       string,
       unknown
     >,
-    ExtraPageFields extends Record<string, unknown> = Record<never, never>,
+    ExtraPageFields extends Record<string, unknown> = Record<string, never>,
   >(
     page: Page<
       ExtraPageData,
@@ -125,12 +125,12 @@ export interface FeedGetter {
    * 获取器应在作者信息缺失时返回空数组
    */
   author?: <
-    ExtraPageData extends Record<string, unknown> = Record<never, never>,
+    ExtraPageData extends Record<string, unknown> = Record<string, never>,
     ExtraPageFrontmatter extends Record<string, unknown> = Record<
       string,
       unknown
     >,
-    ExtraPageFields extends Record<string, unknown> = Record<never, never>,
+    ExtraPageFields extends Record<string, unknown> = Record<string, never>,
   >(
     page: Page<
       ExtraPageData,
@@ -146,12 +146,12 @@ export interface FeedGetter {
    * 项目分类获取器
    */
   category?: <
-    ExtraPageData extends Record<string, unknown> = Record<never, never>,
+    ExtraPageData extends Record<string, unknown> = Record<string, never>,
     ExtraPageFrontmatter extends Record<string, unknown> = Record<
       string,
       unknown
     >,
-    ExtraPageFields extends Record<string, unknown> = Record<never, never>,
+    ExtraPageFields extends Record<string, unknown> = Record<string, never>,
   >(
     page: Page<
       ExtraPageData,
@@ -167,12 +167,12 @@ export interface FeedGetter {
    * 项目附件获取器
    */
   enclosure?: <
-    ExtraPageData extends Record<string, unknown> = Record<never, never>,
+    ExtraPageData extends Record<string, unknown> = Record<string, never>,
     ExtraPageFrontmatter extends Record<string, unknown> = Record<
       string,
       unknown
     >,
-    ExtraPageFields extends Record<string, unknown> = Record<never, never>,
+    ExtraPageFields extends Record<string, unknown> = Record<string, never>,
   >(
     page: Page<
       ExtraPageData,
@@ -188,12 +188,12 @@ export interface FeedGetter {
    * 项目发布日期获取器
    */
   publishDate?: <
-    ExtraPageData extends Record<string, unknown> = Record<never, never>,
+    ExtraPageData extends Record<string, unknown> = Record<string, never>,
     ExtraPageFrontmatter extends Record<string, unknown> = Record<
       string,
       unknown
     >,
-    ExtraPageFields extends Record<string, unknown> = Record<never, never>,
+    ExtraPageFields extends Record<string, unknown> = Record<string, never>,
   >(
     page: Page<
       ExtraPageData,
@@ -209,12 +209,12 @@ export interface FeedGetter {
    * 项目最后更新日期获取器
    */
   lastUpdateDate?: <
-    ExtraPageData extends Record<string, unknown> = Record<never, never>,
+    ExtraPageData extends Record<string, unknown> = Record<string, never>,
     ExtraPageFrontmatter extends Record<string, unknown> = Record<
       string,
       unknown
     >,
-    ExtraPageFields extends Record<string, unknown> = Record<never, never>,
+    ExtraPageFields extends Record<string, unknown> = Record<string, never>,
   >(
     page: Page<
       ExtraPageData,
@@ -230,12 +230,12 @@ export interface FeedGetter {
    * 项目图片获取器
    */
   image?: <
-    ExtraPageData extends Record<string, unknown> = Record<never, never>,
+    ExtraPageData extends Record<string, unknown> = Record<string, never>,
     ExtraPageFrontmatter extends Record<string, unknown> = Record<
       string,
       unknown
     >,
-    ExtraPageFields extends Record<string, unknown> = Record<never, never>,
+    ExtraPageFields extends Record<string, unknown> = Record<string, never>,
   >(
     page: Page<
       ExtraPageData,
@@ -251,12 +251,12 @@ export interface FeedGetter {
    * 项目贡献者获取器
    */
   contributor?: <
-    ExtraPageData extends Record<string, unknown> = Record<never, never>,
+    ExtraPageData extends Record<string, unknown> = Record<string, never>,
     ExtraPageFrontmatter extends Record<string, unknown> = Record<
       string,
       unknown
     >,
-    ExtraPageFields extends Record<string, unknown> = Record<never, never>,
+    ExtraPageFields extends Record<string, unknown> = Record<string, never>,
   >(
     page: Page<
       ExtraPageData,
@@ -272,12 +272,12 @@ export interface FeedGetter {
    * 项目版权获取器
    */
   copyright?: <
-    ExtraPageData extends Record<string, unknown> = Record<never, never>,
+    ExtraPageData extends Record<string, unknown> = Record<string, never>,
     ExtraPageFrontmatter extends Record<string, unknown> = Record<
       string,
       unknown
     >,
-    ExtraPageFields extends Record<string, unknown> = Record<never, never>,
+    ExtraPageFields extends Record<string, unknown> = Record<string, never>,
   >(
     page: Page<
       ExtraPageData,
@@ -352,12 +352,12 @@ export interface BaseFeedPluginOptions {
    * Feed 项目过滤器
    */
   filter?: <
-    ExtraPageData extends Record<string, unknown> = Record<never, never>,
+    ExtraPageData extends Record<string, unknown> = Record<string, never>,
     ExtraPageFrontmatter extends Record<string, unknown> = Record<
       string,
       unknown
     >,
-    ExtraPageFields extends Record<string, unknown> = Record<never, never>,
+    ExtraPageFields extends Record<string, unknown> = Record<string, never>,
   >(
     page: Page<
       ExtraPageData,
@@ -372,12 +372,12 @@ export interface BaseFeedPluginOptions {
    * Feed 项目排序器
    */
   sorter?: <
-    ExtraPageData extends Record<string, unknown> = Record<never, never>,
+    ExtraPageData extends Record<string, unknown> = Record<string, never>,
     ExtraPageFrontmatter extends Record<string, unknown> = Record<
       string,
       unknown
     >,
-    ExtraPageFields extends Record<string, unknown> = Record<never, never>,
+    ExtraPageFields extends Record<string, unknown> = Record<string, never>,
   >(
     pageA: Page<
       ExtraPageData,

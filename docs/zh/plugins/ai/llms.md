@@ -243,67 +243,49 @@ description: ...
 - 类型: `TemplateGetterOptions`
 
   ```ts
-  /**
-   * 生成链接的后缀扩展名选项
-   */
+  /** 生成链接的后缀扩展名选项 */
   export type LinkExtension = '.html' | '.md'
 
-  /**
-   * 包含额外 LLM 友好内容的页面对象
-   */
+  /** 包含额外 LLM 友好内容的页面对象 */
   export interface LLMPage extends Page {
     /**
      * 页面的 Markdown 内容
      *
-     * @example '# Guide\n\nA guide'
+     * @example
+     *   '# Guide\n\nA guide'
      */
     markdown: string
 
     /**
      * 页面的摘要
      *
-     * @example 'Introduction to the guide'
+     * @example
+     *   'Introduction to the guide'
      */
     excerpt: string
   }
 
-  /**
-   * LLM 文本生成的状态对象
-   */
+  /** LLM 文本生成的状态对象 */
   export interface LLMState {
-    /**
-     * VuePress 应用实例
-     */
+    /** VuePress 应用实例 */
     app: App
 
-    /**
-     * 站点基础 URL (Base URL)
-     */
+    /** 站点基础 URL (Base URL) */
     base: string
 
-    /**
-     * 添加到 URL 前面的可选域名
-     */
+    /** 添加到 URL 前面的可选域名 */
     domain?: string
 
-    /**
-     * 生成链接的后缀扩展名
-     */
+    /** 生成链接的后缀扩展名 */
     linkExtension?: LinkExtension
 
-    /**
-     * 当前语言环境的路径
-     */
+    /** 当前语言环境的路径 */
     currentLocale: string
 
-    /**
-     * 当前站点语言环境数据
-     */
+    /** 当前站点语言环境数据 */
     siteLocale: SiteLocaleData
 
-    /**
-     * 是否为所有语言环境生成 llms.txt 文件
-     */
+    /** 是否为所有语言环境生成 llms.txt 文件 */
     allLocales: boolean
   }
 

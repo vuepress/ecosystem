@@ -170,6 +170,7 @@ Do not disable `codeBlockTitle`, or replace it with a custom render function, ot
 
 ```ts title="src/main.ts"
 import { createApp } from 'vue'
+
 import App from './App.vue'
 
 createApp(App).mount('#app')

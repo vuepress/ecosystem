@@ -68,12 +68,12 @@ export interface SeoPluginOptions {
    * 页面是否是文章
    */
   isArticle?: <
-    ExtraPageData extends Record<string, unknown> = Record<never, never>,
+    ExtraPageData extends Record<string, unknown> = Record<string, never>,
     ExtraPageFrontmatter extends Record<string, unknown> = Record<
       string,
       unknown
     >,
-    ExtraPageFields extends Record<string, unknown> = Record<never, never>,
+    ExtraPageFields extends Record<string, unknown> = Record<string, never>,
   >(
     page: ExtendPage<ExtraPageData, ExtraPageFrontmatter, ExtraPageFields>,
   ) => boolean
@@ -84,12 +84,12 @@ export interface SeoPluginOptions {
    * 自定义 OGP 生成器
    */
   ogp?: <
-    ExtraPageData extends Record<string, unknown> = Record<never, never>,
+    ExtraPageData extends Record<string, unknown> = Record<string, never>,
     ExtraPageFrontmatter extends Record<string, unknown> = Record<
       string,
       unknown
     >,
-    ExtraPageFields extends Record<string, unknown> = Record<never, never>,
+    ExtraPageFields extends Record<string, unknown> = Record<string, never>,
   >(
     /**
      * OGP Object inferred by plugin
@@ -113,12 +113,12 @@ export interface SeoPluginOptions {
    * 自定义 JSON-LD 生成器
    */
   jsonLd?: <
-    ExtraPageData extends Record<string, unknown> = Record<never, never>,
+    ExtraPageData extends Record<string, unknown> = Record<string, never>,
     ExtraPageFrontmatter extends Record<string, unknown> = Record<
       string,
       unknown
     >,
-    ExtraPageFields extends Record<string, unknown> = Record<never, never>,
+    ExtraPageFields extends Record<string, unknown> = Record<string, never>,
   >(
     /**
      * JSON-LD Object inferred by plugin
@@ -142,12 +142,12 @@ export interface SeoPluginOptions {
    * 自定义 Head 标签
    */
   customHead?: <
-    ExtraPageData extends Record<string, unknown> = Record<never, never>,
+    ExtraPageData extends Record<string, unknown> = Record<string, never>,
     ExtraPageFrontmatter extends Record<string, unknown> = Record<
       string,
       unknown
     >,
-    ExtraPageFields extends Record<string, unknown> = Record<never, never>,
+    ExtraPageFields extends Record<string, unknown> = Record<string, never>,
   >(
     /**
      * Head tag config
@@ -173,12 +173,12 @@ export interface SeoPluginOptions {
   canonical?:
     | string
     | (<
-        ExtraPageData extends Record<string, unknown> = Record<never, never>,
+        ExtraPageData extends Record<string, unknown> = Record<string, never>,
         ExtraPageFrontmatter extends Record<string, unknown> = Record<
           string,
           unknown
         >,
-        ExtraPageFields extends Record<string, unknown> = Record<never, never>,
+        ExtraPageFields extends Record<string, unknown> = Record<string, never>,
       >(
         page: ExtendPage<ExtraPageData, ExtraPageFrontmatter, ExtraPageFields>,
       ) => string | null)

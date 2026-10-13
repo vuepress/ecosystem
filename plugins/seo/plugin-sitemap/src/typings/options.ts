@@ -7,8 +7,8 @@ export type PageModifyTimeGetter = <
   ExtraPageData extends Record<string, unknown> & {
     git?: GitData
   } = { git?: GitData },
-  ExtraPageFrontmatter extends Record<string, unknown> = Record<never, never>,
-  ExtraPageFields extends Record<string, unknown> = Record<never, never>,
+  ExtraPageFrontmatter extends Record<string, unknown> = Record<string, never>,
+  ExtraPageFields extends Record<string, unknown> = Record<string, never>,
 >(
   page: Page<ExtraPageData, ExtraPageFrontmatter, ExtraPageFields>,
   app: App,

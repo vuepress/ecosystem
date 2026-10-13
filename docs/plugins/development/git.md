@@ -399,53 +399,31 @@ interface GitContributorInfo {
 
 ```ts
 interface CoAuthorInfo {
-  /**
-   * Co-author name
-   */
+  /** Co-author name */
   name: string
-  /**
-   * Co-author email
-   */
+  /** Co-author email */
   email: string
 }
 
 interface GitChangelogInfo {
-  /**
-   * Commit hash
-   */
+  /** Commit hash */
   hash: string
-  /**
-   * Unix timestamp in milliseconds
-   */
+  /** Unix timestamp in milliseconds */
   time: number
-  /**
-   * Commit message
-   */
+  /** Commit message */
   message: string
-  /**
-   * The URL of the commit
-   */
+  /** The URL of the commit */
   commitUrl?: string
-  /**
-   * Release tag associated with the commit
-   */
+  /** Release tag associated with the commit */
   tag?: string
-  /**
-   * The URL of the release tag
-   */
+  /** The URL of the release tag */
   tagUrl?: string
-  /**
-   * Commit author name
-   */
+  /** Commit author name */
   author: string
-  /**
-   * Commit author email
-   */
+  /** Commit author email */
   email: string
 
-  /**
-   * The co-authors of the commit
-   */
+  /** The co-authors of the commit */
   coAuthors?: CoAuthorInfo[]
 }
 ```

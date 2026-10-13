@@ -399,53 +399,31 @@ interface GitContributorInfo {
 
 ```ts
 interface CoAuthorInfo {
-  /**
-   * 共同作者姓名
-   */
+  /** 共同作者姓名 */
   name: string
-  /**
-   * 共同作者邮箱
-   */
+  /** 共同作者邮箱 */
   email: string
 }
 
 interface GitChangelogInfo {
-  /**
-   * 提交哈希
-   */
+  /** 提交哈希 */
   hash: string
-  /**
-   * Unix 时间戳（毫秒）
-   */
+  /** Unix 时间戳（毫秒） */
   time: number
-  /**
-   * 提交信息
-   */
+  /** 提交信息 */
   message: string
-  /**
-   * 提交记录的 url
-   */
+  /** 提交记录的 url */
   commitUrl?: string
-  /**
-   * 发布标签 (tag)
-   */
+  /** 发布标签 (tag) */
   tag?: string
-  /**
-   * 发布标签的 url
-   */
+  /** 发布标签的 url */
   tagUrl?: string
-  /**
-   * 提交作者姓名
-   */
+  /** 提交作者姓名 */
   author: string
-  /**
-   * 提交作者邮箱
-   */
+  /** 提交作者邮箱 */
   email: string
 
-  /**
-   * 提交的共同作者
-   */
+  /** 提交的共同作者 */
   coAuthors?: CoAuthorInfo[]
 }
 ```

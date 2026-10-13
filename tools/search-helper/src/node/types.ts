@@ -13,12 +13,12 @@ export interface SearchCustomField {
    * @returns Values of the custom field 自定义字段的值
    */
   getter: <
-    ExtraPageData extends Record<string, unknown> = Record<never, never>,
+    ExtraPageData extends Record<string, unknown> = Record<string, never>,
     ExtraPageFrontmatter extends Record<string, unknown> = Record<
       string,
       unknown
     >,
-    ExtraPageFields extends Record<string, unknown> = Record<never, never>,
+    ExtraPageFields extends Record<string, unknown> = Record<string, never>,
   >(
     page: Page<ExtraPageData, ExtraPageFrontmatter, ExtraPageFields>,
   ) => string[] | string | null | undefined

@@ -17,8 +17,8 @@ npm i -D @vuepress/test-utils@next @vue/test-utils happy-dom
 ```
 
 ```ts title="vitest.config.ts"
-import { defineConfig } from 'vitest/config'
 import { vuepressTestPlugin } from '@vuepress/test-utils'
+import { defineConfig } from 'vitest/config'
 
 export default defineConfig({
   plugins: [vuepressTestPlugin()],

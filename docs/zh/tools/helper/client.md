@@ -127,8 +127,7 @@ export interface GetHeadersOptions {
   /**
    * 标题的选择器
    *
-   * 它将作为 `document.querySelectorAll(selector)` 的参数，
-   * 因此你应该传入一个 `CSS 选择器` 字符串。
+   * 它将作为 `document.querySelectorAll(selector)` 的参数， 因此你应该传入一个 `CSS 选择器` 字符串。
    *
    * @default '[vp-content] h1, [vp-content] h2, [vp-content] h3, [vp-content] h4, [vp-content] h5, [vp-content] h6'
    */
@@ -138,7 +137,7 @@ export interface GetHeadersOptions {
    *
    * `CSS 选择器` 数组
    *
-   * @default []
+   * @default [ ]
    */
   ignore?: string[]
   /**
@@ -146,7 +145,8 @@ export interface GetHeadersOptions {
    *
    * - `false`: 无标题。
    * - `number`: 仅显示该层级的标题。
-   * - `[number, number]`: 标题层级元组，第一个数字应小于第二个数字，例如 `[2, 4]` 表示显示从 `<h2>` 到 `<h4>` 的所有标题。
+   * - `[number, number]`: 标题层级元组，第一个数字应小于第二个数字，例如 `[2, 4]` 表示显示从 `<h2>` 到 `<h4>`
+   *   的所有标题。
    * - `deep`: 等同于 `[2, 6]`，表示显示从 `<h2>` 到 `<h6>` 的所有标题。
    *
    * @default 2
@@ -165,9 +165,7 @@ interface PageHeader {
    * `1` 至 `6` 表示 `<h1>` 至 `<h6>`
    */
   level: number
-  /**
-   * 标题的内容
-   */
+  /** 标题的内容 */
   title: string
   /**
    * 标题的标识符
@@ -181,9 +179,7 @@ interface PageHeader {
    * 通常使用 `#${slug}` 作为锚点哈希
    */
   link: string
-  /**
-   * 标题的子标题
-   */
+  /** 标题的子标题 */
   children: MarkdownItHeader[]
 }
 
@@ -363,13 +359,9 @@ const animateSequence = async () => {
 
 ```ts
 interface FadeInExpandTransitionProps {
-  /**
-   * 是否分组过渡
-   */
+  /** 是否分组过渡 */
   group?: boolean
-  /**
-   * 过渡模式
-   */
+  /** 过渡模式 */
   mode?: 'default' | 'in-out' | 'out-in'
 
   /**
