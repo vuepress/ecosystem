@@ -50,7 +50,7 @@
     "gray-matter": "^4.0.3",
     "js-yaml": "^5.4.3",
     "nanoid": "^6.0.2",
-    "p-map": "^7.0.8",
+    "p-map": "^7.1.1",
     "picomatch": "^4.0.7"
   },
   "devDependencies": {
