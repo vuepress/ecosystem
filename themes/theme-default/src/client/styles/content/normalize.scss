@@ -7,11 +7,17 @@
   h4,
   h5,
   h6 {
-    margin-top: calc(0.5rem - var(--header-offset));
+    margin-top: 2.5rem;
     margin-bottom: 0;
-    padding-top: calc(1rem + var(--header-offset));
+
+    // Keep the anchor target below the navbar when it is scrolled into view.
+    // The box itself must stay in place: the padding that used to push the
+    // content down while a negative margin shifted the box up was covering the
+    // content above and making it unclickable.
+    scroll-margin-top: calc(var(--header-offset) + 1rem);
 
     &:first-child {
+      margin-top: 1.5rem;
       margin-bottom: 1rem;
 
       + p,
@@ -20,6 +26,11 @@
         margin-top: 2rem;
       }
     }
+  }
+
+  // heading following another heading needs less space
+  :is(h1, h2, h3, h4, h5, h6) + :is(h1, h2, h3, h4, h5, h6) {
+    margin-top: 1.5rem;
   }
 
   h1 {

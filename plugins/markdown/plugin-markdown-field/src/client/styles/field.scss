@@ -35,12 +35,13 @@
   }
 
   .vp-field-name {
-    // Keep the anchor target below the navbar by shifting the box up while
-    // pushing the content back down, the same way page headings do
-    margin-top: calc(-1 * var(--header-offset, 0px));
-    padding-top: var(--header-offset, 0);
     font-weight: 500;
     font-size: 18px;
+
+    // Keep the anchor target below the navbar when it is scrolled into view.
+    // The box must not be shifted up, otherwise it would cover the content
+    // above and make it unclickable.
+    scroll-margin-top: calc(var(--header-offset, 0px) + 1rem);
   }
 
   .vp-field.deprecated .vp-field-name {

@@ -25,8 +25,31 @@ export const clientConfig: ClientConfig = defineClientConfig({
     // scrollBehavior is a bit hard to typed here
     // oxlint-disable-next-line typescript/explicit-function-return-type
     router.options.scrollBehavior = async (...args) => {
+      const [to, from, savedPosition] = args
+
       await useScrollPromise().wait()
-      return scrollBehavior(...args)
+
+      // The default `{ el }` behavior computes the scroll position on its own
+      // and ignores `scroll-margin-top`, which is used to keep anchor targets
+      // clear of the navbar. Scroll with `scrollIntoView` instead, and defer it
+      // to the next frame so that the target of a hash link pointing to another
+      // page has been rendered.
+      if (!savedPosition && to.hash) {
+        const id = decodeURIComponent(to.hash).slice(1)
+
+        requestAnimationFrame(() => {
+          // `getElementById` is used instead of `querySelector`, as an id may
+          // contain characters that are invalid in a CSS selector, like the
+          // space in catalog item ids (`AI Plugins`) or the `:` in footnote
+          // ids (`footnote-ref2:1`).
+          // oxlint-disable-next-line unicorn/prefer-query-selector
+          document.getElementById(id)?.scrollIntoView({ block: 'start' })
+        })
+
+        return false
+      }
+
+      return scrollBehavior(to, from, savedPosition)
     }
   },
 
