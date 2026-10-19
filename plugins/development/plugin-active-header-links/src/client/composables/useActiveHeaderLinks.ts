@@ -17,12 +17,15 @@ export interface UseActiveHeaderLinksOptions {
  */
 const updateHash = async (router: Router, hash: string): Promise<void> => {
   const { path, query } = router.currentRoute.value
+  // oxlint-disable-next-line typescript/no-deprecated
   const { scrollBehavior } = router.options
 
   // temporarily disable `scrollBehavior`
+  // oxlint-disable-next-line typescript/no-deprecated
   router.options.scrollBehavior = undefined
   await router.replace({ path, query, hash })
   // restore it after navigation
+  // oxlint-disable-next-line typescript/no-deprecated
   router.options.scrollBehavior = scrollBehavior
 }
 

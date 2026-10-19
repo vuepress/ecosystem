@@ -50,7 +50,7 @@
     "unplugin": "^3.4.0"
   },
   "devDependencies": {
-    "webpack": "^5.111.1"
+    "webpack": "^5.112.0"
   },
   "peerDependencies": {
     "vuepress": "catalog:"
