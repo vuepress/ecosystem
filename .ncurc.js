@@ -41,7 +41,7 @@ export default {
     )
       return '@next'
 
-    if (name === '@types/node') return 'minor'
+    if (['@types/node', 'typescript'].includes(name)) return 'minor'
 
     if (['vite'].includes(name)) return 'patch'
 
