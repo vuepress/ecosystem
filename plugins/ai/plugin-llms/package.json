@@ -42,12 +42,12 @@
   "dependencies": {
     "@types/mdast": "^4.0.4",
     "@vuepress/helper": "workspace:*",
-    "byte-size": "^9.0.1",
+    "byte-size": "^9.0.2",
     "gray-matter": "^4.0.3",
     "mdast-util-from-markdown": "^2.1.0",
     "millify": "^6.1.0",
     "remark": "^15.0.1",
-    "tokenx": "^2.1.0",
+    "tokenx": "^2.2.0",
     "unist-util-remove": "^4.0.0",
     "unist-util-visit": "^5.1.0"
   },

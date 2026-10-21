@@ -17,7 +17,7 @@ const parseTagName = (refs: string): string | null => {
   // `refs` is the raw `%d` value, e.g. `(HEAD -> main, tag: v1.0.0, origin/main)`.
   // The tag is not necessarily the first ref, so look for the one holding it.
   const tagRef = refs
-    .replace(RE_CLEAN_REFS, '')
+    .replaceAll(RE_CLEAN_REFS, '')
     .split(',')
     .map((tag) => tag.trim())
     .find((tag) => tag.startsWith('tag:'))

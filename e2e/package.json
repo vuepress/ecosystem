@@ -15,8 +15,8 @@
     "e2e:dev-webpack": "cross-env E2E_COMMAND=dev E2E_BUNDLER=webpack playwright test"
   },
   "dependencies": {
-    "@iconify-json/vscode-icons": "^1.2.85",
-    "@videojs/html": "10.0.1",
+    "@iconify-json/vscode-icons": "^1.2.91",
+    "@videojs/html": "10.1.0",
     "@vuepress/bundler-vite": "catalog:",
     "@vuepress/bundler-webpack": "catalog:",
     "@vuepress/plugin-auto-frontmatter": "workspace:*",
@@ -39,13 +39,13 @@
     "@vuepress/plugin-watermark": "workspace:*",
     "@vuepress/theme-default": "workspace:*",
     "artplayer": "^5.4.0",
-    "iconify-icon": "^3.0.3",
+    "iconify-icon": "^3.0.4",
     "sass-embedded": "catalog:",
     "sass-loader": "catalog:",
     "vue": "catalog:",
     "vuepress": "catalog:"
   },
   "devDependencies": {
-    "@playwright/test": "^1.63.0"
+    "@playwright/test": "^1.64.1"
   }
 }

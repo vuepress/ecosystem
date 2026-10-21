@@ -30,7 +30,7 @@ export const cleanupTransformer: ShikiTransformer = {
  */
 export const removeEscapeTransformer: ShikiTransformer = {
   name: 'vuepress:remove-escape',
-  postprocess: (code) => code.replace(CODE_ESCAPE_RE, '[!code'),
+  postprocess: (code) => code.replaceAll(CODE_ESCAPE_RE, '[!code'),
 }
 
 /**

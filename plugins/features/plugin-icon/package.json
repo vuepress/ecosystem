@@ -57,9 +57,9 @@
     "vue": "catalog:"
   },
   "devDependencies": {
-    "@iconify-json/lucide": "^1.2.140",
+    "@iconify-json/lucide": "^1.2.146",
     "@iconify-json/mdi": "^1.2.3",
-    "iconify-icon": "^3.0.3"
+    "iconify-icon": "^3.0.4"
   },
   "peerDependencies": {
     "@fortawesome/fontawesome-svg-core": "^7.0.0",

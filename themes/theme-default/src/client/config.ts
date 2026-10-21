@@ -20,10 +20,11 @@ export const clientConfig: ClientConfig = defineClientConfig({
     if (!hasGlobalComponent('Badge')) app.component('Badge', Badge)
 
     // handle scrollBehavior with transition
+    // oxlint-disable-next-line typescript/no-deprecated
     const scrollBehavior = router.options.scrollBehavior!
 
     // scrollBehavior is a bit hard to typed here
-    // oxlint-disable-next-line typescript/explicit-function-return-type
+    // oxlint-disable-next-line typescript/explicit-function-return-type, typescript/no-deprecated
     router.options.scrollBehavior = async (...args) => {
       await useScrollPromise().wait()
       return scrollBehavior(...args)

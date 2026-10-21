@@ -56,10 +56,10 @@
     "vue": "catalog:"
   },
   "devDependencies": {
-    "@iconify-json/vscode-icons": "^1.2.85",
+    "@iconify-json/vscode-icons": "^1.2.91",
     "@vuepress/highlighter-helper": "workspace:*",
-    "@yutengjing/vscode-icons": "^0.1.1",
-    "iconify-icon": "^3.0.3",
+    "@yutengjing/vscode-icons": "^0.2.0",
+    "iconify-icon": "^3.0.4",
     "markdown-it": "catalog:"
   },
   "peerDependencies": {

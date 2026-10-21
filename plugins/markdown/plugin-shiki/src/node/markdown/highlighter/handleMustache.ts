@@ -12,7 +12,7 @@ type MustacheStore = Map<string, string>
  * @returns Content with mustache replaced by unique markers
  */
 const removeMustache = (content: string, store: MustacheStore): string =>
-  content.replace(MUSTACHE_REG, (match) => {
+  content.replaceAll(MUSTACHE_REG, (match) => {
     let marker = store.get(match)
 
     if (!marker) {

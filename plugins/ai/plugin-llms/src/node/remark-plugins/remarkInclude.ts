@@ -61,7 +61,7 @@ const testLine = (
     full &&
     tag &&
     name === regionName &&
-    tag.match(end ? /^[Ee]nd ?[rR]egion$/u : /^[rR]egion$/u),
+    (end ? /^[Ee]nd ?[rR]egion$/u : /^[rR]egion$/u).test(tag),
   )
 }
 
@@ -118,7 +118,7 @@ export const handleInclude = async (
   // read file content
   const fileContent = await fs.readFile(realPath, 'utf-8')
 
-  const lines = fileContent.replace(NEWLINE_RE, '\n').split('\n')
+  const lines = fileContent.replaceAll(NEWLINE_RE, '\n').split('\n')
   let results: string[] = []
 
   // is region
