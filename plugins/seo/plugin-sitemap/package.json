@@ -46,7 +46,7 @@
   },
   "dependencies": {
     "@vuepress/helper": "workspace:*",
-    "sitemap": "^9.0.1"
+    "sitemap": "^10.0.0"
   },
   "devDependencies": {
     "@vuepress/plugin-git": "workspace:*"
