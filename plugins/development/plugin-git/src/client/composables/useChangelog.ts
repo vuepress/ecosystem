@@ -61,7 +61,7 @@ export const useChangelog =
             const repo = item.submodule?.repoUrl ?? mainRepo
 
             if (pattern.issue && repo) {
-              res.message = res.message.replace(
+              res.message = res.message.replaceAll(
                 RE_ISSUE,
                 (matched, issue: string) => {
                   const url = pattern

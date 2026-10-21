@@ -52,13 +52,13 @@ describe('plugin-replace-assets > normalizeRules', () => {
 
   it('should work with single rule', () => {
     const rules = normalizeRules({
-      find: '^/images/.*\\.(jpe?g|png|gif|svg)$',
+      find: String.raw`^/images/.*\.(jpe?g|png|gif|svg)$`,
       replacement: 'https://example.com/images/',
     })
 
     expect(rules).toStrictEqual([
       {
-        find: '^/images/.*\\.(jpe?g|png|gif|svg)$',
+        find: String.raw`^/images/.*\.(jpe?g|png|gif|svg)$`,
         replacement: 'https://example.com/images/',
       },
     ])
@@ -67,22 +67,22 @@ describe('plugin-replace-assets > normalizeRules', () => {
   it('should work with multiple rules', () => {
     const rules = normalizeRules([
       {
-        find: '^/images/.*\\.(jpe?g|png|gif|svg)$',
+        find: String.raw`^/images/.*\.(jpe?g|png|gif|svg)$`,
         replacement: 'https://example.com/images/',
       },
       {
-        find: '^/medias/.*\\.(mp4|ogg|ogv|webm)$',
+        find: String.raw`^/medias/.*\.(mp4|ogg|ogv|webm)$`,
         replacement: 'https://example.com/medias/',
       },
     ])
 
     expect(rules).toStrictEqual([
       {
-        find: '^/images/.*\\.(jpe?g|png|gif|svg)$',
+        find: String.raw`^/images/.*\.(jpe?g|png|gif|svg)$`,
         replacement: 'https://example.com/images/',
       },
       {
-        find: '^/medias/.*\\.(mp4|ogg|ogv|webm)$',
+        find: String.raw`^/medias/.*\.(mp4|ogg|ogv|webm)$`,
         replacement: 'https://example.com/medias/',
       },
     ])
@@ -112,14 +112,14 @@ describe('plugin-replace-assets > normalizeRules', () => {
   it('should work with custom single rule', () => {
     const rules = normalizeRules({
       rules: {
-        find: '^/images/.*\\.(jpe?g|png|gif|svg)$',
+        find: String.raw`^/images/.*\.(jpe?g|png|gif|svg)$`,
         replacement: 'https://example.com/images/',
       },
     })
 
     expect(rules).toStrictEqual([
       {
-        find: '^/images/.*\\.(jpe?g|png|gif|svg)$',
+        find: String.raw`^/images/.*\.(jpe?g|png|gif|svg)$`,
         replacement: 'https://example.com/images/',
       },
     ])
@@ -129,11 +129,11 @@ describe('plugin-replace-assets > normalizeRules', () => {
     const rules = normalizeRules({
       rules: [
         {
-          find: '^/images/.*\\.(jpe?g|png|gif|svg)$',
+          find: String.raw`^/images/.*\.(jpe?g|png|gif|svg)$`,
           replacement: 'https://example.com/images/',
         },
         {
-          find: '^/medias/.*\\.(mp4|ogg|ogv|webm)$',
+          find: String.raw`^/medias/.*\.(mp4|ogg|ogv|webm)$`,
           replacement: 'https://example.com/medias/',
         },
       ],
@@ -141,11 +141,11 @@ describe('plugin-replace-assets > normalizeRules', () => {
 
     expect(rules).toStrictEqual([
       {
-        find: '^/images/.*\\.(jpe?g|png|gif|svg)$',
+        find: String.raw`^/images/.*\.(jpe?g|png|gif|svg)$`,
         replacement: 'https://example.com/images/',
       },
       {
-        find: '^/medias/.*\\.(mp4|ogg|ogv|webm)$',
+        find: String.raw`^/medias/.*\.(mp4|ogg|ogv|webm)$`,
         replacement: 'https://example.com/medias/',
       },
     ])

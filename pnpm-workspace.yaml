@@ -13,7 +13,7 @@ catalog:
   '@vuepress/bundler-webpack': 2.0.0-rc.31
   '@vueuse/core': ^15.0.0
   chokidar: ^5.0.0
-  markdown-it: ^14.3.2
+  markdown-it: ^14.3.3
   sass: ^1.105.2
   sass-embedded: ^1.105.2
   sass-loader: ^17.0.1
