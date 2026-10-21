@@ -49,8 +49,9 @@ test.describe('plugin-media players', () => {
 
     const videos = page.locator('.vp-video-player video')
 
-    // `playsinline` is read by its presence, so the prop removes it
-    await expect(videos.nth(0)).toHaveAttribute('playsinline', 'true')
-    await expect(videos.nth(1)).not.toHaveAttribute('playsinline')
+    // `playsinline` is a boolean attribute, so only its presence matters, not
+    // the serialized value, which Vue writes as an empty string
+    await expect(videos.nth(0)).toHaveJSProperty('playsInline', true)
+    await expect(videos.nth(1)).toHaveJSProperty('playsInline', false)
   })
 })
