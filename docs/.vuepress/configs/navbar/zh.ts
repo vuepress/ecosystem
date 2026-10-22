@@ -46,6 +46,6 @@ export const navbarZh: NavbarOptions = [
     text: '工具',
     icon: 'hammer',
     prefix: '/zh/tools/',
-    children: ['helper/'],
+    children: ['helper/', { text: '@vuepress/test-utils', link: 'test-utils' }],
   },
 ]
