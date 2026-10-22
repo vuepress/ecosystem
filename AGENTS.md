@@ -358,10 +358,10 @@ An unquoted value ends at the first whitespace, so values containing spaces must
 
 The following table covers the PR / build / release workflows. The repo also has issue-triage automation (`issue-commented.yml`, `issue-daily.yml`, `issue-labeled.yml`) which are not relevant to code changes.
 
-| Workflow       | Trigger        | What it does                       |
-| -------------- | -------------- | ---------------------------------- |
-| `check.yml`    | Push / PR      | Lint, type-check, unit tests       |
-| `e2e.yml`      | Push / PR      | Playwright e2e tests (dev + build) |
-| `coverage.yml` | Push to `main` | Code coverage report (Coveralls)   |
-| `docs.yml`     | Push to `main` | Deploys the documentation site     |
-| `release.yml`  | Manual         | Full release pipeline              |
+| Workflow       | Trigger        | What it does                            |
+| -------------- | -------------- | --------------------------------------- |
+| `check.yml`    | Push / PR      | Lint, type-check, unit tests            |
+| `e2e.yml`      | Push / PR      | Playwright e2e tests (dev + build)      |
+| `coverage.yml` | Push to `main` | Code coverage report (Coveralls)        |
+| `docs.yml`     | Push to `main` | Deploys the documentation site          |
+| `release.yml`  | Manual         | Full release pipeline incl. docs deploy |
