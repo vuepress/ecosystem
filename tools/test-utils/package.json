@@ -54,7 +54,7 @@
   },
   "peerDependencies": {
     "@vue/test-utils": "^2.5.1",
-    "happy-dom": "^20.14.5",
+    "happy-dom": "^21.0.0",
     "vuepress": "catalog:"
   },
   "peerDependenciesMeta": {
