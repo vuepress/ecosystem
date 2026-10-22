@@ -40,7 +40,7 @@ jobs:
       - name: Setup pnpm
         uses: pnpm/setup@v3
         with:
-          runtime: node@^24.20.0
+          runtime: node@^24.22.1
 
       - name: Install Deps
         run: pnpm ci
@@ -48,11 +48,14 @@ jobs:
       - name: Build project
         run: pnpm run bundle
 
-      - name: Linting check
-        run: pnpm lint:check
+      - name: Type check
+        run: pnpm run type:check
 
-      - name: Test check
-        run: pnpm test
+      - name: Linting check
+        run: pnpm run lint:check
+
+      - name: Test coverage
+        run: pnpm run test:cov
 
       - name: Config git
         run: |
@@ -86,7 +89,7 @@ jobs:
       - name: Setup pnpm
         uses: pnpm/setup@v3
         with:
-          runtime: node@^24.18.0
+          runtime: node@^24.22.1
 
       - name: Install deps
         run: pnpm ci
