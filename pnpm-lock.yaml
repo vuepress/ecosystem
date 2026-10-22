@@ -923,7 +923,7 @@ importers:
     devDependencies:
       '@iconify-json/lucide':
         specifier: ^1.2.146
-        version: 1.2.146
+        version: 1.2.147
       '@iconify-json/mdi':
         specifier: ^1.2.3
         version: 1.2.3
@@ -3500,8 +3500,8 @@ packages:
   '@gera2ld/jsx-dom@2.2.2':
     resolution: {integrity: sha512-EOqf31IATRE6zS1W1EoWmXZhGfLAoO9FIlwTtHduSrBdud4npYBxYAkv8dZ5hudDPwJeeSjn40kbCL4wAzr8dA==}
 
-  '@iconify-json/lucide@1.2.146':
-    resolution: {integrity: sha512-T7qetsZJ682CCVT2X8C5uYEF6G/mtSoPl8F87wvu1LbfeVt4RxdP03NtaAs4RrrAXbWHBLjKrb8cmMtDucoI5g==}
+  '@iconify-json/lucide@1.2.147':
+    resolution: {integrity: sha512-7Qqa/joSBeUxihWsQJx5nKcqMWtV3YrH90Jldxcx4J9ciTLavRUlpexQwRTcx9dcb7CJpISfjZTj42zD/30sqA==}
 
   '@iconify-json/mdi@1.2.3':
     resolution: {integrity: sha512-O3cLwbDOK7NNDf2ihaQOH5F9JglnulNDFV7WprU2dSoZu3h3cWH//h74uQAB87brHmvFVxIOkuBX2sZSzYhScg==}
@@ -12727,7 +12727,7 @@ snapshots:
     dependencies:
       '@babel/runtime': 7.29.10
 
-  '@iconify-json/lucide@1.2.146':
+  '@iconify-json/lucide@1.2.147':
     dependencies:
       '@iconify/types': 2.0.0
 
