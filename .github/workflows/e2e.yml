@@ -30,9 +30,7 @@ jobs:
         uses: pnpm/setup@v3
         with:
           runtime: node@^24.22.1
-
-      - name: Install dependencies
-        run: pnpm ci
+          require-lockfile: true
 
       - name: Install playwright chromium
         working-directory: ./e2e
@@ -74,9 +72,7 @@ jobs:
         uses: pnpm/setup@v3
         with:
           runtime: node@^24.22.1
-
-      - name: Install dependencies
-        run: pnpm ci
+          require-lockfile: true
 
       - name: Install playwright chromium
         working-directory: ./e2e
@@ -120,9 +116,7 @@ jobs:
         uses: pnpm/setup@v3
         with:
           runtime: node@${{ matrix.node }}
-
-      - name: Install dependencies
-        run: pnpm ci
+          require-lockfile: true
 
       - name: Install playwright chromium
         working-directory: ./e2e

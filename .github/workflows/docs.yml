@@ -22,9 +22,7 @@ jobs:
         uses: pnpm/setup@v3
         with:
           runtime: node@^24.22.1
-
-      - name: Install deps
-        run: pnpm ci
+          require-lockfile: true
 
       - name: Build Project
         run: pnpm run bundle
