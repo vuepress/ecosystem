@@ -90,7 +90,7 @@
     "@types/connect": "^3.4.38",
     "@vuepress/bundler-vite": "catalog:",
     "@vuepress/bundler-webpack": "catalog:",
-    "domhandler": "^6.0.1",
+    "domhandler": "^5.0.3",
     "vite": "^8.3.5"
   },
   "peerDependencies": {

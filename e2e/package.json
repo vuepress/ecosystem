@@ -15,7 +15,7 @@
     "e2e:dev-webpack": "cross-env E2E_COMMAND=dev E2E_BUNDLER=webpack playwright test"
   },
   "dependencies": {
-    "@iconify-json/vscode-icons": "^1.2.91",
+    "@iconify-json/vscode-icons": "^1.2.93",
     "@videojs/html": "10.2.0",
     "@vuepress/bundler-vite": "catalog:",
     "@vuepress/bundler-webpack": "catalog:",

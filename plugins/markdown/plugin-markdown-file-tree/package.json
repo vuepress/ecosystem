@@ -50,13 +50,13 @@
   "dependencies": {
     "@iconify/types": "^2.0.0",
     "@iconify/utils": "^3.1.7",
-    "@mdit/plugin-container": "^2.0.2",
+    "@mdit/plugin-container": "^2.0.3",
     "@types/markdown-it": "catalog:",
     "@vuepress/helper": "workspace:*",
     "vue": "catalog:"
   },
   "devDependencies": {
-    "@iconify-json/vscode-icons": "^1.2.91",
+    "@iconify-json/vscode-icons": "^1.2.93",
     "@vuepress/highlighter-helper": "workspace:*",
     "@yutengjing/vscode-icons": "^0.2.0",
     "iconify-icon": "^3.0.4",
