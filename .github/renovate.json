@@ -3,13 +3,10 @@
   "extends": [
     "config:recommended",
     ":prHourlyLimitNone",
-    ":prConcurrentLimitNone"
+    ":prConcurrentLimitNone",
+    "helpers:disableTypesNodeMajor"
   ],
   "packageRules": [
-    {
-      "matchPackageNames": ["@types/node"],
-      "matchUpdateTypes": ["minor", "patch"]
-    },
     {
       "groupName": "mdit",
       "matchPackageNames": ["@mdit/**"]
