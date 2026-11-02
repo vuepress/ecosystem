@@ -528,7 +528,7 @@ importers:
         version: 5.4.0
       iconify-icon:
         specifier: ^3.0.4
-        version: 3.0.4
+        version: 3.0.5
       sass-embedded:
         specifier: 'catalog:'
         version: 1.105.2
@@ -929,7 +929,7 @@ importers:
         version: 1.2.3
       iconify-icon:
         specifier: ^3.0.4
-        version: 3.0.4
+        version: 3.0.5
 
   plugins/features/plugin-media:
     dependencies:
@@ -1269,7 +1269,7 @@ importers:
         version: 0.2.0
       iconify-icon:
         specifier: ^3.0.4
-        version: 3.0.4
+        version: 3.0.5
       markdown-it:
         specifier: 'catalog:'
         version: 14.3.3
@@ -7721,8 +7721,8 @@ packages:
     resolution: {integrity: sha512-Y93lCzHYgGWdrJ66yIktxiaGULYc6oGiABxhcO5AufBeOyoIdZF7bIfLaOrbM0iGIOXQQgxxRrFEnb+Y6w1n4A==}
     engines: {node: '>=10.18'}
 
-  iconify-icon@3.0.4:
-    resolution: {integrity: sha512-au7IER/1evWjPP1rtueNnBdge9E9ocoPfQ87RYTLkRMYpNt87xn5oy6i5U2qRp+wXul5aV0VyPuZAf7rt+jpRg==}
+  iconify-icon@3.0.5:
+    resolution: {integrity: sha512-tApy9Ojh7ZGAuKRiPbUHpqd+hwNwM516al7vwX0dU6f7FoLI11DWGZwl85OYknGIwo4KnWeaqPJvCEMOrnKPWw==}
 
   iconv-lite@0.4.24:
     resolution: {integrity: sha512-v3MXnZAcvnywkTUEZomIActle7RXXeedOR31wwl7VlyoXO4Qi9arvSenNQWne1TcRwhCL1HwLI21bEqdpj8/rA==}
@@ -17328,7 +17328,7 @@ snapshots:
 
   hyperdyperid@1.2.0: {}
 
-  iconify-icon@3.0.4:
+  iconify-icon@3.0.5:
     dependencies:
       '@iconify/types': 2.0.0
 
