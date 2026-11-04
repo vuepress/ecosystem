@@ -7,12 +7,14 @@
   }
 
   &-main-title {
-    margin-top: calc(1rem - var(--catalog-header-offset));
+    margin-top: 2.5rem;
     margin-bottom: 0.5rem;
-    padding-top: var(--catalog-header-offset);
 
     font-weight: 500;
     font-size: 1.75rem;
+
+    // Keep the anchor target below the navbar when it is scrolled into view
+    scroll-margin-top: calc(var(--catalog-header-offset) + 1rem);
 
     &:first-child {
       margin-bottom: 0.5rem !important;
@@ -31,12 +33,14 @@
     margin-bottom: 0.5rem !important;
 
     &.has-children {
-      margin-top: calc(1rem - var(--catalog-header-offset));
-      padding-top: var(--catalog-header-offset);
+      margin-top: 1.5rem;
       border-bottom: 1px solid var(--catalog-c-divider);
 
       font-weight: 500;
       font-size: 1.3rem;
+
+      // Keep the anchor target below the navbar when it is scrolled into view
+      scroll-margin-top: calc(var(--catalog-header-offset) + 1rem);
 
       transition: border-color 0.3s;
 

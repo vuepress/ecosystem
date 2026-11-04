@@ -1,7 +1,10 @@
 // footnote anchor position
 .footnote-item {
-  margin-top: calc(0rem - var(--header-offset, 3.6rem));
-  padding-top: calc(var(--header-offset, 3.6rem) + 0.5rem);
+  // Keep the anchor target below the navbar when it is scrolled into view.
+  // The box must not be shifted up, otherwise it would cover the content above.
+  // The padding is part of the layout, it is not used to offset the anchor.
+  padding-top: 0.5rem;
+  scroll-margin-top: var(--header-offset, 3.6rem);
 
   > p {
     margin-bottom: 0;
@@ -12,6 +15,8 @@
   position: relative;
 }
 
+// The anchor is an empty element, so the offset can be done by moving the box
+// without covering anything.
 .footnote-anchor {
   position: absolute;
   top: calc(-0.5rem - var(--header-offset, 3.6rem));
