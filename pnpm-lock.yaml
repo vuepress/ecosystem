@@ -1005,7 +1005,7 @@ importers:
         version: link:../../../tools/helper
       medium-zoom:
         specifier: ^1.1.0
-        version: 1.1.0
+        version: 1.1.2
       vue:
         specifier: 'catalog:'
         version: 3.5.44(typescript@6.0.3)
@@ -8481,8 +8481,8 @@ packages:
     resolution: {integrity: sha512-dq+qelQ9akHpcOl/gUVRTxVIOkAJ1wR3QAvb4RsVjS8oVoFjDGTc679wJYmUmknUF5HwMLOgb5O+a3KxfWapPQ==}
     engines: {node: '>= 0.6'}
 
-  medium-zoom@1.1.0:
-    resolution: {integrity: sha512-ewyDsp7k4InCUp3jRmwHBRFGyjBimKps/AJLjRSox+2q/2H4p/PNpQf+pwONWlJiOudkBXtbdmVbFjqyybfTmQ==}
+  medium-zoom@1.1.2:
+    resolution: {integrity: sha512-0wTqeCQ4NGzjPghi7i2lMI6RyGj9N60fGvzY9HiNcxDTcvOw7S+ri7K3xVkrIZ+2uzUg4w/KSVMDdZXYMtHkdw==}
 
   meilisearch-docsearch@0.8.0:
     resolution: {integrity: sha512-I0sd0z7CRSyn83ACDKbDD4PQNFCe/oZxN4pWgJbqLgLwOEICQMZLMlFVmQPQzzSb9ZkvjjJnaNPxVpZ4yi7upw==}
@@ -18110,7 +18110,7 @@ snapshots:
 
   media-typer@0.3.0: {}
 
-  medium-zoom@1.1.0: {}
+  medium-zoom@1.1.2: {}
 
   meilisearch-docsearch@0.8.0:
     dependencies:
