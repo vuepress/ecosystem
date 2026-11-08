@@ -30,6 +30,7 @@ The following styles are provided.
 ```vue
 <script setup>
 import { ref } from 'vue'
+
 import '@vuepress/helper/transition/fade-in.css'
 
 const show = ref(true)

@@ -48,11 +48,11 @@
     "style": "unrun scripts/generateThemeColors.ts"
   },
   "dependencies": {
-    "@shikijs/transformers": "^4.5.0",
+    "@shikijs/transformers": "^4.6.0",
     "@vuepress/helper": "workspace:*",
     "@vuepress/highlighter-helper": "workspace:*",
     "nanoid": "^6.0.2",
-    "shiki": "^4.5.0",
+    "shiki": "^4.6.0",
     "synckit": "^0.12.3"
   },
   "devDependencies": {

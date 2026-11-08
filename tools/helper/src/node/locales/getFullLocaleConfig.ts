@@ -61,11 +61,13 @@ export const getLocaleData = <Locale extends LocaleData>(
 
   return (
     // en-US
-    (info.find(([langs]) => langs.includes('en-US')) ??
+    (
+      info.find(([langs]) => langs.includes('en-US')) ??
       // en
       info.find(([langs]) => langs.some((item) => item.startsWith('en'))) ??
       // first one
-      info[0])[1]
+      info[0]
+    )[1]
   )
 }
 

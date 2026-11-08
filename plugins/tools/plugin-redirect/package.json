@@ -54,7 +54,7 @@
   "dependencies": {
     "@vuepress/helper": "workspace:*",
     "@vueuse/core": "catalog:",
-    "commander": "^15.0.0",
+    "commander": "^15.1.0",
     "vue": "catalog:"
   },
   "peerDependencies": {

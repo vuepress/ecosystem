@@ -44,8 +44,8 @@
     "clean": "rimraf ./dist"
   },
   "dependencies": {
-    "@inquirer/prompts": "^8.7.4",
-    "commander": "^15.0.0"
+    "@inquirer/prompts": "^8.7.5",
+    "commander": "^15.1.0"
   },
   "devDependencies": {
     "@vuepress/plugin-blog": "workspace:*",

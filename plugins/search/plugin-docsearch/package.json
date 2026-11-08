@@ -48,15 +48,15 @@
     "clean": "rimraf ./dist"
   },
   "dependencies": {
-    "@docsearch/css": "^5.1.2",
-    "@docsearch/js": "^5.1.2",
+    "@docsearch/css": "^5.2.0",
+    "@docsearch/js": "^5.2.0",
     "@vuepress/helper": "workspace:*",
     "@vueuse/core": "catalog:",
     "vue": "catalog:"
   },
   "devDependencies": {
-    "@docsearch/react": "^5.1.2",
-    "algoliasearch": "^5.60.0"
+    "@docsearch/react": "^5.2.0",
+    "algoliasearch": "^5.61.0"
   },
   "peerDependencies": {
     "vuepress": "catalog:"

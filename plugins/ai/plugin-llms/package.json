@@ -49,7 +49,7 @@
     "remark": "^15.0.1",
     "tokenx": "^2.2.0",
     "unist-util-remove": "^4.0.0",
-    "unist-util-visit": "^5.1.0"
+    "unist-util-visit": "^5.2.0"
   },
   "devDependencies": {
     "@types/byte-size": "^8.1.2",
