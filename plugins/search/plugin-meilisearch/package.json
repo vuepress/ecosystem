@@ -47,7 +47,7 @@
   },
   "dependencies": {
     "@vuepress/helper": "workspace:*",
-    "commander": "^15.0.0",
+    "commander": "^15.1.0",
     "meilisearch": "^0.62.0",
     "meilisearch-docsearch": "^0.8.0",
     "vue": "catalog:"

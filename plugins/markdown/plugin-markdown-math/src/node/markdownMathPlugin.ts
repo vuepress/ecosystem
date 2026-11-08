@@ -123,7 +123,7 @@ export const markdownMathPlugin =
               // Ignore this error
               if (errorCode === 'newLineInDisplayMode') return
 
-              if (errorCode === 'unicodeTextInMathMode') {
+              if (errorCode === 'unicodeTextInMathMode' && token) {
                 logger.warn(
                   `Found unicode character ${token.text} inside tex${
                     filePathRelative

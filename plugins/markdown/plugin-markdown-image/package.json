@@ -52,10 +52,10 @@
     "clean": "rimraf ./dist"
   },
   "dependencies": {
-    "@mdit/plugin-figure": "^1.2.2",
-    "@mdit/plugin-img-lazyload": "^1.1.2",
-    "@mdit/plugin-img-mark": "^1.1.2",
-    "@mdit/plugin-img-size": "^1.1.2",
+    "@mdit/plugin-figure": "^1.2.4",
+    "@mdit/plugin-img-lazyload": "^1.1.4",
+    "@mdit/plugin-img-mark": "^1.1.4",
+    "@mdit/plugin-img-size": "^1.2.0",
     "@types/markdown-it": "catalog:",
     "@vuepress/helper": "workspace:*"
   },

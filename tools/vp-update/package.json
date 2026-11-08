@@ -41,8 +41,8 @@
     "clean": "rimraf ./dist"
   },
   "dependencies": {
-    "commander": "^15.0.0",
-    "semver": "^7.8.5"
+    "commander": "^15.1.0",
+    "semver": "^7.8.6"
   },
   "devDependencies": {
     "@types/semver": "^7.8.0"
