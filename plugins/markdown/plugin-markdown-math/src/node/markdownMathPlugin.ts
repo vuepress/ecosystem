@@ -1,7 +1,7 @@
 import type { MarkdownItKatexOptions } from '@mdit/plugin-katex-slim'
 import { katex } from '@mdit/plugin-katex-slim'
-import type { MathjaxInstance } from '@mdit/plugin-mathjax-slim'
-import { createMathjaxInstance, mathjax } from '@mdit/plugin-mathjax-slim'
+import type { MathjaxInstance } from '@mdit/plugin-mathjax-slim/async'
+import { createMathjaxInstance, mathjax } from '@mdit/plugin-mathjax-slim/async'
 import {
   addCustomElement,
   deepAssign,

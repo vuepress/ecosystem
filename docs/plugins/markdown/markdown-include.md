@@ -40,6 +40,12 @@ Also, you can include a file region:
 
 - `<!-- @include: filename#region -->`
 
+::: tip File access is restricted
+
+For security, files outside the project root and sensitive files (e.g. `.env`) are not included by default. Set `allowOutsideRoot: true` to allow reading files outside the project root, and use `projectRoot` / `denyFiles` to customize the check.
+
+:::
+
 :::: info File region
 
 File region is a concept in vscode, where the region content is surrounded by `#region` and `#endregion` comments.

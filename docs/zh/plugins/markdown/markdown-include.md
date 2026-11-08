@@ -40,6 +40,12 @@ export default {
 
 - `<!-- @include: filename#region -->`
 
+::: tip 文件访问受限
+
+出于安全考虑，默认不会导入项目根目录之外的文件和敏感文件（例如 `.env`）。设置 `allowOutsideRoot: true` 可以允许读取项目根目录之外的文件，并使用 `projectRoot` / `denyFiles` 自定义检查规则。
+
+:::
+
 :::: info 文件区域
 
 文件区域是 vscode 中的一个概念，区域内容被 `#region` 和 `#endregion` 注释包围。

@@ -46,7 +46,7 @@
   },
   "dependencies": {
     "@mdit/plugin-katex-slim": "^1.1.5",
-    "@mdit/plugin-mathjax-slim": "^1.2.2",
+    "@mdit/plugin-mathjax-slim": "^2.0.0",
     "@types/markdown-it": "catalog:",
     "@vuepress/helper": "workspace:*",
     "vue": "catalog:"
@@ -55,8 +55,8 @@
     "markdown-it": "catalog:"
   },
   "peerDependencies": {
-    "@mathjax/src": "^4.1.1",
-    "katex": "^0.16.38 || ^0.18.0",
+    "@mathjax/src": "^4.1.3",
+    "katex": "^0.19.1",
     "vuepress": "catalog:"
   },
   "peerDependenciesMeta": {

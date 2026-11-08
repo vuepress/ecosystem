@@ -1,4 +1,4 @@
-import type { MathjaxInstance } from '@mdit/plugin-mathjax-slim'
+import type { MathjaxInstance } from '@mdit/plugin-mathjax-slim/async'
 import type { App } from 'vuepress/core'
 
 // 1. prevent mathjax breaking mobile layout
