@@ -35,6 +35,17 @@ const REGIONS_RE = [
   /^# ?(?<tag>(?:end)?region) (?<name>[\w*-]+)$/u, // C#, PHP, Powershell, Python, perl & misc
 ]
 
+type RemarkIncludeOptions = Required<
+  Pick<
+    MarkdownIncludePluginOptions,
+    | 'deep'
+    | 'resolveImagePath'
+    | 'resolveLinkPath'
+    | 'resolvePath'
+    | 'useComment'
+  >
+>
+
 // regexp to match the import syntax
 const INCLUDE_COMMENT_RE =
   /^(?<indent> *)<!-{2,}\s*@include:\s*(?<filePath>[^<>|:"*?]+(?:\.[a-z0-9]+))(?:#(?<region>[\w-]+))?(?:\{(?<lineStart>\d+)?-(?<lineEnd>\d+)?\})?\s*-{2,}>\s*$/gmu
@@ -157,7 +168,7 @@ export const handleInclude = async (
 const resolveInclude = async (
   cwd: string | null,
   [indent, includePath, region, lineStart, lineEnd]: string[],
-  options: Required<MarkdownIncludePluginOptions>,
+  options: RemarkIncludeOptions,
 ): Promise<string> => {
   const actualPath = options.resolvePath(includePath, cwd)
   const resolvedPath = options.resolveImagePath || options.resolveLinkPath
@@ -193,7 +204,7 @@ const resolveInclude = async (
 
 const replaceInclude = async (
   content: string,
-  options: Required<MarkdownIncludePluginOptions>,
+  options: RemarkIncludeOptions,
   { cwd }: IncludeInfo,
 ): Promise<string> => {
   const regex = options.useComment ? INCLUDE_COMMENT_RE : INCLUDE_RE
@@ -295,7 +306,7 @@ const resolveLink = (
  * @returns A remark plugin
  */
 export const remarkInclude =
-  (cwd: string, options: Required<MarkdownIncludePluginOptions>) =>
+  (cwd: string, options: RemarkIncludeOptions) =>
   () =>
   async (tree: Root): Promise<void> => {
     const tasks: {

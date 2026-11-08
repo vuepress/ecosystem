@@ -52,7 +52,7 @@
     "@mdit/plugin-align": "^1.1.4",
     "@mdit/plugin-attrs": "^1.4.0",
     "@mdit/plugin-container": "^2.1.0",
-    "@mdit/plugin-layout": "^1.1.3",
+    "@mdit/plugin-layout": "^2.0.0",
     "@mdit/plugin-mark": "^2.1.4",
     "@mdit/plugin-spoiler": "^2.1.4",
     "@mdit/plugin-stylize": "^2.0.4",

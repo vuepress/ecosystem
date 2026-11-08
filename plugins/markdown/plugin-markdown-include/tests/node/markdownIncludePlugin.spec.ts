@@ -21,7 +21,7 @@ const resolveNestedPath = (filePath: string, cwd: string | null): string =>
 describe('markdown include plugin', () => {
   it('includes a file with the comment syntax', async () => {
     const app = await createTestApp({
-      plugins: [markdownIncludePlugin({})],
+      plugins: [markdownIncludePlugin({ allowOutsideRoot: true })],
       files: {
         'index.md': '',
         'snippet.md': 'snippet content\n',
@@ -42,7 +42,7 @@ describe('markdown include plugin', () => {
 
   it('does not resolve the plain syntax by default', async () => {
     const app = await createTestApp({
-      plugins: [markdownIncludePlugin({})],
+      plugins: [markdownIncludePlugin({ allowOutsideRoot: true })],
       files: {
         'index.md': '',
         'snippet.md': 'snippet content\n',
@@ -64,7 +64,9 @@ describe('markdown include plugin', () => {
 
   it('resolves the plain syntax when useComment is disabled', async () => {
     const app = await createTestApp({
-      plugins: [markdownIncludePlugin({ useComment: false })],
+      plugins: [
+        markdownIncludePlugin({ allowOutsideRoot: true, useComment: false }),
+      ],
       files: {
         'index.md': '',
         'snippet.md': 'snippet content\n',
@@ -85,7 +87,7 @@ describe('markdown include plugin', () => {
 
   it('includes only the requested line range', async () => {
     const app = await createTestApp({
-      plugins: [markdownIncludePlugin({})],
+      plugins: [markdownIncludePlugin({ allowOutsideRoot: true })],
       files: {
         'index.md': '',
         'snippet.md': 'line1\nline2\nline3\nline4\n',
@@ -109,7 +111,7 @@ describe('markdown include plugin', () => {
 
   it('includes the lines from the given start to the end of the file', async () => {
     const app = await createTestApp({
-      plugins: [markdownIncludePlugin({})],
+      plugins: [markdownIncludePlugin({ allowOutsideRoot: true })],
       files: {
         'index.md': '',
         'snippet.md': 'line1\nline2\nline3\nline4\n',
@@ -133,7 +135,7 @@ describe('markdown include plugin', () => {
 
   it('includes the lines from the start of the file to the given end', async () => {
     const app = await createTestApp({
-      plugins: [markdownIncludePlugin({})],
+      plugins: [markdownIncludePlugin({ allowOutsideRoot: true })],
       files: {
         'index.md': '',
         'snippet.md': 'line1\nline2\nline3\nline4\n',
@@ -159,6 +161,7 @@ describe('markdown include plugin', () => {
     const app = await createTestApp({
       plugins: [
         markdownIncludePlugin({
+          allowOutsideRoot: true,
           resolvePath: resolveNestedPath,
         }),
       ],
@@ -182,7 +185,7 @@ describe('markdown include plugin', () => {
 
   it('includes only the content between the region markers', async () => {
     const app = await createTestApp({
-      plugins: [markdownIncludePlugin({})],
+      plugins: [markdownIncludePlugin({ allowOutsideRoot: true })],
       files: {
         'index.md': '',
         'snippet.md': [
@@ -217,7 +220,7 @@ describe('markdown include plugin', () => {
 
   it('renders a "File not found" placeholder for a missing file', async () => {
     const app = await createTestApp({
-      plugins: [markdownIncludePlugin({})],
+      plugins: [markdownIncludePlugin({ allowOutsideRoot: true })],
       files: { 'index.md': '' },
     })
 
@@ -235,7 +238,7 @@ describe('markdown include plugin', () => {
 
   it('does not include the nested file when deep is disabled', async () => {
     const app = await createTestApp({
-      plugins: [markdownIncludePlugin({})],
+      plugins: [markdownIncludePlugin({ allowOutsideRoot: true })],
       files: {
         'index.md': '',
         'snippet.md': 'nested content\n',
@@ -260,7 +263,7 @@ describe('markdown include plugin', () => {
 
   it('includes the nested file when deep is enabled', async () => {
     const app = await createTestApp({
-      plugins: [markdownIncludePlugin({ deep: true })],
+      plugins: [markdownIncludePlugin({ allowOutsideRoot: true, deep: true })],
       files: {
         'index.md': '',
         'snippet.md': 'nested content\n',
@@ -283,7 +286,7 @@ describe('markdown include plugin', () => {
 
   it('registers the included files as page dependencies', async () => {
     const app = await createTestApp({
-      plugins: [markdownIncludePlugin({})],
+      plugins: [markdownIncludePlugin({ allowOutsideRoot: true })],
       files: {
         'index.md': '<!-- @include: snippet.md -->\n',
         'snippet.md': 'snippet content\n',
