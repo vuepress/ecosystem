@@ -7,12 +7,13 @@
 
 // override css variables
 .markmap {
-  --markmap-a-color: var(--vp-c-accent) !important;
-  --markmap-a-hover-color: var(--vp-c-accent) !important;
-  --markmap-code-bg: var(--vp-c-border) !important;
-  --markmap-code-color: var(--vp-c-text) !important;
-  --markmap-circle-open-bg: var(--vp-c-white) !important;
-  --markmap-text-color: var(--vp-c-text) !important;
+  --mm-text: var(--vp-c-text) !important;
+  --mm-bg: var(--vp-c-bg) !important;
+  --mm-link: var(--vp-c-accent) !important;
+  --mm-code-bg: var(--vp-c-border) !important;
+  --mm-code-text: var(--vp-c-text) !important;
+  --mm-toggle-bg: var(--vp-c-bg) !important;
+  --mm-mark-bg: var(--vp-c-warning-bg) !important;
 }
 
 .markmap-wrapper {
@@ -52,69 +53,13 @@
   color: var(--vp-c-accent-bg);
 }
 
-.mm-toolbar {
-  display: flex;
-  align-items: center;
+// the toolbar is not positioned by the package, place it at the bottom corner
+.markmap-toolbar {
+  position: absolute;
+  inset-block-end: 0.5rem;
+  inset-inline-end: 0.5rem;
 
-  padding: 0.25rem;
-  border-width: 1px;
-  border-style: solid;
-  border-color: var(--vp-c-border);
-  border-radius: 0.25rem;
-
-  background: var(--vp-c-control);
-
-  line-height: 1;
-  direction: ltr;
-
-  user-select: none;
-
-  &:hover {
-    box-shadow: 0 2px 12px 0 var(--vp-c-shadow);
-  }
-
-  .mm-toolbar-brand {
+  @media print {
     display: none;
-  }
-
-  svg {
-    display: block;
-  }
-
-  a {
-    display: inline-block;
-    text-decoration-line: none;
-  }
-
-  > span {
-    padding-inline: 0.25rem;
-  }
-}
-
-.mm-toolbar-item {
-  &:not(:first-child) {
-    margin-left: 0.25rem;
-  }
-
-  > * {
-    min-width: 20px;
-    height: 20px;
-
-    font-size: 0.75rem;
-    line-height: 1rem;
-    line-height: 20px;
-    text-align: center;
-
-    cursor: pointer;
-  }
-
-  &.active,
-  &:hover {
-    border-radius: 0.25rem;
-    background-color: var(--vp-c-accent-bg);
-
-    > * {
-      color: var(--vp-c-white);
-    }
   }
 }

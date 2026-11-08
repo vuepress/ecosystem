@@ -1,3 +1,4 @@
+import { getModulePath } from '@vuepress/helper'
 import type { App } from 'vuepress/core'
 
 import { CLIENT_FOLDER } from './utils.js'
@@ -5,6 +6,7 @@ import { CLIENT_FOLDER } from './utils.js'
 export const prepareConfigFile = async (
   app: App,
   status: Record<string, boolean>,
+  markmapMathInstalled = false,
 ): Promise<string> => {
   const imports = new Set<string>()
   const enhances = new Set<string>()
@@ -28,7 +30,32 @@ export const prepareConfigFile = async (
   }
 
   if (status.markmap) {
-    imports.add(`import MarkMap from "${CLIENT_FOLDER}components/MarkMap.js";`)
+    if (markmapMathInstalled) {
+      // The math packages stay optional, so the plugins are only imported and
+      // provided when they are installed.
+      //
+      // 数学公式包是可选的，因此只有在它们已安装时才会导入并注入插件。
+      imports.add(
+        `import MarkMap, { markmapMathKey } from "${CLIENT_FOLDER}components/MarkMap.js";`,
+      )
+      imports.add(
+        `import { mathContent, remarkMath } from ${JSON.stringify(getModulePath('@markmap/plugin-math', import.meta))};`,
+      )
+      imports.add(
+        `import { defaultContentPlugins } from ${JSON.stringify(getModulePath('@markmap/render', import.meta))};`,
+      )
+      enhances.add(
+        `app.provide(markmapMathKey, {
+  contentPlugins: [...defaultContentPlugins, mathContent],
+  parsePlugins: [remarkMath],
+});`,
+      )
+    } else {
+      imports.add(
+        `import MarkMap from "${CLIENT_FOLDER}components/MarkMap.js";`,
+      )
+    }
+
     enhances.add(`app.component("MarkMap", MarkMap);`)
   }
 

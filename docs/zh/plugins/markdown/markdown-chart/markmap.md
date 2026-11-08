@@ -10,26 +10,50 @@ icon: list-tree
 
 ## 安装 {#installation}
 
-在你的项目中安装 `markmap-lib`、`markmap-toolbar` 和 `markmap-view`：
+在你的项目中安装 `@markmap/parse`、`@markmap/toolbar` 和 `@markmap/view`：
 
 ::: code-tabs#shell
 
 @tab pnpm
 
 ```bash
-pnpm add -D markmap-lib markmap-toolbar markmap-view
+pnpm add -D @markmap/parse @markmap/toolbar @markmap/view
 ```
 
 @tab yarn
 
 ```bash
-yarn add -D markmap-lib markmap-toolbar markmap-view
+yarn add -D @markmap/parse @markmap/toolbar @markmap/view
 ```
 
 @tab npm
 
 ```bash
-npm i -D markmap-lib markmap-toolbar markmap-view
+npm i -D @markmap/parse @markmap/toolbar @markmap/view
+```
+
+:::
+
+要在标签中渲染 TeX 数学公式，还需要安装 `@markmap/plugin-math` 和 `@markmap/render`：
+
+::: code-tabs#shell
+
+@tab pnpm
+
+```bash
+pnpm add -D @markmap/plugin-math @markmap/render
+```
+
+@tab yarn
+
+```bash
+yarn add -D @markmap/plugin-math @markmap/render
+```
+
+@tab npm
+
+```bash
+npm i -D @markmap/plugin-math @markmap/render
 ```
 
 :::
@@ -69,7 +93,7 @@ export default {
 ---
 title: markmap
 markmap:
-  colorFreezeLevel: 2
+  colorDepth: 2
 ---
 
 ## 链接
@@ -85,7 +109,7 @@ markmap:
 
 ## 功能
 
-注意：如果块元素和列表出现在同一级别，列表将被忽略。
+段落、代码块和表格会显示为注释，点击节点旁的圆点即可展开。
 
 ### 列表
 
@@ -94,7 +118,7 @@ markmap:
 - [x] 复选框
 - Katex: $x = {-b \pm \sqrt{b^2-4ac} \over 2a}$ <!-- markmap: fold -->
   - [更多 Katex 示例](#?d=gist:af76a4c245b302206b16aec503dbe07b:katex.md)
-- 现在我们可以通过 `maxWidth` 选项自动换行非常非常非常非常长的文本
+- 现在我们可以通过 `wrapWidth` 选项自动换行非常非常非常非常长的文本
 - 有序列表
   1. 项目 1
   2. 项目 2

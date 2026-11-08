@@ -6,7 +6,7 @@ import { markmap } from '../../src/node/markdown-it-plugins/markmap.js'
 const content = `\
 ---
 markmap:
-  colorFreezeLevel: 2
+  colorDepth: 2
 ---
 
 # markmap
@@ -29,7 +29,7 @@ markmap:
     \`\`\`
 - Katex
   - $x = {-b \\pm \\sqrt{b^2-4ac} \\over 2a}$
-- Now we can wrap very very very very long text based on \`maxWidth\` option
+- Now we can wrap very very very very long text based on \`wrapWidth\` option
 `
 
 describe('markmap plugin', () => {

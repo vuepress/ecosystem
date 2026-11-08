@@ -1,21 +1,54 @@
-import { LoadingIcon, decodeData } from '@vuepress/helper/client'
-import { useDebounceFn, useEventListener } from '@vueuse/core'
-import type { Markmap } from 'markmap-view'
-import type { VNode } from 'vue'
+import type { ParseOptions } from '@markmap/parse'
+import type { Markmap, ViewOptions } from '@markmap/view'
+import { LoadingIcon, decodeData, useDarkMode } from '@vuepress/helper/client'
+import { useDebounceFn, useEventListener, watchImmediate } from '@vueuse/core'
+import type { InjectionKey, VNode } from 'vue'
 import {
   defineComponent,
   h,
+  inject,
   nextTick,
   onMounted,
   onUnmounted,
   ref,
   shallowRef,
-  toRefs,
-  watch,
 } from 'vue'
-import { onContentUpdated } from 'vuepress/client'
 
 import '../styles/markmap.scss'
+
+/**
+ * Plugins that add TeX math support to markmap labels
+ *
+ * 为 markmap 标签添加 TeX 数学公式支持的插件
+ */
+export interface MarkmapMathPlugins {
+  /**
+   * Content plugins passed to `@markmap/view`
+   *
+   * 传给 `@markmap/view` 的内容插件
+   */
+  contentPlugins: NonNullable<ViewOptions['plugins']>
+
+  /**
+   * Remark plugins passed to `@markmap/parse`
+   *
+   * 传给 `@markmap/parse` 的 remark 插件
+   */
+  parsePlugins: NonNullable<ParseOptions['plugins']>
+}
+
+/**
+ * Injection key of the markmap math plugins
+ *
+ * The generated client config provides the plugins only when the math packages
+ * are installed, so this component does not import them directly.
+ *
+ * Markmap 数学公式插件的注入键
+ *
+ * 生成的客户端配置仅会在数学公式包已安装时提供这些插件，因此本组件不会直接导入它们。
+ */
+export const markmapMathKey: InjectionKey<MarkmapMathPlugins> =
+  Symbol('markmap-math')
 
 export default defineComponent({
   name: 'MarkMap',
@@ -33,22 +66,27 @@ export default defineComponent({
   },
 
   setup(props) {
-    const { content } = toRefs(props)
+    const isDarkMode = useDarkMode()
+    const math = inject(markmapMathKey, null)
+
     const markmapWrapper = shallowRef<HTMLElement>()
-    const markmapSVG = shallowRef<SVGElement>()
+    const markmapSVG = shallowRef<SVGSVGElement>()
 
     const loaded = ref(false)
 
     let markmap: Markmap | null = null
+    let toolbar: { element: HTMLElement; destroy: () => void } | null = null
 
     useEventListener(
       'resize',
       useDebounceFn(() => {
-        void markmap?.fit()
+        markmap?.fit()
       }, 100),
     )
 
     const destroyMarkmap = (): void => {
+      toolbar?.destroy()
+      toolbar = null
       markmap?.destroy()
       markmap = null
     }
@@ -56,68 +94,53 @@ export default defineComponent({
     const renderMarkmap = async (): Promise<void> => {
       if (__VUEPRESS_SSR__) return
 
-      const [{ Transformer }, markmapView, { Toolbar }] = await Promise.all([
-        import(/* webpackChunkName: "markmap" */ 'markmap-lib'),
-        import(/* webpackChunkName: "markmap" */ 'markmap-view'),
-        import(/* webpackChunkName: "markmap" */ 'markmap-toolbar'),
+      const [{ parse }, markmapView, { createToolbar }] = await Promise.all([
+        import(/* webpackChunkName: "markmap" */ '@markmap/parse'),
+        import(/* webpackChunkName: "markmap" */ '@markmap/view'),
+        import(/* webpackChunkName: "markmap" */ '@markmap/toolbar'),
       ])
 
-      const { Markmap, deriveOptions, loadJS, loadCSS } = markmapView
+      const { Markmap, resolveViewOptions } = markmapView
 
-      const transformer = new Transformer()
-      const { frontmatter, features, root } = transformer.transform(
+      const { frontmatter, root } = parse(
         decodeData(props.content),
+        math ? { plugins: math.parsePlugins } : undefined,
       )
-      const { styles, scripts } = transformer.getUsedAssets(features)
-
-      await Promise.all([
-        // Load scripts
-        scripts
-          ? loadJS(scripts, {
-              // For plugins to access the `markmap-view` module
-              getMarkmap: () => markmapView,
-            })
-          : Promise.resolve(),
-        // Load styles
-        styles ? loadCSS(styles) : Promise.resolve(),
-      ])
-
-      markmap = Markmap.create(
-        markmapSVG.value!,
-        deriveOptions({
-          maxWidth: 240,
-          ...frontmatter?.markmap,
-        }),
+      const { options, warnings } = resolveViewOptions(
+        {
+          colorScheme: isDarkMode.value ? 'dark' : 'light',
+          wrapWidth: 240,
+          ...(math ? { plugins: math.contentPlugins } : {}),
+        },
+        frontmatter?.markmap,
       )
 
-      const { el } = Toolbar.create(markmap)
+      if (__VUEPRESS_DEV__ && warnings.length > 0) {
+        // oxlint-disable-next-line no-console
+        console.warn(`[markmap]: ${warnings.join('\n')}`)
+      }
 
-      await markmap.setData(root)
-      await markmap.fit()
+      markmap = Markmap.create(markmapSVG.value!, root, options)
 
-      el.style.position = 'absolute'
-      el.style.bottom = '0.5rem'
-      el.style.right = '0.5rem'
+      const mapToolbar = createToolbar(markmap)
 
-      markmapWrapper.value!.append(el)
+      // Let the toolbar use the theme tokens of the map
+      mapToolbar.element.classList.add(markmap.themeClass)
+
+      toolbar = mapToolbar
+      markmapWrapper.value!.append(mapToolbar.element)
     }
 
-    onContentUpdated(async (reason) => {
-      if (reason === 'mounted') {
-        await renderMarkmap()
-        loaded.value = true
-      }
-    })
-
     onMounted(() => {
-      if (!__VUEPRESS_DEV__) return
-
-      watch(
-        content,
+      watchImmediate(
+        __VUEPRESS_DEV__
+          ? [(): string => props.content, isDarkMode]
+          : isDarkMode,
         async () => {
           destroyMarkmap()
           await nextTick()
           await renderMarkmap()
+          loaded.value = true
         },
         { flush: 'post' },
       )
