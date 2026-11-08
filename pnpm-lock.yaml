@@ -1109,6 +1109,21 @@ importers:
 
   plugins/markdown/plugin-markdown-chart:
     dependencies:
+      '@markmap/parse':
+        specifier: ^1.0.0
+        version: 1.0.0(supports-color@10.2.2)
+      '@markmap/plugin-math':
+        specifier: ^1.0.0
+        version: 1.0.0(supports-color@10.2.2)
+      '@markmap/render':
+        specifier: ^1.0.0
+        version: 1.0.0
+      '@markmap/toolbar':
+        specifier: ^1.0.0
+        version: 1.0.0(@markmap/view@1.0.0)
+      '@markmap/view':
+        specifier: ^1.0.0
+        version: 1.0.0
       '@mdit/plugin-container':
         specifier: ^2.1.0
         version: 2.1.0(markdown-it@14.3.3)
@@ -1130,15 +1145,6 @@ importers:
       flowchart.ts:
         specifier: ^3.0.1
         version: 3.0.1
-      markmap-lib:
-        specifier: ^0.18.12
-        version: 0.18.13(markmap-common@0.18.9)
-      markmap-toolbar:
-        specifier: ^0.18.12
-        version: 0.18.13(markmap-common@0.18.9)
-      markmap-view:
-        specifier: ^0.18.12
-        version: 0.18.13(markmap-common@0.18.9)
       mermaid:
         specifier: ^12.0.0
         version: 12.3.0
@@ -1155,9 +1161,6 @@ importers:
       markdown-it:
         specifier: 'catalog:'
         version: 14.3.3
-      markmap-common:
-        specifier: ^0.18.9
-        version: 0.18.9
 
   plugins/markdown/plugin-markdown-container:
     dependencies:
@@ -3466,9 +3469,6 @@ packages:
     resolution: {integrity: sha512-GmzA9ckNokPypTg10pgpeHNQe7ph+iIKKmhKu3Ob9ANkswreCx7R3cKmY781K8QK3AqVL3xVh9A42JvIAbkkSA==}
     engines: {node: ^20.17.0 || >=22.9.0}
 
-  '@gera2ld/jsx-dom@2.2.2':
-    resolution: {integrity: sha512-EOqf31IATRE6zS1W1EoWmXZhGfLAoO9FIlwTtHduSrBdud4npYBxYAkv8dZ5hudDPwJeeSjn40kbCL4wAzr8dA==}
-
   '@iconify-json/lucide@1.2.152':
     resolution: {integrity: sha512-OQTsOaQ+kD8yhy5EATMD5QHe5O+XJVibExdaRCaXP3hvNPNkn6wVUcTrGA16yU2luqe0ImE4qP74WBK8JuwwNA==}
 
@@ -3856,8 +3856,31 @@ packages:
   '@lit/reactive-element@2.1.2':
     resolution: {integrity: sha512-pbCDiVMnne1lYUIaYNN5wrwQXDtHaYtg7YEFPeW+hws6U47WeFvISGUWekPGKWOP1ygrs0ef0o1VJMk1exos5A==}
 
+  '@markmap/core@1.0.0':
+    resolution: {integrity: sha512-I+D/10Ha8sjQmxjVMq8lI5rzKdvysaodFQ2PQgQ0sWxfmDXhHoDC+gsjcX64X2LX56xOijlEG5eLSR91PHyQeQ==}
+
+  '@markmap/parse@1.0.0':
+    resolution: {integrity: sha512-yGQFESFphNq9DVYyvMJBCiQs8w7kkM2EAh9RWLODSQNDyoFLYd+lfqhmFy22UQE3Lz72smuTj0MnaOnfhtvrbw==}
+
+  '@markmap/plugin-math@1.0.0':
+    resolution: {integrity: sha512-Yoc14H0WOGR/EdILfyOKDBY/wgqvP9i3Jjhr2OwxegHIduKEXzDzbQs6znvwOEbgUvzs/FM5B1SpFUyJaLej3Q==}
+
+  '@markmap/render@1.0.0':
+    resolution: {integrity: sha512-gAKMmWBOBHTW0I99MaZpLg6uyT1GZ9TJ4OXjl4nmD2H+TEe5ctdaNzcxHW9jAZVW0h9jWVnjgvB0XrSSOWpDMA==}
+
+  '@markmap/toolbar@1.0.0':
+    resolution: {integrity: sha512-I/wk14/3tdvaTYTyH2wbZlrrr6VWv1/otpIPjcMQl9TegB40WDH8JeAUcMXbQgfbipVdTFQEIwex+U06P0zwcw==}
+    peerDependencies:
+      '@markmap/view': ^1.0.0
+
+  '@markmap/view@1.0.0':
+    resolution: {integrity: sha512-6A13ud4ZwGqxlfSPS/JeL4fVYzlkVlvwQ0eg/X4YMWJltVGPtuO7OL931XBw3ZOh1HtetuFCdrUXig/Zi5Ed8w==}
+
   '@mathjax/mathjax-newcm-font@4.1.3':
     resolution: {integrity: sha512-gzAB3dFHilHX1l5x2xUqRL+1jDQt3Fyza1DkEMVXWC4E8SvsGdlgEza47HYi2WhVcgfkvf4zgUGzuhbq3Pjlew==}
+
+  '@mathjax/mathjax-tex-font@4.1.3':
+    resolution: {integrity: sha512-9B78brBEmmAwyumaREIyM1gF2HgDamDIXA36UyeXWxX7XrpLdmoSB5NLIf/c6tEA4L6xNrIdMxfgY6YX/kcSNw==}
 
   '@mathjax/src@4.1.3':
     resolution: {integrity: sha512-rIrWquuBSoJuoMBdC/1qD+AUHTorlccPicoVy6P2xbUgnuDBpCcpbHtOAsB8L3hdCHtNBg92lF8e3Fz+pkcQbw==}
@@ -5572,6 +5595,9 @@ packages:
   '@types/jsonfile@6.1.4':
     resolution: {integrity: sha512-D5qGUYwjvnNNextdU59/+fI+spnwtTFmyQP0h+PfIOSkNfpU6AOICUOkm4i0OnSk+NyjdPJrxCDro0sJsWlRpQ==}
 
+  '@types/katex@0.16.8':
+    resolution: {integrity: sha512-trgaNyfU+Xh2Tc+ABIb44a5AYUpicB3uwirOioeOkNPPbmgRNtcWyDeeFRzjPZENO9Vq8gvVqfhaaXWLlevVwg==}
+
   '@types/linkify-it@5.0.0':
     resolution: {integrity: sha512-sVDA58zAw4eWAffKOaQH5/5j3XeayukzDk+ewSsnv3p4yJEZHCCzMDiZM8e0OUrRvmpGZ85jf4yDHkHsgBNr9Q==}
 
@@ -5845,9 +5871,6 @@ packages:
 
   '@volar/source-map@2.4.30':
     resolution: {integrity: sha512-zym1ob/KwDDyN+0jGVtxwbxJSRRnUvv5HspCtz3yEfVVdCG4/dzxJktMGPAgemqRuVs81O0o/y0q3qOUErR8kg==}
-
-  '@vscode/markdown-it-katex@1.1.2':
-    resolution: {integrity: sha512-+4IIv5PgrmhKvW/3LpkpkGg257OViEhXkOOgCyj5KMsjsOfnRXkni8XAuuF9Ui5p3B8WnUovlDXAQNb8RJ/RaQ==}
 
   '@vue-macros/common@3.1.4':
     resolution: {integrity: sha512-/5Fv+6DgIcM9ajY05ZmKBv+LMX1M9A0X+IUwDRVdt67ciw8OV9bvG2r34p3RiEadlsQybjhKPRKNXDC8Bp23cw==}
@@ -6429,10 +6452,6 @@ packages:
   cheerio-select@2.1.0:
     resolution: {integrity: sha512-9v9kG0LvzrlcungtnJtpGNxY+fzECQKhK4EGJX2vByejiMX84MFNQw4UxPJl3bFbTMw+Dfs37XaIkCwTZfLh4g==}
 
-  cheerio@1.0.0:
-    resolution: {integrity: sha512-quS9HgjQpdaXOvsZz82Oz7uxtXiy6UIsIQcpBj7HRw2M63Skasm9qlDocAM7jNuaxdhpPU7c4kJN+gA5MCu4ww==}
-    engines: {node: '>=18.17'}
-
   cheerio@1.2.0:
     resolution: {integrity: sha512-WDrybc/gKFpTYQutKIK6UvfcuxijIZfMfXaYm8NMsPQxSYvf+13fXUJ4rztGGbJcBQ/GF55gvrZ0Bc0bj/mqvg==}
     engines: {node: '>=20.18.1'}
@@ -6875,6 +6894,9 @@ packages:
     resolution: {integrity: sha512-1wGF62bgjMRbF6mqbD+6rRWBL2hwWVYQjFO2UP3Wm1nIAvJZKaQxXM5caVY7athoCa8wIq9lCf7g44lPWFk50g==}
     engines: {node: '>=12'}
 
+  d3-flextree@2.1.2:
+    resolution: {integrity: sha512-gJiHrx5uTTHq44bjyIb3xpbmmdZcWLYPKeO9EPVOq8EylMFOiH2+9sWqKAiQ4DcFuOZTAxPOQyv0Rnmji/g15A==}
+
   d3-force@3.0.1:
     resolution: {integrity: sha512-kAaaHLFebBYwgi5cYBXAI8vKrQFMCD2MEswj2QuPKKbdU1wYLc8WXtS7O8F/b6POCIe3gJjY6hkDstHi1yMETQ==}
     engines: {node: '>=12'}
@@ -6886,6 +6908,9 @@ packages:
   d3-geo@3.1.2:
     resolution: {integrity: sha512-5R8ZgDQorIxmauv7R6gpE/ndz+Z0qAZssigq0aXFdvPHdY41RqtW02jrRUQAL724NdPABYXo1+gQEGBBr7uKNg==}
     engines: {node: '>=12'}
+
+  d3-hierarchy@1.1.9:
+    resolution: {integrity: sha512-j8tPxlqh1srJHAtxfvOUwKNYJkQuBFdM1+JAUfq6xqH5eAqf93L7oG1NVqDa4CpFZNvnNKtCYEUC8KY9yEn9lQ==}
 
   d3-hierarchy@3.1.3:
     resolution: {integrity: sha512-GRajN5ZcnEwYFWqqdzhG1qJ3+fDg6WWzk47TJg7ePY7yvYAgRfD2r1mUx+wviBOWuCwamCUzjwMSdato43jbGA==}
@@ -7377,6 +7402,9 @@ packages:
   fastq@1.20.3:
     resolution: {integrity: sha512-XKv5nnLs6nLF71NgiKJLIZFLkPyIEuOselLG7ujZnGrRfQK8HpvY+WqKhAJUAdLomwVHErVS4LfxFlPq0/FTAw==}
 
+  fault@2.0.1:
+    resolution: {integrity: sha512-WtySTkS4OKev5JtpHXnib4Gxiurzh5NCGvWrFaZ34m6JehfTUhKZvn9njTfw48t6JumVQOmrKqpmGcdwxnhqBQ==}
+
   faye-websocket@0.11.4:
     resolution: {integrity: sha512-CzbClwlXAuiRQAlUyfqPgvPoNKTckTPGfwZV4ZdAhVcP2lh9KUxJg2b5GkE7XbjKQ3YJnQ9z6D9ntLAlB+tP8g==}
     engines: {node: '>=0.8.0'}
@@ -7421,6 +7449,12 @@ packages:
     resolution: {integrity: sha512-b6suED+5/3rTpUBdG1gupIl8MPFCAMA0QXwmljLhvCUKcUvdE4gWky9zpuGCcXHOsz4J9wPGNWq6OKpmIzz3hQ==}
     hasBin: true
 
+  flatbush@4.7.0:
+    resolution: {integrity: sha512-oFBkbYI3Rx6snZEBQOiJSaxt1MfZtbH2p862dRmIOOYRVxQWDyAn4oyKjoJv7TgmOft2yIavvooOU5itliagOw==}
+
+  flatqueue@3.1.0:
+    resolution: {integrity: sha512-Ia4qIYrrsEqIRx3c3XhkT+QDLQuUV5ovsr6ah1rIgKT5wclhoGK3lAMS1bWRAWxlx7wtlTBpV7QXB5d9fOSRxA==}
+
   flatted@3.4.4:
     resolution: {integrity: sha512-5+ybhBZANEJxaH3X5evAFatUxLfEHSr7n6kYJ+1Qd0mUqr4eu9gIf6GDbWHf8RJijHrjjO8G+la14SlL2SeS1Q==}
 
@@ -7456,6 +7490,10 @@ packages:
   foreground-child@3.3.1:
     resolution: {integrity: sha512-gIXjKqtFuWEgzFRJA9WCQeSJLZDjgJUOMCMzxtvFq/37KojM1BFGufqsCy0r4qSQmYLsZYMeyRqzIWOMup03sw==}
     engines: {node: '>=14'}
+
+  format@0.2.2:
+    resolution: {integrity: sha512-wzsgA6WOq+09wrU1tsJ09udeR/YZRaeArL9e1wPbFg3GG2yDnC2ldKpxs4xunpFF9DgqCqOIra3bc1HWrJ37Ww==}
+    engines: {node: '>=0.4.x'}
 
   forwarded@0.2.0:
     resolution: {integrity: sha512-buRG0fpBtRHSTCOASe6hD258tEubFoRLb4ZNA6NxMVHNw2gOcwHo9wyablzMzOA5z9xA9L1KNjk/Nt6MT9aYow==}
@@ -7674,6 +7712,9 @@ packages:
   hast-util-to-html@9.0.6:
     resolution: {integrity: sha512-1SZUxCN3TtJAE7e2BQN2MBHsoZ1gnmi9GoCP5Di59CSWptIezSAW09yDZyVbanb78V9eCwrKqdQsjtfVTxYHWA==}
 
+  hast-util-to-text@4.0.3:
+    resolution: {integrity: sha512-5yrlWOvGFs6CqHriUpSsNrjzT/Tdo+IOQudbznxOn8K5qblp18MJyzOg8IgDOKQ8MYgQcJA7SusuCjSpDr8mSA==}
+
   hast-util-whitespace@3.0.0:
     resolution: {integrity: sha512-88JUN06ipLwsnv+dVn+OIYOvAuvBMy/Qoi6O7mQHxdPXpjy+Cd6xRkWwux7DKO+4sYILtLBRIKgsdpS2gQc7qw==}
 
@@ -7684,8 +7725,8 @@ packages:
     resolution: {integrity: sha512-F/1DnUGPopORZi0ni+CvrCgHQ5FyEAHRLSApuYWMmrbSwoN2Mn/7k+Gl38gJnR7yyDZk6WLXwiGod1JOWNDKGw==}
     hasBin: true
 
-  highlight.js@11.12.0:
-    resolution: {integrity: sha512-nbfWpyRMcMrPMmDwJB+dhX/eiaPKtc2RB+0QZskqJ3WjRA/FDS0e9hZrx8EC/lbEv8gXy98FcDbNa/dspAaJMg==}
+  highlight.js@11.11.2:
+    resolution: {integrity: sha512-oaXMACAU0kzOMXBjWpNcX+vlwSBCIAiZ9BHa7gA15NOTtT2L/l8OSZDuqS2XppOhZBPJ7hm4o8ep2kyuip2uEQ==}
     engines: {node: '>=12.0.0'}
 
   hls.js@1.7.3:
@@ -8390,6 +8431,9 @@ packages:
   lower-case@2.0.2:
     resolution: {integrity: sha512-7fm3l3NAF9WfN6W3JOmf5drwpVqX78JtoGJ3A6W0a6ZnldM41w2fV5D490psKFTpMds8TJse/eHLFFsNHHjHgg==}
 
+  lowlight@3.3.0:
+    resolution: {integrity: sha512-0JNhgFoPvP6U6lE/UdVsSq99tn6DhjjpAj5MxG49ewd2mOBVtwWYIT8ClyABhq198aXXODMU6Ox8DrGy/CpTZQ==}
+
   lru-cache@11.5.3:
     resolution: {integrity: sha512-U4N8FgzmWxc8k1VH8Kr6lQg18U7Fjvby6wXHVRX/ZZ7IwWbRMgrRbP0Wrb5q5NVinryp4SQampHKdvtecItxUg==}
     engines: {node: 20 || >=22}
@@ -8433,18 +8477,6 @@ packages:
   markdown-it-emoji@3.1.0:
     resolution: {integrity: sha512-NhmMEH2ywduD4Nty1E8uB5NqfLhAT1VR0dyvoJyStKOqCzbZmVdn/+8wj7zpDsb/fLBikpCPsWwxqKlvMmbz4g==}
 
-  markdown-it-ins@4.0.0:
-    resolution: {integrity: sha512-sWbjK2DprrkINE4oYDhHdCijGT+MIDhEupjSHLXe5UXeVr5qmVxs/nTUVtgi0Oh/qtF+QKV0tNWDhQBEPxiMew==}
-
-  markdown-it-mark@4.0.0:
-    resolution: {integrity: sha512-YLhzaOsU9THO/cal0lUjfMjrqSMPjjyjChYM7oyj4DnyaXEzA8gnW6cVJeyCrCVeyesrY2PlEdUYJSPFYL4Nkg==}
-
-  markdown-it-sub@2.0.0:
-    resolution: {integrity: sha512-iCBKgwCkfQBRg2vApy9vx1C1Tu6D8XYo8NvevI3OlwzBRmiMtsJ2sXupBgEA7PPxiDwNni3qIUkhZ6j5wofDUA==}
-
-  markdown-it-sup@2.0.0:
-    resolution: {integrity: sha512-5VgmdKlkBd8sgXuoDoxMpiU+BiEt3I49GItBzzw7Mxq9CxvnhE/k09HFli09zgfFDRixDQDfDxi0mgBCXtaTvA==}
-
   markdown-it@14.3.3:
     resolution: {integrity: sha512-L//tDAkjTjJCU6pBUSBTgs3Kg4InVaZuUZog/b6V12UKhcDQ7S78877ibbCanRExwPuYP1CZD7Gd2dxSy1GXRg==}
     hasBin: true
@@ -8467,34 +8499,6 @@ packages:
     engines: {node: '>= 20'}
     hasBin: true
 
-  markmap-common@0.18.9:
-    resolution: {integrity: sha512-MV2HQO7IGIm3jWEJXSG8vmdpqf4WIDXcEyAEN52lrWR1qD53Zg5l81JwjXoZ2l0rY5mofKYqUFlmdM2fqTGMVg==}
-    deprecated: Replaced by @markmap/* in 1.0.0. See https://markmap.js.org/docs/migration
-
-  markmap-html-parser@0.18.11:
-    resolution: {integrity: sha512-+kC5C4sCGntGUhGvTa5VIb5rtM75cSy/VCy3tzZoNAcn2qZGdgYvljN0WvjsOzrEzp+V6XKgwzO0u2TdzNAiOg==}
-    deprecated: Replaced by @markmap/* in 1.0.0. See https://markmap.js.org/docs/migration
-    peerDependencies:
-      markmap-common: '*'
-
-  markmap-lib@0.18.13:
-    resolution: {integrity: sha512-8ufvDRDxKu7aMeVaVZpCxcbpaJa96q+FdwzSDtb/tpPYPF9L6lO7t5X0kji6M3N1TAEFb2gzaVoe8EAbBTASYw==}
-    deprecated: Replaced by @markmap/* in 1.0.0. See https://markmap.js.org/docs/migration
-    peerDependencies:
-      markmap-common: '*'
-
-  markmap-toolbar@0.18.13:
-    resolution: {integrity: sha512-TOy0/uifW73gxRqvMalcVxVljGnvT5dkYp4xgeH8c17RJASYiO7TPE69bLfrsJQ/EJxnrUTIEvbBdDhWQpZmrQ==}
-    deprecated: Replaced by @markmap/* in 1.0.0. See https://markmap.js.org/docs/migration
-    peerDependencies:
-      markmap-common: '*'
-
-  markmap-view@0.18.13:
-    resolution: {integrity: sha512-FNzBzDZ81hR9TJ8MmpDxH1qhFWVqAHeCE2BkOW4GseDrymNTlXg5uLaiVl6PFAlB+O6mG6Gkbd+UsHuaOpgyKA==}
-    deprecated: Replaced by @markmap/* in 1.0.0. See https://markmap.js.org/docs/migration
-    peerDependencies:
-      markmap-common: '*'
-
   math-intrinsics@1.1.0:
     resolution: {integrity: sha512-/IXtbwEk5HTPyEwyKX6hGkYXxM9nbj64B+ilVJnC/R6B0pH5G4V3b0pVbL7DBj4tkhBAppbQUlf6F6Xl9LHu1g==}
     engines: {node: '>= 0.4'}
@@ -8507,6 +8511,9 @@ packages:
 
   mdast-util-from-markdown@2.1.0:
     resolution: {integrity: sha512-KRLgmPaP2H1ul2bpoJkOS+9pAcDAAj9Nu1mqLnh8NLeJG5tlvj42TH80PIGBpROWlRXLk0lDrWNuZCFy/tsB4A==}
+
+  mdast-util-frontmatter@2.0.1:
+    resolution: {integrity: sha512-LRqI9+wdgC25P0URIJY9vwocIzCcksduHQ9OF2joxQoyTNVduwLAFUzjoopuRJbJAReaKrNQKAZKL3uCMugWJA==}
 
   mdast-util-gfm-autolink-literal@2.1.0:
     resolution: {integrity: sha512-Jx6QSK8wDo558Bcf7q+1pe0v81g2PVs09Hlvu9xJHmCFRF3sAPW7vXFVIAwBncs3sde92WbsVqNxwdqViA2XnQ==}
@@ -8525,6 +8532,9 @@ packages:
 
   mdast-util-gfm@3.1.0:
     resolution: {integrity: sha512-0ulfdQOM3ysHhCJ1p06l0b0VKlhU0wuQs3thxZQagjcjPrlFRqY215uZGHHJan9GEAXd9MbfPjFJz+qMkVR6zQ==}
+
+  mdast-util-math@3.0.0:
+    resolution: {integrity: sha512-Tl9GBNeG/AhJnQM221bJR2HPvLOSnLE/T9cJI9tlc6zwQk2nPk/4f0cHkOdEixQPC/j8UtKDdITswvLAy1OZ1w==}
 
   mdast-util-phrasing@4.1.0:
     resolution: {integrity: sha512-TqICwyvJJpBwvGAMZjj4J2n0X8QWp21b9l0o7eXyVJ25YNWYbJDVIyD1bZXE6WtV6RmKJVYmQAKWa0zWOABz2w==}
@@ -8594,6 +8604,33 @@ packages:
 
   micromark-core-commonmark@2.0.4:
     resolution: {integrity: sha512-wxEeE8v8XVvOrxn1TZj74qYhAtTQsSqufHVS3uNVyT1MupXxhyaHk8/9xDNPh9BmL77QNDgWTkZ3RsYHB2ry7w==}
+
+  micromark-extension-frontmatter@2.0.0:
+    resolution: {integrity: sha512-C4AkuM3dA58cgZha7zVnuVxBhDsbttIMiytjgsM2XbHAB2faRVaHRle40558FBN+DJcrLNCoqG5mlrpdU4cRtg==}
+
+  micromark-extension-gfm-autolink-literal@2.1.0:
+    resolution: {integrity: sha512-oOg7knzhicgQ3t4QCjCWgTmfNhvQbDDnJeVu9v81r7NltNCVmhPy1fJRX27pISafdjL+SVc4d3l48Gb6pbRypw==}
+
+  micromark-extension-gfm-footnote@2.1.0:
+    resolution: {integrity: sha512-/yPhxI1ntnDNsiHtzLKYnE3vf9JZ6cAisqVDauhp4CEHxlb4uoOTxOCJ+9s51bIB8U1N1FJ1RXOKTIlD5B/gqw==}
+
+  micromark-extension-gfm-strikethrough@2.1.0:
+    resolution: {integrity: sha512-ADVjpOOkjz1hhkZLlBiYA9cR2Anf8F4HqZUO6e5eDcPQd0Txw5fxLzzxnEkSkfnD0wziSGiv7sYhk/ktvbf1uw==}
+
+  micromark-extension-gfm-table@2.1.2:
+    resolution: {integrity: sha512-pRzm4kDTu0MjlmBkxmS9yYhw60nncfcEwu9NNdPFSQEFXS95ZKyIIyTSHu/o3ReBUrLKYEq+7YaXCRn/bPB4MA==}
+
+  micromark-extension-gfm-tagfilter@2.0.0:
+    resolution: {integrity: sha512-xHlTOmuCSotIA8TW1mDIM6X2O1SiX5P9IuDtqGonFhEK0qgRI4yeC6vMxEV2dgyr2TiD+2PQ10o+cOhdVAcwfg==}
+
+  micromark-extension-gfm-task-list-item@2.1.0:
+    resolution: {integrity: sha512-qIBZhqxqI6fjLDYFTBIa4eivDMnP+OZqsNwmQ3xNLE4Cxwc+zfQEfbs6tzAo2Hjq+bh6q5F+Z8/cksrLFYWQQw==}
+
+  micromark-extension-gfm@3.0.0:
+    resolution: {integrity: sha512-vsKArQsicm7t0z2GugkCKtZehqUm31oeGBV/KVSorWSy8ZlNAv7ytjFhvaryUiCUJYqs+NoE6AFhpQvBTM6Q4w==}
+
+  micromark-extension-math@3.1.0:
+    resolution: {integrity: sha512-lvEqd+fHjATVs+2v/8kg9i5Q0AP2k85H0WUOwpIVvUML8BapsMvh1XAogmQjOCsLpoKRCVQqEkQBB3NhVBcsOg==}
 
   micromark-factory-destination@2.0.1:
     resolution: {integrity: sha512-Xe6rDdJlkmbFRExpTOmRj9N3MaWmbAgdpSrBQvCFqhezUn4AHqJHbaEnfbVYYiexVSs//tqOdY/DxhjdCiJnIA==}
@@ -8939,9 +8976,6 @@ packages:
   npm-registry-fetch@19.1.1:
     resolution: {integrity: sha512-TakBap6OM1w0H73VZVDf44iFXsOS3h+L4wVMXmbWOQroZgFhMch0juN6XSzBNlD965yIKvWg2dfu7NSiaYLxtw==}
     engines: {node: ^20.17.0 || >=22.9.0}
-
-  npm2url@0.2.4:
-    resolution: {integrity: sha512-arzGp/hQz0Ey+ZGhF64XVH7Xqwd+1Q/po5uGiBbzph8ebX6T0uvt3N7c1nBHQNsQVykQgHhqoRTX7JFcHecGuw==}
 
   nth-check@2.1.1:
     resolution: {integrity: sha512-lqjrjmaOoAnWfMmBPL+XNnynZh2+swxiX3WUE0s4yEHI6m+AwrK2UZOimIRl3X/4QctVqS8AiZjFqyOGrMXb/w==}
@@ -9671,6 +9705,15 @@ packages:
   relateurl@0.2.7:
     resolution: {integrity: sha512-G08Dxvm4iDN3MLM0EsP62EDV9IuhXPR6blNz6Utcp7zyV3tr4HVNINt6MpaRWbxoOHT3Q7YN2P+jaHX8vUbgog==}
     engines: {node: '>= 0.10'}
+
+  remark-frontmatter@5.0.0:
+    resolution: {integrity: sha512-XTFYvNASMe5iPN0719nPrdItC9aU0ssC4v14mH1BCi1u0n1gAocqcujWUrByftZTbLhRtiKRyjYTSIOcr69UVQ==}
+
+  remark-gfm@4.0.1:
+    resolution: {integrity: sha512-1quofZ2RQ9EWdeN34S79+KExV1764+wCUGop5CPL1WGdD0ocPpu91lzPGbwWMECpEpd42kJGQwzRfyov9j4yNg==}
+
+  remark-math@6.0.0:
+    resolution: {integrity: sha512-MMqgnP74Igy+S3WwnhQ7kqGlEerTETXMvJhrUzDikVZ2/uogJCb+WHUg97hK9/jcfc0dkD73s3LN8zU49cTEtA==}
 
   remark-parse@11.0.0:
     resolution: {integrity: sha512-FCxlKLNGknS5ba/1lmpYijMUzX2esxW5xQqjWxw2eHFfS2MSdaHVINFmhjo+qN1WhZhNimq0dZATN9pH0IDrpA==}
@@ -10670,6 +10713,9 @@ packages:
 
   unist-util-position@5.0.0:
     resolution: {integrity: sha512-fucsC7HjXvkB5R3kTCO7kUjRdrS0BJt3M/FPxmHMBOm8JQi2BsHAHFsy27E0EolP8rp0NzXsJ+jNPyDWvOJZPA==}
+
+  unist-util-remove-position@5.0.0:
+    resolution: {integrity: sha512-Hp5Kh3wLxv0PHj9m2yZhhLt58KzPtEYKQQ4yxfYFEO7EvHwzyDYnduhHnY1mDxoqr7VUwVuHXk9RXKIiYS1N8Q==}
 
   unist-util-remove@4.0.0:
     resolution: {integrity: sha512-b4gokeGId57UVRX/eVKej5gXqGlc9+trkORhFJpu9raqZkZhU0zm8Doi05+HaiBsMEIJowL+2WtQ5ItjsngPXg==}
@@ -12744,10 +12790,6 @@ snapshots:
 
   '@gar/promise-retry@1.0.3': {}
 
-  '@gera2ld/jsx-dom@2.2.2':
-    dependencies:
-      '@babel/runtime': 7.29.13
-
   '@iconify-json/lucide@1.2.152':
     dependencies:
       '@iconify/types': 2.0.0
@@ -13194,7 +13236,57 @@ snapshots:
     dependencies:
       '@lit-labs/ssr-dom-shim': 1.6.0
 
+  '@markmap/core@1.0.0':
+    dependencies:
+      '@types/hast': 3.0.5
+      '@types/mdast': 4.0.4
+
+  '@markmap/parse@1.0.0(supports-color@10.2.2)':
+    dependencies:
+      '@markmap/core': 1.0.0
+      remark-frontmatter: 5.0.0(supports-color@10.2.2)
+      remark-gfm: 4.0.1(supports-color@10.2.2)
+      remark-parse: 11.0.0(supports-color@10.2.2)
+      unified: 11.0.5
+      yaml: 2.9.1
+    transitivePeerDependencies:
+      - supports-color
+
+  '@markmap/plugin-math@1.0.0(supports-color@10.2.2)':
+    dependencies:
+      '@markmap/core': 1.0.0
+      '@mathjax/mathjax-tex-font': 4.1.3
+      '@mathjax/src': 4.1.3
+      mdast-util-math: 3.0.0(supports-color@10.2.2)
+      remark-math: 6.0.0(supports-color@10.2.2)
+    transitivePeerDependencies:
+      - supports-color
+
+  '@markmap/render@1.0.0':
+    dependencies:
+      '@markmap/core': 1.0.0
+      d3-flextree: 2.1.2
+
+  '@markmap/toolbar@1.0.0(@markmap/view@1.0.0)':
+    dependencies:
+      '@markmap/view': 1.0.0
+
+  '@markmap/view@1.0.0':
+    dependencies:
+      '@markmap/core': 1.0.0
+      '@markmap/render': 1.0.0
+      d3-selection: 3.0.1
+      d3-zoom: 3.0.1
+      flatbush: 4.7.0
+      hast-util-sanitize: 5.0.2
+      hast-util-to-html: 9.0.6
+      hast-util-to-text: 4.0.3
+      lowlight: 3.3.0
+      mdast-util-to-hast: 13.2.1
+
   '@mathjax/mathjax-newcm-font@4.1.3': {}
+
+  '@mathjax/mathjax-tex-font@4.1.3': {}
 
   '@mathjax/src@4.1.3':
     dependencies:
@@ -14588,6 +14680,8 @@ snapshots:
     dependencies:
       '@types/node': 22.20.5
 
+  '@types/katex@0.16.8': {}
+
   '@types/linkify-it@5.0.0': {}
 
   '@types/markdown-it-emoji@3.0.1':
@@ -14864,10 +14958,6 @@ snapshots:
       '@volar/source-map': 2.4.30
 
   '@volar/source-map@2.4.30': {}
-
-  '@vscode/markdown-it-katex@1.1.2':
-    dependencies:
-      katex: 0.16.47
 
   '@vue-macros/common@3.1.4(vue@3.5.45(typescript@6.0.3))':
     dependencies:
@@ -15748,20 +15838,6 @@ snapshots:
       domhandler: 5.0.3
       domutils: 3.2.2
 
-  cheerio@1.0.0:
-    dependencies:
-      cheerio-select: 2.1.0
-      dom-serializer: 2.0.0
-      domhandler: 5.0.3
-      domutils: 3.2.2
-      encoding-sniffer: 0.2.1
-      htmlparser2: 9.1.0
-      parse5: 7.3.0
-      parse5-htmlparser2-tree-adapter: 7.1.0
-      parse5-parser-stream: 7.1.2
-      undici: 6.29.1
-      whatwg-mimetype: 4.0.0
-
   cheerio@1.2.0:
     dependencies:
       cheerio-select: 2.1.0
@@ -16228,6 +16304,10 @@ snapshots:
     dependencies:
       d3-dsv: 3.0.2
 
+  d3-flextree@2.1.2:
+    dependencies:
+      d3-hierarchy: 1.1.9
+
   d3-force@3.0.1:
     dependencies:
       d3-dispatch: 3.0.2
@@ -16239,6 +16319,8 @@ snapshots:
   d3-geo@3.1.2:
     dependencies:
       d3-array: 3.2.5
+
+  d3-hierarchy@1.1.9: {}
 
   d3-hierarchy@3.1.3: {}
 
@@ -16855,6 +16937,10 @@ snapshots:
     dependencies:
       reusify: 1.1.0
 
+  fault@2.0.1:
+    dependencies:
+      format: 0.2.2
+
   faye-websocket@0.11.4:
     dependencies:
       websocket-driver: 0.7.5
@@ -16906,6 +16992,12 @@ snapshots:
 
   flat@5.0.2: {}
 
+  flatbush@4.7.0:
+    dependencies:
+      flatqueue: 3.1.0
+
+  flatqueue@3.1.0: {}
+
   flatted@3.4.4: {}
 
   flexsearch@0.8.212: {}
@@ -16933,6 +17025,8 @@ snapshots:
     dependencies:
       cross-spawn: 7.0.6
       signal-exit: 4.1.0
+
+  format@0.2.2: {}
 
   forwarded@0.2.0: {}
 
@@ -17206,6 +17300,10 @@ snapshots:
       stringify-entities: 4.0.4
       zwitch: 2.0.4
 
+  hast-util-to-text@4.0.3:
+    dependencies:
+      '@types/hast': 3.0.5
+
   hast-util-whitespace@3.0.0:
     dependencies:
       '@types/hast': 3.0.5
@@ -17220,7 +17318,7 @@ snapshots:
 
   he@1.2.0: {}
 
-  highlight.js@11.12.0: {}
+  highlight.js@11.11.2: {}
 
   hls.js@1.7.3: {}
 
@@ -17883,6 +17981,12 @@ snapshots:
     dependencies:
       tslib: 2.9.1
 
+  lowlight@3.3.0:
+    dependencies:
+      '@types/hast': 3.0.5
+      devlop: 1.1.0
+      highlight.js: 11.11.2
+
   lru-cache@11.5.3: {}
 
   lru-cache@5.1.1:
@@ -17938,14 +18042,6 @@ snapshots:
 
   markdown-it-emoji@3.1.0: {}
 
-  markdown-it-ins@4.0.0: {}
-
-  markdown-it-mark@4.0.0: {}
-
-  markdown-it-sub@2.0.0: {}
-
-  markdown-it-sup@2.0.0: {}
-
   markdown-it@14.3.3:
     dependencies:
       argparse: 2.0.1
@@ -17964,47 +18060,6 @@ snapshots:
   marked@16.4.2: {}
 
   marked@18.1.3: {}
-
-  markmap-common@0.18.9:
-    dependencies:
-      '@babel/runtime': 7.29.13
-      '@gera2ld/jsx-dom': 2.2.2
-      npm2url: 0.2.4
-
-  markmap-html-parser@0.18.11(markmap-common@0.18.9):
-    dependencies:
-      '@babel/runtime': 7.29.13
-      cheerio: 1.0.0
-      markmap-common: 0.18.9
-
-  markmap-lib@0.18.13(markmap-common@0.18.9):
-    dependencies:
-      '@babel/runtime': 7.29.13
-      '@vscode/markdown-it-katex': 1.1.2
-      highlight.js: 11.12.0
-      katex: 0.16.47
-      markdown-it: 14.3.3
-      markdown-it-ins: 4.0.0
-      markdown-it-mark: 4.0.0
-      markdown-it-sub: 2.0.0
-      markdown-it-sup: 2.0.0
-      markmap-common: 0.18.9
-      markmap-html-parser: 0.18.11(markmap-common@0.18.9)
-      markmap-view: 0.18.13(markmap-common@0.18.9)
-      prismjs: 1.30.0
-      yaml: 2.9.1
-
-  markmap-toolbar@0.18.13(markmap-common@0.18.9):
-    dependencies:
-      '@babel/runtime': 7.29.13
-      '@gera2ld/jsx-dom': 2.2.2
-      markmap-common: 0.18.9
-
-  markmap-view@0.18.13(markmap-common@0.18.9):
-    dependencies:
-      '@babel/runtime': 7.29.13
-      d3: 7.9.2
-      markmap-common: 0.18.9
 
   math-intrinsics@1.1.0: {}
 
@@ -18031,6 +18086,17 @@ snapshots:
       micromark-util-symbol: 2.0.1
       micromark-util-types: 2.0.3
       unist-util-stringify-position: 4.0.0
+    transitivePeerDependencies:
+      - supports-color
+
+  mdast-util-frontmatter@2.0.1(supports-color@10.2.2):
+    dependencies:
+      '@types/mdast': 4.0.4
+      devlop: 1.1.0
+      escape-string-regexp: 5.0.0
+      mdast-util-from-markdown: 2.1.0(supports-color@10.2.2)
+      mdast-util-to-markdown: 2.2.3
+      micromark-extension-frontmatter: 2.0.0
     transitivePeerDependencies:
       - supports-color
 
@@ -18090,6 +18156,18 @@ snapshots:
       mdast-util-gfm-table: 2.0.1(supports-color@10.2.2)
       mdast-util-gfm-task-list-item: 2.0.1(supports-color@10.2.2)
       mdast-util-to-markdown: 2.2.3
+    transitivePeerDependencies:
+      - supports-color
+
+  mdast-util-math@3.0.0(supports-color@10.2.2):
+    dependencies:
+      '@types/hast': 3.0.5
+      '@types/mdast': 4.0.4
+      devlop: 1.1.0
+      longest-streak: 3.1.0
+      mdast-util-from-markdown: 2.1.0(supports-color@10.2.2)
+      mdast-util-to-markdown: 2.2.3
+      unist-util-remove-position: 5.0.0
     transitivePeerDependencies:
       - supports-color
 
@@ -18218,6 +18296,81 @@ snapshots:
       micromark-util-normalize-identifier: 2.0.1
       micromark-util-resolve-all: 2.0.1
       micromark-util-subtokenize: 2.1.0
+      micromark-util-symbol: 2.0.1
+      micromark-util-types: 2.0.3
+
+  micromark-extension-frontmatter@2.0.0:
+    dependencies:
+      fault: 2.0.1
+      micromark-util-character: 2.1.1
+      micromark-util-symbol: 2.0.1
+      micromark-util-types: 2.0.3
+
+  micromark-extension-gfm-autolink-literal@2.1.0:
+    dependencies:
+      micromark-util-character: 2.1.1
+      micromark-util-sanitize-uri: 2.0.1
+      micromark-util-symbol: 2.0.1
+      micromark-util-types: 2.0.3
+
+  micromark-extension-gfm-footnote@2.1.0:
+    dependencies:
+      devlop: 1.1.0
+      micromark-core-commonmark: 2.0.4
+      micromark-factory-space: 2.1.0
+      micromark-util-character: 2.1.1
+      micromark-util-normalize-identifier: 2.0.1
+      micromark-util-sanitize-uri: 2.0.1
+      micromark-util-symbol: 2.0.1
+      micromark-util-types: 2.0.3
+
+  micromark-extension-gfm-strikethrough@2.1.0:
+    dependencies:
+      devlop: 1.1.0
+      micromark-util-chunked: 2.0.1
+      micromark-util-classify-character: 2.0.1
+      micromark-util-resolve-all: 2.0.1
+      micromark-util-symbol: 2.0.1
+      micromark-util-types: 2.0.3
+
+  micromark-extension-gfm-table@2.1.2:
+    dependencies:
+      devlop: 1.1.0
+      micromark-factory-space: 2.1.0
+      micromark-util-character: 2.1.1
+      micromark-util-symbol: 2.0.1
+      micromark-util-types: 2.0.3
+
+  micromark-extension-gfm-tagfilter@2.0.0:
+    dependencies:
+      micromark-util-types: 2.0.3
+
+  micromark-extension-gfm-task-list-item@2.1.0:
+    dependencies:
+      devlop: 1.1.0
+      micromark-factory-space: 2.1.0
+      micromark-util-character: 2.1.1
+      micromark-util-symbol: 2.0.1
+      micromark-util-types: 2.0.3
+
+  micromark-extension-gfm@3.0.0:
+    dependencies:
+      micromark-extension-gfm-autolink-literal: 2.1.0
+      micromark-extension-gfm-footnote: 2.1.0
+      micromark-extension-gfm-strikethrough: 2.1.0
+      micromark-extension-gfm-table: 2.1.2
+      micromark-extension-gfm-tagfilter: 2.0.0
+      micromark-extension-gfm-task-list-item: 2.1.0
+      micromark-util-combine-extensions: 2.0.1
+      micromark-util-types: 2.0.3
+
+  micromark-extension-math@3.1.0:
+    dependencies:
+      '@types/katex': 0.16.8
+      devlop: 1.1.0
+      katex: 0.16.47
+      micromark-factory-space: 2.1.0
+      micromark-util-character: 2.1.1
       micromark-util-symbol: 2.0.1
       micromark-util-types: 2.0.3
 
@@ -18576,8 +18729,6 @@ snapshots:
       proc-log: 6.1.0
     transitivePeerDependencies:
       - supports-color
-
-  npm2url@0.2.4: {}
 
   nth-check@2.1.1:
     dependencies:
@@ -19324,6 +19475,35 @@ snapshots:
       unified: 11.0.5
 
   relateurl@0.2.7: {}
+
+  remark-frontmatter@5.0.0(supports-color@10.2.2):
+    dependencies:
+      '@types/mdast': 4.0.4
+      mdast-util-frontmatter: 2.0.1(supports-color@10.2.2)
+      micromark-extension-frontmatter: 2.0.0
+      unified: 11.0.5
+    transitivePeerDependencies:
+      - supports-color
+
+  remark-gfm@4.0.1(supports-color@10.2.2):
+    dependencies:
+      '@types/mdast': 4.0.4
+      mdast-util-gfm: 3.1.0(supports-color@10.2.2)
+      micromark-extension-gfm: 3.0.0
+      remark-parse: 11.0.0(supports-color@10.2.2)
+      remark-stringify: 11.0.0
+      unified: 11.0.5
+    transitivePeerDependencies:
+      - supports-color
+
+  remark-math@6.0.0(supports-color@10.2.2):
+    dependencies:
+      '@types/mdast': 4.0.4
+      mdast-util-math: 3.0.0(supports-color@10.2.2)
+      micromark-extension-math: 3.1.0
+      unified: 11.0.5
+    transitivePeerDependencies:
+      - supports-color
 
   remark-parse@11.0.0(supports-color@10.2.2):
     dependencies:
@@ -20486,6 +20666,11 @@ snapshots:
   unist-util-position@5.0.0:
     dependencies:
       '@types/unist': 3.0.3
+
+  unist-util-remove-position@5.0.0:
+    dependencies:
+      '@types/unist': 3.0.3
+      unist-util-visit: 5.2.0
 
   unist-util-remove@4.0.0:
     dependencies:

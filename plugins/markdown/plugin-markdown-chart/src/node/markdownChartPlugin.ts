@@ -72,12 +72,21 @@ export const markdownChartPlugin =
       echarts: getStatus('echarts', ['echarts']),
       flowchart: getStatus('flowchart', ['flowchart.ts']),
       markmap: getStatus('markmap', [
-        'markmap-lib',
-        'markmap-toolbar',
-        'markmap-view',
+        '@markmap/parse',
+        '@markmap/toolbar',
+        '@markmap/view',
       ]),
       mermaid: getStatus('mermaid', ['mermaid']),
     }
+
+    // Math support in markmap labels needs two extra packages. They stay
+    // optional, so a site that does not use math does not install MathJax.
+    //
+    // markmap 标签中的数学公式需要额外两个包。它们是可选的，不需要公式的站点无需安装 MathJax。
+    const markmapMathInstalled =
+      status.markmap &&
+      isInstalled('@markmap/plugin-math', false) &&
+      isInstalled('@markmap/render', false)
 
     return {
       name: PLUGIN_NAME,
@@ -144,15 +153,26 @@ export const markdownChartPlugin =
 
         if (status.markmap) {
           addViteOptimizeDepsInclude(bundlerOptions, app, [
-            'markmap-lib',
-            'markmap-toolbar',
-            'markmap-view',
+            '@markmap/parse',
+            '@markmap/toolbar',
+            '@markmap/view',
           ])
           addViteSsrExternal(bundlerOptions, app, [
-            'markmap-lib',
-            'markmap-toolbar',
-            'markmap-view',
+            '@markmap/parse',
+            '@markmap/toolbar',
+            '@markmap/view',
           ])
+
+          if (markmapMathInstalled) {
+            addViteOptimizeDepsInclude(bundlerOptions, app, [
+              '@markmap/plugin-math',
+              '@markmap/render',
+            ])
+            addViteSsrExternal(bundlerOptions, app, [
+              '@markmap/plugin-math',
+              '@markmap/render',
+            ])
+          }
         }
 
         if (status.mermaid) {
@@ -165,6 +185,7 @@ export const markdownChartPlugin =
         }
       },
 
-      clientConfigFile: () => prepareConfigFile(app, status),
+      clientConfigFile: () =>
+        prepareConfigFile(app, status, markmapMathInstalled),
     }
   }

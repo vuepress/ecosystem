@@ -10,26 +10,50 @@ Add Markmap support to the Markdown files in your VuePress site.
 
 ## Installation
 
-Install `markmap-lib`, `markmap-toolbar` and `markmap-view` in your project:
+Install `@markmap/parse`, `@markmap/toolbar` and `@markmap/view` in your project:
 
 ::: code-tabs#shell
 
 @tab pnpm
 
 ```bash
-pnpm add -D markmap-lib markmap-toolbar markmap-view
+pnpm add -D @markmap/parse @markmap/toolbar @markmap/view
 ```
 
 @tab yarn
 
 ```bash
-yarn add -D markmap-lib markmap-toolbar markmap-view
+yarn add -D @markmap/parse @markmap/toolbar @markmap/view
 ```
 
 @tab npm
 
 ```bash
-npm i -D markmap-lib markmap-toolbar markmap-view
+npm i -D @markmap/parse @markmap/toolbar @markmap/view
+```
+
+:::
+
+To render TeX math in labels, also install `@markmap/plugin-math` and `@markmap/render`:
+
+::: code-tabs#shell
+
+@tab pnpm
+
+```bash
+pnpm add -D @markmap/plugin-math @markmap/render
+```
+
+@tab yarn
+
+```bash
+yarn add -D @markmap/plugin-math @markmap/render
+```
+
+@tab npm
+
+```bash
+npm i -D @markmap/plugin-math @markmap/render
 ```
 
 :::
@@ -67,7 +91,7 @@ Configuring through frontmatter syntax is supported.
 ---
 title: markmap
 markmap:
-  colorFreezeLevel: 2
+  colorDepth: 2
 ---
 
 ## Links
@@ -83,7 +107,7 @@ markmap:
 
 ## Features
 
-Note that if blocks and lists appear at the same level, the lists will be ignored.
+Paragraphs, code blocks and tables are shown as notes, click the dot next to a node to open them.
 
 ### Lists
 
@@ -92,7 +116,7 @@ Note that if blocks and lists appear at the same level, the lists will be ignore
 - [x] checkbox
 - Katex: $x = {-b \pm \sqrt{b^2-4ac} \over 2a}$ <!-- markmap: fold -->
   - [More Katex Examples](#?d=gist:af76a4c245b302206b16aec503dbe07b:katex.md)
-- Now we can wrap very very very very long text based on `maxWidth` option
+- Now we can wrap very very very very long text based on `wrapWidth` option
 - Ordered list
   1. item 1
   2. item 2
