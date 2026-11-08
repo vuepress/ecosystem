@@ -92,6 +92,10 @@ export default defineComponent({
 
       loaded.value = true
 
+      // The svg size is calculated from the bounding boxes of the text,
+      // so the container must be visible before drawing.
+      await nextTick()
+
       // Draw svg to #id
       flowchart.draw(id, {
         ...flowchartPresets[props.preset],

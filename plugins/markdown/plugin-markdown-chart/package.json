@@ -72,10 +72,10 @@
     "@markmap/render": "^1.0.0",
     "@markmap/toolbar": "^1.0.0",
     "@markmap/view": "^1.0.0",
-    "chart.js": "^4.5.1",
-    "echarts": "^6.0.0",
-    "flowchart.ts": "^3.0.1",
-    "mermaid": "^12.0.0",
+    "chart.js": "^4.6.1",
+    "echarts": "^6.1.0",
+    "flowchart.ts": "^4.0.0",
+    "mermaid": "^12.3.0",
     "vuepress": "catalog:"
   },
   "peerDependenciesMeta": {
