@@ -1137,16 +1137,16 @@ importers:
         specifier: 'catalog:'
         version: 15.0.0(vue@3.5.45(typescript@6.0.3))
       chart.js:
-        specifier: ^4.5.1
+        specifier: ^4.6.1
         version: 4.6.1
       echarts:
-        specifier: ^6.0.0
+        specifier: ^6.1.0
         version: 6.1.0
       flowchart.ts:
-        specifier: ^3.0.1
-        version: 3.0.1
+        specifier: ^4.0.0
+        version: 4.0.0
       mermaid:
-        specifier: ^12.0.0
+        specifier: ^12.3.0
         version: 12.3.0
       vue:
         specifier: 'catalog:'
@@ -5640,9 +5640,6 @@ packages:
   '@types/range-parser@1.2.7':
     resolution: {integrity: sha512-hKormJbkJqzQGhziax5PItDUTMAM9uE2XXQmM37dyd4hVM+5aVl7oVxMVUiVQn2oCQFN/LKCZdvSM0pFRqbSmQ==}
 
-  '@types/raphael@2.3.10':
-    resolution: {integrity: sha512-sgELhCMN2RihpyuqUFd+KBQ8QQQNrncCvWuuyIowKAU2tfa1CYz8IHqz0BtZXW0DdD2mTq4HWaq8aaoQMftKaA==}
-
   '@types/resolve@1.20.2':
     resolution: {integrity: sha512-60BCwRFOZCQhDncwQdxxeOEEkbc5dIMccYLwbxsS4TUNeVECQ/pBJ0j09mrHOl/JJvpRPGwO9SvE4nR2Nb/a4Q==}
 
@@ -7338,9 +7335,6 @@ packages:
     resolution: {integrity: sha512-aIL5Fx7mawVa300al2BnEE4iNvo1qETxLrPI/o05L7z6go7fCw1J6EQmbK4FmJ2AS7kgVF/KEZWufBfdClMcPg==}
     engines: {node: '>= 0.6'}
 
-  eve-raphael@0.5.0:
-    resolution: {integrity: sha512-jrxnPsCGqng1UZuEp9DecX/AuSyAszATSjf4oEcRxvfxa1Oux4KkIPKBAAWWnpdwfARtr+Q0o9aPYWjsROD7ug==}
-
   eventemitter3@4.0.7:
     resolution: {integrity: sha512-8guHBZCwKnFhYdHr2ysuRWErTwhoN2X8XELRlrRwpmfeY2jjuUN4taQMsULKUVo1K4DvZl+0pgfyoysHxvmvEw==}
 
@@ -7470,9 +7464,9 @@ packages:
       '@nuxt/kit':
         optional: true
 
-  flowchart.ts@3.0.1:
-    resolution: {integrity: sha512-bBlP6IAe6A/Y9UXb27YhbGS39fTaGLHx1dyjNazIc0d6ntVGC2eIHP6siUQj9PMEX1M5vKXbTecpi+dn4Bhhjg==}
-    engines: {node: ^18.0.0 || >= 20}
+  flowchart.ts@4.0.0:
+    resolution: {integrity: sha512-0xUOC4q8YsD7qZDo1P8SnOuB5daoMyqg5wUC55vGP7S04FO7jXarOa1Dll12MNqQDiiGxv1EKf/4x9D3FFOdpw==}
+    engines: {node: '>=22'}
 
   follow-redirects@1.16.2:
     resolution: {integrity: sha512-/kVP2U8z596Ia0gwFrwyIeo74ta5aVmSeU1FfAUMAmcEP5EP7zydmag3SLiN64NaRKef3lxsq7i/g7ltJQDGow==}
@@ -9597,9 +9591,6 @@ packages:
   range-parser@1.3.0:
     resolution: {integrity: sha512-hek2mFQpPuI4E1BBKrSto+BU3e3x4xuarsbiwr3+lf7p44juvFMV0XFWQAP3xUyqXA4RrXLIoaSUGbSt056ZMw==}
     engines: {node: '>= 0.6'}
-
-  raphael@2.3.0:
-    resolution: {integrity: sha512-w2yIenZAQnp257XUWGni4bLMVxpUpcIl7qgxEgDIXtmSypYtlNxfXWpOBxs7LBTps5sDwhRnrToJrMUrivqNTQ==}
 
   raw-body@2.5.3:
     resolution: {integrity: sha512-s4VSOf6yN0rvbRZGxs8Om5CWj6seneMwK3oDb4lWDH0UPhWcxwOWw5+qk24bxq87szX1ydrwylIOp2uG1ojUpA==}
@@ -14721,8 +14712,6 @@ snapshots:
 
   '@types/range-parser@1.2.7': {}
 
-  '@types/raphael@2.3.10': {}
-
   '@types/resolve@1.20.2': {}
 
   '@types/retry@0.12.2': {}
@@ -16851,8 +16840,6 @@ snapshots:
 
   etag@1.8.1: {}
 
-  eve-raphael@0.5.0: {}
-
   eventemitter3@4.0.7: {}
 
   events@3.3.0: {}
@@ -17007,11 +16994,7 @@ snapshots:
       '@floating-ui/dom': 1.8.0
       vue: 3.5.45(typescript@6.0.3)
 
-  flowchart.ts@3.0.1:
-    dependencies:
-      '@types/raphael': 2.3.10
-      raphael: 2.3.0
-      tslib: 2.9.1
+  flowchart.ts@4.0.0: {}
 
   follow-redirects@1.16.2(debug@4.4.3(supports-color@10.2.2)):
     optionalDependencies:
@@ -19337,10 +19320,6 @@ snapshots:
   range-parser@1.2.1: {}
 
   range-parser@1.3.0: {}
-
-  raphael@2.3.0:
-    dependencies:
-      eve-raphael: 0.5.0
 
   raw-body@2.5.3:
     dependencies:
