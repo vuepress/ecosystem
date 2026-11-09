@@ -63,8 +63,8 @@
     "markdown-it": "catalog:"
   },
   "peerDependencies": {
-    "@iconify-json/vscode-icons": "^1.2.0",
-    "iconify-icon": "^3.0.0",
+    "@iconify-json/vscode-icons": "^1.2.96",
+    "iconify-icon": "^3.0.5",
     "vuepress": "catalog:"
   },
   "peerDependenciesMeta": {
