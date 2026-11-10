@@ -1802,7 +1802,7 @@ importers:
     dependencies:
       ci-info:
         specifier: ^4.4.0
-        version: 4.4.0
+        version: 4.5.0
       lru-cache:
         specifier: ^11.5.3
         version: 11.5.3
@@ -6477,8 +6477,8 @@ packages:
     resolution: {integrity: sha512-rNjApaLzuwaOTjCiT8lSDdGN1APCiqkChLMJxJPWLunPAt5fy8xgU9/jNOchV84wfIxrA0lRQB7oCT8jrn/wrQ==}
     engines: {node: '>=6.0'}
 
-  ci-info@4.4.0:
-    resolution: {integrity: sha512-77PSwercCZU2Fc4sX94eF8k8Pxte6JAwL4/ICZLFjJLqegs7kCuAsqqj/70NQF6TvDpgFjkubQB2FW2ZZddvQg==}
+  ci-info@4.5.0:
+    resolution: {integrity: sha512-d1uM8k5UZEyPza1n/MG3ko8nKupKN0KJpFsipgPcgaCCvV+IqIfJ+NzTjetlLM+UcXZx3+cLrNr76+eAO7G1Mw==}
     engines: {node: '>=8'}
 
   clean-css@5.3.3:
@@ -13136,7 +13136,7 @@ snapshots:
       '@inquirer/select': 5.2.8(@types/node@22.20.5)
       '@lerna-lite/npmlog': 5.4.1
       '@npmcli/run-script': 10.0.4
-      ci-info: 4.4.0
+      ci-info: 4.5.0
       json5: 2.2.3
       lilconfig: 3.1.4
       npm-package-arg: 13.0.2
@@ -13169,7 +13169,7 @@ snapshots:
       '@lerna-lite/version': 5.8.0(@lerna-lite/publish@5.8.0(@types/node@22.20.5)(conventional-commits-filter@6.0.1)(supports-color@10.2.2))(@types/node@22.20.5)(conventional-commits-filter@6.0.1)
       '@npmcli/arborist': 9.9.3(supports-color@10.2.2)
       '@npmcli/package-json': 7.0.5
-      ci-info: 4.4.0
+      ci-info: 4.5.0
       libnpmaccess: 10.0.3(supports-color@10.2.2)
       libnpmpublish: 11.2.1(supports-color@10.2.2)
       npm-package-arg: 13.0.2
@@ -15873,7 +15873,7 @@ snapshots:
 
   chrome-trace-event@1.0.4: {}
 
-  ci-info@4.4.0: {}
+  ci-info@4.5.0: {}
 
   clean-css@5.3.3:
     dependencies:
@@ -17714,7 +17714,7 @@ snapshots:
       '@jest/types': 30.5.1
       '@types/node': 22.20.5
       chalk: 4.1.2
-      ci-info: 4.4.0
+      ci-info: 4.5.0
       graceful-fs: 4.2.11
       picomatch: 4.0.7
 
@@ -17834,7 +17834,7 @@ snapshots:
   libnpmpublish@11.2.1(supports-color@10.2.2):
     dependencies:
       '@npmcli/package-json': 7.0.5
-      ci-info: 4.4.0
+      ci-info: 4.5.0
       npm-package-arg: 13.0.2
       npm-registry-fetch: 19.1.1(supports-color@10.2.2)
       proc-log: 6.1.0
