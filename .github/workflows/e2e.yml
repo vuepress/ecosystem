@@ -29,7 +29,7 @@ jobs:
       - name: Setup pnpm
         uses: pnpm/setup@v3
         with:
-          runtime: node@^24.22.1
+          runtime: node@^26.0.0
           require-lockfile: true
 
       - name: Install playwright chromium
@@ -71,7 +71,7 @@ jobs:
       - name: Setup pnpm
         uses: pnpm/setup@v3
         with:
-          runtime: node@^24.22.1
+          runtime: node@^26.0.0
           require-lockfile: true
 
       - name: Install playwright chromium
