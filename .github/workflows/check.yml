@@ -23,7 +23,7 @@ jobs:
       - name: Setup pnpm
         uses: pnpm/setup@v3
         with:
-          runtime: node@^24.22.1
+          runtime: node@26
           require-lockfile: true
 
       - name: Build source files
@@ -36,6 +36,7 @@ jobs:
         run: |
           pnpm run --filter @vuepress/ecosystem-docs docs:build
           pnpm run --filter @vuepress/ecosystem-docs docs:build-webpack
+          pnpm run --filter @vuepress/ecosystem-docs docs:build-rspack
 
       - name: Unit Test
         run: pnpm run test:unit

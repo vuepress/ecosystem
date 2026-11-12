@@ -1,3 +1,4 @@
+import type { RspackBundlerOptions } from '@vuepress/bundler-rspack'
 import type { ViteBundlerOptions } from '@vuepress/bundler-vite'
 import type { WebpackBundlerOptions } from '@vuepress/bundler-webpack'
 import type { App } from 'vuepress/core'
@@ -60,20 +61,22 @@ export const addCustomElement = (
       }
   }
 
-  // for webpack
-  else if (bundlerName === 'webpack') {
-    const webpackBundlerConfig = bundlerOptions as WebpackBundlerOptions
+  // for webpack and rspack
+  else if (bundlerName === 'webpack' || bundlerName === 'rspack') {
+    const bundlerConfig = bundlerOptions as
+      | RspackBundlerOptions
+      | WebpackBundlerOptions
 
     // oxlint-disable-next-line no-multi-assign
-    const { isCustomElement } = ((webpackBundlerConfig.vue ??=
-      {}).compilerOptions ??= {})
+    const { isCustomElement } = ((bundlerConfig.vue ??= {}).compilerOptions ??=
+      {})
 
     /**
      * @param tag - The tag name to check / 要检查的标签名称
      * @returns Whether the tag is a custom element / 是否为自定义元素
      * @see https://vue-loader.vuejs.org/options.html#compileroptions
      */
-    webpackBundlerConfig.vue.compilerOptions.isCustomElement = (
+    bundlerConfig.vue.compilerOptions.isCustomElement = (
       tag: string,
     ): boolean | void => {
       if (

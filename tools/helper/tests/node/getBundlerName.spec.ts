@@ -19,12 +19,21 @@ describe('should get bundler name', () => {
         },
       },
     }
+    const app3 = {
+      options: {
+        bundler: {
+          name: '@vuepress/bundler-rspack',
+        },
+      },
+    }
 
     const ans1 = getBundlerName(app1 as App)
     const ans2 = getBundlerName(app2 as App)
+    const ans3 = getBundlerName(app3 as App)
 
     expect(ans1).toBe('webpack')
     expect(ans2).toBe('vite')
+    expect(ans3).toBe('rspack')
   })
 
   it('3rd party bundler', () => {

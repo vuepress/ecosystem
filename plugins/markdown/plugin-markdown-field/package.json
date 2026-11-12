@@ -49,10 +49,9 @@
     "clean": "rimraf ./dist"
   },
   "dependencies": {
-    "@mdit-vue/shared": "^3.0.2",
-    "@mdit/helper": "^1.2.0",
-    "@mdit/plugin-field": "^3.0.2",
-    "@types/markdown-it": "catalog:",
+    "@mdit-vue/shared": "^4.0.0",
+    "@mdit/helper": "^1.2.1",
+    "@mdit/plugin-field": "^3.0.3",
     "@vuepress/helper": "workspace:*"
   },
   "devDependencies": {

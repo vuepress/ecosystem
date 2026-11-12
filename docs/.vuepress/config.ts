@@ -1,5 +1,6 @@
 import process from 'node:process'
 
+import { rspackBundler } from '@vuepress/bundler-rspack'
 import { viteBundler } from '@vuepress/bundler-vite'
 import { webpackBundler } from '@vuepress/bundler-webpack'
 import { getModulePath } from '@vuepress/helper'
@@ -36,7 +37,11 @@ export default defineUserConfig({
 
   // specify bundler via environment variable
   bundler:
-    process.env.DOCS_BUNDLER === 'webpack' ? webpackBundler() : viteBundler(),
+    process.env.DOCS_BUNDLER === 'webpack'
+      ? webpackBundler()
+      : process.env.DOCS_BUNDLER === 'rspack'
+        ? rspackBundler()
+        : viteBundler(),
 
   // configure markdown
   markdown: {

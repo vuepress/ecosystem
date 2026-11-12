@@ -1,9 +1,4 @@
-import {
-  CUSTOM_FIELDS_INDEX_ID,
-  HEADING_INDEX_ID,
-  TEXT_INDEX_ID,
-  foldDiacritics,
-} from '@vuepress/search-helper/shared'
+import { foldDiacritics } from '@vuepress/search-helper/shared'
 
 import { getIndexTokenizer } from '../../shared/index.js'
 import type { SearchIndex, WorkerSearchOptions } from '../../shared/index.js'
@@ -89,14 +84,10 @@ export const getSuggestions = (
     limit: SUGGESTION_COUNT,
   })) {
     const fields = [
-      ...(searchedFields.includes(HEADING_INDEX_ID)
-        ? [document[HEADING_INDEX_ID]]
-        : []),
-      ...(searchedFields.includes(TEXT_INDEX_ID)
-        ? (document[TEXT_INDEX_ID] ?? [])
-        : []),
-      ...(searchedFields.includes(CUSTOM_FIELDS_INDEX_ID)
-        ? (document[CUSTOM_FIELDS_INDEX_ID] ?? [])
+      ...(searchedFields.includes('heading') ? [document.heading] : []),
+      ...(searchedFields.includes('text') ? (document.text ?? []) : []),
+      ...(searchedFields.includes('customFields')
+        ? (document.customFields ?? [])
         : []),
     ]
 

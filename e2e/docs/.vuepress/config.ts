@@ -1,6 +1,7 @@
 // oxlint-disable import/max-dependencies
 import process from 'node:process'
 
+import { rspackBundler } from '@vuepress/bundler-rspack'
 import { viteBundler } from '@vuepress/bundler-vite'
 import { webpackBundler } from '@vuepress/bundler-webpack'
 import {
@@ -59,7 +60,12 @@ export default defineUserConfig({
     },
   },
 
-  bundler: E2E_BUNDLER === 'webpack' ? webpackBundler() : viteBundler(),
+  bundler:
+    E2E_BUNDLER === 'webpack'
+      ? webpackBundler()
+      : E2E_BUNDLER === 'rspack'
+        ? rspackBundler()
+        : viteBundler(),
 
   theme: defaultTheme({
     hostname: 'https://ecosystem-e2e-test.com',

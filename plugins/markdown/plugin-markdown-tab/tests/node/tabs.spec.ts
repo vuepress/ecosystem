@@ -1,14 +1,14 @@
-import MarkdownIt from 'markdown-it'
+import markdownIt from 'markdown-it'
 import { describe, expect, it } from 'vitest'
 
 import { tabs } from '../../src/node/tabs.js'
 
-const markdownIt = new MarkdownIt({ linkify: true }).use(tabs)
+const md = markdownIt({ linkify: true }).use(tabs)
 
 describe(tabs, () => {
   it('should render single block', () => {
     expect(
-      markdownIt.render(`
+      md.render(`
 ::: tabs
 
 @tab js
@@ -22,7 +22,7 @@ const a = 1;
     ).toMatchSnapshot('loose')
 
     expect(
-      markdownIt.render(`
+      md.render(`
 ::: tabs
 @tab js
 \`\`\`js
@@ -35,7 +35,7 @@ const a = 1;
 
   it('should render multiple block', () => {
     expect(
-      markdownIt.render(`
+      md.render(`
 ::: tabs
 
 @tab js
@@ -55,7 +55,7 @@ const a = 1;
     ).toMatchSnapshot('loose')
 
     expect(
-      markdownIt.render(`
+      md.render(`
 ::: tabs
 @tab js
 \`\`\`js
@@ -72,7 +72,7 @@ const a = 1;
 
   it('should support tabs id', () => {
     expect(
-      markdownIt.render(`
+      md.render(`
 ::: tabs#event
 
 @tab js
@@ -86,7 +86,7 @@ const a = 1;
     ).toMatchSnapshot('id')
 
     expect(
-      markdownIt.render(`
+      md.render(`
 ::: tabs#event-id
 @tab js
 \`\`\`js
@@ -97,7 +97,7 @@ const a = 1;
     ).toMatchSnapshot('complex id')
 
     expect(
-      markdownIt.render(`
+      md.render(`
 ::: tabs#id with space
 @tab js
 \`\`\`js
@@ -108,7 +108,7 @@ const a = 1;
     ).toMatchSnapshot('id with space')
 
     expect(
-      markdownIt.render(`
+      md.render(`
 ::: tabs # id starts and having space in the end
 @tab js
 \`\`\`js
@@ -121,7 +121,7 @@ const a = 1;
 
   it('should support active', () => {
     expect(
-      markdownIt.render(`
+      md.render(`
 ::: tabs
 
 @tab:active js
@@ -135,7 +135,7 @@ const a = 1;
     ).toMatchSnapshot('active loose')
 
     expect(
-      markdownIt.render(`
+      md.render(`
 ::: tabs
 @tab:active js
 \`\`\`js
@@ -146,7 +146,7 @@ const a = 1;
     ).toMatchSnapshot('active tight')
 
     expect(
-      markdownIt.render(`
+      md.render(`
 ::: tabs
 
 @tab js
@@ -166,7 +166,7 @@ const a = 1;
     ).toMatchSnapshot('active multiple')
 
     expect(
-      markdownIt.render(`
+      md.render(`
 ::: tabs
 @tab js
 \`\`\`js
@@ -183,7 +183,7 @@ const a = 1;
 
   it('should ignore other items', () => {
     expect(
-      markdownIt.render(`
+      md.render(`
 ::: tabs
 
 \`\`\`coffee
@@ -205,7 +205,7 @@ const a = 1;
     ).toMatchSnapshot('loose')
 
     expect(
-      markdownIt.render(`
+      md.render(`
 ::: tabs
 \`\`\`coffee
 const a = 1;

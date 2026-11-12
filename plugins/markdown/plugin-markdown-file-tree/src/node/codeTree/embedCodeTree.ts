@@ -407,7 +407,7 @@ export const embedCodeTree = (
     tokens,
     index,
     _options,
-    env: MarkdownEnv,
+    env: MarkdownEnv = {},
   ): string => {
     const { info, dir } = tokens[index].meta as { info: string; dir: string }
 

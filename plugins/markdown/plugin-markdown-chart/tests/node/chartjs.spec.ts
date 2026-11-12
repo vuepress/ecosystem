@@ -1,16 +1,16 @@
-import MarkdownIt from 'markdown-it'
+import markdownIt from 'markdown-it'
 import { describe, expect, it } from 'vitest'
 
 import { chartjs } from '../../src/node/markdown-it-plugins/chartjs.js'
 
 describe(chartjs, () => {
-  const markdownIt = new MarkdownIt({ linkify: true }).use(chartjs, {
+  const md = markdownIt({ linkify: true }).use(chartjs, {
     allowScripts: true,
     allowAll: true,
   })
 
   it('should resolve chartjs info with json block', () => {
-    const result = markdownIt.render(
+    const result = md.render(
       `
 ::: chartjs A bar chart
 
@@ -65,7 +65,7 @@ describe(chartjs, () => {
   })
 
   it('should resolve chartjs info with js block', () => {
-    const result = markdownIt.render(
+    const result = md.render(
       `
 ::: chartjs A bar chart
 
@@ -120,7 +120,7 @@ const config = {
   })
 
   it('should resolve chart info with javascript block', () => {
-    const result = markdownIt.render(
+    const result = md.render(
       `
 ::: chartjs A bar chart
 
@@ -175,7 +175,7 @@ const config = {
   })
 
   it('should resolve chart with empty title and body', () => {
-    const result = markdownIt.render(
+    const result = md.render(
       `
 ::: chartjs
 
@@ -191,7 +191,7 @@ const config = {
   })
 
   it('should not break markdown fence', () => {
-    const result = markdownIt.render(
+    const result = md.render(
       `
 \`\`\`js
 const a = 1;
@@ -205,9 +205,9 @@ const a = 1;
   })
 
   it('should remove unsafe script block by default', () => {
-    const md = new MarkdownIt({ linkify: true }).use(chartjs)
+    const mdWithoutScripts = markdownIt({ linkify: true }).use(chartjs)
 
-    const result = md.render(
+    const result = mdWithoutScripts.render(
       `
 ::: chartjs A bar chart
 

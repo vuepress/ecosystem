@@ -1,5 +1,4 @@
-import type Renderer from 'markdown-it/lib/renderer.mjs'
-import type Token from 'markdown-it/lib/token.mjs'
+import type { Renderer, Token } from 'markdown-it'
 import type { MarkdownEnv } from 'vuepress/markdown'
 import type { LocaleConfig } from 'vuepress/shared'
 
@@ -52,7 +51,7 @@ export type MarkdownItContainerRenderFunction = (
   tokens: Token[],
   index: number,
   options: unknown,
-  env: MarkdownEnv,
+  env: MarkdownEnv | undefined,
   self: Renderer,
 ) => string
 

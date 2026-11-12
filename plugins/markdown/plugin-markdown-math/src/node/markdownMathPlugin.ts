@@ -1,4 +1,3 @@
-import type { MarkdownItKatexOptions } from '@mdit/plugin-katex-slim'
 import { katex } from '@mdit/plugin-katex-slim'
 import type { MathjaxInstance } from '@mdit/plugin-mathjax-slim/async'
 import { createMathjaxInstance, mathjax } from '@mdit/plugin-mathjax-slim/async'
@@ -8,7 +7,6 @@ import {
   isModuleAvailable,
 } from '@vuepress/helper'
 import type { Plugin } from 'vuepress/core'
-import type { MarkdownEnv } from 'vuepress/markdown'
 import { colors, logger } from 'vuepress/utils'
 
 import type {
@@ -93,17 +91,17 @@ export const markdownMathPlugin =
 
       extendsMarkdown: async (md) => {
         if (mathRenderer === 'mathjax') {
-          mathjaxInstance = await createMathjaxInstance({
+          mathjaxInstance = (await createMathjaxInstance({
             ...(renderOptions as MarkdownMathjaxPluginOptions),
-            transformer: (content: string) =>
+            transformer: (content) =>
               content.replace(/^<mjx-container/u, '<mjx-container v-pre'),
-          })
+          }))!
           md.use(mathjax, mathjaxInstance)
           // Reset mathjax style in each render
           md.use((mdIt) => {
             const originalRender = mdIt.render.bind(mdIt)
 
-            mdIt.render = (src: string, env: unknown): string => {
+            mdIt.render = (src, env): string => {
               const result = originalRender(src, env)
 
               // markdown render may be called after mathjaxInstance is released
@@ -118,7 +116,7 @@ export const markdownMathPlugin =
           if ((renderOptions as MarkdownKatexPluginOptions).mhchem)
             await import('@mdit/plugin-katex-slim/mhchem')
 
-          md.use<MarkdownItKatexOptions<MarkdownEnv>>(katex, {
+          md.use(katex, {
             logger: (errorCode, errorMsg, token, { filePathRelative }) => {
               // Ignore this error
               if (errorCode === 'newLineInDisplayMode') return

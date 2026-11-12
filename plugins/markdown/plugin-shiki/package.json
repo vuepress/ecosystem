@@ -57,7 +57,6 @@
   },
   "devDependencies": {
     "@types/culori": "^4.0.1",
-    "@types/markdown-it": "catalog:",
     "@vuepress/shiki-twoslash": "workspace:*",
     "culori": "^4.0.2",
     "markdown-it": "catalog:"

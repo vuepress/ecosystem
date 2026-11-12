@@ -15,6 +15,7 @@ export const VUE_RELATED_PACKAGES = [
 ]
 
 export const OFFICIAL_PACKAGES = [
+  '@vuepress/bundler-rspack',
   '@vuepress/bundler-vite',
   '@vuepress/bundler-webpack',
   'vuepress',

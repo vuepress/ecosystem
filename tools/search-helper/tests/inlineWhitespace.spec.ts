@@ -1,7 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import type { Page } from 'vuepress/core'
 
-import { TEXT_INDEX_ID } from '../src/node/index.js'
 import type { PageIndexItem } from '../src/node/index.js'
 import { generatePageIndex } from '../src/node/pageIndex.js'
 import { PathStore } from '../src/node/pathStore.js'
@@ -51,7 +50,7 @@ describe('inline element whitespace handling', () => {
     const items = generatePageIndex(makePage(html), store, {
       indexContent: true,
     })
-    const joined = (items[0] as PageIndexItem)[TEXT_INDEX_ID]!.join(' ')
+    const joined = (items[0] as PageIndexItem).text!.join(' ')
 
     // No whitespace between inline elements → joined
     expect(joined).toBe('HelloWorldfoo')
@@ -64,7 +63,7 @@ describe('inline element whitespace handling', () => {
     const items = generatePageIndex(makePage(html), store, {
       indexContent: true,
     })
-    const joined = (items[0] as PageIndexItem)[TEXT_INDEX_ID]!.join(' ')
+    const joined = (items[0] as PageIndexItem).text!.join(' ')
 
     expect(joined).toBe('Hello world')
   })

@@ -1,4 +1,4 @@
-import MarkdownIt from 'markdown-it'
+import markdownIt from 'markdown-it'
 import { describe, expect, it } from 'vitest'
 import type { App, PluginFunction } from 'vuepress/core'
 import type { MarkdownOptions } from 'vuepress/markdown'
@@ -20,7 +20,7 @@ const render = (markdown: MarkdownOptions, source: string): string => {
   const plugin = (markdownFieldPlugin({ fields: true }) as PluginFunction)(
     createApp(markdown),
   )
-  const md = new MarkdownIt()
+  const md = markdownIt()
 
   void plugin.extendsMarkdown?.(md, createApp(markdown))
 

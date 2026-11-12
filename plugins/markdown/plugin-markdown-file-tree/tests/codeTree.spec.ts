@@ -1,12 +1,12 @@
 import { container } from '@mdit/plugin-container'
 import { codeBlockTitle } from '@vuepress/highlighter-helper'
-import MarkdownIt from 'markdown-it'
+import markdownIt from 'markdown-it'
 import { describe, expect, it } from 'vitest'
 
 import { codeTree } from '../src/node/codeTree/codeTree.js'
 
 describe(codeTree, () => {
-  const markdownIt = new MarkdownIt({ linkify: true }).use(codeTree)
+  const md = markdownIt({ linkify: true }).use(codeTree)
 
   it('should render code tree', () => {
     const content = `\
@@ -24,7 +24,7 @@ console.log('main')
 \`\`\`
 :::
 `
-    const result = markdownIt.render(content)
+    const result = md.render(content)
 
     expect(result).toContain(
       '<VPCodeTree title="Vue App" height="400px" entry="src/main.ts">',
@@ -50,7 +50,7 @@ console.log('main')
 \`\`\`
 :::
 `
-    const result = markdownIt.render(content)
+    const result = md.render(content)
 
     expect(result).toContain(
       '<VPCodeTree height="320px" entry="src/components/HelloWorld.vue">',
@@ -79,7 +79,7 @@ console.log('main')
 \`\`\`
 :::
 `
-    const result = markdownIt.render(content)
+    const result = md.render(content)
 
     expect(result).toContain('<VPCodeTree height="320px" entry="src/utils.ts">')
   })
@@ -94,7 +94,7 @@ console.log('main')
 \`\`\`
 :::
 `
-    const result = markdownIt.render(content)
+    const result = md.render(content)
 
     expect(result).toContain('<VPCodeTree height="320px" entry="src/index.ts">')
   })
@@ -110,7 +110,7 @@ const foo = 'foo'
 \`\`\`
 :::
 `
-    const result = markdownIt.render(content)
+    const result = md.render(content)
 
     expect(result).toContain('<VPCodeTree height="320px" entry="src/index.ts">')
     expect(result).toContain(
@@ -128,14 +128,14 @@ const foo = 'foo'
 \`\`\`
 :::
 `
-    const result = markdownIt.render(content)
+    const result = md.render(content)
 
     expect(result).toContain('<VPCodeTree height="320px">')
     expect(result).not.toContain('file-tree')
   })
 
   it('should not be broken by nested containers', () => {
-    const markdown = new MarkdownIt({ linkify: true }).use(codeTree)
+    const markdown = markdownIt({ linkify: true }).use(codeTree)
 
     // A nested container, whose content is tokenized as usual blocks
     container(markdown, {
@@ -168,14 +168,14 @@ A nested container.
 \`\`\`
 :::
 `
-    const result = markdownIt.render(content)
+    const result = md.render(content)
 
     expect(result).toContain('<VPCodeTree title="A &amp; B"')
     expect(result).toContain('filepath="a&amp;b.ts"')
   })
 
   it('should support a number height', () => {
-    const markdown = new MarkdownIt({ linkify: true }).use(codeTree, {
+    const markdown = markdownIt({ linkify: true }).use(codeTree, {
       height: 400,
     })
 
@@ -183,7 +183,7 @@ A nested container.
   })
 
   it('should treat a bare number height of the container as pixels', () => {
-    const markdown = new MarkdownIt({ linkify: true }).use(codeTree)
+    const markdown = markdownIt({ linkify: true }).use(codeTree)
 
     expect(markdown.render('::: code-tree height="400"\n:::\n')).toContain(
       'height="400px"',
@@ -200,7 +200,7 @@ A nested container.
 \`\`\`
 :::
 `
-    const result = markdownIt.render(content)
+    const result = md.render(content)
 
     // Keep it in sync with the rendered code block title
     expect(result).toContain('<VPCodeTree height="320px" entry="src/index.ts">')
@@ -209,9 +209,7 @@ A nested container.
   })
 
   it('should apply the default height', () => {
-    expect(markdownIt.render('::: code-tree\n:::\n')).toContain(
-      'height="320px"',
-    )
+    expect(md.render('::: code-tree\n:::\n')).toContain('height="320px"')
   })
 
   it('should not resolve the icons when they are disabled', () => {
@@ -221,9 +219,7 @@ A nested container.
 \`\`\`
 :::
 `
-    const result = new MarkdownIt()
-      .use(codeTree, { icons: false })
-      .render(content)
+    const result = markdownIt().use(codeTree, { icons: false }).render(content)
 
     expect(result).not.toContain('icon=')
   })
@@ -231,7 +227,7 @@ A nested container.
   it('should work with the code block title of the highlighter', () => {
     // The client relies on the markup rendered by the highlighter, which wraps
     // the code block with a `.code-block-with-title` element.
-    const markdown = new MarkdownIt({ linkify: true })
+    const markdown = markdownIt({ linkify: true })
       .use(codeBlockTitle, { codeBlockTitle: true })
       .use(codeTree)
 
@@ -255,7 +251,7 @@ export const foo = 'foo'
   })
 
   it('should not affect other containers', () => {
-    const result = markdownIt.render('::: file-tree\n- src\n:::\n')
+    const result = md.render('::: file-tree\n- src\n:::\n')
 
     expect(result).not.toContain('<VPCodeTree')
   })

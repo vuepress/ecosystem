@@ -2,16 +2,10 @@ import { getByID, search } from '@orama/orama'
 import type { SearchParamsFullText } from '@orama/orama'
 import { buildSearchResults } from '@vuepress/search-helper/shared'
 import type {
-  IndexItemDocument,
   SearchableProperty,
   SearchHit,
 } from '@vuepress/search-helper/shared'
 
-import {
-  CUSTOM_FIELDS_INDEX_ID,
-  HEADING_INDEX_ID,
-  TEXT_INDEX_ID,
-} from '../../shared/index.js'
 import type {
   IndexItem,
   SearchIndex,
@@ -54,15 +48,15 @@ const searchWithOptions = (
   const searchedProperties: SearchableProperty[] =
     properties && properties !== '*'
       ? [...properties]
-      : [HEADING_INDEX_ID, TEXT_INDEX_ID, CUSTOM_FIELDS_INDEX_ID]
+      : ['heading', 'text', 'customFields']
 
   const results = search(localeIndex, {
     term: query,
     threshold: 0,
     boost: {
-      [CUSTOM_FIELDS_INDEX_ID]: 4,
-      [HEADING_INDEX_ID]: 2,
-      [TEXT_INDEX_ID]: 1,
+      customFields: 4,
+      heading: 2,
+      text: 1,
     },
     limit: 100,
     ...rest,
@@ -102,10 +96,7 @@ export const getSearchResults = (
     displayTerms,
     // Search the index to get the title when the page-level document did not
     // match the query
-    getPageTitle: (pageId) =>
-      (getByID(localeIndex, String(pageId)) as IndexItemDocument | undefined)?.[
-        HEADING_INDEX_ID
-      ],
+    getPageTitle: (pageId) => getByID(localeIndex, String(pageId))?.heading,
     sortStrategy,
   })
 }

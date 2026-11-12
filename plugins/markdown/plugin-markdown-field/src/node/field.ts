@@ -1,13 +1,9 @@
 import { slugify as defaultSlugify } from '@mdit-vue/shared'
+import type { PluginWithOptions } from '@mdit/helper'
 import { escapeHtml } from '@mdit/helper'
 import { field as fieldPlugin } from '@mdit/plugin-field'
-import type {
-  FieldMeta,
-  MarkdownItFieldOpenRenderer,
-  MarkdownItFieldOptions,
-} from '@mdit/plugin-field'
+import type { FieldMeta, MarkdownItFieldOpenRenderer } from '@mdit/plugin-field'
 import { ensureLeadingSlash } from '@vuepress/helper'
-import type { PluginWithOptions } from 'markdown-it'
 import type { MarkdownEnv } from 'vuepress/markdown'
 import { resolveLocalePath } from 'vuepress/shared'
 
@@ -82,7 +78,7 @@ export const field: PluginWithOptions<FieldPluginOptions> = (
     tokens,
     index,
     _options,
-    env: MarkdownEnv,
+    env: MarkdownEnv = {},
   ) => {
     const locale = resolveFieldLocale(locales, env)
     const classNames = ['vp-field']
@@ -123,7 +119,7 @@ ${quote === 'backtick' ? `<code>${escape(value)}</code>` : md.renderInline(escap
       : ''
 
     const id = tokens[index].attrGet('id')
-    const idAttr = id ? ` id="${escapeHtml(id)}"` : ''
+    const idAttr = id ? ` id="${escapeHtml(String(id))}"` : ''
 
     return `\
 <div class="${classNames.join(' ')}">
@@ -136,7 +132,7 @@ ${defaultValue}\
 `
   }
 
-  md.use<MarkdownItFieldOptions>(fieldPlugin, {
+  md.use(fieldPlugin, {
     fieldsOpenRenderer: () => '<div class="vp-fields">\n',
     fieldsCloseRenderer: () => '</div>\n',
     fieldOpenRenderer,

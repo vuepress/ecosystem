@@ -1,4 +1,4 @@
-import MarkdownIt from 'markdown-it'
+import markdownIt from 'markdown-it'
 import { describe, expect, it } from 'vitest'
 
 import { flowchart } from '../../src/node/markdown-it-plugins/flowchart.js'
@@ -20,10 +20,10 @@ c2(yes)->io->e
 c2(no)->op2->e`
 
 describe(flowchart, () => {
-  const markdownIt = new MarkdownIt({ linkify: true }).use(flowchart)
+  const md = markdownIt({ linkify: true }).use(flowchart)
 
   it('should render ```flow', () => {
-    const flowRenderResult = markdownIt.render(`
+    const flowRenderResult = md.render(`
 \`\`\`flow
 ${demo}
 \`\`\`
@@ -36,7 +36,7 @@ ${demo}
   })
 
   it('should render ```flowchart', () => {
-    const flowChartRenderResult = markdownIt.render(`
+    const flowChartRenderResult = md.render(`
 \`\`\`flowchart
 ${demo}
 \`\`\`
@@ -50,13 +50,13 @@ ${demo}
 
   it('should not render', () => {
     expect(
-      markdownIt.render(`
+      md.render(`
 ${demo}
 `),
     ).toMatchSnapshot('without fence')
 
     expect(
-      markdownIt.render(`
+      md.render(`
 \`\`\`md
 ${demo}
 \`\`\`
@@ -65,7 +65,7 @@ ${demo}
   })
 
   it('should handle preset', () => {
-    const flowRenderResult = markdownIt.render(`
+    const flowRenderResult = md.render(`
 \`\`\`flow:ant
 ${demo}
 \`\`\`
@@ -76,7 +76,7 @@ ${demo}
     )
     expect(flowRenderResult).toMatchSnapshot('short')
 
-    const flowChartRenderResult = markdownIt.render(`
+    const flowChartRenderResult = md.render(`
 \`\`\`flowchart:ant
 ${demo}
 \`\`\`

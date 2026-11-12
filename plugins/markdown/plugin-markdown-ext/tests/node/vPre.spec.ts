@@ -1,13 +1,13 @@
-import MarkdownIt from 'markdown-it'
+import markdownIt from 'markdown-it'
 import { describe, expect, it } from 'vitest'
 
 import { vPre } from '../../src/node/markdown-it-plugins/vPre.js'
 
 describe(vPre, () => {
   it('should add v-pre wrapper', () => {
-    const markdownIt = new MarkdownIt({ linkify: true }).use(vPre)
+    const md = markdownIt({ linkify: true }).use(vPre)
 
-    expect(markdownIt.render('::: v-pre\n{{a}}\n:::\n')).toBe(
+    expect(md.render('::: v-pre\n{{a}}\n:::\n')).toBe(
       '<div v-pre>\n<p>{{a}}</p>\n</div>\n',
     )
   })

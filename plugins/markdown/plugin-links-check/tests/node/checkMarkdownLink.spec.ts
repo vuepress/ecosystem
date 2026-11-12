@@ -1,4 +1,5 @@
-import MarkdownIt from 'markdown-it'
+import markdownIt from 'markdown-it'
+import type { MarkdownIt } from 'markdown-it'
 import { describe, expect, it, vi } from 'vitest'
 import type { App, Page, PluginFunction, PluginObject } from 'vuepress/core'
 import type { MarkdownEnv, MarkdownLink } from 'vuepress/markdown'
@@ -48,7 +49,7 @@ const createPlugin = (options: LinksCheckPluginOptions = {}): PluginObject =>
 const createMarkdownIt = (
   options: LinksCheckPluginOptions = {},
 ): MarkdownIt => {
-  const md = new MarkdownIt()
+  const md = markdownIt()
   const { extendsMarkdown } = createPlugin(options)
 
   if (typeof extendsMarkdown === 'function')

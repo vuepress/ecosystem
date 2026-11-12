@@ -51,7 +51,6 @@
     "prismjs": "^1.30.0"
   },
   "devDependencies": {
-    "@types/markdown-it": "catalog:",
     "@types/prismjs": "^1.26.6",
     "markdown-it": "catalog:"
   },

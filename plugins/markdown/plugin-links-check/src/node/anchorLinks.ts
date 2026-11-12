@@ -1,4 +1,5 @@
-import type { PluginSimple, Token } from 'markdown-it'
+import type { PluginSimple } from '@mdit/helper'
+import type { Token } from 'markdown-it'
 import type { MarkdownEnv } from 'vuepress/markdown'
 
 declare module 'vuepress/markdown' {
@@ -40,7 +41,7 @@ const collect = (
   for (const token of tokens) {
     const id = token.attrGet('id')
 
-    if (id) anchors.push(id)
+    if (id) anchors.push(String(id))
 
     // Raw html may also add ids to the page
     if (token.type === 'html_block' || token.type === 'html_inline') {
@@ -51,7 +52,7 @@ const collect = (
     if (token.type === 'link_open') {
       const href = token.attrGet('href')
 
-      if (href && href.length > 1 && href.startsWith('#'))
+      if (typeof href === 'string' && href.length > 1 && href.startsWith('#'))
         anchorLinks.push(href)
     }
 

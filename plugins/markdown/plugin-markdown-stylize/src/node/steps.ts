@@ -1,6 +1,5 @@
-import type { MarkdownItContainerOptions } from '@mdit/plugin-container'
+import type { PluginSimple } from '@mdit/helper'
 import { container } from '@mdit/plugin-container'
-import type { PluginSimple } from 'markdown-it'
 
 /**
  * Steps container markdown-it plugin
@@ -10,7 +9,7 @@ import type { PluginSimple } from 'markdown-it'
  * @param md - MarkdownIt instance / MarkdownIt 实例
  */
 export const steps: PluginSimple = (md) => {
-  md.use<MarkdownItContainerOptions>(container, {
+  md.use(container, {
     name: 'steps',
     openRenderer: () => '<div class="vp-steps">\n',
     closeRenderer: () => '</div>\n',

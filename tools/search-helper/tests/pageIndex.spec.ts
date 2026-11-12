@@ -6,7 +6,7 @@ import type { Bundler, Page } from 'vuepress/core'
 import { createBuildApp } from 'vuepress/core'
 import { path } from 'vuepress/utils'
 
-import { INDEX_ID_SEPARATOR, TEXT_INDEX_ID } from '../src/node/index.js'
+import { INDEX_ID_SEPARATOR } from '../src/node/index.js'
 import type { IndexItem, SectionIndexItem } from '../src/node/index.js'
 import { generatePageIndex } from '../src/node/pageIndex.js'
 import { PathStore } from '../src/node/pathStore.js'
@@ -129,9 +129,8 @@ describe(generatePageIndex, () => {
     expect(normalizeIndexIds(result)).toMatchSnapshot('default')
 
     const text = (
-      result.find((item): item is SectionIndexItem => 'text' in item)?.[
-        TEXT_INDEX_ID
-      ] ?? []
+      result.find((item): item is SectionIndexItem => 'text' in item)?.text ??
+      []
     ).join('')
 
     expect(text).toContain('Text 1')

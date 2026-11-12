@@ -1,7 +1,6 @@
+import type { PluginSimple } from '@mdit/helper'
 import { load } from 'js-yaml'
-import type { Options, PluginSimple } from 'markdown-it'
-import type { RenderRule } from 'markdown-it/lib/renderer.mjs'
-import type Token from 'markdown-it/lib/token.mjs'
+import type { MarkdownItOptions, RendererRule, Token } from 'markdown-it'
 import type { MarkdownEnv } from 'vuepress/markdown'
 
 import { logger } from '../utils.js'
@@ -16,12 +15,12 @@ import { stringifyProp } from './utils.js'
  * @returns Render function / 渲染函数
  */
 const getComponentRender =
-  (name: string): RenderRule =>
+  (name: string): RendererRule =>
   (
     tokens: Token[],
     index: number,
-    _options: Options,
-    { filePathRelative }: MarkdownEnv,
+    _options: MarkdownItOptions,
+    { filePathRelative }: MarkdownEnv = {},
   ): string => {
     const token = tokens[index]
     const { content } = token
@@ -78,6 +77,6 @@ export const component: PluginSimple = (md) => {
       return render(...args)
     }
 
-    return fence!(...args)
+    return fence(...args)
   }
 }

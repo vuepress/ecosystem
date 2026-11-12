@@ -1,5 +1,5 @@
+import type { PluginSimple } from '@mdit/helper'
 import { container } from '@mdit/plugin-container'
-import type { PluginSimple } from 'markdown-it'
 
 /**
  * `v-pre` container support plugin

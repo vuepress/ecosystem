@@ -1,4 +1,4 @@
-import MarkdownIt from 'markdown-it'
+import markdownIt from 'markdown-it'
 import { describe, expect, it } from 'vitest'
 
 import { revealJs } from '../../src/node/revealJs.js'
@@ -33,10 +33,10 @@ $$
 `
 
 describe(revealJs, () => {
-  const markdownIt = new MarkdownIt({ linkify: true }).use(revealJs)
+  const md = markdownIt({ linkify: true }).use(revealJs)
 
   it('should render', () => {
-    const renderResult = markdownIt.render(`
+    const renderResult = md.render(`
 @slidestart
 ${demo}
 @slideend
@@ -61,7 +61,7 @@ ${demo}
     ]
 
     cases.forEach((caseContent) => {
-      const result = markdownIt.render(caseContent)
+      const result = md.render(caseContent)
 
       expect(result).not.toContain('RevealJs')
     })

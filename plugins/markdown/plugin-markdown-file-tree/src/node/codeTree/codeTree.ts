@@ -1,6 +1,5 @@
 import { container } from '@mdit/plugin-container'
-import type { RendererRule } from 'markdown-it'
-import type Token from 'markdown-it/lib/token.mjs'
+import type { RendererRule, Token } from 'markdown-it'
 import type { Markdown } from 'vuepress/markdown'
 
 import type { FileIconOptions } from '../fileIcons/types.js'

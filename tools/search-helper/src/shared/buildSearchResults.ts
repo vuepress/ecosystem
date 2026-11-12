@@ -1,12 +1,7 @@
 import { entries } from '@vuepress/helper/shared'
 
 import type { IndexItemDocument } from './data.js'
-import {
-  CUSTOM_FIELDS_INDEX_ID,
-  HEADING_INDEX_ID,
-  TEXT_INDEX_ID,
-  parseIndexId,
-} from './data.js'
+import { parseIndexId } from './data.js'
 import { getMatchedContent } from './getMatchedContent.js'
 import type {
   HeadingMatchedItem,
@@ -129,11 +124,11 @@ export const buildSearchResults = ({
 
     // The page-level document holds the page title
     if (document.id === String(pageId))
-      resultMap[pageId].title = document[HEADING_INDEX_ID] ?? ''
+      resultMap[pageId].title = document.heading ?? ''
 
     // CustomFieldIndexItem
     if (isCustomField) {
-      const fields = document[CUSTOM_FIELDS_INDEX_ID] ?? []
+      const fields = document.customFields ?? []
 
       contents.push([
         {
@@ -150,9 +145,7 @@ export const buildSearchResults = ({
       ])
     } else {
       const headerContent = terms
-        .map((term) =>
-          getMatchedContent(document[HEADING_INDEX_ID] ?? '', term),
-        )
+        .map((term) => getMatchedContent(document.heading ?? '', term))
         .filter((item): item is MatchedContent => item != null)
 
       if (headerContent.length > 0) {
@@ -167,8 +160,8 @@ export const buildSearchResults = ({
         ])
       }
 
-      if (document[TEXT_INDEX_ID]) {
-        for (const text of document[TEXT_INDEX_ID]) {
+      if (document.text) {
+        for (const text of document.text) {
           const matchedContent = terms
             .map((term) => getMatchedContent(text, term))
             .filter((item): item is MatchedContent => item != null)

@@ -1,7 +1,7 @@
+import type { PluginSimple } from '@mdit/helper'
 import { escapeHtml } from '@mdit/helper'
 import type { MarkdownItDemoOptions } from '@mdit/plugin-demo'
 import { demo } from '@mdit/plugin-demo'
-import type { PluginSimple } from 'markdown-it'
 
 export const preview: PluginSimple = (md) => {
   const demoOptions: MarkdownItDemoOptions = {
@@ -10,7 +10,7 @@ export const preview: PluginSimple = (md) => {
     codeRenderer: (tokens, index, options, _env, self) =>
       `\
 <template #code>
-${self.rules.fence!(tokens, index, options, _env, self)}
+${self.rules.fence(tokens, index, options, _env, self)}
 </template>
 `,
     contentOpenRenderer: () => `<template #content>\n`,

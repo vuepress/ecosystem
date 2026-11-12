@@ -1,4 +1,4 @@
-import MarkdownIt from 'markdown-it'
+import markdownIt from 'markdown-it'
 import { describe, expect, it } from 'vitest'
 
 import { markmap } from '../../src/node/markdown-it-plugins/markmap.js'
@@ -33,10 +33,10 @@ markmap:
 `
 
 describe('markmap plugin', () => {
-  const markdownIt = new MarkdownIt({ linkify: true }).use(markmap)
+  const md = markdownIt({ linkify: true }).use(markmap)
 
   it('should render ```markmap', () => {
-    const renderResult = markdownIt.render(`
+    const renderResult = md.render(`
 \`\`\`\`markmap
 ${content}
 \`\`\`\`
@@ -48,13 +48,13 @@ ${content}
 
   it('should not render', () => {
     expect(
-      markdownIt.render(`
+      md.render(`
 ${content}
 `),
     ).toMatchSnapshot('without fence')
 
     expect(
-      markdownIt.render(`
+      md.render(`
 \`\`\`md
 ${content}
 \`\`\`

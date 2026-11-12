@@ -1,4 +1,5 @@
-import MarkdownIt from 'markdown-it'
+import markdownIt from 'markdown-it'
+import type { MarkdownIt } from 'markdown-it'
 import { describe, expect, it } from 'vitest'
 
 import { registerAdvancedLinks } from '../../src/node/advancedLinks.js'
@@ -6,11 +7,11 @@ import { registerAdvancedLinks } from '../../src/node/advancedLinks.js'
 const COMPONENTS = ['ArtPlayer', 'VideoPlayer', 'BiliBiliEmbed', 'YouTubeEmbed']
 
 const createMarkdownIt = (): MarkdownIt => {
-  const markdownIt = new MarkdownIt()
+  const md = markdownIt()
 
-  registerAdvancedLinks(markdownIt, COMPONENTS)
+  registerAdvancedLinks(md, COMPONENTS)
 
-  return markdownIt
+  return md
 }
 
 const render = (markdown: string): string => createMarkdownIt().render(markdown)

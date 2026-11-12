@@ -4,15 +4,19 @@
   "type": "module",
   "scripts": {
     "docs:build": "vuepress build . --clean-cache --clean-temp",
+    "docs:build-rspack": "DOCS_BUNDLER=rspack pnpm docs:build",
     "docs:build-webpack": "DOCS_BUNDLER=webpack pnpm docs:build",
     "docs:clean-dev": "vuepress dev . --clean-cache --clean-temp",
+    "docs:clean-dev-rspack": "DOCS_BUNDLER=rspack pnpm docs:clean-dev",
     "docs:clean-dev-webpack": "DOCS_BUNDLER=webpack pnpm docs:clean-dev",
     "docs:dev": "vuepress dev .",
+    "docs:dev-rspack": "DOCS_BUNDLER=rspack pnpm docs:dev",
     "docs:dev-webpack": "DOCS_BUNDLER=webpack pnpm docs:dev",
     "docs:serve": "serve .vuepress/dist"
   },
   "dependencies": {
     "@mathjax/src": "^4.1.3",
+    "@vuepress/bundler-rspack": "catalog:",
     "@vuepress/bundler-vite": "catalog:",
     "@vuepress/bundler-webpack": "catalog:",
     "@vuepress/helper": "workspace:*",

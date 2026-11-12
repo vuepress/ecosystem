@@ -1,6 +1,6 @@
+import type { PluginWithOptions } from '@mdit/helper'
 import type { MarkdownItPlantumlOptions } from '@mdit/plugin-plantuml'
 import { plantuml as _plantuml } from '@mdit/plugin-plantuml'
-import type { PluginWithOptions } from 'markdown-it'
 
 /**
  * PlantUML markdown-it plugin

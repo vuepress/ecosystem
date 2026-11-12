@@ -1,8 +1,8 @@
+import type { PluginWithOptions } from '@mdit/helper'
 import type { MarkdownItAlertOptions as _MarkdownItAlertOptions } from '@mdit/plugin-alert'
 import { alert as _alert } from '@mdit/plugin-alert'
 import type { ExactLocaleConfig } from '@vuepress/helper'
 import { ensureLeadingSlash } from '@vuepress/helper'
-import type { PluginWithOptions } from 'markdown-it'
 import type { MarkdownEnv } from 'vuepress/markdown'
 import { resolveLocalePath } from 'vuepress/shared'
 
@@ -23,11 +23,11 @@ export const alert: PluginWithOptions<MarkdownItAlertOptions> = (
   md,
   options = {},
 ) => {
-  md.use<_MarkdownItAlertOptions>(_alert, {
+  md.use(_alert, {
     alertNames: ['important', 'note', 'tip', 'warning', 'caution', 'info'],
     openRenderer: (tokens, index) =>
       `<div class="hint-container ${tokens[index].markup}">\n`,
-    titleRenderer: (tokens, index, _options, env: MarkdownEnv) => {
+    titleRenderer: (tokens, index, _options, env: MarkdownEnv = {}) => {
       const type = tokens[index].markup
       const relativePath = ensureLeadingSlash(env.filePathRelative ?? '')
       const localePath = resolveLocalePath(options, relativePath)

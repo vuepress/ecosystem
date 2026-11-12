@@ -1,16 +1,7 @@
-import {
-  CUSTOM_FIELDS_INDEX_ID,
-  HEADING_INDEX_ID,
-  TEXT_INDEX_ID,
-} from '@vuepress/search-helper/shared'
 import type { Document, DocumentData } from 'flexsearch'
 
 /** Fields of the index, from the most to the least relevant. 索引字段，按相关度从高到低排列。 */
-export const INDEX_FIELDS = [
-  CUSTOM_FIELDS_INDEX_ID,
-  HEADING_INDEX_ID,
-  TEXT_INDEX_ID,
-] as const
+export const INDEX_FIELDS = ['customFields', 'heading', 'text'] as const
 
 /**
  * Relevance boost of the indexed fields.
@@ -23,9 +14,9 @@ export const INDEX_FIELDS = [
  * FlexSearch 不会为其结果评分，因此命中项的分数由其命中的字段的权重推导而来。
  */
 export const FIELD_BOOST: Record<string, number> = {
-  [CUSTOM_FIELDS_INDEX_ID]: 4,
-  [HEADING_INDEX_ID]: 2,
-  [TEXT_INDEX_ID]: 1,
+  customFields: 4,
+  heading: 2,
+  text: 1,
 }
 
 /**
@@ -43,9 +34,9 @@ export const FIELD_BOOST: Record<string, number> = {
 export type SearchIndexItem = {
   /** Index id of the item 索引项的索引 id */
   id: string
-  [HEADING_INDEX_ID]?: string
-  [TEXT_INDEX_ID]?: string[]
-  [CUSTOM_FIELDS_INDEX_ID]?: string[]
+  heading?: string
+  text?: string[]
+  customFields?: string[]
 } & DocumentData
 
 /** FlexSearch index. FlexSearch 索引。 */

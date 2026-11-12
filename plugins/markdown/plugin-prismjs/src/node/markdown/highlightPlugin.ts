@@ -113,9 +113,9 @@ export interface MarkdownItPrismjsHighlightOptions {
  *
  * @example
  *   import { highlightPlugin } from '@vuepress/plugin-prismjs'
- *   import MarkdownIt from 'markdown-it'
+ *   import markdownIt from 'markdown-it'
  *
- *   const md = new MarkdownIt()
+ *   const md = markdownIt()
  *   md.use(highlightPlugin, { highlightLines: true })
  *
  * @param md - MarkdownIt instance / MarkdownIt 实例
@@ -133,7 +133,7 @@ export const highlightPlugin = (
     whitespace: whitespacePosition = false,
   }: MarkdownItPrismjsHighlightOptions = {},
 ): void => {
-  const rawFence = md.renderer.rules.fence!
+  const rawFence = md.renderer.rules.fence
 
   md.renderer.rules.fence = (...args): string => {
     const [tokens, idx, { langPrefix }] = args

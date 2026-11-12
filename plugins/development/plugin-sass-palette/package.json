@@ -58,6 +58,7 @@
     "chokidar": "catalog:"
   },
   "devDependencies": {
+    "@vuepress/bundler-rspack": "catalog:",
     "@vuepress/bundler-vite": "catalog:",
     "@vuepress/bundler-webpack": "catalog:"
   },

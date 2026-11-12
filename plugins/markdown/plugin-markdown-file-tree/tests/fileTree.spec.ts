@@ -1,10 +1,10 @@
-import MarkdownIt from 'markdown-it'
+import markdownIt from 'markdown-it'
 import { describe, expect, it } from 'vitest'
 
 import { fileTree } from '../src/node/fileTree.js'
 
 describe(fileTree, () => {
-  const markdownIt = new MarkdownIt({ linkify: true }).use(fileTree)
+  const md = markdownIt({ linkify: true }).use(fileTree)
 
   it('should render basic file tree', () => {
     const content = `
@@ -13,7 +13,7 @@ describe(fileTree, () => {
 - file2.ts
 :::
 `
-    const result = markdownIt.render(content)
+    const result = md.render(content)
     expect(result).toContain('<VPFileTree>')
     expect(result).toContain('filename="file1.js"')
     expect(result).toContain('filename="file2.ts"')
@@ -29,7 +29,7 @@ describe(fileTree, () => {
 - file2.ts
 :::
 `
-    const result = markdownIt.render(content)
+    const result = md.render(content)
     expect(result).toContain('type="folder"')
     expect(result).toContain('filename="folder"')
     expect(result).toContain('level="1"')
@@ -45,7 +45,7 @@ describe(fileTree, () => {
   - file.js
 :::
 `
-    const result = markdownIt.render(content)
+    const result = md.render(content)
     expect(result).toContain('expanded')
     expect(result).toMatchSnapshot()
   })
@@ -56,7 +56,7 @@ describe(fileTree, () => {
 - file.txt
 :::
 `
-    const result = markdownIt.render(content)
+    const result = md.render(content)
     expect(result).toContain('<VPFileTree title="My Project">')
     expect(result).toMatchSnapshot()
   })
@@ -67,7 +67,7 @@ describe(fileTree, () => {
 - file.js # This is a comment
 :::
 `
-    const result = markdownIt.render(content)
+    const result = md.render(content)
     expect(result).toContain('This is a comment')
     expect(result).toMatchSnapshot()
   })
@@ -78,7 +78,7 @@ describe(fileTree, () => {
 - **file.js**
 :::
 `
-    const result = markdownIt.render(content)
+    const result = md.render(content)
     expect(result).toContain('focus')
     expect(result).toMatchSnapshot()
   })
@@ -90,7 +90,7 @@ describe(fileTree, () => {
 - -- removed.js
 :::
 `
-    const result = markdownIt.render(content)
+    const result = md.render(content)
     expect(result).toContain('diff="add"')
     expect(result).toContain('diff="remove"')
     expect(result).toMatchSnapshot()
@@ -102,7 +102,7 @@ describe(fileTree, () => {
 - empty-folder/
 :::
 `
-    const result = markdownIt.render(content)
+    const result = md.render(content)
     expect(result).toContain('filename="…"')
     expect(result).toMatchSnapshot()
   })
@@ -114,7 +114,7 @@ describe(fileTree, () => {
   - ...
 :::
 `
-    const result = markdownIt.render(content)
+    const result = md.render(content)
     expect(result).toContain('filename="..."')
     // the folder only holds a placeholder, so it is treated as empty
     expect(result).toContain(' empty')
@@ -128,9 +128,7 @@ describe(fileTree, () => {
   - file2.ts
 :::
 `
-    const result = new MarkdownIt()
-      .use(fileTree, { icons: false })
-      .render(content)
+    const result = markdownIt().use(fileTree, { icons: false }).render(content)
 
     expect(result).not.toContain('icon=')
   })

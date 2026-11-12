@@ -54,8 +54,8 @@
     "clean": "rimraf ./dist"
   },
   "dependencies": {
-    "@mdit/plugin-uml": "^2.0.4",
-    "@types/markdown-it": "catalog:",
+    "@mdit/helper": "^1.2.1",
+    "@mdit/plugin-uml": "^2.1.0",
     "@vuepress/helper": "workspace:*",
     "@vueuse/core": "catalog:",
     "reveal.js": "^6.0.2",

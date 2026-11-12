@@ -1,4 +1,3 @@
-import type { MarkdownItContainerOptions as MditContainerOptions } from '@mdit/plugin-container'
 import { container } from '@mdit/plugin-container'
 import type { Plugin, PluginObject } from 'vuepress/core'
 import { ensureLeadingSlash, resolveLocalePath } from 'vuepress/shared'
@@ -72,7 +71,7 @@ export const markdownContainerPlugin = ({
     // token info stack
     const infoStack: string[] = []
 
-    render = (tokens, index, _, env): string => {
+    render = (tokens, index, _, env = {}): string => {
       const token = tokens[index]
 
       if (token.nesting === 1) {
@@ -112,7 +111,7 @@ export const markdownContainerPlugin = ({
 
   // use @mdit/plugin-container
   plugin.extendsMarkdown = (md) => {
-    md.use<MditContainerOptions>(container, {
+    md.use(container, {
       name: type,
       marker,
       validate,

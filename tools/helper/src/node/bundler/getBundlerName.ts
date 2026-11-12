@@ -10,6 +10,8 @@ import type { App } from 'vuepress/core'
  *   getBundlerName(app) // 'vite'
  *   // With @vuepress/bundler-webpack
  *   getBundlerName(app) // 'webpack'
+ *   // With @vuepress/bundler-rspack
+ *   getBundlerName(app) // 'rspack'
  *
  * @param app - VuePress Node App / VuePress Node 应用
  * @returns The bundler name / 打包器名称

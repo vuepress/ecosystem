@@ -1,4 +1,4 @@
-import { addViteConfig, chainWebpack } from '@vuepress/helper'
+import { addViteConfig, chainRspack, chainWebpack } from '@vuepress/helper'
 import { watch } from 'chokidar'
 import type { PluginFunction } from 'vuepress/core'
 import { path } from 'vuepress/utils'
@@ -14,6 +14,13 @@ import {
 import { EMPTY_FILE, PLUGIN_NAME, getIdPrefix, logger } from './utils.js'
 
 const __dirname = import.meta.dirname
+
+interface SassLoaderOptions extends Record<string, unknown> {
+  sassOptions?: {
+    silenceDeprecations?: string[]
+    [key: string]: unknown
+  }
+}
 
 /**
  * Sass palette plugin
@@ -98,18 +105,39 @@ export const sassPalettePlugin =
           webpackOptions.module
             .rule('scss')
             .use('sass-loader')
-            .tap((loaderOptions) => ({
-              ...loaderOptions,
-              // oxlint-disable-next-line typescript/no-unsafe-assignment
-              sassOptions: {
-                ...loaderOptions.sassOptions,
-                silenceDeprecations: [
-                  'import',
-                  // oxlint-disable-next-line typescript/no-unsafe-assignment, typescript/no-unsafe-member-access
-                  ...(loaderOptions.sassOptions?.silenceDeprecations ?? []),
-                ],
-              },
-            }))
+            .tap((loaderOptions) => {
+              const tapOptions = loaderOptions as SassLoaderOptions
+
+              return {
+                ...tapOptions,
+                sassOptions: {
+                  ...tapOptions.sassOptions,
+                  silenceDeprecations: [
+                    'import',
+                    ...(tapOptions.sassOptions?.silenceDeprecations ?? []),
+                  ],
+                },
+              }
+            })
+        })
+        chainRspack(bundlerOptions, app, (rspackOptions) => {
+          rspackOptions.module
+            .rule('scss')
+            .use('sass-loader')
+            .tap((loaderOptions) => {
+              const tapOptions = loaderOptions as SassLoaderOptions
+
+              return {
+                ...tapOptions,
+                sassOptions: {
+                  ...tapOptions.sassOptions,
+                  silenceDeprecations: [
+                    'import',
+                    ...(tapOptions.sassOptions?.silenceDeprecations ?? []),
+                  ],
+                },
+              }
+            })
         })
         injectScssConfigModule(bundlerOptions, app, id)
       },

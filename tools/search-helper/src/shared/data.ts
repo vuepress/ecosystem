@@ -1,34 +1,9 @@
 /**
- * Field of the page / section heading in the index.
- *
- * 索引中页面 / 段落标题的字段。
- */
-export const HEADING_INDEX_ID = 'heading'
-
-/**
- * Field of the text content in the index.
- *
- * 索引中正文内容的字段。
- */
-export const TEXT_INDEX_ID = 'text'
-
-/**
- * Field of the custom fields in the index.
- *
- * 索引中自定义字段的字段。
- */
-export const CUSTOM_FIELDS_INDEX_ID = 'customFields'
-
-/**
  * Properties that can be searched.
  *
  * 可供搜索的属性。
  */
-export type SearchableProperty =
-  | typeof CUSTOM_FIELDS_INDEX_ID
-  | typeof HEADING_INDEX_ID
-  | 'id'
-  | typeof TEXT_INDEX_ID
+export type SearchableProperty = 'customFields' | 'heading' | 'id' | 'text'
 
 /**
  * Character separating the page id, the kind marker and the rest of an index
@@ -60,21 +35,21 @@ export type CustomFieldIndexId =
 /** Index item of a page. 页面的索引项。 */
 export interface PageIndexItem {
   id: PageIndexId
-  [HEADING_INDEX_ID]: string
-  [TEXT_INDEX_ID]?: string[]
+  heading: string
+  text?: string[]
 }
 
 /** Index item of a section of a page. 页面段落的索引项。 */
 export interface SectionIndexItem {
   id: SectionIndexId
-  [HEADING_INDEX_ID]: string
-  [TEXT_INDEX_ID]?: string[]
+  heading: string
+  text?: string[]
 }
 
 /** Index item of a custom field of a page. 页面自定义字段的索引项。 */
 export interface CustomFieldIndexItem {
   id: CustomFieldIndexId
-  [CUSTOM_FIELDS_INDEX_ID]: string[]
+  ['customFields']: string[]
 }
 
 /** Index item. 索引项。 */
@@ -93,9 +68,9 @@ export type IndexItem = CustomFieldIndexItem | PageIndexItem | SectionIndexItem
 export interface IndexItemDocument {
   /** Index id of the item 索引项的索引 id */
   id: string
-  [HEADING_INDEX_ID]?: string
-  [TEXT_INDEX_ID]?: string[]
-  [CUSTOM_FIELDS_INDEX_ID]?: string[]
+  heading?: string
+  text?: string[]
+  customFields?: string[]
 }
 
 /** Index items of locales. 各语言环境的索引项。 */

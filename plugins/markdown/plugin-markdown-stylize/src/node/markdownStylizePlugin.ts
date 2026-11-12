@@ -4,6 +4,7 @@ import { layout as layoutPlugin } from '@mdit/plugin-layout'
 import { mark as markPlugin } from '@mdit/plugin-mark'
 import { spoiler as spoilerPlugin } from '@mdit/plugin-spoiler'
 import { stylize as stylizePlugin } from '@mdit/plugin-stylize'
+import type { MarkdownItStylizeConfig } from '@mdit/plugin-stylize'
 import { sub as subPlugin } from '@mdit/plugin-sub'
 import { sup as supPlugin } from '@mdit/plugin-sup'
 import { deepAssign } from '@vuepress/helper'
@@ -61,8 +62,10 @@ export const markdownStylizePlugin =
         if (custom) {
           md.use(stylizePlugin, {
             config: custom,
-            localConfigGetter: (env: MarkdownEnv) =>
-              env.frontmatter?.stylize || null,
+            localConfigGetter: (env) =>
+              ((env as MarkdownEnv | undefined)?.frontmatter?.stylize as
+                | MarkdownItStylizeConfig[]
+                | undefined) ?? null,
           })
         }
         if (attrs) md.use(attrsPlugin, isPlainObject(attrs) ? attrs : {})

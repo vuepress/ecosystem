@@ -1,9 +1,14 @@
 import type {
+  RspackPluginInstance,
   UnpluginFactory,
   VitePlugin,
   WebpackPluginInstance,
 } from 'unplugin'
-import { createVitePlugin, createWebpackPlugin } from 'unplugin'
+import {
+  createRspackPlugin,
+  createVitePlugin,
+  createWebpackPlugin,
+} from 'unplugin'
 
 import { transformAssets } from './transformAssets.js'
 import type { ReplacementRule } from './types.js'
@@ -38,3 +43,7 @@ export const createVitePluginReplaceAssets: () => (
 export const createWebpackPluginReplaceAssets: () => (
   options: ReplaceAssetsFactoryOptions,
 ) => WebpackPluginInstance = () => createWebpackPlugin(replaceAssetsFactory)
+
+export const createRspackPluginReplaceAssets: () => (
+  options: ReplaceAssetsFactoryOptions,
+) => RspackPluginInstance = () => createRspackPlugin(replaceAssetsFactory)
