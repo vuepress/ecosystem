@@ -3,12 +3,7 @@ import { entries, fromEntries, isArray, keys, cheerio } from '@vuepress/helper'
 import type { AnyNode, Element } from 'domhandler'
 import type { Page } from 'vuepress/core'
 
-import {
-  CUSTOM_FIELDS_INDEX_ID,
-  HEADING_INDEX_ID,
-  INDEX_ID_SEPARATOR,
-  TEXT_INDEX_ID,
-} from '../shared/index.js'
+import { INDEX_ID_SEPARATOR } from '../shared/index.js'
 import type {
   CustomFieldIndexId,
   IndexItem,
@@ -107,7 +102,7 @@ export const generatePageIndex = (
 
   const pageIndex: PageIndexItem = {
     id: pageId,
-    [HEADING_INDEX_ID]: page.title,
+    heading: page.title,
   }
   const results: IndexItem[] = [pageIndex]
 
@@ -124,8 +119,7 @@ export const generatePageIndex = (
       const text = indexedText.replaceAll(/[\n\s]+/gu, ' ').trim()
 
       if (text) {
-        ;((foundFirstHeader ? sectionIndex! : pageIndex)[TEXT_INDEX_ID] ??=
-          []).push(text)
+        ;((foundFirstHeader ? sectionIndex! : pageIndex).text ??= []).push(text)
       }
       indexedText = ''
     }
@@ -146,10 +140,10 @@ export const generatePageIndex = (
 
           sectionIndex = {
             id: `${pageId}${INDEX_ID_SEPARATOR}#${id}`,
-            [HEADING_INDEX_ID]: header,
+            heading: header,
           }
         } else if (header) {
-          ;((sectionIndex ?? pageIndex)[TEXT_INDEX_ID] ??= []).push(header)
+          ;((sectionIndex ?? pageIndex).text ??= []).push(header)
         }
       } else if (CONTENT_BLOCK_TAGS.includes(node.name)) {
         addTextToIndex()
@@ -223,7 +217,7 @@ export const generatePageIndex = (
   entries(customFields).forEach(([customField, values]) => {
     results.push({
       id: `${pageId}${INDEX_ID_SEPARATOR}@${customField}` as CustomFieldIndexId,
-      [CUSTOM_FIELDS_INDEX_ID]: values,
+      customFields: values,
     })
   })
 

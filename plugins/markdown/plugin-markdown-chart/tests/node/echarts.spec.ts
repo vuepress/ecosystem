@@ -1,16 +1,16 @@
-import MarkdownIt from 'markdown-it'
+import markdownIt from 'markdown-it'
 import { describe, expect, it } from 'vitest'
 
 import { echarts } from '../../src/node/markdown-it-plugins/echarts.js'
 
 describe(echarts, () => {
-  const markdownIt = new MarkdownIt({ linkify: true }).use(echarts, {
+  const md = markdownIt({ linkify: true }).use(echarts, {
     allowScripts: true,
     allowAll: true,
   })
 
   it('should resolve echarts container with json block', () => {
-    const result = markdownIt.render(
+    const result = md.render(
       `
 ::: echarts A line chart
 
@@ -44,7 +44,7 @@ describe(echarts, () => {
   })
 
   it('should resolve echarts container with js block', () => {
-    const result = markdownIt.render(
+    const result = md.render(
       `
 ::: echarts A line chart
 
@@ -78,7 +78,7 @@ const option = {
   })
 
   it('should resolve echarts container with javascript block', () => {
-    const result = markdownIt.render(
+    const result = md.render(
       `
 ::: echarts A line chart
 
@@ -112,7 +112,7 @@ const option = {
   })
 
   it('should resolve echarts container with empty title and body', () => {
-    const result = markdownIt.render(
+    const result = md.render(
       `
 ::: echarts
 
@@ -128,7 +128,7 @@ const option = {
   })
 
   it('should resolve echarts fence', () => {
-    const result = markdownIt.render(
+    const result = md.render(
       `
 \`\`\`echarts:A line chart
 {
@@ -158,7 +158,7 @@ const option = {
   })
 
   it('should resolve echarts fence with empty title and body', () => {
-    const result = markdownIt.render(
+    const result = md.render(
       `
 \`\`\`echarts
 \`\`\`
@@ -173,7 +173,7 @@ const option = {
   })
 
   it('should not break markdown fence', () => {
-    const result = markdownIt.render(
+    const result = md.render(
       `
 \`\`\`js
 const a = 1;
@@ -187,9 +187,9 @@ const a = 1;
   })
 
   it('should remove unsafe script block by default', () => {
-    const md = new MarkdownIt({ linkify: true }).use(echarts)
+    const mdWithoutScripts = markdownIt({ linkify: true }).use(echarts)
 
-    const result = md.render(
+    const result = mdWithoutScripts.render(
       `
 ::: echarts A bar chart
 

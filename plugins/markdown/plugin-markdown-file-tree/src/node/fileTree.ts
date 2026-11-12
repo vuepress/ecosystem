@@ -1,6 +1,5 @@
-import type { PluginWithOptions } from 'markdown-it'
-import type StateBlock from 'markdown-it/lib/rules_block/state_block.mjs'
-import type Token from 'markdown-it/lib/token.mjs'
+import type { PluginWithOptions } from '@mdit/helper'
+import type { StateBlock, Token } from 'markdown-it'
 
 import { getFileIcon } from './fileIcons/index.js'
 import type { FileIconOptions } from './fileIcons/types.js'

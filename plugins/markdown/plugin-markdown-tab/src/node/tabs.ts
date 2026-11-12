@@ -1,5 +1,5 @@
+import type { PluginSimple } from '@mdit/helper'
 import { tab } from '@mdit/plugin-tab'
-import type { PluginSimple } from 'markdown-it'
 
 import { stringifyProp } from './utils.js'
 
@@ -15,8 +15,7 @@ export const tabs: PluginSimple = (md) => {
     name: 'tabs',
 
     openRenderer: ({ active, data }, tokens, index) => {
-      // oxlint-disable-next-line typescript/no-unsafe-assignment
-      const { meta } = tokens[index]
+      const meta = tokens[index].meta ?? {}
       const titles = data.map(({ title }) => md.renderInline(title))
       const tabsData = data.map((item, dataIndex) => {
         const { id = titles[dataIndex] } = item
@@ -27,10 +26,7 @@ export const tabs: PluginSimple = (md) => {
       return `\
 <VPTabs :data='${stringifyProp(tabsData)}'${
         active === -1 ? '' : ` :active="${active}"`
-      }${
-        // oxlint-disable-next-line typescript/no-unsafe-member-access
-        meta.id ? ` tab-id="${meta.id as string}"` : ''
-      }>
+      }${meta.id ? ` tab-id="${meta.id as string}"` : ''}>
 ${titles
   .map(
     (title, titleIndex) => `\

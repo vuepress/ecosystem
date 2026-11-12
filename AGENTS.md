@@ -36,7 +36,6 @@ scripts/      # Shared build scripts (tsdown config, release helpers)
 | `pnpm run lint:check` | Same checks without auto-fix                                  |
 | `pnpm run format`     | Format all files with Oxfmt                                   |
 | `pnpm run clean`      | Delete all `dist/` outputs                                    |
-| `pnpm run type:check` | TypeScript type checking (no emit)                            |
 
 > **Important:** All packages compile TypeScript to `./dist/` via `tsdown`. The `dist/` directories are git-ignored. Run `pnpm bundle` before running e2e tests or working with the docs site. Unit tests (`pnpm test:unit`) run Vitest directly against TypeScript sources via aliases and do **not** require a build step.
 
@@ -185,7 +184,6 @@ All packages use a shared `tsdownConfig` factory defined in `scripts/tsdown.ts`:
 - To emit SCSS/CSS from `src/client/styles/`, add a wildcard entry to `tsdown.config.ts`: `tsdownConfig(['node/index', { 'client/styles/*': './src/client/styles/*.scss' }])`. The CSS lands in `dist/client/styles/*.css`.
 - If a CSS chunk must be importable at runtime (e.g. from a generated client config), map it in `package.json` `exports`, e.g. `"./<name>.css": "./dist/client/styles/<name>.css"`, and reference it with `getModulePath('<pkg>/<name>.css', import.meta)` from `@vuepress/helper`.
 - The `tsdownConfig` helper accepts `onlyBundle`, `alwaysBundle`, and `neverBundle` options for fine-grained dependency bundling control. Modules starting with `@internal/` and `@temp/` are never bundled.
-- `pnpm run type:check` resolves `@vuepress/<plugin-name>` from the package `dist/`, so build the affected package (`pnpm --filter <pkg> build`) before type-checking.
 
 ## Testing
 

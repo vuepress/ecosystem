@@ -1,13 +1,13 @@
-import MarkdownIt from 'markdown-it'
+import markdownIt from 'markdown-it'
 import { describe, expect, it } from 'vitest'
 
 import { component } from '../../src/node/markdown-it-plugins/component.js'
 
 describe(component, () => {
-  const markdownIt = new MarkdownIt({ linkify: true }).use(component)
+  const md = markdownIt({ linkify: true }).use(component)
 
   it('should resolve component fence', () => {
-    const result1 = markdownIt.render(
+    const result1 = md.render(
       `
 \`\`\`component VPCard
 title: A card
@@ -20,7 +20,7 @@ color: "#000"
       {},
     )
 
-    const result2 = markdownIt.render(
+    const result2 = md.render(
       `
 \`\`\`component VPCard
 {
@@ -42,7 +42,7 @@ color: "#000"
   })
 
   it('should not throw with invalid syntax', () => {
-    const result1 = markdownIt.render(
+    const result1 = md.render(
       `
 \`\`\`component VPCard
 title: a
@@ -52,7 +52,7 @@ title: b
       {},
     )
 
-    const result2 = markdownIt.render(
+    const result2 = md.render(
       `
 \`\`\`component VPCard
 title: a
@@ -67,7 +67,7 @@ title: b
   })
 
   it('should drop when receiving a invalid syntax', () => {
-    const result = markdownIt.render(
+    const result = md.render(
       `
 \`\`\`component VPCard
 {a:1}
@@ -80,7 +80,7 @@ title: b
   })
 
   it('should not break markdown fence', () => {
-    const result = markdownIt.render(
+    const result = md.render(
       `
 \`\`\`js
 const a = 1;

@@ -1,15 +1,15 @@
-import MarkdownIt from 'markdown-it'
+import markdownIt from 'markdown-it'
 import { describe, expect, it } from 'vitest'
 import { createMarkdown } from 'vuepress/markdown'
 
 import { codeTabs } from '../../src/node/codeTabs.js'
 
-const markdownIt = new MarkdownIt({ linkify: true }).use(codeTabs)
+const md = markdownIt({ linkify: true }).use(codeTabs)
 
 describe('code tabs', () => {
   it('should render single block', () => {
     expect(
-      markdownIt.render(`
+      md.render(`
 ::: code-tabs
 
 @tab js
@@ -23,7 +23,7 @@ const a = 1;
     ).toMatchSnapshot('loose')
 
     expect(
-      markdownIt.render(`
+      md.render(`
 ::: code-tabs
 @tab js
 \`\`\`js
@@ -36,7 +36,7 @@ const a = 1;
 
   it('should render multiple block', () => {
     expect(
-      markdownIt.render(`
+      md.render(`
 ::: code-tabs
 
 @tab js
@@ -56,7 +56,7 @@ const a = 1;
     ).toMatchSnapshot('loose')
 
     expect(
-      markdownIt.render(`
+      md.render(`
 ::: code-tabs
 @tab js
 \`\`\`js
@@ -73,7 +73,7 @@ const a = 1;
 
   it('should support id', () => {
     expect(
-      markdownIt.render(`
+      md.render(`
 ::: code-tabs#event
 
 @tab js
@@ -87,7 +87,7 @@ const a = 1;
     ).toMatchSnapshot('simple id')
 
     expect(
-      markdownIt.render(`
+      md.render(`
 ::: code-tabs#event-id
 @tab js
 \`\`\`js
@@ -98,7 +98,7 @@ const a = 1;
     ).toMatchSnapshot('id with dash')
 
     expect(
-      markdownIt.render(`
+      md.render(`
 ::: code-tabs#id with space
 @tab js
 \`\`\`js
@@ -109,7 +109,7 @@ const a = 1;
     ).toMatchSnapshot('id with space')
 
     expect(
-      markdownIt.render(`
+      md.render(`
 ::: code-tabs # id starts and having space in the end
 @tab js
 \`\`\`js
@@ -122,7 +122,7 @@ const a = 1;
 
   it('should support active', () => {
     expect(
-      markdownIt.render(`
+      md.render(`
 ::: code-tabs
 
 @tab:active js
@@ -136,7 +136,7 @@ const a = 1;
     ).toMatchSnapshot('loose')
 
     expect(
-      markdownIt.render(`
+      md.render(`
 ::: code-tabs
 @tab:active js
 \`\`\`js
@@ -147,7 +147,7 @@ const a = 1;
     ).toMatchSnapshot('tight')
 
     expect(
-      markdownIt.render(`
+      md.render(`
 ::: code-tabs
 
 @tab js
@@ -167,7 +167,7 @@ const a = 1;
     ).toMatchSnapshot('multiple loose')
 
     expect(
-      markdownIt.render(`
+      md.render(`
 ::: code-tabs
 @tab js
 \`\`\`js
@@ -184,7 +184,7 @@ const a = 1;
 
   it('should support value', () => {
     expect(
-      markdownIt.render(`
+      md.render(`
 ::: code-tabs
 
 @tab js#javascript
@@ -198,7 +198,7 @@ const a = 1;
     ).toMatchSnapshot('loose')
 
     expect(
-      markdownIt.render(`
+      md.render(`
 ::: code-tabs
 @tab:active js#javascript
 \`\`\`js
@@ -209,7 +209,7 @@ const a = 1;
     ).toMatchSnapshot('tight')
 
     expect(
-      markdownIt.render(`
+      md.render(`
 ::: code-tabs
 
 @tab js#js
@@ -229,7 +229,7 @@ const a = 1;
     ).toMatchSnapshot('multiple loose')
 
     expect(
-      markdownIt.render(`
+      md.render(`
 ::: code-tabs
 @tab js #javascript
 \`\`\`js
@@ -246,7 +246,7 @@ const a = 1;
 
   it('should ignore other items', () => {
     expect(
-      markdownIt.render(`
+      md.render(`
 ::: code-tabs
 
 \`\`\`coffee
@@ -268,7 +268,7 @@ const a = 1;
     ).toMatchSnapshot('loose')
 
     expect(
-      markdownIt.render(`
+      md.render(`
 ::: code-tabs
 \`\`\`coffee
 const a = 1;
@@ -285,7 +285,7 @@ const a = 1;
     ).toMatchSnapshot('tight')
 
     expect(
-      markdownIt.render(`
+      md.render(`
 ::: code-tabs
 
 @tab js
@@ -313,7 +313,7 @@ Another text again
     ).toMatchSnapshot('complex loose')
 
     expect(
-      markdownIt.render(`
+      md.render(`
 ::: code-tabs
 @tab js
 A text

@@ -20,6 +20,7 @@ jobs:
         bundler:
           - vite
           - webpack
+          - rspack
     runs-on: ubuntu-latest
 
     steps:
@@ -29,7 +30,7 @@ jobs:
       - name: Setup pnpm
         uses: pnpm/setup@v3
         with:
-          runtime: node@^24.22.1
+          runtime: node@^26.13.0
           require-lockfile: true
 
       - name: Install playwright chromium
@@ -61,6 +62,7 @@ jobs:
         bundler:
           - vite
           - webpack
+          - rspack
 
     runs-on: ${{ matrix.os }}
 
@@ -71,7 +73,7 @@ jobs:
       - name: Setup pnpm
         uses: pnpm/setup@v3
         with:
-          runtime: node@^24.22.1
+          runtime: node@^26.13.0
           require-lockfile: true
 
       - name: Install playwright chromium
@@ -82,14 +84,14 @@ jobs:
         run: pnpm run bundle
 
       - name: E2E test (base /)
-        timeout-minutes: 5
+        timeout-minutes: 10
         run: pnpm run test:e2e
         env:
           E2E_BASE: /
           E2E_BUNDLER: ${{ matrix.bundler }}
 
       - name: E2E test (base /e2e/)
-        timeout-minutes: 5
+        timeout-minutes: 10
         run: pnpm run test:e2e
         env:
           E2E_BASE: /e2e/
@@ -101,10 +103,11 @@ jobs:
       matrix:
         node:
           - 22
-          # - 26
+          - 26
         bundler:
           - vite
           - webpack
+          - rspack
 
     runs-on: ubuntu-latest
 

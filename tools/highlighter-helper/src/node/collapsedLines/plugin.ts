@@ -28,7 +28,7 @@ export const collapsedLines = (
 ): void => {
   if (collapsedLinesOptions === 'disable') return
 
-  const rawFence = md.renderer.rules.fence!
+  const rawFence = md.renderer.rules.fence
 
   md.renderer.rules.fence = (...args): string => {
     const [tokens, index] = args

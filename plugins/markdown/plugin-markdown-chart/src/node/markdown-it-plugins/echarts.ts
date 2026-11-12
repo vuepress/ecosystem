@@ -1,7 +1,7 @@
+import type { PluginWithOptions } from '@mdit/helper'
 import { container } from '@mdit/plugin-container'
 import { encodeData } from '@vuepress/helper'
-import type { PluginWithOptions } from 'markdown-it'
-import type Token from 'markdown-it/lib/token.mjs'
+import type { Token } from 'markdown-it'
 import { colors } from 'vuepress/utils'
 
 const echartsRender = (tokens: Token[], index: number): string => {
@@ -66,7 +66,7 @@ export const echarts: PluginWithOptions<EChartsPluginOptions> = (
 
     if (realInfo === 'echarts') return echartsRender(tokens, index)
 
-    return fence!(...args)
+    return fence(...args)
   }
 
   md.renderer.rules.echarts = echartsRender
@@ -85,7 +85,6 @@ export const echarts: PluginWithOptions<EChartsPluginOptions> = (
       let isJavaScript = false
       let isInAllowList = false
 
-      // oxlint-disable-next-line typescript/no-unsafe-assignment, typescript/no-unsafe-member-access
       const filePathRelative: string = env?.filePathRelative ?? ''
 
       for (let i = index; i < tokens.length; i++) {

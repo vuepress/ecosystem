@@ -1,8 +1,7 @@
-import type { MarkdownItContainerOptions } from '@mdit/plugin-container'
+import type { PluginWithOptions } from '@mdit/helper'
 import { container } from '@mdit/plugin-container'
 import type { ExactLocaleConfig } from '@vuepress/helper'
 import { ensureLeadingSlash } from '@vuepress/helper'
-import type { PluginWithOptions } from 'markdown-it'
 import type { MarkdownEnv } from 'vuepress/markdown'
 import { resolveLocalePath } from 'vuepress/shared'
 
@@ -36,9 +35,9 @@ export const hint: PluginWithOptions<MarkdownItHintOptions> = (
   options = {},
 ) => {
   CONTAINERS.forEach((name) => {
-    md.use<MarkdownItContainerOptions>(container, {
+    md.use(container, {
       name,
-      openRenderer: (tokens, index, _options, env: MarkdownEnv) => {
+      openRenderer: (tokens, index, _options, env: MarkdownEnv = {}) => {
         const token = tokens[index]
 
         // Resolve info (title)
@@ -63,9 +62,9 @@ export const hint: PluginWithOptions<MarkdownItHintOptions> = (
   })
 
   // Compact with @vuepress/theme-default
-  md.use<MarkdownItContainerOptions>(container, {
+  md.use(container, {
     name: 'danger',
-    openRenderer: (tokens, index, _options, env: MarkdownEnv) => {
+    openRenderer: (tokens, index, _options, env: MarkdownEnv = {}) => {
       const token = tokens[index]
 
       // Resolve info (title)
@@ -90,9 +89,9 @@ export const hint: PluginWithOptions<MarkdownItHintOptions> = (
     closeRenderer: () => '</div>\n',
   })
 
-  md.use<MarkdownItContainerOptions>(container, {
+  md.use(container, {
     name: 'details',
-    openRenderer: (tokens, index, _options, env: MarkdownEnv) => {
+    openRenderer: (tokens, index, _options, env: MarkdownEnv = {}) => {
       const token = tokens[index]
 
       // Resolve info (title)

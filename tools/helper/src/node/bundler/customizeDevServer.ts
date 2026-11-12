@@ -1,9 +1,13 @@
 import type { IncomingMessage, ServerResponse } from 'node:http'
 
+import type {
+  RspackBundlerOptions,
+  RspackDevServer,
+} from '@vuepress/bundler-rspack'
 import type { ViteBundlerOptions } from '@vuepress/bundler-vite'
 import type {
   WebpackBundlerOptions,
-  WebpackDevServer,
+  WebpackDevServerConfiguration,
 } from '@vuepress/bundler-webpack'
 import type { HandleFunction } from 'connect'
 import type { Plugin } from 'vite'
@@ -12,6 +16,14 @@ import { removeLeadingSlash } from 'vuepress/shared'
 
 import { getBundlerName } from './getBundlerName.js'
 import { mergeViteConfig } from './vite/index.js'
+
+type WebpackSetupMiddlewares = NonNullable<
+  WebpackDevServerConfiguration['setupMiddlewares']
+>
+
+type RspackSetupMiddlewares = NonNullable<
+  RspackBundlerOptions['devServerSetupMiddlewares']
+>
 
 /** Options for customizing VuePress Dev Server */
 export interface DevServerOptions {
@@ -81,34 +93,51 @@ export const customizeDevServer = (
       )
     }
 
-    // for webpack
-    else if (bundlerName === 'webpack') {
-      const webpackBundlerOptions = bundlerOptions as WebpackBundlerOptions
+    // for webpack and rspack
+    else if (bundlerName === 'webpack' || bundlerName === 'rspack') {
+      const route = `${base}${removeLeadingSlash(path)}`
 
-      const { devServerSetupMiddlewares } = webpackBundlerOptions
+      const requestHandler = (
+        request: IncomingMessage,
+        response: ServerResponse,
+      ): void => {
+        responseHandler(request, response)
+          .then((data) => {
+            response.statusCode = 200
+            response.end(data)
+          })
+          .catch(() => {
+            response.statusCode = 500
+            response.end(errMsg)
+          })
+      }
 
-      /**
-       * @param middlewares - Existing middlewares / 现有中间件
-       * @param server - Webpack Dev Server instance / Webpack 开发服务器实例
-       * @returns Updated middlewares / 更新后的中间件
-       * @see https://webpack.js.org/configuration/dev-server/#devserversetupmiddlewares
-       */
-      webpackBundlerOptions.devServerSetupMiddlewares = (
-        middlewares: WebpackDevServer.Middleware[],
-        server: WebpackDevServer,
-      ): WebpackDevServer.Middleware[] => {
-        server.app?.get(
-          `${base}${removeLeadingSlash(path)}`,
-          (request, response) => {
-            responseHandler(request, response)
-              .then((data) => response.status(200).send(data))
-              .catch(() => response.status(500).send(errMsg))
-          },
-        )
+      if (bundlerName === 'webpack') {
+        const webpackBundlerOptions = bundlerOptions as WebpackBundlerOptions
+        const { devServerSetupMiddlewares } = webpackBundlerOptions
+        const setupMiddlewares: WebpackSetupMiddlewares = (
+          middlewares,
+          server,
+        ) => {
+          server.app?.get(route, requestHandler)
 
-        return devServerSetupMiddlewares
-          ? devServerSetupMiddlewares(middlewares, server)
-          : middlewares
+          return devServerSetupMiddlewares?.(middlewares, server) ?? middlewares
+        }
+
+        webpackBundlerOptions.devServerSetupMiddlewares = setupMiddlewares
+      } else {
+        const rspackBundlerOptions = bundlerOptions as RspackBundlerOptions
+        const { devServerSetupMiddlewares } = rspackBundlerOptions
+        const setupMiddlewares: RspackSetupMiddlewares = (
+          middlewares,
+          server: RspackDevServer,
+        ) => {
+          server.app?.use(route, requestHandler)
+
+          return devServerSetupMiddlewares?.(middlewares, server) ?? middlewares
+        }
+
+        rspackBundlerOptions.devServerSetupMiddlewares = setupMiddlewares
       }
     }
   }

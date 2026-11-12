@@ -1,21 +1,13 @@
-import type {
-  MarkdownItCodeBlockTitleOptions,
-  MarkdownItCollapsedLinesOptions,
-  MarkdownItLineNumbersOptions,
-} from '@vuepress/highlighter-helper'
 import {
   codeBlockTitle as codeBlockTitlePlugin,
   collapsedLines as collapsedLinesPlugin,
   lineNumbers as lineNumbersPlugin,
 } from '@vuepress/highlighter-helper'
-import MarkdownIt from 'markdown-it'
+import markdownIt from 'markdown-it'
+import type { MarkdownIt } from 'markdown-it'
 import { describe, expect, it, vi } from 'vitest'
 
-import type {
-  MarkdownItPreWrapperOptions,
-  MarkdownItPrismjsHighlightOptions,
-  PrismjsPluginOptions,
-} from '../src/node/index.js'
+import type { PrismjsPluginOptions } from '../src/node/index.js'
 import { highlightPlugin, preWrapperPlugin } from '../src/node/index.js'
 import { resolveHighlighter } from '../src/node/resolveHighlighter.js'
 
@@ -28,24 +20,24 @@ const createMarkdown = ({
   codeBlockTitle = true,
   ...options
 }: PrismjsPluginOptions = {}): MarkdownIt => {
-  const md = new MarkdownIt()
+  const md = markdownIt()
 
   md.options.highlight = (code, lang): string => {
     const highlighter = resolveHighlighter(lang)
     return highlighter?.(code) || ''
   }
-  md.use<MarkdownItPrismjsHighlightOptions>(highlightPlugin, options)
-  md.use<MarkdownItPreWrapperOptions>(preWrapperPlugin, { preWrapper })
+  md.use(highlightPlugin, options)
+  md.use(preWrapperPlugin, { preWrapper })
   if (preWrapper) {
-    md.use<MarkdownItLineNumbersOptions>(lineNumbersPlugin, {
+    md.use(lineNumbersPlugin, {
       lineNumbers,
       removeLastLine: true,
     })
-    md.use<MarkdownItCollapsedLinesOptions>(collapsedLinesPlugin, {
+    md.use(collapsedLinesPlugin, {
       collapsedLines,
       removeLastLine: true,
     })
-    md.use<MarkdownItCodeBlockTitleOptions>(codeBlockTitlePlugin, {
+    md.use(codeBlockTitlePlugin, {
       codeBlockTitle,
     })
   }

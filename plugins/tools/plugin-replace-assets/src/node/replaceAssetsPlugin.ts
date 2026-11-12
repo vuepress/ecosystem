@@ -1,10 +1,16 @@
-import { addViteConfig, configWebpack, getBundlerName } from '@vuepress/helper'
+import {
+  addViteConfig,
+  configRspack,
+  configWebpack,
+  getBundlerName,
+} from '@vuepress/helper'
 import type { Plugin } from 'vuepress/core'
 
 import { PLUGIN_NAME } from './constants.js'
 import { normalizeRules } from './normalizeRules.js'
 import type { ReplaceAssetsPluginOptions } from './types.js'
 import {
+  createRspackPluginReplaceAssets,
   createVitePluginReplaceAssets,
   createWebpackPluginReplaceAssets,
 } from './unplugin.js'
@@ -45,6 +51,14 @@ export const replaceAssetsPlugin = (
         configWebpack(bundlerOptions, app, (config) => {
           config.plugins ??= []
           const replaceAssets = createWebpackPluginReplaceAssets()
+          config.plugins.push(replaceAssets({ rules, base: app.options.base }))
+        })
+      }
+
+      if (bundle === 'rspack') {
+        configRspack(bundlerOptions, app, (config) => {
+          config.plugins ??= []
+          const replaceAssets = createRspackPluginReplaceAssets()
           config.plugins.push(replaceAssets({ rules, base: app.options.base }))
         })
       }

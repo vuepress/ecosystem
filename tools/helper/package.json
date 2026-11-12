@@ -88,17 +88,22 @@
   },
   "devDependencies": {
     "@types/connect": "^3.4.38",
+    "@vuepress/bundler-rspack": "catalog:",
     "@vuepress/bundler-vite": "catalog:",
     "@vuepress/bundler-webpack": "catalog:",
     "domhandler": "^5.0.3",
-    "vite": "^8.3.6"
+    "vite": "^8.3.8"
   },
   "peerDependencies": {
+    "@vuepress/bundler-rspack": "catalog:",
     "@vuepress/bundler-vite": "catalog:",
     "@vuepress/bundler-webpack": "catalog:",
     "vuepress": "catalog:"
   },
   "peerDependenciesMeta": {
+    "@vuepress/bundler-rspack": {
+      "optional": true
+    },
     "@vuepress/bundler-vite": {
       "optional": true
     },

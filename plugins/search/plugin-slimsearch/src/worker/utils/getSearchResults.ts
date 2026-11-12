@@ -1,11 +1,6 @@
 import { buildSearchResults } from '@vuepress/search-helper/shared'
 import { getStoredFields, search } from 'slimsearch'
 
-import {
-  CUSTOM_FIELDS_INDEX_ID,
-  HEADING_INDEX_ID,
-  TEXT_INDEX_ID,
-} from '../../shared/index.js'
 import type {
   PageIndexItem,
   SearchIndex,
@@ -53,9 +48,9 @@ export const getSearchResults = (
 ): SearchResult[] => {
   const results = search(localeIndex, query, {
     boost: {
-      [CUSTOM_FIELDS_INDEX_ID]: 4,
-      [HEADING_INDEX_ID]: 2,
-      [TEXT_INDEX_ID]: 1,
+      customFields: 4,
+      heading: 2,
+      text: 1,
     },
     prefix: true,
     ...searchOptions,
@@ -77,7 +72,7 @@ export const getSearchResults = (
         getStoredFields(localeIndex, String(pageId)) as unknown as
           | PageIndexItem
           | undefined
-      )?.[HEADING_INDEX_ID],
+      )?.heading,
     sortStrategy,
   })
 }

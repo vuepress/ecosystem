@@ -1,6 +1,6 @@
+import type { PluginSimple } from '@mdit/helper'
 import { encodeData } from '@vuepress/helper'
-import type { PluginSimple } from 'markdown-it'
-import type Token from 'markdown-it/lib/token.mjs'
+import type { Token } from 'markdown-it'
 
 const SUPPORTED_PRESETS = new Set(['ant', 'pie', 'vue'])
 
@@ -33,7 +33,7 @@ export const flowchart: PluginSimple = (md) => {
     if (realInfo === 'flow' || realInfo === 'flowchart')
       return flowchartRender(tokens, index)
 
-    return fence!(...args)
+    return fence(...args)
   }
 
   md.renderer.rules.flowchart = flowchartRender

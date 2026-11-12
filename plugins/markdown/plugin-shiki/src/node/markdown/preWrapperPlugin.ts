@@ -30,7 +30,7 @@ export const preWrapperPlugin = (
   md: Markdown,
   { preWrapper = true }: MarkdownItPreWrapperOptions = {},
 ): void => {
-  const rawFence = md.renderer.rules.fence!
+  const rawFence = md.renderer.rules.fence
 
   md.renderer.rules.fence = (...args): string => {
     let result = rawFence(...args)

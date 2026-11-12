@@ -2,11 +2,6 @@ import { search } from '@orama/orama'
 import { foldDiacritics } from '@vuepress/search-helper/shared'
 import type { IndexItemDocument } from '@vuepress/search-helper/shared'
 
-import {
-  CUSTOM_FIELDS_INDEX_ID,
-  HEADING_INDEX_ID,
-  TEXT_INDEX_ID,
-} from '../../shared/index.js'
 import type {
   SearchableProperty,
   SearchIndex,
@@ -69,7 +64,7 @@ export const getSuggestions = (
   const searchedProperties: SearchableProperty[] =
     properties && properties !== '*'
       ? [...properties]
-      : [HEADING_INDEX_ID, TEXT_INDEX_ID, CUSTOM_FIELDS_INDEX_ID]
+      : ['heading', 'text', 'customFields']
 
   const results = search(localeIndex, {
     term: query,
@@ -89,9 +84,9 @@ export const getSuggestions = (
   ;(results as { hits: { document: IndexItemDocument }[] }).hits.forEach(
     ({ document }) => {
       const fields = [
-        document[HEADING_INDEX_ID],
-        ...(document[TEXT_INDEX_ID] ?? []),
-        ...(document[CUSTOM_FIELDS_INDEX_ID] ?? []),
+        document.heading,
+        ...(document.text ?? []),
+        ...(document.customFields ?? []),
       ]
 
       fields.forEach((field) => {

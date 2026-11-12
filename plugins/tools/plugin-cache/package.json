@@ -39,7 +39,7 @@
     "clean": "rimraf ./dist"
   },
   "dependencies": {
-    "ci-info": "^4.4.0",
+    "ci-info": "^4.5.0",
     "lru-cache": "^11.5.3"
   },
   "peerDependencies": {

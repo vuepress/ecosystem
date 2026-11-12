@@ -1,9 +1,4 @@
 import { isModuleAvailable } from '@vuepress/helper'
-import type {
-  MarkdownItCodeBlockTitleOptions,
-  MarkdownItCollapsedLinesOptions,
-  MarkdownItLineNumbersOptions,
-} from '@vuepress/highlighter-helper'
 import {
   codeBlockTitle as codeBlockTitlePlugin,
   collapsedLines as collapsedLinesPlugin,
@@ -14,7 +9,6 @@ import { isPlainObject } from 'vuepress/shared'
 import { colors } from 'vuepress/utils'
 
 import { createMarkdownFilePathGetter } from './markdown/highlighter/createMarkdownFilePathGetter.js'
-import type { MarkdownItPreWrapperOptions } from './markdown/index.js'
 import {
   createShikiHighlighter,
   getHighLightFunction,
@@ -106,9 +100,9 @@ export const shikiPlugin =
           markdownFilePathGetter,
         )
         md.use(highlightLinePlugin)
-        md.use<MarkdownItPreWrapperOptions>(preWrapperPlugin, { preWrapper })
+        md.use(preWrapperPlugin, { preWrapper })
         if (preWrapper) {
-          md.use<MarkdownItLineNumbersOptions>(lineNumbersPlugin, {
+          md.use(lineNumbersPlugin, {
             lineNumbers,
             resolveLineNumbers(info) {
               return shikiOptions.twoslash && TWOSLASH_RE.test(info)
@@ -116,10 +110,10 @@ export const shikiPlugin =
                 : undefined
             },
           })
-          md.use<MarkdownItCollapsedLinesOptions>(collapsedLinesPlugin, {
+          md.use(collapsedLinesPlugin, {
             collapsedLines,
           })
-          md.use<MarkdownItCodeBlockTitleOptions>(codeBlockTitlePlugin, {
+          md.use(codeBlockTitlePlugin, {
             codeBlockTitle,
           })
         }

@@ -4,7 +4,7 @@ import type {
   SearchSortStrategy,
 } from '@vuepress/search-helper/shared'
 
-import { HEADING_INDEX_ID, getIndexTokenizer } from '../../shared/index.js'
+import { getIndexTokenizer } from '../../shared/index.js'
 import type { SearchIndex, WorkerSearchOptions } from '../../shared/index.js'
 import { searchIndex } from './search.js'
 
@@ -32,7 +32,6 @@ export const getSearchResults = (
     displayTerms: getIndexTokenizer(localeIndex)(query),
     // Search the store to get the title when the page-level document did not
     // match the query
-    getPageTitle: (pageId) =>
-      localeIndex.get(String(pageId))?.[HEADING_INDEX_ID],
+    getPageTitle: (pageId) => localeIndex.get(String(pageId))?.heading,
     sortStrategy,
   })

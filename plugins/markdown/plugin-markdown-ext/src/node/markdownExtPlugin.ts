@@ -74,7 +74,7 @@ export const markdownExtPlugin =
 
         if (footnote ?? gfm) md.use(footnotePlugin)
         if (tasklist ?? gfm)
-          md.use(tasklistPlugin, [isPlainObject(tasklist) ? tasklist : {}])
+          md.use(tasklistPlugin, isPlainObject(tasklist) ? tasklist : {})
         if (component) md.use(componentPlugin)
         if (vPre) md.use(vPrePlugin)
         if (isCjkFriendlyEnabled) md.use(markdownItCjkFriendlyPlugin)

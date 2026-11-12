@@ -1,8 +1,8 @@
+import type { PluginSimple } from '@mdit/helper'
 import { encodeData } from '@vuepress/helper'
-import type { PluginSimple } from 'markdown-it'
-import type { RenderRule } from 'markdown-it/lib/renderer.mjs'
+import type { RendererRule } from 'markdown-it'
 
-const mermaidRenderer: RenderRule = (tokens, index) =>
+const mermaidRenderer: RendererRule = (tokens, index) =>
   `<Mermaid code="${encodeData(tokens[index].content)}"></Mermaid>`
 
 interface MermaidOptions {
@@ -137,7 +137,7 @@ export const mermaid: PluginSimple = (md) => {
       })
     }
 
-    return fence!(...args)
+    return fence(...args)
   }
 
   md.renderer.rules.mermaid = mermaidRenderer

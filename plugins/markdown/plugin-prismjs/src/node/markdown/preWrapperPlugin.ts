@@ -23,9 +23,9 @@ export interface MarkdownItPreWrapperOptions {
  *
  * @example
  *   import { preWrapperPlugin } from '@vuepress/plugin-prismjs'
- *   import MarkdownIt from 'markdown-it'
+ *   import markdownIt from 'markdown-it'
  *
- *   const md = new MarkdownIt()
+ *   const md = markdownIt()
  *   md.use(preWrapperPlugin, { preWrapper: true })
  *
  * @param md - MarkdownIt instance / MarkdownIt 实例
@@ -35,7 +35,7 @@ export const preWrapperPlugin = (
   md: Markdown,
   { preWrapper = true }: MarkdownItPreWrapperOptions = {},
 ): void => {
-  const rawFence = md.renderer.rules.fence!
+  const rawFence = md.renderer.rules.fence
 
   md.renderer.rules.fence = (...args): string => {
     let result = rawFence(...args)

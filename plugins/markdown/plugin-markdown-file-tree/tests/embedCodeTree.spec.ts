@@ -5,7 +5,8 @@ import os from 'node:os'
 import path from 'node:path'
 
 import { codeBlockTitle } from '@vuepress/highlighter-helper'
-import MarkdownIt from 'markdown-it'
+import markdownIt from 'markdown-it'
+import type { MarkdownIt } from 'markdown-it'
 import { describe, expect, it, vi } from 'vitest'
 import type { App } from 'vuepress/core'
 
@@ -53,7 +54,7 @@ const createApp = (source = FIXTURES_DIR): App =>
   ({ dir: { source: () => source } }) as unknown as App
 
 const createMarkdown = (source = FIXTURES_DIR): MarkdownIt => {
-  const md = new MarkdownIt({ linkify: true }).use(codeBlockTitle, {
+  const md = markdownIt({ linkify: true }).use(codeBlockTitle, {
     codeBlockTitle: true,
   })
 

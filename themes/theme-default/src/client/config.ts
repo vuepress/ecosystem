@@ -21,13 +21,17 @@ export const clientConfig: ClientConfig = defineClientConfig({
 
     // handle scrollBehavior with transition
     // oxlint-disable-next-line typescript/no-deprecated
-    const scrollBehavior = router.options.scrollBehavior!
+    const { scrollBehavior } = router.options
 
-    // scrollBehavior is a bit hard to typed here
-    // oxlint-disable-next-line typescript/explicit-function-return-type, typescript/no-deprecated
-    router.options.scrollBehavior = async (...args) => {
-      await useScrollPromise().wait()
-      return scrollBehavior(...args)
+    // VuePress 2.0.0-rc.32+ handles scroll restoration internally, so it is
+    // only wrapped when the router still provides it.
+    if (scrollBehavior) {
+      // scrollBehavior is a bit hard to typed here
+      // oxlint-disable-next-line typescript/explicit-function-return-type, typescript/no-deprecated
+      router.options.scrollBehavior = async (...args) => {
+        await useScrollPromise().wait()
+        return scrollBehavior(...args)
+      }
     }
   },
 

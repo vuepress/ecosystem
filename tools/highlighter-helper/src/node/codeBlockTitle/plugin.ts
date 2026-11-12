@@ -52,7 +52,7 @@ export const codeBlockTitle = (
     ? codeBlockTitleOptions
     : defaultTitleRender
 
-  const rawFence = md.renderer.rules.fence!
+  const rawFence = md.renderer.rules.fence
 
   md.renderer.rules.fence = (...args): string => {
     const [tokens, index] = args

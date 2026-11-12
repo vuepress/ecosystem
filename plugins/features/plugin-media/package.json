@@ -52,14 +52,13 @@
     "clean": "rimraf ./dist"
   },
   "dependencies": {
-    "@mdit/helper": "^1.2.0",
-    "@mdit/plugin-advanced-links": "^0.2.3",
+    "@mdit/helper": "^1.2.1",
+    "@mdit/plugin-advanced-links": "^1.0.0",
     "@vuepress/helper": "workspace:*",
     "@vueuse/core": "catalog:",
     "vue": "catalog:"
   },
   "devDependencies": {
-    "@types/markdown-it": "catalog:",
     "markdown-it": "catalog:"
   },
   "peerDependencies": {

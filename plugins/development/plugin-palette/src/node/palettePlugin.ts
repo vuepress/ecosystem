@@ -1,9 +1,16 @@
-import { addViteConfig, chainWebpack } from '@vuepress/helper'
+import { addViteConfig, chainRspack, chainWebpack } from '@vuepress/helper'
 import { watch } from 'chokidar'
 import type { Plugin } from 'vuepress/core'
 
 import { preparePaletteFile } from './preparePaletteFile.js'
 import { presetOptions } from './presetOptions.js'
+
+interface SassLoaderOptions extends Record<string, unknown> {
+  sassOptions?: {
+    silenceDeprecations?: string[]
+    [key: string]: unknown
+  }
+}
 
 /**
  * Options of `@vuepress/plugin-palette`
@@ -91,18 +98,39 @@ export const palettePlugin = ({
       webpackOptions.module
         .rule('scss')
         .use('sass-loader')
-        .tap((loaderOptions) => ({
-          ...loaderOptions,
-          // oxlint-disable-next-line typescript/no-unsafe-assignment
-          sassOptions: {
-            ...loaderOptions.sassOptions,
-            silenceDeprecations: [
-              'import',
-              // oxlint-disable-next-line typescript/no-unsafe-assignment, typescript/no-unsafe-member-access
-              ...(loaderOptions.sassOptions?.silenceDeprecations ?? []),
-            ],
-          },
-        }))
+        .tap((loaderOptions) => {
+          const tapOptions = loaderOptions as SassLoaderOptions
+
+          return {
+            ...tapOptions,
+            sassOptions: {
+              ...tapOptions.sassOptions,
+              silenceDeprecations: [
+                'import',
+                ...(tapOptions.sassOptions?.silenceDeprecations ?? []),
+              ],
+            },
+          }
+        })
+    })
+    chainRspack(bundlerOptions, app, (rspackOptions) => {
+      rspackOptions.module
+        .rule('scss')
+        .use('sass-loader')
+        .tap((loaderOptions) => {
+          const tapOptions = loaderOptions as SassLoaderOptions
+
+          return {
+            ...tapOptions,
+            sassOptions: {
+              ...tapOptions.sassOptions,
+              silenceDeprecations: [
+                'import',
+                ...(tapOptions.sassOptions?.silenceDeprecations ?? []),
+              ],
+            },
+          }
+        })
     })
   },
 

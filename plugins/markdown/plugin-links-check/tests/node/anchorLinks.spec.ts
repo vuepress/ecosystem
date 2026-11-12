@@ -1,11 +1,12 @@
-import MarkdownIt from 'markdown-it'
+import markdownIt from 'markdown-it'
+import type { MarkdownIt } from 'markdown-it'
 import { describe, expect, it } from 'vitest'
 import type { MarkdownEnv } from 'vuepress/markdown'
 
 import { anchorLinksPlugin } from '../../src/node/anchorLinks.js'
 
 const createMarkdownIt = (): MarkdownIt => {
-  const md = new MarkdownIt({ html: true })
+  const md = markdownIt({ html: true })
 
   md.use(anchorLinksPlugin)
 

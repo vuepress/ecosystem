@@ -1,10 +1,10 @@
-import MarkdownIt from 'markdown-it'
+import markdownIt from 'markdown-it'
 import { describe, expect, it } from 'vitest'
 
 import { llmOnlyPlugin } from '../src/node/markdown-it-plugins/llm-only'
 
 describe('@vuepress/plugin-llms > llmOnlyPlugin', () => {
-  const md = new MarkdownIt().use(llmOnlyPlugin)
+  const md = markdownIt().use(llmOnlyPlugin)
 
   it('should render inline empty content', () => {
     expect(md.render('<llm-only></llm-only>')).toBe('')

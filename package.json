@@ -16,12 +16,11 @@
     "test": "pnpm run test:unit && pnpm run test:e2e",
     "test:cov": "cross-env TZ=Etc/UTC vitest run --coverage",
     "test:e2e": "pnpm run --filter ecosystem-e2e e2e:dev && pnpm run --filter ecosystem-e2e e2e:build",
-    "test:unit": "cross-env TZ=Etc/UTC vitest run",
-    "type:check": "tsc --noEmit"
+    "test:unit": "cross-env TZ=Etc/UTC vitest run"
   },
   "devDependencies": {
-    "@lerna-lite/cli": "^5.7.0",
-    "@lerna-lite/publish": "^5.7.0",
+    "@lerna-lite/cli": "^5.8.0",
+    "@lerna-lite/publish": "^5.8.0",
     "@mr-hope/verify-commit-message": "0.1.1",
     "@tsdown/css": "^0.23.7",
     "@types/node": "^22.20.5",
@@ -39,8 +38,8 @@
     "lightningcss": "^1.33.0",
     "nano-staged": "^1.0.2",
     "oxc-config-hope": "^0.3.15",
-    "oxfmt": "^0.77.0",
-    "oxlint": "^1.92.0",
+    "oxfmt": "^0.78.0",
+    "oxlint": "^1.93.0",
     "oxlint-tsgolint": "^7.0.2006",
     "picocolors": "^1.1.1",
     "postcss-html": "^2.0.0",
@@ -56,7 +55,7 @@
     "typescript": "^6.0.3",
     "uglify-js": "^3.19.3",
     "unrun": "^0.3.1",
-    "vite": "^8.3.6",
+    "vite": "^8.3.8",
     "vitest": "^5.1.0",
     "vuepress": "catalog:"
   },

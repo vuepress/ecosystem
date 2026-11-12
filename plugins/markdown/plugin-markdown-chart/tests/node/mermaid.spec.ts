@@ -1,5 +1,5 @@
 import { decodeData } from '@vuepress/helper'
-import MarkdownIt from 'markdown-it'
+import markdownIt from 'markdown-it'
 import { describe, expect, it } from 'vitest'
 
 import {
@@ -62,10 +62,10 @@ describe(getMermaidContent, () => {
 })
 
 describe('mermaid plugin', () => {
-  const markdownIt = new MarkdownIt({ linkify: true }).use(mermaid)
+  const md = markdownIt({ linkify: true }).use(mermaid)
 
   it('should render ```mermaid', () => {
-    const renderResult = markdownIt.render(`
+    const renderResult = md.render(`
 \`\`\`mermaid
 ${flowchartDemo}
 \`\`\`
@@ -83,13 +83,13 @@ ${flowchartDemo}
 
   it('should not render', () => {
     expect(
-      markdownIt.render(`
+      md.render(`
 ${flowchartDemo}
 `),
     ).toMatchSnapshot('without fence')
 
     expect(
-      markdownIt.render(`
+      md.render(`
 \`\`\`md
 ${flowchartDemo}
 \`\`\`
@@ -98,7 +98,7 @@ ${flowchartDemo}
   })
 
   it('should render ```sequence', () => {
-    const renderResult1 = markdownIt.render(`
+    const renderResult1 = md.render(`
 \`\`\`sequence
 Alice ->> Bob: Hello Bob, how are you?
 Bob-->>John: How about you John?
@@ -110,7 +110,7 @@ Bob-->Alice: Checking with John...
 Alice->John: Yes... John, how are you?
 \`\`\`
 `)
-    const renderResult2 = markdownIt.render(`
+    const renderResult2 = md.render(`
 \`\`\`sequence Greetings
 Alice ->> Bob: Hello Bob, how are you?
 Bob-->>John: How about you John?
@@ -128,7 +128,7 @@ Alice->John: Yes... John, how are you?
   })
 
   it('should render ```class', () => {
-    const renderResult = markdownIt.render(`
+    const renderResult = md.render(`
 \`\`\`class
 class Square~Shape~{
   int id
@@ -147,7 +147,7 @@ Square : +getMessages() List~string~
   })
 
   it('should render ```state', () => {
-    const renderResult = markdownIt.render(`
+    const renderResult = md.render(`
 \`\`\`state
 [*] --> Active
 
@@ -171,7 +171,7 @@ state Active {
   })
 
   it('should render ```er', () => {
-    const renderResult = markdownIt.render(`
+    const renderResult = md.render(`
 \`\`\`er
 CAR ||--o{ NAMED-DRIVER : allows
 CAR {
@@ -192,7 +192,7 @@ PERSON {
   })
 
   it('should render ```journey', () => {
-    const renderResult = markdownIt.render(`
+    const renderResult = md.render(`
 \`\`\`journey
 title My working day
 section Go to work
@@ -209,7 +209,7 @@ section Go home
   })
 
   it('should render ```gantt', () => {
-    const renderResult = markdownIt.render(`
+    const renderResult = md.render(`
 \`\`\`gantt
 dateFormat  YYYY-MM-DD
 title       Adding GANTT diagram functionality to mermaid
@@ -246,7 +246,7 @@ Add another diagram to demo page    :48h
   })
 
   it('should render ```pie', () => {
-    const renderResult = markdownIt.render(`
+    const renderResult = md.render(`
 \`\`\`pie
 title What Voldemort doesn’t have?
   "FRIENDS" : 2
@@ -259,7 +259,7 @@ title What Voldemort doesn’t have?
   })
 
   it('should render ```git-graph', () => {
-    const renderResult = markdownIt.render(`
+    const renderResult = md.render(`
 \`\`\`git-graph
 commit id: "Normal"
 commit
@@ -274,7 +274,7 @@ commit
   })
 
   it('should render ```usecase', () => {
-    const renderResult = markdownIt.render(`
+    const renderResult = md.render(`
 \`\`\`usecase
 direction LR
 actor Customer("Customer")
@@ -292,7 +292,7 @@ Checkout ..> : include Browse
   })
 
   it('should render ```agentflow', () => {
-    const renderResult = markdownIt.render(`
+    const renderResult = md.render(`
 \`\`\`agentflow
 flow reviewer["Review Agent"]
   changes["Gather changes"]@{ shape: input }

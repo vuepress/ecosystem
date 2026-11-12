@@ -1,16 +1,17 @@
-import MarkdownIt from 'markdown-it'
+import markdownIt from 'markdown-it'
+import type { MarkdownIt } from 'markdown-it'
 import { describe, expect, it } from 'vitest'
 
 import { field } from '../../src/node/field.js'
 
-const createMarkdownIt = (): MarkdownIt => new MarkdownIt().use(field)
+const createMarkdownIt = (): MarkdownIt => markdownIt().use(field)
 
 describe(field, () => {
   it('should wrap fields with vp-field container', () => {
-    const markdownIt = createMarkdownIt()
+    const md = createMarkdownIt()
 
     expect(
-      markdownIt.render(`::: fields
+      md.render(`::: fields
 @\`theme\` type="ThemeConfig" required
 Theme Config
 :::
@@ -33,10 +34,10 @@ Theme Config
   })
 
   it('should render optional and default attributes', () => {
-    const markdownIt = createMarkdownIt()
+    const md = createMarkdownIt()
 
     expect(
-      markdownIt.render(`::: fields
+      md.render(`::: fields
 @\`enabled\` type="boolean" optional default=\`true\`
 Whether it's enabled
 :::
@@ -86,9 +87,9 @@ Whether it's enabled
   })
 
   it('should mark deprecated fields', () => {
-    const markdownIt = createMarkdownIt()
+    const md = createMarkdownIt()
 
-    const result = markdownIt.render(`::: fields
+    const result = md.render(`::: fields
 @\`other\` type="string" deprecated
 Deprecated field
 :::
@@ -100,9 +101,9 @@ Deprecated field
   })
 
   it('should support nested fields', () => {
-    const markdownIt = createMarkdownIt()
+    const md = createMarkdownIt()
 
-    const result = markdownIt.render(`::: fields
+    const result = md.render(`::: fields
 @\`parent\` type="object"
 Parent description.
 @@\`parent.name\` type="string"
@@ -116,8 +117,8 @@ Name description.
   })
 
   it('should escape field name and values', () => {
-    const markdownIt = createMarkdownIt()
-    const result = markdownIt.render(`::: fields
+    const md = createMarkdownIt()
+    const result = md.render(`::: fields
 @\`a<b\` type="st&r"
 :::
 `)
@@ -127,7 +128,7 @@ Name description.
   })
 
   it('should use locale config for badges', () => {
-    const markdownIt = new MarkdownIt().use(field, {
+    const md = markdownIt().use(field, {
       locales: {
         '/': {
           default: 'Default',
@@ -144,7 +145,7 @@ Name description.
       },
     })
 
-    const zhResult = markdownIt.render(
+    const zhResult = md.render(
       `::: fields
 @\`theme\` type="ThemeConfig" required default="{}"
 Theme Config
@@ -160,7 +161,7 @@ Enabled
     expect(zhResult).toContain('>可选<')
     expect(zhResult).toContain('>默认值<')
 
-    const enResult = markdownIt.render(
+    const enResult = md.render(
       `::: fields
 @\`theme\` type="ThemeConfig" required
 Theme Config
@@ -173,9 +174,9 @@ Theme Config
   })
 
   it('should add slugified ids to field items', () => {
-    const markdownIt = createMarkdownIt()
+    const md = createMarkdownIt()
 
-    const result = markdownIt.render(`::: fields
+    const result = md.render(`::: fields
 @\`markdown.chartjs\` type="boolean"
 Chart.js support
 
@@ -193,10 +194,10 @@ Allow script execution
   })
 
   it('should publish field ids to the markdown env', () => {
-    const markdownIt = createMarkdownIt()
+    const md = createMarkdownIt()
     const env: Record<string, unknown> = {}
 
-    markdownIt.render(
+    md.render(
       `::: fields
 @\`theme\` type="ThemeConfig"
 Theme Config
@@ -209,9 +210,9 @@ Theme Config
   })
 
   it('should strip array and record placeholders from field ids', () => {
-    const markdownIt = createMarkdownIt()
+    const md = createMarkdownIt()
 
-    const result = markdownIt.render(`::: fields
+    const result = md.render(`::: fields
 @\`contributors.info[*].username\` type=string
 Username
 
@@ -235,9 +236,9 @@ Title
   })
 
   it('should make duplicate field ids unique', () => {
-    const markdownIt = createMarkdownIt()
+    const md = createMarkdownIt()
 
-    const result = markdownIt.render(`::: fields
+    const result = md.render(`::: fields
 @\`theme\` type="object"
 Theme config
 
@@ -251,10 +252,10 @@ Nested theme
   })
 
   it('should not conflict with ids already used in the page', () => {
-    const markdownIt = createMarkdownIt()
+    const md = createMarkdownIt()
 
     // `#theme` is used by the fields container, so the field item should not reuse it
-    const result = markdownIt.render(`::: fields #theme
+    const result = md.render(`::: fields #theme
 @\`theme\` type="object"
 Theme config
 :::
@@ -264,11 +265,11 @@ Theme config
   })
 
   it('should use custom slugify', () => {
-    const markdownIt = new MarkdownIt().use(field, {
+    const md = markdownIt().use(field, {
       slugify: (str) => `field-${str}`,
     })
 
-    const result = markdownIt.render(`::: fields
+    const result = md.render(`::: fields
 @\`theme\` type="object"
 Theme config
 :::
@@ -278,9 +279,9 @@ Theme config
   })
 
   it('should keep a field that is not closed as plain content', () => {
-    const markdownIt = createMarkdownIt()
+    const md = createMarkdownIt()
 
-    const result = markdownIt.render(`::: fields
+    const result = md.render(`::: fields
 @theme type="object"
 :::
 `)
@@ -289,9 +290,9 @@ Theme config
   })
 
   it('should keep an escaped marker as content', () => {
-    const markdownIt = createMarkdownIt()
+    const md = createMarkdownIt()
 
-    const result = markdownIt.render(`::: fields
+    const result = md.render(`::: fields
 @\`theme\` type=object
 
 \\@\`not-a-field\`

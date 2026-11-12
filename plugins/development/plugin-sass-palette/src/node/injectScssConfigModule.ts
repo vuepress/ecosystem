@@ -1,3 +1,4 @@
+import type { RspackBundlerOptions } from '@vuepress/bundler-rspack'
 import type { ViteBundlerOptions } from '@vuepress/bundler-vite'
 import type {
   SassLoaderOptions,
@@ -20,6 +21,62 @@ type SassLoaderContext =
   ) => string
     ? T
     : never
+
+type RspackSassLoaderContext =
+  Exclude<
+    NonNullable<RspackBundlerOptions['scss']>['additionalData'],
+    string | undefined
+  > extends (content: string, loaderContext: infer T) => string
+    ? T
+    : never
+
+interface ScssModules {
+  configImport: string
+  configModuleName: string
+  configRegExp: RegExp
+  paletteImport: string
+  paletteModuleName: string
+  paletteRegExp: RegExp
+}
+
+const createAdditionalData = <Context>(
+  modules: ScssModules,
+  additionalData:
+    | string
+    | ((content: string, loaderContext: Context) => string)
+    | undefined,
+): ((content: string, loaderContext: Context) => string) => {
+  const {
+    configImport,
+    configModuleName,
+    configRegExp,
+    paletteImport,
+    paletteModuleName,
+    paletteRegExp,
+  } = modules
+
+  return (content, loaderContext) => {
+    let originalContent = isString(additionalData)
+      ? `${additionalData}${content}`
+      : isFunction(additionalData)
+        ? additionalData(content, loaderContext)
+        : content
+
+    if (
+      originalContent.includes(configModuleName) &&
+      !configRegExp.test(originalContent)
+    )
+      originalContent = `${configImport}\n${originalContent}`
+
+    if (
+      originalContent.includes(paletteModuleName) &&
+      !paletteRegExp.test(originalContent)
+    )
+      originalContent = `${paletteImport}\n${originalContent}`
+
+    return originalContent
+  }
+}
 
 /**
  * Use "additionalData" to make config and palette modules available in SCSS
@@ -54,6 +111,14 @@ export const injectScssConfigModule = (
     `@use\\s+(["'])@sass-palette\\/${getIdPrefix(id)}palette\\1;`,
     'u',
   )
+  const modules: ScssModules = {
+    configImport,
+    configModuleName,
+    configRegExp,
+    paletteImport,
+    paletteModuleName,
+    paletteRegExp,
+  }
 
   // For vite
   if (bundlerName === 'vite') {
@@ -110,31 +175,23 @@ export const injectScssConfigModule = (
 
     webpackBundlerConfig.scss ??= {}
 
-    const { additionalData } = webpackBundlerConfig.scss
-
-    webpackBundlerConfig.scss.additionalData = (
-      content,
-      loaderContext: SassLoaderContext,
-    ): string => {
-      let originalContent = isString(additionalData)
-        ? `${additionalData}${content}`
-        : isFunction(additionalData)
-          ? additionalData(content, loaderContext)
-          : content
-
-      if (
-        originalContent.includes(configModuleName) &&
-        !configRegExp.test(originalContent)
+    webpackBundlerConfig.scss.additionalData =
+      createAdditionalData<SassLoaderContext>(
+        modules,
+        webpackBundlerConfig.scss.additionalData,
       )
-        originalContent = `${configImport}\n${originalContent}`
+  }
 
-      if (
-        originalContent.includes(paletteModuleName) &&
-        !paletteRegExp.test(originalContent)
+  // For rspack
+  else if (bundlerName === 'rspack') {
+    const rspackBundlerConfig = config as RspackBundlerOptions
+
+    rspackBundlerConfig.scss ??= {}
+
+    rspackBundlerConfig.scss.additionalData =
+      createAdditionalData<RspackSassLoaderContext>(
+        modules,
+        rspackBundlerConfig.scss.additionalData,
       )
-        originalContent = `${paletteImport}\n${originalContent}`
-
-      return originalContent
-    }
   }
 }

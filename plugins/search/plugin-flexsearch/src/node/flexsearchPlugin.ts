@@ -1,6 +1,9 @@
+import { createRequire } from 'node:module'
+
 import {
   addViteOptimizeDepsInclude,
   addViteSsrNoExternal,
+  chainRspack,
   chainWebpack,
   fromEntries,
   getFullLocaleConfig,
@@ -20,6 +23,9 @@ import {
   updateSearchIndex,
 } from './prepare.js'
 import { CLIENT_FOLDER, PLUGIN_NAME, logger } from './utils.js'
+
+const resolveFlexsearch = (): string =>
+  createRequire(import.meta.url).resolve('flexsearch')
 
 export const flexsearchPlugin =
   (options: FlexSearchPluginOptions = {}): PluginFunction =>
@@ -74,17 +80,15 @@ export const flexsearchPlugin =
           'flexsearch',
         ])
         // The ESM build of flexsearch contains bare `import.meta.dirname`,
-        // which webpack does not rewrite, so a classic worker can not parse
-        // it. Resolve flexsearch to its classic build under webpack instead.
-        // `process.getBuiltinModule` keeps a static `node:module` import out
-        // of the bundle, which a browser worker could not resolve.
+        // which webpack and rspack do not rewrite, so a classic worker can not
+        // parse it. Resolve flexsearch to its classic build under webpack and
+        // rspack instead.
         chainWebpack(bundlerOptions, app, (config) => {
-          const { createRequire } = process.getBuiltinModule('node:module')
+          config.resolve.alias.set('flexsearch$', resolveFlexsearch())
+        })
 
-          config.resolve.alias.set(
-            'flexsearch$',
-            createRequire(import.meta.url).resolve('flexsearch'),
-          )
+        chainRspack(bundlerOptions, app, (config) => {
+          config.resolve.alias.set('flexsearch$', resolveFlexsearch())
         })
       },
 

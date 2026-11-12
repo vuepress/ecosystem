@@ -46,6 +46,8 @@ export const getBundlerName: (app: App) => string
 getBundlerName(app) === 'vite' // true
 // @vuepress/bundler-webpack
 getBundlerName(app) === 'webpack' // true
+// @vuepress/bundler-rspack
+getBundlerName(app) === 'rspack' // true
 ```
 
 :::
@@ -349,6 +351,64 @@ useCustomDevServer(bundlerOptions, app, {
   import { configWebpack } from '@vuepress/helper'
 
   configWebpack(bundlerOptions, app, (config, isServer, isBuild) => {
+    // do some customize here
+  })
+  ```
+
+  :::
+
+## Rspack 相关 {#rspack-related}
+
+- chainRspack
+
+  链式修改 rspack 配置.
+
+  ```ts
+  export const chainRspack: (
+    bundlerOptions: unknown,
+    app: App,
+    chainRspack: (
+      config: RspackChainConfig,
+      isServer: boolean,
+      isBuild: boolean,
+    ) => void,
+  ) => void
+  ```
+
+  ::: details 示例
+
+  ```ts
+  import { chainRspack } from '@vuepress/helper'
+
+  chainRspack(bundlerOptions, app, (config, isServer, isBuild) => {
+    // do some customize here
+  })
+  ```
+
+  :::
+
+- configRspack
+
+  配置 Rspack
+
+  ```ts
+  export const configRspack: (
+    bundlerOptions: unknown,
+    app: App,
+    configureRspack: (
+      config: RspackConfiguration,
+      isServer: boolean,
+      isBuild: boolean,
+    ) => void,
+  ) => void
+  ```
+
+  ::: details 示例
+
+  ```ts
+  import { configRspack } from '@vuepress/helper'
+
+  configRspack(bundlerOptions, app, (config, isServer, isBuild) => {
     // do some customize here
   })
   ```
