@@ -23,16 +23,36 @@ export const clientConfig: ClientConfig = defineClientConfig({
     // oxlint-disable-next-line typescript/no-deprecated
     const { scrollBehavior } = router.options
 
-    // VuePress 2.0.0-rc.32+ handles scroll restoration internally, so it is
-    // only wrapped when the router still provides it.
-    if (scrollBehavior) {
-      // scrollBehavior is a bit hard to typed here
-      // oxlint-disable-next-line typescript/explicit-function-return-type, typescript/no-deprecated
-      router.options.scrollBehavior = async (...args) => {
-        await useScrollPromise().wait()
-        return scrollBehavior(...args)
-      }
+    type RouterScrollBehavior = NonNullable<
+      // oxlint-disable-next-line typescript/no-deprecated
+      typeof router.options.scrollBehavior
+    >
+
+    // VuePress 2.0.0-rc.32+ no longer provides a scrollBehavior and restores
+    // the scroll position right after the route changes, before the page
+    // transition has inserted the new page. Restore it after the transition
+    // ourselves so hash targets exist when they are scrolled into view.
+    // oxlint-disable-next-line unicorn/consistent-function-scoping
+    const transitionScrollBehavior: RouterScrollBehavior = async (
+      to,
+      _from,
+      savedPosition,
+    ) => {
+      await useScrollPromise().wait()
+
+      if (savedPosition) return savedPosition
+      if (to.hash) return { el: to.hash }
+      return { top: 0 }
     }
+
+    // scrollBehavior is a bit hard to typed here
+    // oxlint-disable-next-line typescript/no-deprecated
+    router.options.scrollBehavior = scrollBehavior
+      ? async (...args): Promise<Awaited<ReturnType<RouterScrollBehavior>>> => {
+          await useScrollPromise().wait()
+          return scrollBehavior(...args)
+        }
+      : transitionScrollBehavior
   },
 
   setup() {
