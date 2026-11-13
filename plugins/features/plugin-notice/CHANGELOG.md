@@ -1,7 +1,16 @@
 # Change Log
 
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## [2.0.0-rc.138](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.137...v2.0.0-rc.138) (2026-11-13)
+
+### ✨ Features
+
+- **plugin-notice:** add pop out and close animations ([#999](https://github.com/vuepress/ecosystem/issues/999)) ([90192f5](https://github.com/vuepress/ecosystem/commit/90192f56230d2ad8370b418f255bae765a55234c))
+
+### Tests
+
+- **plugin-notice:** add unit tests ([#962](https://github.com/vuepress/ecosystem/issues/962)) ([4823c50](https://github.com/vuepress/ecosystem/commit/4823c501ed3f18eeb2c44454568f8f360977b1a5))
 
 # [2.0.0-rc.135](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.134...v2.0.0-rc.135) (2026-09-24)
 

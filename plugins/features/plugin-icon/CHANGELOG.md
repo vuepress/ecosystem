@@ -1,7 +1,24 @@
 # Change Log
 
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## [2.0.0-rc.138](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.137...v2.0.0-rc.138) (2026-11-13)
+
+### ✨ Features
+
+- support rspack bundler and upgrade dependencies ([#1100](https://github.com/vuepress/ecosystem/issues/1100)) ([73269fc](https://github.com/vuepress/ecosystem/commit/73269fc84d3373a21298215eb59958bcaf9f3d80))
+
+### 🐛 Bug Fixes
+
+- **plugin-icon:** tighten the icon asset type and add unit tests ([#959](https://github.com/vuepress/ecosystem/issues/959)) ([769ead4](https://github.com/vuepress/ecosystem/commit/769ead44424b48ef94129bc580142fccd2ebc508))
+
+### Build System
+
+- bump deps ([#1022](https://github.com/vuepress/ecosystem/issues/1022)) ([baa6590](https://github.com/vuepress/ecosystem/commit/baa659098060469900be48ea471583a002173f21))
+- bump deps ([#1041](https://github.com/vuepress/ecosystem/issues/1041)) ([8a511ce](https://github.com/vuepress/ecosystem/commit/8a511ce43fed3e4945105267616c4a3a71491f5f))
+- bump deps ([#997](https://github.com/vuepress/ecosystem/issues/997)) ([ea624fd](https://github.com/vuepress/ecosystem/commit/ea624fd42d8890363d0f6f30001d5c24ad232137))
+- bump non-major dependencies ([#1086](https://github.com/vuepress/ecosystem/issues/1086)) ([610d109](https://github.com/vuepress/ecosystem/commit/610d109648def86c7208ce8831b9f7f54b540d2b))
+- bump peer dependency ranges ([#1091](https://github.com/vuepress/ecosystem/issues/1091)) ([a9b4827](https://github.com/vuepress/ecosystem/commit/a9b48273679f299524734be1552cff1d43bed1a6))
 
 # [2.0.0-rc.137](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.136...v2.0.0-rc.137) (2026-09-28)
 

@@ -1,7 +1,12 @@
 # Change Log
 
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## [2.0.0-rc.138](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.137...v2.0.0-rc.138) (2026-11-13)
+
+### Tests
+
+- **plugin-umami-analytics:** add unit tests ([#945](https://github.com/vuepress/ecosystem/issues/945)) ([5bbe2f7](https://github.com/vuepress/ecosystem/commit/5bbe2f7e8b370105da2ebfa0a75a76567eaf576c))
 
 # [2.0.0-rc.135](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.134...v2.0.0-rc.135) (2026-09-24)
 

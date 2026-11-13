@@ -1,7 +1,12 @@
 # Change Log
 
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## [2.0.0-rc.138](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.137...v2.0.0-rc.138) (2026-11-13)
+
+### Tests
+
+- **plugin-google-tag-manager:** add unit tests ([#987](https://github.com/vuepress/ecosystem/issues/987)) ([d580156](https://github.com/vuepress/ecosystem/commit/d580156a98bf65eeefb7c04034cdbf66c3795938))
 
 # [2.0.0-rc.135](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.134...v2.0.0-rc.135) (2026-09-24)
 

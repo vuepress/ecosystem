@@ -1,7 +1,23 @@
 # Change Log
 
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## [2.0.0-rc.138](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.137...v2.0.0-rc.138) (2026-11-13)
+
+### ✨ Features
+
+- support rspack bundler and upgrade dependencies ([#1100](https://github.com/vuepress/ecosystem/issues/1100)) ([73269fc](https://github.com/vuepress/ecosystem/commit/73269fc84d3373a21298215eb59958bcaf9f3d80))
+
+### Tests
+
+- **helper:** add unit tests ([#991](https://github.com/vuepress/ecosystem/issues/991)) ([6a89a87](https://github.com/vuepress/ecosystem/commit/6a89a87a91830a27f59e991a0880f15eaa93407a))
+
+### Build System
+
+- bump deps ([#1022](https://github.com/vuepress/ecosystem/issues/1022)) ([baa6590](https://github.com/vuepress/ecosystem/commit/baa659098060469900be48ea471583a002173f21))
+- bump deps ([#1041](https://github.com/vuepress/ecosystem/issues/1041)) ([8a511ce](https://github.com/vuepress/ecosystem/commit/8a511ce43fed3e4945105267616c4a3a71491f5f))
+- bump deps ([#997](https://github.com/vuepress/ecosystem/issues/997)) ([ea624fd](https://github.com/vuepress/ecosystem/commit/ea624fd42d8890363d0f6f30001d5c24ad232137))
+- bump non-major dependencies ([#1086](https://github.com/vuepress/ecosystem/issues/1086)) ([610d109](https://github.com/vuepress/ecosystem/commit/610d109648def86c7208ce8831b9f7f54b540d2b))
 
 # [2.0.0-rc.135](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.134...v2.0.0-rc.135) (2026-09-24)
 

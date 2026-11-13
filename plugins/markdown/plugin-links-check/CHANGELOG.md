@@ -1,7 +1,13 @@
 # Change Log
 
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## [2.0.0-rc.138](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.137...v2.0.0-rc.138) (2026-11-13)
+
+### ✨ Features
+
+- support anchor checking in markdown links ([#927](https://github.com/vuepress/ecosystem/issues/927)) ([480466a](https://github.com/vuepress/ecosystem/commit/480466afe622877268ba399b2cc6024db9dc29b2))
+- support rspack bundler and upgrade dependencies ([#1100](https://github.com/vuepress/ecosystem/issues/1100)) ([73269fc](https://github.com/vuepress/ecosystem/commit/73269fc84d3373a21298215eb59958bcaf9f3d80))
 
 # [2.0.0-rc.135](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.134...v2.0.0-rc.135) (2026-09-24)
 

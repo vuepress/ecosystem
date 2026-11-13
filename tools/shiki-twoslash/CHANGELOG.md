@@ -1,7 +1,21 @@
 # Change Log
 
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## [2.0.0-rc.138](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.137...v2.0.0-rc.138) (2026-11-13)
+
+### 🐛 Bug Fixes
+
+- **shiki-twoslash:** fix classname ([9353669](https://github.com/vuepress/ecosystem/commit/9353669323424fa8a5d732ec7d728ddbe5741d94))
+
+### Tests
+
+- **shiki-twoslash:** add unit tests ([#994](https://github.com/vuepress/ecosystem/issues/994)) ([8d54238](https://github.com/vuepress/ecosystem/commit/8d542380c96a4cd8bb89d602176bd82e4ff037de))
+
+### Build System
+
+- bump deps ([#1022](https://github.com/vuepress/ecosystem/issues/1022)) ([baa6590](https://github.com/vuepress/ecosystem/commit/baa659098060469900be48ea471583a002173f21))
+- bump non-major dependencies ([#1086](https://github.com/vuepress/ecosystem/issues/1086)) ([610d109](https://github.com/vuepress/ecosystem/commit/610d109648def86c7208ce8831b9f7f54b540d2b))
 
 # [2.0.0-rc.135](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.134...v2.0.0-rc.135) (2026-09-24)
 

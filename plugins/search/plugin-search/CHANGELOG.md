@@ -1,7 +1,16 @@
 # Change Log
 
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## [2.0.0-rc.138](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.137...v2.0.0-rc.138) (2026-11-13)
+
+### ✨ Features
+
+- **plugin-search:** use new api and improve perf ([#1001](https://github.com/vuepress/ecosystem/issues/1001)) ([00dfffe](https://github.com/vuepress/ecosystem/commit/00dfffead4954482439b10c6fcfe3c025f7b20b4))
+
+### Tests
+
+- **plugin-search:** add unit tests ([#982](https://github.com/vuepress/ecosystem/issues/982)) ([b641e64](https://github.com/vuepress/ecosystem/commit/b641e6480a5c8b39db64daadce7d6294c52ba7b0))
 
 # [2.0.0-rc.137](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.136...v2.0.0-rc.137) (2026-09-28)
 

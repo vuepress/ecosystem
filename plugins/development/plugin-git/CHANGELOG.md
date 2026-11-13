@@ -1,7 +1,16 @@
 # Change Log
 
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## [2.0.0-rc.138](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.137...v2.0.0-rc.138) (2026-11-13)
+
+### Tests
+
+- **plugin-git:** add unit tests ([#949](https://github.com/vuepress/ecosystem/issues/949)) ([89be75e](https://github.com/vuepress/ecosystem/commit/89be75e6493bd5632d11bde74e9f7791633718cb))
+
+### Build System
+
+- bump deps ([#1041](https://github.com/vuepress/ecosystem/issues/1041)) ([8a511ce](https://github.com/vuepress/ecosystem/commit/8a511ce43fed3e4945105267616c4a3a71491f5f))
 
 # [2.0.0-rc.137](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.136...v2.0.0-rc.137) (2026-09-28)
 

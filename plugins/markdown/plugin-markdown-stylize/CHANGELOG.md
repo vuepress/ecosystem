@@ -1,7 +1,17 @@
 # Change Log
 
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## [2.0.0-rc.138](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.137...v2.0.0-rc.138) (2026-11-13)
+
+### ✨ Features
+
+- support rspack bundler and upgrade dependencies ([#1100](https://github.com/vuepress/ecosystem/issues/1100)) ([73269fc](https://github.com/vuepress/ecosystem/commit/73269fc84d3373a21298215eb59958bcaf9f3d80))
+
+### Build System
+
+- bump non-major dependencies ([#1086](https://github.com/vuepress/ecosystem/issues/1086)) ([610d109](https://github.com/vuepress/ecosystem/commit/610d109648def86c7208ce8831b9f7f54b540d2b))
+- update [@mdit](https://github.com/mdit) plugins to v2 ([#1088](https://github.com/vuepress/ecosystem/issues/1088)) ([182e431](https://github.com/vuepress/ecosystem/commit/182e431223dff93e61c8034c9f62470e324149db))
 
 # [2.0.0-rc.137](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.136...v2.0.0-rc.137) (2026-09-28)
 

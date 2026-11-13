@@ -1,7 +1,12 @@
 # Change Log
 
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## [2.0.0-rc.138](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.137...v2.0.0-rc.138) (2026-11-13)
+
+### 🐛 Bug Fixes
+
+- **plugin-copy-code:** make copy button work with custom selectors and add unit tests ([#957](https://github.com/vuepress/ecosystem/issues/957)) ([6926b31](https://github.com/vuepress/ecosystem/commit/6926b313bcbeb9df0b0ebe6bc689eaaabcd75e1b))
 
 # [2.0.0-rc.137](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.136...v2.0.0-rc.137) (2026-09-28)
 

@@ -1,7 +1,21 @@
 # Change Log
 
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## [2.0.0-rc.138](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.137...v2.0.0-rc.138) (2026-11-13)
+
+### ✨ Features
+
+- **plugin-auto-frontmatter:** stable permalink ([#998](https://github.com/vuepress/ecosystem/issues/998)) ([a54ecc1](https://github.com/vuepress/ecosystem/commit/a54ecc1803228b895df076fadb27f686a672451f))
+
+### Tests
+
+- **plugin-auto-frontmatter:** add unit tests ([#985](https://github.com/vuepress/ecosystem/issues/985)) ([bd1ed41](https://github.com/vuepress/ecosystem/commit/bd1ed417c6a21c1845347f8dcf1109d48ced5574))
+
+### Build System
+
+- bump deps ([#1022](https://github.com/vuepress/ecosystem/issues/1022)) ([baa6590](https://github.com/vuepress/ecosystem/commit/baa659098060469900be48ea471583a002173f21))
+- bump deps ([#1041](https://github.com/vuepress/ecosystem/issues/1041)) ([8a511ce](https://github.com/vuepress/ecosystem/commit/8a511ce43fed3e4945105267616c4a3a71491f5f))
 
 # [2.0.0-rc.135](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.134...v2.0.0-rc.135) (2026-09-24)
 

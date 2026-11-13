@@ -1,7 +1,20 @@
 # Change Log
 
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## [2.0.0-rc.138](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.137...v2.0.0-rc.138) (2026-11-13)
+
+### ✨ Features
+
+- support rspack bundler and upgrade dependencies ([#1100](https://github.com/vuepress/ecosystem/issues/1100)) ([73269fc](https://github.com/vuepress/ecosystem/commit/73269fc84d3373a21298215eb59958bcaf9f3d80))
+
+### Tests
+
+- **plugin-sass-palette:** add unit tests ([#952](https://github.com/vuepress/ecosystem/issues/952)) ([4a184d0](https://github.com/vuepress/ecosystem/commit/4a184d0d787c36b81fe6a650fcb2e8faadeb09d1))
+
+### Build System
+
+- bump peer dependency ranges ([#1091](https://github.com/vuepress/ecosystem/issues/1091)) ([a9b4827](https://github.com/vuepress/ecosystem/commit/a9b48273679f299524734be1552cff1d43bed1a6))
 
 # [2.0.0-rc.135](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.134...v2.0.0-rc.135) (2026-09-24)
 

@@ -1,7 +1,24 @@
 # Change Log
 
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## [2.0.0-rc.138](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.137...v2.0.0-rc.138) (2026-11-13)
+
+### ✨ Features
+
+- support rspack bundler and upgrade dependencies ([#1100](https://github.com/vuepress/ecosystem/issues/1100)) ([73269fc](https://github.com/vuepress/ecosystem/commit/73269fc84d3373a21298215eb59958bcaf9f3d80))
+
+### 🐛 Bug Fixes
+
+- **theme-default:** restore scroll behavior after page transition ([0b0afb1](https://github.com/vuepress/ecosystem/commit/0b0afb14c761db66bcc3240bddf946d5ea164861))
+
+### Tests
+
+- **theme-default:** add unit tests ([#989](https://github.com/vuepress/ecosystem/issues/989)) ([d991fec](https://github.com/vuepress/ecosystem/commit/d991fec4a39360d9584599001300d3c98642eb7e))
+
+### Build System
+
+- bump deps ([#1041](https://github.com/vuepress/ecosystem/issues/1041)) ([8a511ce](https://github.com/vuepress/ecosystem/commit/8a511ce43fed3e4945105267616c4a3a71491f5f))
 
 # [2.0.0-rc.137](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.136...v2.0.0-rc.137) (2026-09-28)
 

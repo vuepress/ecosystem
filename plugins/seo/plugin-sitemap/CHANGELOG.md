@@ -1,7 +1,20 @@
 # Change Log
 
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## [2.0.0-rc.138](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.137...v2.0.0-rc.138) (2026-11-13)
+
+### 🐛 Bug Fixes
+
+- **deps:** update dependency sitemap to v10 ([#1050](https://github.com/vuepress/ecosystem/issues/1050)) ([2bf75bd](https://github.com/vuepress/ecosystem/commit/2bf75bdb1fd5ec04e0b51178cd518f3ddc4f3c98))
+
+### Tests
+
+- **plugin-sitemap:** add unit tests ([#984](https://github.com/vuepress/ecosystem/issues/984)) ([f3dfcd0](https://github.com/vuepress/ecosystem/commit/f3dfcd0d7da6809ddaee54663a810f6f628fc0d5))
+
+### Build System
+
+- bump deps ([#1022](https://github.com/vuepress/ecosystem/issues/1022)) ([baa6590](https://github.com/vuepress/ecosystem/commit/baa659098060469900be48ea471583a002173f21))
 
 # [2.0.0-rc.137](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.136...v2.0.0-rc.137) (2026-09-28)
 

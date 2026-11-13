@@ -1,7 +1,136 @@
 # Change Log
 
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## [2.0.0-rc.138](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.137...v2.0.0-rc.138) (2026-11-13)
+
+### ⚠ BREAKING CHANGES
+
+- rename search index fields to full names ([#938](https://github.com/vuepress/ecosystem/issues/938))
+
+### ✨ Features
+
+- add flexsearch plugin ([#934](https://github.com/vuepress/ecosystem/issues/934)) ([aee5b03](https://github.com/vuepress/ecosystem/commit/aee5b0334278ea1f21c5b0c0418f594524604eea))
+- add test-utils package ([#941](https://github.com/vuepress/ecosystem/issues/941)) ([7f1e718](https://github.com/vuepress/ecosystem/commit/7f1e718a87e09f85c2e2e0712217067a2ed70a13))
+- **plugin-auto-frontmatter:** stable permalink ([#998](https://github.com/vuepress/ecosystem/issues/998)) ([a54ecc1](https://github.com/vuepress/ecosystem/commit/a54ecc1803228b895df076fadb27f686a672451f))
+- **plugin-notice:** add pop out and close animations ([#999](https://github.com/vuepress/ecosystem/issues/999)) ([90192f5](https://github.com/vuepress/ecosystem/commit/90192f56230d2ad8370b418f255bae765a55234c))
+- **plugin-search:** use new api and improve perf ([#1001](https://github.com/vuepress/ecosystem/issues/1001)) ([00dfffe](https://github.com/vuepress/ecosystem/commit/00dfffead4954482439b10c6fcfe3c025f7b20b4))
+- **plugin-shiki:** theme-derived code colors ([#931](https://github.com/vuepress/ecosystem/issues/931)) ([6c50e41](https://github.com/vuepress/ecosystem/commit/6c50e4124e1b53760ae6104bd621702603de9b19))
+- support anchor checking in markdown links ([#927](https://github.com/vuepress/ecosystem/issues/927)) ([480466a](https://github.com/vuepress/ecosystem/commit/480466afe622877268ba399b2cc6024db9dc29b2))
+- support rspack bundler and upgrade dependencies ([#1100](https://github.com/vuepress/ecosystem/issues/1100)) ([73269fc](https://github.com/vuepress/ecosystem/commit/73269fc84d3373a21298215eb59958bcaf9f3d80))
+
+### 🐛 Bug Fixes
+
+- **deps:** update dependency @videojs/html to v10.2.0 ([#1011](https://github.com/vuepress/ecosystem/issues/1011)) ([d817186](https://github.com/vuepress/ecosystem/commit/d8171869517ece58147450c29e8112fa387003da))
+- **deps:** update dependency sitemap to v10 ([#1050](https://github.com/vuepress/ecosystem/issues/1050)) ([2bf75bd](https://github.com/vuepress/ecosystem/commit/2bf75bdb1fd5ec04e0b51178cd518f3ddc4f3c98))
+- **e2e:** make cross-page hash link base-agnostic ([#1102](https://github.com/vuepress/ecosystem/issues/1102)) ([8bea549](https://github.com/vuepress/ecosystem/commit/8bea5494c7d5da0633f616ac442fffeff0ed1194))
+- make dev search worker work with webpack bundler ([#996](https://github.com/vuepress/ecosystem/issues/996)) ([3aa7e8c](https://github.com/vuepress/ecosystem/commit/3aa7e8ce413ad7fcb9af0c827c0f46abfdbfd41b))
+- **plugin-copy-code:** make copy button work with custom selectors and add unit tests ([#957](https://github.com/vuepress/ecosystem/issues/957)) ([6926b31](https://github.com/vuepress/ecosystem/commit/6926b313bcbeb9df0b0ebe6bc689eaaabcd75e1b))
+- **plugin-icon:** tighten the icon asset type and add unit tests ([#959](https://github.com/vuepress/ecosystem/issues/959)) ([769ead4](https://github.com/vuepress/ecosystem/commit/769ead44424b48ef94129bc580142fccd2ebc508))
+- **plugin-markdown-file-tree:** follow code block colors ([#929](https://github.com/vuepress/ecosystem/issues/929)) ([459b40f](https://github.com/vuepress/ecosystem/commit/459b40fc3f633ef8a82d4004cf7b5f2c265d251f))
+- **plugin-media:** do not resolve the optional artplayer peer when it is absent ([#1003](https://github.com/vuepress/ecosystem/issues/1003)) ([d5e09ff](https://github.com/vuepress/ecosystem/commit/d5e09ffe943e0cf1eef4e8222da6b77b7f2b6eb6))
+- **plugin-orama:** guard dev hot reload and drop stale documents ([#937](https://github.com/vuepress/ecosystem/issues/937)) ([d123bda](https://github.com/vuepress/ecosystem/commit/d123bdadd540441b2ca2153fff39cc8154d60d8b))
+- **plugin-photo-swipe:** show error placeholder for broken images and add unit tests ([#964](https://github.com/vuepress/ecosystem/issues/964)) ([0ca962d](https://github.com/vuepress/ecosystem/commit/0ca962db2bb9ac6747b2c97b85e836abd7ec1bce))
+- **plugin-redirect:** fix auto locale in dev server ([#1000](https://github.com/vuepress/ecosystem/issues/1000)) ([b21c998](https://github.com/vuepress/ecosystem/commit/b21c998ab408a12aa032b4fe73d90d4837c10a43))
+- **plugin-slimsearch:** guard dev hot reload and drop stale documents ([#936](https://github.com/vuepress/ecosystem/issues/936)) ([5bdc6c1](https://github.com/vuepress/ecosystem/commit/5bdc6c1b4b032ede051928942b522cb85a89d664))
+- **shiki-twoslash:** fix classname ([9353669](https://github.com/vuepress/ecosystem/commit/9353669323424fa8a5d732ec7d728ddbe5741d94))
+- **theme-default:** restore scroll behavior after page transition ([0b0afb1](https://github.com/vuepress/ecosystem/commit/0b0afb14c761db66bcc3240bddf946d5ea164861))
+
+### Documentation
+
+- add test-utils to navbar and fix sidebar link ([#1053](https://github.com/vuepress/ecosystem/issues/1053)) ([7de5168](https://github.com/vuepress/ecosystem/commit/7de51680e15d278141a6b8231ad93fc3e97b3180))
+
+### Miscellaneous Chores
+
+- **deps:** update dependency chokidar to v6 ([#1051](https://github.com/vuepress/ecosystem/issues/1051)) ([e469dd1](https://github.com/vuepress/ecosystem/commit/e469dd1be935f1b417b1c6b50e31f93206cf5411))
+- **deps:** update dependency cssnano to v9.1.0 ([#932](https://github.com/vuepress/ecosystem/issues/932)) ([ecbc0ed](https://github.com/vuepress/ecosystem/commit/ecbc0edc71a4b8a6bb1e65d36e78ef35724e7dda))
+- **deps:** update dependency cssnano to v9.1.1 ([#939](https://github.com/vuepress/ecosystem/issues/939)) ([14467b3](https://github.com/vuepress/ecosystem/commit/14467b358f2b2a8f86c39d1817ab319e7fe720b7))
+- **deps:** update dependency happy-dom to v21 ([#1052](https://github.com/vuepress/ecosystem/issues/1052)) ([ceb071d](https://github.com/vuepress/ecosystem/commit/ceb071dc97800b1f037dbc412bacda991276ac90))
+- **deps:** update dependency happy-dom to v21.0.4 ([#1028](https://github.com/vuepress/ecosystem/issues/1028)) ([edd3b82](https://github.com/vuepress/ecosystem/commit/edd3b826079d8907cd55687b5d52a3e3437adb37))
+- **deps:** update dependency js-yaml to v5.4.3 ([#1020](https://github.com/vuepress/ecosystem/issues/1020)) ([803c8e9](https://github.com/vuepress/ecosystem/commit/803c8e986e7ef51cd1f499622102dc6c02177c79))
+- **deps:** update dependency katex to v0.18.10 ([#1004](https://github.com/vuepress/ecosystem/issues/1004)) ([003b0a1](https://github.com/vuepress/ecosystem/commit/003b0a1247531cefb419e77b44a3966c031c347a))
+- **deps:** update dependency nanoid to v6.0.2 ([#1021](https://github.com/vuepress/ecosystem/issues/1021)) ([2676e3f](https://github.com/vuepress/ecosystem/commit/2676e3fd7b639afe3910c82de639798a3d2a739a))
+- **deps:** update dependency oxlint to v1.87.0 ([#743](https://github.com/vuepress/ecosystem/issues/743)) ([aa7db94](https://github.com/vuepress/ecosystem/commit/aa7db94c75fed95778ff645571ca6be4a0b6ab19))
+- **deps:** update pnpm to v12.15.0 ([#1023](https://github.com/vuepress/ecosystem/issues/1023)) ([3c84f28](https://github.com/vuepress/ecosystem/commit/3c84f286fd6060ffab35f721e73fd354a9d680de))
+- **deps:** update pnpm to v12.9.1 ([#1014](https://github.com/vuepress/ecosystem/issues/1014)) ([8a436fd](https://github.com/vuepress/ecosystem/commit/8a436fd1131a2d5f12874d9585cfbae6194e7f17))
+
+### Code Refactoring
+
+- **plugin-markdown-file-tree:** decouple file icons ([#930](https://github.com/vuepress/ecosystem/issues/930)) ([b897aa7](https://github.com/vuepress/ecosystem/commit/b897aa7d5faa50cc5fa134b3bf19211520ff40d6))
+- rename search index fields to full names ([#938](https://github.com/vuepress/ecosystem/issues/938)) ([3ee16c5](https://github.com/vuepress/ecosystem/commit/3ee16c54e488267c869259eda02d9e0b0da503c1))
+
+### Tests
+
+- **create-vuepress:** add unit tests ([#990](https://github.com/vuepress/ecosystem/issues/990)) ([1f700b8](https://github.com/vuepress/ecosystem/commit/1f700b8892b333a21ff81b6cdd12b7a874e57680))
+- **helper:** add unit tests ([#991](https://github.com/vuepress/ecosystem/issues/991)) ([6a89a87](https://github.com/vuepress/ecosystem/commit/6a89a87a91830a27f59e991a0880f15eaa93407a))
+- **highlighter-helper:** add unit tests ([#992](https://github.com/vuepress/ecosystem/issues/992)) ([5fccdb3](https://github.com/vuepress/ecosystem/commit/5fccdb3a1c0ed01f64983394991bc8d7073b925c))
+- **plugin-active-header-links:** add unit tests ([#948](https://github.com/vuepress/ecosystem/issues/948)) ([8bf7e8c](https://github.com/vuepress/ecosystem/commit/8bf7e8ce955dfdd7719c70c9a520094f737e85f8))
+- **plugin-auto-frontmatter:** add unit tests ([#985](https://github.com/vuepress/ecosystem/issues/985)) ([bd1ed41](https://github.com/vuepress/ecosystem/commit/bd1ed417c6a21c1845347f8dcf1109d48ced5574))
+- **plugin-back-to-top:** add unit tests ([#955](https://github.com/vuepress/ecosystem/issues/955)) ([f7eaa50](https://github.com/vuepress/ecosystem/commit/f7eaa502939fe70d6bc592c060fec693276595bf))
+- **plugin-baidu-analytics:** add unit tests ([#942](https://github.com/vuepress/ecosystem/issues/942)) ([3b9ce40](https://github.com/vuepress/ecosystem/commit/3b9ce402ab931e7afaf5be1d2fd7c145c8a64cfb))
+- **plugin-blog:** add unit tests ([#946](https://github.com/vuepress/ecosystem/issues/946)) ([5c26971](https://github.com/vuepress/ecosystem/commit/5c269714c1173b80c885361088c572d7d44f5490))
+- **plugin-cache:** add unit tests ([#986](https://github.com/vuepress/ecosystem/issues/986)) ([19369ec](https://github.com/vuepress/ecosystem/commit/19369ecd97689f18e63914e162861a3fbcac61e6))
+- **plugin-catalog:** add unit tests ([#956](https://github.com/vuepress/ecosystem/issues/956)) ([410d0cf](https://github.com/vuepress/ecosystem/commit/410d0cf2edd0aaab9fa717df1bb290177da9493f))
+- **plugin-clarity-analytics:** add unit tests ([#943](https://github.com/vuepress/ecosystem/issues/943)) ([44d93cb](https://github.com/vuepress/ecosystem/commit/44d93cb97a8ad99d97424091cfb8b680bfe9d492))
+- **plugin-comment:** add unit tests ([#947](https://github.com/vuepress/ecosystem/issues/947)) ([cef9e94](https://github.com/vuepress/ecosystem/commit/cef9e945bfa5d49d7164db675b3915ec9a2a8f90))
+- **plugin-copyright:** add unit tests ([#958](https://github.com/vuepress/ecosystem/issues/958)) ([ac51101](https://github.com/vuepress/ecosystem/commit/ac5110170abe0df88faca9f3e4eee3d3f543c3c0))
+- **plugin-docsearch:** add unit tests ([#978](https://github.com/vuepress/ecosystem/issues/978)) ([2c350cf](https://github.com/vuepress/ecosystem/commit/2c350cf637aca0594356d3b4f8175defafd47ea5))
+- **plugin-flexsearch:** add unit tests ([#979](https://github.com/vuepress/ecosystem/issues/979)) ([1ee4e52](https://github.com/vuepress/ecosystem/commit/1ee4e52522a9677aca43db97b8193ac858d6eafd))
+- **plugin-git:** add unit tests ([#949](https://github.com/vuepress/ecosystem/issues/949)) ([89be75e](https://github.com/vuepress/ecosystem/commit/89be75e6493bd5632d11bde74e9f7791633718cb))
+- **plugin-google-analytics:** add unit tests ([#944](https://github.com/vuepress/ecosystem/issues/944)) ([b17176a](https://github.com/vuepress/ecosystem/commit/b17176a018fbace6705423d4ee4623fe072a27d6))
+- **plugin-google-tag-manager:** add unit tests ([#987](https://github.com/vuepress/ecosystem/issues/987)) ([d580156](https://github.com/vuepress/ecosystem/commit/d580156a98bf65eeefb7c04034cdbf66c3795938))
+- **plugin-markdown-chart:** add unit tests ([#966](https://github.com/vuepress/ecosystem/issues/966)) ([b21f562](https://github.com/vuepress/ecosystem/commit/b21f562e481e8c8dca8fabe12eab2470e51fc2dc))
+- **plugin-markdown-container:** add unit tests ([#967](https://github.com/vuepress/ecosystem/issues/967)) ([b7c4ba2](https://github.com/vuepress/ecosystem/commit/b7c4ba2b9d26ea86cd59577cbc7cf816a173d00f))
+- **plugin-markdown-file-tree:** add unit tests ([#968](https://github.com/vuepress/ecosystem/issues/968)) ([b58cab4](https://github.com/vuepress/ecosystem/commit/b58cab45e71c290bbc159e02abe528de62ae0a3a))
+- **plugin-markdown-hint:** add unit tests ([#969](https://github.com/vuepress/ecosystem/issues/969)) ([7993be6](https://github.com/vuepress/ecosystem/commit/7993be67f743795027bb3f7101b1f36fc19f7622))
+- **plugin-markdown-image:** add unit tests ([#970](https://github.com/vuepress/ecosystem/issues/970)) ([a3f8bf0](https://github.com/vuepress/ecosystem/commit/a3f8bf052bb523aa8c3efdd2d4ec754a4bb3e407))
+- **plugin-markdown-include:** add unit tests ([#971](https://github.com/vuepress/ecosystem/issues/971)) ([c86da6e](https://github.com/vuepress/ecosystem/commit/c86da6ec1e4e8fd6ad9c2752156fc807260b2288))
+- **plugin-markdown-math:** add unit tests ([#972](https://github.com/vuepress/ecosystem/issues/972)) ([e5d32b5](https://github.com/vuepress/ecosystem/commit/e5d32b5f6d0c068997d2742df3835e76c6a5b3be))
+- **plugin-markdown-preview:** add unit tests ([#973](https://github.com/vuepress/ecosystem/issues/973)) ([545bf74](https://github.com/vuepress/ecosystem/commit/545bf74b18147c14b351623f1dfea48ab9302e03))
+- **plugin-markdown-tab:** add unit tests ([#974](https://github.com/vuepress/ecosystem/issues/974)) ([ba8e4fc](https://github.com/vuepress/ecosystem/commit/ba8e4fc104fa21fc87f7083218de709fa8371eff))
+- **plugin-media:** add unit tests ([#960](https://github.com/vuepress/ecosystem/issues/960)) ([dbd1d1c](https://github.com/vuepress/ecosystem/commit/dbd1d1c2136403a619da1113831a532d8617ff21))
+- **plugin-medium-zoom:** add unit tests ([#961](https://github.com/vuepress/ecosystem/issues/961)) ([29814fc](https://github.com/vuepress/ecosystem/commit/29814fc1d737de4b6174141474c4be1c0eef7f87))
+- **plugin-meilisearch:** add unit tests ([#980](https://github.com/vuepress/ecosystem/issues/980)) ([f8604e3](https://github.com/vuepress/ecosystem/commit/f8604e3f3391fb787aadf057d040aea03af1425f))
+- **plugin-notice:** add unit tests ([#962](https://github.com/vuepress/ecosystem/issues/962)) ([4823c50](https://github.com/vuepress/ecosystem/commit/4823c501ed3f18eeb2c44454568f8f360977b1a5))
+- **plugin-nprogress:** add unit tests ([#963](https://github.com/vuepress/ecosystem/issues/963)) ([600ea0a](https://github.com/vuepress/ecosystem/commit/600ea0a01f3090ddbf870ad5f4cd4b3efe8eacdc))
+- **plugin-orama:** add unit tests ([#981](https://github.com/vuepress/ecosystem/issues/981)) ([35e00ad](https://github.com/vuepress/ecosystem/commit/35e00adccbf28e5349cfcb98bbcc8ac09a0547e7))
+- **plugin-pwa:** add unit tests ([#976](https://github.com/vuepress/ecosystem/issues/976)) ([ec22691](https://github.com/vuepress/ecosystem/commit/ec2269104854db74804c96bc0bdb792874daf86f))
+- **plugin-reading-time:** add unit tests ([#950](https://github.com/vuepress/ecosystem/issues/950)) ([59f2f4e](https://github.com/vuepress/ecosystem/commit/59f2f4e9912ead685b6d1de30908da9c932e2d95))
+- **plugin-redirect:** add unit tests ([#988](https://github.com/vuepress/ecosystem/issues/988)) ([a542e18](https://github.com/vuepress/ecosystem/commit/a542e189cd8679b9797edba235af7c63ebdf6e76))
+- **plugin-remove-pwa:** add unit tests ([#977](https://github.com/vuepress/ecosystem/issues/977)) ([e2ad458](https://github.com/vuepress/ecosystem/commit/e2ad4581afe76d64b619c69ed7dc1e72b75754e4))
+- **plugin-revealjs:** add unit tests ([#975](https://github.com/vuepress/ecosystem/issues/975)) ([8418c0c](https://github.com/vuepress/ecosystem/commit/8418c0c3e51f3480eb95f299051142f37b4b0bed))
+- **plugin-rtl:** add unit tests ([#951](https://github.com/vuepress/ecosystem/issues/951)) ([fb8d2e8](https://github.com/vuepress/ecosystem/commit/fb8d2e8f26cd0677ac3a8609a9dfd44e5303490b))
+- **plugin-sass-palette:** add unit tests ([#952](https://github.com/vuepress/ecosystem/issues/952)) ([4a184d0](https://github.com/vuepress/ecosystem/commit/4a184d0d787c36b81fe6a650fcb2e8faadeb09d1))
+- **plugin-search:** add unit tests ([#982](https://github.com/vuepress/ecosystem/issues/982)) ([b641e64](https://github.com/vuepress/ecosystem/commit/b641e6480a5c8b39db64daadce7d6294c52ba7b0))
+- **plugin-sitemap:** add unit tests ([#984](https://github.com/vuepress/ecosystem/issues/984)) ([f3dfcd0](https://github.com/vuepress/ecosystem/commit/f3dfcd0d7da6809ddaee54663a810f6f628fc0d5))
+- **plugin-slimsearch:** add unit tests ([#983](https://github.com/vuepress/ecosystem/issues/983)) ([ed51acc](https://github.com/vuepress/ecosystem/commit/ed51acc5b8af72953693c4e9ac313caed3ea6c94))
+- **plugin-theme-data:** add unit tests ([#953](https://github.com/vuepress/ecosystem/issues/953)) ([97396c3](https://github.com/vuepress/ecosystem/commit/97396c320a34ada31962df435acc0690c44e449d))
+- **plugin-toc:** add unit tests ([#954](https://github.com/vuepress/ecosystem/issues/954)) ([70d4a99](https://github.com/vuepress/ecosystem/commit/70d4a995176d3173d3bb4e808eee1513e27dfaf4))
+- **plugin-umami-analytics:** add unit tests ([#945](https://github.com/vuepress/ecosystem/issues/945)) ([5bbe2f7](https://github.com/vuepress/ecosystem/commit/5bbe2f7e8b370105da2ebfa0a75a76567eaf576c))
+- **plugin-watermark:** add unit tests ([#965](https://github.com/vuepress/ecosystem/issues/965)) ([4e3733e](https://github.com/vuepress/ecosystem/commit/4e3733e2af88401a5d4e65d0c4727df96741a76a))
+- **search-helper:** add unit tests ([#993](https://github.com/vuepress/ecosystem/issues/993)) ([282bf47](https://github.com/vuepress/ecosystem/commit/282bf47cc866b68a61e0da969929839e68ffc71e))
+- **shiki-twoslash:** add unit tests ([#994](https://github.com/vuepress/ecosystem/issues/994)) ([8d54238](https://github.com/vuepress/ecosystem/commit/8d542380c96a4cd8bb89d602176bd82e4ff037de))
+- **theme-default:** add unit tests ([#989](https://github.com/vuepress/ecosystem/issues/989)) ([d991fec](https://github.com/vuepress/ecosystem/commit/d991fec4a39360d9584599001300d3c98642eb7e))
+
+### Build System
+
+- bump deps ([#1022](https://github.com/vuepress/ecosystem/issues/1022)) ([baa6590](https://github.com/vuepress/ecosystem/commit/baa659098060469900be48ea471583a002173f21))
+- bump deps ([#1041](https://github.com/vuepress/ecosystem/issues/1041)) ([8a511ce](https://github.com/vuepress/ecosystem/commit/8a511ce43fed3e4945105267616c4a3a71491f5f))
+- bump deps ([#997](https://github.com/vuepress/ecosystem/issues/997)) ([ea624fd](https://github.com/vuepress/ecosystem/commit/ea624fd42d8890363d0f6f30001d5c24ad232137))
+- bump non-major dependencies ([#1086](https://github.com/vuepress/ecosystem/issues/1086)) ([610d109](https://github.com/vuepress/ecosystem/commit/610d109648def86c7208ce8831b9f7f54b540d2b))
+- bump peer dependency ranges ([#1091](https://github.com/vuepress/ecosystem/issues/1091)) ([a9b4827](https://github.com/vuepress/ecosystem/commit/a9b48273679f299524734be1552cff1d43bed1a6))
+- **plugin-markdown-chart:** bump chart peer dependencies ([#1090](https://github.com/vuepress/ecosystem/issues/1090)) ([aac41b1](https://github.com/vuepress/ecosystem/commit/aac41b1c674ae0130bfd3fccb348eb73d960539a))
+- update [@mdit](https://github.com/mdit) plugins to v2 ([#1088](https://github.com/vuepress/ecosystem/issues/1088)) ([182e431](https://github.com/vuepress/ecosystem/commit/182e431223dff93e61c8034c9f62470e324149db))
+- update config and bump deps ([cb16411](https://github.com/vuepress/ecosystem/commit/cb1641182f3cefca632e77073571fa16a1743ca7))
+- update markmap to v1 ([#1089](https://github.com/vuepress/ecosystem/issues/1089)) ([1210750](https://github.com/vuepress/ecosystem/commit/1210750b4f27512bad4db2636ec4988f7a5ff505))
+- update ncu config ([0471fe3](https://github.com/vuepress/ecosystem/commit/0471fe3fb91ea0068be40e0a728397dcf9638589))
+
+### Continuous Integration
+
+- align release workflow with mdit-plugins and secure Node ([#1054](https://github.com/vuepress/ecosystem/issues/1054)) ([0bb90f4](https://github.com/vuepress/ecosystem/commit/0bb90f49fc67edf931070865051032d4520233f9))
+- disable major @types/node updates with the official helper ([#1058](https://github.com/vuepress/ecosystem/issues/1058)) ([4dda6d8](https://github.com/vuepress/ecosystem/commit/4dda6d8250d78416220c7bd1e6651757408e2f09))
+- scope Renovate automerge to patch/minor devDependencies ([#1063](https://github.com/vuepress/ecosystem/issues/1063)) ([1e7a48c](https://github.com/vuepress/ecosystem/commit/1e7a48c4ee95b94988321ecd28f673993332f6c4))
+- use pnpm/setup require-lockfile ([#1064](https://github.com/vuepress/ecosystem/issues/1064)) ([ba5b172](https://github.com/vuepress/ecosystem/commit/ba5b172b5061c01111671ea7600f34dc4e133964))
 
 # [2.0.0-rc.137](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.136...v2.0.0-rc.137) (2026-09-28)
 

@@ -1,7 +1,12 @@
 # Change Log
 
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## [2.0.0-rc.138](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.137...v2.0.0-rc.138) (2026-11-13)
+
+### 🐛 Bug Fixes
+
+- **plugin-photo-swipe:** show error placeholder for broken images and add unit tests ([#964](https://github.com/vuepress/ecosystem/issues/964)) ([0ca962d](https://github.com/vuepress/ecosystem/commit/0ca962db2bb9ac6747b2c97b85e836abd7ec1bce))
 
 # [2.0.0-rc.137](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.136...v2.0.0-rc.137) (2026-09-28)
 
