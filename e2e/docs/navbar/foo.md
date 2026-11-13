@@ -1,3 +1,3 @@
 nested foo content
 
-[Cross page hash](/markdown.html#code-block)
+[Cross page hash](../markdown.md#code-block)
