@@ -46,7 +46,7 @@
     "publint": "^0.3.25",
     "rimraf": "^6.1.4",
     "sass-embedded": "catalog:",
-    "serve": "^14.2.7",
+    "serve": "^14.2.8",
     "stylelint": "^17.16.0",
     "stylelint-config-hope": "^12.1.0",
     "stylelint-config-html": "^2.0.0",

@@ -21,6 +21,15 @@ catalog:
   vuepress: 2.0.0-rc.32
 catalogPrune: true
 
+# Pin vulnerable transitive dependencies to patched versions.
+# Drop an entry once its parent package ships a release with the fix.
+overrides:
+  'echarts-wordcloud>echarts': ^6.1.0 # GHSA-fgmj-fm8m-jvvx
+  'glob@^11.0.0': ^14.0.6 # GHSA-3g3m-2fjr-6pw4
+  'glob@^13.0.0': ^14.0.6 # GHSA-3g3m-2fjr-6pw4
+  'micromark-extension-math>katex': ^0.19.1 # GHSA-238p-pmpm-9mq7
+  'minimatch@^10.0.0': ^11.0.8 # GHSA-g3hv-75wg-m249
+
 allowBuilds:
   '@parcel/watcher': true
   esbuild: true
@@ -41,6 +50,7 @@ minimumReleaseAgeExclude:
   - 'oxc-config-hope'
   - 'oxfmt'
   - 'oxlint'
+  - 'serve@14.2.8'
   - 'stylelint-config-hope'
   - 'vite'
   - 'vitest'
