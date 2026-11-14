@@ -1,0 +1,1 @@
+var e=`/images/icon/github-light.svg`,t=`/images/icon/github-dark.svg`,n=`/favicon.ico`;export{t as n,e as r,n as t};
