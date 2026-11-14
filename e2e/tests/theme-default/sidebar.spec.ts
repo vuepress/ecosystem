@@ -60,3 +60,33 @@ test('frontmatter disable', async ({ page }) => {
 
   expect(await sidebarItems.count()).toBe(0)
 })
+
+test('toggles a collapsible sidebar group with the keyboard', async ({
+  page,
+}) => {
+  await page.goto('sidebar/frontmatter/collapsible.html', {
+    waitUntil: 'domcontentloaded',
+  })
+
+  const group = page.locator('.vp-sidebar-item', {
+    hasText: 'Collapsible group',
+  })
+  const child = page.locator('.vp-sidebar-children a', {
+    hasText: 'Example page',
+  })
+
+  await expect(child).toBeHidden()
+  await group.focus()
+  await page.keyboard.press('Space')
+  await expect(child).toBeVisible()
+  await expect(group).toHaveRole('button')
+  await expect(group).toHaveAttribute('aria-expanded', 'true')
+
+  await page.keyboard.press('Tab')
+  await expect(child).toBeFocused()
+  await page.keyboard.press('Shift+Tab')
+  await expect(group).toBeFocused()
+  await page.keyboard.press('Enter')
+  await expect(child).toBeHidden()
+  await expect(group).toHaveAttribute('aria-expanded', 'false')
+})

@@ -190,12 +190,15 @@ describe('sidebar item', () => {
       attachTo: document.body,
     })
 
+    const toggle = wrapper.get('button.vp-sidebar-item')
     const children = wrapper.find('ul.vp-sidebar-children')
 
     expect(children.isVisible()).toBe(false)
+    expect(toggle.attributes('aria-expanded')).toBe('false')
 
-    await wrapper.find('p.vp-sidebar-item').trigger('click')
+    await toggle.trigger('click')
 
     expect(children.isVisible()).toBe(true)
+    expect(toggle.attributes('aria-expanded')).toBe('true')
   })
 })

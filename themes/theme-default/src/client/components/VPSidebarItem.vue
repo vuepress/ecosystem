@@ -20,12 +20,15 @@ const route = useRoute()
 const router = useRouter()
 
 const collapsible = computed(() => (item as SidebarGroupItem).collapsible)
+const hasChildren = computed(
+  () => 'children' in item && item.children.length > 0,
+)
 const isActive = computed(() => isActiveSidebarItem(item, route))
 const itemClass = computed(() => ({
   'vp-sidebar-item': true,
   'vp-sidebar-heading': depth === 0,
   'active': isActive.value,
-  'collapsible': collapsible.value,
+  'collapsible': collapsible.value && (Boolean(item.link) || hasChildren.value),
 }))
 
 const isOpenDefault = computed(() =>
@@ -33,13 +36,6 @@ const isOpenDefault = computed(() =>
 )
 
 const [isOpen, toggleIsOpen] = useToggle(isOpenDefault.value)
-const onClick = (event: Event): void => {
-  if (collapsible.value) {
-    event.preventDefault()
-    // toggle open status on click
-    toggleIsOpen()
-  }
-}
 
 // reset open status after navigation
 const unregisterRouterHook = router.afterEach(() => {
@@ -63,19 +59,18 @@ onBeforeUnmount(() => {
         />
       </template>
     </VPAutoLink>
-    <p
-      v-else
-      tabindex="0"
+    <button
+      v-else-if="collapsible && hasChildren"
+      type="button"
       :class="itemClass"
-      @click="onClick"
-      @keydown.enter="onClick"
+      :aria-expanded="isOpen"
+      @click="toggleIsOpen()"
     >
       {{ item.text }}
-      <span
-        v-if="collapsible"
-        class="arrow"
-        :class="isOpen ? 'down' : 'right'"
-      />
+      <span class="arrow" :class="isOpen ? 'down' : 'right'" />
+    </button>
+    <p v-else tabindex="0" :class="itemClass">
+      {{ item.text }}
     </p>
 
     <VPDropdownTransition v-if="'children' in item && item.children.length">
@@ -103,6 +98,17 @@ onBeforeUnmount(() => {
   &:focus-visible {
     outline-width: 1px;
     outline-offset: -1px;
+  }
+
+  &:is(button) {
+    border-block: 0;
+    border-inline-end: 0;
+
+    background: none;
+
+    font-family: inherit;
+    line-height: inherit;
+    text-align: start;
   }
 
   &.vp-sidebar-heading {
@@ -161,7 +167,7 @@ onBeforeUnmount(() => {
     }
   }
 
-  &.active:not(p.vp-sidebar-heading) {
+  &.active:not(:is(p, button).vp-sidebar-heading) {
     border-inline-start-color: var(--vp-c-accent);
     color: var(--vp-c-accent);
     font-weight: 600;
