@@ -193,6 +193,7 @@ describe('sidebar item', () => {
     const toggle = wrapper.get('button.vp-sidebar-item')
     const children = wrapper.find('ul.vp-sidebar-children')
 
+    expect(toggle.attributes('type')).toBe('button')
     expect(children.isVisible()).toBe(false)
     expect(toggle.attributes('aria-expanded')).toBe('false')
 
@@ -200,5 +201,23 @@ describe('sidebar item', () => {
 
     expect(children.isVisible()).toBe(true)
     expect(toggle.attributes('aria-expanded')).toBe('true')
+  })
+
+  it('should not make a static item focusable', async () => {
+    const item: SidebarItem = {
+      text: 'Foo',
+      children: [{ text: 'Bar', link: '/foo/bar.html' }],
+    }
+
+    const wrapper = await mountVuePress({
+      rootComponent: createItemWrapper(item),
+      page: { path: '/other/', title: 'Other' },
+      site: { title: 'My Site' },
+    })
+
+    const label = wrapper.get('p.vp-sidebar-item')
+
+    expect(label.text()).toBe('Foo')
+    expect(label.attributes('tabindex')).toBeUndefined()
   })
 })

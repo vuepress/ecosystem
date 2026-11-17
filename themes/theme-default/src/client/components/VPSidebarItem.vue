@@ -23,11 +23,17 @@ const collapsible = computed(() => (item as SidebarGroupItem).collapsible)
 const hasChildren = computed(
   () => 'children' in item && item.children.length > 0,
 )
+/** Whether the item is rendered as a button to toggle its children */
+const isDisclosure = computed(
+  () => collapsible.value && !item.link && hasChildren.value,
+)
 const isActive = computed(() => isActiveSidebarItem(item, route))
 const itemClass = computed(() => ({
   'vp-sidebar-item': true,
   'vp-sidebar-heading': depth === 0,
   'active': isActive.value,
+  // Only items that can be clicked (a link or a disclosure button) show a
+  // pointer cursor.
   'collapsible': collapsible.value && (Boolean(item.link) || hasChildren.value),
 }))
 
@@ -60,7 +66,7 @@ onBeforeUnmount(() => {
       </template>
     </VPAutoLink>
     <button
-      v-else-if="collapsible && hasChildren"
+      v-else-if="isDisclosure"
       type="button"
       :class="itemClass"
       :aria-expanded="isOpen"
@@ -69,11 +75,11 @@ onBeforeUnmount(() => {
       {{ item.text }}
       <span class="arrow" :class="isOpen ? 'down' : 'right'" />
     </button>
-    <p v-else tabindex="0" :class="itemClass">
+    <p v-else :class="itemClass">
       {{ item.text }}
     </p>
 
-    <VPDropdownTransition v-if="'children' in item && item.children.length">
+    <VPDropdownTransition v-if="hasChildren">
       <ul v-show="isOpen" class="vp-sidebar-children">
         <VPSidebarItem
           v-for="child in item.children"
@@ -103,12 +109,15 @@ onBeforeUnmount(() => {
   &:is(button) {
     border-block: 0;
     border-inline-end: 0;
+    border-radius: 0;
 
     background: none;
 
     font-family: inherit;
     line-height: inherit;
     text-align: start;
+
+    appearance: none;
   }
 
   &.vp-sidebar-heading {
