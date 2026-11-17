@@ -48,7 +48,7 @@
     "sass-embedded": "catalog:",
     "serve": "^14.2.8",
     "stylelint": "^17.16.0",
-    "stylelint-config-hope": "^12.1.0",
+    "stylelint-config-hope": "^13.0.0",
     "stylelint-config-html": "^2.0.0",
     "tsconfig-vuepress": "^7.0.0",
     "tsdown": "^0.23.7",
