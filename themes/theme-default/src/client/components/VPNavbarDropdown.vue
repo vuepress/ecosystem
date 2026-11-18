@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { FadeInExpandTransition } from '@vuepress/helper/client'
 import { useToggle } from '@vueuse/core'
-import { computed } from 'vue'
+import { computed, useId } from 'vue'
 import { onContentUpdated } from 'vuepress/client'
 
 import VPAutoLink from '@theme/VPAutoLink.vue'
@@ -16,6 +16,8 @@ const { config } = defineProps<{
 }>()
 
 const [open, toggleOpen] = useToggle()
+
+const menuId = `vp-navbar-dropdown-${useId()}`
 
 const dropdownAriaLabel = computed(() => config.ariaLabel || config.text)
 
@@ -46,6 +48,8 @@ onContentUpdated(() => {
     <button
       class="vp-navbar-dropdown-title"
       type="button"
+      :aria-expanded="open"
+      :aria-controls="menuId"
       :aria-label="dropdownAriaLabel"
       @click="handleDropdown"
     >
@@ -56,6 +60,8 @@ onContentUpdated(() => {
     <button
       class="vp-navbar-dropdown-title-mobile"
       type="button"
+      :aria-expanded="open"
+      :aria-controls="menuId"
       :aria-label="dropdownAriaLabel"
       @click="() => toggleOpen()"
     >
@@ -64,7 +70,7 @@ onContentUpdated(() => {
     </button>
 
     <FadeInExpandTransition>
-      <ul v-show="open" class="vp-navbar-dropdown">
+      <ul :id="menuId" v-show="open" class="vp-navbar-dropdown">
         <li
           v-for="child in config.children"
           :key="child.text"

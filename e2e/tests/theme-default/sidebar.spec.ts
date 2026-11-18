@@ -90,3 +90,19 @@ test('toggles a collapsible sidebar group with the keyboard', async ({
   await expect(child).toBeHidden()
   await expect(group).toHaveAttribute('aria-expanded', 'false')
 })
+
+test('marks the current page link', async ({ page }) => {
+  await page.goto('sidebar/config/1.html')
+
+  const link1 = page.locator('a.vp-sidebar-item[aria-label="sidebar 1"]')
+  const link2 = page.locator('a.vp-sidebar-item[aria-label="sidebar 2"]')
+
+  await expect(link1).toHaveAttribute('aria-current', 'page')
+  await expect(link2).not.toHaveAttribute('aria-current', 'page')
+
+  await link2.click()
+
+  await expect(page).toHaveURL(/\/sidebar\/config\/2\.html$/u)
+  await expect(link2).toHaveAttribute('aria-current', 'page')
+  await expect(link1).not.toHaveAttribute('aria-current', 'page')
+})
