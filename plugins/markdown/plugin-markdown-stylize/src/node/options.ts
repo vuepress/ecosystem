@@ -4,6 +4,13 @@ import type { MarkdownItStylizeConfig } from '@mdit/plugin-stylize'
 export type * from '@mdit/plugin-attrs'
 export type * from '@mdit/plugin-stylize'
 
+/**
+ * Style of the window container
+ *
+ * 窗口容器的样式
+ */
+export type MarkdownStylizeWindowStyle = 'mac' | 'windows'
+
 export interface MarkdownStylizePluginOptions {
   /**
    * Whether to enable align support
@@ -76,6 +83,19 @@ export interface MarkdownStylizePluginOptions {
    * @default false
    */
   steps?: boolean
+
+  /**
+   * Whether to enable window container support
+   *
+   * Set to `'mac'` or `'windows'` to specify the default window style.
+   *
+   * 是否启用窗口容器支持。
+   *
+   * 设置为 `'mac'` 或 `'windows'` 可指定默认窗口样式。
+   *
+   * @default false
+   */
+  window?: MarkdownStylizeWindowStyle | boolean
 
   /**
    * Customizing token stylize

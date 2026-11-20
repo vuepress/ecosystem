@@ -120,6 +120,7 @@ export const plugins = [
     steps: true,
     sub: true,
     sup: true,
+    window: true,
     custom: [
       {
         matcher: 'Recommended',

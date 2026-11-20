@@ -171,6 +171,47 @@ VuePress !!非常强大!!。
 
 ::::
 
+### 创建窗口 {#creating-windows}
+
+你可以使用 `::: window` 容器来将内容展示在带有标题栏的窗口中。`mac` 样式（默认）会显示红绿灯按钮并将标题居中，`windows` 样式会显示最小化、最大化和关闭按钮，并将标题对齐到起始位置。
+
+:::: preview
+
+::: window title="Hello World"
+
+窗口内容支持任意 Markdown 语法。
+
+```ts
+console.log('Hello World!')
+```
+
+:::
+
+::::
+
+:::: preview
+
+::: window windows title="Hello World"
+
+窗口内容支持任意 Markdown 语法。
+
+```ts
+console.log('Hello World!')
+```
+
+:::
+
+::::
+
+容器支持以下属性：
+
+- `title`：窗口标题，以纯文本展示。
+- `height`：内容区域的高度。数字会被视为像素值，也可以使用任意 CSS 长度。当内容超出高度时，内容区域会滚动。
+- `padding`：内容区域的内边距。数字会被视为像素值，也可以使用任意 CSS 长度。
+- `no-padding`：移除内容区域的内边距，适用于需要填满窗口的图片和演示。
+
+你可以通过 `window` 选项设置所有窗口的默认样式，也可以在容器名称后添加 `mac` 或 `windows` 来覆盖单个窗口的样式。
+
 ### 上下标 {#superscript-and-subscript}
 
 你可以使用 `^` 来标记上标，`~` 来标记下标。
@@ -276,6 +317,10 @@ export default {
 @`steps` type=boolean
 
 是否启用步骤支持。
+
+@`window` type=`boolean | 'mac' | 'windows'`
+
+是否启用窗口容器支持。将其设置为 `'mac'` 或 `'windows'` 可指定默认窗口样式。
 
 @`sup` type=boolean
 
