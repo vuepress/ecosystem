@@ -60,3 +60,49 @@ test('frontmatter disable', async ({ page }) => {
 
   expect(await sidebarItems.count()).toBe(0)
 })
+
+test('toggles a collapsible sidebar group with the keyboard', async ({
+  page,
+}) => {
+  await page.goto('sidebar/frontmatter/collapsible.html', {
+    waitUntil: 'domcontentloaded',
+  })
+
+  const group = page.locator('.vp-sidebar-item', {
+    hasText: 'Collapsible group',
+  })
+  const child = page.locator('.vp-sidebar-children a', {
+    hasText: 'Example page',
+  })
+
+  await expect(child).toBeHidden()
+  await group.focus()
+  await page.keyboard.press('Space')
+  await expect(child).toBeVisible()
+  await expect(group).toHaveRole('button')
+  await expect(group).toHaveAttribute('aria-expanded', 'true')
+
+  await page.keyboard.press('Tab')
+  await expect(child).toBeFocused()
+  await page.keyboard.press('Shift+Tab')
+  await expect(group).toBeFocused()
+  await page.keyboard.press('Enter')
+  await expect(child).toBeHidden()
+  await expect(group).toHaveAttribute('aria-expanded', 'false')
+})
+
+test('marks the current page link', async ({ page }) => {
+  await page.goto('sidebar/config/1.html')
+
+  const link1 = page.locator('a.vp-sidebar-item[aria-label="sidebar 1"]')
+  const link2 = page.locator('a.vp-sidebar-item[aria-label="sidebar 2"]')
+
+  await expect(link1).toHaveAttribute('aria-current', 'page')
+  await expect(link2).not.toHaveAttribute('aria-current', 'page')
+
+  await link2.click()
+
+  await expect(page).toHaveURL(/\/sidebar\/config\/2\.html$/u)
+  await expect(link2).toHaveAttribute('aria-current', 'page')
+  await expect(link1).not.toHaveAttribute('aria-current', 'page')
+})
