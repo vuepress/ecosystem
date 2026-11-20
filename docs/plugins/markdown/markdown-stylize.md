@@ -172,6 +172,47 @@ You can also use an unordered list:
 
 ::::
 
+### Creating Windows
+
+You can use the `::: window` container to display content in a window with a titlebar. The `mac` style (default) shows the traffic light buttons and a centered title, while the `windows` style shows the minimize, maximize and close buttons with the title aligned to the start.
+
+:::: preview
+
+::: window title="Hello World"
+
+The content of the window supports any Markdown syntax.
+
+```ts
+console.log('Hello World!')
+```
+
+:::
+
+::::
+
+:::: preview
+
+::: window windows title="Hello World"
+
+The content of the window supports any Markdown syntax.
+
+```ts
+console.log('Hello World!')
+```
+
+:::
+
+::::
+
+The container accepts the following attributes:
+
+- `title`: the title of the window, displayed as plain text.
+- `height`: the height of the content area. A number is treated as pixels, and any CSS length is accepted. The content scrolls when it exceeds the height.
+- `padding`: the padding of the content area. A number is treated as pixels, and any CSS length is accepted.
+- `no-padding`: remove the padding of the content area, which is useful for images and demos that should fill the window.
+
+You can set the default style of all windows with the `window` option, and override it for a single window by adding `mac` or `windows` after the container name.
+
 ### Superscript and Subscript
 
 You can use `^` for superscript and `~` for subscript.
@@ -277,6 +318,10 @@ Whether to enable spoiler support.
 @`steps` type=boolean
 
 Whether to enable steps support.
+
+@`window` type=`boolean | 'mac' | 'windows'`
+
+Whether to enable window container support. Set it to `'mac'` or `'windows'` to specify the default window style.
 
 @`sup` type=boolean
 

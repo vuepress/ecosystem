@@ -39,6 +39,7 @@
       "default": "./dist/node/index.js"
     },
     "./steps.css": "./dist/client/styles/steps.css",
+    "./window.css": "./dist/client/styles/window.css",
     "./package.json": "./package.json"
   },
   "publishConfig": {

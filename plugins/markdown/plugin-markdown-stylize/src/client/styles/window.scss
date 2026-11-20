@@ -1,0 +1,160 @@
+@use 'pkg:@vuepress/helper';
+
+$window-minimize-icon: '<svg viewBox="0 0 24 24"><path d="M5 12h14" fill="none" stroke="#000" stroke-width="1.5" stroke-linecap="round" /></svg>';
+$window-maximize-icon: '<svg viewBox="0 0 24 24"><rect x="5" y="5" width="14" height="14" rx="1.5" fill="none" stroke="#000" stroke-width="1.5" /></svg>';
+$window-close-icon: '<svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18" fill="none" stroke="#000" stroke-width="1.5" stroke-linecap="round" /></svg>';
+
+.vp-window {
+  --vp-window-c-header: var(--vp-c-bg-alt);
+  --vp-window-c-close: #ff5f57;
+  --vp-window-c-minimize: #febc2e;
+  --vp-window-c-maximize: #28c840;
+
+  overflow: hidden;
+
+  margin: 16px 0;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 8px;
+
+  background-color: var(--vp-c-bg);
+  box-shadow: 0 1px 4px 0 var(--vp-c-shadow);
+
+  transition:
+    background-color var(--vp-t-color),
+    border-color var(--vp-t-color);
+
+  @media print {
+    break-inside: avoid;
+  }
+}
+
+.vp-window-header {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+
+  height: 36px;
+  padding-inline: 12px;
+  border-bottom: 1px solid var(--vp-c-divider);
+
+  background-color: var(--vp-window-c-header);
+
+  transition:
+    background-color var(--vp-t-color),
+    border-color var(--vp-t-color);
+}
+
+.vp-window-controls {
+  display: flex;
+  flex: 1;
+  gap: 8px;
+  align-items: center;
+
+  i {
+    display: block;
+
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+
+    background-color: var(--vp-c-border);
+
+    transition: background-color var(--vp-t-color);
+  }
+}
+
+.vp-window-mac {
+  .vp-window-control-close {
+    background-color: var(--vp-window-c-close);
+  }
+
+  .vp-window-control-minimize {
+    background-color: var(--vp-window-c-minimize);
+  }
+
+  .vp-window-control-maximize {
+    background-color: var(--vp-window-c-maximize);
+  }
+}
+
+.vp-window-spacer {
+  flex: 1;
+}
+
+.vp-window-title {
+  overflow: hidden;
+
+  min-width: 0;
+
+  color: var(--vp-c-text-mute);
+
+  font-weight: 500;
+  font-size: 0.875em;
+  line-height: 1.4;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+  transition: color var(--vp-t-color);
+}
+
+.vp-window-windows {
+  .vp-window-title {
+    flex: 1;
+    order: -1;
+    text-align: start;
+  }
+
+  .vp-window-controls {
+    flex: none;
+    gap: 10px;
+
+    i {
+      width: 12px;
+      height: 12px;
+      border-radius: 0;
+
+      background-color: var(--vp-c-text-subtle);
+
+      mask: var(--icon) no-repeat center / 100%;
+    }
+  }
+
+  .vp-window-control-minimize {
+    --icon: #{helper.encode-svg($window-minimize-icon)};
+  }
+
+  .vp-window-control-maximize {
+    --icon: #{helper.encode-svg($window-maximize-icon)};
+  }
+
+  .vp-window-control-close {
+    --icon: #{helper.encode-svg($window-close-icon)};
+  }
+
+  .vp-window-spacer {
+    display: none;
+  }
+}
+
+.vp-window-content {
+  overflow: auto;
+
+  height: var(--vp-window-height, auto);
+  padding: var(--vp-window-padding, 16px 20px);
+
+  background-color: var(--vp-c-bg);
+
+  transition: background-color var(--vp-t-color);
+
+  > :first-child {
+    margin-block-start: 0;
+  }
+
+  > :last-child {
+    margin-block-end: 0;
+  }
+
+  > p:has(> img:only-child) {
+    line-height: 0;
+  }
+}

@@ -15,6 +15,7 @@ import { isPlainObject } from 'vuepress/shared'
 import type { MarkdownStylizePluginOptions } from './options.js'
 import { prepareClientConfigFile } from './prepareClientConfigFile.js'
 import { steps as stepsPlugin } from './steps.js'
+import { window as windowPlugin } from './window.js'
 
 declare module 'vuepress/markdown' {
   interface MarkdownOptions {
@@ -41,6 +42,7 @@ declare module 'vuepress/markdown' {
  *         steps: true,
  *         sub: true,
  *         sup: true,
+ *         window: true,
  *       }),
  *     ],
  *   }
@@ -52,8 +54,18 @@ export const markdownStylizePlugin =
   (app) => {
     const opts = deepAssign({}, app.options.markdown.stylize, options)
     app.options.markdown.stylize = opts
-    const { attrs, align, custom, layout, mark, spoiler, steps, sup, sub } =
-      opts
+    const {
+      attrs,
+      align,
+      custom,
+      layout,
+      mark,
+      spoiler,
+      steps,
+      sup,
+      sub,
+      window: windowContainer,
+    } = opts
 
     return {
       name: '@vuepress/plugin-markdown-stylize',
@@ -76,8 +88,18 @@ export const markdownStylizePlugin =
         if (sup) md.use(supPlugin)
         if (layout) md.use(layoutPlugin)
         if (steps) md.use(stepsPlugin)
+        if (windowContainer) {
+          md.use(windowPlugin, {
+            style: windowContainer === true ? 'mac' : windowContainer,
+          })
+        }
       },
 
-      clientConfigFile: () => prepareClientConfigFile(app, { spoiler, steps }),
+      clientConfigFile: () =>
+        prepareClientConfigFile(app, {
+          spoiler,
+          steps,
+          window: windowContainer,
+        }),
     }
   }
