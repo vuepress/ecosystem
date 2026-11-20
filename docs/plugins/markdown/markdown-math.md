@@ -151,4 +151,8 @@ Options passed to Common HTML output parser.
 
 Options passed to SVG output parser.
 
+@`preloadDynamicFonts` type=boolean default=`true`
+
+Whether to preload all dynamic font files when the MathJax instance is created. Keep it enabled unless you provide a custom `asyncLoad` loader that resolves those files synchronously, or you only render glyphs from already loaded font groups.
+
 :::

@@ -151,4 +151,8 @@ Mathjax:
 
 传递给 SVG 输出解析器的选项。
 
+@`preloadDynamicFonts` type=boolean default=`true`
+
+是否在创建 MathJax 实例时预加载所有动态字体文件。除非你提供了能同步解析这些文件的自定义 `asyncLoad` 加载器，或只渲染已加载字体组中的字形，否则请保持开启。
+
 :::
