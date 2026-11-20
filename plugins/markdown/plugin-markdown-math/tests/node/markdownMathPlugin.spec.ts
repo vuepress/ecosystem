@@ -181,9 +181,9 @@ describe('markdown math plugin', () => {
     }
   })
 
-  it('renders dynamic glyphs with mathjax svg output', async () => {
+  it('renders dynamic glyphs with the default mathjax output', async () => {
     const app = await createTestApp({
-      plugins: [markdownMathPlugin({ type: 'mathjax', output: 'svg' })],
+      plugins: [markdownMathPlugin({ type: 'mathjax' })],
     })
 
     try {
