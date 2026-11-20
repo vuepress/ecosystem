@@ -11,7 +11,7 @@ export default defineHopeConfig({
     '.temp/',
     '**/__fixtures__/**',
     'node_modules/',
-    '**/dist/**/',
+    '**/dist/**',
     '**/*.module.scss',
     '**/empty.scss',
   ],
