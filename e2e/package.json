@@ -20,7 +20,7 @@
   },
   "dependencies": {
     "@iconify-json/vscode-icons": "^1.2.99",
-    "@videojs/html": "10.4.0",
+    "@videojs/html": "10.5.0",
     "@vuepress/bundler-rspack": "catalog:",
     "@vuepress/bundler-vite": "catalog:",
     "@vuepress/bundler-webpack": "catalog:",
