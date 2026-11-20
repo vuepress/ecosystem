@@ -180,4 +180,38 @@ describe('markdown math plugin', () => {
       app.cleanup()
     }
   })
+
+  it('renders dynamic glyphs with mathjax svg output', async () => {
+    const app = await createTestApp({
+      plugins: [markdownMathPlugin({ type: 'mathjax', output: 'svg' })],
+    })
+
+    try {
+      const html = app.markdown.render(String.raw`$\mathbb{R}$`, {})
+
+      expect(html).toContain('<mjx-container v-pre class="MathJax"')
+      expect(html).toContain(String.raw`data-latex="\mathbb{R}"`)
+      expect(html).not.toContain('mjx-merror')
+      expect(html).toContain('<svg')
+    } finally {
+      app.cleanup()
+    }
+  })
+
+  it('renders dynamic glyphs with mathjax chtml output', async () => {
+    const app = await createTestApp({
+      plugins: [markdownMathPlugin({ type: 'mathjax', output: 'chtml' })],
+    })
+
+    try {
+      const html = app.markdown.render(String.raw`$\mathbb{R}$`, {})
+
+      expect(html).toContain('<mjx-container v-pre class="MathJax"')
+      expect(html).toContain(String.raw`data-latex="\mathbb{R}"`)
+      expect(html).not.toContain('mjx-merror')
+      expect(html).toContain('<mjx-math')
+    } finally {
+      app.cleanup()
+    }
+  })
 })

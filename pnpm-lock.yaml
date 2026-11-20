@@ -1345,8 +1345,8 @@ importers:
         specifier: ^1.2.0
         version: 1.2.0(katex@0.19.1)(markdown-it@15.0.3)
       '@mdit/plugin-mathjax-slim':
-        specifier: ^2.1.0
-        version: 2.1.0(@mathjax/mathjax-newcm-font@4.1.3)(@mathjax/src@4.1.3)(markdown-it@15.0.3)
+        specifier: ^2.1.1
+        version: 2.1.1(@mathjax/mathjax-newcm-font@4.1.3)(@mathjax/src@4.1.3)(markdown-it@15.0.3)
       '@vuepress/helper':
         specifier: workspace:*
         version: link:../../../tools/helper
@@ -4082,8 +4082,8 @@ packages:
       markdown-it:
         optional: true
 
-  '@mdit/plugin-mathjax-slim@2.1.0':
-    resolution: {integrity: sha512-Tk7S9U+vHJ2aTyn0ndL0Z8VN/eb9Ijw80cSCh21MpGX+XfN/a2ye2uMtWahqzdM4w74RFYxp3zpHdXmsOPhP5w==}
+  '@mdit/plugin-mathjax-slim@2.1.1':
+    resolution: {integrity: sha512-1QpK8t3rhtqpwhVQLeFAQdW9hUPzlYJSn8H+GzN7MtWxM8UTGzdhHQseWL5Bpb74YhNZKJgkRdQVo+oXlkwK8w==}
     engines: {node: '>=22'}
     peerDependencies:
       '@mathjax/mathjax-newcm-font': ^4.1.3
@@ -13399,7 +13399,7 @@ snapshots:
     optionalDependencies:
       markdown-it: 15.0.3
 
-  '@mdit/plugin-mathjax-slim@2.1.0(@mathjax/mathjax-newcm-font@4.1.3)(@mathjax/src@4.1.3)(markdown-it@15.0.3)':
+  '@mdit/plugin-mathjax-slim@2.1.1(@mathjax/mathjax-newcm-font@4.1.3)(@mathjax/src@4.1.3)(markdown-it@15.0.3)':
     dependencies:
       '@mdit/plugin-tex': 1.3.0(markdown-it@15.0.3)
       synckit: 0.12.3
