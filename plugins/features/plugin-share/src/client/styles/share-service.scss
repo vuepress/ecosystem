@@ -1,0 +1,121 @@
+.vp-share-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+
+  background-color: transparent;
+  color: var(--vp-c-text-mute);
+
+  cursor: pointer;
+
+  transition:
+    color 0.2s,
+    background-color 0.2s;
+
+  &:hover {
+    background-color: var(--vp-c-accent-soft);
+    color: var(--vp-c-accent);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--vp-c-accent);
+    outline-offset: 2px;
+  }
+}
+
+.vp-share-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 1.25rem;
+  height: 1.25rem;
+
+  font-size: 1.25rem;
+  line-height: 1;
+
+  > svg {
+    width: 100%;
+    height: 100%;
+    fill: currentcolor;
+  }
+
+  &.plain {
+    color: inherit;
+  }
+
+  &.colorful {
+    color: #fff;
+  }
+}
+
+.vp-share-qrcode {
+  display: block;
+
+  width: 250px;
+  max-width: 80vw;
+  height: auto;
+
+  background-color: #fff;
+}
+
+#vp-share-popup-container {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  pointer-events: none;
+}
+
+.vp-share-popup-wrapper {
+  position: absolute;
+  inset: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-color: rgb(0 0 0 / 50%);
+
+  pointer-events: auto;
+
+  animation: vp-share-popup-in 0.2s ease-out;
+}
+
+.vp-share-popup-leave {
+  animation: vp-share-popup-out 0.2s ease-in forwards;
+}
+
+.vp-share-popup-content {
+  max-width: min(90vw, 320px);
+  padding: 1rem;
+  border-radius: 8px;
+
+  background-color: var(--vp-c-bg-elv);
+  box-shadow: 0 4px 16px var(--vp-c-shadow);
+}
+
+@keyframes vp-share-popup-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes vp-share-popup-out {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
