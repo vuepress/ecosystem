@@ -17,6 +17,27 @@ import path from 'node:path'
  */
 const packageRoot = path.resolve(import.meta.dirname, '../..')
 
+/**
+ * Resolve a path next to the Node.js entry files
+ *
+ * `@vuepress/test-utils` is used from `src/` in this repository, and from
+ * `dist/node/` in the published package. This file is bundled into the Node.js
+ * entry, so the directory of this file is the directory of the entries in both
+ * cases. The files of `./plugin/` are one level deeper in `src/`, so they must
+ * resolve their paths through this function instead of `import.meta.dirname`.
+ *
+ * 解析 Node.js 入口文件旁边的路径
+ *
+ * 本包在本仓库中从 `src/` 使用，在发布后从 `dist/node/` 使用。本文件会被打包进 Node.js 入口，
+ * 因此在两种情况下它所在的目录都是这些入口的目录。`./plugin/` 下的文件在 `src/` 中深一层， 所以它们必须通过本函数解析路径，而不能使用
+ * `import.meta.dirname`。
+ *
+ * @param segments - The path segments / 路径片段
+ * @returns The resolved path / 解析出的路径
+ */
+export const resolveNodeEntryPath = (...segments: string[]): string =>
+  path.resolve(import.meta.dirname, ...segments)
+
 const packageHash = createHash('sha1')
   .update(packageRoot)
   .digest('hex')

@@ -2092,6 +2092,10 @@ importers:
       vuepress:
         specifier: 'catalog:'
         version: 2.0.0-rc.32(534515f20ab12067869497424e383b6c)
+    devDependencies:
+      vite:
+        specifier: ^8.3.8
+        version: 8.3.8(@types/node@22.20.5)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.108.2)(sass@1.108.2)(terser@5.51.2)(yaml@2.9.1)
 
   tools/vp-update:
     dependencies:

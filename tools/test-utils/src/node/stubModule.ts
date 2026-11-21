@@ -62,10 +62,10 @@ const createModuleSource = (
 /**
  * Stub a generated (virtual) client module
  *
- * VuePress generates client modules at build time: `@internal/*` modules, and
- * `@temp/*` modules created by generated client configs (e.g.
- * `@temp/revealjs/index.js`). They do not exist in a unit test, so a module
- * that imports them cannot be imported at all.
+ * VuePress generates the client modules that a plugin imports at build time:
+ * internal modules, and the `@temp/*` modules created by generated client
+ * configs (e.g. `@temp/revealjs/index.js`). They do not exist in a unit test,
+ * so a module that imports them cannot be imported at all.
  *
  * `stubModule()` registers the given values on `globalThis`, and writes a
  * generated ESM module that re-exports them. The Vite plugin of this package
@@ -75,11 +75,13 @@ const createModuleSource = (
  * Notice that Vite resolves imports when a module is transformed, which happens
  * before the test runs. Therefore the module that imports the stubbed module
  * must be imported dynamically after `stubModule()`, with `vi.resetModules()`
- * when it may already be cached.
+ * when it may already be cached. When the module under test also reads the
+ * plugin options from the defines, stub them with `stubClientDefines()` before
+ * the dynamic import.
  *
  * 为生成的（虚拟）客户端模块打桩
  *
- * VuePress 会在构建期生成客户端模块：`@internal/*` 模块，以及由生成的客户端配置创建的 `@temp/*` 模块（如
+ * VuePress 会在构建期生成插件导入的客户端模块：内部模块，以及由生成的客户端配置创建的 `@temp/*` 模块（如
  * `@temp/revealjs/index.js`）。它们在单元测试中并不存在，因此导入它们的模块完全无法导入。
  *
  * `stubModule()` 会把给定值注册到 `globalThis`，并写入一个重新导出它们的生成 ESM 模块。本包的 Vite 插件会把该模块
@@ -88,14 +90,17 @@ const createModuleSource = (
  * 注意：Vite 在模块被转换时解析导入，而这发生在测试运行之前。因此导入被打桩模块的模块，必须在 `stubModule()`
  * 之后动态导入，若它可能已被缓存还需配合 `vi.resetModules()`。
  *
+ * 若被测模块还会读取 define 中的插件配置，需要先用 `stubClientDefines()` 打桩。
+ *
  * @example
- *   const restore = stubModule('@internal/noticeOptions', {
- *     NOTICE_OPTIONS: [{ title: 'Notice', content: 'Content' }],
+ *   // `@vuepress/plugin-comment/service` is aliased by the comment plugin
+ *   const restore = stubModule('@vuepress/plugin-comment/service', {
+ *     default: CommentProviderStub,
  *   })
  *
  *   vi.resetModules()
- *   const { useNoticeOptions } =
- *     await import('../src/client/composables/index.js')
+ *   const { default: CommentService } =
+ *     await import('../src/client/components/CommentService.js')
  *
  *   restore()
  *
