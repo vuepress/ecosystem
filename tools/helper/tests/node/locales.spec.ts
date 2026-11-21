@@ -4,7 +4,10 @@ import { createBuildApp } from 'vuepress/core'
 import { path } from 'vuepress/utils'
 
 import { getFullLocaleConfig } from '../../src/node/locales/getFullLocaleConfig.js'
-import type { DefaultLocaleInfo } from '../../src/node/locales/types.js'
+import type {
+  DefaultLocaleInfo,
+  LocaleDataConfig,
+} from '../../src/node/locales/types.js'
 import { emptyTheme } from '../__fixtures__/theme/empty.js'
 
 const defaultLocaleInfo: DefaultLocaleInfo<{ text: string; label: string }> = [
@@ -530,5 +533,59 @@ describe('getFullLocaleConfig() with string locale data', () => {
       '/en/': 'Search (US): $content',
       '/ja/': '',
     })
+  })
+})
+
+describe('getFullLocaleConfig() with non-plain locale data', () => {
+  it('uses non-plain object data as-is instead of merging it', () => {
+    const zhData = [{ text: '搜索' }]
+    const arrayLocaleInfo: DefaultLocaleInfo<{ text: string }[]> = [
+      [['en'], [{ text: 'Search' }]],
+      [['zh', 'zh-CN'], zhData],
+    ]
+
+    const app = createBuildApp({
+      locales: {
+        '/': { lang: 'zh-CN' },
+        '/en/': { lang: 'en' },
+      },
+      source: path.resolve(__dirname, './__fixtures__/src'),
+      bundler: {} as Bundler,
+      theme: emptyTheme,
+    })
+
+    const locales = getFullLocaleConfig({ app, default: arrayLocaleInfo })
+
+    // `deepAssign` would iterate the array and turn it into an object of indexes
+    expect(locales['/']).toBe(zhData)
+    expect(locales['/en/']).toStrictEqual([{ text: 'Search' }])
+  })
+
+  it('uses non-plain user config as-is instead of merging it', () => {
+    const userData = [{ text: '用户' }]
+    const objectLocaleInfo: DefaultLocaleInfo<{ text: string }> = [
+      [['en'], { text: 'Search' }],
+      [['zh'], { text: '搜索' }],
+    ]
+
+    const app = createBuildApp({
+      locales: {
+        '/': { lang: 'zh' },
+      },
+      source: path.resolve(__dirname, './__fixtures__/src'),
+      bundler: {} as Bundler,
+      theme: emptyTheme,
+    })
+
+    const locales = getFullLocaleConfig({
+      app,
+      default: objectLocaleInfo,
+      // A non-plain value is allowed at runtime, and must not be merged either
+      config: { '/': userData } as unknown as LocaleDataConfig<{
+        text: string
+      }>,
+    })
+
+    expect(locales['/']).toBe(userData)
   })
 })
