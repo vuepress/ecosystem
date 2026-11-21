@@ -273,7 +273,8 @@ export default defineComponent({
     }
 
     return (): VNode => {
-      const { color, icon, name, shape } = props.config
+      const { color, icon, label, name, shape } = props.config
+      const title = label ?? name
       const plain = props.plain || (!icon && !color)
 
       return h(
@@ -281,8 +282,8 @@ export default defineComponent({
         {
           'type': 'button',
           'class': ['vp-share-button', { plain }],
-          'aria-label': name,
-          'title': name,
+          'aria-label': title,
+          title,
           'onClick': share,
         },
         [plain ? renderIcon(shape, 'plain') : renderColorfulIcon(props.config)],

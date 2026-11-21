@@ -16,18 +16,18 @@ export interface SharePluginOptions {
    *
    * 内置服务通过名称选择，自定义服务通过包含 `name`、`link` 与 `shape` 的对象提供。
    *
-   * @default ['twitter', 'facebook', 'reddit', 'telegram', 'whatsapp', 'email']
+   * @default ['x', 'facebook', 'reddit', 'telegram', 'whatsapp', 'email']
    */
   services?: ShareService[]
 
   /**
-   * Twitter user name to mention
+   * X user name to mention
    *
-   * It is appended to the tweet as the `via` parameter.
+   * It is appended to the share link as the `via` parameter of the `x` service.
    *
-   * 要提及的 Twitter 用户名
+   * 要提及的 X 用户名
    *
-   * 它会作为 `via` 参数添加到推文中。
+   * 它会作为 `via` 参数添加到 `x` 服务的分享链接中。
    */
-  twitterUserName?: string
+  xUserName?: string
 }

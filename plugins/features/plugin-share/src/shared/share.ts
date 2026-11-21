@@ -40,11 +40,11 @@ export type BuiltInShareService =
   | 'snapchat'
   | 'telegram'
   | 'tumblr'
-  | 'twitter'
   | 'vk'
   | 'weibo'
   | 'whatsapp'
   | 'wordpress'
+  | 'x'
 
 /**
  * Variables that can be used in a share link
@@ -104,6 +104,20 @@ export interface ShareServiceConfig {
    * @default 'popup'
    */
   action?: ShareAction
+
+  /**
+   * Display label of the share service
+   *
+   * It is used as the accessible label and tooltip of the button. When it is
+   * omitted, the name of the service is used.
+   *
+   * 分享服务的显示名称
+   *
+   * 它用作按钮的无障碍标签和提示。省略时使用服务名称。
+   *
+   * @default name
+   */
+  label?: string
 
   /**
    * Background color of the colorful icon
