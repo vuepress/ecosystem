@@ -132,6 +132,7 @@ export const sidebarZh: SidebarOptions = {
     'notice',
     'nprogress',
     'photo-swipe',
+    'share',
     'watermark',
   ],
 

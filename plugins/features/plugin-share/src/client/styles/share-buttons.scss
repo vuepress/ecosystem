@@ -1,0 +1,13 @@
+.vp-share-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+
+  margin-block: 1rem;
+}
+
+.vp-share-buttons-inline {
+  display: inline-flex;
+  margin-block: 0;
+}
