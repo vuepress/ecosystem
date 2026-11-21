@@ -1,0 +1,256 @@
+/* NOTE: the plugin default renderer always emits a title element, so the rules
+   below are a 1:1 class remap of the ported VitePress `custom-block` styles.
+   The `{no-title}` syntax of VitePress is not supported by that renderer. */
+.custom-container {
+  padding: 0.5rem 1rem;
+  border: 1px solid transparent;
+  border-radius: 0.5rem;
+
+  color: var(--vp-c-text-2);
+
+  font-size: var(--vp-custom-block-font-size);
+  line-height: 1.7142857;
+}
+
+/* containers rendered without a title keep the reduced padding */
+.custom-container:has(> .custom-container-title, > summary) {
+  padding-top: 1rem;
+}
+
+.custom-container.info {
+  border-color: var(--vp-custom-block-info-border);
+  background-color: var(--vp-custom-block-info-bg);
+  color: var(--vp-custom-block-info-text);
+}
+
+.custom-container.info a,
+.custom-container.info code {
+  color: var(--vp-c-brand-1);
+}
+
+.custom-container.info a:hover,
+.custom-container.info a:hover > code {
+  color: var(--vp-c-brand-2);
+}
+
+.custom-container.info code {
+  background-color: var(--vp-custom-block-info-code-bg);
+}
+
+.custom-container.note {
+  border-color: var(--vp-custom-block-note-border);
+  background-color: var(--vp-custom-block-note-bg);
+  color: var(--vp-custom-block-note-text);
+}
+
+.custom-container.note a,
+.custom-container.note code {
+  color: var(--vp-c-brand-1);
+}
+
+.custom-container.note a:hover,
+.custom-container.note a:hover > code {
+  color: var(--vp-c-brand-2);
+}
+
+.custom-container.note code {
+  background-color: var(--vp-custom-block-note-code-bg);
+}
+
+.custom-container.tip {
+  border-color: var(--vp-custom-block-tip-border);
+  background-color: var(--vp-custom-block-tip-bg);
+  color: var(--vp-custom-block-tip-text);
+}
+
+.custom-container.tip a,
+.custom-container.tip code {
+  color: var(--vp-c-tip-1);
+}
+
+.custom-container.tip a:hover,
+.custom-container.tip a:hover > code {
+  color: var(--vp-c-tip-2);
+}
+
+.custom-container.tip code {
+  background-color: var(--vp-custom-block-tip-code-bg);
+}
+
+.custom-container.important {
+  border-color: var(--vp-custom-block-important-border);
+  background-color: var(--vp-custom-block-important-bg);
+  color: var(--vp-custom-block-important-text);
+}
+
+.custom-container.important a,
+.custom-container.important code {
+  color: var(--vp-c-important-1);
+}
+
+.custom-container.important a:hover,
+.custom-container.important a:hover > code {
+  color: var(--vp-c-important-2);
+}
+
+.custom-container.important code {
+  background-color: var(--vp-custom-block-important-code-bg);
+}
+
+.custom-container.warning {
+  border-color: var(--vp-custom-block-warning-border);
+  background-color: var(--vp-custom-block-warning-bg);
+  color: var(--vp-custom-block-warning-text);
+}
+
+.custom-container.warning a,
+.custom-container.warning code {
+  color: var(--vp-c-warning-1);
+}
+
+.custom-container.warning a:hover,
+.custom-container.warning a:hover > code {
+  color: var(--vp-c-warning-2);
+}
+
+.custom-container.warning code {
+  background-color: var(--vp-custom-block-warning-code-bg);
+}
+
+.custom-container.danger {
+  border-color: var(--vp-custom-block-danger-border);
+  background-color: var(--vp-custom-block-danger-bg);
+  color: var(--vp-custom-block-danger-text);
+}
+
+.custom-container.danger a,
+.custom-container.danger code {
+  color: var(--vp-c-danger-1);
+}
+
+.custom-container.danger a:hover,
+.custom-container.danger a:hover > code {
+  color: var(--vp-c-danger-2);
+}
+
+.custom-container.danger code {
+  background-color: var(--vp-custom-block-danger-code-bg);
+}
+
+.custom-container.caution {
+  border-color: var(--vp-custom-block-caution-border);
+  background-color: var(--vp-custom-block-caution-bg);
+  color: var(--vp-custom-block-caution-text);
+}
+
+.custom-container.caution a,
+.custom-container.caution code {
+  color: var(--vp-c-caution-1);
+}
+
+.custom-container.caution a:hover,
+.custom-container.caution a:hover > code {
+  color: var(--vp-c-caution-2);
+}
+
+.custom-container.caution code {
+  background-color: var(--vp-custom-block-caution-code-bg);
+}
+
+.custom-container.details {
+  border-color: var(--vp-custom-block-details-border);
+  background-color: var(--vp-custom-block-details-bg);
+  color: var(--vp-custom-block-details-text);
+}
+
+.custom-container.details a {
+  color: var(--vp-c-brand-1);
+}
+
+.custom-container.details a:hover,
+.custom-container.details a:hover > code {
+  color: var(--vp-c-brand-2);
+}
+
+.custom-container.details code {
+  background-color: var(--vp-custom-block-details-code-bg);
+}
+
+.custom-container-title {
+  font-weight: 600;
+}
+
+.custom-container p + p {
+  margin: 0.5rem 0;
+}
+
+.custom-container.details summary {
+  margin: 0 0 0.5rem;
+  font-weight: 700;
+  cursor: pointer;
+  user-select: none;
+}
+
+.custom-container.details summary + p {
+  margin: 0.5rem 0;
+}
+
+.custom-container a {
+  color: inherit;
+
+  font-weight: 600;
+  text-decoration: underline;
+
+  transition: opacity 0.25s;
+
+  text-underline-offset: 0.125rem;
+}
+
+.custom-container a:hover {
+  opacity: 0.75;
+}
+
+.custom-container code {
+  font-size: var(--vp-custom-block-code-font-size);
+}
+
+.custom-container.custom-container th,
+.custom-container.custom-container blockquote > p {
+  color: inherit;
+  font-size: var(--vp-custom-block-font-size);
+}
+
+/**
+ * Document content
+ * -------------------------------------------------------------------------- */
+
+.vp-doc .custom-container {
+  margin: 1rem 0;
+}
+
+.vp-doc .custom-container p {
+  margin: 0.5rem 0;
+  line-height: 1.7142857;
+}
+
+.vp-doc .custom-container p:first-child {
+  margin: 0;
+}
+
+.vp-doc .custom-container div[class*='language-'] {
+  margin: 0.5rem 0 !important;
+  border-radius: 0.5rem;
+}
+
+.vp-doc .custom-container div[class*='language-'] code {
+  background-color: transparent;
+  font-weight: 400;
+}
+
+.vp-doc .custom-container [class*='vp-code-block'] {
+  margin-top: 0.5rem;
+}
+
+.vp-doc .custom-container [class*='vp-code-block'] div[class*='language-'] {
+  margin-top: 0 !important;
+}

@@ -1,0 +1,124 @@
+import type { DefaultTheme } from '../shared.js'
+import { isActive, isExternal } from '../shared.js'
+import { ensureStartingSlash } from './utils.js'
+
+export interface SidebarLink {
+  text: string
+  link: string
+  docFooterText?: string
+  rel?: string
+  target?: string
+}
+
+type SidebarItem = DefaultTheme.SidebarItem
+
+/**
+ * Get the `Sidebar` from sidebar option. This method will ensure to get correct
+ * sidebar config from `MultiSideBarConfig` with various path combinations such
+ * as matching `guide/` and `/guide/`. If no matching config was found, it will
+ * return empty array.
+ */
+export function getSidebar(
+  _sidebar: DefaultTheme.Sidebar | undefined,
+  path: string,
+): SidebarItem[] {
+  if (Array.isArray(_sidebar)) return addBase(_sidebar)
+  if (_sidebar == null) return []
+
+  path = ensureStartingSlash(path)
+
+  const dir = Object.keys(_sidebar)
+    .sort((a, b) => {
+      return b.split('/').length - a.split('/').length
+    })
+    .find((dir) => {
+      // make sure the multi sidebar key starts with slash too
+      return path.startsWith(ensureStartingSlash(dir))
+    })
+
+  const sidebar = dir ? (_sidebar[dir] ?? []) : []
+  return Array.isArray(sidebar)
+    ? addBase(sidebar)
+    : addBase(sidebar.items, sidebar.base)
+}
+
+/** Get or generate sidebar group from the given sidebar items. */
+export function getSidebarGroups(sidebar: SidebarItem[]): SidebarItem[] {
+  const groups: SidebarItem[] = []
+
+  let lastGroupIndex: number = 0
+
+  for (const item of sidebar) {
+    if (item.items) {
+      lastGroupIndex = groups.push(item)
+      continue
+    }
+
+    let group = groups[lastGroupIndex]
+
+    if (!group) {
+      group = { items: [] }
+      groups.push(group)
+    }
+
+    group.items?.push(item)
+  }
+
+  return groups
+}
+
+export function getFlatSideBarLinks(sidebar: SidebarItem[]): SidebarLink[] {
+  const links: SidebarLink[] = []
+
+  function recursivelyExtractLinks(items: SidebarItem[]) {
+    for (const item of items) {
+      if (item.text && item.link) {
+        links.push({
+          text: item.text,
+          link: item.link,
+          docFooterText: item.docFooterText,
+          rel: item.rel,
+          target: item.target,
+        })
+      }
+
+      if (item.items) {
+        recursivelyExtractLinks(item.items)
+      }
+    }
+  }
+
+  recursivelyExtractLinks(sidebar)
+
+  return links
+}
+
+/** Check if the given sidebar item contains any active link. */
+export function hasActiveLink(
+  path: string,
+  hash: string,
+  items: SidebarItem | SidebarItem[],
+  skipHashCheck = false,
+): boolean {
+  if (Array.isArray(items)) {
+    return items.some((item) => hasActiveLink(path, hash, item, skipHashCheck))
+  }
+  if (items.link && isActive(path, hash, items.link, false, skipHashCheck)) {
+    return true
+  }
+  if (items.items) {
+    return hasActiveLink(path, hash, items.items, skipHashCheck)
+  }
+  return false
+}
+
+function addBase(items: SidebarItem[], _base?: string): SidebarItem[] {
+  return [...items].map((_item) => {
+    const item = { ..._item }
+    const base = item.base || _base
+    if (base && item.link && !isExternal(item.link))
+      item.link = base + item.link.replace(/^\//, base.endsWith('/') ? '' : '/')
+    if (item.items) item.items = addBase(item.items, base)
+    return item
+  })
+}

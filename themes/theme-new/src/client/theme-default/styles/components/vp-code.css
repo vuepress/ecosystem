@@ -1,0 +1,15 @@
+[data-theme='dark'] .shiki span {
+  color: var(--shiki-dark, inherit);
+  font-weight: var(--shiki-dark-font-weight, inherit);
+  text-decoration: var(--shiki-dark-text-decoration, inherit);
+}
+
+html:not([data-theme='dark']) .shiki span {
+  color: var(--shiki-light, inherit);
+  font-weight: var(--shiki-light-font-weight, inherit);
+  text-decoration: var(--shiki-light-text-decoration, inherit);
+}
+
+.shiki span {
+  unicode-bidi: isolate;
+}

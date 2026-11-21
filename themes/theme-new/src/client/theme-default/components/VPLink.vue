@@ -1,0 +1,47 @@
+<script lang="ts" setup>
+import { computed } from 'vue'
+
+import { isLinkExternal, normalizeLink } from '../support/utils.js'
+
+const props = withDefaults(
+  defineProps<{
+    tag?: string
+    href?: string
+    noIcon?: boolean
+    external?: boolean
+    target?: string
+    rel?: string
+  }>(),
+  {
+    external: undefined,
+  },
+)
+
+const tag = computed(() => props.tag ?? (props.href ? 'a' : 'span'))
+const isExternal = computed(() =>
+  isLinkExternal(props.href, props.target, props.external),
+)
+</script>
+
+<template>
+  <component
+    :is="tag"
+    class="vp-link"
+    :class="{
+      'link': href,
+      'vp-external-link-icon': isExternal,
+      'no-icon': noIcon,
+    }"
+    :href="href ? normalizeLink(href) : undefined"
+    :target="target ?? (isExternal ? '_blank' : undefined)"
+    :rel="rel ?? (isExternal ? 'noreferrer' : undefined)"
+  >
+    <slot />
+  </component>
+</template>
+
+<style scoped>
+.vp-external-link-icon::after {
+  color: var(--vp-c-text-3);
+}
+</style>
