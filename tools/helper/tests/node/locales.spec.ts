@@ -454,3 +454,81 @@ describe('getFullLocaleConfig() should generate locale', () => {
     })
   })
 })
+
+describe('getFullLocaleConfig() with string locale data', () => {
+  const stringLocaleInfo: DefaultLocaleInfo<string> = [
+    [['en'], 'Search: $content'],
+    [['en-US'], 'Search (US): $content'],
+    [['zh', 'zh-CN', 'zh-Hans'], '分类: $content'],
+    [['ja', 'ja-JP'], 'タグ: $content'],
+  ]
+
+  it('returns the resolved string for a known language', () => {
+    const app = createBuildApp({
+      locales: {
+        '/': { lang: 'zh-CN' },
+        '/en/': { lang: 'en-US' },
+        '/ja/': { lang: 'ja-JP' },
+      },
+      source: path.resolve(__dirname, './__fixtures__/src'),
+      bundler: {} as Bundler,
+      theme: emptyTheme,
+    })
+
+    const locales = getFullLocaleConfig({ app, default: stringLocaleInfo })
+
+    expect(locales).toStrictEqual({
+      '/': '分类: $content',
+      '/en/': 'Search (US): $content',
+      '/ja/': 'タグ: $content',
+    })
+    // The string must be kept as-is rather than being iterated into an object
+    expect(locales['/']).toBeTypeOf('string')
+  })
+
+  it('supports exact and short language fallback', () => {
+    const app = createBuildApp({
+      locales: {
+        '/': { lang: 'en-US' },
+        '/exact/': { lang: 'en-US' },
+        '/short/': { lang: 'en-CA' },
+      },
+      source: path.resolve(__dirname, './__fixtures__/src'),
+      bundler: {} as Bundler,
+      theme: emptyTheme,
+    })
+
+    expect(
+      getFullLocaleConfig({ app, default: stringLocaleInfo }),
+    ).toStrictEqual({
+      '/': 'Search (US): $content',
+      '/exact/': 'Search (US): $content',
+      '/short/': 'Search: $content',
+    })
+  })
+
+  it('prefers the user config and keeps other strings untouched', () => {
+    const app = createBuildApp({
+      locales: {
+        '/': { lang: 'zh-CN' },
+        '/en/': { lang: 'en-US' },
+        '/ja/': { lang: 'ja-JP' },
+      },
+      source: path.resolve(__dirname, './__fixtures__/src'),
+      bundler: {} as Bundler,
+      theme: emptyTheme,
+    })
+
+    expect(
+      getFullLocaleConfig({
+        app,
+        default: stringLocaleInfo,
+        config: { '/': '自定义: $content', '/ja/': '' },
+      }),
+    ).toStrictEqual({
+      '/': '自定义: $content',
+      '/en/': 'Search (US): $content',
+      '/ja/': '',
+    })
+  })
+})
