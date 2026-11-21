@@ -57,6 +57,23 @@ export interface TsdownOptions extends Omit<UserConfig, 'entry' | 'copy'> {
   neverBundle?: (string | RegExp)[]
 
   /**
+   * Packages to never bundle into the generated declarations
+   *
+   * They are imported by the `.d.ts` files instead of being inlined, which is
+   * required when the declarations reference the types of a dependency that
+   * cannot be bundled, e.g. `vite`, whose declarations import the CommonJS
+   * declarations of `postcss`.
+   *
+   * 永远不打包进生成的类型声明的包
+   *
+   * 它们会以导入的形式出现在 `.d.ts` 中，而不是被内联；当类型声明引用了无法被打包的依赖类型时必须这样做，例如 `vite` 的声明导入了
+   * `postcss` 的 CommonJS 声明。
+   *
+   * @default `[]`
+   */
+  dtsNeverBundle?: (string | RegExp)[]
+
+  /**
    * Treeshaking options
    *
    * 摇树选项
@@ -115,6 +132,7 @@ export const tsdownConfig = (
     platform = 'node',
     alwaysBundle = [],
     neverBundle = [],
+    dtsNeverBundle = [],
     onlyBundle = false,
     treeshake,
     moduleSideEffects,
@@ -137,6 +155,10 @@ export const tsdownConfig = (
             )
         : entryOptions
 
+  const dts = isolatedDeclarations
+    ? { compilerOptions: { isolatedDeclarations: true } }
+    : undefined
+
   return defineConfig({
     entry,
     format: 'esm',
@@ -150,6 +172,9 @@ export const tsdownConfig = (
     },
     deps: {
       alwaysBundle,
+      ...(dtsNeverBundle.length > 0
+        ? { dts: { neverBundle: dtsNeverBundle } }
+        : {}),
       neverBundle: [/^@internal\//u, /^@temp\//u, ...neverBundle],
       onlyBundle,
     },
@@ -181,15 +206,7 @@ export const tsdownConfig = (
     fixedExtension: false,
     logLevel: 'warn',
     publint,
-    ...(isolatedDeclarations
-      ? {
-          dts: {
-            compilerOptions: {
-              isolatedDeclarations: true,
-            },
-          },
-        }
-      : {}),
+    ...(dts ? { dts } : {}),
     ...rest,
   })
 }
