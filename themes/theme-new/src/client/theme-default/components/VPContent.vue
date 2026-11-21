@@ -1,0 +1,127 @@
+<script setup lang="ts">
+import { resolveDynamicComponent } from 'vue'
+
+import {
+  usePageIsNotFound,
+  useThemePageFrontmatter,
+} from '../../composables/page.js'
+import { useLayout } from '../composables/layout.js'
+import NotFound from '../NotFound.vue'
+import VPDoc from './VPDoc.vue'
+import VPHome from './VPHome.vue'
+import VPPage from './VPPage.vue'
+
+const pageIsNotFound = usePageIsNotFound()
+const frontmatter = useThemePageFrontmatter()
+const { isHome, hasSidebar } = useLayout()
+
+function isRegistered(component: string): boolean {
+  return typeof resolveDynamicComponent(component) !== 'string'
+}
+</script>
+
+<template>
+  <div
+    class="vp-content"
+    id="vp-content"
+    vp-content
+    :class="{ 'has-sidebar': hasSidebar, 'is-home': isHome }"
+  >
+    <slot name="not-found" v-if="pageIsNotFound"><NotFound /></slot>
+
+    <VPPage v-else-if="frontmatter.layout === 'page' && !isRegistered('page')">
+      <template #page-top><slot name="page-top" /></template>
+      <template #page-bottom><slot name="page-bottom" /></template>
+    </VPPage>
+
+    <VPHome v-else-if="frontmatter.layout === 'home' && !isRegistered('home')">
+      <template #home-hero-before><slot name="home-hero-before" /></template>
+      <template #home-hero-info-before
+        ><slot name="home-hero-info-before"
+      /></template>
+      <template #home-hero-info><slot name="home-hero-info" /></template>
+      <template #home-hero-info-after
+        ><slot name="home-hero-info-after"
+      /></template>
+      <template #home-hero-actions-after
+        ><slot name="home-hero-actions-after"
+      /></template>
+      <template #home-hero-actions-before-actions
+        ><slot name="home-hero-actions-before-actions"
+      /></template>
+      <template #home-hero-image><slot name="home-hero-image" /></template>
+      <template #home-hero-after><slot name="home-hero-after" /></template>
+      <template #home-features-before
+        ><slot name="home-features-before"
+      /></template>
+      <template #home-features-after
+        ><slot name="home-features-after"
+      /></template>
+    </VPHome>
+
+    <VPDoc
+      v-else-if="
+        (!frontmatter.layout || frontmatter.layout === 'doc') &&
+        !isRegistered('doc')
+      "
+    >
+      <template #doc-top><slot name="doc-top" /></template>
+      <template #doc-bottom><slot name="doc-bottom" /></template>
+
+      <template #doc-footer-before><slot name="doc-footer-before" /></template>
+      <template #doc-before><slot name="doc-before" /></template>
+      <template #doc-after><slot name="doc-after" /></template>
+
+      <template #aside-top><slot name="aside-top" /></template>
+      <template #aside-outline-before
+        ><slot name="aside-outline-before"
+      /></template>
+      <template #aside-outline-after
+        ><slot name="aside-outline-after"
+      /></template>
+      <template #aside-ads-before><slot name="aside-ads-before" /></template>
+      <template #aside-ads-after><slot name="aside-ads-after" /></template>
+      <template #aside-bottom><slot name="aside-bottom" /></template>
+    </VPDoc>
+
+    <component v-else :is="frontmatter.layout || 'doc'" />
+  </div>
+</template>
+
+<style scoped>
+.vp-content {
+  flex-grow: 1;
+  flex-shrink: 0;
+  width: 100%;
+  margin: var(--vp-layout-top-height, 0) auto 0;
+}
+
+.vp-content.is-home {
+  width: 100%;
+  max-width: 100%;
+}
+
+.vp-content.has-sidebar {
+  margin: 0;
+}
+
+@media (min-width: 60rem) {
+  .vp-content {
+    padding-top: var(--vp-nav-height);
+  }
+
+  .vp-content.has-sidebar {
+    margin: var(--vp-layout-top-height, 0) 0 0;
+    padding-inline-start: var(--vp-sidebar-width);
+  }
+}
+
+@media (min-width: 90rem) {
+  .vp-content.has-sidebar {
+    padding-inline: calc(
+        (100% - var(--vp-layout-max-width)) / 2 + var(--vp-sidebar-width)
+      )
+      calc((100% - var(--vp-layout-max-width)) / 2);
+  }
+}
+</style>

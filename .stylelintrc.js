@@ -49,5 +49,23 @@ export default defineHopeConfig({
         ],
       },
     },
+    {
+      // Layout styles ported from the VitePress default theme. They are kept
+      // close to upstream so they can be diffed and re-synced, so the stricter
+      // selector/number rules are relaxed for this layer.
+      files: ['themes/theme-new/src/client/theme-default/**'],
+      rules: {
+        'number-max-precision': null,
+        'selector-max-class': null,
+        'selector-max-compound-selectors': null,
+        'selector-max-attribute': null,
+        'no-duplicate-selectors': null,
+        'declaration-block-no-duplicate-properties': null,
+        'property-no-deprecated': null,
+        'layer-name-pattern': null,
+        'declaration-property-value-no-unknown': null,
+        'media-feature-range-notation': null,
+      },
+    },
   ],
 })

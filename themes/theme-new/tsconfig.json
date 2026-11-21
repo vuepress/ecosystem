@@ -1,0 +1,10 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "jsx": "preserve",
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+    "types": ["node", "vuepress/client-types", "vite/client"]
+  },
+  "include": ["**/*.ts", "**/*.vue", "*.config.ts"],
+  "exclude": ["dist", "node_modules"]
+}

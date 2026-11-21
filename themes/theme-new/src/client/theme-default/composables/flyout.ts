@@ -1,0 +1,61 @@
+import { onUnmounted, readonly, type TemplateRef, ref, watch } from 'vue'
+
+import { inBrowser } from '../../composables/env.js'
+
+interface UseFlyoutOptions {
+  el: TemplateRef<HTMLElement>
+  onFocus?(): void
+  onBlur?(): void
+}
+
+export const focusedElement = ref<HTMLElement>()
+
+let active = false
+let listeners = 0
+
+export function useFlyout(options: UseFlyoutOptions) {
+  const focus = ref(false)
+
+  if (inBrowser) {
+    if (!active) activateFocusTracking()
+
+    listeners++
+
+    const unwatch = watch(focusedElement, (el) => {
+      if (el === options.el.value || options.el.value?.contains(el!)) {
+        focus.value = true
+        options.onFocus?.()
+      } else {
+        focus.value = false
+        options.onBlur?.()
+      }
+    })
+
+    onUnmounted(() => {
+      unwatch()
+
+      listeners--
+
+      if (!listeners) {
+        deactivateFocusTracking()
+      }
+    })
+  }
+
+  return readonly(focus)
+}
+
+function activateFocusTracking() {
+  document.addEventListener('focusin', handleFocusIn)
+  active = true
+  focusedElement.value = document.activeElement as HTMLElement
+}
+
+function deactivateFocusTracking() {
+  document.removeEventListener('focusin', handleFocusIn)
+  active = false
+}
+
+function handleFocusIn() {
+  focusedElement.value = document.activeElement as HTMLElement
+}
