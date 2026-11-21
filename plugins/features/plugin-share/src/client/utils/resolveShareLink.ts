@@ -65,13 +65,47 @@ export const resolveShareLink = (
         ? encodeURIComponent(value)
         : value
 
-  return link.replaceAll(/\[(?<names>[^\]]+)\]/gu, (_, names: string) => {
-    for (const name of names.split('|')) {
-      const value = data[name.trim() as ShareServiceVariableName]
+  const parts: string[] = []
+  let index = 0
 
-      if (value) return stringify(value)
+  while (index < link.length) {
+    const start = link.indexOf('[', index)
+
+    if (start === -1) {
+      parts.push(link.slice(index))
+      break
     }
 
-    return ''
-  })
+    const end = link.indexOf(']', start + 1)
+
+    if (end === -1) {
+      parts.push(link.slice(index))
+      break
+    }
+
+    parts.push(link.slice(index, start))
+
+    const names = link.slice(start + 1, end)
+
+    if (names) {
+      let resolved: string | null = null
+
+      for (const name of names.split('|')) {
+        const value = data[name.trim() as ShareServiceVariableName]
+
+        if (value) {
+          resolved = stringify(value)
+          break
+        }
+      }
+
+      parts.push(resolved ?? '')
+    } else {
+      parts.push('[]')
+    }
+
+    index = end + 1
+  }
+
+  return parts.join('')
 }

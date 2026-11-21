@@ -65,6 +65,11 @@ describe('resolve share link', () => {
   it('should replace a missing variable with an empty string', () => {
     expect(resolveShareLink('[title]-[unknown]', {})).toBe('-')
   })
+
+  it('should keep brackets without a variable untouched', () => {
+    expect(resolveShareLink('[title', { title: 'Hello' })).toBe('[title')
+    expect(resolveShareLink('[]', {})).toBe('[]')
+  })
 })
 
 let Share: Component
