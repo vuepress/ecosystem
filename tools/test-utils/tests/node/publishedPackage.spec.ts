@@ -1,4 +1,4 @@
-import { existsSync, readdirSync, readFileSync } from 'node:fs'
+import { existsSync, readdirSync, readFileSync, statSync } from 'node:fs'
 import path from 'node:path'
 
 import type { Alias, Plugin } from 'vite'
@@ -29,6 +29,14 @@ const isBuilt =
 interface TestConfig {
   resolve?: { alias?: Alias[] }
   test?: { setupFiles?: string[] }
+}
+
+interface PackageManifest {
+  dependencies?: Record<string, string>
+  devDependencies?: Record<string, string>
+  optionalDependencies?: Record<string, string>
+  peerDependencies?: Record<string, string>
+  peerDependenciesMeta?: Record<string, { optional?: boolean }>
 }
 
 interface PublishedPackage {
@@ -152,6 +160,24 @@ const getDeclaredNames = (types: string): Set<string> => {
   return names
 }
 
+describe('package manifest', () => {
+  it('should declare vitest as a required dependency', () => {
+    const packageRoot = path.resolve(import.meta.dirname, '../..')
+    const manifest = JSON.parse(
+      readFileSync(path.join(packageRoot, 'package.json'), 'utf8'),
+    ) as PackageManifest
+
+    // A peer dependency makes the package resolve `vitest` from the tree of
+    // the consumer, so that a single instance runs the tests; the dev
+    // dependency is what the local build and tests resolve.
+    expect(manifest.peerDependencies?.vitest).toBeDefined()
+    expect(manifest.devDependencies?.vitest).toBeDefined()
+    expect(manifest.dependencies?.vitest).toBeUndefined()
+    expect(manifest.optionalDependencies?.vitest).toBeUndefined()
+    expect(manifest.peerDependenciesMeta?.vitest?.optional).not.toBe(true)
+  })
+})
+
 describe.skipIf(!isBuilt)('published package', () => {
   it('should declare every runtime export in the types', async () => {
     const runtimeExports = Object.keys(await loadPublishedPackage())
@@ -206,5 +232,22 @@ describe.skipIf(!isBuilt)('published package', () => {
     )
 
     expect(missingNames.flat()).toStrictEqual([])
+  })
+
+  it('should import vitest instead of bundling it', () => {
+    const entrySource = readFileSync(distIndex, 'utf8')
+    const typesSource = readFileSync(distTypes, 'utf8')
+
+    // `vitest` is a peer dependency, so both the entry and the declarations
+    // must import it instead of inlining the runtime and the type graph.
+    expect(entrySource).toMatch(/^import[^\n]*from\s*["']vitest["']/mu)
+    expect(typesSource).toMatch(/^import[^\n]*from\s*["']vitest["']/mu)
+    expect(entrySource).not.toContain('tinyspy')
+
+    // The package itself is tiny: the entry is a few kilobytes when vitest is
+    // external (281,930 bytes minified and 622,747 bytes otherwise when it was
+    // bundled), so these ceilings guard against inlining it again.
+    expect(statSync(distIndex).size).toBeLessThan(64_000)
+    expect(statSync(distTypes).size).toBeLessThan(64_000)
   })
 })

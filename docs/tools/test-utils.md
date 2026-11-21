@@ -13,7 +13,7 @@ Unit testing utilities for VuePress.
 ## Usage
 
 ```bash
-npm i -D @vuepress/test-utils@next @vue/test-utils happy-dom
+npm i -D @vuepress/test-utils@next @vue/test-utils happy-dom vitest
 ```
 
 ```ts title="vitest.config.ts"
