@@ -88,11 +88,11 @@ export interface GetLocaleConfigOption<
  *
  * 获取客户端的最终本地化配置
  *
- * The locale data can be a plain object or a primitive value such as a string.
- * Plain objects are deeply merged with the user config, while primitive values
- * are used as-is and the user config overrides them when present.
+ * The locale data can be a plain object or a string. Plain objects are deeply
+ * merged with the user config, while strings are used as-is and the user config
+ * overrides them when present.
  *
- * 本地化数据可以是普通对象，也可以是字符串等原始值。普通对象会与用户配置深度合并，而原始值会直接使用，存在用户配置时会覆盖它。
+ * 本地化数据可以是普通对象或字符串。普通对象会与用户配置深度合并，而字符串会直接使用，存在用户配置时会覆盖它。
  *
  * @param options - Configuration options / 配置选项
  * @returns Final locale config / 最终本地化配置
@@ -104,9 +104,7 @@ export const getFullLocaleConfig = <
   name,
   default: defaultLocaleData,
   config: userLocalesConfig = {},
-}: GetLocaleConfigOption<Locale>): ExactLocaleConfig<
-  Locale extends string ? string : Locale
-> => {
+}: GetLocaleConfigOption<Locale>): ExactLocaleConfig<Locale> => {
   const logger = new Logger(name)
   const localeInfo = getLocaleInfo(app, logger)
 
@@ -117,17 +115,16 @@ export const getFullLocaleConfig = <
         | Partial<Locale>
         | undefined
 
-      // Deep merging only applies to plain objects. Primitive locale data
-      // (e.g. a string template) is used as-is, otherwise `deepAssign` would
-      // iterate it and turn it into an object of its characters.
-      if (isPlainObject(defaultData) && isPlainObject(userData ?? {})) {
-        return [
-          localePath,
-          deepAssign({}, defaultData, userData ?? {}) as unknown as Locale,
-        ]
-      }
+      // Deep merging only applies to plain objects. String and other non-plain
+      // locale data is used as-is, otherwise `deepAssign` would iterate it and
+      // turn a string into an object of its characters.
+      if (
+        isPlainObject(defaultData) &&
+        (userData == null || isPlainObject(userData))
+      )
+        return [localePath, deepAssign({}, defaultData, userData ?? {})]
 
       return [localePath, (userData ?? defaultData) as Locale]
     }),
-  ) as ExactLocaleConfig<Locale extends string ? string : Locale>
+  ) as ExactLocaleConfig<Locale>
 }

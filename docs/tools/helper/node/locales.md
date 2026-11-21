@@ -22,17 +22,17 @@ export interface GetLocaleConfigOption<T extends LocaleDataValue> {
 
 export const getFullLocaleConfig: <T extends LocaleDataValue>(
   options: GetLocaleConfigOption<T>,
-) => ExactLocaleConfig<T extends string ? string : T>
+) => ExactLocaleConfig<T>
 ```
 
-`LocaleDataConfig<T>` is `Record<string, string>` when `T` is a string, and `Record<string, Partial<T>>` otherwise.
+Each value of `LocaleDataConfig<T>` is `Partial<T>`, which is `T` itself when `T` is a string, so a string locale is overridden with the full string.
 
 - The `app` parameter is the VuePress Node app instance.
 - The `default` parameter is the default locale info, where this should be an array of locale info settings.
 
   Each locale info setting should be a tuple with two elements:
   - The first element is an array of lang code that the locale info setting belongs to.
-  - The second element is the locale data, which can be a plain object or a primitive value such as a string.
+  - The second element is the locale data, which can be a plain object or a string.
 
   An example of `default` parameter:
 
@@ -61,7 +61,7 @@ export const getFullLocaleConfig: <T extends LocaleDataValue>(
 
 - The `config` parameter is the user locale config, which is optional.
 
-  It should be an object with localePath as key. For object locale data, the value is a partial locale info setting; for primitive locale data, the value is the full locale data.
+  It should be an object with localePath as key. For object locale data, the value is a partial locale info setting; for string locale data, the value is the full string.
 
   An example of `config` parameter:
 
@@ -84,7 +84,7 @@ export const getFullLocaleConfig: <T extends LocaleDataValue>(
 
 The function will automatically merge the default locale info and user locale config, and return the final locale config, where the user locale config will override the default locale info.
 
-When the locale data is a plain object, it is deeply merged with the user locale config. When it is a primitive value such as a string, it is returned as-is, and the user locale config value overrides it when present.
+When the locale data is a plain object, it is deeply merged with the user locale config. When it is a string, it is returned as-is, and the user locale config value overrides it when present.
 
 The default locale info will be chosen based on the current language of each locale in site config, and when a locale's lang code is not found in the default locale info, it will fallback to the first one of the following that exists:
 

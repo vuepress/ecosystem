@@ -22,17 +22,17 @@ export interface GetLocaleConfigOption<T extends LocaleDataValue> {
 
 export const getFullLocaleConfig: <T extends LocaleDataValue>(
   options: GetLocaleConfigOption<T>,
-) => ExactLocaleConfig<T extends string ? string : T>
+) => ExactLocaleConfig<T>
 ```
 
-`LocaleDataConfig<T>` 在 `T` 为字符串时是 `Record<string, string>`，否则是 `Record<string, Partial<T>>`。
+`LocaleDataConfig<T>` 的每个值都是 `Partial<T>`；当 `T` 为字符串时 `Partial<T>` 就是 `T`，因此字符串本地化数据会用完整字符串覆盖。
 
 - `app` 参数是 VuePress Node app 实例。
 - `default` 参数是默认的 locale 信息，应该是一个 locale 信息设置的数组。
 
   每个 locale 信息设置应该是一个包含两个元素的元组：
   - 第一个元素是 locale 信息设置所属的语言代码数组。
-  - 第二个元素是 locale 数据，可以是普通对象，也可以是字符串等原始值。
+  - 第二个元素是 locale 数据，可以是普通对象或字符串。
 
   `default` 参数的示例：
 
@@ -61,7 +61,7 @@ export const getFullLocaleConfig: <T extends LocaleDataValue>(
 
 - `config` 参数是用户 locale 配置，是可选的。
 
-  它应该是一个以 localePath 为键的对象。当 locale 数据是普通对象时，值应该是部分 locale 信息设置；当 locale 数据是原始值时，值应该是完整的 locale 数据。
+  它应该是一个以 localePath 为键的对象。当 locale 数据是普通对象时，值应该是部分 locale 信息设置；当 locale 数据是字符串时，值应该是完整的字符串。
 
   `config` 参数的示例：
 
@@ -84,7 +84,7 @@ export const getFullLocaleConfig: <T extends LocaleDataValue>(
 
 函数将自动合并默认的 locale 信息和用户 locale 配置，并返回最终的 locale 配置，其中用户 locale 配置将覆盖默认的 locale 信息。
 
-当 locale 数据是普通对象时，它会与用户 locale 配置深度合并；当它是字符串等原始值时，将按原样返回，存在用户配置时会被覆盖。
+当 locale 数据是普通对象时，它会与用户 locale 配置深度合并；当它是字符串时，将按原样返回，存在用户配置时会被覆盖。
 
 默认的 locale 信息将根据站点配置中每个 locale 的当前语言选择，当 locale 的语言代码在默认的 locale 信息中找不到时，它将回退到以下存在的第一个：
 
