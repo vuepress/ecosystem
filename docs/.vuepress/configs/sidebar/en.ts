@@ -132,6 +132,7 @@ export const sidebarEn: SidebarOptions = {
     'notice',
     'nprogress',
     'photo-swipe',
+    'share',
     'watermark',
   ],
 
