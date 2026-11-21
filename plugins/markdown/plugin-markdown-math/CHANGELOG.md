@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.0-rc.139](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.138...v2.0.0-rc.139) (2026-11-21)
+
+### 🐛 Bug Fixes
+
+- **plugin-markdown-math:** bump mathjax slim ([#1123](https://github.com/vuepress/ecosystem/issues/1123)) ([e7a7323](https://github.com/vuepress/ecosystem/commit/e7a732389868c635e08d49852ee85b8ccb9caeda))
+
+### Documentation
+
+- **plugin-markdown-math:** document preload option ([#1124](https://github.com/vuepress/ecosystem/issues/1124)) ([acbac5a](https://github.com/vuepress/ecosystem/commit/acbac5ad2b52868f4c27e3757549c4f8d3369935))
+
 ## [2.0.0-rc.138](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.137...v2.0.0-rc.138) (2026-11-13)
 
 ### ✨ Features

@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.0-rc.139](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.138...v2.0.0-rc.139) (2026-11-21)
+
+### 🐛 Bug Fixes
+
+- **helper:** support string locale data in getFullLocaleConfig ([#1105](https://github.com/vuepress/ecosystem/issues/1105)) ([7df5acc](https://github.com/vuepress/ecosystem/commit/7df5accbec6d32f59b33ffc4e0594e6afcd0aeac))
+
+### Code Refactoring
+
+- **helper:** simplify locale data types ([#1126](https://github.com/vuepress/ecosystem/issues/1126)) ([e9204c0](https://github.com/vuepress/ecosystem/commit/e9204c04f8ef3509b41ba0d929ba29b677c9ed96))
+
 ## [2.0.0-rc.138](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.137...v2.0.0-rc.138) (2026-11-13)
 
 ### ✨ Features

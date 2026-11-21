@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.0-rc.139](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.138...v2.0.0-rc.139) (2026-11-21)
+
+### 🐛 Bug Fixes
+
+- **theme-default:** make sidebar disclosures keyboard accessible ([#1116](https://github.com/vuepress/ecosystem/issues/1116)) ([b5f9204](https://github.com/vuepress/ecosystem/commit/b5f920499f9095386f8c3c175827f60f0000e824)), references [#1106](https://github.com/vuepress/ecosystem/issues/1106)
+
 ## [2.0.0-rc.138](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.137...v2.0.0-rc.138) (2026-11-13)
 
 ### ✨ Features

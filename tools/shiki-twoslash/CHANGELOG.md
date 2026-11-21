@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.0-rc.139](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.138...v2.0.0-rc.139) (2026-11-21)
+
+### Build System
+
+- bump deps ([#1120](https://github.com/vuepress/ecosystem/issues/1120)) ([4ec9a70](https://github.com/vuepress/ecosystem/commit/4ec9a7011bec2a534af16a94052700245dae856c))
+
 ## [2.0.0-rc.138](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.137...v2.0.0-rc.138) (2026-11-13)
 
 ### 🐛 Bug Fixes

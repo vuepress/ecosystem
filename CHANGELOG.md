@@ -2,6 +2,53 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.0-rc.139](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.138...v2.0.0-rc.139) (2026-11-21)
+
+### ✨ Features
+
+- **plugin-markdown-stylize:** add window container ([#1121](https://github.com/vuepress/ecosystem/issues/1121)) ([47d89e2](https://github.com/vuepress/ecosystem/commit/47d89e250a3823532b52b37e0fc2b2ef877c8208))
+
+### 🐛 Bug Fixes
+
+- **deps:** update dependency @videojs/html to v10.4.0 ([#1080](https://github.com/vuepress/ecosystem/issues/1080)) ([c682324](https://github.com/vuepress/ecosystem/commit/c682324332bcc093b5716fa3592d41051c0e4512))
+- **deps:** update dependency @videojs/html to v10.5.0 ([#1117](https://github.com/vuepress/ecosystem/issues/1117)) ([95753c1](https://github.com/vuepress/ecosystem/commit/95753c143f9ccf52b237701344b88ed4076f7622))
+- **helper:** support string locale data in getFullLocaleConfig ([#1105](https://github.com/vuepress/ecosystem/issues/1105)) ([7df5acc](https://github.com/vuepress/ecosystem/commit/7df5accbec6d32f59b33ffc4e0594e6afcd0aeac))
+- **plugin-markdown-math:** bump mathjax slim ([#1123](https://github.com/vuepress/ecosystem/issues/1123)) ([e7a7323](https://github.com/vuepress/ecosystem/commit/e7a732389868c635e08d49852ee85b8ccb9caeda))
+- **theme-default:** make sidebar disclosures keyboard accessible ([#1116](https://github.com/vuepress/ecosystem/issues/1116)) ([b5f9204](https://github.com/vuepress/ecosystem/commit/b5f920499f9095386f8c3c175827f60f0000e824)), references [#1106](https://github.com/vuepress/ecosystem/issues/1106)
+
+### Documentation
+
+- **plugin-markdown-math:** document preload option ([#1124](https://github.com/vuepress/ecosystem/issues/1124)) ([acbac5a](https://github.com/vuepress/ecosystem/commit/acbac5ad2b52868f4c27e3757549c4f8d3369935))
+
+### Miscellaneous Chores
+
+- **deps:** pin vulnerable transitive deps ([#1104](https://github.com/vuepress/ecosystem/issues/1104)) ([03bbff7](https://github.com/vuepress/ecosystem/commit/03bbff7446c1cb98877cad7bed13bba3a918358e))
+- **deps:** update dependency @iconify-json/lucide to v1.2.154 ([#870](https://github.com/vuepress/ecosystem/issues/870)) ([b63dcf4](https://github.com/vuepress/ecosystem/commit/b63dcf4a536ae75a5a10f56d439954a4aa6662b6))
+- **deps:** update dependency @iconify-json/lucide to v1.2.155 ([#1112](https://github.com/vuepress/ecosystem/issues/1112)) ([c404223](https://github.com/vuepress/ecosystem/commit/c404223373e50e8a08dec5a439d0a44fac0fb5fd))
+- **deps:** update dependency @iconify-json/lucide to v1.2.156 ([#1118](https://github.com/vuepress/ecosystem/issues/1118)) ([b71c095](https://github.com/vuepress/ecosystem/commit/b71c095f5eff833336670e7234f3ba5d731113fa))
+- **deps:** update dependency @iconify-json/lucide to v1.2.157 ([#1122](https://github.com/vuepress/ecosystem/issues/1122)) ([f8e3c36](https://github.com/vuepress/ecosystem/commit/f8e3c36d7fbd6e94f77b231dcd1b54486dc7e41f))
+- **deps:** update dependency @playwright/test to v1.65.1 ([#1083](https://github.com/vuepress/ecosystem/issues/1083)) ([bce6780](https://github.com/vuepress/ecosystem/commit/bce67806b1a031c52bcf72a76ceec6757d3d0c20))
+- **deps:** update dependency @vitejs/plugin-vue to v6.0.11 ([#1103](https://github.com/vuepress/ecosystem/issues/1103)) ([c7185fc](https://github.com/vuepress/ecosystem/commit/c7185fc4ba40be1c91298c7e66a524e2e29a7784))
+- **deps:** update dependency @vue/test-utils to v2.6.0 ([#1113](https://github.com/vuepress/ecosystem/issues/1113)) ([b2d8de9](https://github.com/vuepress/ecosystem/commit/b2d8de97a063bbded743a3d894599c19946913b8))
+- **deps:** update dependency algoliasearch to v5.65.0 ([#1068](https://github.com/vuepress/ecosystem/issues/1068)) ([b76874d](https://github.com/vuepress/ecosystem/commit/b76874df57ca4ddc3b066797e147a9fbe0361e3a))
+- **deps:** update dependency oxfmt to ^0.79.0 ([#1093](https://github.com/vuepress/ecosystem/issues/1093)) ([f66ab8d](https://github.com/vuepress/ecosystem/commit/f66ab8dfba0f1b9bce06ba52ac18bb3c3872342a))
+- **deps:** update dependency oxlint to v1.94.0 ([#1094](https://github.com/vuepress/ecosystem/issues/1094)) ([27f8c06](https://github.com/vuepress/ecosystem/commit/27f8c06409725466b3507b96c4726e71fc365c95))
+- **deps:** update dependency oxlint-tsgolint to v7.0.2007 ([#1032](https://github.com/vuepress/ecosystem/issues/1032)) ([68d40d9](https://github.com/vuepress/ecosystem/commit/68d40d9583575c8fbe782c5c6f8a24de2939311a))
+- **deps:** update dependency postcss-html to v2.0.1 ([#1114](https://github.com/vuepress/ecosystem/issues/1114)) ([8667d75](https://github.com/vuepress/ecosystem/commit/8667d75af2e6c35e3c73c718b23c09ce5b617398))
+- **deps:** update dependency webpack to v5.113.0 ([#1125](https://github.com/vuepress/ecosystem/issues/1125)) ([6265ec2](https://github.com/vuepress/ecosystem/commit/6265ec22a3d33f299d7c561656f4953dbbafc73f))
+- **deps:** update lerna-lite monorepo to v5.9.0 ([#1115](https://github.com/vuepress/ecosystem/issues/1115)) ([3c71f7f](https://github.com/vuepress/ecosystem/commit/3c71f7fd8d831c13a425972eaf05683e6f8241d0))
+- **deps:** update lockfile ([#766](https://github.com/vuepress/ecosystem/issues/766)) ([3f0d679](https://github.com/vuepress/ecosystem/commit/3f0d67948f2195c1f4b82615a1cf58379f25f285))
+- **deps:** update pnpm to v12.21.0 ([#1066](https://github.com/vuepress/ecosystem/issues/1066)) ([2ab043c](https://github.com/vuepress/ecosystem/commit/2ab043c6a024324f85ff746400f92b1eb1c2c62c))
+- **deps:** update vitest monorepo to v5.1.1 ([#1119](https://github.com/vuepress/ecosystem/issues/1119)) ([44b7646](https://github.com/vuepress/ecosystem/commit/44b76461f34d2b2cc9c2b2325979e4be9ea58fd2))
+
+### Code Refactoring
+
+- **helper:** simplify locale data types ([#1126](https://github.com/vuepress/ecosystem/issues/1126)) ([e9204c0](https://github.com/vuepress/ecosystem/commit/e9204c04f8ef3509b41ba0d929ba29b677c9ed96))
+
+### Build System
+
+- bump deps ([#1120](https://github.com/vuepress/ecosystem/issues/1120)) ([4ec9a70](https://github.com/vuepress/ecosystem/commit/4ec9a7011bec2a534af16a94052700245dae856c))
+
 ## [2.0.0-rc.138](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.137...v2.0.0-rc.138) (2026-11-13)
 
 ### ⚠ BREAKING CHANGES
