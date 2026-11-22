@@ -116,8 +116,6 @@ watch(
     opacity: 1;
     visibility: visible;
 
-    transition: background-color var(--vp-t-color);
-
     transform: translateX(0);
   }
 }

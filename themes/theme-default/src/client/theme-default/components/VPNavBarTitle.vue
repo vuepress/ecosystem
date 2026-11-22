@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useThemeLocaleData } from '@vuepress/plugin-theme-data/client'
 import { computed } from 'vue'
-import { useSiteLocaleData } from 'vuepress/client'
+import { RouteLink, useSiteLocaleData } from 'vuepress/client'
 
 import { useLangs } from '../composables/useLangs.js'
 import { useLayout } from '../composables/useLayout.js'
@@ -18,6 +18,16 @@ const link = computed(() =>
   typeof theme.value.logoLink === 'string'
     ? theme.value.logoLink
     : theme.value.logoLink?.link,
+)
+
+/**
+ * Whether the title links to another page of the current site, so that the
+ * client router handles it instead of reloading the page
+ *
+ * 标题是否链接到站内页面，此时由客户端路由处理而不是刷新页面
+ */
+const isInternalRoute = computed(
+  () => !link.value || !/^[a-z][a-z+.-]*:/iu.test(link.value),
 )
 
 const rel = computed(() =>
@@ -57,9 +67,22 @@ const textTitle = computed(() => {
 
 <template>
   <div class="vp-navbar-title" :class="{ 'has-sidebar': hasSidebar }">
-    <a
+    <RouteLink
+      v-if="isInternalRoute"
       class="title"
-      :href="link ?? normalizeLink(currentLang.link)"
+      :to="link ?? currentLang.link"
+      :title="textTitle"
+    >
+      <slot name="nav-bar-title-before" />
+      <VPImage v-if="theme.logo" class="logo" :image="theme.logo" />
+      <span v-if="theme.siteTitle" dir="auto" v-html="theme.siteTitle"></span>
+      <span v-else-if="theme.siteTitle === undefined">{{ site.title }}</span>
+      <slot name="nav-bar-title-after" />
+    </RouteLink>
+    <a
+      v-else
+      class="title"
+      :href="normalizeLink(link ?? currentLang.link)"
       :rel
       :target
       :title="textTitle"

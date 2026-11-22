@@ -20,6 +20,37 @@ export const themeDarkModeSymbol: InjectionKey<WritableComputedRef<boolean>> =
 export const COLOR_MODE_STORAGE_KEY = 'vuepress-color-scheme'
 
 /**
+ * The class that enables the color transition of the theme
+ *
+ * 启用主题颜色过渡的类名
+ */
+const THEME_TRANSITION_CLASS = 'vp-theme-transition'
+
+/**
+ * The duration of the color transition in milliseconds
+ *
+ * 颜色过渡的持续时间（毫秒）
+ */
+const THEME_TRANSITION_DURATION = 300
+
+let transitionTimer: ReturnType<typeof setTimeout> | undefined
+
+/**
+ * Enable the color transition for the duration of the appearance switch
+ *
+ * 在切换外观期间启用颜色过渡
+ */
+const startThemeTransition = (): void => {
+  const { classList } = document.documentElement
+
+  classList.add(THEME_TRANSITION_CLASS)
+  clearTimeout(transitionTimer)
+  transitionTimer = setTimeout(() => {
+    classList.remove(THEME_TRANSITION_CLASS)
+  }, THEME_TRANSITION_DURATION)
+}
+
+/**
  * Resolve whether the appearance option is fixed, which disables the switch
  *
  * 判断外观配置是否为固定值（此时禁用切换）
@@ -68,6 +99,8 @@ export const createDarkModeRef = (
     },
     set(value: boolean) {
       if (isFixedAppearance(appearance)) return
+
+      startThemeTransition()
 
       darkStorage.value =
         value === isDarkPreferred.value ? 'auto' : value ? 'dark' : 'light'

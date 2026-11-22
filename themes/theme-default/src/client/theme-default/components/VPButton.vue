@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue'
+import { RouteLink } from 'vuepress/client'
 
 import { EXTERNAL_URL_RE } from '../shared.js'
 import { normalizeLink } from '../support/utils.js'
@@ -19,17 +20,36 @@ const props = withDefaults(defineProps<Props>(), {
 })
 
 const isExternal = computed(
-  () => props.href && EXTERNAL_URL_RE.test(props.href),
+  () => !!props.href && EXTERNAL_URL_RE.test(props.href),
 )
 
 const component = computed(() => {
   return props.tag || (props.href ? 'a' : 'button')
 })
+
+/**
+ * Whether the button links to another page of the current site, so that the
+ * client router handles it instead of reloading the page
+ *
+ * 按钮是否链接到站内页面，此时由客户端路由处理而不是刷新页面
+ */
+const isInternalRoute = computed(
+  () => !!props.href && component.value === 'a' && !isExternal.value,
+)
 </script>
 
 <template>
+  <RouteLink
+    v-if="isInternalRoute"
+    class="vp-button no-icon"
+    :class="[size, theme]"
+    :to="href!"
+  >
+    <slot>{{ text }}</slot>
+  </RouteLink>
   <component
     :is="component"
+    v-else
     class="vp-button no-icon"
     :class="[size, theme]"
     :href="href ? normalizeLink(href) : undefined"
