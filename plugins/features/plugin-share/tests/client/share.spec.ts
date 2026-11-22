@@ -141,7 +141,7 @@ describe('share component', () => {
     expect(
       buttons.map((button) => button.attributes('aria-label')),
     ).toStrictEqual([
-      'twitter',
+      'X',
       'facebook',
       'reddit',
       'telegram',
@@ -174,6 +174,7 @@ describe('share component', () => {
       services: [
         {
           name: 'custom',
+          label: 'Mastodon',
           link: 'https://example.com/share?url=[url]',
           shape: '<svg></svg>',
         },
@@ -182,7 +183,7 @@ describe('share component', () => {
 
     expect(wrapper.findAll('.vp-share-button')).toHaveLength(1)
     expect(wrapper.find('.vp-share-button').attributes('aria-label')).toBe(
-      'custom',
+      'Mastodon',
     )
   })
 
@@ -217,6 +218,7 @@ describe('share component', () => {
     await wrapper.find('.vp-share-button').trigger('click')
 
     expect(open).toHaveBeenCalledTimes(1)
+    expect(open.mock.calls[0][0]).toMatch(/^https:\/\/x\.com\/intent\/tweet\?/u)
     expect(open.mock.calls[0][0]).toContain('text=Hello')
     expect(open.mock.calls[0][0]).toContain('hashtags=vue,vuepress')
 

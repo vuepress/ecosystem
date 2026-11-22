@@ -8,7 +8,7 @@ import type { ShareServiceOptions } from '../../src/shared/index.js'
 describe('share services', () => {
   it('should use the default services', () => {
     expect(getShareServices().map(({ name }) => name)).toStrictEqual([
-      'twitter',
+      'x',
       'facebook',
       'reddit',
       'telegram',
@@ -26,14 +26,16 @@ describe('share services', () => {
     expect(services[0].shape).toContain('<svg')
   })
 
-  it('should add the twitter user name as the via parameter', () => {
-    const [twitter] = getShareServices({
-      services: ['twitter'],
-      twitterUserName: 'vuepress',
+  it('should add the X user name as the via parameter', () => {
+    const [service] = getShareServices({
+      services: ['x'],
+      xUserName: 'vuepress',
     })
 
-    expect(twitter.link).toContain('via=vuepress')
-    expect(twitter.link).not.toContain('[twitter-user]')
+    expect(service.label).toBe('X')
+    expect(service.link).toContain('https://x.com/intent/tweet')
+    expect(service.link).toContain('via=vuepress')
+    expect(service.link).not.toContain('[x-user]')
   })
 
   it('should keep a valid custom service and ignore an invalid one', () => {
@@ -63,7 +65,7 @@ describe('share plugin', () => {
 
       expect(defines.__SHARE_DEFAULT_SERVICES__).toStrictEqual(['qq'])
       expect(services).toHaveLength(24)
-      expect(services.map(({ name }) => name)).toContain('twitter')
+      expect(services.map(({ name }) => name)).toContain('x')
       expect(services.every(({ name }) => typeof name === 'string')).toBe(true)
     } finally {
       app.cleanup()

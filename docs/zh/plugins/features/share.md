@@ -36,7 +36,7 @@ export default {
 
 ### 分享服务
 
-默认情况下，插件会显示 Twitter、Facebook、Reddit、Telegram、WhatsApp 和邮件的分享按钮。
+默认情况下，插件会显示 X（原 Twitter）、Facebook、Reddit、Telegram、WhatsApp 和邮件的分享按钮。
 
 你可以通过 `services` 属性选择页面上显示的按钮。它接受逗号分隔的字符串或服务名称数组：
 
@@ -50,18 +50,18 @@ export default {
 
 | 名称        | 平台      | 名称        | 平台      |
 | ----------- | --------- | ----------- | --------- |
-| `buffer`    | Buffer    | `qq`        | QQ        |
-| `douban`    | 豆瓣      | `qrcode`    | 二维码    |
-| `email`     | 邮件      | `qzone`     | QQ 空间   |
-| `evernote`  | Evernote  | `reddit`    | Reddit    |
-| `facebook`  | Facebook  | `skype`     | Skype     |
-| `flipboard` | Flipboard | `sms`       | 短信      |
-| `line`      | LINE      | `snapchat`  | Snapchat  |
-| `linkedin`  | LinkedIn  | `telegram`  | Telegram  |
-| `messenger` | Messenger | `tumblr`    | Tumblr    |
-| `pinterest` | Pinterest | `twitter`   | Twitter   |
-| `vk`        | VK        | `weibo`     | 微博      |
-| `whatsapp`  | WhatsApp  | `wordpress` | WordPress |
+| `buffer`    | Buffer    | `douban`    | 豆瓣      |
+| `email`     | 邮件      | `evernote`  | Evernote  |
+| `facebook`  | Facebook  | `flipboard` | Flipboard |
+| `line`      | LINE      | `linkedin`  | LinkedIn  |
+| `messenger` | Messenger | `pinterest` | Pinterest |
+| `qq`        | QQ        | `qrcode`    | 二维码    |
+| `qzone`     | QQ 空间   | `reddit`    | Reddit    |
+| `skype`     | Skype     | `sms`       | 短信      |
+| `snapchat`  | Snapchat  | `telegram`  | Telegram  |
+| `tumblr`    | Tumblr    | `vk`        | VK        |
+| `weibo`     | 微博      | `whatsapp`  | WhatsApp  |
+| `wordpress` | WordPress | `x`         | X         |
 
 所有内置服务都可被组件使用。`services` 选项只决定默认显示哪些按钮，因此无需在插件选项中列出 `qq` 也可以使用 `<Share services="qq" />`。
 
@@ -76,7 +76,7 @@ export default {
   plugins: [
     sharePlugin({
       services: [
-        'twitter',
+        'x',
         {
           name: 'mastodon',
           link: 'https://mastodon.social/share?text=[title]&url=[url]',
@@ -89,8 +89,9 @@ export default {
 }
 ```
 
-自定义服务需要提供 `name`、`link` 和 `shape`，还支持 `color`、`icon` 与 `action`：
+自定义服务需要提供 `name`、`link` 和 `shape`，还支持 `label`、`color`、`icon` 与 `action`：
 
+- `label` 覆盖按钮的无障碍标签和提示，默认使用 `name`。
 - `shape` 是纯色图标，可以是 SVG 字符串、图片链接或字体图标类名。
 - `color` 是彩色图标的背景色。
 - `icon` 会覆盖启用 `colorful` 时使用的图标。
@@ -99,7 +100,7 @@ export default {
 只有插件选项中提供的自定义服务才会被客户端知晓。要按名称显示它们，请在 `services` 属性中传入名称：
 
 ```md
-<Share services="twitter,mastodon" />
+<Share services="x,mastodon" />
 ```
 
 ### 分享数据
@@ -170,13 +171,13 @@ cover: /images/cover.png
 
 默认显示的分享服务。内置服务通过名称选择，自定义服务通过对象提供。
 
-默认为 `twitter`、`facebook`、`reddit`、`telegram`、`whatsapp` 和 `email`。
+默认为 `x`、`facebook`、`reddit`、`telegram`、`whatsapp` 和 `email`。
 
 参考：[分享服务](#分享服务)与[自定义服务](#自定义服务)。
 
-@`twitterUserName` type=string
+@`xUserName` type=string
 
-Twitter 用户名，用于 Twitter 分享链接的 `via` 参数。
+X 用户名，用于内置 `x` 服务的 `via` 参数。
 :::
 
 ## 组件属性

@@ -10,7 +10,7 @@ test.describe('plugin-share', () => {
     await expect(groups.nth(0).locator('.vp-share-button')).toHaveCount(6)
     await expect(
       groups.nth(0).locator('.vp-share-button').nth(0),
-    ).toHaveAttribute('aria-label', 'twitter')
+    ).toHaveAttribute('aria-label', 'X')
     await expect(groups.nth(1).locator('.vp-share-button')).toHaveCount(2)
     await expect(groups.nth(2).locator('.vp-share-icon.colorful')).toHaveCount(
       6,

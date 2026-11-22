@@ -24,11 +24,11 @@ import { sms } from './sms.js'
 import { snapchat } from './snapchat.js'
 import { telegram } from './telegram.js'
 import { tumblr } from './tumblr.js'
-import { twitter } from './twitter.js'
 import { vk } from './vk.js'
 import { weibo } from './weibo.js'
 import { whatsapp } from './whatsapp.js'
 import { wordpress } from './wordpress.js'
+import { x } from './x.js'
 
 /**
  * Configurations of all built-in share services
@@ -55,11 +55,11 @@ export const SHARE_CONFIG: Record<BuiltInShareService, ShareServiceConfig> = {
   snapchat,
   telegram,
   tumblr,
-  twitter,
   vk,
   weibo,
   whatsapp,
   wordpress,
+  x,
 }
 
 /**

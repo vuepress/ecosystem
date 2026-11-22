@@ -13,7 +13,7 @@ import { AVAILABLE_SERVICES, SHARE_CONFIG } from './config.js'
  * 默认分享服务
  */
 export const DEFAULT_SHARE_SERVICES: ShareService[] = [
-  'twitter',
+  'x',
   'facebook',
   'reddit',
   'telegram',
@@ -43,13 +43,13 @@ export const getShareServices = (
 
   for (const service of services) {
     if (isString(service)) {
-      if (service === 'twitter') {
+      if (service === 'x') {
         result.push({
           name: service,
-          ...SHARE_CONFIG.twitter,
-          link: SHARE_CONFIG.twitter.link.replaceAll(
-            '[twitter-user]',
-            options.twitterUserName ?? '',
+          ...SHARE_CONFIG.x,
+          link: SHARE_CONFIG.x.link.replaceAll(
+            '[x-user]',
+            options.xUserName ?? '',
           ),
         })
       } else if (AVAILABLE_SERVICES.includes(service)) {

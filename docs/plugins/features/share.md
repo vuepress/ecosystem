@@ -36,7 +36,7 @@ The plugin registers a global `Share` component. Add it to any page:
 
 ### Share Services
 
-By default, the plugin renders buttons for Twitter, Facebook, Reddit, Telegram, WhatsApp, and email.
+By default, the plugin renders buttons for X (formerly Twitter), Facebook, Reddit, Telegram, WhatsApp, and email.
 
 You can choose the buttons to display on a page with the `services` prop. It accepts a comma separated string or an array of service names:
 
@@ -50,18 +50,18 @@ The following built-in services are available:
 
 | Name        | Platform  | Name        | Platform  |
 | ----------- | --------- | ----------- | --------- |
-| `buffer`    | Buffer    | `qq`        | QQ        |
-| `douban`    | Douban    | `qrcode`    | QR code   |
-| `email`     | Email     | `qzone`     | Qzone     |
-| `evernote`  | Evernote  | `reddit`    | Reddit    |
-| `facebook`  | Facebook  | `skype`     | Skype     |
-| `flipboard` | Flipboard | `sms`       | SMS       |
-| `line`      | LINE      | `snapchat`  | Snapchat  |
-| `linkedin`  | LinkedIn  | `telegram`  | Telegram  |
-| `messenger` | Messenger | `tumblr`    | Tumblr    |
-| `pinterest` | Pinterest | `twitter`   | Twitter   |
-| `vk`        | VK        | `weibo`     | Weibo     |
-| `whatsapp`  | WhatsApp  | `wordpress` | WordPress |
+| `buffer`    | Buffer    | `douban`    | Douban    |
+| `email`     | Email     | `evernote`  | Evernote  |
+| `facebook`  | Facebook  | `flipboard` | Flipboard |
+| `line`      | LINE      | `linkedin`  | LinkedIn  |
+| `messenger` | Messenger | `pinterest` | Pinterest |
+| `qq`        | QQ        | `qrcode`    | QR code   |
+| `qzone`     | Qzone     | `reddit`    | Reddit    |
+| `skype`     | Skype     | `sms`       | SMS       |
+| `snapchat`  | Snapchat  | `telegram`  | Telegram  |
+| `tumblr`    | Tumblr    | `vk`        | VK        |
+| `weibo`     | Weibo     | `whatsapp`  | WhatsApp  |
+| `wordpress` | WordPress | `x`         | X         |
 
 Every built-in service is available to the component. The `services` option only decides which buttons are displayed by default, so `<Share services="qq" />` works without listing `qq` in the plugin options.
 
@@ -76,7 +76,7 @@ export default {
   plugins: [
     sharePlugin({
       services: [
-        'twitter',
+        'x',
         {
           name: 'mastodon',
           link: 'https://mastodon.social/share?text=[title]&url=[url]',
@@ -89,8 +89,9 @@ export default {
 }
 ```
 
-A custom service requires `name`, `link`, and `shape`. It also supports `color`, `icon`, and `action`:
+A custom service requires `name`, `link`, and `shape`. It also supports `label`, `color`, `icon`, and `action`:
 
+- `label` overrides the accessible label and tooltip of the button, which default to `name`.
 - `shape` is the plain icon. It can be an SVG string, an image URL, or a font icon class.
 - `color` is the background color used by the colorful icon.
 - `icon` overrides the icon used when `colorful` is enabled.
@@ -99,7 +100,7 @@ A custom service requires `name`, `link`, and `shape`. It also supports `color`,
 Custom services are only known to the client when they are provided in the plugin options. To display them by name, pass their names in the `services` prop:
 
 ```md
-<Share services="twitter,mastodon" />
+<Share services="x,mastodon" />
 ```
 
 ### Share Data
@@ -170,13 +171,13 @@ Use `inline` to remove the vertical margin, which is useful when the buttons are
 
 Services to display by default. Built-in services are selected by name, and a custom service is provided as an object.
 
-Defaults to `twitter`, `facebook`, `reddit`, `telegram`, `whatsapp`, and `email`.
+Defaults to `x`, `facebook`, `reddit`, `telegram`, `whatsapp`, and `email`.
 
 See also: [Share Services](#share-services) and [Custom Services](#custom-services).
 
-@`twitterUserName` type=string
+@`xUserName` type=string
 
-Twitter username used by the `via` parameter of the Twitter share link.
+X username used by the `via` parameter of the built-in `x` service.
 :::
 
 ## Component Props

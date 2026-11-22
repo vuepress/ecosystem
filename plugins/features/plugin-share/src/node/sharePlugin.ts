@@ -32,7 +32,7 @@ const getAllShareServices = (
 
   for (const service of getShareServices({
     services: AVAILABLE_SERVICES,
-    twitterUserName: options.twitterUserName,
+    xUserName: options.xUserName,
   }))
     services.set(service.name, service)
 
@@ -58,7 +58,7 @@ const getAllShareServices = (
  *   export default {
  *     plugins: [
  *       sharePlugin({
- *         services: ['twitter', 'qq', 'weibo'],
+ *         services: ['x', 'qq', 'weibo'],
  *       }),
  *     ],
  *   }
