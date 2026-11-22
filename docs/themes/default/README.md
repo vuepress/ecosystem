@@ -93,12 +93,18 @@ The theme enables a set of ecosystem plugins, each of which can be configured or
 | `@vuepress/plugin-medium-zoom`         | Enabled                                  |
 | `@vuepress/plugin-icon`                | Enabled (`assets: 'iconify'`)            |
 | `@vuepress/plugin-active-header-links` | Enabled                                  |
+| `@vuepress/plugin-back-to-top`         | Enabled                                  |
+| `@vuepress/plugin-links-check`         | Enabled                                  |
+| `@vuepress/plugin-seo`                 | Enabled when `hostname` is configured    |
+| `@vuepress/plugin-sitemap`             | Enabled when `hostname` is configured    |
 | `@vuepress/plugin-markdown-hint`       | Enabled                                  |
 | `@vuepress/plugin-markdown-tab`        | Enabled (code tabs)                      |
 | `@vuepress/plugin-markdown-ext`        | Enabled (`v-pre`)                        |
 | `@vuepress/plugin-markdown-raw`        | Enabled (`raw`, style isolation)         |
 
 Search is not bundled: install one of the search plugins and the navbar will mount its search box automatically.
+
+The theme registers `userStyle: '.vuepress/styles/index.css'`, so custom styles (including CSS variables) can be written there instead of the Sass palette of `@vuepress/theme-classic`.
 
 ## API
 

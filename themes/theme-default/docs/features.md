@@ -109,6 +109,10 @@
 | 最后更新时间      | `@vuepress/plugin-git`                                                                                                        | 启用，只取更新时间；贡献者由主题渲染                |
 | 主题数据          | `@vuepress/plugin-theme-data`                                                                                                 | 启用                                                |
 | 当前标题高亮      | `@vuepress/plugin-active-header-links`                                                                                        | 启用                                                |
+| 返回顶部          | `@vuepress/plugin-back-to-top`                                                                                                | 启用，文案由插件 locales（`backToTop`）提供         |
+| 链接检查          | `@vuepress/plugin-links-check`                                                                                                | 启用                                                |
+| SEO               | `@vuepress/plugin-seo`                                                                                                        | 配置 `hostname` 后启用                              |
+| 站点地图          | `@vuepress/plugin-sitemap`                                                                                                    | 配置 `hostname` 后启用                              |
 | Markdown 提示容器 | `@vuepress/plugin-markdown-hint`                                                                                              | 启用                                                |
 | Markdown Tab      | `@vuepress/plugin-markdown-tab`                                                                                               | 启用代码组                                          |
 
@@ -120,6 +124,7 @@
 
 ```ts
 themeDefault({
+  hostname: 'https://example.com',
   themePlugins: {
     icon: { offline: true, scan: {} },
     mediumZoom: false,
@@ -127,6 +132,10 @@ themeDefault({
   },
 })
 ```
+
+`hostname` 写入后主题会自动接线 SEO 与站点地图插件；不需要时把 `themePlugins.seo` / `themePlugins.sitemap` 设为 `false`。
+
+站点样式覆盖走主题注册的 `userStyle: '.vuepress/styles/index.css'`：把 CSS 自定义属性或样式写在该文件即可（等价于 classic 的 `palettePlugin` / `userStyle` 用法）。
 
 ## 公共 API
 

@@ -12,11 +12,11 @@ This page maps "option → equivalent → no equivalent". The field names do not
 
 ### General
 
-| classic (`@vuepress/theme-classic`) | `@vuepress/theme-default` equivalent | Note                                                                                                                               |
-| ----------------------------------- | ------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------- |
-| `hostname`                          | None                                 | classic uses it to register `plugin-seo` and `plugin-sitemap` automatically; register these plugins in the site `plugins` instead  |
-| `themePlugins`                      | `themePlugins`                       | Every entry can be disabled with `false`; entries with options accept an object (`activeHeaderLinks` and `nprogress` are booleans) |
-| `locales`                           | `locales` (different keys)           | classic keys are route paths (`/`, `/zh/`); use VitePress-style keys (`root`, `zh`), which are converted to route paths internally |
+| classic (`@vuepress/theme-classic`) | `@vuepress/theme-default` equivalent | Note                                                                                                                                 |
+| ----------------------------------- | ------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------ |
+| `hostname`                          | `hostname`                           | Same: the theme wires `plugin-seo` and `plugin-sitemap` automatically, disable them with `themePlugins.seo` / `themePlugins.sitemap` |
+| `themePlugins`                      | `themePlugins`                       | Every entry can be disabled with `false`; entries with options accept an object (`activeHeaderLinks` and `nprogress` are booleans)   |
+| `locales`                           | `locales` (different keys)           | classic keys are route paths (`/`, `/zh/`); use VitePress-style keys (`root`, `zh`), which are converted to route paths internally   |
 
 ### Color mode
 
@@ -56,30 +56,32 @@ New capabilities: `socialLinks`, `extraMenuLabel`, `skipToContentLabel`, `return
 | `themePlugins: { nprogress: false, mediumZoom: false }`                                               | Same                                                                                                                                                                                                                                         |
 | `themePlugins: { copyCode: { ... }, git: { ... }, hint: { ... }, tab: { ... }, mediumZoom: { ... } }` | `themePlugins: { copyCode: { ... }, git: { ... }, markdownHint: { ... }, markdownTab: { ... }, icon: { ... }, mediumZoom: { ... } }`                                                                                                         |
 | `themePlugins: { activeHeaderLinks: false }`                                                          | Same                                                                                                                                                                                                                                         |
-| `themePlugins: { backToTop, linksCheck, prismjs, seo, sitemap }`                                      | No equivalent: register these plugins in the site `plugins`                                                                                                                                                                                  |
+| `themePlugins: { backToTop, linksCheck, seo, sitemap }`                                               | Same (`seo` / `sitemap` require the `hostname` option)                                                                                                                                                                                       |
+| `themePlugins: { prismjs }`                                                                           | No equivalent: the theme uses Shiki; set `themePlugins.shiki` to `false` and register `prismjsPlugin()` in the site `plugins` to use Prism.js instead                                                                                        |
 | — (classic does not provide `v-pre` / `raw`)                                                          | The theme additionally wires `@vuepress/plugin-markdown-ext` (`vPre: true`) and `@vuepress/plugin-markdown-raw` (style isolation enabled by default); configure or disable them with `themePlugins.markdownExt` / `themePlugins.markdownRaw` |
 
 ### Sidebar and document page
 
-| classic                                                   | New theme equivalent                                         | Note                                                                                         |
-| --------------------------------------------------------- | ------------------------------------------------------------ | -------------------------------------------------------------------------------------------- |
-| `sidebar: 'heading'`                                      | `sidebar: 'heading'` (default)                               | Built from the headings of the current page                                                  |
-| `sidebar: [...]` / `{ '/guide/': [...] }`                 | Same shape (VitePress-style objects)                         | Groups use `text` / `items` / `link`; string entries are not accepted                        |
-| `sidebar: false`                                          | `sidebar: false`                                             | Supported                                                                                    |
-| `sidebarDepth`                                            | `sidebarDepth` (defaults to 2)                               | Depth of the heading sidebar; the outline is controlled by `outline.level` (defaults to `2`) |
-| `editLink: boolean`                                       | `editLink: { pattern, text }`                                | Omit the option to disable                                                                   |
-| `editLinkText`                                            | `editLink.text`                                              |                                                                                              |
-| `editLinkPattern`                                         | `editLink.pattern`, `:path` is replaced with the source path |                                                                                              |
-| `docsRepo` / `docsBranch` / `docsDir`                     | No equivalent                                                | Write the full `editLink.pattern` instead                                                    |
-| `lastUpdated: boolean`                                    | `lastUpdated: boolean \| { text, formatOptions }`            |                                                                                              |
-| `lastUpdatedText`                                         | `lastUpdated.text`                                           |                                                                                              |
-| `contributors` / `contributorsText`                       | Same names                                                   | The contributors are rendered in the doc footer, from `@vuepress/plugin-git`                 |
-| `prev` / `next`                                           | `docFooter.prev` / `docFooter.next`                          | Accepts `string` / `false`                                                                   |
-| `externalLinkIcon`                                        | `externalLinkIcon`                                           | Same                                                                                         |
-| `tip` / `warning` / `danger` / `important` / `note` texts | Same theme options                                           | Passed to the `locales` of `@vuepress/plugin-markdown-hint`                                  |
-| `backToTop` (classic plugin)                              | Built-in "Return to top"                                     | In the dropdown at the bottom right of a document page, `returnToTopLabel`                   |
-| `prismjs` theme configuration                             | `@vuepress/plugin-shiki`                                     | Shiki with `github-light` / `github-dark`                                                    |
-| `palettePlugin` / `userStyle`                             | No equivalent                                                | The theme has no Sass palette or user-style entry                                            |
+| classic                                                   | New theme equivalent                                         | Note                                                                                                                                                            |
+| --------------------------------------------------------- | ------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `sidebar: 'heading'`                                      | `sidebar: 'heading'` (default)                               | Built from the headings of the current page                                                                                                                     |
+| `sidebar: [...]` / `{ '/guide/': [...] }`                 | Same shape (VitePress-style objects)                         | Groups use `text` / `items` / `link`; string entries are not accepted                                                                                           |
+| `sidebar: false`                                          | `sidebar: false`                                             | Supported                                                                                                                                                       |
+| `sidebarDepth`                                            | `sidebarDepth` (defaults to 2)                               | Depth of the heading sidebar; the outline is controlled by `outline.level` (defaults to `2`)                                                                    |
+| `editLink: boolean`                                       | `editLink: { pattern, text }`                                | Omit the option to disable                                                                                                                                      |
+| `editLinkText`                                            | `editLink.text`                                              |                                                                                                                                                                 |
+| `editLinkPattern`                                         | `editLink.pattern`, `:path` is replaced with the source path |                                                                                                                                                                 |
+| `docsRepo` / `docsBranch` / `docsDir`                     | No equivalent                                                | Write the full `editLink.pattern` instead                                                                                                                       |
+| `lastUpdated: boolean`                                    | `lastUpdated: boolean \| { text, formatOptions }`            |                                                                                                                                                                 |
+| `lastUpdatedText`                                         | `lastUpdated.text`                                           |                                                                                                                                                                 |
+| `contributors` / `contributorsText`                       | Same names                                                   | The contributors are rendered in the doc footer, from `@vuepress/plugin-git`                                                                                    |
+| `prev` / `next`                                           | `docFooter.prev` / `docFooter.next`                          | Accepts `string` / `false`                                                                                                                                      |
+| `externalLinkIcon`                                        | `externalLinkIcon`                                           | Same                                                                                                                                                            |
+| `tip` / `warning` / `danger` / `important` / `note` texts | Same theme options                                           | Passed to the `locales` of `@vuepress/plugin-markdown-hint`                                                                                                     |
+| `backToTop` (classic plugin)                              | `themePlugins.backToTop`                                     | Wires the same plugin, enabled by default, options are passed through; the mobile local-nav "Return to top" control is labelled by the theme `returnToTopLabel` |
+| `linksCheck` (classic plugin)                             | `themePlugins.linksCheck`                                    | Enabled by default, the options are passed to `@vuepress/plugin-links-check`                                                                                    |
+| `prismjs` theme configuration                             | `@vuepress/plugin-shiki`                                     | Shiki with `github-light` / `github-dark`                                                                                                                       |
+| `palettePlugin` / `userStyle`                             | `userStyle` (`.vuepress/styles/index.css`)                   | The theme registers a plain CSS user-style entry; register `palettePlugin` in the site for Sass palettes                                                        |
 
 ### Home page and 404
 
@@ -149,8 +151,6 @@ The markdown hint containers are parsed and styled by `@vuepress/plugin-markdown
 The following classic capabilities have no equivalent in this theme yet; they are recorded here and will be filled in by priority:
 
 1. The repository icon / `repoLabel` of `repo`, and the automatic edit link from `docsRepo` / `docsBranch` / `docsDir` (a full `editLink.pattern` works instead).
-2. The automatic SEO / Sitemap registration from `hostname`.
-3. `palettePlugin` and the `userStyle` entry.
-4. `colorModeSwitch`, `openInNewWindow` and the `home` behaviors.
-5. The `@theme/*` component override mechanism.
-6. Public `useHeaders` / `useSidebarItems` composables.
+2. `colorModeSwitch`, `openInNewWindow` and the `home` behaviors.
+3. The `@theme/*` component override mechanism.
+4. Public `useHeaders` / `useSidebarItems` composables.

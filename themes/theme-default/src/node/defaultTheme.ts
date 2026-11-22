@@ -1,9 +1,11 @@
 import path from 'node:path'
 
 import { activeHeaderLinksPlugin } from '@vuepress/plugin-active-header-links'
+import { backToTopPlugin } from '@vuepress/plugin-back-to-top'
 import { copyCodePlugin } from '@vuepress/plugin-copy-code'
 import { gitPlugin } from '@vuepress/plugin-git'
 import { iconPlugin } from '@vuepress/plugin-icon'
+import { linksCheckPlugin } from '@vuepress/plugin-links-check'
 import { markdownExtPlugin } from '@vuepress/plugin-markdown-ext'
 import { markdownHintPlugin } from '@vuepress/plugin-markdown-hint'
 import type { MarkdownHintPluginLocaleData } from '@vuepress/plugin-markdown-hint'
@@ -11,7 +13,9 @@ import { markdownRawPlugin } from '@vuepress/plugin-markdown-raw'
 import { markdownTabPlugin } from '@vuepress/plugin-markdown-tab'
 import { mediumZoomPlugin } from '@vuepress/plugin-medium-zoom'
 import { nprogressPlugin } from '@vuepress/plugin-nprogress'
+import { seoPlugin } from '@vuepress/plugin-seo'
 import { shikiPlugin } from '@vuepress/plugin-shiki'
+import { sitemapPlugin } from '@vuepress/plugin-sitemap'
 import { themeDataPlugin } from '@vuepress/plugin-theme-data'
 import type { ThemeObject } from 'vuepress'
 
@@ -62,7 +66,9 @@ const resolveLocalePath = (key: string, link?: string): string => {
 export const resolveThemeData = (
   options: ThemeOptions,
 ): Record<string, unknown> => {
-  const { locales, ...rest } = options
+  // `hostname` is used by the SEO and sitemap plugins, it is not part of the
+  // theme data
+  const { hostname: _hostname, locales, ...rest } = options
 
   if (!locales) return rest
 
@@ -210,11 +216,25 @@ const createTemplateBuildRenderer =
       .replace('{{ version }}', () => context.version)
 
 /**
- * Options of the new theme
+ * Options of the default theme
  *
- * 新主题的配置项
+ * 默认主题的配置项
  */
-export type ThemeOptions = ThemeConfig
+export interface ThemeOptions extends ThemeConfig {
+  /**
+   * Deployed hostname of the site
+   *
+   * It enables the SEO and sitemap plugins, which require an absolute URL.
+   *
+   * 站点的部署域名
+   *
+   * 它会启用 SEO 与站点地图插件，这两个插件需要绝对链接。
+   *
+   * @example
+   *   'https://example.com'
+   */
+  hostname?: string
+}
 
 /**
  * Create the markdown plugin list wired by the theme
@@ -285,11 +305,13 @@ const resolveMarkdownPlugins = (
  *
  * @param options - Theme options / 主题配置项
  * @param plugins - Plugin options / 插件配置项
+ * @param hostname - Deployed hostname / 部署域名
  * @returns The plugin list / 插件列表
  */
 const resolveThemePlugins = (
   options: ThemeOptions,
   plugins: ThemePluginsOptions,
+  hostname?: string,
 ): ThemePluginList => [
   themeDataPlugin({ themeData: resolveThemeData(options) }),
   ...(plugins.copyCode === false
@@ -335,6 +357,21 @@ const resolveThemePlugins = (
           headerLinkSelector: '.outline-link',
         }),
       ]),
+  ...(plugins.backToTop === false
+    ? []
+    : [
+        backToTopPlugin({
+          // the label of the button comes from the locales of the plugin
+          ...(typeof plugins.backToTop === 'object' ? plugins.backToTop : {}),
+        }),
+      ]),
+  ...(plugins.linksCheck === false
+    ? []
+    : [
+        linksCheckPlugin({
+          ...(typeof plugins.linksCheck === 'object' ? plugins.linksCheck : {}),
+        }),
+      ]),
   ...(plugins.icon === false
     ? []
     : [
@@ -354,6 +391,24 @@ const resolveThemePlugins = (
         ),
       ]),
   ...(plugins.nprogress === false ? [] : [nprogressPlugin()]),
+  // the SEO and sitemap plugins require an absolute hostname, so they are
+  // only wired when the theme is configured with one, like theme-classic
+  ...(hostname && plugins.seo !== false
+    ? [
+        seoPlugin({
+          hostname,
+          ...(typeof plugins.seo === 'object' ? plugins.seo : {}),
+        }),
+      ]
+    : []),
+  ...(hostname && plugins.sitemap !== false
+    ? [
+        sitemapPlugin({
+          hostname,
+          ...(typeof plugins.sitemap === 'object' ? plugins.sitemap : {}),
+        }),
+      ]
+    : []),
 ]
 
 /**
@@ -373,10 +428,15 @@ const resolveThemePlugins = (
  * @returns The theme plugin / 主题插件
  */
 export const themeDefault = (options: ThemeOptions = {}): ThemeObject => {
+  const { hostname } = options
   const plugins: ThemePluginsOptions = options.themePlugins ?? {}
 
   return {
     name: '@vuepress/theme-default',
+
+    // the default theme exposes its style entry instead of a Sass palette,
+    // users can override the CSS variables there
+    userStyle: '.vuepress/styles/index.css',
 
     templateBuild: path.resolve(__dirname, '../../templates/build.html'),
 
@@ -389,6 +449,6 @@ export const themeDefault = (options: ThemeOptions = {}): ThemeObject => {
       page.routeMeta.title = page.title
     },
 
-    plugins: resolveThemePlugins(options, plugins),
+    plugins: resolveThemePlugins(options, plugins, hostname),
   }
 }

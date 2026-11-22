@@ -14,7 +14,7 @@ icon: arrow-right-left
 
 | classic（`@vuepress/theme-classic`） | `@vuepress/theme-default` 等价写法 | 说明                                                                                                                   |
 | ------------------------------------ | ---------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
-| `hostname`                           | 无                                 | classic用它自动注册 `plugin-seo`、`plugin-sitemap`；新主题不内置这两个插件，请在站点 `plugins` 中自行注册              |
+| `hostname`                           | `hostname`                         | 同名同义：配置后自动接线 `plugin-seo` 与 `plugin-sitemap`，可用 `themePlugins.seo` / `themePlugins.sitemap` 关闭       |
 | `themePlugins`                       | `themePlugins`                     | 每项都可设为 `false` 关闭；带配置项的插件也可传对象，`activeHeaderLinks`、`nprogress` 为布尔开关（见下方「插件开关」） |
 | `locales`                            | `locales`（键名不同）              | classic键为路由路径 `/`、`/zh/`；新主题键为 VitePress 风格 `root`、`zh`，内部会转换为路由路径                          |
 
@@ -56,30 +56,32 @@ classic 的 `navbar` 是一个 `AutoLinkOptions` 数组，支持 `prefix`、`chi
 | `themePlugins: { nprogress: false, mediumZoom: false }`                                               | 同名同义                                                                                                                                                                                          |
 | `themePlugins: { copyCode: { ... }, git: { ... }, hint: { ... }, tab: { ... }, mediumZoom: { ... } }` | `themePlugins: { copyCode: { ... }, git: { ... }, markdownHint: { ... }, markdownTab: { ... }, icon: { ... }, mediumZoom: { ... } }`                                                              |
 | `themePlugins: { activeHeaderLinks: false }`                                                          | 同名同义                                                                                                                                                                                          |
-| `themePlugins: { backToTop, linksCheck, prismjs, seo, sitemap }`                                      | 无等价项：这些插件不由主题接线，请在站点 `plugins` 中自行注册                                                                                                                                     |
+| `themePlugins: { backToTop, linksCheck, seo, sitemap }`                                               | 同名同义（`seo` / `sitemap` 需要先配置 `hostname`）                                                                                                                                               |
+| `themePlugins: { prismjs }`                                                                           | 无等价项：新主题使用 Shiki；需要 Prism 时把 `themePlugins.shiki` 设为 `false`，再在站点 `plugins` 中注册 `prismjsPlugin()`                                                                        |
 | 无对应开关（classic不提供 `v-pre` / `raw` 容器）                                                      | 新主题额外接线 `@vuepress/plugin-markdown-ext`（`vPre: true`）与 `@vuepress/plugin-markdown-raw`（默认开启样式隔离），可分别用 `themePlugins.markdownExt` / `themePlugins.markdownRaw` 配置或关闭 |
 
 ### 侧边栏与文档页
 
-| classic                                                  | 新主题等价写法                                      | 说明                                                                    |
-| -------------------------------------------------------- | --------------------------------------------------- | ----------------------------------------------------------------------- |
-| `sidebar: 'heading'`                                     | `sidebar: 'heading'`（默认）                        | 从当前页标题生成侧边栏                                                  |
-| `sidebar: [...]` / `{ '/guide/': [...] }`                | 同形（VitePress 风格对象数组）                      | 新主题分组用 `text` / `items` / `link`，不接受字符串条目                |
-| `sidebar: false`                                         | `sidebar: false`                                    | 支持（关闭自动侧边栏）                                                  |
-| `sidebarDepth`                                           | `sidebarDepth`（默认 2）                            | 控制自动侧边栏的标题深度；右侧大纲仍由 `outline.level` 控制（默认 `2`） |
-| `editLink: boolean`                                      | `editLink: { pattern, text }`                       | 关闭时省略该选项                                                        |
-| `editLinkText`                                           | `editLink.text`                                     |                                                                         |
-| `editLinkPattern`                                        | `editLink.pattern`，其中 `:path` 会替换为源文件路径 |                                                                         |
-| `docsRepo` / `docsBranch` / `docsDir`                    | 无等价项                                            | 直接写成完整的 `editLink.pattern`                                       |
-| `lastUpdated: boolean`                                   | `lastUpdated: boolean \| { text, formatOptions }`   |                                                                         |
-| `lastUpdatedText`                                        | `lastUpdated.text`                                  |                                                                         |
-| `contributors` / `contributorsText`                      | 同名                                                | 文档页脚渲染贡献者列表，数据来自 `@vuepress/plugin-git`                 |
-| `prev` / `next`                                          | `docFooter.prev` / `docFooter.next`                 | 支持 `string` / `false`                                                 |
-| `externalLinkIcon`                                       | `externalLinkIcon`                                  | 同名同义                                                                |
-| `tip` / `warning` / `danger` / `important` / `note` 文案 | 同名主题选项                                        | 主题会转成 `@vuepress/plugin-markdown-hint` 的 `locales`                |
-| `backToTop`（经典主题插件）                              | 内置「返回顶部」                                    | 文档页右下角下拉里的「Return to top」，文案 `returnToTopLabel`          |
-| `prismjs` 主题配置                                       | `@vuepress/plugin-shiki`                            | 新主题默认使用 Shiki（`github-light` / `github-dark`），不再使用 Prism  |
-| `palettePlugin` / `userStyle`                            | 无等价项                                            | 主题不提供 Sass 调色板与用户样式入口，需要时在站点注册插件/样式         |
+| classic                                                  | 新主题等价写法                                      | 说明                                                                                                   |
+| -------------------------------------------------------- | --------------------------------------------------- | ------------------------------------------------------------------------------------------------------ |
+| `sidebar: 'heading'`                                     | `sidebar: 'heading'`（默认）                        | 从当前页标题生成侧边栏                                                                                 |
+| `sidebar: [...]` / `{ '/guide/': [...] }`                | 同形（VitePress 风格对象数组）                      | 新主题分组用 `text` / `items` / `link`，不接受字符串条目                                               |
+| `sidebar: false`                                         | `sidebar: false`                                    | 支持（关闭自动侧边栏）                                                                                 |
+| `sidebarDepth`                                           | `sidebarDepth`（默认 2）                            | 控制自动侧边栏的标题深度；右侧大纲仍由 `outline.level` 控制（默认 `2`）                                |
+| `editLink: boolean`                                      | `editLink: { pattern, text }`                       | 关闭时省略该选项                                                                                       |
+| `editLinkText`                                           | `editLink.text`                                     |                                                                                                        |
+| `editLinkPattern`                                        | `editLink.pattern`，其中 `:path` 会替换为源文件路径 |                                                                                                        |
+| `docsRepo` / `docsBranch` / `docsDir`                    | 无等价项                                            | 直接写成完整的 `editLink.pattern`                                                                      |
+| `lastUpdated: boolean`                                   | `lastUpdated: boolean \| { text, formatOptions }`   |                                                                                                        |
+| `lastUpdatedText`                                        | `lastUpdated.text`                                  |                                                                                                        |
+| `contributors` / `contributorsText`                      | 同名                                                | 文档页脚渲染贡献者列表，数据来自 `@vuepress/plugin-git`                                                |
+| `prev` / `next`                                          | `docFooter.prev` / `docFooter.next`                 | 支持 `string` / `false`                                                                                |
+| `externalLinkIcon`                                       | `externalLinkIcon`                                  | 同名同义                                                                                               |
+| `tip` / `warning` / `danger` / `important` / `note` 文案 | 同名主题选项                                        | 主题会转成 `@vuepress/plugin-markdown-hint` 的 `locales`                                               |
+| `backToTop`（经典主题插件）                              | `themePlugins.backToTop`                            | 接线同一个插件，默认启用，配置项透传；移动端本地导航里的「返回顶部」另由主题的 `returnToTopLabel` 控制 |
+| `linksCheck`（经典主题插件）                             | `themePlugins.linksCheck`                           | 默认启用，配置项透传给 `@vuepress/plugin-links-check`                                                  |
+| `prismjs` 主题配置                                       | `@vuepress/plugin-shiki`                            | 新主题默认使用 Shiki（`github-light` / `github-dark`），不再使用 Prism                                 |
+| `palettePlugin` / `userStyle`                            | `userStyle`（`.vuepress/styles/index.css`）         | 主题注册纯 CSS 的用户样式入口，覆盖 CSS 自定义属性；需要 Sass 调色板时在站点注册 `palettePlugin`       |
 
 ### 首页与 404
 
@@ -149,8 +151,6 @@ classic 的 `navbar` 是一个 `AutoLinkOptions` 数组，支持 `prefix`、`chi
 以下classic能力目前在新主题中没有等价项，已逐条记录，后续按优先级补全：
 
 1. `repo` 的仓库图标与 `repoLabel`、`docsRepo` / `docsBranch` / `docsDir` 的自动编辑链接推导（可用完整 `editLink.pattern` 替代）。
-2. `hostname` 驱动的 SEO / Sitemap 自动注册。
-3. `palettePlugin` 调色板与 `userStyle` 用户样式入口。
-4. `colorModeSwitch`、`openInNewWindow`、`home` 等文案/行为开关。
-5. `@theme/*` 组件覆盖机制。
-6. `useHeaders` / `useSidebarItems` 等对外组合函数。
+2. `colorModeSwitch`、`openInNewWindow`、`home` 等文案/行为开关。
+3. `@theme/*` 组件覆盖机制。
+4. `useHeaders` / `useSidebarItems` 等对外组合函数。

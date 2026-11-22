@@ -1994,6 +1994,9 @@ importers:
       '@vuepress/plugin-active-header-links':
         specifier: workspace:*
         version: link:../../plugins/development/plugin-active-header-links
+      '@vuepress/plugin-back-to-top':
+        specifier: workspace:*
+        version: link:../../plugins/features/plugin-back-to-top
       '@vuepress/plugin-copy-code':
         specifier: workspace:*
         version: link:../../plugins/features/plugin-copy-code
@@ -2003,6 +2006,9 @@ importers:
       '@vuepress/plugin-icon':
         specifier: workspace:*
         version: link:../../plugins/features/plugin-icon
+      '@vuepress/plugin-links-check':
+        specifier: workspace:*
+        version: link:../../plugins/markdown/plugin-links-check
       '@vuepress/plugin-markdown-ext':
         specifier: workspace:*
         version: link:../../plugins/markdown/plugin-markdown-ext
@@ -2021,9 +2027,15 @@ importers:
       '@vuepress/plugin-nprogress':
         specifier: workspace:*
         version: link:../../plugins/features/plugin-nprogress
+      '@vuepress/plugin-seo':
+        specifier: workspace:*
+        version: link:../../plugins/seo/plugin-seo
       '@vuepress/plugin-shiki':
         specifier: workspace:*
         version: link:../../plugins/markdown/plugin-shiki
+      '@vuepress/plugin-sitemap':
+        specifier: workspace:*
+        version: link:../../plugins/seo/plugin-sitemap
       '@vuepress/plugin-theme-data':
         specifier: workspace:*
         version: link:../../plugins/development/plugin-theme-data

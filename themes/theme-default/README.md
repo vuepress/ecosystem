@@ -34,12 +34,17 @@ The theme decouples features into plugins and only keeps layout-related behaviou
   `@vuepress/plugin-markdown-hint` (hint containers and styles, the theme only overrides its CSS
   variables), `@vuepress/plugin-icon` (iconify icons), `@vuepress/plugin-active-header-links`
   (outline highlight), `@vuepress/plugin-markdown-ext` (`v-pre` container),
-  `@vuepress/plugin-markdown-raw` (`raw` container).
+  `@vuepress/plugin-markdown-raw` (`raw` container), `@vuepress/plugin-back-to-top`,
+  `@vuepress/plugin-links-check`; `@vuepress/plugin-seo` and `@vuepress/plugin-sitemap` are wired
+  when the `hostname` option is provided.
 - **Configurable plugins**: every plugin wired by the theme can be disabled through the
   `themePlugins` option; plugins that accept options also accept an object, e.g.
   `themePlugins: { icon: { offline: true, scan: {} } }` or
   `themePlugins: { mediumZoom: false, nprogress: false }` (`activeHeaderLinks` and `nprogress` are
-  boolean switches only).
+  boolean switches only). The `seo` and `sitemap` plugins are wired only when the `hostname` option
+  is provided, like `@vuepress/theme-classic`.
+- **Style customization**: the theme registers `userStyle: '.vuepress/styles/index.css'`, where you
+  can override the CSS variables. This replaces the Sass palette of `@vuepress/theme-classic`.
 - **Provided by the user**: any search plugin registering a global `SearchBox`
   (`plugin-slimsearch`, `plugin-orama`, `plugin-flexsearch`, `plugin-docsearch`,
   `plugin-meilisearch`, `plugin-search`).

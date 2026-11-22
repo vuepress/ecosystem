@@ -112,6 +112,10 @@ A multilingual site must declare its languages in the VuePress site `locales` (t
 | Last update              | `@vuepress/plugin-git`                                                                                                        | Enabled, the time only; contributors are rendered by the theme |
 | Theme data               | `@vuepress/plugin-theme-data`                                                                                                 | Enabled                                                        |
 | Active heading           | `@vuepress/plugin-active-header-links`                                                                                        | Enabled                                                        |
+| Back to top              | `@vuepress/plugin-back-to-top`                                                                                                | Enabled, label from the plugin locales (`backToTop`)           |
+| Links check              | `@vuepress/plugin-links-check`                                                                                                | Enabled                                                        |
+| SEO                      | `@vuepress/plugin-seo`                                                                                                        | Enabled once `hostname` is configured                          |
+| Sitemap                  | `@vuepress/plugin-sitemap`                                                                                                    | Enabled once `hostname` is configured                          |
 | Markdown hint containers | `@vuepress/plugin-markdown-hint`                                                                                              | Enabled                                                        |
 | Markdown tabs            | `@vuepress/plugin-markdown-tab`                                                                                               | Enabled, for `code-tabs`                                       |
 
@@ -123,6 +127,7 @@ The theme options are defined by the theme's own `ThemeConfig` type, which only 
 
 ```ts
 themeDefault({
+  hostname: 'https://example.com',
   themePlugins: {
     icon: { offline: true, scan: {} },
     mediumZoom: false,
@@ -130,6 +135,10 @@ themeDefault({
   },
 })
 ```
+
+`hostname` makes the theme wire the SEO and sitemap plugins automatically; set `themePlugins.seo` / `themePlugins.sitemap` to `false` to keep the others only.
+
+Custom styles go to the `userStyle: '.vuepress/styles/index.css'` entry registered by the theme: write CSS variables or rules there to override the look (the equivalent of `palettePlugin` / `userStyle` in `@vuepress/theme-classic`).
 
 ## Public API
 

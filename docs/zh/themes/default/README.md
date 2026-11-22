@@ -91,12 +91,18 @@ export default defineUserConfig({
 | `@vuepress/plugin-medium-zoom`         | 启用                                   |
 | `@vuepress/plugin-icon`                | 启用（`assets: 'iconify'`）            |
 | `@vuepress/plugin-active-header-links` | 启用                                   |
+| `@vuepress/plugin-back-to-top`         | 启用                                   |
+| `@vuepress/plugin-links-check`         | 启用                                   |
+| `@vuepress/plugin-seo`                 | 配置 `hostname` 后启用                 |
+| `@vuepress/plugin-sitemap`             | 配置 `hostname` 后启用                 |
 | `@vuepress/plugin-markdown-hint`       | 启用                                   |
 | `@vuepress/plugin-markdown-tab`        | 启用（代码组）                         |
 | `@vuepress/plugin-markdown-ext`        | 启用（`v-pre`）                        |
 | `@vuepress/plugin-markdown-raw`        | 启用（`raw`，样式隔离）                |
 
 搜索不打包在主题内：安装任意一个搜索插件，导航栏会自动挂载它的搜索框。
+
+主题注册了 `userStyle: '.vuepress/styles/index.css'`，自定义样式（包括 CSS 自定义属性）可以直接写在该文件里，替代 classic 的 Sass 调色板。
 
 ## API
 

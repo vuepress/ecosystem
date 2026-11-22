@@ -8,7 +8,7 @@ icon: palette
 
 Provide palette support for your theme.
 
-This plugin is primarily designed for theme development and has been integrated into the classic theme (`@vuepress/theme-classic`). You typically won't need to use it directly in most cases.
+This plugin is primarily designed for theme development, so you typically won't need to use it directly. The default theme does not use it: it exposes its CSS variables for overriding through the `.vuepress/styles/index.css` user style entry, and you can register this plugin when your own theme needs a Sass palette.
 
 For theme authors, this plugin provides users with the ability to customize styles.
 

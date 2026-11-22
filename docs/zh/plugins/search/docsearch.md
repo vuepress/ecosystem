@@ -76,11 +76,11 @@ new Crawler({
       pathsToMatch: ['https://YOUR_WEBSITE_URL/**'],
       // 控制 Algolia 如何抓取你的站点
       recordExtractor: ({ $, helpers }) => {
-        // @vuepress/theme-classic 的选项
+        // @vuepress/theme-default 的选项
         return helpers.docsearch({
           recordProps: {
             lvl0: {
-              selectors: '.vp-sidebar-heading.active',
+              selectors: '.vp-sidebar-item.level-0.has-active > .item .text',
               defaultValue: 'Documentation',
             },
             lvl1: '[vp-content] h1',
@@ -167,13 +167,13 @@ new Crawler({
 })
 ```
 
-上述代码中的 `recordProps` 是针对经典主题（`@vuepress/theme-classic`）的配置。你可以根据正在使用的主题结构进行相应的修改。
+上述代码中的 `recordProps` 是针对默认主题的配置。其中 `lvl0` 选择器对应默认主题的侧边栏（经典主题 `@vuepress/theme-classic` 使用 `.vp-sidebar-heading.active`）。你可以根据正在使用的主题结构进行相应的修改。
 
 **注意：** 为了让插件正常工作（特别是多语言支持），`initialIndexSettings.YOUR_INDEX_NAME.attributesForFaceting` 字段必须包含 `'lang'`。
 :::
 
 ::: tip
-如果你没有使用经典主题，或者在使用 DocSearch 时遇到问题，可以检查上面的爬虫配置示例。此外，你可以前往 [Algolia Crawler](https://crawler.algolia.com/admin/crawlers/)，使用项目侧边栏中的 "Editor" 面板来调试和编辑你的配置。
+如果你没有使用默认主题，或者在使用 DocSearch 时遇到问题，可以检查上面的爬虫配置示例。此外，你可以前往 [Algolia Crawler](https://crawler.algolia.com/admin/crawlers/)，使用项目侧边栏中的 "Editor" 面板来调试和编辑你的配置。
 :::
 
 ## 选项 {#options}
@@ -271,7 +271,7 @@ const defineDocSearchConfig: (
 
 你可以通过 [@docsearch/css](https://docsearch.algolia.com/docs/styling) 提供的 CSS 变量来自定义样式。
 
-为了适配 VuePress 的经典主题，本插件覆盖了部分 CSS 变量。
+为了适配 VuePress 的默认主题，本插件覆盖了部分 CSS 变量。
 
 ## 组件 {#components}
 

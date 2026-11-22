@@ -1,12 +1,16 @@
+import type { BackToTopPluginOptions } from '@vuepress/plugin-back-to-top'
 import type { CopyCodePluginOptions } from '@vuepress/plugin-copy-code'
 import type { GitPluginOptions } from '@vuepress/plugin-git'
 import type { IconPluginOptions } from '@vuepress/plugin-icon'
+import type { LinksCheckPluginOptions } from '@vuepress/plugin-links-check'
 import type { MarkdownExtPluginOptions } from '@vuepress/plugin-markdown-ext'
 import type { MarkdownHintPluginOptions } from '@vuepress/plugin-markdown-hint'
 import type { MarkdownRawPluginOptions } from '@vuepress/plugin-markdown-raw'
 import type { MarkdownTabPluginOptions } from '@vuepress/plugin-markdown-tab'
 import type { MediumZoomPluginOptions } from '@vuepress/plugin-medium-zoom'
+import type { SeoPluginOptions } from '@vuepress/plugin-seo'
 import type { ShikiPluginOptions } from '@vuepress/plugin-shiki'
+import type { SitemapPluginOptions } from '@vuepress/plugin-sitemap'
 /* oxlint-disable typescript/no-explicit-any, typescript/no-namespace -- Theme types ported from VitePress, the namespace keeps the component-facing shapes */
 import type { UseDarkOptions } from '@vueuse/core'
 import type { Ref } from 'vue'
@@ -208,6 +212,12 @@ export interface ThemePluginsOptions {
    */
   activeHeaderLinks?: boolean
 
+  /**
+   * Options of `@vuepress/plugin-back-to-top` / `@vuepress/plugin-back-to-top`
+   * 的配置项
+   */
+  backToTop?: BackToTopPluginOptions | boolean
+
   /** Options of `@vuepress/plugin-copy-code` / `@vuepress/plugin-copy-code` 的配置项 */
   copyCode?: CopyCodePluginOptions | boolean
 
@@ -246,6 +256,12 @@ export interface ThemePluginsOptions {
   markdownTab?: MarkdownTabPluginOptions | boolean
 
   /**
+   * Options of `@vuepress/plugin-links-check` / `@vuepress/plugin-links-check`
+   * 的配置项
+   */
+  linksCheck?: LinksCheckPluginOptions | boolean
+
+  /**
    * Options of `@vuepress/plugin-medium-zoom` / `@vuepress/plugin-medium-zoom`
    * 的配置项
    */
@@ -257,8 +273,26 @@ export interface ThemePluginsOptions {
    */
   nprogress?: boolean
 
+  /**
+   * Options of `@vuepress/plugin-seo` / `@vuepress/plugin-seo` 的配置项
+   *
+   * It requires the `hostname` option.
+   *
+   * 需要先配置 `hostname`。
+   */
+  seo?: Partial<SeoPluginOptions> | boolean
+
   /** Options of `@vuepress/plugin-shiki` / `@vuepress/plugin-shiki` 的配置项 */
   shiki?: ShikiPluginOptions | boolean
+
+  /**
+   * Options of `@vuepress/plugin-sitemap` / `@vuepress/plugin-sitemap` 的配置项
+   *
+   * It requires the `hostname` option.
+   *
+   * 需要先配置 `hostname`。
+   */
+  sitemap?: Partial<SitemapPluginOptions> | boolean
 }
 
 /**

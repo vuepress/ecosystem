@@ -11,7 +11,7 @@ import {
   resolveTemplateAppearance,
   resolveThemeData,
   themeDefault,
-} from '../../src/node/themeDefault.js'
+} from '../../src/node/defaultTheme.js'
 import type { DefaultTheme } from '../../src/shared/types.js'
 
 const createTheme = (
@@ -25,9 +25,10 @@ describe(themeDefault, () => {
     expect(theme.name).toBe('@vuepress/theme-default')
     expect(theme.templateBuild).toBeDefined()
     expect(existsSync(theme.templateBuild!)).toBe(true)
+    expect(theme.userStyle).toBe('.vuepress/styles/index.css')
     // some plugin factories do not set a name, so only the named ones are
     // asserted here
-    expect(theme.plugins).toHaveLength(12)
+    expect(theme.plugins).toHaveLength(14)
     expect(
       theme.plugins
         ?.map((plugin) => (plugin as { name?: string } | undefined)?.name)
@@ -52,7 +53,7 @@ describe(themeDefault, () => {
       },
     })
 
-    expect(disabled.plugins).toHaveLength(8)
+    expect(disabled.plugins).toHaveLength(10)
     expect(
       disabled.plugins
         ?.map((plugin) => (plugin as { name?: string } | undefined)?.name)
@@ -66,7 +67,22 @@ describe(themeDefault, () => {
       themePlugins: { copyCode: { selector: '.custom pre' }, mediumZoom: {} },
     })
 
-    expect(configured.plugins).toHaveLength(12)
+    expect(configured.plugins).toHaveLength(14)
+  })
+
+  it('should wire the SEO and sitemap plugins only when hostname is given', () => {
+    expect(createTheme().plugins).toHaveLength(14)
+
+    const withHostname = createTheme({ hostname: 'https://example.com' })
+
+    expect(withHostname.plugins).toHaveLength(16)
+
+    const disabled = createTheme({
+      hostname: 'https://example.com',
+      themePlugins: { seo: false, sitemap: false },
+    })
+
+    expect(disabled.plugins).toHaveLength(14)
   })
 
   it('should convert VitePress locale keys to route locale paths', () => {
