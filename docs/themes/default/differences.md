@@ -6,6 +6,10 @@ icon: git-compare
 
 The theme intentionally does not aim at a byte-for-byte copy of the VitePress default theme. This page lists the differences by concern, with the reason for each choice, the benefits and the trade-offs.
 
+## Migrating from VitePress
+
+The theme borrows the layout and the styles of the VitePress default theme, but it is a VuePress theme, so a VitePress site is ported by moving its config and its content into VuePress instead of switching a package. The [VitePress documentation](https://vitepress.dev/) and the [VuePress guide](https://vuepress.vuejs.org/guide/) describe both sides, and [Migrating from Classic](./migrating-from-classic.md) covers the same kind of mapping for a site that used the former VuePress default theme.
+
 ## Class prefix: `vp-` instead of `VP`
 
 - **Approach**: All public classes of the ported layer are renamed from `VPFoo` to `vp-foo` (`VPNavBar*` becomes `vp-navbar*`); the root classes are `vp-theme-container` and `vp-not-found`.
@@ -78,7 +82,7 @@ The theme intentionally does not aim at a byte-for-byte copy of the VitePress de
 - **Approach**: The ported layer has no VitePress compatibility layer (the former `src/client/app/*`): the theme composables (`useThemePageData`, `useThemePageFrontmatter`, `usePageRelativePath`, and `useThemeLocaleData` from `@vuepress/plugin-theme-data/client`, ...) read the native data of `vuepress/client` and organize it into the theme data API (`ThemePageData`, `ThemePageFrontmatter`, `ThemeLayout`, ...), whose shape and semantics follow `@vuepress/theme-classic`, with new fields documented separately.
 - **Reason**: A compatibility layer adds reactive wrapping and runtime overhead; the user asked for a native implementation with zero performance loss.
 - **Benefits**: No intermediate layer and a direct data flow; the theme code matches the other themes of the ecosystem and is easier to maintain.
-- **Trade-off**: The internal composables are the theme's own API and have to stay equivalent to the data shape and semantics of `@vuepress/theme-classic`; new or temporarily missing fields are documented in [Features](./features.md) and [Equivalents to `@vuepress/theme-classic`](./classic.md), so that two parallel conventions do not appear.
+- **Trade-off**: The internal composables are the theme's own API and have to stay equivalent to the data shape and semantics of `@vuepress/theme-classic`; new or temporarily missing fields are documented in [Config](./config.md) and [Migrating from Classic](./migrating-from-classic.md), so that two parallel conventions do not appear.
 - **Interface notes**:
   - The theme keeps neither the VitePress data shape nor the VitePress data composables (`useData`, `useRouter`, `useRoute`, ...). Site extensions use the native `vuepress/client` API; the theme's own layout state composable `useLayout()` returns the theme's `ThemeLayout` type for the ported components and for sites that extend the layout.
   - VitePress callback payloads such as `nav[].link` and `editLink.pattern` no longer construct `VitePressData`; they receive the native VuePress page data (`page`), whose fields differ (e.g. `filePath` vs `filePathRelative`). Adapt on the site side if a VitePress-compatible payload is needed.
