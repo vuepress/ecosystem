@@ -106,3 +106,10 @@ icon: git-compare
 - **原因**：用户要求既然一个布局够用就只保留一个，而不是注册三个指向同一组件的布局；显式的 `type` 取代了 VitePress 兼容层，并移除了 `originalLayout` 这类只为 VitePress 检查而存在的字段。
 - **收益**：布局注册表干净，主题只有一个布局入口；页面类型是显式的 API，组件检查不再依赖 VitePress 的 frontmatter 约定；`extendsPage` 不改写用户数据，因此行为可预测；自定义布局（例如 `layout: CommentPage`）不受影响；`NotFound` 的处理与首页 / 文档检查解耦。
 - **取舍**：页面类型是主题特有的字段；VitePress 的 `layout: home|doc|page` 会被 VuePress 当作布局名（主题并未注册）并抛出 `[vuepress] Cannot resolve layout`，而 `layout: false` 不是字符串，会回退到完整的布局外壳。页面类型切换完全由 `VPContent` 处理；`NotFound` 仍必须注册为第二个布局，因为 VuePress 只在 `extendsPage` 执行之后才设置 `frontmatter.layout = 'NotFound'`，主题无法更早改写它。
+
+## 不作移植的 VitePress 功能 {#not-ported-from-vitepress}
+
+VitePress 默认主题的两个功能被有意排除：
+
+- **Carbon 广告**：`carbonAds` 配置项、`VPCarbonAds` 组件与 `__CARBON__` 构建标记均不移植，也没有替代方案。
+- **内置搜索 UI**：本地搜索弹窗、`@localSearchIndex` 模块、搜索 worker 与 `search` 主题配置项均不移植。请改为安装任一搜索插件（`@vuepress/plugin-slimsearch`、`@vuepress/plugin-orama`、`@vuepress/plugin-flexsearch`、`@vuepress/plugin-search`、`@vuepress/plugin-meilisearch`、`@vuepress/plugin-docsearch`），主题会挂载它们注册的 `SearchBox` 组件。

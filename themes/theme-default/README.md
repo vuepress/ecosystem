@@ -19,7 +19,8 @@ theme, which is now published as `@vuepress/theme-classic`.
 - The theme is configured with its own `ThemeConfig`, whose shapes and semantics follow
   `@vuepress/theme-classic`: `nav`, `sidebar`, `outline`, `socialLinks`, `locales`, `appearance`, …
   The type only contains the supported fields, so VitePress-only theme config keys are rejected by
-  the type checker. See [the equivalents to `@vuepress/theme-classic`](./docs/classic.md).
+  the type checker. See
+  [the equivalents to `@vuepress/theme-classic`](https://ecosystem.vuejs.press/themes/default/migrating-from-classic.html).
 - The dark mode state is written as `data-theme="light|dark"` on `<html>` (no `dark` class) and
   persisted in the `vuepress-color-scheme` storage key. The theme's `useDarkMode()` and the build
   template read the key, and it is the same key that `@vuepress/test-utils` drives in tests.
@@ -63,14 +64,12 @@ The theme decouples features into plugins and only keeps layout-related behaviou
 - **Containers**: the title text of the hint containers can be customized per locale with the
   `tip` / `warning` / `danger` / `important` / `note` options.
 
-See the documents below for the exact coverage, the implementation trade-offs and the unsupported
-VitePress features:
+The documentation lives on the documentation site:
 
-- [Feature overview](./docs/features.md)
-- [Equivalents to `@vuepress/theme-classic`](./docs/classic.md)
-- [Feature coverage and plans](./docs/coverage.md)
-- [Implementation differences and trade-offs](./docs/differences.md)
-- [Unsupported VitePress features](./docs/unsupported.md)
+- [Theme documentation](https://ecosystem.vuejs.press/themes/default/)
+- [Configuration](https://ecosystem.vuejs.press/themes/default/config.html)
+- [Migrating from `@vuepress/theme-classic`](https://ecosystem.vuejs.press/themes/default/migrating-from-classic.html)
+- [Differences from VitePress](https://ecosystem.vuejs.press/themes/default/differences.html)
 
 ## Usage
 

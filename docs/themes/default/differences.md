@@ -106,3 +106,10 @@ The theme borrows the layout and the styles of the VitePress default theme, but 
 - **Reason**: The user asked to keep only one layout when one is enough, instead of registering three layouts pointing at the same component; the explicit `type` replaces the VitePress compatibility layer and removes fields such as `originalLayout` that only existed for VitePress checks.
 - **Benefits**: The layout registry is clean and the theme has a single layout entry; the page type is an explicit API and the component checks no longer depend on the VitePress frontmatter convention; `extendsPage` does not rewrite user data, so the behavior is predictable; custom layouts (e.g. `layout: CommentPage`) are not affected; the `NotFound` handling is decoupled from the home / doc checks.
 - **Trade-off**: The page type is a theme-specific field; VitePress `layout: home|doc|page` is treated as a layout name by VuePress (which the theme does not register) and throws `[vuepress] Cannot resolve layout`, while `layout: false` is not a string and falls back to the full layout shell. The page type switching is handled entirely by `VPContent`; `NotFound` still has to be registered as a second layout, because VuePress sets `frontmatter.layout = 'NotFound'` only after `extendsPage` has run, so the theme cannot rewrite it earlier.
+
+## Not ported from VitePress
+
+Two features of the VitePress default theme are intentionally left out:
+
+- **Carbon Ads**: the `carbonAds` option, the `VPCarbonAds` component and the `__CARBON__` build flag are not ported, and there is no equivalent.
+- **Built-in search UI**: the local search box, the `@localSearchIndex` module, the search worker and the `search` theme option are not ported. Install one of the search plugins (`@vuepress/plugin-slimsearch`, `@vuepress/plugin-orama`, `@vuepress/plugin-flexsearch`, `@vuepress/plugin-search`, `@vuepress/plugin-meilisearch`, `@vuepress/plugin-docsearch`) instead — the theme mounts the `SearchBox` component they register.
