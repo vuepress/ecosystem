@@ -4,6 +4,7 @@ import { activeHeaderLinksPlugin } from '@vuepress/plugin-active-header-links'
 import { copyCodePlugin } from '@vuepress/plugin-copy-code'
 import { gitPlugin } from '@vuepress/plugin-git'
 import { iconPlugin } from '@vuepress/plugin-icon'
+import { markdownExtPlugin } from '@vuepress/plugin-markdown-ext'
 import { markdownHintPlugin } from '@vuepress/plugin-markdown-hint'
 import type { MarkdownHintPluginLocaleData } from '@vuepress/plugin-markdown-hint'
 import { markdownTabPlugin } from '@vuepress/plugin-markdown-tab'
@@ -18,7 +19,13 @@ import type {
   ThemeConfig,
   ThemePluginsOptions,
 } from '../shared/types.js'
-import { registerExtraContainers } from './containers.js'
+
+/**
+ * Plugin list of the theme
+ *
+ * 主题的插件列表
+ */
+type ThemePluginList = NonNullable<ThemeObject['plugins']>
 
 const __dirname = import.meta.dirname
 
@@ -32,7 +39,12 @@ const __dirname = import.meta.dirname
  * @returns VuePress route locale path / VuePress 路由多语言路径
  */
 const resolveLocalePath = (key: string, link?: string): string => {
-  const localePath = link ?? (key === 'root' ? '/' : `/${key}/`)
+  const normalizedKey = key.replaceAll(/^\/+|\/+$/gu, '')
+  const localePath =
+    link ??
+    (normalizedKey === '' || normalizedKey === 'root'
+      ? '/'
+      : `/${normalizedKey}/`)
 
   return localePath.endsWith('/') ? localePath : `${localePath}/`
 }
@@ -204,6 +216,56 @@ const createTemplateBuildRenderer =
 export type ThemeNewOptions = ThemeConfig
 
 /**
+ * Create the markdown plugin list wired by the theme
+ *
+ * 创建主题接线的 Markdown 插件列表
+ *
+ * @param options - Theme options / 主题配置项
+ * @param plugins - Plugin options / 插件配置项
+ * @returns The plugin list / 插件列表
+ */
+const resolveMarkdownPlugins = (
+  options: ThemeNewOptions,
+  plugins: ThemePluginsOptions,
+): ThemePluginList => [
+  ...(plugins.markdownExt === false
+    ? []
+    : [
+        markdownExtPlugin({
+          // `v-pre` and `raw` are the VitePress built-in containers, they
+          // are provided by the markdown extensions plugin
+          vPre: true,
+          raw: true,
+          ...(typeof plugins.markdownExt === 'object'
+            ? plugins.markdownExt
+            : {}),
+        }),
+      ]),
+  ...(plugins.markdownHint === false
+    ? []
+    : [
+        markdownHintPlugin({
+          alert: true,
+          hint: true,
+          locales: resolveHintLocales(options),
+          ...(typeof plugins.markdownHint === 'object'
+            ? plugins.markdownHint
+            : {}),
+        }),
+      ]),
+  ...(plugins.markdownTab === false
+    ? []
+    : [
+        markdownTabPlugin({
+          codeTabs: true,
+          ...(typeof plugins.markdownTab === 'object'
+            ? plugins.markdownTab
+            : {}),
+        }),
+      ]),
+]
+
+/**
  * Create the plugin list wired by the theme
  *
  * 创建主题接线的插件列表
@@ -215,7 +277,7 @@ export type ThemeNewOptions = ThemeConfig
 const resolveThemePlugins = (
   options: ThemeNewOptions,
   plugins: ThemePluginsOptions,
-): ThemeObject['plugins'] => [
+): ThemePluginList => [
   themeDataPlugin({ themeData: resolveThemeData(options) }),
   ...(plugins.copyCode === false
     ? []
@@ -250,28 +312,7 @@ const resolveThemePlugins = (
           ...(typeof plugins.shiki === 'object' ? plugins.shiki : {}),
         }),
       ]),
-  ...(plugins.markdownHint === false
-    ? []
-    : [
-        markdownHintPlugin({
-          alert: true,
-          hint: true,
-          locales: resolveHintLocales(options),
-          ...(typeof plugins.markdownHint === 'object'
-            ? plugins.markdownHint
-            : {}),
-        }),
-      ]),
-  ...(plugins.markdownTab === false
-    ? []
-    : [
-        markdownTabPlugin({
-          codeTabs: true,
-          ...(typeof plugins.markdownTab === 'object'
-            ? plugins.markdownTab
-            : {}),
-        }),
-      ]),
+  ...resolveMarkdownPlugins(options, plugins),
   ...(plugins.activeHeaderLinks === false
     ? []
     : [
@@ -329,10 +370,6 @@ export const themeNew = (options: ThemeNewOptions = {}): ThemeObject => {
     templateBuildRenderer: createTemplateBuildRenderer(options.appearance),
 
     clientConfigFile: path.resolve(__dirname, '../client/config.js'),
-
-    extendsMarkdown: (md, app) => {
-      registerExtraContainers(md, app)
-    },
 
     extendsPage: (page) => {
       page.data.filePathRelative = page.filePathRelative

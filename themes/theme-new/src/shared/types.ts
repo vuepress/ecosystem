@@ -1,6 +1,7 @@
 import type { CopyCodePluginOptions } from '@vuepress/plugin-copy-code'
 import type { GitPluginOptions } from '@vuepress/plugin-git'
 import type { IconPluginOptions } from '@vuepress/plugin-icon'
+import type { MarkdownExtPluginOptions } from '@vuepress/plugin-markdown-ext'
 import type { MarkdownHintPluginOptions } from '@vuepress/plugin-markdown-hint'
 import type { MarkdownTabPluginOptions } from '@vuepress/plugin-markdown-tab'
 import type { MediumZoomPluginOptions } from '@vuepress/plugin-medium-zoom'
@@ -189,12 +190,15 @@ export interface ThemeContributor {
 /**
  * Options of the plugins wired by the theme
  *
- * Every plugin is enabled by default. Set it to `false` to disable the plugin,
- * or pass an object to override the options the theme passes to the plugin.
+ * Every plugin is enabled by default. Set it to `false` to disable the plugin.
+ * Plugins that accept options also accept an object, which is merged over the
+ * options the theme passes to the plugin; plugins whose options are booleans
+ * only (`activeHeaderLinks`, `nprogress`) accept a boolean.
  *
  * 主题接入的插件配置项
  *
- * 每个插件默认启用。设为 `false` 可禁用对应插件，传入对象可以覆盖主题传给插件的配置。
+ * 每个插件默认启用，设为 `false` 可禁用对应插件。
+ * 带配置项的插件也可以传对象，对象会覆盖主题传给插件的配置；`activeHeaderLinks`、`nprogress` 只有布尔开关。
  */
 export interface ThemePluginsOptions {
   /**
@@ -211,6 +215,11 @@ export interface ThemePluginsOptions {
 
   /** Options of `@vuepress/plugin-icon` / `@vuepress/plugin-icon` 的配置项 */
   icon?: IconPluginOptions | boolean
+  /**
+   * Options of `@vuepress/plugin-markdown-ext` /
+   * `@vuepress/plugin-markdown-ext` 的配置项
+   */
+  markdownExt?: MarkdownExtPluginOptions | boolean
 
   /**
    * Options of `@vuepress/plugin-markdown-hint` /
@@ -256,7 +265,13 @@ export interface ThemeConfig {
   /** Custom site title in navbar / 导航栏中的自定义站点标题 */
   siteTitle?: string | false
 
-  /** Custom header levels of outline in the aside component / 侧边栏大纲的自定义标题级别 */
+  /**
+   * Custom header levels of outline in the aside component
+   *
+   * 侧边栏大纲的自定义标题级别
+   *
+   * @default 2
+   */
   outline?: DefaultTheme.Outline | DefaultTheme.Outline['level'] | false
 
   /** The nav items / 导航条目 */
@@ -270,7 +285,7 @@ export interface ThemeConfig {
    *
    * @default 'heading'
    */
-  sidebar?: DefaultTheme.Sidebar | 'heading'
+  sidebar?: DefaultTheme.Sidebar | 'heading' | false
 
   /**
    * The maximum depth of the sidebar headings, only used when `sidebar` is
@@ -292,7 +307,7 @@ export interface ThemeConfig {
   editLink?: DefaultTheme.EditLink
 
   /** Whether to show the last updated time / 是否显示最后更新时间 */
-  lastUpdated?: DefaultTheme.LastUpdatedOptions
+  lastUpdated?: DefaultTheme.LastUpdatedOptions | boolean
 
   /** Set custom prev/next labels / 自定义上一页/下一页标签 */
   docFooter?: DefaultTheme.DocFooter

@@ -25,7 +25,12 @@ const contributors = useContributors()
 const hasEditLink = computed(
   () => theme.value.editLink && frontmatter.value.editLink !== false,
 )
-const hasLastUpdated = computed(() => pageLastUpdated.value)
+const lastUpdated = computed(
+  () => frontmatter.value.lastUpdated ?? theme.value.lastUpdated,
+)
+const hasLastUpdated = computed(
+  () => Boolean(pageLastUpdated.value) && lastUpdated.value !== false,
+)
 const hasContributors = computed(() => contributors.value.length > 0)
 const showFooter = computed(
   () =>

@@ -129,7 +129,7 @@ export interface ThemePageFrontmatter {
    */
   layout?: string
   /** Last update time of the page / 页面的最后更新时间 */
-  lastUpdated?: number
+  lastUpdated?: number | boolean
   /** Whether to render the markdown styles / 是否渲染 Markdown 样式 */
   markdownStyles?: boolean
   /** Whether to show the navbar / 是否显示导航栏 */
@@ -163,11 +163,11 @@ export interface ThemePageFrontmatter {
    *
    * The theme renders the home page for `home`, the doc page for `doc` (the
    * default), the bare page container for `page`, and only the page content
-   * without the layout shell for `false`.
+   * without the layout shell for `content`.
    *
    * 主题的页面类型，用于控制内容布局
    *
-   * 主题会为 `home` 渲染首页、为 `doc`（默认值）渲染文档页、为 `page` 渲染空白页面容器， 为 `false`
+   * 主题会为 `home` 渲染首页、为 `doc`（默认值）渲染文档页、为 `page` 渲染空白页面容器， 为 `content`
    * 只渲染页面内容而不渲染布局外壳。
    */
   type?: 'home' | 'doc' | 'page' | 'content'
@@ -235,7 +235,8 @@ export const usePageRelativePath = (): ComputedRef<string> => {
  *
  * 当前页面的最后更新时间
  *
- * `@vuepress/plugin-git` 提供的时间优先于 frontmatter 中的配置。
+ * `@vuepress/plugin-git` 提供的时间优先于 frontmatter 中的数字配置；frontmatter 设为 `false`
+ * 时不显示最后更新时间。
  *
  * @returns Computed last update time / 计算得到的最后更新时间
  */
@@ -243,9 +244,18 @@ export const usePageLastUpdated = (): ComputedRef<number | undefined> => {
   const page = useThemePageData()
   const frontmatter = usePageFrontmatter<ThemePageFrontmatter>()
 
-  return computed(
-    () => page.value.git?.updatedTime ?? frontmatter.value.lastUpdated,
-  )
+  return computed(() => {
+    const { lastUpdated } = frontmatter.value
+
+    // `lastUpdated: false` in the page frontmatter disables the timestamp
+    // even when `@vuepress/plugin-git` provides the update time.
+    const value =
+      lastUpdated === false
+        ? undefined
+        : (page.value.git?.updatedTime ?? lastUpdated)
+
+    return typeof value === 'number' ? value : undefined
+  })
 }
 
 /**

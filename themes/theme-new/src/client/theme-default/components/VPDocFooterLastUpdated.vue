@@ -20,6 +20,9 @@ const { language: browserLang } = useNavigatorLanguage()
 
 const timeRef = useTemplateRef('timeRef')
 
+const lastUpdatedOptions = computed(() =>
+  typeof theme.value.lastUpdated === 'object' ? theme.value.lastUpdated : {},
+)
 const date = computed(() => new Date(pageLastUpdated.value!))
 const isoDatetime = computed(() => date.value.toISOString())
 const datetime = shallowRef('')
@@ -28,13 +31,13 @@ const datetime = shallowRef('')
 // potential differences in timezones of the server and clients
 onMounted(() => {
   watchEffect(() => {
-    const lang = theme.value.lastUpdated?.formatOptions?.forceLocale
+    const lang = lastUpdatedOptions.value.formatOptions?.forceLocale
       ? pageLang.value
       : browserLang.value
 
     datetime.value = new Intl.DateTimeFormat(
       lang,
-      theme.value.lastUpdated?.formatOptions ?? {
+      lastUpdatedOptions.value.formatOptions ?? {
         dateStyle: 'medium',
         timeStyle: 'medium',
       },
@@ -51,7 +54,7 @@ onMounted(() => {
 
 <template>
   <p class="vp-last-updated">
-    <bdi>{{ theme.lastUpdated?.text || 'Last updated' }}: </bdi>
+    <bdi>{{ lastUpdatedOptions.text || 'Last updated' }}: </bdi>
     <time ref="timeRef" dir="auto" :datetime="isoDatetime">{{ datetime }}</time>
   </p>
 </template>

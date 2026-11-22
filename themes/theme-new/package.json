@@ -59,7 +59,7 @@
     "@vuepress/plugin-copy-code": "workspace:*",
     "@vuepress/plugin-git": "workspace:*",
     "@vuepress/plugin-icon": "workspace:*",
-    "@vuepress/plugin-markdown-container": "workspace:*",
+    "@vuepress/plugin-markdown-ext": "workspace:*",
     "@vuepress/plugin-markdown-hint": "workspace:*",
     "@vuepress/plugin-markdown-tab": "workspace:*",
     "@vuepress/plugin-medium-zoom": "workspace:*",

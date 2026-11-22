@@ -31,17 +31,20 @@ The theme decouples features into plugins and only keeps layout-related behaviou
   `@vuepress/plugin-nprogress`, `@vuepress/plugin-medium-zoom`, `@vuepress/plugin-markdown-tab`,
   `@vuepress/plugin-markdown-hint` (hint containers and styles, the theme only overrides its CSS
   variables), `@vuepress/plugin-icon` (iconify icons), `@vuepress/plugin-active-header-links`
-  (outline highlight).
-- **Configurable plugins**: every plugin wired by the theme can be configured or disabled through
-  the `themePlugins` option, e.g. `themePlugins: { icon: { offline: true, scan: {} } }` or
-  `themePlugins: { mediumZoom: false, nprogress: false }`.
+  (outline highlight), `@vuepress/plugin-markdown-ext` (`v-pre` / `raw` containers).
+- **Configurable plugins**: every plugin wired by the theme can be disabled through the
+  `themePlugins` option; plugins that accept options also accept an object, e.g.
+  `themePlugins: { icon: { offline: true, scan: {} } }` or
+  `themePlugins: { mediumZoom: false, nprogress: false }` (`activeHeaderLinks` and `nprogress` are
+  boolean switches only).
 - **Provided by the user**: any search plugin registering a global `SearchBox`
   (`plugin-slimsearch`, `plugin-orama`, `plugin-flexsearch`, `plugin-docsearch`,
   `plugin-meilisearch`, `plugin-search`).
 - **Markdown**: hint containers (`::: tip`, `::: details`, …) are parsed, rendered and styled by
   `@vuepress/plugin-markdown-hint`; the theme only overrides its CSS variables. Code groups are
   provided by `@vuepress/plugin-markdown-tab` (`codeTabs: true`) with the `::: code-tabs` + `@tab`
-  syntax.
+  syntax. The `v-pre` / `raw` containers are wrapped by `@vuepress/plugin-markdown-ext`; `raw` only
+  emits the `.vp-raw` wrapper, style isolation is up to the site (as in VitePress).
 - **Icons**: `socialLinks` and iconify names in page `features` are rendered by
   `@vuepress/plugin-icon`; icon sets are loaded at runtime by the iconify web component.
 - **Sidebar**: `sidebar: 'heading'` generates the sidebar from the page headings (the default), and

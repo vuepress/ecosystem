@@ -1,18 +1,12 @@
 import { existsSync } from 'node:fs'
 import path from 'node:path'
 
-import {
-  createTestApp,
-  createTestMarkdown,
-  createTestPage,
-} from '@vuepress/test-utils'
-import type { MarkdownIt } from 'markdown-it'
+import { createTestApp, createTestPage } from '@vuepress/test-utils'
 import { describe, expect, it } from 'vitest'
 import type { ThemeObject } from 'vuepress/core'
 
 import clientConfig from '../../src/client/config.js'
 import { getSidebar } from '../../src/client/theme-default/support/sidebar.js'
-import { registerExtraContainers } from '../../src/node/containers.js'
 import {
   resolveTemplateAppearance,
   resolveThemeData,
@@ -23,8 +17,6 @@ import type { DefaultTheme } from '../../src/shared/types.js'
 const createTheme = (options?: Parameters<typeof themeNew>[0]): ThemeObject =>
   themeNew(options)
 
-const containerPlugin = (md: MarkdownIt): void => registerExtraContainers(md)
-
 describe(themeNew, () => {
   it('should create the theme with expected metadata', () => {
     const theme = createTheme()
@@ -34,7 +26,7 @@ describe(themeNew, () => {
     expect(existsSync(theme.templateBuild!)).toBe(true)
     // some plugin factories do not set a name, so only the named ones are
     // asserted here
-    expect(theme.plugins).toHaveLength(10)
+    expect(theme.plugins).toHaveLength(11)
     expect(
       theme.plugins
         ?.map((plugin) => (plugin as { name?: string } | undefined)?.name)
@@ -53,7 +45,7 @@ describe(themeNew, () => {
       themePlugins: { icon: false, nprogress: false, mediumZoom: false },
     })
 
-    expect(disabled.plugins).toHaveLength(7)
+    expect(disabled.plugins).toHaveLength(8)
     expect(
       disabled.plugins
         ?.map((plugin) => (plugin as { name?: string } | undefined)?.name)
@@ -67,7 +59,7 @@ describe(themeNew, () => {
       themePlugins: { copyCode: { selector: '.custom pre' }, mediumZoom: {} },
     })
 
-    expect(configured.plugins).toHaveLength(10)
+    expect(configured.plugins).toHaveLength(11)
   })
 
   it('should convert VitePress locale keys to route locale paths', () => {
@@ -87,6 +79,19 @@ describe(themeNew, () => {
         '/ja/': { label: '日本語', lang: 'ja-JP' },
         '/zh/': { label: '简体中文', lang: 'zh-CN', link: '/zh/' },
       },
+    })
+
+    // route-style keys are normalized as well
+    expect(
+      resolveThemeData({
+        locales: {
+          '/': { label: 'English', lang: 'en-US' },
+          '/zh/': { label: '简体中文', lang: 'zh-CN' },
+        },
+      }).locales,
+    ).toStrictEqual({
+      '/': { label: 'English', lang: 'en-US' },
+      '/zh/': { label: '简体中文', lang: 'zh-CN' },
     })
   })
 
@@ -256,18 +261,31 @@ describe(getSidebar, () => {
     ])
 
     expect(getSidebar('heading', '/guide/')).toStrictEqual([])
+    expect(getSidebar(false, '/guide/')).toStrictEqual([])
   })
 })
 
-describe(registerExtraContainers, () => {
-  it('should render the extra container markup', () => {
-    const md = createTestMarkdown({ plugins: [containerPlugin] })
+describe('markdown containers', () => {
+  it('should render the v-pre and raw containers through the markdown extensions plugin', async () => {
+    const app = await createTestApp({ theme: createTheme() })
 
-    expect(md.render('::: raw\nHello\n:::', {})).toContain(
+    expect(app.markdown.render('::: raw\nHello\n:::', {})).toContain(
       '<div class="vp-raw">',
     )
 
-    expect(md.render('::: v-pre\nHello\n:::', {})).toContain('<div v-pre>')
+    expect(app.markdown.render('::: v-pre\nHello\n:::', {})).toContain(
+      '<div v-pre>',
+    )
+  })
+
+  it('should not render the containers when the markdown extensions plugin is disabled', async () => {
+    const app = await createTestApp({
+      theme: createTheme({ themePlugins: { markdownExt: false } }),
+    })
+
+    expect(app.markdown.render('::: raw\nHello\n:::', {})).not.toContain(
+      'vp-raw',
+    )
   })
 
   it('should render code tabs through the markdown tab plugin', async () => {

@@ -22,7 +22,7 @@
 - `home`：首页，渲染 hero、features 等内容区。
 - `doc`：文档页（默认值），渲染标题、正文、右侧大纲、上下篇导航。
 - `page`：空白页面容器，只渲染内容区，不带文档页的辅助元素。
-- `false`：只渲染页面内容，不渲染布局外壳（导航栏、侧边栏等）。
+- `content`：只渲染页面内容，不渲染布局外壳（导航栏、侧边栏等）。
 
 ## 导航栏
 
@@ -42,7 +42,7 @@
 | --------------- | ----------- | ------------------------------------------------------------------------------------------------------------------------------ |
 | 侧边栏          | 主题        | `sidebar` 支持数组与按路径分组两种写法，支持分组折叠与当前项高亮；默认 `'heading'` 按页面标题自动生成，`sidebarDepth` 控制深度 |
 | 页面贡献者      | 插件 + 主题 | `@vuepress/plugin-git` 收集，主题渲染在文档页脚，`contributors` / `contributorsText` 可配置                                    |
-| 右侧大纲        | 主题        | `outline` 控制标题级别与标签；滚动高亮由 `@vuepress/plugin-active-header-links` 驱动                                           |
+| 右侧大纲        | 主题        | `outline` 控制标题级别与标签（`outline.level` 默认 `2`，即只取 h2）；滚动高亮由 `@vuepress/plugin-active-header-links` 驱动    |
 | 上一页 / 下一页 | 主题        | `docFooter` 配置文案，默认从侧边栏顺序推导                                                                                     |
 | 编辑此页        | 主题        | `editLink` 配置 `pattern` 与 `text`，`:path` 会替换为页面源文件路径                                                            |
 | 最后更新时间    | 插件 + 主题 | `@vuepress/plugin-git` 提供时间，主题负责展示，`lastUpdated` 配置文案与格式                                                    |
@@ -74,7 +74,7 @@
 | 持久化     | 主题   | 读取 `localStorage` 的 `vuepress-color-scheme`                                      |
 | 插件互通   | 主题   | 通过 `@vuepress/helper/client` 的 `darkModeSymbol` 暴露状态，生态插件可直接读取     |
 
-`appearance` 取值：`true`（默认，跟随系统并可切换）、`'dark'`（初始深色）、`'light'`（初始浅色）、`false`（固定浅色）、`'force-dark'` / `'force-auto'`（固定深色 / 固定跟随系统，隐藏切换按钮），也支持传给 `useDark` 的选项对象。
+`appearance` 取值：`true`（默认，跟随系统并可切换）、`'dark'`（初始深色并可切换）、`false`（固定浅色）、`'force-dark'` / `'force-auto'`（固定深色 / 固定跟随系统，隐藏切换按钮）；也可以传 `useDark` 的选项对象（主题只读取其中的 `initialValue: 'dark'`）。
 
 ## 多语言
 
@@ -94,7 +94,7 @@
 | 代码组               | `@vuepress/plugin-markdown-tab`  | `::: code-tabs` + `@tab`，主题提供与自身风格一致的样式                                                                                                                                                     |
 | 标题锚点             | 主题                             | 标题文本内部渲染锚点链接，适配 VuePress 的标题 DOM                                                                                                                                                         |
 | 外链图标             | 主题                             | `externalLinkIcon` 控制外链图标                                                                                                                                                                            |
-| `v-pre` / `raw` 容器 | 主题                             | 保留 VitePress 的两个容器扩展                                                                                                                                                                              |
+| `v-pre` / `raw` 容器 | `@vuepress/plugin-markdown-ext`  | `vPre: true, raw: true`，主题已接线，可用 `themePlugins.markdownExt` 配置或关闭；插件只输出包裹标记，`raw` 的样式隔离需由站点/主题另行处理                                                                 |
 
 ## 由插件提供的能力
 
@@ -133,17 +133,18 @@ themeNew({
 服务端（`@vuepress/theme-new`）：
 
 - `themeNew(options)`：创建主题。
-- `ThemeNewOptions`、`ThemeConfig`、`ThemePageData`、`DefaultTheme`（组件用的类型命名空间）。
+- 类型：`ThemeNewOptions`、`ThemeConfig`、`ThemeLayout`、`ThemePageData`、`ThemePluginsOptions`、`ThemeContributor`、`AppearanceOptions`、`DefaultTheme`（组件用的类型命名空间）。
 
 客户端（`@vuepress/theme-new/client`）：
 
-- 布局与组件：`Layout`、`NotFound`、`VP*` 组件（`VPBadge`、`VPButton`、`VPFeatures`、`VPHero`、`VPTeamPage`、`VPSocialLinks` 等）。
+- 默认导出与组件：默认导出（`Layout`、`enhanceApp`）以及 `VP*` 组件（`VPBadge`、`VPButton`、`VPFeatures`、`VPSocialLinks` 等）。`NotFound` 是内部组件，由 `VPContent` 渲染，不作为具名导出。
 - `useLayout()`：布局状态，包括是否首页、侧边栏、大纲、是否有 aside 等。
 - `usePageType()`：当前页面 `type`，默认 `doc`。
-- 页面数据组合函数：`useThemePageData`、`useThemePageFrontmatter`、`useThemePageRelativePath`、`useThemePageLastUpdated`、`useThemePageIsNotFound`。
+- 页面数据组合函数：`useThemePageData()`、`useThemePageFrontmatter()`、`usePageRelativePath()`、`usePageLastUpdated()`、`usePageIsNotFound()`。
 - `useContributors()`：当前页面的贡献者列表（受 `contributors` 选项与 frontmatter 控制）。
-- 多语言：`useThemeLocaleData`、`useThemeLocalePath`、`useThemeLocales`、`resolveThemeLocalePath`。
+- 多语言：`useThemeLocalePath()`、`useThemeLocales()`；`useThemeData()` / `useThemeLocaleData()` 由 `@vuepress/plugin-theme-data/client` 提供，主题直接再导出；`resolveThemeLocalePath()` 不存在，主题不提供该 API。
 - 暗色模式：`useDarkMode()`、`themeDarkModeSymbol`、`COLOR_MODE_STORAGE_KEY`、`createDarkModeRef()`。
+- 运行时：`useRuntimeBase()` 返回站点基础路径的运行时值。
 
 ## 构建与首屏
 

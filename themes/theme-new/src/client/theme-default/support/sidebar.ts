@@ -61,13 +61,13 @@ export const resolveHeadingSidebar = (
  * return empty array.
  */
 export function getSidebar(
-  _sidebar: DefaultTheme.Sidebar | 'heading' | undefined,
+  _sidebar: DefaultTheme.Sidebar | 'heading' | false | undefined,
   path: string,
   page?: SidebarPage,
 ): SidebarItem[] {
   if (_sidebar === 'heading') return resolveHeadingSidebar(page)
+  if (_sidebar === false || _sidebar == null) return []
   if (Array.isArray(_sidebar)) return addBase(_sidebar)
-  if (_sidebar == null) return []
 
   path = ensureStartingSlash(path)
 

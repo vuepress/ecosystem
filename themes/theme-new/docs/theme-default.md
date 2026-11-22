@@ -8,20 +8,20 @@
 
 ### 总体
 
-| `@vuepress/theme-default` | `@vuepress/theme-new` 等价写法 | 说明                                                                                                     |
-| ------------------------- | ------------------------------ | -------------------------------------------------------------------------------------------------------- |
-| `hostname`                | 无                             | 原主题用它自动注册 `plugin-seo`、`plugin-sitemap`；新主题不内置这两个插件，请在站点 `plugins` 中自行注册 |
-| `themePlugins`            | `themePlugins`                 | 均为「布尔或插件配置对象」，可逐项配置或关闭主题接线的插件（见下方「插件开关」）                         |
-| `locales`                 | `locales`（键名不同）          | 原主题键为路由路径 `/`、`/zh/`；新主题键为 VitePress 风格 `root`、`zh`，内部会转换为路由路径             |
+| `@vuepress/theme-default` | `@vuepress/theme-new` 等价写法 | 说明                                                                                                                   |
+| ------------------------- | ------------------------------ | ---------------------------------------------------------------------------------------------------------------------- |
+| `hostname`                | 无                             | 原主题用它自动注册 `plugin-seo`、`plugin-sitemap`；新主题不内置这两个插件，请在站点 `plugins` 中自行注册               |
+| `themePlugins`            | `themePlugins`                 | 每项都可设为 `false` 关闭；带配置项的插件也可传对象，`activeHeaderLinks`、`nprogress` 为布尔开关（见下方「插件开关」） |
+| `locales`                 | `locales`（键名不同）          | 原主题键为路由路径 `/`、`/zh/`；新主题键为 VitePress 风格 `root`、`zh`，内部会转换为路由路径                           |
 
 ### 颜色模式
 
-| 原主题                   | 新主题                             | 说明                                                    |
-| ------------------------ | ---------------------------------- | ------------------------------------------------------- |
-| `colorMode: 'auto'`      | `appearance: true`（默认，可省略） | 跟随系统，可切换                                        |
-| `colorMode: 'dark'`      | `appearance: 'dark'`               | 初始深色，可切换                                        |
-| `colorMode: 'light'`     | `appearance: false`                | 固定浅色                                                |
-| `colorModeSwitch: false` | 无等价项                           | 新主题的切换按钮默认显示；如需隐藏可先固定 `appearance` |
+| 原主题                   | 新主题                             | 说明                                                                                                            |
+| ------------------------ | ---------------------------------- | --------------------------------------------------------------------------------------------------------------- |
+| `colorMode: 'auto'`      | `appearance: true`（默认，可省略） | 跟随系统，可切换                                                                                                |
+| `colorMode: 'dark'`      | `appearance: 'dark'`               | 初始深色，可切换                                                                                                |
+| `colorMode: 'light'`     | `appearance: false`                | 固定浅色                                                                                                        |
+| `colorModeSwitch: false` | 无等价项                           | 新主题的切换按钮默认显示；可固定 `appearance` 为 `false` / `'force-dark'` / `'force-auto'` 隐藏，见「颜色模式」 |
 
 原主题没有的能力：`appearance: 'force-dark'` / `'force-auto'`（固定深色 / 固定跟随系统，不显示切换按钮），这是从 VitePress 语义保留的新功能。
 
@@ -53,28 +53,29 @@
 | `themePlugins: { copyCode: { ... }, git: { ... }, hint: { ... }, tab: { ... }, icon: { ... }, mediumZoom: { ... } }` | `themePlugins: { copyCode: { ... }, git: { ... }, markdownHint: { ... }, markdownTab: { ... }, icon: { ... }, mediumZoom: { ... } }` |
 | `themePlugins: { activeHeaderLinks: false }`                                                                         | 同名同义                                                                                                                             |
 | `themePlugins: { backToTop, linksCheck, prismjs, seo, sitemap }`                                                     | 无等价项：这些插件不由主题接线，请在站点 `plugins` 中自行注册                                                                        |
+| 无对应开关（原主题不提供 `v-pre` / `raw` 容器）                                                                      | 新主题额外接线 `@vuepress/plugin-markdown-ext`（`vPre: true, raw: true`），可用 `themePlugins.markdownExt` 配置或关闭                |
 
 ### 侧边栏与文档页
 
-| 原主题                                                   | 新主题等价写法                                        | 说明                                                                   |
-| -------------------------------------------------------- | ----------------------------------------------------- | ---------------------------------------------------------------------- |
-| `sidebar: 'heading'`                                     | `sidebar: 'heading'`（默认）                          | 从当前页标题生成侧边栏                                                 |
-| `sidebar: [...]` / `{ '/guide/': [...] }`                | 同形（VitePress 风格对象数组）                        | 新主题分组用 `text` / `items` / `link`，不接受字符串条目               |
-| `sidebar: false`                                         | `sidebar: false`                                      | 支持                                                                   |
-| `sidebarDepth`                                           | `sidebarDepth`（默认 2）                              | 控制自动侧边栏的标题深度；右侧大纲仍由 `outline.level` 控制            |
-| `editLink: boolean`                                      | `editLink: { pattern, text }`                         | 关闭时省略该选项                                                       |
-| `editLinkText`                                           | `editLink.text`                                       |                                                                        |
-| `editLinkPattern`                                        | `editLink.pattern`，其中 `:path` 会替换为源文件路径   |                                                                        |
-| `docsRepo` / `docsBranch` / `docsDir`                    | 无等价项                                              | 直接写成完整的 `editLink.pattern`                                      |
-| `lastUpdated: boolean`                                   | `lastUpdated: boolean \| { text, formatOptions }`     |                                                                        |
-| `lastUpdatedText`                                        | `lastUpdated.text`                                    |                                                                        |
-| `contributors` / `contributorsText`                      | 同名                                                  | 文档页脚渲染贡献者列表，数据来自 `@vuepress/plugin-git`                |
-| `prev` / `next`                                          | `docFooter.prev` / `docFooter.next`                   | 支持 `string` / `false`                                                |
-| `externalLinkIcon`                                       | `externalLinkIcon`                                    | 同名同义                                                               |
-| `tip` / `warning` / `danger` / `important` / `note` 文案 | 由 `@vuepress/plugin-markdown-hint` 的 `locales` 配置 | 新主题未把该文案提升为主题选项，属待补项                               |
-| `backToTop`（默认主题插件）                              | 内置「返回顶部」                                      | 文档页右下角下拉里的「Return to top」，文案 `returnToTopLabel`         |
-| `prismjs` 主题配置                                       | `@vuepress/plugin-shiki`                              | 新主题默认使用 Shiki（`github-light` / `github-dark`），不再使用 Prism |
-| `palettePlugin` / `userStyle`                            | 无等价项                                              | 主题不提供 Sass 调色板与用户样式入口，需要时在站点注册插件/样式        |
+| 原主题                                                   | 新主题等价写法                                      | 说明                                                                    |
+| -------------------------------------------------------- | --------------------------------------------------- | ----------------------------------------------------------------------- |
+| `sidebar: 'heading'`                                     | `sidebar: 'heading'`（默认）                        | 从当前页标题生成侧边栏                                                  |
+| `sidebar: [...]` / `{ '/guide/': [...] }`                | 同形（VitePress 风格对象数组）                      | 新主题分组用 `text` / `items` / `link`，不接受字符串条目                |
+| `sidebar: false`                                         | `sidebar: false`                                    | 支持（关闭自动侧边栏）                                                  |
+| `sidebarDepth`                                           | `sidebarDepth`（默认 2）                            | 控制自动侧边栏的标题深度；右侧大纲仍由 `outline.level` 控制（默认 `2`） |
+| `editLink: boolean`                                      | `editLink: { pattern, text }`                       | 关闭时省略该选项                                                        |
+| `editLinkText`                                           | `editLink.text`                                     |                                                                         |
+| `editLinkPattern`                                        | `editLink.pattern`，其中 `:path` 会替换为源文件路径 |                                                                         |
+| `docsRepo` / `docsBranch` / `docsDir`                    | 无等价项                                            | 直接写成完整的 `editLink.pattern`                                       |
+| `lastUpdated: boolean`                                   | `lastUpdated: boolean \| { text, formatOptions }`   |                                                                         |
+| `lastUpdatedText`                                        | `lastUpdated.text`                                  |                                                                         |
+| `contributors` / `contributorsText`                      | 同名                                                | 文档页脚渲染贡献者列表，数据来自 `@vuepress/plugin-git`                 |
+| `prev` / `next`                                          | `docFooter.prev` / `docFooter.next`                 | 支持 `string` / `false`                                                 |
+| `externalLinkIcon`                                       | `externalLinkIcon`                                  | 同名同义                                                                |
+| `tip` / `warning` / `danger` / `important` / `note` 文案 | 同名主题选项                                        | 主题会转成 `@vuepress/plugin-markdown-hint` 的 `locales`                |
+| `backToTop`（默认主题插件）                              | 内置「返回顶部」                                    | 文档页右下角下拉里的「Return to top」，文案 `returnToTopLabel`          |
+| `prismjs` 主题配置                                       | `@vuepress/plugin-shiki`                            | 新主题默认使用 Shiki（`github-light` / `github-dark`），不再使用 Prism  |
+| `palettePlugin` / `userStyle`                            | 无等价项                                            | 主题不提供 Sass 调色板与用户样式入口，需要时在站点注册插件/样式         |
 
 ### 首页与 404
 
@@ -103,15 +104,15 @@
 
 ## 页面数据与 frontmatter
 
-| 原主题                                                                         | 新主题等价物                                                                                 |
-| ------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------- |
-| `DefaultThemeData` / `DefaultThemeLocaleOptions`                               | `ThemeConfig`（`locales` 支持多语言覆盖）                                                    |
-| `DefaultThemePageData`（`filePathRelative`、`git`）                            | `ThemePageData`（`path`、`title`、`lang`、`frontmatter`、`filePathRelative`、`git`、`type`） |
-| `DefaultThemeNormalPageFrontmatter`                                            | `ThemePageFrontmatter`（新增 `type`，其余字段按需扩展）                                      |
-| `home: true`                                                                   | `type: home`                                                                                 |
-| `navbar: false`                                                                | 无等价项（导航菜单由主题配置的 `nav` 决定）                                                  |
-| `sidebar: ...` / `sidebarDepth` / `editLink` / `lastUpdated` / `prev` / `next` | 与主题选项同名，见上表                                                                       |
-| ——                                                                             | 新增 `type`、`hero`、`features`、`team`、`sponsors`、`outline`、`pageClass` 等字段           |
+| 原主题                                                                         | 新主题等价物                                                                         |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
+| `DefaultThemeData` / `DefaultThemeLocaleOptions`                               | `ThemeConfig`（`locales` 支持多语言覆盖）                                            |
+| `DefaultThemePageData`（`filePathRelative`、`git`）                            | `ThemePageData`（`path`、`title`、`lang`、`frontmatter`、`filePathRelative`、`git`） |
+| `DefaultThemeNormalPageFrontmatter`                                            | `ThemePageFrontmatter`（新增 `type`，其余字段按需扩展）                              |
+| `home: true`                                                                   | `type: home`                                                                         |
+| `navbar: false`                                                                | 无等价项（导航菜单由主题配置的 `nav` 决定）                                          |
+| `sidebar: ...` / `sidebarDepth` / `editLink` / `lastUpdated` / `prev` / `next` | 与主题选项同名，见上表                                                               |
+| ——                                                                             | 新增 `type`、`hero`、`features`、`team`、`sponsors`、`outline`、`pageClass` 等字段   |
 
 ## 客户端 API 与组件
 
@@ -127,7 +128,7 @@
 | `resolveEditLink()`、`resolvePrefix()`、`resolveRepoType()`、`isActiveSidebarItem()`     | 内部实现                                                                    | 不作为公开 API                                                    |
 | `@theme/*` 组件别名（可替换组件）                                                        | 不支持                                                                      | 新主题通过 `exports` 暴露组件与样式，但不提供按文件替换的机制     |
 
-新主题公开的客户端 API：布局与组件（`Layout`、`NotFound`、`VP*`）、`useLayout()`、`usePageType()`、页面与主题数据组合函数、多语言与暗色模式组合函数、若干类型。详见 [功能一览](./features.md#公共-api)。
+新主题公开的客户端 API：默认导出与 `VP*` 组件、`useLayout()`、`usePageType()`、页面数据组合函数（`useThemePageData()` 等）、`useThemeLocalePath()` / `useThemeLocales()`、暗色模式组合函数、若干类型；`Layout` 通过默认导出提供，`NotFound` 为内部组件。详见 [功能一览](./features.md#公共-api)。
 
 ### 提示容器文案
 

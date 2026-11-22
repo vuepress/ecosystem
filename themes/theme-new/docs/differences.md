@@ -50,7 +50,7 @@
 - **移植方式**：主题启用 `markdownHintPlugin({ hint: true, alert: true })`。`tip` / `info` / `warning` / `caution` / `note` / `important` / `danger`（渲染为 `caution`，与 theme-default 一致）与 `details` 都由插件解析、渲染并自带样式：`.hint-container`、`.hint-container-title`，标题前带图标，`details` 是原生可折叠的 `<details>`。主题不再注册容器渲染器，也不再为容器写样式，只做三件事：
   1. 引入 `@vuepress/helper/colors.css`：插件样式依赖它提供的 `--vp-c-*-bg` / `-text` / `-soft` 调色板，该调色板用 `[data-theme='dark']` 切换，与主题的暗色方案一致。
   2. 在 `styles/vars.css` 覆盖少量变量：`--hint-font-size: 0.875rem` 对齐 VitePress 的容器字号；把插件调色板中的 blue 映射到 indigo（VitePress 的 info 容器用 indigo 色系）。
-  3. 保留 `v-pre`、`raw` 两个 VitePress 扩展：hint 插件不覆盖它们，主题用 `@vuepress/plugin-markdown-container` 的极简 `render` 输出 `<div v-pre>` / `<div class="vp-raw">`（`src/node/containers.ts`）。
+  3. `v-pre`、`raw` 两个 VitePress 扩展交给 `@vuepress/plugin-markdown-ext`（`themePlugins.markdownExt` 默认 `vPre: true, raw: true`）：插件只输出 `<div v-pre>` / `<div class="vp-raw">` 包裹标记；`raw` 的样式隔离在 VitePress 里也是可选项（`postcssIsolateStyles`），本主题不内置隔离，需要时由站点用 PostCSS 排除 `.vp-raw`。
 - **原因**：容器属于「功能」，应由官方插件提供；样式问题通过覆盖插件的 CSS 变量解决，而不是在主题里复刻或映射一套 VitePress 容器样式。
 - **优点**：主题里没有容器样式与渲染代码；容器图标、默认标题的多语言、打印前自动展开 `<details>` 等行为全部由插件维护；外观与 theme-default 一致，只受主题调色板影响；插件后续改进自动惠及主题。
 - **缺点（与 VitePress 的差异）**：
@@ -70,7 +70,7 @@
 
 ## 客户端 API：直接使用 `vuepress/client`
 
-- **移植方式**：移植层内部不再保留 VitePress 兼容层（原 `src/client/app/*`）：主题的组合函数（`useThemePageData`、`useThemePageFrontmatter`、`useThemePageRelativePath`、`useThemeLocaleData` 等）直接读取 `vuepress/client` 与 `@vuepress/plugin-theme-data/client` 的原生数据，并整理为主题自己的数据 API（`ThemePageData`、`ThemePageFrontmatter`、`ThemeLayout` 等）；数据的形状与语义以 `@vuepress/theme-default` 为参照，新增字段单独记录。
+- **移植方式**：移植层内部不再保留 VitePress 兼容层（原 `src/client/app/*`）：主题的组合函数（`useThemePageData`、`useThemePageFrontmatter`、`usePageRelativePath`，以及来自 `@vuepress/plugin-theme-data/client` 的 `useThemeLocaleData` 等）直接读取 `vuepress/client` 的原生数据，并整理为主题自己的数据 API（`ThemePageData`、`ThemePageFrontmatter`、`ThemeLayout` 等）；数据的形状与语义以 `@vuepress/theme-default` 为参照，新增字段单独记录。
 - **原因**：兼容层会带来额外的响应式包装与运行时开销；用户要求最终提供「0 性能损失的原生实现」。
 - **优点**：没有中间层，数据流更直接；主题代码与生态其他主题一致，便于长期维护。
 - **缺点**：主题内部组合函数是主题自有 API，需要与 `@vuepress/theme-default` 的数据形状和语义保持等价；新增或暂时缺失的字段都记录在[功能一览](./features.md)与[与 `@vuepress/theme-default` 的对应关系](./theme-default.md)中，避免出现两套并行约定。

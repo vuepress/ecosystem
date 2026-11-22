@@ -102,6 +102,55 @@ describe('theme layout', () => {
     expect(disabledHtml).not.toContain('class="vp-doc-footer-contributors"')
   })
 
+  it('should hide the last updated time when disabled', async () => {
+    const updatedTime = 1_700_000_000_000
+
+    const enabledHtml = await renderVuePress({
+      clientConfigs: await createClientConfigs(),
+      content: '<h1 id="hello">Hello</h1>',
+      page: {
+        path: '/guide/',
+        title: 'Guide',
+        data: { filePathRelative: 'guide/index.md', git: { updatedTime } },
+      },
+      site: { title: 'My Site' },
+      themeData: {},
+    })
+
+    expect(enabledHtml).toContain('class="vp-last-updated"')
+
+    // `lastUpdated: false` in the page frontmatter wins over the git data
+    const pageDisabledHtml = await renderVuePress({
+      clientConfigs: await createClientConfigs(),
+      content: '<h1 id="hello">Hello</h1>',
+      page: {
+        path: '/guide/',
+        title: 'Guide',
+        frontmatter: { lastUpdated: false },
+        data: { filePathRelative: 'guide/index.md', git: { updatedTime } },
+      },
+      site: { title: 'My Site' },
+      themeData: {},
+    })
+
+    expect(pageDisabledHtml).not.toContain('class="vp-last-updated"')
+
+    // the theme-level option works as well
+    const themeDisabledHtml = await renderVuePress({
+      clientConfigs: await createClientConfigs(),
+      content: '<h1 id="hello">Hello</h1>',
+      page: {
+        path: '/guide/',
+        title: 'Guide',
+        data: { filePathRelative: 'guide/index.md', git: { updatedTime } },
+      },
+      site: { title: 'My Site' },
+      themeData: { lastUpdated: false },
+    })
+
+    expect(themeDisabledHtml).not.toContain('class="vp-last-updated"')
+  })
+
   it('should render the content without the layout shell for the content type', async () => {
     const html = await renderVuePress({
       clientConfigs: await createClientConfigs(),
