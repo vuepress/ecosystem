@@ -3,13 +3,13 @@ import { useThemeLocaleData } from '@vuepress/plugin-theme-data/client'
 import { computed } from 'vue'
 import { useSiteLocaleData } from 'vuepress/client'
 
-import { useLangs } from '../composables/langs.js'
-import { useLayout } from '../composables/layout.js'
-import type { DefaultTheme } from '../shared.js'
+import { useLangs } from '../composables/useLangs.js'
+import { useLayout } from '../composables/useLayout.js'
+import type { ThemeConfig } from '../shared.js'
 import { normalizeLink } from '../support/utils.js'
 import VPImage from './VPImage.vue'
 
-const theme = useThemeLocaleData<DefaultTheme.Config>()
+const theme = useThemeLocaleData<ThemeConfig>()
 const site = useSiteLocaleData()
 const { hasSidebar } = useLayout()
 const { currentLang } = useLangs()

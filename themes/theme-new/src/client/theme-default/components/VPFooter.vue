@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import { useThemeLocaleData } from '@vuepress/plugin-theme-data/client'
 
-import { useThemePageFrontmatter } from '../../composables/page.js'
-import { useLayout } from '../composables/layout.js'
-import type { DefaultTheme } from '../shared.js'
+import { useThemePageFrontmatter } from '../../composables/useThemePageData.js'
+import { useLayout } from '../composables/useLayout.js'
+import type { ThemeConfig } from '../shared.js'
 
-const theme = useThemeLocaleData<DefaultTheme.Config>()
+const theme = useThemeLocaleData<ThemeConfig>()
 const frontmatter = useThemePageFrontmatter()
 const { hasSidebar } = useLayout()
 </script>

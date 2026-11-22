@@ -13,15 +13,59 @@ export interface SidebarLink {
 type SidebarItem = DefaultTheme.SidebarItem
 
 /**
+ * The page information used to resolve the `heading` sidebar
+ *
+ * 用于解析 `heading` 侧边栏的页面信息
+ */
+export interface SidebarPage {
+  /** Title of the page / 页面标题 */
+  title: string
+  /** Headings of the page / 页面的标题列表 */
+  headers: DefaultTheme.OutlineItem[]
+}
+
+/**
+ * Convert the page headings to sidebar items
+ *
+ * 将页面标题转换为侧边栏条目
+ *
+ * @param headers - Headings of the page / 页面的标题列表
+ * @returns The sidebar items / 侧边栏条目
+ */
+const resolveHeadingItems = (
+  headers: DefaultTheme.OutlineItem[],
+): SidebarItem[] =>
+  headers.map(({ title, link, children }) => ({
+    text: title,
+    link,
+    ...(children?.length ? { items: resolveHeadingItems(children) } : {}),
+  }))
+
+/**
+ * Resolve the sidebar items from the page headings
+ *
+ * 从页面标题解析侧边栏条目
+ *
+ * @param page - Page information / 页面信息
+ * @returns The sidebar items / 侧边栏条目
+ */
+export const resolveHeadingSidebar = (
+  page: SidebarPage | undefined,
+): SidebarItem[] =>
+  page ? [{ text: page.title, items: resolveHeadingItems(page.headers) }] : []
+
+/**
  * Get the `Sidebar` from sidebar option. This method will ensure to get correct
  * sidebar config from `MultiSideBarConfig` with various path combinations such
  * as matching `guide/` and `/guide/`. If no matching config was found, it will
  * return empty array.
  */
 export function getSidebar(
-  _sidebar: DefaultTheme.Sidebar | undefined,
+  _sidebar: DefaultTheme.Sidebar | 'heading' | undefined,
   path: string,
+  page?: SidebarPage,
 ): SidebarItem[] {
+  if (_sidebar === 'heading') return resolveHeadingSidebar(page)
   if (Array.isArray(_sidebar)) return addBase(_sidebar)
   if (_sidebar == null) return []
 
@@ -37,6 +81,9 @@ export function getSidebar(
     })
 
   const sidebar = dir ? (_sidebar[dir] ?? []) : []
+
+  if (sidebar === 'heading') return resolveHeadingSidebar(page)
+
   return Array.isArray(sidebar)
     ? addBase(sidebar)
     : addBase(sidebar.items, sidebar.base)
@@ -103,8 +150,12 @@ export function hasActiveLink(
   if (Array.isArray(items)) {
     return items.some((item) => hasActiveLink(path, hash, item, skipHashCheck))
   }
-  if (items.link && isActive(path, hash, items.link, false, skipHashCheck)) {
-    return true
+  if (items.link) {
+    if (items.link.startsWith('#')) {
+      if (items.link === hash) return true
+    } else if (isActive(path, hash, items.link, false, skipHashCheck)) {
+      return true
+    }
   }
   if (items.items) {
     return hasActiveLink(path, hash, items.items, skipHashCheck)

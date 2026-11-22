@@ -1,13 +1,13 @@
 <script setup lang="ts">
 import { useThemeLocaleData } from '@vuepress/plugin-theme-data/client'
 
-import { useThemePageFrontmatter } from '../../composables/page.js'
-import type { DefaultTheme } from '../shared.js'
+import { useThemePageFrontmatter } from '../../composables/useThemePageData.js'
+import type { ThemeConfig } from '../shared.js'
 import VPHomeContent from './VPHomeContent.vue'
 import VPHomeFeatures from './VPHomeFeatures.vue'
 import VPHomeHero from './VPHomeHero.vue'
 
-const theme = useThemeLocaleData<DefaultTheme.Config>()
+const theme = useThemeLocaleData<ThemeConfig>()
 const frontmatter = useThemePageFrontmatter()
 </script>
 

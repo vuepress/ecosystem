@@ -4,9 +4,9 @@ import { onKeyStroke } from '@vueuse/core'
 import { nextTick, ref, useId, useTemplateRef, watch } from 'vue'
 import { onContentUpdated } from 'vuepress/client'
 
-import { resolveTitle } from '../composables/outline.js'
-import { useBodyScrollLock } from '../composables/scroll-lock.js'
-import type { DefaultTheme } from '../shared.js'
+import { resolveTitle } from '../composables/useActiveAnchor.js'
+import { useBodyScrollLock } from '../composables/useBodyScrollLock.js'
+import type { DefaultTheme, ThemeConfig } from '../shared.js'
 import VPDocOutlineItem from './VPDocOutlineItem.vue'
 
 const props = defineProps<{
@@ -14,7 +14,7 @@ const props = defineProps<{
   navHeight: number
 }>()
 
-const theme = useThemeLocaleData<DefaultTheme.Config>()
+const theme = useThemeLocaleData<ThemeConfig>()
 const open = ref(false)
 const vh = ref(0)
 const main = useTemplateRef('main')

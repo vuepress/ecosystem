@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 
-import type { GridSize } from '../composables/sponsor-grid.js'
+import type { GridSize } from '../composables/useSponsorsGrid.js'
 import type { Sponsor } from './VPSponsorsGrid.vue'
 import VPSponsorsGrid from './VPSponsorsGrid.vue'
 

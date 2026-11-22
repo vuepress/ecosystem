@@ -2,10 +2,10 @@
 import { useThemeLocaleData } from '@vuepress/plugin-theme-data/client'
 import { withBase } from 'vuepress/client'
 
-import { useLangs } from './composables/langs.js'
-import type { DefaultTheme } from './shared.js'
+import { useLangs } from './composables/useLangs.js'
+import type { ThemeConfig } from './shared.js'
 
-const theme = useThemeLocaleData<DefaultTheme.Config>()
+const theme = useThemeLocaleData<ThemeConfig>()
 const { currentLang } = useLangs()
 </script>
 

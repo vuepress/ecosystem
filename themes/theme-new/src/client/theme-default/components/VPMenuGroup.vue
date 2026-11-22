@@ -10,7 +10,7 @@
 >
 import { computed, inject } from 'vue'
 
-import { navScreenInjectionKey } from '../composables/nav.js'
+import { navScreenInjectionKey } from '../composables/useNav.js'
 import type { DefaultTheme } from '../shared.js'
 import VPMenuLink from './VPMenuLink.vue'
 

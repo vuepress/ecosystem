@@ -2,11 +2,11 @@
 import { useThemeLocaleData } from '@vuepress/plugin-theme-data/client'
 import { inject, ref, watchPostEffect } from 'vue'
 
-import { useDarkMode } from '../../composables/darkMode.js'
-import type { DefaultTheme } from '../shared.js'
+import { useDarkMode } from '../../composables/useDarkMode.js'
+import type { ThemeConfig } from '../shared.js'
 import VPSwitch from './VPSwitch.vue'
 
-const theme = useThemeLocaleData<DefaultTheme.Config>()
+const theme = useThemeLocaleData<ThemeConfig>()
 const isDark = useDarkMode()
 
 const toggleAppearance = inject('toggle-appearance', () => {

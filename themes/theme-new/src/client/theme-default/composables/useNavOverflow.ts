@@ -10,7 +10,7 @@ import {
   type MaybeRefOrGetter,
 } from 'vue'
 
-import { inBrowser } from '../../composables/env.js'
+import { inBrowser } from '../../composables/inBrowser.js'
 
 /**
  * Priority+ overflow for the navbar (#1271, #2842).

@@ -2,8 +2,8 @@
 import { useThemeLocaleData } from '@vuepress/plugin-theme-data/client'
 import { useTemplateRef, watchEffect } from 'vue'
 
-import { useNav } from '../composables/nav.js'
-import type { DefaultTheme } from '../shared.js'
+import { useNav } from '../composables/useNav.js'
+import type { ThemeConfig } from '../shared.js'
 
 defineProps<{
   active: boolean
@@ -13,7 +13,7 @@ defineEmits<{
   (e: 'click'): void
 }>()
 
-const theme = useThemeLocaleData<DefaultTheme.Config>()
+const theme = useThemeLocaleData<ThemeConfig>()
 
 // register as the screen's trigger so Escape can return focus here
 const el = useTemplateRef('el')

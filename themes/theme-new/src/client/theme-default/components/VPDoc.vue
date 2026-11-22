@@ -3,13 +3,13 @@ import { useThemeLocaleData } from '@vuepress/plugin-theme-data/client'
 import { computed } from 'vue'
 import { useRoute, useSiteData } from 'vuepress/client'
 
-import { useRuntimeBase } from '../../composables/site.js'
-import { useLayout } from '../composables/layout.js'
-import { isRelativeBase, type DefaultTheme } from '../shared.js'
+import { useRuntimeBase } from '../../composables/useRuntimeBase.js'
+import { useLayout } from '../composables/useLayout.js'
+import { isRelativeBase, type ThemeConfig } from '../shared.js'
 import VPDocAside from './VPDocAside.vue'
 import VPDocFooter from './VPDocFooter.vue'
 
-const theme = useThemeLocaleData<DefaultTheme.Config>()
+const theme = useThemeLocaleData<ThemeConfig>()
 const site = useSiteData()
 const runtimeBase = useRuntimeBase()
 const route = useRoute()

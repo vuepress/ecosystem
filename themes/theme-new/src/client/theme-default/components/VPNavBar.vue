@@ -3,9 +3,9 @@ import { useThemeLocaleData } from '@vuepress/plugin-theme-data/client'
 import { useWindowScroll } from '@vueuse/core'
 import { computed } from 'vue'
 
-import { useLayout } from '../composables/layout.js'
-import { provideNavOverflow } from '../composables/nav-overflow.js'
-import type { DefaultTheme } from '../shared.js'
+import { useLayout } from '../composables/useLayout.js'
+import { provideNavOverflow } from '../composables/useNavOverflow.js'
+import type { ThemeConfig } from '../shared.js'
 import VPNavAppearance from './VPNavAppearance.vue'
 import VPNavBarExtra from './VPNavBarExtra.vue'
 import VPNavBarHamburger from './VPNavBarHamburger.vue'
@@ -23,7 +23,7 @@ defineEmits<{
   (e: 'toggle-screen'): void
 }>()
 
-const theme = useThemeLocaleData<DefaultTheme.Config>()
+const theme = useThemeLocaleData<ThemeConfig>()
 const { isHome, hasSidebar, hasLocalNav } = useLayout()
 
 const { y } = useWindowScroll()

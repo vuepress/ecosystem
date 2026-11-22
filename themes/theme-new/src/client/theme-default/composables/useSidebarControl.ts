@@ -10,7 +10,7 @@ import {
 } from 'vue'
 import { useRoute } from 'vuepress/client'
 
-import { useThemePageData } from '../../composables/page.js'
+import { useThemePageData } from '../../composables/useThemePageData.js'
 import type { DefaultTheme } from '../shared.js'
 import { isActive } from '../shared.js'
 import { hasActiveLink as containsActiveLink } from '../support/sidebar.js'
@@ -92,13 +92,15 @@ export function useSidebarItemControl(
 
   function updateActiveLink(skipHashCheck = false): void {
     if (item.value.link) {
-      isActiveLink.value = isActive(
-        page.value.filePathRelative ?? '',
-        route.hash,
-        item.value.link,
-        false,
-        skipHashCheck,
-      )
+      isActiveLink.value = item.value.link.startsWith('#')
+        ? route.hash === item.value.link
+        : isActive(
+            page.value.filePathRelative ?? '',
+            route.hash,
+            item.value.link,
+            false,
+            skipHashCheck,
+          )
     } else {
       isActiveLink.value = false
     }
@@ -134,9 +136,11 @@ export function useSidebarItemControl(
   // mount — links that differ only in hash must not claim aria-current in
   // SSR output
   const isCurrentLink = computed(() => {
-    return item.value.link
-      ? isActive(page.value.filePathRelative ?? '', route.hash, item.value.link)
-      : false
+    if (!item.value.link) return false
+
+    return item.value.link.startsWith('#')
+      ? route.hash === item.value.link
+      : isActive(page.value.filePathRelative ?? '', route.hash, item.value.link)
   })
 
   const hasChildren = computed(() => {

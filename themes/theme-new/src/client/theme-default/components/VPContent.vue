@@ -1,6 +1,9 @@
 <script setup lang="ts">
-import { usePageIsNotFound, usePageType } from '../../composables/page.js'
-import { useLayout } from '../composables/layout.js'
+import {
+  usePageIsNotFound,
+  usePageType,
+} from '../../composables/useThemePageData.js'
+import { useLayout } from '../composables/useLayout.js'
 import NotFound from '../NotFound.vue'
 import VPDoc from './VPDoc.vue'
 import VPHome from './VPHome.vue'

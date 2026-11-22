@@ -8,37 +8,34 @@ import {
   type ComputedRef,
   type InjectionKey,
 } from 'vue'
-import { onContentUpdated, useRoute } from 'vuepress/client'
+import { onContentUpdated, usePageData, useRoute } from 'vuepress/client'
 
 import {
   usePageRelativePath,
   usePageType,
   useThemePageFrontmatter,
-} from '../../composables/page.js'
-import type { DefaultTheme } from '../shared.js'
+} from '../../composables/useThemePageData.js'
+import type { DefaultTheme, ThemeConfig, ThemeLayout } from '../shared.js'
 import { getSidebar, getSidebarGroups } from '../support/sidebar.js'
-import { getHeaders } from './outline.js'
-import { useCloseSidebarOnEscape } from './sidebar.js'
+import { getHeaders } from './useActiveAnchor.js'
+import { useCloseSidebarOnEscape } from './useSidebarControl.js'
 
 const headers = shallowRef<DefaultTheme.OutlineItem[]>([])
 const sidebar = shallowRef<DefaultTheme.SidebarItem[]>([])
+const sidebarHeaders = shallowRef<DefaultTheme.OutlineItem[]>([])
 
 const isDesktop = useMediaQuery('(min-width: 60rem)')
 
-export function useLayout(): DefaultTheme.Layout {
+export function useLayout(): ThemeLayout {
   const frontmatter = useThemePageFrontmatter()
-  const theme = useThemeLocaleData<DefaultTheme.Config>()
+  const theme = useThemeLocaleData<ThemeConfig>()
 
   const pageType = usePageType()
 
   const isHome = computed(() => pageType.value === 'home')
 
   const hasSidebar = computed(() => {
-    return (
-      frontmatter.value.sidebar !== false &&
-      sidebar.value.length > 0 &&
-      !isHome.value
-    )
+    return sidebar.value.length > 0 && !isHome.value
   })
 
   const isSidebarEnabled = computed(() => hasSidebar.value && isDesktop.value)
@@ -83,24 +80,44 @@ interface RegisterWatchersOptions {
 
 export function registerWatchers({ closeSidebar }: RegisterWatchersOptions) {
   const frontmatter = useThemePageFrontmatter()
-  const theme = useThemeLocaleData<DefaultTheme.Config>()
+  const theme = useThemeLocaleData<ThemeConfig>()
   const relativePath = usePageRelativePath()
+  const page = usePageData()
+
+  const sidebarConfig = computed(
+    () => frontmatter.value.sidebar ?? theme.value.sidebar ?? 'heading',
+  )
+
+  const sidebarDepth = computed(
+    () => frontmatter.value.sidebarDepth ?? theme.value.sidebarDepth ?? 2,
+  )
+
+  function updateSidebar(): void {
+    const newSidebar =
+      sidebarConfig.value === false
+        ? []
+        : getSidebar(sidebarConfig.value, relativePath.value, {
+            title: page.value.title,
+            headers: sidebarHeaders.value,
+          })
+
+    if (JSON.stringify(newSidebar) !== JSON.stringify(sidebar.value))
+      sidebar.value = newSidebar
+  }
 
   watch(
-    () => [relativePath.value, theme.value.sidebar] as const,
-    ([currentRelativePath, sidebarConfig]) => {
-      const newSidebar = sidebarConfig
-        ? getSidebar(sidebarConfig, currentRelativePath)
-        : []
-      if (JSON.stringify(newSidebar) !== JSON.stringify(sidebar.value)) {
-        sidebar.value = newSidebar
-      }
-    },
+    [sidebarConfig, sidebarDepth, relativePath, () => page.value.title],
+    updateSidebar,
     { immediate: true, deep: true, flush: 'sync' },
   )
 
   onContentUpdated(() => {
     headers.value = getHeaders(frontmatter.value.outline ?? theme.value.outline)
+    sidebarHeaders.value = getHeaders([2, sidebarDepth.value + 1] as [
+      number,
+      number,
+    ])
+    updateSidebar()
   })
 
   const route = useRoute()

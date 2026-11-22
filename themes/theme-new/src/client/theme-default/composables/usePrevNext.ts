@@ -4,13 +4,13 @@ import { computed } from 'vue'
 import {
   usePageRelativePath,
   useThemePageFrontmatter,
-} from '../../composables/page.js'
-import { isActive, normalize, type DefaultTheme } from '../shared.js'
+} from '../../composables/useThemePageData.js'
+import { isActive, normalize, type ThemeConfig } from '../shared.js'
 import { getFlatSideBarLinks, getSidebar } from '../support/sidebar.js'
 import { uniqBy } from '../support/utils.js'
 
 export function usePrevNext() {
-  const theme = useThemeLocaleData<DefaultTheme.Config>()
+  const theme = useThemeLocaleData<ThemeConfig>()
   const relativePath = usePageRelativePath()
   const frontmatter = useThemePageFrontmatter()
 

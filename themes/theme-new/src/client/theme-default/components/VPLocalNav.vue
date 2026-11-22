@@ -3,8 +3,8 @@ import { useThemeLocaleData } from '@vuepress/plugin-theme-data/client'
 import { useWindowScroll } from '@vueuse/core'
 import { computed, onMounted, ref } from 'vue'
 
-import { useLayout } from '../composables/layout.js'
-import type { DefaultTheme } from '../shared.js'
+import { useLayout } from '../composables/useLayout.js'
+import type { ThemeConfig } from '../shared.js'
 import VPLocalNavOutlineDropdown from './VPLocalNavOutlineDropdown.vue'
 
 defineProps<{
@@ -15,7 +15,7 @@ defineEmits<{
   (e: 'open-menu'): void
 }>()
 
-const theme = useThemeLocaleData<DefaultTheme.Config>()
+const theme = useThemeLocaleData<ThemeConfig>()
 const { isHome, hasSidebar, headers, hasLocalNav } = useLayout()
 const { y } = useWindowScroll()
 

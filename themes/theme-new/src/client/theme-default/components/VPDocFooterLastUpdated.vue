@@ -10,10 +10,10 @@ import {
 } from 'vue'
 import { usePageLang } from 'vuepress/client'
 
-import { usePageLastUpdated } from '../../composables/page.js'
-import type { DefaultTheme } from '../shared.js'
+import { usePageLastUpdated } from '../../composables/useThemePageData.js'
+import type { ThemeConfig } from '../shared.js'
 
-const theme = useThemeLocaleData<DefaultTheme.Config>()
+const theme = useThemeLocaleData<ThemeConfig>()
 const pageLang = usePageLang()
 const pageLastUpdated = usePageLastUpdated()
 const { language: browserLang } = useNavigatorLanguage()

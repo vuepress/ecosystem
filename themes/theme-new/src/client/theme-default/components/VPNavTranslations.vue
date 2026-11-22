@@ -2,9 +2,9 @@
 import { useThemeLocaleData } from '@vuepress/plugin-theme-data/client'
 import { computed, ref, useId } from 'vue'
 
-import { useLangs } from '../composables/langs.js'
-import { useNavOverflow } from '../composables/nav-overflow.js'
-import type { DefaultTheme } from '../shared.js'
+import { useLangs } from '../composables/useLangs.js'
+import { useNavOverflow } from '../composables/useNavOverflow.js'
+import type { ThemeConfig } from '../shared.js'
 import VPFlyout from './VPFlyout.vue'
 import VPLink from './VPLink.vue'
 import VPMenuLink from './VPMenuLink.vue'
@@ -16,7 +16,7 @@ const props = defineProps<{
   menu?: boolean
 }>()
 
-const theme = useThemeLocaleData<DefaultTheme.Config>()
+const theme = useThemeLocaleData<ThemeConfig>()
 const { localeLinks, currentLang } = useLangs({
   linkToCorrespondingPage: true,
 })

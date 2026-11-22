@@ -2,10 +2,10 @@
 import { useThemeLocaleData } from '@vuepress/plugin-theme-data/client'
 import { computed } from 'vue'
 
-import { useLangs } from '../composables/langs.js'
-import { useNavOverflow } from '../composables/nav-overflow.js'
-import { useAppearanceSwitch } from '../composables/nav.js'
-import type { DefaultTheme } from '../shared.js'
+import { useLangs } from '../composables/useLangs.js'
+import { useAppearanceSwitch } from '../composables/useNav.js'
+import { useNavOverflow } from '../composables/useNavOverflow.js'
+import type { ThemeConfig } from '../shared.js'
 import VPFlyout from './VPFlyout.vue'
 import VPMenuGroup from './VPMenuGroup.vue'
 import VPMenuLink from './VPMenuLink.vue'
@@ -13,7 +13,7 @@ import VPNavAppearance from './VPNavAppearance.vue'
 import VPNavTranslations from './VPNavTranslations.vue'
 import VPSocialLinks from './VPSocialLinks.vue'
 
-const theme = useThemeLocaleData<DefaultTheme.Config>()
+const theme = useThemeLocaleData<ThemeConfig>()
 const { localeLinks, currentLang } = useLangs({
   linkToCorrespondingPage: true,
 })

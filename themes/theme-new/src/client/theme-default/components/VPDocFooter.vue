@@ -5,28 +5,33 @@ import { computed } from 'vue'
 import {
   usePageLastUpdated,
   useThemePageFrontmatter,
-} from '../../composables/page.js'
-import { useEditLink } from '../composables/edit-link.js'
-import { usePrevNext } from '../composables/prev-next.js'
-import type { DefaultTheme } from '../shared.js'
+} from '../../composables/useThemePageData.js'
+import { useContributors } from '../composables/useContributors.js'
+import { useEditLink } from '../composables/useEditLink.js'
+import { usePrevNext } from '../composables/usePrevNext.js'
+import type { ThemeConfig } from '../shared.js'
+import VPDocFooterContributors from './VPDocFooterContributors.vue'
 import VPDocFooterLastUpdated from './VPDocFooterLastUpdated.vue'
 import VPLink from './VPLink.vue'
 
-const theme = useThemeLocaleData<DefaultTheme.Config>()
+const theme = useThemeLocaleData<ThemeConfig>()
 const frontmatter = useThemePageFrontmatter()
 const pageLastUpdated = usePageLastUpdated()
 
 const editLink = useEditLink()
 const control = usePrevNext()
+const contributors = useContributors()
 
 const hasEditLink = computed(
   () => theme.value.editLink && frontmatter.value.editLink !== false,
 )
 const hasLastUpdated = computed(() => pageLastUpdated.value)
+const hasContributors = computed(() => contributors.value.length > 0)
 const showFooter = computed(
   () =>
     hasEditLink.value ||
     hasLastUpdated.value ||
+    hasContributors.value ||
     control.value.prev ||
     control.value.next,
 )
@@ -36,7 +41,10 @@ const showFooter = computed(
   <footer v-if="showFooter" class="vp-doc-footer">
     <slot name="doc-footer-before" />
 
-    <div v-if="hasEditLink || hasLastUpdated" class="edit-info">
+    <div
+      v-if="hasEditLink || hasLastUpdated || hasContributors"
+      class="edit-info"
+    >
       <div v-if="hasEditLink" class="edit-link">
         <VPLink class="edit-link-button" :href="editLink.url" :no-icon="true">
           <span class="vpi-square-pen edit-link-icon" />
@@ -44,8 +52,11 @@ const showFooter = computed(
         </VPLink>
       </div>
 
-      <div v-if="hasLastUpdated" class="last-updated">
-        <VPDocFooterLastUpdated />
+      <div class="meta">
+        <div v-if="hasLastUpdated" class="last-updated">
+          <VPDocFooterLastUpdated />
+        </div>
+        <VPDocFooterContributors />
       </div>
     </div>
 
@@ -106,6 +117,12 @@ const showFooter = computed(
     justify-content: space-between;
     padding-bottom: 0.875rem;
   }
+}
+
+.meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
 }
 
 .edit-link-button {

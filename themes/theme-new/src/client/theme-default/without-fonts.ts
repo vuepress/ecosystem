@@ -13,6 +13,7 @@ import Layout from './Layout.vue'
 export { default as VPBadge } from './components/VPBadge.vue'
 export { default as VPButton } from './components/VPButton.vue'
 export { default as VPDocAsideSponsors } from './components/VPDocAsideSponsors.vue'
+export { default as VPDocFooterContributors } from './components/VPDocFooterContributors.vue'
 export { default as VPFeatures } from './components/VPFeatures.vue'
 export { default as VPHomeContent } from './components/VPHomeContent.vue'
 export { default as VPHomeFeatures } from './components/VPHomeFeatures.vue'
@@ -29,7 +30,8 @@ export { default as VPTeamPage } from './components/VPTeamPage.vue'
 export { default as VPTeamPageSection } from './components/VPTeamPageSection.vue'
 export { default as VPTeamPageTitle } from './components/VPTeamPageTitle.vue'
 
-export { useLayout } from './composables/layout.js'
+export { useContributors } from './composables/useContributors.js'
+export { useLayout } from './composables/useLayout.js'
 
 const theme = {
   Layout,

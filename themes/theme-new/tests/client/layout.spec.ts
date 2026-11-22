@@ -59,11 +59,54 @@ describe('theme layout', () => {
     expect(html).not.toContain('class="vp-doc"')
   })
 
-  it('should render the content without the layout shell when the type is false', async () => {
+  it('should render the contributors in the doc footer', async () => {
+    const contributors = [
+      {
+        name: 'Alice',
+        email: 'alice@example.com',
+        url: 'https://example.com/alice',
+      },
+      { name: 'Bob', email: 'bob@example.com' },
+    ]
+
+    const html = await renderVuePress({
+      clientConfigs: await createClientConfigs(),
+      content: '<h1 id="hello">Hello</h1>',
+      page: {
+        path: '/guide/',
+        title: 'Guide',
+        data: { filePathRelative: 'guide/index.md', git: { contributors } },
+      },
+      site: { title: 'My Site' },
+      themeData: {},
+    })
+
+    expect(html).toContain('class="vp-doc-footer-contributors"')
+    expect(html).toContain('Contributors')
+    expect(html).toContain('href="https://example.com/alice"')
+    expect(html).toContain('Bob')
+
+    const disabledHtml = await renderVuePress({
+      clientConfigs: await createClientConfigs(),
+      content: '<h1 id="hello">Hello</h1>',
+      page: {
+        path: '/guide/',
+        title: 'Guide',
+        frontmatter: { contributors: false },
+        data: { filePathRelative: 'guide/index.md', git: { contributors } },
+      },
+      site: { title: 'My Site' },
+      themeData: {},
+    })
+
+    expect(disabledHtml).not.toContain('class="vp-doc-footer-contributors"')
+  })
+
+  it('should render the content without the layout shell for the content type', async () => {
     const html = await renderVuePress({
       clientConfigs: await createClientConfigs(),
       content: '<p>Raw content</p>',
-      page: { path: '/raw/', title: 'Raw', frontmatter: { type: false } },
+      page: { path: '/raw/', title: 'Raw', frontmatter: { type: 'content' } },
       site: { title: 'My Site' },
       themeData: {},
     })

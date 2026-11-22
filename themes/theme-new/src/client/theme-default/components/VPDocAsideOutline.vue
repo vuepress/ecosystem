@@ -2,12 +2,15 @@
 import { useThemeLocaleData } from '@vuepress/plugin-theme-data/client'
 import { useTemplateRef } from 'vue'
 
-import { useLayout } from '../composables/layout.js'
-import { resolveTitle, useActiveAnchor } from '../composables/outline.js'
-import type { DefaultTheme } from '../shared.js'
+import {
+  resolveTitle,
+  useActiveAnchor,
+} from '../composables/useActiveAnchor.js'
+import { useLayout } from '../composables/useLayout.js'
+import type { ThemeConfig } from '../shared.js'
 import VPDocOutlineItem from './VPDocOutlineItem.vue'
 
-const theme = useThemeLocaleData<DefaultTheme.Config>()
+const theme = useThemeLocaleData<ThemeConfig>()
 
 const container = useTemplateRef('container')
 const marker = useTemplateRef('marker')

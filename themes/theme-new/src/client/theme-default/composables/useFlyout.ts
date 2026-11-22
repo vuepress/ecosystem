@@ -1,6 +1,6 @@
 import { onUnmounted, readonly, type TemplateRef, ref, watch } from 'vue'
 
-import { inBrowser } from '../../composables/env.js'
+import { inBrowser } from '../../composables/inBrowser.js'
 
 interface UseFlyoutOptions {
   el: TemplateRef<HTMLElement>

@@ -3,14 +3,14 @@ import { useThemeLocaleData } from '@vuepress/plugin-theme-data/client'
 import { useTemplateRef, watch } from 'vue'
 import { useRoute } from 'vuepress/client'
 
-import type { DefaultTheme } from '../shared.js'
+import type { ThemeConfig } from '../shared.js'
 
 defineProps<{
   // the component has two root nodes, so `inert` can't fall through
   inert?: boolean
 }>()
 
-const theme = useThemeLocaleData<DefaultTheme.Config>()
+const theme = useThemeLocaleData<ThemeConfig>()
 const route = useRoute()
 const backToTop = useTemplateRef('backToTop')
 

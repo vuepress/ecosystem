@@ -2,9 +2,9 @@
 import { useThemeLocaleData } from '@vuepress/plugin-theme-data/client'
 import { computed, useId } from 'vue'
 
-import { useNavOverflow } from '../composables/nav-overflow.js'
-import { useAppearanceSwitch } from '../composables/nav.js'
-import type { DefaultTheme } from '../shared.js'
+import { useAppearanceSwitch } from '../composables/useNav.js'
+import { useNavOverflow } from '../composables/useNavOverflow.js'
+import type { ThemeConfig } from '../shared.js'
 import VPSwitchAppearance from './VPSwitchAppearance.vue'
 
 const props = defineProps<{
@@ -14,7 +14,7 @@ const props = defineProps<{
   screen?: boolean
 }>()
 
-const theme = useThemeLocaleData<DefaultTheme.Config>()
+const theme = useThemeLocaleData<ThemeConfig>()
 const show = useAppearanceSwitch()
 
 // only the inline bar switch participates in the overflow engine

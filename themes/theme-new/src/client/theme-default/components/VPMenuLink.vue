@@ -5,7 +5,7 @@ import {
   navInjectionKey,
   navScreenInjectionKey,
   useNavItemLink,
-} from '../composables/nav.js'
+} from '../composables/useNav.js'
 import type { DefaultTheme } from '../shared.js'
 import VPLink from './VPLink.vue'
 

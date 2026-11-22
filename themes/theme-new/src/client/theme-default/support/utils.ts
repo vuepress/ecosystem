@@ -1,6 +1,6 @@
 import { useSiteData, withBase } from 'vuepress/client'
 
-import { CLEAN_URLS } from '../../composables/site.js'
+import { CLEAN_URLS } from '../../composables/useRuntimeBase.js'
 import { isExternal, isRelativeBase, treatAsHtml } from '../shared.js'
 
 export function throttleAndDebounce(fn: () => void, delay: number): () => void {

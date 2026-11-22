@@ -1,8 +1,8 @@
 <script lang="ts" setup>
 import { ref, useTemplateRef, watch } from 'vue'
 
-import { useLayout } from '../composables/layout.js'
-import { useBodyScrollLock } from '../composables/scroll-lock.js'
+import { useBodyScrollLock } from '../composables/useBodyScrollLock.js'
+import { useLayout } from '../composables/useLayout.js'
 import VPSidebarGroup from './VPSidebarGroup.vue'
 
 const { sidebarGroups, hasSidebar } = useLayout()

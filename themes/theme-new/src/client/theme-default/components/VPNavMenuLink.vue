@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { inject } from 'vue'
 
-import { navInjectionKey, useNavItemLink } from '../composables/nav.js'
+import { navInjectionKey, useNavItemLink } from '../composables/useNav.js'
 import type { DefaultTheme } from '../shared.js'
 import VPLink from './VPLink.vue'
 

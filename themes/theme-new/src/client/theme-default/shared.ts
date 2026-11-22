@@ -6,6 +6,11 @@ export type {
   Header,
   LocaleConfig,
   SiteData,
+  ThemeConfig,
+  ThemeContributor,
+  ThemeLayout,
+  ThemePageData,
+  ThemePluginsOptions,
 } from '../../shared/types.js'
 
 export const EXTERNAL_URL_RE = /^(?:[a-z]+:|\/\/)/i

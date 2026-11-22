@@ -2,7 +2,10 @@
 import { useThemeLocaleData } from '@vuepress/plugin-theme-data/client'
 import { computed, provide, useSlots } from 'vue'
 
-import { usePageType, useThemePageFrontmatter } from '../composables/page.js'
+import {
+  usePageType,
+  useThemePageFrontmatter,
+} from '../composables/useThemePageData.js'
 import VPBackdrop from './components/VPBackdrop.vue'
 import VPContent from './components/VPContent.vue'
 import VPFooter from './components/VPFooter.vue'
@@ -13,10 +16,10 @@ import VPSkipLink from './components/VPSkipLink.vue'
 import {
   layoutInfoInjectionKey,
   registerWatchers,
-} from './composables/layout.js'
-import { useNav } from './composables/nav.js'
-import { useSidebarControl } from './composables/sidebar.js'
-import type { DefaultTheme } from './shared.js'
+} from './composables/useLayout.js'
+import { useNav } from './composables/useNav.js'
+import { useSidebarControl } from './composables/useSidebarControl.js'
+import type { ThemeConfig } from './shared.js'
 
 const {
   isOpen: isSidebarOpen,
@@ -32,7 +35,7 @@ registerWatchers({ closeSidebar })
 
 const frontmatter = useThemePageFrontmatter()
 const pageType = usePageType()
-const theme = useThemeLocaleData<DefaultTheme.Config>()
+const theme = useThemeLocaleData<ThemeConfig>()
 
 const slots = useSlots()
 const heroImageSlotExists = computed(() => Boolean(slots['home-hero-image']))
@@ -42,7 +45,7 @@ provide(layoutInfoInjectionKey, { heroImageSlotExists })
 
 <template>
   <div
-    v-if="pageType !== false"
+    v-if="pageType !== 'content'"
     class="vp-theme-container"
     :class="[
       frontmatter.pageClass,

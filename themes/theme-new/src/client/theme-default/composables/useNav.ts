@@ -11,10 +11,10 @@ import {
 } from 'vue'
 import { useRoute } from 'vuepress/client'
 
-import { isFixedAppearance } from '../../composables/darkMode.js'
-import { inBrowser } from '../../composables/env.js'
-import { useThemePageData } from '../../composables/page.js'
-import type { DefaultTheme } from '../shared.js'
+import { inBrowser } from '../../composables/inBrowser.js'
+import { isFixedAppearance } from '../../composables/useDarkMode.js'
+import { useThemePageData } from '../../composables/useThemePageData.js'
+import type { DefaultTheme, ThemeConfig } from '../shared.js'
 import { isActive } from '../shared.js'
 
 // module-scoped so Layout.vue can render the rest of the app inert while the
@@ -74,7 +74,7 @@ export function useAppearanceSwitch() {
   // configured, so the raw theme data is used instead of the merged theme
   // locale data (which does not include the default value).
   const themeData = useThemeData<{
-    appearance?: DefaultTheme.Config['appearance']
+    appearance?: ThemeConfig['appearance']
   }>()
   return computed(() => !isFixedAppearance(themeData.value.appearance ?? true))
 }

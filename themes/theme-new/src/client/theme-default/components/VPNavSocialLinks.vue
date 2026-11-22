@@ -2,15 +2,15 @@
 import { useThemeLocaleData } from '@vuepress/plugin-theme-data/client'
 import { computed } from 'vue'
 
-import { useNavOverflow } from '../composables/nav-overflow.js'
-import type { DefaultTheme } from '../shared.js'
+import { useNavOverflow } from '../composables/useNavOverflow.js'
+import type { ThemeConfig } from '../shared.js'
 import VPSocialLinks from './VPSocialLinks.vue'
 
 const props = defineProps<{
   screen?: boolean
 }>()
 
-const theme = useThemeLocaleData<DefaultTheme.Config>()
+const theme = useThemeLocaleData<ThemeConfig>()
 
 const overflow = props.screen ? null : useNavOverflow()
 

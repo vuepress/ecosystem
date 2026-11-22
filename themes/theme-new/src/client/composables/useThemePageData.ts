@@ -3,7 +3,11 @@ import type { ComputedRef } from 'vue'
 import { usePageData, usePageFrontmatter } from 'vuepress/client'
 import type { PageDataRef } from 'vuepress/client'
 
-import type { DefaultTheme, ThemePageData } from '../../shared/types.js'
+import type {
+  DefaultTheme,
+  ThemePageData,
+  ThemeConfig,
+} from '../../shared/types.js'
 
 export type { ThemePageData } from '../../shared/types.js'
 
@@ -96,6 +100,12 @@ export interface ThemeFeature {
 export interface ThemePageFrontmatter {
   /** Whether to show the aside / 是否显示侧边栏区域 */
   aside?: boolean | 'left'
+  /**
+   * Whether to show the contributors of the page / 是否显示页面贡献者
+   *
+   * @default true
+   */
+  contributors?: boolean
   /** Whether to show the edit link / 是否显示编辑链接 */
   editLink?: boolean
   /** Features of the home page / 首页的特性列表 */
@@ -109,13 +119,13 @@ export interface ThemePageFrontmatter {
    * custom layout or `NotFound`)
    *
    * VuePress only resolves string layout names, `layout: false` is treated as
-   * "not set" and falls back to the theme `Layout`; use `type: false` to render
-   * the content without the layout shell.
+   * "not set" and falls back to the theme `Layout`; use `type: 'content'` to
+   * render the content without the layout shell.
    *
    * 页面布局名，仅作为 VuePress 的布局名使用（例如自定义布局或 `NotFound`）
    *
    * VuePress 只解析字符串布局名，`layout: false` 会被当作「未设置」并回退到主题的 `Layout`；需要不渲染布局外壳时请使用
-   * `type: false`。
+   * `type: 'content'`。
    */
   layout?: string
   /** Last update time of the page / 页面的最后更新时间 */
@@ -127,13 +137,27 @@ export interface ThemePageFrontmatter {
   /** Next page config / 下一页配置 */
   next?: ThemePageLinkConfig
   /** Outline config of the page / 页面的大纲配置 */
-  outline?: DefaultTheme.Config['outline']
+  outline?: ThemeConfig['outline']
   /** Class name of the page container / 页面容器的类名 */
   pageClass?: string
   /** Previous page config / 上一页配置 */
   prev?: ThemePageLinkConfig
-  /** Whether to show the sidebar / 是否显示侧边栏 */
-  sidebar?: boolean
+  /**
+   * The sidebar items of the page, `'heading'` to generate the sidebar from the
+   * page headings, or `false` to disable the sidebar
+   *
+   * 页面的侧边栏条目，设为 `'heading'` 使用页面标题自动生成侧边栏，或设为 `false` 禁用侧边栏
+   */
+  sidebar?: DefaultTheme.Sidebar | 'heading' | false
+  /**
+   * The maximum depth of the sidebar headings, only used when `sidebar` is
+   * `'heading'`
+   *
+   * 侧边栏标题的最大深度，仅在 `sidebar` 为 `'heading'` 时生效
+   *
+   * @default 2
+   */
+  sidebarDepth?: number
   /**
    * Page type of the theme, which controls the content layout
    *
@@ -146,7 +170,7 @@ export interface ThemePageFrontmatter {
    * 主题会为 `home` 渲染首页、为 `doc`（默认值）渲染文档页、为 `page` 渲染空白页面容器， 为 `false`
    * 只渲染页面内容而不渲染布局外壳。
    */
-  type?: 'home' | 'doc' | 'page' | false
+  type?: 'home' | 'doc' | 'page' | 'content'
   /** Any other VitePress frontmatter field / 其他 VitePress frontmatter 字段 */
   [key: string]: unknown
 }
@@ -183,7 +207,9 @@ export const useThemePageFrontmatter = (): ComputedRef<ThemePageFrontmatter> =>
  *
  * @returns Computed page type / 计算得到的页面类型
  */
-export const usePageType = (): ComputedRef<'home' | 'doc' | 'page' | false> => {
+export const usePageType = (): ComputedRef<
+  'home' | 'doc' | 'page' | 'content'
+> => {
   const frontmatter = useThemePageFrontmatter()
 
   return computed(() => frontmatter.value.type ?? 'doc')

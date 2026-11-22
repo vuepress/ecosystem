@@ -2,8 +2,8 @@
 import { onKeyStroke } from '@vueuse/core'
 import { provide } from 'vue'
 
-import { navScreenInjectionKey, useNav } from '../composables/nav.js'
-import { useBodyScrollLock } from '../composables/scroll-lock.js'
+import { useBodyScrollLock } from '../composables/useBodyScrollLock.js'
+import { navScreenInjectionKey, useNav } from '../composables/useNav.js'
 import VPNavAppearance from './VPNavAppearance.vue'
 import VPNavMenu from './VPNavMenu.vue'
 import VPNavSocialLinks from './VPNavSocialLinks.vue'

@@ -5,13 +5,19 @@ import { copyCodePlugin } from '@vuepress/plugin-copy-code'
 import { gitPlugin } from '@vuepress/plugin-git'
 import { iconPlugin } from '@vuepress/plugin-icon'
 import { markdownHintPlugin } from '@vuepress/plugin-markdown-hint'
+import type { MarkdownHintPluginLocaleData } from '@vuepress/plugin-markdown-hint'
 import { markdownTabPlugin } from '@vuepress/plugin-markdown-tab'
+import { mediumZoomPlugin } from '@vuepress/plugin-medium-zoom'
 import { nprogressPlugin } from '@vuepress/plugin-nprogress'
 import { shikiPlugin } from '@vuepress/plugin-shiki'
 import { themeDataPlugin } from '@vuepress/plugin-theme-data'
-import type { Theme } from 'vuepress'
+import type { ThemeObject } from 'vuepress'
 
-import type { DefaultTheme } from '../shared/types.js'
+import type {
+  AppearanceOptions,
+  ThemeConfig,
+  ThemePluginsOptions,
+} from '../shared/types.js'
 import { registerExtraContainers } from './containers.js'
 
 const __dirname = import.meta.dirname
@@ -59,11 +65,242 @@ export const resolveThemeData = (
 }
 
 /**
+ * Resolve the appearance baked into the build template
+ *
+ * The value is injected into the HTML at build time, so the inline script of
+ * the template can apply it before the first paint instead of waiting for the
+ * client-side hydration.
+ *
+ * 解析写入构建模板的外观值
+ *
+ * 该值在构建期注入 HTML，因此模板里的内联脚本可以在首屏渲染前应用它，而不必等待客户端 hydration。
+ *
+ * @param appearance - Appearance option / 外观配置
+ * @returns The appearance value in the template / 模板中的外观值
+ */
+export const resolveTemplateAppearance = (
+  appearance: AppearanceOptions | undefined,
+): 'light' | 'dark' | 'auto' | 'force-dark' | 'force-auto' => {
+  if (appearance === false) return 'light'
+  if (appearance === 'dark') return 'dark'
+  if (appearance === 'force-dark') return 'force-dark'
+  if (appearance === 'force-auto') return 'force-auto'
+  return typeof appearance === 'object' && appearance.initialValue === 'dark'
+    ? 'dark'
+    : 'auto'
+}
+
+/**
+ * Pick the hint container labels from the theme options
+ *
+ * 从主题配置中提取提示容器的标题文案
+ *
+ * @param options - Theme options / 主题配置项
+ * @returns The labels of the containers / 容器的标题文案
+ */
+const resolveHintLabels = (
+  options: ThemeConfig,
+): Partial<MarkdownHintPluginLocaleData> => {
+  const labels: Partial<MarkdownHintPluginLocaleData> = {}
+
+  if (options.tip) labels.tip = options.tip
+  if (options.warning) labels.warning = options.warning
+  if (options.danger) labels.caution = options.danger
+  if (options.important) labels.important = options.important
+  if (options.note) labels.note = options.note
+
+  return labels
+}
+
+/**
+ * Resolve the locales of `@vuepress/plugin-markdown-hint` from the theme
+ * options
+ *
+ * 从主题配置中解析 `@vuepress/plugin-markdown-hint` 的语言配置
+ *
+ * @param options - Theme options / 主题配置项
+ * @returns The locales of the plugin, or `undefined` when no label is
+ *   customized / 插件的语言配置；未自定义任何文案时返回 `undefined`
+ */
+export const resolveHintLocales = (
+  options: ThemeNewOptions,
+): Record<string, Partial<MarkdownHintPluginLocaleData>> | undefined => {
+  const rootLabels = resolveHintLabels(options)
+  const locales: Record<string, Partial<MarkdownHintPluginLocaleData>> = {}
+
+  if (Object.keys(rootLabels).length > 0) locales['/'] = rootLabels
+
+  for (const [key, value] of Object.entries(options.locales ?? {})) {
+    const labels = resolveHintLabels({ ...options, ...value })
+
+    if (Object.keys(labels).length > 0)
+      locales[resolveLocalePath(key, value.link)] = labels
+  }
+
+  return Object.keys(locales).length > 0 ? locales : undefined
+}
+
+/**
+ * Whether the Git plugin should collect the contributors
+ *
+ * 判断是否需要让 Git 插件收集贡献者信息
+ *
+ * @param options - Theme options / 主题配置项
+ * @returns Whether to collect the contributors / 是否收集贡献者
+ */
+const resolveContributors = (options: ThemeNewOptions): boolean =>
+  options.contributors !== false ||
+  Object.values(options.locales ?? {}).some(
+    (locale) => locale.contributors !== false,
+  )
+
+/**
+ * The context of the template renderer (kept local to avoid depending on
+ * `@vuepress/utils` at runtime)
+ *
+ * 模板渲染器的上下文（保持本地定义，避免在运行时依赖 `@vuepress/utils`）
+ */
+interface TemplateRendererContext {
+  content: string
+  head: string
+  lang: string
+  prefetch: string
+  preload: string
+  scripts: string
+  styles: string
+  version: string
+}
+
+/**
+ * Create the build template renderer which injects the appearance option
+ *
+ * 创建注入外观配置的构建模板渲染器
+ *
+ * @param appearance - Appearance option / 外观配置
+ * @returns The template renderer / 模板渲染器
+ */
+const createTemplateBuildRenderer =
+  (appearance: AppearanceOptions | undefined) =>
+  (template: string, context: TemplateRendererContext): string =>
+    template
+      .replace(
+        'data-appearance="auto"',
+        () => `data-appearance="${resolveTemplateAppearance(appearance)}"`,
+      )
+      .replace('<!--vuepress-ssr-content-->', () => context.content)
+      .replace('<!--vuepress-ssr-head-->', () => context.head)
+      .replace('{{ lang }}', () => context.lang)
+      .replace('<!--vuepress-ssr-prefetch-->', () => context.prefetch)
+      .replace('<!--vuepress-ssr-preload-->', () => context.preload)
+      .replace('<!--vuepress-ssr-scripts-->', () => context.scripts)
+      .replace('<!--vuepress-ssr-styles-->', () => context.styles)
+      .replace('{{ version }}', () => context.version)
+
+/**
  * Options of the new theme
  *
  * 新主题的配置项
  */
-export type ThemeNewOptions = DefaultTheme.Config
+export type ThemeNewOptions = ThemeConfig
+
+/**
+ * Create the plugin list wired by the theme
+ *
+ * 创建主题接线的插件列表
+ *
+ * @param options - Theme options / 主题配置项
+ * @param plugins - Plugin options / 插件配置项
+ * @returns The plugin list / 插件列表
+ */
+const resolveThemePlugins = (
+  options: ThemeNewOptions,
+  plugins: ThemePluginsOptions,
+): ThemeObject['plugins'] => [
+  themeDataPlugin({ themeData: resolveThemeData(options) }),
+  ...(plugins.copyCode === false
+    ? []
+    : [
+        copyCodePlugin({
+          // the content root carries the `vp-content` attribute so plugins
+          // can scope their selectors to the page content, like
+          // theme-default does
+          selector: '[vp-content] div[class*="language-"] pre',
+          ...(typeof plugins.copyCode === 'object' ? plugins.copyCode : {}),
+        }),
+      ]),
+  ...(plugins.git === false
+    ? []
+    : [
+        gitPlugin({
+          createdTime: false,
+          updatedTime:
+            typeof options.lastUpdated === 'object'
+              ? true
+              : (options.lastUpdated ?? true),
+          contributors: resolveContributors(options),
+          changelog: false,
+          ...(typeof plugins.git === 'object' ? plugins.git : {}),
+        }),
+      ]),
+  ...(plugins.shiki === false
+    ? []
+    : [
+        shikiPlugin({
+          themes: { light: 'github-light', dark: 'github-dark' },
+          ...(typeof plugins.shiki === 'object' ? plugins.shiki : {}),
+        }),
+      ]),
+  ...(plugins.markdownHint === false
+    ? []
+    : [
+        markdownHintPlugin({
+          alert: true,
+          hint: true,
+          locales: resolveHintLocales(options),
+          ...(typeof plugins.markdownHint === 'object'
+            ? plugins.markdownHint
+            : {}),
+        }),
+      ]),
+  ...(plugins.markdownTab === false
+    ? []
+    : [
+        markdownTabPlugin({
+          codeTabs: true,
+          ...(typeof plugins.markdownTab === 'object'
+            ? plugins.markdownTab
+            : {}),
+        }),
+      ]),
+  ...(plugins.activeHeaderLinks === false
+    ? []
+    : [
+        activeHeaderLinksPlugin({
+          // the plugin keeps `route.hash` in sync with the section being
+          // read, the theme only reflects it in the outline
+          headerLinkSelector: '.outline-link',
+        }),
+      ]),
+  ...(plugins.icon === false
+    ? []
+    : [
+        iconPlugin({
+          // `assets: 'iconify'` uses the runtime iconify web component,
+          // the icon set packages are loaded by the client from the
+          // iconify CDN
+          assets: 'iconify',
+          ...(typeof plugins.icon === 'object' ? plugins.icon : {}),
+        }),
+      ]),
+  ...(plugins.mediumZoom === false
+    ? []
+    : [
+        mediumZoomPlugin(
+          typeof plugins.mediumZoom === 'object' ? plugins.mediumZoom : {},
+        ),
+      ]),
+  ...(plugins.nprogress === false ? [] : [nprogressPlugin()]),
+]
 
 /**
  * Create the new theme, which ports the default theme of VitePress
@@ -81,54 +318,27 @@ export type ThemeNewOptions = DefaultTheme.Config
  * @param options - Theme options / 主题配置项
  * @returns The theme plugin / 主题插件
  */
-export const themeNew = (options: ThemeNewOptions = {}): Theme => ({
-  name: '@vuepress/theme-new',
+export const themeNew = (options: ThemeNewOptions = {}): ThemeObject => {
+  const plugins: ThemePluginsOptions = options.themePlugins ?? {}
 
-  templateBuild: path.resolve(__dirname, '../../templates/build.html'),
+  return {
+    name: '@vuepress/theme-new',
 
-  clientConfigFile: path.resolve(__dirname, '../client/config.js'),
+    templateBuild: path.resolve(__dirname, '../../templates/build.html'),
 
-  extendsMarkdown: (md, app) => {
-    registerExtraContainers(md, app)
-  },
+    templateBuildRenderer: createTemplateBuildRenderer(options.appearance),
 
-  extendsPage: (page) => {
-    page.data.filePathRelative = page.filePathRelative
-    page.routeMeta.title = page.title
-  },
+    clientConfigFile: path.resolve(__dirname, '../client/config.js'),
 
-  plugins: [
-    themeDataPlugin({ themeData: resolveThemeData(options) }),
-    copyCodePlugin({
-      // the content root carries the `vp-content` attribute so plugins can
-      // scope their selectors to the page content, like theme-default does
-      selector: '[vp-content] div[class*="language-"] pre',
-    }),
-    gitPlugin({
-      createdTime: false,
-      updatedTime:
-        typeof options.lastUpdated === 'object'
-          ? true
-          : (options.lastUpdated ?? true),
-      // the theme does not render contributors or the changelog
-      contributors: false,
-      changelog: false,
-    }),
-    shikiPlugin({
-      themes: { light: 'github-light', dark: 'github-dark' },
-    }),
-    markdownHintPlugin({ alert: true, hint: true }),
-    nprogressPlugin(),
-    markdownTabPlugin({ codeTabs: true }),
-    activeHeaderLinksPlugin({
-      // the plugin keeps `route.hash` in sync with the section being read,
-      // the theme only reflects it in the outline
-      headerLinkSelector: '.outline-link',
-    }),
-    iconPlugin({
-      // use the runtime iconify web component, the icon set packages are
-      // loaded by the client from the iconify CDN
-      assets: 'iconify',
-    }),
-  ],
-})
+    extendsMarkdown: (md, app) => {
+      registerExtraContainers(md, app)
+    },
+
+    extendsPage: (page) => {
+      page.data.filePathRelative = page.filePathRelative
+      page.routeMeta.title = page.title
+    },
+
+    plugins: resolveThemePlugins(options, plugins),
+  }
+}

@@ -1,4 +1,11 @@
-/* oxlint-disable typescript/no-explicit-any, typescript/no-namespace -- Ported from VitePress types, kept as-is for API parity */
+import type { CopyCodePluginOptions } from '@vuepress/plugin-copy-code'
+import type { GitPluginOptions } from '@vuepress/plugin-git'
+import type { IconPluginOptions } from '@vuepress/plugin-icon'
+import type { MarkdownHintPluginOptions } from '@vuepress/plugin-markdown-hint'
+import type { MarkdownTabPluginOptions } from '@vuepress/plugin-markdown-tab'
+import type { MediumZoomPluginOptions } from '@vuepress/plugin-medium-zoom'
+import type { ShikiPluginOptions } from '@vuepress/plugin-shiki'
+/* oxlint-disable typescript/no-explicit-any, typescript/no-namespace -- Theme types ported from VitePress, the namespace keeps the component-facing shapes */
 import type { UseDarkOptions } from '@vueuse/core'
 import type { Ref } from 'vue'
 
@@ -68,6 +75,8 @@ export interface ThemePageData {
     createdTime?: number
     /** Last update time / 最后更新时间 */
     updatedTime?: number
+    /** Contributors of the page / 页面的贡献者 */
+    contributors?: ThemeContributor[]
   }
 
   /** Any other page data field / 其他页面数据字段 */
@@ -138,7 +147,7 @@ export interface SiteData {
  *
  * 站点多语言配置，以语言目录为键（默认语言为 `'root'`）
  */
-export type LocaleConfig<ThemeConfig = any> = Record<
+export type LocaleConfig<T = any> = Record<
   string,
   {
     /** The label of the locale in the locale menu / 语言菜单中该语言的标签 */
@@ -152,8 +161,292 @@ export type LocaleConfig<ThemeConfig = any> = Record<
 
     /** The text direction of the locale / 该语言的文本方向 */
     dir?: 'ltr' | 'rtl' | 'auto'
-  } & Partial<ThemeConfig>
+  } & Partial<T>
 >
+
+/**
+ * A contributor of a page, coming from the Git history
+ *
+ * 页面的贡献者，来自 Git 提交历史
+ */
+export interface ThemeContributor {
+  /** Name of the contributor / 贡献者名称 */
+  name: string
+
+  /** Email of the contributor / 贡献者邮箱 */
+  email: string
+
+  /** GitHub username of the contributor / 贡献者的 GitHub 用户名 */
+  username?: string
+
+  /** Link to the contributor's GitHub profile / 贡献者的 GitHub 主页链接 */
+  url?: string
+
+  /** Avatar URL of the contributor / 贡献者的头像 URL */
+  avatar?: string
+}
+
+/**
+ * Options of the plugins wired by the theme
+ *
+ * Every plugin is enabled by default. Set it to `false` to disable the plugin,
+ * or pass an object to override the options the theme passes to the plugin.
+ *
+ * 主题接入的插件配置项
+ *
+ * 每个插件默认启用。设为 `false` 可禁用对应插件，传入对象可以覆盖主题传给插件的配置。
+ */
+export interface ThemePluginsOptions {
+  /**
+   * Whether to enable `@vuepress/plugin-active-header-links` / 是否启用
+   * `@vuepress/plugin-active-header-links`
+   */
+  activeHeaderLinks?: boolean
+
+  /** Options of `@vuepress/plugin-copy-code` / `@vuepress/plugin-copy-code` 的配置项 */
+  copyCode?: CopyCodePluginOptions | boolean
+
+  /** Options of `@vuepress/plugin-git` / `@vuepress/plugin-git` 的配置项 */
+  git?: GitPluginOptions | boolean
+
+  /** Options of `@vuepress/plugin-icon` / `@vuepress/plugin-icon` 的配置项 */
+  icon?: IconPluginOptions | boolean
+
+  /**
+   * Options of `@vuepress/plugin-markdown-hint` /
+   * `@vuepress/plugin-markdown-hint` 的配置项
+   */
+  markdownHint?: MarkdownHintPluginOptions | boolean
+
+  /**
+   * Options of `@vuepress/plugin-markdown-tab` /
+   * `@vuepress/plugin-markdown-tab` 的配置项
+   */
+  markdownTab?: MarkdownTabPluginOptions | boolean
+
+  /**
+   * Options of `@vuepress/plugin-medium-zoom` / `@vuepress/plugin-medium-zoom`
+   * 的配置项
+   */
+  mediumZoom?: MediumZoomPluginOptions | boolean
+
+  /**
+   * Whether to enable `@vuepress/plugin-nprogress` / 是否启用
+   * `@vuepress/plugin-nprogress`
+   */
+  nprogress?: boolean
+
+  /** Options of `@vuepress/plugin-shiki` / `@vuepress/plugin-shiki` 的配置项 */
+  shiki?: ShikiPluginOptions | boolean
+}
+
+/**
+ * Options of the theme. Only the options supported by the theme are included,
+ * so VitePress-only options are rejected by the type checker.
+ *
+ * 主题配置项。只包含主题支持的字段，VitePress 专有的配置项会被类型检查拒绝。
+ */
+export interface ThemeConfig {
+  /** The logo file of the site / 站点 Logo 文件 */
+  logo?: DefaultTheme.ThemeableImage
+
+  /** Overrides the link of the site logo / 覆盖站点 Logo 的链接 */
+  logoLink?: string | { link?: string; rel?: string; target?: string }
+
+  /** Custom site title in navbar / 导航栏中的自定义站点标题 */
+  siteTitle?: string | false
+
+  /** Custom header levels of outline in the aside component / 侧边栏大纲的自定义标题级别 */
+  outline?: DefaultTheme.Outline | DefaultTheme.Outline['level'] | false
+
+  /** The nav items / 导航条目 */
+  nav?: DefaultTheme.NavItem[]
+
+  /**
+   * The sidebar items, or `'heading'` to generate the sidebar from the page
+   * headings
+   *
+   * 侧边栏条目，或设为 `'heading'` 使用页面标题自动生成侧边栏
+   *
+   * @default 'heading'
+   */
+  sidebar?: DefaultTheme.Sidebar | 'heading'
+
+  /**
+   * The maximum depth of the sidebar headings, only used when `sidebar` is
+   * `'heading'`
+   *
+   * 侧边栏标题的最大深度，仅在 `sidebar` 为 `'heading'` 时生效
+   *
+   * @default 2
+   */
+  sidebarDepth?: number
+
+  /**
+   * Set to `false` to prevent rendering of aside container / 设为 `false`
+   * 以阻止渲染侧边栏区域
+   */
+  aside?: boolean | 'left'
+
+  /** Info for the edit link / 编辑链接信息 */
+  editLink?: DefaultTheme.EditLink
+
+  /** Whether to show the last updated time / 是否显示最后更新时间 */
+  lastUpdated?: DefaultTheme.LastUpdatedOptions
+
+  /** Set custom prev/next labels / 自定义上一页/下一页标签 */
+  docFooter?: DefaultTheme.DocFooter
+
+  /**
+   * Whether to show the contributors of the page / 是否显示页面贡献者
+   *
+   * @default true
+   */
+  contributors?: boolean
+
+  /**
+   * The text of the contributors / 贡献者的文案
+   *
+   * @default 'Contributors'
+   */
+  contributorsText?: string
+
+  /** The social links / 社交链接 */
+  socialLinks?: DefaultTheme.SocialLink[]
+
+  /**
+   * The title of the `tip` container / `tip` 容器的标题
+   *
+   * @default 'TIP'
+   */
+  tip?: string
+
+  /**
+   * The title of the `warning` container / `warning` 容器的标题
+   *
+   * @default 'WARNING'
+   */
+  warning?: string
+
+  /**
+   * The title of the `danger` container / `danger` 容器的标题
+   *
+   * @default 'DANGER'
+   */
+  danger?: string
+
+  /**
+   * The title of the `important` container / `important` 容器的标题
+   *
+   * @default 'IMPORTANT'
+   */
+  important?: string
+
+  /**
+   * The title of the `note` container / `note` 容器的标题
+   *
+   * @default 'NOTE'
+   */
+  note?: string
+
+  /**
+   * Options of the plugins wired by the theme
+   *
+   * 主题接入的插件配置项
+   */
+  themePlugins?: ThemePluginsOptions
+
+  /** The footer configuration / 页脚配置 */
+  footer?: DefaultTheme.Footer
+
+  /** Accessible label of the dark mode switch / 暗色模式切换的无障碍标签 */
+  darkModeSwitchLabel?: string
+
+  /** Accessible title of the light mode switch / 浅色模式切换的标题 */
+  lightModeSwitchTitle?: string
+
+  /** Accessible title of the dark mode switch / 暗色模式切换的标题 */
+  darkModeSwitchTitle?: string
+
+  /** Accessible label of the mobile sidebar menu / 移动端侧边栏菜单的无障碍标签 */
+  sidebarMenuLabel?: string
+
+  /** Label of the return to top button / 返回顶部按钮的标签 */
+  returnToTopLabel?: string
+
+  /** Accessible label of the language menu button / 语言菜单按钮的无障碍标签 */
+  langMenuLabel?: string
+
+  /** Accessible label of the main navigation landmarks / 主导航区域的无障碍标签 */
+  navMenuLabel?: string
+
+  /**
+   * Set custom `aria-label` for the mobile menu button / 移动端菜单按钮的自定义
+   * `aria-label`
+   */
+  mobileMenuLabel?: string
+
+  /**
+   * Set custom `aria-label` for the overflow menu button / 溢出菜单按钮的自定义
+   * `aria-label`
+   */
+  extraMenuLabel?: string
+
+  /** Label of the skip to content link / 跳到正文链接的标签 */
+  skipToContentLabel?: string
+
+  /** Show external link icon in Markdown links / 是否在 Markdown 链接中显示外部链接图标 */
+  externalLinkIcon?: boolean
+
+  /** Color custom containers on a graded severity scale / 是否按严重程度为自定义容器着色 */
+  gradedContainers?: boolean
+
+  /** Customize text of 404 page / 自定义 404 页面的文本 */
+  notFound?: DefaultTheme.NotFoundOptions
+
+  /** Locale configs / 多语言配置 */
+  locales?: LocaleConfig<ThemeConfig>
+
+  /** Appearance option / 外观选项 */
+  appearance?: AppearanceOptions
+
+  /** Text direction of the site / 站点的文本方向 */
+  dir?: 'ltr' | 'rtl' | 'auto'
+}
+
+/**
+ * Layout state of the current page
+ *
+ * 当前页面的布局状态
+ */
+export interface ThemeLayout {
+  /** Whether the current page is the home page / 当前页面是否为主页 */
+  isHome: Ref<boolean>
+
+  /** The sidebar items of the current page / 当前页面的侧边栏条目 */
+  sidebar: Readonly<Ref<DefaultTheme.SidebarItem[]>>
+
+  /** The sidebar groups of the current page / 当前页面的侧边栏分组 */
+  sidebarGroups: Ref<DefaultTheme.SidebarItem[]>
+
+  /** Whether the current page has a sidebar / 当前页面是否有侧边栏 */
+  hasSidebar: Ref<boolean>
+
+  /** Whether the sidebar is enabled / 侧边栏是否启用 */
+  isSidebarEnabled: Ref<boolean>
+
+  /** Whether the current page has an aside / 当前页面是否有侧边栏区域 */
+  hasAside: Ref<boolean>
+
+  /** Whether the aside is on the left / 侧边栏区域是否在左侧 */
+  leftAside: Ref<boolean>
+
+  /** The outline headers of the current page / 当前页面的大纲标题 */
+  headers: Readonly<Ref<DefaultTheme.OutlineItem[]>>
+
+  /** Whether the current page has a local nav / 当前页面是否有本地导航 */
+  hasLocalNav: Ref<boolean>
+}
 
 export namespace DefaultTheme {
   /**
@@ -161,141 +454,6 @@ export namespace DefaultTheme {
    *
    * `useLayout` 返回的布局状态
    */
-  export interface Layout {
-    /** Whether the current page is the home page / 当前页面是否为主页 */
-    isHome: Ref<boolean>
-
-    /** The sidebar items of the current page / 当前页面的侧边栏条目 */
-    sidebar: Readonly<Ref<SidebarItem[]>>
-
-    /** The sidebar groups of the current page / 当前页面的侧边栏分组 */
-    sidebarGroups: Ref<SidebarItem[]>
-
-    /** Whether the current page has a sidebar / 当前页面是否有侧边栏 */
-    hasSidebar: Ref<boolean>
-
-    /** Whether the sidebar is enabled / 侧边栏是否启用 */
-    isSidebarEnabled: Ref<boolean>
-
-    /** Whether the current page has an aside / 当前页面是否有侧边栏区域 */
-    hasAside: Ref<boolean>
-
-    /** Whether the aside is on the left / 侧边栏区域是否在左侧 */
-    leftAside: Ref<boolean>
-
-    /** The outline headers of the current page / 当前页面的大纲标题 */
-    headers: Readonly<Ref<OutlineItem[]>>
-
-    /** Whether the current page has a local nav / 当前页面是否有本地导航 */
-    hasLocalNav: Ref<boolean>
-  }
-
-  /**
-   * Theme config
-   *
-   * 主题配置
-   */
-  export interface Config {
-    /** The logo file of the site / 站点 Logo 文件 */
-    logo?: ThemeableImage
-
-    /** Overrides the link of the site logo / 覆盖站点 Logo 的链接 */
-    logoLink?: string | { link?: string; rel?: string; target?: string }
-
-    /** Custom site title in navbar / 导航栏中的自定义站点标题 */
-    siteTitle?: string | false
-
-    /** Custom header levels of outline in the aside component / 侧边栏大纲的自定义标题级别 */
-    outline?: Outline | Outline['level'] | false
-
-    /** The nav items / 导航条目 */
-    nav?: NavItem[]
-
-    /** The sidebar items / 侧边栏条目 */
-    sidebar?: Sidebar
-
-    /**
-     * Set to `false` to prevent rendering of aside container / 设为 `false`
-     * 以阻止渲染侧边栏区域
-     */
-    aside?: boolean | 'left'
-
-    /** Info for the edit link / 编辑链接信息 */
-    editLink?: EditLink
-
-    /** Whether to show the last updated time / 是否显示最后更新时间 */
-    lastUpdated?: LastUpdatedOptions
-
-    /** Set custom prev/next labels / 自定义上一页/下一页标签 */
-    docFooter?: DocFooter
-
-    /** The social links / 社交链接 */
-    socialLinks?: SocialLink[]
-
-    /** The footer configuration / 页脚配置 */
-    footer?: Footer
-
-    /** Accessible label of the dark mode switch / 暗色模式切换的无障碍标签 */
-    darkModeSwitchLabel?: string
-
-    /** Accessible title of the light mode switch / 浅色模式切换的标题 */
-    lightModeSwitchTitle?: string
-
-    /** Accessible title of the dark mode switch / 暗色模式切换的标题 */
-    darkModeSwitchTitle?: string
-
-    /** Accessible label of the mobile sidebar menu / 移动端侧边栏菜单的无障碍标签 */
-    sidebarMenuLabel?: string
-
-    /** Label of the return to top button / 返回顶部按钮的标签 */
-    returnToTopLabel?: string
-
-    /** Accessible label of the language menu button / 语言菜单按钮的无障碍标签 */
-    langMenuLabel?: string
-
-    /** Accessible label of the main navigation landmarks / 主导航区域的无障碍标签 */
-    navMenuLabel?: string
-
-    /**
-     * Set custom `aria-label` for the mobile menu button / 移动端菜单按钮的自定义
-     * `aria-label`
-     */
-    mobileMenuLabel?: string
-
-    /**
-     * Set custom `aria-label` for the overflow menu button / 溢出菜单按钮的自定义
-     * `aria-label`
-     */
-    extraMenuLabel?: string
-
-    /** Label of the skip to content link / 跳到正文链接的标签 */
-    skipToContentLabel?: string
-
-    /**
-     * Changing locale when current url is `/foo` redirects to `/locale/foo` /
-     * 切换语言时是否跳转到对应的页面
-     */
-    i18nRouting?: boolean
-
-    /** Show external link icon in Markdown links / 是否在 Markdown 链接中显示外部链接图标 */
-    externalLinkIcon?: boolean
-
-    /** Color custom containers on a graded severity scale / 是否按严重程度为自定义容器着色 */
-    gradedContainers?: boolean
-
-    /** Customize text of 404 page / 自定义 404 页面的文本 */
-    notFound?: NotFoundOptions
-
-    /** Locale configs / 多语言配置 */
-    locales?: LocaleConfig<Config>
-
-    /** Appearance option / 外观选项 */
-    appearance?: AppearanceOptions
-
-    /** Text direction of the site / 站点的文本方向 */
-    dir?: 'ltr' | 'rtl' | 'auto'
-  }
-
   // nav -----------------------------------------------------------------------
 
   /** A nav item / 导航条目 */
@@ -390,7 +548,7 @@ export namespace DefaultTheme {
   /** The sidebar config of each path / 各路径的侧边栏配置 */
   export type SidebarMulti = Record<
     string,
-    SidebarItem[] | { items: SidebarItem[]; base: string }
+    SidebarItem[] | { items: SidebarItem[]; base: string } | 'heading'
   >
 
   /** A sidebar item / 侧边栏条目 */

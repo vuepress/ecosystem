@@ -5,7 +5,7 @@ import {
   type WritableComputedRef,
 } from 'vue'
 
-import { inBrowser } from '../../composables/env.js'
+import { inBrowser } from '../../composables/inBrowser.js'
 
 const isIOS =
   inBrowser &&

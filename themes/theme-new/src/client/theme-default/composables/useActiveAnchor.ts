@@ -2,12 +2,12 @@ import { useMediaQuery } from '@vueuse/core'
 import { onMounted, onUpdated, type TemplateRef, watch } from 'vue'
 import { useRoute } from 'vuepress/client'
 
-import type { DefaultTheme } from '../shared.js'
+import type { DefaultTheme, ThemeConfig } from '../shared.js'
 
 // cached list of anchor elements from resolveHeaders
 const resolvedHeaders: { element: HTMLHeadElement; link: string }[] = []
 
-export function resolveTitle(theme: DefaultTheme.Config): string {
+export function resolveTitle(theme: ThemeConfig): string {
   return (
     (typeof theme.outline === 'object' &&
       !Array.isArray(theme.outline) &&
@@ -17,7 +17,7 @@ export function resolveTitle(theme: DefaultTheme.Config): string {
 }
 
 export function getHeaders(
-  range: DefaultTheme.Config['outline'],
+  range: ThemeConfig['outline'],
 ): DefaultTheme.OutlineItem[] {
   const headers = [
     ...document.querySelectorAll(
@@ -53,7 +53,7 @@ function serializeHeader(h: Element): string {
 
 export function resolveHeaders(
   headers: DefaultTheme.OutlineItem[],
-  range?: DefaultTheme.Config['outline'],
+  range?: ThemeConfig['outline'],
 ): DefaultTheme.OutlineItem[] {
   if (range === false) {
     return []

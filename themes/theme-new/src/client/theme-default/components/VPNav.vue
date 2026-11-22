@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { computed, provide, watchEffect } from 'vue'
 
-import { inBrowser } from '../../composables/env.js'
-import { useThemePageFrontmatter } from '../../composables/page.js'
-import { navInjectionKey, useNav } from '../composables/nav.js'
+import { inBrowser } from '../../composables/inBrowser.js'
+import { useThemePageFrontmatter } from '../../composables/useThemePageData.js'
+import { navInjectionKey, useNav } from '../composables/useNav.js'
 import VPNavBar from './VPNavBar.vue'
 import VPNavScreen from './VPNavScreen.vue'
 

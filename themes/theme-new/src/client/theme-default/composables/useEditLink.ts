@@ -4,11 +4,11 @@ import { computed } from 'vue'
 import {
   usePageRelativePath,
   useThemePageData,
-} from '../../composables/page.js'
-import type { DefaultTheme } from '../shared.js'
+} from '../../composables/useThemePageData.js'
+import type { ThemeConfig } from '../shared.js'
 
 export function useEditLink() {
-  const theme = useThemeLocaleData<DefaultTheme.Config>()
+  const theme = useThemeLocaleData<ThemeConfig>()
   const page = useThemePageData()
   const relativePath = usePageRelativePath()
 

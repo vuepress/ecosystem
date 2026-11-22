@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, inject } from 'vue'
 
-import { layoutInfoInjectionKey } from '../composables/layout.js'
+import { layoutInfoInjectionKey } from '../composables/useLayout.js'
 import type { DefaultTheme } from '../shared.js'
 import VPButton from './VPButton.vue'
 import VPImage from './VPImage.vue'

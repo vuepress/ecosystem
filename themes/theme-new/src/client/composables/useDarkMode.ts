@@ -46,10 +46,14 @@ export const createDarkModeRef = (
   appearance: AppearanceOptions | undefined,
 ): WritableComputedRef<boolean> => {
   const isDarkPreferred = usePreferredDark()
-  const darkStorage = useStorage(
-    COLOR_MODE_STORAGE_KEY,
-    appearance === 'dark' ? 'dark' : 'auto',
-  )
+  // `true` / object forms mean "auto" unless the object asks for `'dark'` as
+  // its initial value, mirroring VitePress' `appearance` semantics
+  const initialValue =
+    appearance === 'dark' ||
+    (typeof appearance === 'object' && appearance.initialValue === 'dark')
+      ? 'dark'
+      : 'auto'
+  const darkStorage = useStorage(COLOR_MODE_STORAGE_KEY, initialValue)
 
   return computed({
     get() {

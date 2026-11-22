@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 
-import { useSidebarItemControl } from '../composables/sidebar.js'
+import { useSidebarItemControl } from '../composables/useSidebarControl.js'
 import type { DefaultTheme } from '../shared.js'
 import VPLink from './VPLink.vue'
 

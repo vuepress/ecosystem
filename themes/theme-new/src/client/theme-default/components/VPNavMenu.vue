@@ -1,8 +1,8 @@
 <script lang="ts" setup>
 import { useThemeLocaleData } from '@vuepress/plugin-theme-data/client'
 
-import { useNavOverflow } from '../composables/nav-overflow.js'
-import type { DefaultTheme } from '../shared.js'
+import { useNavOverflow } from '../composables/useNavOverflow.js'
+import type { ThemeConfig } from '../shared.js'
 import VPNavMenuGroup from './VPNavMenuGroup.vue'
 import VPNavMenuLink from './VPNavMenuLink.vue'
 
@@ -10,7 +10,7 @@ const props = defineProps<{
   screen?: boolean
 }>()
 
-const theme = useThemeLocaleData<DefaultTheme.Config>()
+const theme = useThemeLocaleData<ThemeConfig>()
 
 // bar only — inside the screen every item is always shown
 const overflow = props.screen ? null : useNavOverflow()

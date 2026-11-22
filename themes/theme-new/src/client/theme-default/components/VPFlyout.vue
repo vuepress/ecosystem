@@ -3,7 +3,7 @@ import { onKeyStroke, useEventListener } from '@vueuse/core'
 import { ref, useId, useTemplateRef, watch } from 'vue'
 import { useRoute } from 'vuepress/client'
 
-import { useFlyout } from '../composables/flyout.js'
+import { useFlyout } from '../composables/useFlyout.js'
 import type { DefaultTheme } from '../shared.js'
 import VPMenu from './VPMenu.vue'
 

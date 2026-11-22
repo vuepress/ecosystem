@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useThemePageFrontmatter } from '../../composables/page.js'
+import { useThemePageFrontmatter } from '../../composables/useThemePageData.js'
 import VPFeatures from './VPFeatures.vue'
 
 const fm = useThemePageFrontmatter()

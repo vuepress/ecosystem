@@ -62,6 +62,7 @@
     "@vuepress/plugin-markdown-container": "workspace:*",
     "@vuepress/plugin-markdown-hint": "workspace:*",
     "@vuepress/plugin-markdown-tab": "workspace:*",
+    "@vuepress/plugin-medium-zoom": "workspace:*",
     "@vuepress/plugin-nprogress": "workspace:*",
     "@vuepress/plugin-shiki": "workspace:*",
     "@vuepress/plugin-theme-data": "workspace:*",

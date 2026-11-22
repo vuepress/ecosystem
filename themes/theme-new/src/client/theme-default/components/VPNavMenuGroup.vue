@@ -2,7 +2,7 @@
 import { computed, ref, useId } from 'vue'
 import { useRoute } from 'vuepress/client'
 
-import { useThemePageData } from '../../composables/page.js'
+import { useThemePageData } from '../../composables/useThemePageData.js'
 import type { DefaultTheme } from '../shared.js'
 import { isActive } from '../shared.js'
 import VPFlyout from './VPFlyout.vue'
