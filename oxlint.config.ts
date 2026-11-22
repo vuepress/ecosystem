@@ -81,11 +81,11 @@ export default defineHopeConfig(
   // disabled for them.
   {
     files: [
-      'themes/theme-new/src/client/theme-default/components/**',
-      'themes/theme-new/src/client/theme-default/support/**',
-      'themes/theme-new/src/client/theme-default/shared.ts',
-      'themes/theme-new/src/client/theme-default/index.ts',
-      'themes/theme-new/src/client/theme-default/without-fonts.ts',
+      'themes/theme-default/src/client/theme-default/components/**',
+      'themes/theme-default/src/client/theme-default/support/**',
+      'themes/theme-default/src/client/theme-default/shared.ts',
+      'themes/theme-default/src/client/theme-default/index.ts',
+      'themes/theme-default/src/client/theme-default/without-fonts.ts',
     ],
     rules: {
       'arrow-body-style': 'off',
@@ -159,7 +159,7 @@ export default defineHopeConfig(
   // function declarations (used before their definition, as upstream does) are
   // allowed here as well.
   {
-    files: ['themes/theme-new/src/client/theme-default/composables/**'],
+    files: ['themes/theme-default/src/client/theme-default/composables/**'],
     rules: {
       'arrow-body-style': 'off',
       'complexity': 'off',

@@ -38,7 +38,7 @@ export const en: CreateLocaleOptions = {
     bundler: 'bundler (--bundler) only support "vite" or "webpack"',
     preset: 'preset (--preset) only support "doc" or "blog"',
     theme:
-      'Current theme is not supported yet, using @vuepress/theme-default instead.',
+      'Current theme is not supported yet, using @vuepress/theme-classic instead.',
     dirMissing: (packageManager: PackageManager): string =>
       `You should specific a folder name for your project, e.g.: "my-blog", "my-docs"\nFor example: "${packageManager} init vuepress my-docs"`,
     dirNotEmpty: (dir: string) =>

@@ -8,7 +8,7 @@ icon: la:git-alt
 
 该插件会收集页面的 Git 信息，包括创建时间、更新时间、贡献者列表以及变更日志等。
 
-默认主题中的 [lastUpdated](../../themes/default/config.md#lastupdated) 和 [contributors](../../themes/default/config.md#contributors) 功能正是由该插件提供支持的。
+主题中的 [lastUpdated](../../themes/classic/config.md#lastupdated) 和 [contributors](../../themes/classic/config.md#contributors) 功能正是由该插件提供支持的。
 
 该插件主要用于主题开发，在大多数情况下你不需要直接使用它，而是通过主题配置来开启相关功能。
 

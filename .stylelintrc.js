@@ -53,7 +53,7 @@ export default defineHopeConfig({
       // Layout styles ported from the VitePress default theme. They are kept
       // close to upstream so they can be diffed and re-synced, so the stricter
       // selector/number rules are relaxed for this layer.
-      files: ['themes/theme-new/src/client/theme-default/**'],
+      files: ['themes/theme-default/src/client/theme-default/**'],
       rules: {
         'number-max-precision': null,
         'selector-max-class': null,

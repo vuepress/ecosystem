@@ -78,7 +78,7 @@ new Crawler({
       pathsToMatch: ['https://YOUR_WEBSITE_URL/**'],
       // controls how algolia extracts records from your site
       recordExtractor: ({ $, helpers }) => {
-        // options for @vuepress/theme-default
+        // options for @vuepress/theme-classic
         return helpers.docsearch({
           recordProps: {
             lvl0: {
@@ -170,13 +170,13 @@ new Crawler({
 })
 ```
 
-The `recordProps` above is configured for the default theme. You may need to adjust the selectors to match your custom theme structure.
+The `recordProps` above is configured for the classic theme (`@vuepress/theme-classic`). You may need to adjust the selectors to match your custom theme structure.
 
 **Note:** The `initialIndexSettings.YOUR_INDEX_NAME.attributesForFaceting` field must include `'lang'` for this plugin to function correctly with multi-language support.
 :::
 
 ::: tip
-If you are not using the default theme or encounter issues with search results, check the crawler configuration above. You can go to the [Algolia Crawler](https://crawler.algolia.com/admin/crawlers/), and use the 'Editor' panel in the project sidebar to debug and modify your config.
+If you are not using the classic theme or encounter issues with search results, check the crawler configuration above. You can go to the [Algolia Crawler](https://crawler.algolia.com/admin/crawlers/), and use the 'Editor' panel in the project sidebar to debug and modify your config.
 :::
 
 ## Options
@@ -274,7 +274,7 @@ If you must customize them, please review the [internal implementation](https://
 
 You can customize the appearance using CSS variables provided by [@docsearch/css](https://docsearch.algolia.com/docs/styling).
 
-The plugin overrides some variables to match the VuePress default theme styles.
+The plugin overrides some variables to match the VuePress classic theme styles.
 
 ## Components
 

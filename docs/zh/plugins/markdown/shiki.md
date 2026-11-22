@@ -114,13 +114,13 @@ const line4 = 'This is line 4'
 ::: preview
 
 ```ts {1,7-9}
-import { defaultTheme } from '@vuepress/theme-default'
+import { themeClassic } from '@vuepress/theme-classic'
 import { defineUserConfig } from 'vuepress'
 
 export default defineUserConfig({
   title: '你好， VuePress',
 
-  theme: defaultTheme({
+  theme: themeClassic({
     logo: 'https://vuepress.vuejs.org/images/hero.png',
   }),
 })

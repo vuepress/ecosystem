@@ -1,6 +1,6 @@
 <script setup>
 import { useBlogCategory } from '@vuepress/plugin-blog/client'
-import ParentLayout from '@vuepress/theme-default/layouts/Layout.vue'
+import ParentLayout from '@vuepress/theme-classic/layouts/Layout.vue'
 import { RouteLink, useRoutePath } from 'vuepress/client'
 
 import ArticleList from '../components/ArticleList.vue'
@@ -35,7 +35,7 @@ const routePath = useRoutePath()
 </template>
 
 <style lang="scss">
-@use '@vuepress/theme-default/styles/mixins';
+@use '@vuepress/theme-classic/styles/mixins';
 
 .category-wrapper {
   @include mixins.content-wrapper;

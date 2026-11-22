@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { FadeInExpandTransition } from '@vuepress/helper/client'
-import type { AutoLinkOptions, NavGroup } from '@vuepress/theme-default/client'
+import type { AutoLinkOptions, NavGroup } from '@vuepress/theme-classic/client'
 import { useToggle } from '@vueuse/core'
 import { computed } from 'vue'
 import type { AutoLinkConfig } from 'vuepress/client'
@@ -137,8 +137,8 @@ onContentUpdated(() => {
 </template>
 
 <style lang="scss">
-@use '@vuepress/theme-default/styles/mixins';
-@use '@vuepress/theme-default/styles/variables' as *;
+@use '@vuepress/theme-classic/styles/mixins';
+@use '@vuepress/theme-classic/styles/variables' as *;
 
 .vp-navbar-dropdown-wrapper {
   cursor: pointer;

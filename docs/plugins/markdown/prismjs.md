@@ -8,7 +8,7 @@ icon: pyramid
 
 This plugin enables syntax highlighting for markdown code fences with [Prism.js](https://prismjs.com/).
 
-This plugin has been integrated into the default theme.
+This plugin has been integrated into the classic theme (`@vuepress/theme-classic`).
 
 ## Usage
 
@@ -128,13 +128,13 @@ Line highlighting is enabled by default. Add line ranges to the code fence info 
 ::: preview
 
 ```ts {1,7-9}
-import { defaultTheme } from '@vuepress/theme-default'
+import { themeClassic } from '@vuepress/theme-classic'
 import { defineUserConfig } from 'vuepress'
 
 export default defineUserConfig({
   title: 'Hello, VuePress',
 
-  theme: defaultTheme({
+  theme: themeClassic({
     logo: 'https://vuepress.vuejs.org/images/hero.png',
   }),
 })

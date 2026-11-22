@@ -65,7 +65,7 @@ const createMediaQueryList = (
 /**
  * Stub the color mode of the site
  *
- * The dark mode of `@vuepress/theme-default` is driven by
+ * The dark mode of `@vuepress/theme-classic` is driven by
  * `(prefers-color-scheme: dark)` and by the `vuepress-color-scheme` local
  * storage key, so a component test cannot reach its dark branch without a DOM
  * stub.
@@ -78,7 +78,7 @@ const createMediaQueryList = (
  *
  * 为站点伪造颜色模式
  *
- * `@vuepress/theme-default` 的夜间模式由 `(prefers-color-scheme: dark)` 与
+ * `@vuepress/theme-classic` 的夜间模式由 `(prefers-color-scheme: dark)` 与
  * `vuepress-color-scheme` 本地存储键驱动，因此组件测试在没有 DOM 桩的情况下无法进入其夜间分支。
  *
  * `setColorMode()` 会伪造 `window.matchMedia()`，使 `(prefers-color-scheme: dark)`

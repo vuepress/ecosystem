@@ -8,7 +8,7 @@ icon: la:git-alt
 
 This plugin collects Git information for your pages, including creation and update timestamps, contributor lists, and changelogs.
 
-The [lastUpdated](../../themes/default/config.md#lastupdated) and [contributors](../../themes/default/config.md#contributors) features in the default theme are powered by this plugin.
+The [lastUpdated](../../themes/classic/config.md#lastupdated) and [contributors](../../themes/classic/config.md#contributors) features of the theme are powered by this plugin.
 
 This plugin is primarily intended for theme development. In most cases, you will not need to use it directly.
 

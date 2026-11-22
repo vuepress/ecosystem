@@ -1,0 +1,96 @@
+{
+  "name": "@vuepress/theme-classic",
+  "version": "2.0.0-rc.140",
+  "description": "Classic theme of VuePress",
+  "keywords": [
+    "classic",
+    "theme",
+    "vuepress",
+    "vuepress-theme"
+  ],
+  "homepage": "https://ecosystem.vuejs.press/themes/classic/",
+  "bugs": {
+    "url": "https://github.com/vuepress/ecosystem/issues"
+  },
+  "license": "MIT",
+  "author": "meteorlxy",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vuepress/ecosystem.git",
+    "directory": "themes/theme-classic"
+  },
+  "files": [
+    "dist",
+    "templates"
+  ],
+  "type": "module",
+  "sideEffects": [
+    "./dist/client/components/**/*.vue",
+    "./dist/client/layouts/*.vue",
+    "./dist/client/styles/*.scss"
+  ],
+  "main": "./dist/node/index.js",
+  "types": "./dist/node/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/node/index.d.ts",
+      "default": "./dist/node/index.js"
+    },
+    "./client": {
+      "types": "./dist/client/index.d.ts",
+      "default": "./dist/client/index.js"
+    },
+    "./components/*": "./dist/client/components/*",
+    "./layouts/*": "./dist/client/layouts/*",
+    "./styles/*.scss": "./dist/client/styles/*.scss",
+    "./styles/*": {
+      "sass": "./dist/client/styles/*.scss"
+    },
+    "./templates/*": "./templates/*",
+    "./dist/*": "./dist/*",
+    "./package.json": "./package.json"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "tsdown",
+    "clean": "rimraf ./dist"
+  },
+  "dependencies": {
+    "@vuepress/helper": "workspace:*",
+    "@vuepress/plugin-active-header-links": "workspace:*",
+    "@vuepress/plugin-back-to-top": "workspace:*",
+    "@vuepress/plugin-copy-code": "workspace:*",
+    "@vuepress/plugin-git": "workspace:*",
+    "@vuepress/plugin-links-check": "workspace:*",
+    "@vuepress/plugin-markdown-hint": "workspace:*",
+    "@vuepress/plugin-markdown-tab": "workspace:*",
+    "@vuepress/plugin-medium-zoom": "workspace:*",
+    "@vuepress/plugin-nprogress": "workspace:*",
+    "@vuepress/plugin-palette": "workspace:*",
+    "@vuepress/plugin-prismjs": "workspace:*",
+    "@vuepress/plugin-seo": "workspace:*",
+    "@vuepress/plugin-sitemap": "workspace:*",
+    "@vuepress/plugin-theme-data": "workspace:*",
+    "@vueuse/core": "catalog:",
+    "vue": "catalog:"
+  },
+  "peerDependencies": {
+    "sass": "catalog:",
+    "sass-embedded": "catalog:",
+    "sass-loader": "catalog:",
+    "vuepress": "catalog:"
+  },
+  "peerDependenciesMeta": {
+    "sass": {
+      "optional": true
+    },
+    "sass-embedded": {
+      "optional": true
+    },
+    "sass-loader": {
+      "optional": true
+    }
+  }
+}

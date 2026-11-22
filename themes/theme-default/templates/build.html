@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="{{ lang }}">
+<html lang="{{ lang }}" data-appearance="auto">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
@@ -9,7 +9,7 @@
         --vp-c-bg: #fff;
       }
 
-      [data-theme='dark'] {
+      html[data-theme='dark'] {
         --vp-c-bg: #1b1b1f;
       }
 
@@ -19,17 +19,33 @@
       }
     </style>
     <script>
-      const useChoice = localStorage.getItem('vuepress-color-scheme')
-      const systemStatus =
-        'matchMedia' in window
-          ? window.matchMedia('(prefers-color-scheme: dark)').matches
-          : false
+      ;(() => {
+        const root = document.documentElement
+        // appearance is injected into this template at build time, so the very
+        // first paint can follow the site config instead of only the browser
+        // preferences and the storage
+        const appearance = root.dataset.appearance || 'auto'
+        const prefersDark = window.matchMedia(
+          '(prefers-color-scheme: dark)',
+        ).matches
+        let isDark = false
 
-      if (useChoice === 'light') {
-        document.documentElement.dataset.theme = 'light'
-      } else if (useChoice === 'dark' || systemStatus) {
-        document.documentElement.dataset.theme = 'dark'
-      }
+        if (appearance === 'force-dark') {
+          isDark = true
+        } else if (appearance === 'force-auto') {
+          isDark = prefersDark
+        } else if (appearance === 'light') {
+          isDark = false
+        } else {
+          const fallback = appearance === 'dark' ? 'dark' : 'auto'
+          const preference =
+            localStorage.getItem('vuepress-color-scheme') || fallback
+
+          isDark = preference === 'auto' ? prefersDark : preference === 'dark'
+        }
+
+        root.dataset.theme = isDark ? 'dark' : 'light'
+      })()
     </script>
     <!--vuepress-ssr-head-->
     <!--vuepress-ssr-styles-->

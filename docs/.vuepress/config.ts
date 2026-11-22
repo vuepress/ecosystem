@@ -4,7 +4,7 @@ import { rspackBundler } from '@vuepress/bundler-rspack'
 import { viteBundler } from '@vuepress/bundler-vite'
 import { webpackBundler } from '@vuepress/bundler-webpack'
 import { getModulePath } from '@vuepress/helper'
-import type { DefaultThemePageData } from '@vuepress/theme-default'
+import type { ClassicThemePageData } from '@vuepress/theme-classic'
 import type { Page } from 'vuepress'
 import { defineUserConfig } from 'vuepress'
 import { path } from 'vuepress/utils'
@@ -101,7 +101,7 @@ export default defineUserConfig({
     ),
   },
 
-  extendsPage: (page: Page<Partial<DefaultThemePageData>>) => {
+  extendsPage: (page: Page<Partial<ClassicThemePageData>>) => {
     const { icon } = page.frontmatter
 
     // save icon into route meta

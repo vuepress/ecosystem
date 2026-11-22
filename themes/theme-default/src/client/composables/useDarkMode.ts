@@ -1,71 +1,91 @@
-import { darkModeSymbol } from '@vuepress/helper/client'
-import { usePreferredDark, useStorage, watchImmediate } from '@vueuse/core'
-import type { WritableComputedRef } from 'vue'
-import { computed, inject, onMounted, onUnmounted, provide } from 'vue'
+import { usePreferredDark, useStorage } from '@vueuse/core'
+import type { InjectionKey, WritableComputedRef } from 'vue'
+import { computed, inject } from 'vue'
 
-import { useData } from '@theme/useData'
-
-export type DarkModeRef = WritableComputedRef<boolean>
-
-const update = (value: boolean): void => {
-  // set `class="dark"` on `<html>` element
-  const el = globalThis.document.documentElement
-
-  // set `data-theme="light|dark"` on `<html>` element
-  el.dataset.theme = value ? 'dark' : 'light'
-}
-
-const applyDarkModeToHTML = (isDarkMode: DarkModeRef): void => {
-  onMounted(() => {
-    watchImmediate(isDarkMode, update)
-  })
-
-  onUnmounted(() => {
-    update(isDarkMode.value)
-  })
-}
+import type { AppearanceOptions } from '../../shared/types.js'
 
 /**
- * Inject dark mode global computed
+ * Symbol of the writable dark mode ref of the theme
  *
- * 注入暗色模式全局计算属性
- *
- * @returns Dark mode ref / 暗色模式引用
+ * 主题可写暗色模式引用的 Symbol
  */
-export const useDarkMode = (): DarkModeRef => {
-  const isDarkMode = inject<WritableComputedRef<boolean>>(darkModeSymbol)
-  if (!isDarkMode) throw new Error('useDarkMode() is called without provider.')
+export const themeDarkModeSymbol: InjectionKey<WritableComputedRef<boolean>> =
+  Symbol('theme-default-dark-mode')
 
-  return isDarkMode
-}
+/**
+ * Storage key of the colour mode, shared by every VuePress theme
+ *
+ * 颜色模式的存储键，所有 VuePress 主题共用
+ */
+export const COLOR_MODE_STORAGE_KEY = 'vuepress-color-scheme'
 
-/** Create dark mode ref and provide as global computed in setup */
-export const setupDarkMode = (): void => {
-  const { themeLocale } = useData()
+/**
+ * Resolve whether the appearance option is fixed, which disables the switch
+ *
+ * 判断外观配置是否为固定值（此时禁用切换）
+ *
+ * @param appearance - Appearance option / 外观配置
+ * @returns Whether the appearance is fixed / 外观是否为固定值
+ */
+export const isFixedAppearance = (
+  appearance: AppearanceOptions | undefined,
+): boolean =>
+  appearance === false ||
+  appearance === 'force-dark' ||
+  appearance === 'force-auto'
+
+/**
+ * Create the writable dark mode ref from the `appearance` option
+ *
+ * 依据 `appearance` 选项创建可写的暗色模式引用
+ *
+ * @param appearance - Appearance option / 外观配置
+ * @returns The writable dark mode ref / 可写暗色模式引用
+ */
+export const createDarkModeRef = (
+  appearance: AppearanceOptions | undefined,
+): WritableComputedRef<boolean> => {
   const isDarkPreferred = usePreferredDark()
-  const darkStorage = useStorage(
-    'vuepress-color-scheme',
-    themeLocale.value.colorMode,
-  )
+  // `true` / object forms mean "auto" unless the object asks for `'dark'` as
+  // its initial value, mirroring VitePress' `appearance` semantics
+  const initialValue =
+    appearance === 'dark' ||
+    (typeof appearance === 'object' && appearance.initialValue === 'dark')
+      ? 'dark'
+      : 'auto'
+  const darkStorage = useStorage(COLOR_MODE_STORAGE_KEY, initialValue)
 
-  const isDarkMode = computed<boolean>({
+  return computed({
     get() {
-      // disable color mode switching
-      if (!themeLocale.value.colorModeSwitch)
-        return themeLocale.value.colorMode === 'dark'
+      if (appearance === false) return false
+      if (appearance === 'force-dark') return true
+      if (appearance === 'force-auto') return isDarkPreferred.value
 
       // auto detected from prefers-color-scheme
       if (darkStorage.value === 'auto') return isDarkPreferred.value
 
-      // storage value
       return darkStorage.value === 'dark'
     },
-    set(val) {
-      if (val === isDarkPreferred.value) darkStorage.value = 'auto'
-      else darkStorage.value = val ? 'dark' : 'light'
+    set(value: boolean) {
+      if (isFixedAppearance(appearance)) return
+
+      darkStorage.value =
+        value === isDarkPreferred.value ? 'auto' : value ? 'dark' : 'light'
     },
   })
-  provide(darkModeSymbol, isDarkMode)
+}
 
-  applyDarkModeToHTML(isDarkMode)
+/**
+ * Inject the dark mode ref of the theme
+ *
+ * 注入主题的暗色模式引用
+ *
+ * @returns Writable dark mode ref / 可写暗色模式引用
+ */
+export const useDarkMode = (): WritableComputedRef<boolean> => {
+  const isDark = inject(themeDarkModeSymbol)
+
+  if (!isDark) throw new Error('useDarkMode() is called without provider.')
+
+  return isDark
 }

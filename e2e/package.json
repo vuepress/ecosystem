@@ -43,7 +43,7 @@
     "@vuepress/plugin-share": "workspace:*",
     "@vuepress/plugin-theme-data": "workspace:*",
     "@vuepress/plugin-watermark": "workspace:*",
-    "@vuepress/theme-default": "workspace:*",
+    "@vuepress/theme-classic": "workspace:*",
     "artplayer": "^5.4.0",
     "iconify-icon": "^3.0.5",
     "sass-embedded": "catalog:",

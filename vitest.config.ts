@@ -70,10 +70,10 @@ const toolPackages = getPackages('tools')
  * Directories that `@theme/*` may resolve to
  *
  * They are declared in `tsconfig.json`, and the alias is set by
- * `@vuepress/theme-default` for making the theme files replaceable.
+ * `@vuepress/theme-classic` for making the theme files replaceable.
  */
 const THEME_DIRS = ['components', 'composables', 'utils'].map((dir) =>
-  path.resolve(__dirname, './themes/theme-default/src/client', dir),
+  path.resolve(__dirname, './themes/theme-classic/src/client', dir),
 )
 
 const resolveThemeModule = (id: string): string | undefined => {

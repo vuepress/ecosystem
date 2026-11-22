@@ -24,7 +24,7 @@ Meanwhile, you can also add configuration per page with [frontmatter][].
 
 ## Layouts and customization
 
-Here are common configuration controlling layout of `@vuepress/theme-default`:
+Here are common configuration controlling layout of `@vuepress/theme-classic`:
 
 - [navbar][]
 - [sidebar][]
@@ -40,7 +40,7 @@ You can [add extra style][style] with `.vuepress/styles/index.scss` file.
 [config]: https://vuejs.press/guide/configuration.html#client-config-file
 [client-config]: https://vuejs.press/guide/configuration.html#client-config-file
 [frontmatter]: https://vuejs.press/guide/page.html#frontmatter
-[navbar]: https://vuejs.press/reference/default-theme/config.html#navbar
-[sidebar]: https://vuejs.press/reference/default-theme/config.html#sidebar
-[default-theme]: https://vuejs.press/reference/default-theme/
-[style]: https://vuejs.press/reference/default-theme/styles.html#style-file
+[navbar]: https://ecosystem.vuejs.press/themes/classic/config.html#navbar
+[sidebar]: https://ecosystem.vuejs.press/themes/classic/config.html#sidebar
+[default-theme]: https://ecosystem.vuejs.press/themes/classic/
+[style]: https://ecosystem.vuejs.press/themes/classic/styles.html#style-file

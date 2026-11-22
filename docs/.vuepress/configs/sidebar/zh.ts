@@ -1,4 +1,4 @@
-import type { SidebarOptions } from '@vuepress/theme-default'
+import type { SidebarOptions } from '@vuepress/theme-classic'
 
 export const sidebarZh: SidebarOptions = {
   '/zh/plugins/': [
@@ -227,6 +227,13 @@ export const sidebarZh: SidebarOptions = {
       icon: 'palette',
       prefix: 'default/',
       link: 'default/',
+      children: ['features', 'differences', 'classic'],
+    },
+    {
+      text: '经典主题',
+      icon: 'palette',
+      prefix: 'classic/',
+      link: 'classic/',
       children: [
         'config',
         'plugin',

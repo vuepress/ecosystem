@@ -49,7 +49,7 @@
   },
   "devDependencies": {
     "@vuepress/plugin-blog": "workspace:*",
-    "@vuepress/theme-default": "workspace:*",
+    "@vuepress/theme-classic": "workspace:*",
     "sass-embedded": "catalog:",
     "sass-loader": "catalog:",
     "vue": "catalog:",

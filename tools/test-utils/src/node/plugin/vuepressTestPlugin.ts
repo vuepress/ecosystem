@@ -122,7 +122,7 @@ export interface VuepressTestPluginOptions {
    *
    * Vite `resolve.alias` maps one pattern to one file, so it cannot handle a
    * convention that may resolve to different directories or extensions, e.g.
-   * the `@theme/*` alias of `@vuepress/theme-default`, or a sub-path alias such
+   * the `@theme/*` alias of `@vuepress/theme-classic`, or a sub-path alias such
    * as `@vuepress/plugin-comment/service` that only exists at build time.
    *
    * Modules registered with `stubModule()` are resolved before this function is
@@ -131,7 +131,7 @@ export interface VuepressTestPluginOptions {
    * 解析 `resolve.alias` 无法表达的模块 id
    *
    * Vite 的 `resolve.alias` 只能把一个模式映射到一个文件，无法处理可能落到不同目录或扩展名的约定，如
-   * `@vuepress/theme-default` 的 `@theme/*` 别名，或仅在构建期存在的子路径别名（如
+   * `@vuepress/theme-classic` 的 `@theme/*` 别名，或仅在构建期存在的子路径别名（如
    * `@vuepress/plugin-comment/service`）。
    *
    * 通过 `stubModule()` 注册的模块会先于该函数被解析。

@@ -1,4 +1,4 @@
-import type { SidebarOptions } from '@vuepress/theme-default'
+import type { SidebarOptions } from '@vuepress/theme-classic'
 
 export const sidebarEn: SidebarOptions = {
   '/plugins/': [
@@ -227,6 +227,13 @@ export const sidebarEn: SidebarOptions = {
       icon: 'palette',
       prefix: 'default/',
       link: 'default/',
+      children: ['features', 'differences', 'classic'],
+    },
+    {
+      text: 'Classic Theme',
+      icon: 'palette',
+      prefix: 'classic/',
+      link: 'classic/',
       children: [
         'config',
         'plugin',
