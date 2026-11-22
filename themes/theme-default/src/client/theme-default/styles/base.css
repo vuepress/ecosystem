@@ -251,6 +251,58 @@
     text-spacing-trim: normal;
   }
 
+  /* Smooth the color change when the appearance is toggled, so that the whole
+     page fades together instead of only the components that happen to define a
+     transition. */
+  body,
+  .vp-navbar,
+  .vp-navbar-mask,
+  .vp-sidebar,
+  .vp-sidebar-mask,
+  .vp-local-nav,
+  .vp-nav-screen,
+  .vp-menu,
+  .vp-flyout,
+  .vp-doc,
+  .vp-doc-container,
+  .vp-doc-aside,
+  .vp-doc-footer,
+  .vp-footer,
+  .vp-home,
+  .vp-page,
+  .vp-content,
+  .vp-hint-container {
+    transition:
+      color var(--vp-t-color),
+      background-color var(--vp-t-color),
+      border-color var(--vp-t-color);
+  }
+
+  .vp-doc
+    :is(
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6,
+      p,
+      li,
+      td,
+      th,
+      strong,
+      em,
+      blockquote,
+      summary,
+      a,
+      [class*='language-']
+    ) {
+    transition:
+      color var(--vp-t-color),
+      background-color var(--vp-t-color),
+      border-color var(--vp-t-color);
+  }
+
   pre,
   code,
   kbd,

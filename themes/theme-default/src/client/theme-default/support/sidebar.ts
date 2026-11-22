@@ -1,3 +1,5 @@
+import { resolveRoute } from 'vuepress/client'
+
 import type { DefaultTheme } from '../shared.js'
 import { isActive, isExternal } from '../shared.js'
 import { ensureStartingSlash } from './utils.js'
@@ -173,3 +175,39 @@ function addBase(items: SidebarItem[], _base?: string): SidebarItem[] {
     return item
   })
 }
+
+/**
+ * Resolve the text and icon of the sidebar items from the page meta.
+ *
+ * The link of a sidebar item points to a page, whose title and icon live in the
+ * route meta. Items that already define the text or the icon keep them.
+ *
+ * 从页面元信息解析侧边栏条目的文本和图标。
+ *
+ * 侧边栏条目的链接指向一个页面，页面标题和图标保存在路由元信息中。 已经定义了文本或图标的条目保持不变。
+ *
+ * @param items - The sidebar items / 侧边栏条目
+ * @returns The resolved sidebar items / 解析后的侧边栏条目
+ */
+export const resolveSidebarData = (items: SidebarItem[]): SidebarItem[] =>
+  items.map((item) => {
+    const children = item.items?.length
+      ? { items: resolveSidebarData(item.items) }
+      : {}
+
+    if (!item.link || isExternal(item.link)) return { ...item, ...children }
+
+    const { notFound, meta } = resolveRoute<{
+      title?: string
+      icon?: string
+    }>(item.link)
+
+    if (notFound) return { ...item, ...children }
+
+    return {
+      ...item,
+      ...(!item.text && meta.title ? { text: meta.title } : {}),
+      ...(!item.icon && meta.icon ? { icon: meta.icon } : {}),
+      ...children,
+    }
+  })

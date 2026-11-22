@@ -16,7 +16,11 @@ import {
   useThemePageFrontmatter,
 } from '../../composables/useThemePageData.js'
 import type { DefaultTheme, ThemeConfig, ThemeLayout } from '../shared.js'
-import { getSidebar, getSidebarGroups } from '../support/sidebar.js'
+import {
+  getSidebar,
+  getSidebarGroups,
+  resolveSidebarData,
+} from '../support/sidebar.js'
 import { getHeaders } from './useActiveAnchor.js'
 import { useCloseSidebarOnEscape } from './useSidebarControl.js'
 
@@ -96,10 +100,12 @@ export function registerWatchers({ closeSidebar }: RegisterWatchersOptions) {
     const newSidebar =
       sidebarConfig.value === false
         ? []
-        : getSidebar(sidebarConfig.value, relativePath.value, {
-            title: page.value.title,
-            headers: sidebarHeaders.value,
-          })
+        : resolveSidebarData(
+            getSidebar(sidebarConfig.value, relativePath.value, {
+              title: page.value.title,
+              headers: sidebarHeaders.value,
+            }),
+          )
 
     if (JSON.stringify(newSidebar) !== JSON.stringify(sidebar.value))
       sidebar.value = newSidebar

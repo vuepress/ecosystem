@@ -6,7 +6,11 @@ import {
   useThemePageFrontmatter,
 } from '../../composables/useThemePageData.js'
 import { isActive, normalize, type ThemeConfig } from '../shared.js'
-import { getFlatSideBarLinks, getSidebar } from '../support/sidebar.js'
+import {
+  getFlatSideBarLinks,
+  getSidebar,
+  resolveSidebarData,
+} from '../support/sidebar.js'
 import { uniqBy } from '../support/utils.js'
 
 export function usePrevNext() {
@@ -18,7 +22,9 @@ export function usePrevNext() {
     prev?: { text?: string; link?: string; target?: string; rel?: string }
     next?: { text?: string; link?: string; target?: string; rel?: string }
   }>(() => {
-    const sidebar = getSidebar(theme.value.sidebar, relativePath.value)
+    const sidebar = resolveSidebarData(
+      getSidebar(theme.value.sidebar, relativePath.value),
+    )
     const links = getFlatSideBarLinks(sidebar)
 
     // ignore inner-page links with hashes
