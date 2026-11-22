@@ -132,7 +132,9 @@ Logo 和站点标题的链接。它默认为当前语言的主页链接（根语
 
 @`nav[*].text` type=string
 
-链接项目或子项目的文本。链接项目必须提供该字段。
+链接项目或子项目的文本。子项目必须提供该字段。
+
+链接项目可以省略：主题会回退到页面元数据的 `title`，所以一个导航条目只需要它的 `link`，文本和它指向的页面一致。
 
 @`nav[*].link` type=`string | ((payload: ThemePageData) => string)`
 
@@ -141,6 +143,8 @@ Logo 和站点标题的链接。它默认为当前语言的主页链接（根语
 @`nav[*].icon` type=string
 
 项目的图标。主题的图标类以 `vpi-` 开头（例如 `vpi-github`），也接受任何 [Iconify](https://iconify.design) 名称。见 [图标](../../plugins/features/icon.md)。
+
+链接项目或分组的图标省略时，主题会回退到页面元数据中的 `icon`，也就是链接指向页面的 frontmatter `icon`。
 
 @`nav[*].activeMatch` type=string
 
@@ -174,9 +178,9 @@ Logo 和站点标题的链接。它默认为当前语言的主页链接（根语
 
 分组的项目。分组在下拉菜单中渲染为带标题的列。
 
-@@@`nav[*].items[*].items[*].text` type=string required
+@@@`nav[*].items[*].items[*].text` type=string
 
-分组内链接的文本。
+分组内链接的文本。省略时回退到页面元数据的 `title`。
 
 @@@`nav[*].items[*].items[*].link` type=`string | ((payload: ThemePageData) => string)`
 
@@ -184,7 +188,7 @@ Logo 和站点标题的链接。它默认为当前语言的主页链接（根语
 
 @@@`nav[*].items[*].items[*].icon` type=string
 
-分组内链接的图标。
+分组内链接的图标。省略时回退到页面元数据。
 ::::
 
 一个包含下拉菜单、分组和外部链接的导航栏示例：

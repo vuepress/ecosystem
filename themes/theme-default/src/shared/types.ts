@@ -531,11 +531,19 @@ export namespace DefaultTheme {
 
   /** A nav item with a link / 带链接的导航条目 */
   export interface NavItemWithLink {
-    /** The icon of the item / 条目图标 */
+    /**
+     * The icon of the item, falls back to the icon of the page metadata
+     *
+     * 条目图标，省略时回退到页面元数据的图标
+     */
     icon?: string
 
-    /** The text of the item / 条目文本 */
-    text: string
+    /**
+     * The text of the item, falls back to the title of the page metadata
+     *
+     * 条目文本，省略时回退到页面元数据的标题
+     */
+    text?: string
 
     /** The link of the item / 条目链接 */
     link: string | ((payload: ThemePageData) => string)

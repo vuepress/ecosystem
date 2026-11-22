@@ -1,8 +1,10 @@
 <script lang="ts" setup>
 import { useThemeLocaleData } from '@vuepress/plugin-theme-data/client'
+import { computed } from 'vue'
 
 import { useNavOverflow } from '../composables/useNavOverflow.js'
 import type { ThemeConfig } from '../shared.js'
+import { resolveNavData } from '../support/nav.js'
 import VPNavMenuGroup from './VPNavMenuGroup.vue'
 import VPNavMenuLink from './VPNavMenuLink.vue'
 
@@ -11,6 +13,10 @@ const props = defineProps<{
 }>()
 
 const theme = useThemeLocaleData<ThemeConfig>()
+
+const nav = computed(() =>
+  theme.value.nav ? resolveNavData(theme.value.nav) : undefined,
+)
 
 // bar only — inside the screen every item is always shown
 const overflow = props.screen ? null : useNavOverflow()
@@ -22,7 +28,7 @@ function isVisible(index: number) {
 
 <template>
   <nav
-    v-if="theme.nav"
+    v-if="nav"
     :aria-label="theme.navMenuLabel || 'Main Navigation'"
     class="vp-nav-menu"
     :class="screen ? 'vp-nav-screen-menu' : 'vp-navbar-menu'"
@@ -30,7 +36,7 @@ function isVisible(index: number) {
   >
     <ul class="list">
       <li
-        v-for="(item, index) in theme.nav"
+        v-for="(item, index) in nav"
         :key="JSON.stringify(item)"
         :class="{ collapsed: !isVisible(index) }"
         :ref="(el) => overflow?.setItemEl(index, el as HTMLElement | null)"

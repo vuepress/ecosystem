@@ -132,7 +132,9 @@ The navbar items. Every item is one of three shapes:
 
 @`nav[*].text` type=string
 
-The text of a link item or a children item. It is required for a link item.
+The text of a link item or a children item. It is required for a children item.
+
+For a link item it can be omitted: the theme falls back to the `title` of the page metadata, so a navbar item only needs its `link` and is labelled like the page it leads to.
 
 @`nav[*].link` type=`string | ((payload: ThemePageData) => string)`
 
@@ -141,6 +143,8 @@ The link of a link item. Pass a function to compute the link from the current pa
 @`nav[*].icon` type=string
 
 The icon of the item. Icon classes of the theme start with `vpi-` (for example `vpi-github`), and any [Iconify](https://iconify.design) name is also accepted. See [Icons](../../plugins/features/icon.md).
+
+When the icon of a link item or of a group is omitted, the theme falls back to the `icon` of the page metadata — the frontmatter `icon` of the page that the link leads to.
 
 @`nav[*].activeMatch` type=string
 
@@ -174,9 +178,9 @@ The props passed to that component.
 
 The items of a group. A group is rendered as a column with a title inside the dropdown.
 
-@@@`nav[*].items[*].items[*].text` type=string required
+@@@`nav[*].items[*].items[*].text` type=string
 
-The text of the link inside the group.
+The text of the link inside the group. It falls back to the `title` of the page metadata when omitted.
 
 @@@`nav[*].items[*].items[*].link` type=`string | ((payload: ThemePageData) => string)`
 
@@ -184,7 +188,7 @@ The link of the link inside the group.
 
 @@@`nav[*].items[*].items[*].icon` type=string
 
-The icon of the link inside the group.
+The icon of the link inside the group. It falls back to the page metadata when omitted.
 ::::
 
 A navbar example with a dropdown, a group and an external link:
