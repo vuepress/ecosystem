@@ -80,7 +80,6 @@ export const plugins = [
     gfm: true,
     component: true,
     vPre: true,
-    raw: true,
   }),
   markdownFieldPlugin({
     fields: true,

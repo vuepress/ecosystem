@@ -7,7 +7,6 @@ import { isPlainObject } from 'vuepress/shared'
 
 import {
   component as componentPlugin,
-  raw as rawPlugin,
   vPre as vPrePlugin,
 } from './markdown-it-plugins/index.js'
 import type { MarkdownExtPluginOptions } from './options.js'
@@ -36,7 +35,6 @@ declare module 'vuepress/markdown' {
  *         gfm: true,
  *         component: true,
  *         vPre: true,
- *         raw: true,
  *       }),
  *     ],
  *   }
@@ -53,7 +51,6 @@ export const markdownExtPlugin =
       tasklist,
       component,
       vPre,
-      raw,
       cjkFriendly,
     } = mergedOptions
 
@@ -80,7 +77,6 @@ export const markdownExtPlugin =
           md.use(tasklistPlugin, isPlainObject(tasklist) ? tasklist : {})
         if (component) md.use(componentPlugin)
         if (vPre) md.use(vPrePlugin)
-        if (raw) md.use(rawPlugin)
         if (isCjkFriendlyEnabled) md.use(markdownItCjkFriendlyPlugin)
       },
 
