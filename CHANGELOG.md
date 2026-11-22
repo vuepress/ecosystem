@@ -2,6 +2,26 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.0-rc.140](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.139...v2.0.0-rc.140) (2026-11-22)
+
+### ✨ Features
+
+- **plugin-markdown-hint:** add no-title support ([#1136](https://github.com/vuepress/ecosystem/issues/1136)) ([0974f43](https://github.com/vuepress/ecosystem/commit/0974f43b61777fceaa5248901139d034d0b8c2cf))
+- **plugin-share:** add share plugin ([#1132](https://github.com/vuepress/ecosystem/issues/1132)) ([fece6a8](https://github.com/vuepress/ecosystem/commit/fece6a8549c7a3571cbfd9595874e7738fe392dc))
+- **plugin-share:** rename Twitter service to X ([#1135](https://github.com/vuepress/ecosystem/issues/1135)) ([0011843](https://github.com/vuepress/ecosystem/commit/00118431e950a0c05d649bdc3f5803ea6b85bc10))
+
+### 🐛 Bug Fixes
+
+- **deps:** update dependency @videojs/html to v10.6.0 ([#1137](https://github.com/vuepress/ecosystem/issues/1137)) ([4a4d8c3](https://github.com/vuepress/ecosystem/commit/4a4d8c31a1c0312f6ada65eaa195e9af4acc2b90))
+- **test-utils:** fix published paths and declarations ([#1130](https://github.com/vuepress/ecosystem/issues/1130)) ([db0b3f2](https://github.com/vuepress/ecosystem/commit/db0b3f2c32d165345e292046eb78cb225b5dd255))
+- **test-utils:** stop bundling vitest ([#1133](https://github.com/vuepress/ecosystem/issues/1133)) ([28304c7](https://github.com/vuepress/ecosystem/commit/28304c78b6359d11e50bb45eaf5349927def6198))
+
+### Miscellaneous Chores
+
+- **deps:** group oxc dependency updates ([#1127](https://github.com/vuepress/ecosystem/issues/1127)) ([f06eef7](https://github.com/vuepress/ecosystem/commit/f06eef7b0f6406cdc01794586a42370c8eeeb327))
+- **deps:** update dependency sass-loader to v17.1.1 ([#1131](https://github.com/vuepress/ecosystem/issues/1131)) ([599823d](https://github.com/vuepress/ecosystem/commit/599823dcda7175431035c11d029cb21ed1ba2027))
+- **deps:** update dependency stylelint to v18.1.0 ([#1128](https://github.com/vuepress/ecosystem/issues/1128)) ([a2c07f0](https://github.com/vuepress/ecosystem/commit/a2c07f0aea42c486ce456e12af54481f3b341a24))
+
 ## [2.0.0-rc.139](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.138...v2.0.0-rc.139) (2026-11-21)
 
 ### ✨ Features

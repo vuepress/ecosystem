@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.0-rc.140](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.139...v2.0.0-rc.140) (2026-11-22)
+
+### ✨ Features
+
+- **plugin-markdown-hint:** add no-title support ([#1136](https://github.com/vuepress/ecosystem/issues/1136)) ([0974f43](https://github.com/vuepress/ecosystem/commit/0974f43b61777fceaa5248901139d034d0b8c2cf))
+
 ## [2.0.0-rc.139](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.138...v2.0.0-rc.139) (2026-11-21)
 
 **Note:** Version bump only for package @vuepress/plugin-markdown-hint

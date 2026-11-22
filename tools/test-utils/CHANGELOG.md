@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.0-rc.140](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.139...v2.0.0-rc.140) (2026-11-22)
+
+### 🐛 Bug Fixes
+
+- **test-utils:** fix published paths and declarations ([#1130](https://github.com/vuepress/ecosystem/issues/1130)) ([db0b3f2](https://github.com/vuepress/ecosystem/commit/db0b3f2c32d165345e292046eb78cb225b5dd255))
+- **test-utils:** stop bundling vitest ([#1133](https://github.com/vuepress/ecosystem/issues/1133)) ([28304c7](https://github.com/vuepress/ecosystem/commit/28304c78b6359d11e50bb45eaf5349927def6198))
+
 ## [2.0.0-rc.139](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.138...v2.0.0-rc.139) (2026-11-21)
 
 ### Build System
