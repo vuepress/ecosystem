@@ -17,6 +17,7 @@ export interface UseActiveHeaderLinksOptions {
  */
 const updateHash = async (router: Router, hash: string): Promise<void> => {
   const { path, query } = router.currentRoute.value
+  const { scrollX, scrollY } = window
   // oxlint-disable-next-line typescript/no-deprecated
   const { scrollBehavior } = router.options
 
@@ -27,6 +28,12 @@ const updateHash = async (router: Router, hash: string): Promise<void> => {
   // restore it after navigation
   // oxlint-disable-next-line typescript/no-deprecated
   router.options.scrollBehavior = scrollBehavior
+
+  // The client restores the scroll position of the route after the navigation,
+  // which moves the page to the hash element. Restore the position the user has
+  // scrolled to, otherwise scrolling the page would jump between the headings.
+  if (window.scrollX !== scrollX || window.scrollY !== scrollY)
+    window.scrollTo(scrollX, scrollY)
 }
 
 export const useActiveHeaderLinks = ({

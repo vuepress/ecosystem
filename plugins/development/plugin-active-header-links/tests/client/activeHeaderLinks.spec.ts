@@ -136,6 +136,48 @@ describe('active header links composable', () => {
     }
   })
 
+  it('should keep the scroll position when the route hash changes', async () => {
+    document.body.innerHTML = ''
+
+    const client = await createTestClient({
+      page: { path: '/guide/', title: 'Guide' },
+      rootComponent: createProbe(probeOptions),
+      route: '/guide/',
+    })
+    const wrapper = await client.mount({ attachTo: document.body })
+    const { replace } = client.router
+    // the client restores the scroll position of the new route after the
+    // navigation, which would move the page away from where the user scrolled
+    vi.spyOn(client.router, 'replace').mockImplementation(async (to) => {
+      const result = await replace(to)
+
+      window.scrollY = 0
+
+      return result
+    })
+    // the router scrolls to the hash element with the options signature while
+    // the composable restores the scroll position with the numbers signature
+    const scrollTo = vi
+      .spyOn(window, 'scrollTo')
+      .mockImplementation((_options: ScrollToOptions | number, y = 0) => {
+        window.scrollY = y
+      })
+
+    try {
+      setSectionOffsets()
+
+      setScrollMetrics({ innerHeight: 600, scrollHeight: 3000, scrollTop: 250 })
+      await triggerScroll()
+
+      expect(client.router.currentRoute.value.hash).toBe('#b')
+      expect(scrollTo).toHaveBeenCalledWith(window.scrollX, 250)
+      expect(window.scrollY).toBe(250)
+    } finally {
+      scrollTo.mockRestore()
+      wrapper.unmount()
+    }
+  })
+
   it('should clear the route hash at the page top', async () => {
     document.body.innerHTML = ''
 
