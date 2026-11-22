@@ -16,3 +16,5 @@ actions:
 
 footer: MIT 协议 | 版权所有 © 2018-至今 VuePress 社区
 ---
+
+<HomeSections />

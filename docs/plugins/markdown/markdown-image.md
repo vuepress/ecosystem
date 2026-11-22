@@ -43,7 +43,7 @@ The plugin will enable image lazyload using native HTML5 features, so it's only 
 
 When you set `mark: true` in plugin options, you can mark pictures by `#light` and `#dark` suffix to let them be displayed under certain color mode.
 
-<VPToggleColorModeButton /> (Try to toggle theme mode)
+<button @click="isDarkMode = !isDarkMode">Toggle dark mode</button> (Try to toggle theme mode)
 
 ::: preview
 
@@ -192,6 +192,8 @@ Whether enable legacy image size support.
 
 :::
 
-<script setup>
-import VPToggleColorModeButton from '@theme/VPToggleColorModeButton.vue'
+<script setup lang="ts">
+import { useDarkMode } from '@vuepress/theme-default/client'
+
+const isDarkMode = useDarkMode()
 </script>

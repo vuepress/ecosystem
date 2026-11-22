@@ -255,11 +255,13 @@ Shiki 的亮色和暗色主题会作为每个 token 的 `--shiki-light` 和 `--s
 | 变量                                    | 默认值                                              | 说明            |
 | --------------------------------------- | --------------------------------------------------- | --------------- |
 | `--vp-home-hero-name-color`             | `transparent`                                       | hero 名称的颜色 |
-| `--vp-home-hero-name-background`        | `linear-gradient(120deg, #3eaf7c 30%, #1b1b1f)`     | hero 名称的背景 |
-| `--vp-home-hero-image-background-image` | `linear-gradient(-45deg, #3eaf7c 50%, #232327 50%)` | hero 图片的背景 |
+| `--vp-home-hero-name-background`        | `linear-gradient(120deg, #3eaf7c 30%, #343a42)`     | hero 名称的背景 |
+| `--vp-home-hero-image-background-image` | `linear-gradient(-45deg, #3eaf7c 50%, #3d4750 50%)` | hero 图片的背景 |
 | `--vp-home-hero-image-filter`           | `blur(44px)`                                        | hero 图片的滤镜 |
 
 名称使用了裁剪到文字上的渐变，因此它的颜色是透明的。可以用另一个渐变覆盖 `--vp-home-hero-name-background`，或者把名称颜色设为纯色并清除背景。
+
+暗色主题在 `[data-theme='dark']` 下覆盖了这两个渐变，改用更亮的版本（名称 `linear-gradient(120deg, #3eaf7c 30%, #8f97a1)`，图片 `linear-gradient(-45deg, #3eaf7c 50%, #59626c 50%)`），避免深色端融入暗色背景。
 
 ### 过渡与插件兼容 {#transitions-and-plugin-compatibility}
 

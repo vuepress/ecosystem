@@ -452,6 +452,9 @@ importers:
       '@vuepress/theme-classic':
         specifier: workspace:*
         version: link:../themes/theme-classic
+      '@vuepress/theme-default':
+        specifier: workspace:*
+        version: link:../themes/theme-default
       '@vueuse/core':
         specifier: 'catalog:'
         version: 15.0.0(vue@3.5.46(typescript@6.0.3))

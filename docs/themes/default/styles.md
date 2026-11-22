@@ -257,11 +257,13 @@ Each container type also has `-c-text` and `-c-soft` variants.
 | Variable                                | Default                                             | Description                      |
 | --------------------------------------- | --------------------------------------------------- | -------------------------------- |
 | `--vp-home-hero-name-color`             | `transparent`                                       | the color of the hero name       |
-| `--vp-home-hero-name-background`        | `linear-gradient(120deg, #3eaf7c 30%, #1b1b1f)`     | the background of the hero name  |
-| `--vp-home-hero-image-background-image` | `linear-gradient(-45deg, #3eaf7c 50%, #232327 50%)` | the background of the hero image |
+| `--vp-home-hero-name-background`        | `linear-gradient(120deg, #3eaf7c 30%, #343a42)`     | the background of the hero name  |
+| `--vp-home-hero-image-background-image` | `linear-gradient(-45deg, #3eaf7c 50%, #3d4750 50%)` | the background of the hero image |
 | `--vp-home-hero-image-filter`           | `blur(44px)`                                        | the filter of the hero image     |
 
 The name uses a gradient clipped to the text, which is why its color is transparent. Override `--vp-home-hero-name-background` with another gradient, or set the name color to a solid color and clear the background.
+
+The dark theme overrides both gradients at `[data-theme='dark']` with a lighter version (`linear-gradient(120deg, #3eaf7c 30%, #8f97a1)` for the name and `linear-gradient(-45deg, #3eaf7c 50%, #59626c 50%)` for the image), so the dark end does not disappear into the dark background.
 
 ### Transitions and Plugin Compatibility
 

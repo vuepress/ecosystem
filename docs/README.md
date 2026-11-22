@@ -16,3 +16,5 @@ actions:
 
 footer: MIT Licensed | Copyright © 2018-present VuePress Community
 ---
+
+<HomeSections />
