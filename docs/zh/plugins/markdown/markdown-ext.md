@@ -118,22 +118,6 @@ type: tip
 
 ::::
 
-### raw 容器 {#raw-container}
-
-你可以使用 `raw` 容器将内容包裹在 `<div class="vp-raw">` 元素中。这在编写组件库文档时很有用，被包裹的内容应该不受主题文档样式的影响。
-
-插件只负责提供包裹标记，本身不会隔离样式。若要让被包裹的内容不受主题文档样式影响，需要由主题在文档样式中排除 `.vp-raw`（例如使用 PostCSS，参考 VitePress 的 `postcssIsolateStyles`）。
-
-:::: preview
-
-::: raw
-
-Hello.
-
-:::
-
-::::
-
 ## 选项 {#options}
 
 ::: fields
@@ -181,10 +165,6 @@ Hello.
 @`vPre` type=boolean
 
 是否启用 v-pre 容器支持。
-
-@`raw` type=boolean
-
-是否启用 raw 容器支持。
 
 @`cjkFriendly` type=boolean
 
