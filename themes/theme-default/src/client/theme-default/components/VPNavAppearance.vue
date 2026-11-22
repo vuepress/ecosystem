@@ -61,7 +61,7 @@ const labelId = useId()
 }
 
 .vp-nav-appearance .text {
-  color: var(--vp-c-text-2);
+  color: var(--vp-c-text-mute);
   font-weight: 500;
   font-size: 0.75rem;
 }

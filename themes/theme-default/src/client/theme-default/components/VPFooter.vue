@@ -49,7 +49,7 @@ const { hasSidebar } = useLayout()
 }
 
 .vp-footer :deep(a:hover) {
-  color: var(--vp-c-text-1);
+  color: var(--vp-c-text);
 }
 
 @media (min-width: 48rem) {
@@ -66,7 +66,7 @@ const { hasSidebar } = useLayout()
 
 .message,
 .copyright {
-  color: var(--vp-c-text-2);
+  color: var(--vp-c-text-mute);
   font-weight: 500;
   font-size: 0.875rem;
   line-height: 1.7142857;

@@ -204,7 +204,7 @@ const { heroImageSlotExists } = inject(layoutInfoInjectionKey, {
   max-width: 24.5rem;
   padding-top: 0.5rem;
 
-  color: var(--vp-c-text-2);
+  color: var(--vp-c-text-mute);
 
   font-weight: 500;
   font-size: 1.125rem;

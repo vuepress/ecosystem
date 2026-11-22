@@ -73,7 +73,7 @@ useActiveAnchor(container, marker)
   height: 1.125rem;
   border-radius: 2px;
 
-  background-color: var(--vp-c-brand-1);
+  background-color: var(--vp-c-brand);
 
   opacity: 0;
 

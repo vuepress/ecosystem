@@ -133,7 +133,7 @@ const isScrolled = computed(() => y.value >= navHeight.value)
   display: flex;
   align-items: center;
 
-  color: var(--vp-c-text-2);
+  color: var(--vp-c-text-mute);
 
   font-weight: 500;
   font-size: 0.75rem;
@@ -143,7 +143,7 @@ const isScrolled = computed(() => y.value >= navHeight.value)
 }
 
 .menu:hover {
-  color: var(--vp-c-text-1);
+  color: var(--vp-c-text);
   transition: color 0.25s;
 }
 

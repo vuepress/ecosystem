@@ -38,7 +38,7 @@ watch(
   border-radius: 0.5rem;
 
   background-color: var(--vp-c-bg);
-  color: var(--vp-c-brand-1);
+  color: var(--vp-c-brand);
   box-shadow: var(--vp-shadow-3);
 
   font-weight: bold;

@@ -81,7 +81,7 @@ const textTitle = computed(() => {
   width: 100%;
   height: var(--vp-nav-height);
 
-  color: var(--vp-c-text-1);
+  color: var(--vp-c-text);
 
   font-weight: 600;
   font-size: 1rem;

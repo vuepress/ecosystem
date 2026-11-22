@@ -38,7 +38,7 @@ defineProps<{
 
   overflow: hidden;
 
-  color: var(--vp-c-text-2);
+  color: var(--vp-c-text-mute);
 
   font-weight: 400;
   font-size: 0.875rem;
@@ -56,7 +56,7 @@ defineProps<{
 
 .outline-link:hover,
 .outline-link.active {
-  color: var(--vp-c-text-1);
+  color: var(--vp-c-text);
   transition: color 0.25s;
 }
 

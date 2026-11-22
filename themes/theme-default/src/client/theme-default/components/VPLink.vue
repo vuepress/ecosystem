@@ -42,6 +42,6 @@ const isExternal = computed(() =>
 
 <style scoped>
 .vp-external-link-icon::after {
-  color: var(--vp-c-text-3);
+  color: var(--vp-c-text-subtle);
 }
 </style>

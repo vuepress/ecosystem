@@ -79,7 +79,7 @@ defineProps<{
 }
 
 .vp-feature.link:hover {
-  border-color: var(--vp-c-brand-1);
+  border-color: var(--vp-c-brand);
 }
 
 .box {
@@ -121,7 +121,7 @@ defineProps<{
 
   padding-top: 0.5rem;
 
-  color: var(--vp-c-text-2);
+  color: var(--vp-c-text-mute);
 
   font-weight: 500;
   font-size: 0.875rem;
@@ -141,7 +141,7 @@ ul.details {
   display: flex;
   align-items: center;
 
-  color: var(--vp-c-brand-1);
+  color: var(--vp-c-brand);
 
   font-weight: 500;
   font-size: 0.875rem;

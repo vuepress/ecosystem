@@ -130,7 +130,7 @@ function toggle() {
 
 .vp-nav-screen-menu-group.open .button {
   padding-bottom: 0.375rem;
-  color: var(--vp-c-brand-1);
+  color: var(--vp-c-brand);
 }
 
 .vp-nav-screen-menu-group.open .button-icon {
@@ -146,7 +146,7 @@ function toggle() {
   padding-block: 0.75rem 0.6875rem;
   padding-inline: 0 0.25rem;
 
-  color: var(--vp-c-text-1);
+  color: var(--vp-c-text);
 
   font-weight: 500;
   font-size: 0.875rem;
@@ -157,7 +157,7 @@ function toggle() {
 
 .button:hover,
 .vp-nav-screen-menu-group.active .button {
-  color: var(--vp-c-brand-1);
+  color: var(--vp-c-brand);
 }
 
 .button-icon {

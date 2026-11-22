@@ -42,7 +42,7 @@ function onClick() {
 
 <style scoped>
 .vp-nav-menu-link {
-  color: var(--vp-c-text-1);
+  color: var(--vp-c-text);
   font-weight: 500;
   font-size: 0.875rem;
   transition: color 0.25s;
@@ -54,7 +54,7 @@ function onClick() {
 
 .vp-nav-menu-link:hover,
 .vp-nav-menu-link.active {
-  color: var(--vp-c-brand-1);
+  color: var(--vp-c-brand);
 }
 
 .vp-navbar-menu-link {

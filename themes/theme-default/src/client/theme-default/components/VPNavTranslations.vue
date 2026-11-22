@@ -136,7 +136,7 @@ const localeProps = (locale: (typeof localeLinks.value)[number]) => ({
   padding-block: 0;
   padding-inline: 0.75rem 1.5rem;
 
-  color: var(--vp-c-text-1);
+  color: var(--vp-c-text);
 
   font-weight: 700;
   font-size: 0.875rem;
@@ -148,7 +148,7 @@ const localeProps = (locale: (typeof localeLinks.value)[number]) => ({
 .group > .title {
   padding: 0 0.75rem;
 
-  color: var(--vp-c-text-2);
+  color: var(--vp-c-text-mute);
 
   font-weight: 600;
   font-size: 0.875rem;
@@ -160,7 +160,7 @@ const localeProps = (locale: (typeof localeLinks.value)[number]) => ({
   display: flex;
   align-items: center;
 
-  color: var(--vp-c-text-1);
+  color: var(--vp-c-text);
 
   font-weight: 500;
   font-size: 0.875rem;
@@ -189,7 +189,7 @@ const localeProps = (locale: (typeof localeLinks.value)[number]) => ({
 }
 
 .vp-nav-screen-translations .link {
-  color: var(--vp-c-text-1);
+  color: var(--vp-c-text);
   font-size: 0.8125rem;
   line-height: 2.4615385;
 }

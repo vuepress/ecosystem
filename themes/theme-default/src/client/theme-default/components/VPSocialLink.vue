@@ -41,13 +41,13 @@ const qualifiedIcon = computed(() =>
   width: 2.25rem;
   height: 2.25rem;
 
-  color: var(--vp-c-text-2);
+  color: var(--vp-c-text-mute);
 
   transition: color 0.5s;
 }
 
 .vp-social-link:hover {
-  color: var(--vp-c-text-1);
+  color: var(--vp-c-text);
   transition: color 0.25s;
 }
 

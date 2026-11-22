@@ -123,24 +123,24 @@ useEventListener('pointerdown', (e) => {
 }
 
 .vp-flyout:hover {
-  color: var(--vp-c-brand-1);
+  color: var(--vp-c-brand);
   transition: color 0.25s;
 }
 
 .vp-flyout:hover .text {
-  color: var(--vp-c-text-2);
+  color: var(--vp-c-text-mute);
 }
 
 .vp-flyout:hover .icon {
-  fill: var(--vp-c-text-2);
+  fill: var(--vp-c-text-mute);
 }
 
 .vp-flyout.active .text {
-  color: var(--vp-c-brand-1);
+  color: var(--vp-c-brand);
 }
 
 .vp-flyout.active:hover .text {
-  color: var(--vp-c-brand-2);
+  color: var(--vp-c-brand-hover);
 }
 
 /* closing is snappier than opening so a panel doesn't linger over the
@@ -165,7 +165,7 @@ useEventListener('pointerdown', (e) => {
   height: var(--vp-nav-height);
   padding: 0 0.75rem;
 
-  color: var(--vp-c-text-1);
+  color: var(--vp-c-text);
 
   transition: color 0.5s;
 }
@@ -174,7 +174,7 @@ useEventListener('pointerdown', (e) => {
   display: flex;
   align-items: center;
 
-  color: var(--vp-c-text-1);
+  color: var(--vp-c-text);
 
   font-weight: 500;
   font-size: 0.875rem;

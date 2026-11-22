@@ -61,7 +61,7 @@ onMounted(() => {
 
 <style scoped>
 .vp-last-updated {
-  color: var(--vp-c-text-2);
+  color: var(--vp-c-text-mute);
   font-weight: 500;
   font-size: 0.875rem;
   line-height: 1.7142857;

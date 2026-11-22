@@ -79,7 +79,7 @@ defineOptions({ inheritAttrs: false })
   padding: 0 0.75rem;
   border-radius: 0.375rem;
 
-  color: var(--vp-c-text-1);
+  color: var(--vp-c-text);
 
   font-weight: 500;
   font-size: 0.875rem;
@@ -94,11 +94,11 @@ defineOptions({ inheritAttrs: false })
 
 .link:hover {
   background-color: var(--vp-c-default-soft);
-  color: var(--vp-c-brand-1);
+  color: var(--vp-c-brand);
 }
 
 .link.active {
-  color: var(--vp-c-brand-1);
+  color: var(--vp-c-brand);
 }
 
 .vp-nav-screen .vp-menu-link {

@@ -102,7 +102,7 @@ watchEffect(() => {
 .vp-navbar-hamburger.active:hover .top,
 .vp-navbar-hamburger.active:hover .middle,
 .vp-navbar-hamburger.active:hover .bottom {
-  background-color: var(--vp-c-text-2);
+  background-color: var(--vp-c-text-mute);
   transition:
     top 0.25s,
     background-color 0.25s,
@@ -118,7 +118,7 @@ watchEffect(() => {
   width: 1rem;
   height: 0.125rem;
 
-  background-color: var(--vp-c-text-1);
+  background-color: var(--vp-c-text);
 
   transition:
     top 0.25s,

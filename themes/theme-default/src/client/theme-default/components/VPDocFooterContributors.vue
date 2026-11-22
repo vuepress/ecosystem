@@ -42,14 +42,14 @@ const text = computed(() => theme.value.contributorsText ?? 'Contributors')
 
 <style scoped>
 .vp-doc-footer-contributors {
-  color: var(--vp-c-text-2);
+  color: var(--vp-c-text-mute);
   font-size: 0.875rem;
   line-height: 1.7142857;
 }
 
 .contributors-text {
   margin-inline-end: 0.25em;
-  color: var(--vp-c-text-2);
+  color: var(--vp-c-text-mute);
   font-weight: 500;
 }
 
@@ -58,13 +58,13 @@ const text = computed(() => theme.value.contributorsText ?? 'Contributors')
 }
 
 .contributor {
-  color: var(--vp-c-brand-1);
+  color: var(--vp-c-brand);
   text-decoration: none;
   transition: color 0.25s;
 }
 
 .contributor:hover {
-  color: var(--vp-c-brand-2);
+  color: var(--vp-c-brand-hover);
 }
 
 .separator {

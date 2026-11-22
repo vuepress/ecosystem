@@ -22,7 +22,7 @@
     border-radius: 0.5rem;
 
     background-color: var(--vp-c-bg-alt);
-    color: var(--vp-c-text-2);
+    color: var(--vp-c-text-mute);
 
     font-size: 0.9375rem;
 
@@ -30,7 +30,7 @@
   }
 
   .vp-navbar-ask-ai-button:hover {
-    color: var(--vp-c-brand-1);
+    color: var(--vp-c-brand);
   }
 }
 </style>

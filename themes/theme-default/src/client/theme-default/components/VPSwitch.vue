@@ -26,7 +26,7 @@
 }
 
 .vp-switch:hover {
-  border-color: var(--vp-c-brand-1);
+  border-color: var(--vp-c-brand);
 }
 
 .check {
@@ -64,11 +64,11 @@
   width: 0.75rem;
   height: 0.75rem;
 
-  color: var(--vp-c-text-2);
+  color: var(--vp-c-text-mute);
 }
 
 [data-theme='dark'] .icon :deep([class^='vpi-']) {
-  color: var(--vp-c-text-1);
+  color: var(--vp-c-text);
   transition: opacity 0.25s !important;
 }
 </style>

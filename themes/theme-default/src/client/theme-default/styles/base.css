@@ -241,7 +241,7 @@
 
   body {
     background-color: var(--vp-c-bg);
-    color: var(--vp-c-text-1);
+    color: var(--vp-c-text);
 
     text-rendering: optimizelegibility;
 
@@ -329,7 +329,7 @@
 
   input::placeholder,
   textarea::placeholder {
-    color: var(--vp-c-text-3);
+    color: var(--vp-c-text-subtle);
   }
 
   h1,

@@ -118,7 +118,7 @@ function scrollToTop() {
 
   display: block;
 
-  color: var(--vp-c-text-2);
+  color: var(--vp-c-text-mute);
 
   font-weight: 500;
   font-size: 0.75rem;
@@ -128,12 +128,12 @@ function scrollToTop() {
 }
 
 .vp-local-nav-outline-dropdown button:hover {
-  color: var(--vp-c-text-1);
+  color: var(--vp-c-text);
   transition: color 0.25s;
 }
 
 .vp-local-nav-outline-dropdown button.open {
-  color: var(--vp-c-text-1);
+  color: var(--vp-c-text);
 }
 
 .icon {
@@ -199,7 +199,7 @@ function scrollToTop() {
 
   padding: 0 1rem;
 
-  color: var(--vp-c-brand-1);
+  color: var(--vp-c-brand);
 
   font-weight: 500;
   font-size: 0.875rem;

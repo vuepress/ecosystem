@@ -147,7 +147,7 @@
   padding-inline-start: 1rem;
   border-inline-start: 2px solid var(--vp-c-divider);
 
-  color: var(--vp-c-text-2);
+  color: var(--vp-c-text-mute);
 
   transition: border-color 0.5s;
 }
@@ -159,7 +159,7 @@
 }
 
 .vp-doc a {
-  color: var(--vp-c-brand-1);
+  color: var(--vp-c-brand);
 
   font-weight: 500;
   text-decoration: underline;
@@ -172,7 +172,7 @@
 }
 
 .vp-doc a:hover {
-  color: var(--vp-c-brand-2);
+  color: var(--vp-c-brand-hover);
 }
 
 .vp-doc strong {
@@ -222,7 +222,7 @@
   vertical-align: middle;
   margin-block: 0 0.125rem;
   margin-inline: -1.25rem 0.25rem;
-  accent-color: var(--vp-c-brand-1);
+  accent-color: var(--vp-c-brand);
 }
 
 /**
@@ -272,7 +272,7 @@
 
 .vp-doc th {
   background-color: var(--vp-c-bg-soft);
-  color: var(--vp-c-text-2);
+  color: var(--vp-c-text-mute);
 
   font-weight: 600;
   font-size: 0.875rem;

@@ -73,7 +73,7 @@ const { currentLang } = useLangs()
   max-width: 16rem;
   margin: 0 auto;
 
-  color: var(--vp-c-text-2);
+  color: var(--vp-c-text-mute);
 
   font-weight: 500;
   font-size: 0.875rem;
@@ -87,10 +87,10 @@ const { currentLang } = useLangs()
   display: inline-block;
 
   padding: 0.1875rem 1rem;
-  border: 1px solid var(--vp-c-brand-1);
+  border: 1px solid var(--vp-c-brand);
   border-radius: 1rem;
 
-  color: var(--vp-c-brand-1);
+  color: var(--vp-c-brand);
 
   font-weight: 500;
   font-size: 0.875rem;
@@ -101,7 +101,7 @@ const { currentLang } = useLangs()
 }
 
 .link:hover {
-  border-color: var(--vp-c-brand-2);
-  color: var(--vp-c-brand-2);
+  border-color: var(--vp-c-brand-hover);
+  color: var(--vp-c-brand-hover);
 }
 </style>
