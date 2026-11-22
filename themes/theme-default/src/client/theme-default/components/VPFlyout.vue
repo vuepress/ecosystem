@@ -6,6 +6,7 @@ import { useRoute } from 'vuepress/client'
 import { useFlyout } from '../composables/useFlyout.js'
 import type { DefaultTheme } from '../shared.js'
 import VPMenu from './VPMenu.vue'
+import VPThemeIcon from './VPThemeIcon.vue'
 
 defineProps<{
   icon?: string
@@ -100,7 +101,7 @@ useEventListener('pointerdown', (e) => {
       @click="toggle"
     >
       <span v-if="button || icon" class="text">
-        <span v-if="icon" :class="[icon, 'option-icon']" aria-hidden="true" />
+        <VPThemeIcon v-if="icon" :icon="icon" class="option-icon" />
         <span v-if="button" dir="auto" v-html="button"></span>
         <span class="vpi-chevron-down text-icon" aria-hidden="true" />
       </span>
@@ -183,6 +184,7 @@ useEventListener('pointerdown', (e) => {
 }
 
 .option-icon {
+  margin-inline-end: 0.375rem;
   font-size: 1rem;
 }
 

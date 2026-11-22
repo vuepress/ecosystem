@@ -13,9 +13,11 @@ import { computed, inject } from 'vue'
 import { navScreenInjectionKey } from '../composables/useNav.js'
 import type { DefaultTheme } from '../shared.js'
 import VPMenuLink from './VPMenuLink.vue'
+import VPThemeIcon from './VPThemeIcon.vue'
 
 const props = defineProps<{
   text?: string
+  icon?: string
   items: T[]
 }>()
 
@@ -31,7 +33,10 @@ const hasSubGroups = computed(() =>
     class="vp-menu-group"
     :class="{ 'vp-nav-screen-menu-group-section': screen }"
   >
-    <p v-if="text" class="title">{{ text }}</p>
+    <p v-if="text" class="title">
+      <VPThemeIcon v-if="icon" :icon="icon" class="title-icon" />
+      {{ text }}
+    </p>
 
     <ul :class="{ 'sub-groups': hasSubGroups }">
       <template v-for="item in items" :key="JSON.stringify(item)">
@@ -43,7 +48,12 @@ const hasSubGroups = computed(() =>
           :screen-menu="screen || undefined"
           :menu="!screen || undefined"
         />
-        <VPMenuGroup v-else :text="item.text" :items="item.items" />
+        <VPMenuGroup
+          v-else
+          :text="item.text"
+          :icon="item.icon"
+          :items="item.items"
+        />
       </template>
     </ul>
   </li>
@@ -65,6 +75,12 @@ const hasSubGroups = computed(() =>
 .vp-menu-group + .vp-menu-group {
   margin-top: 0.75rem;
   border-top: 1px solid var(--vp-c-divider);
+}
+
+.title-icon {
+  vertical-align: -0.125em;
+  margin-inline-end: 0.375rem;
+  font-size: 1.125em;
 }
 
 .title {

@@ -4,6 +4,7 @@ import { inject } from 'vue'
 import { navInjectionKey, useNavItemLink } from '../composables/useNav.js'
 import type { DefaultTheme } from '../shared.js'
 import VPLink from './VPLink.vue'
+import VPThemeIcon from './VPThemeIcon.vue'
 
 const props = defineProps<{
   item: DefaultTheme.NavItemWithLink
@@ -34,6 +35,7 @@ function onClick() {
     :no-icon="item.noIcon"
     @click="onClick"
   >
+    <VPThemeIcon v-if="item.icon" :icon="item.icon" class="vp-nav-menu-icon" />
     <span dir="auto" v-html="item.text"></span>
   </VPLink>
 </template>
@@ -44,6 +46,10 @@ function onClick() {
   font-weight: 500;
   font-size: 0.875rem;
   transition: color 0.25s;
+}
+
+.vp-nav-menu-icon {
+  margin-inline-end: 0.375rem;
 }
 
 .vp-nav-menu-link:hover,

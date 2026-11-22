@@ -8,6 +8,7 @@ import {
 } from '../composables/useNav.js'
 import type { DefaultTheme } from '../shared.js'
 import VPLink from './VPLink.vue'
+import VPThemeIcon from './VPThemeIcon.vue'
 
 const props = defineProps<{
   item: T
@@ -41,19 +42,32 @@ defineOptions({ inheritAttrs: false })
       :no-icon="item.noIcon"
       @click="onClick"
     >
+      <VPThemeIcon
+        v-if="item.icon"
+        :icon="item.icon"
+        class="vp-menu-link-icon"
+      />
       <span dir="auto" v-html="item.text"></span>
     </VPLink>
   </li>
 </template>
 
 <style scoped>
+.vp-menu-link-icon {
+  margin-inline-end: 0.375rem;
+}
+
 .vp-menu-group + .vp-menu-link {
   margin: 0.75rem -0.75rem 0;
   padding: 0.75rem 0.75rem 0;
   border-top: 1px solid var(--vp-c-divider);
 }
 
-.vp-menu-group .vp-menu-group + .vp-menu-link {
+.vp-menu-group .vp-menu-link-icon {
+  margin-inline-end: 0.375rem;
+}
+
+.vp-menu-group + .vp-menu-link {
   margin: 0;
   padding: 0.5rem 0 0;
   border-top: 0;

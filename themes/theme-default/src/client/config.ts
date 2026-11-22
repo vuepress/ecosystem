@@ -15,7 +15,7 @@ import './theme-default/styles/fonts.css'
 import theme from './theme-default/without-fonts.js'
 
 export default defineClientConfig({
-  enhance({ app }) {
+  enhance({ app, router }) {
     // the raw theme data is a module-level ref, so it is available before the
     // app is set up, unlike the merged theme locale data
     const themeData = useThemeData<ThemeConfig>()
@@ -32,6 +32,23 @@ export default defineClientConfig({
 
     // the links inside the `raw` container bypass the SPA router
     setupRawContainerLinks()
+
+    // restore the scroll position and the hash target after the route changes,
+    // VuePress core no longer provides a `scrollBehavior` since rc.32
+    type RouterScrollBehavior = NonNullable<
+      // oxlint-disable-next-line typescript/no-deprecated
+      typeof router.options.scrollBehavior
+    >
+
+    // oxlint-disable-next-line unicorn/consistent-function-scoping
+    const scrollBehavior: RouterScrollBehavior = (to, _from, savedPosition) => {
+      if (savedPosition) return savedPosition
+      if (to.hash) return { el: to.hash }
+      return { top: 0 }
+    }
+
+    // oxlint-disable-next-line typescript/no-deprecated
+    router.options.scrollBehavior = scrollBehavior
 
     theme.enhanceApp({ app })
   },

@@ -27,7 +27,7 @@ const pageName = computed(() => {
 
 <template>
   <div
-    class="vp-doc"
+    class="vp-doc-layout"
     :class="{ 'has-sidebar': hasSidebar, 'has-aside': hasAside }"
   >
     <slot name="doc-top" />
@@ -82,50 +82,50 @@ const pageName = computed(() => {
 </template>
 
 <style scoped>
-.vp-doc {
+.vp-doc-layout {
   width: 100%;
   padding: 2rem 1.5rem 6rem;
 }
 
 @media (min-width: 48rem) {
-  .vp-doc {
+  .vp-doc-layout {
     padding: 3rem 2rem 8rem;
   }
 }
 
 @media (min-width: 60rem) {
-  .vp-doc {
+  .vp-doc-layout {
     padding: 3rem 2rem 0;
   }
 
-  .vp-doc:not(.has-sidebar) .container {
+  .vp-doc-layout:not(.has-sidebar) .container {
     display: flex;
     justify-content: center;
     max-width: 62rem;
   }
 
-  .vp-doc:not(.has-sidebar) .content {
+  .vp-doc-layout:not(.has-sidebar) .content {
     max-width: 47rem;
   }
 }
 
 @media (min-width: 80rem) {
-  .vp-doc .container {
+  .vp-doc-layout .container {
     display: flex;
     justify-content: center;
   }
 
-  .vp-doc .aside {
+  .vp-doc-layout .aside {
     display: block;
   }
 }
 
 @media (min-width: 90rem) {
-  .vp-doc:not(.has-sidebar) .content {
+  .vp-doc-layout:not(.has-sidebar) .content {
     max-width: 49rem;
   }
 
-  .vp-doc:not(.has-sidebar) .container {
+  .vp-doc-layout:not(.has-sidebar) .container {
     max-width: 69rem;
   }
 }
@@ -221,7 +221,7 @@ const pageName = computed(() => {
   margin: 0 auto;
 }
 
-.vp-doc.has-aside .content-container {
+.vp-doc-layout.has-aside .content-container {
   max-width: 43rem;
 }
 </style>

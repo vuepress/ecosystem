@@ -1,3 +1,5 @@
+// the classic theme palette and the shared color variables it aliases
+import '@vuepress/helper/colors.css'
 import './styles/vars.css'
 import './styles/base.css'
 import './styles/icons.css'
@@ -29,6 +31,7 @@ export { default as VPTeamMembers } from './components/VPTeamMembers.vue'
 export { default as VPTeamPage } from './components/VPTeamPage.vue'
 export { default as VPTeamPageSection } from './components/VPTeamPageSection.vue'
 export { default as VPTeamPageTitle } from './components/VPTeamPageTitle.vue'
+export { default as VPThemeIcon } from './components/VPThemeIcon.vue'
 
 export { useContributors } from './composables/useContributors.js'
 export { useLayout } from './composables/useLayout.js'

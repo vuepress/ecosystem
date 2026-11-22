@@ -47,7 +47,7 @@ classic 的 `navbar` 是一个 `AutoLinkOptions` 数组，支持 `prefix`、`chi
 | `repo` / `repoLabel`                                                    | `socialLinks: [{ icon: 'github', link: repo }]`；也可放在 `nav` 的额外菜单               |
 | `selectLanguageText` / `selectLanguageAriaLabel` / `selectLanguageName` | `langMenuLabel` + `locales.<key>.label`                                                  |
 
-新增能力：`socialLinks`、`extraMenuLabel`、`skipToContentLabel`、`returnToTopLabel`、`gradedContainers`。
+新增能力：导航栏与侧边栏图标（`icon` 字段）、Hero 默认渐变、`socialLinks`、`extraMenuLabel`、`skipToContentLabel`、`returnToTopLabel`、`gradedContainers`。
 
 ### 插件开关
 
@@ -97,7 +97,7 @@ classic 的 `navbar` 是一个 `AutoLinkOptions` 数组，支持 `prefix`、`chi
 | `notFound: string[]`                      | `notFound: { title, quote, link, linkLabel, linkText, code }` | 改为对象，语义更明确                              |
 | `backToHome`                              | `notFound.linkText`                                           |                                                   |
 
-新增能力：`VPTeamPage*` / `VPTeamMembers`、`VPSponsors*` 组件，以及 `VPHomeContent` 等区块组件。
+新增能力：导航栏与侧边栏图标（`icon` 字段）、Hero 默认渐变、`VPTeamPage*` / `VPTeamMembers`、`VPSponsors*` 组件，以及 `VPHomeContent` 等区块组件。
 
 ### 无障碍文案
 

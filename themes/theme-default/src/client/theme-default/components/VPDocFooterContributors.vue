@@ -32,8 +32,8 @@ const text = computed(() => theme.value.contributorsText ?? 'Contributors')
         <span v-else class="contributor" :title="`email: ${contributor.email}`">
           {{ contributor.name }}
         </span>
-        <span v-if="index !== contributors.length - 1" class="separator">
-          ,
+        <span v-if="index !== contributors.length - 1" class="separator"
+          >,
         </span>
       </template>
     </span>
@@ -44,11 +44,17 @@ const text = computed(() => theme.value.contributorsText ?? 'Contributors')
 .vp-doc-footer-contributors {
   color: var(--vp-c-text-2);
   font-size: 0.875rem;
-  line-height: 1.4285714;
+  line-height: 1.7142857;
 }
 
 .contributors-text {
+  margin-inline-end: 0.25em;
   color: var(--vp-c-text-2);
+  font-weight: 500;
+}
+
+.contributors {
+  font-weight: 400;
 }
 
 .contributor {
@@ -62,6 +68,6 @@ const text = computed(() => theme.value.contributorsText ?? 'Contributors')
 }
 
 .separator {
-  margin-inline-end: 0.25rem;
+  white-space: pre;
 }
 </style>

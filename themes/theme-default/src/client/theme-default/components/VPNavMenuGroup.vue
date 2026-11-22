@@ -8,6 +8,7 @@ import { isActive } from '../shared.js'
 import VPFlyout from './VPFlyout.vue'
 import VPMenuGroup from './VPMenuGroup.vue'
 import VPMenuLink from './VPMenuLink.vue'
+import VPThemeIcon from './VPThemeIcon.vue'
 
 const props = defineProps<{
   item: DefaultTheme.NavItemWithChildren
@@ -66,6 +67,7 @@ function toggle() {
     v-if="menu"
     class="vp-nav-menu-group"
     :text="item.text"
+    :icon="item.icon"
     :items="item.items"
   />
 
@@ -76,6 +78,7 @@ function toggle() {
       'vp-navbar-menu-group': true,
       'active': isActiveGroup,
     }"
+    :icon="item.icon"
     :button="item.text"
     :items="item.items"
   />
@@ -92,7 +95,14 @@ function toggle() {
       :aria-controls="groupId"
       @click="toggle"
     >
-      <span class="button-text" dir="auto" v-html="item.text"></span>
+      <span class="button-text">
+        <VPThemeIcon
+          v-if="item.icon"
+          :icon="item.icon"
+          class="button-icon-start"
+        />
+        <span dir="auto" v-html="item.text"></span>
+      </span>
       <span class="vpi-plus button-icon" aria-hidden="true" />
     </button>
 
@@ -152,6 +162,15 @@ function toggle() {
 
 .button-icon {
   transition: transform 0.25s;
+}
+
+.button-text {
+  display: flex;
+  align-items: center;
+}
+
+.button-icon-start {
+  margin-inline-end: 0.375rem;
 }
 
 .items :deep(.vp-menu-group) {

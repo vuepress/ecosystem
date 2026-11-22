@@ -531,6 +531,9 @@ export namespace DefaultTheme {
 
   /** A nav item with a link / 带链接的导航条目 */
   export interface NavItemWithLink {
+    /** The icon of the item / 条目图标 */
+    icon?: string
+
     /** The text of the item / 条目文本 */
     text: string
 
@@ -555,6 +558,9 @@ export namespace DefaultTheme {
 
   /** A group of nav items / 导航条目分组 */
   export interface NavItemChildren {
+    /** The icon of the group / 分组图标 */
+    icon?: string
+
     /** The text of the group / 分组文本 */
     text?: string
 
@@ -564,6 +570,9 @@ export namespace DefaultTheme {
 
   /** A nav item with children / 带子项的导航条目 */
   export interface NavItemWithChildren {
+    /** The icon of the item / 条目图标 */
+    icon?: string
+
     /** The text of the item / 条目文本 */
     text?: string
 
@@ -614,6 +623,9 @@ export namespace DefaultTheme {
 
   /** A sidebar item / 侧边栏条目 */
   export interface SidebarItem {
+    /** The icon of the item / 条目图标 */
+    icon?: string
+
     /** The text label of the item / 条目文本 */
     text?: string
 

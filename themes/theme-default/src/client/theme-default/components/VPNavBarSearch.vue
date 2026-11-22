@@ -13,3 +13,23 @@ import { getCurrentInstance } from 'vue'
 // "Failed to resolve component: SearchBox" warning.
 const searchBox = getCurrentInstance()?.appContext.components.SearchBox
 </script>
+
+<style scoped>
+.vp-navbar-search {
+  display: flex;
+  align-items: center;
+}
+
+@media (min-width: 48rem) {
+  .vp-navbar-search {
+    gap: 0.5rem;
+    padding-inline-start: 1.5rem;
+  }
+}
+
+@media (min-width: 60rem) {
+  .vp-navbar-search {
+    padding-inline-start: 2rem;
+  }
+}
+</style>

@@ -66,12 +66,4 @@ onMounted(() => {
   font-size: 0.875rem;
   line-height: 1.7142857;
 }
-
-@media (min-width: 40rem) {
-  .vp-last-updated {
-    font-weight: 500;
-    font-size: 0.875rem;
-    line-height: 2.2857143;
-  }
-}
 </style>

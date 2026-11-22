@@ -127,7 +127,8 @@ const showFooter = computed(
 .meta {
   display: flex;
   flex-direction: column;
-  gap: 0.25rem;
+  gap: 0.125rem;
+  align-items: flex-end;
 }
 
 .edit-link-button {

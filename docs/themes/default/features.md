@@ -29,21 +29,23 @@ The `type` values:
 
 ## Navbar
 
-| Feature              | Provided by    | Description                                                                |
-| -------------------- | -------------- | -------------------------------------------------------------------------- |
-| Site title/logo      | Theme          | `siteTitle`, `logo`, `logoLink`                                            |
-| Navigation menu      | Theme          | `nav`, with dropdown groups and external links                             |
-| Language menu        | Theme          | Generated from the theme `locales`                                         |
-| Appearance switch    | Theme          | The light/dark switch, labelled by `darkModeSwitchLabel` etc.              |
-| Search entry         | Plugin + theme | The theme only mounts the global `SearchBox` registered by a search plugin |
-| Mobile menu          | Theme          | Hamburger button and full-screen menu                                      |
-| Accessibility labels | Theme          | `navMenuLabel`, `mobileMenuLabel`, `skipToContentLabel`, etc.              |
+| Feature              | Provided by    | Description                                                                 |
+| -------------------- | -------------- | --------------------------------------------------------------------------- |
+| Site title/logo      | Theme          | `siteTitle`, `logo`, `logoLink`                                             |
+| Navigation menu      | Theme          | `nav`, with dropdown groups and external links                              |
+| Language menu        | Theme          | Generated from the theme `locales`                                          |
+| Appearance switch    | Theme          | The light/dark switch, labelled by `darkModeSwitchLabel` etc.               |
+| Search entry         | Plugin + theme | The theme only mounts the global `SearchBox` registered by a search plugin  |
+| Menu icons           | Theme          | `nav` items and groups accept an `icon` (Iconify name or `vpi-` icon class) |
+| Mobile menu          | Theme          | Hamburger button and full-screen menu                                       |
+| Accessibility labels | Theme          | `navMenuLabel`, `mobileMenuLabel`, `skipToContentLabel`, etc.               |
 
 ## Sidebar and document page
 
 | Feature           | Provided by    | Description                                                                                                                                                         |
 | ----------------- | -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Sidebar           | Theme          | `sidebar` accepts an array or a path-keyed record, with collapsible groups and active-item highlighting; defaults to `'heading'`, `sidebarDepth` controls the depth |
+| Entry icons       | Theme          | Sidebar items and groups accept an `icon` (Iconify name or `vpi-` icon class)                                                                                       |
 | Page contributors | Plugin + theme | Collected by `@vuepress/plugin-git`, rendered in the doc footer, configurable by `contributors` / `contributorsText`                                                |
 | Outline           | Theme          | `outline` controls the heading levels and the label (`outline.level` defaults to `2`); the active heading is driven by `@vuepress/plugin-active-header-links`       |
 | Previous/next     | Theme          | Labels configured by `docFooter`, derived from the sidebar order by default                                                                                         |
@@ -53,13 +55,14 @@ The `type` values:
 
 ## Home page
 
-| Feature      | Provided by | Description                                                                                                                          |
-| ------------ | ----------- | ------------------------------------------------------------------------------------------------------------------------------------ |
-| Hero         | Theme       | Frontmatter `hero`: `name`, `text`, `tagline`, `image`, `actions`                                                                    |
-| Features     | Theme       | Frontmatter `features`: `icon` (emoji, image or Iconify name), `title`, `details`                                                    |
-| Team         | Theme       | Composed with the exported `VPTeamPage` / `VPTeamPageTitle` / `VPTeamPageSection` / `VPTeamMembers` components; no frontmatter field |
-| Sponsors     | Theme       | Composed with the exported `VPSponsors` / `VPHomeSponsors` / `VPDocAsideSponsors` components; no frontmatter field                   |
-| Home content | Theme       | The Markdown body of the home page is rendered after the hero and the features                                                       |
+| Feature       | Provided by | Description                                                                                                                          |
+| ------------- | ----------- | ------------------------------------------------------------------------------------------------------------------------------------ |
+| Hero          | Theme       | Frontmatter `hero`: `name`, `text`, `tagline`, `image`, `actions`                                                                    |
+| Hero gradient | Theme       | The `name` and the image background get a gradient by default, override with `--vp-home-hero-name-background` etc.                   |
+| Features      | Theme       | Frontmatter `features`: `icon` (emoji, image or Iconify name), `title`, `details`                                                    |
+| Team          | Theme       | Composed with the exported `VPTeamPage` / `VPTeamPageTitle` / `VPTeamPageSection` / `VPTeamMembers` components; no frontmatter field |
+| Sponsors      | Theme       | Composed with the exported `VPSponsors` / `VPHomeSponsors` / `VPDocAsideSponsors` components; no frontmatter field                   |
+| Home content  | Theme       | The Markdown body of the home page is rendered after the hero and the features                                                       |
 
 ## Footer and 404
 

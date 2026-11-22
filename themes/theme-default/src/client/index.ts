@@ -1,4 +1,3 @@
-import '@vuepress/helper/colors.css'
 import './theme-default/styles/fonts.css'
 
 export * from './theme-default/without-fonts.js'

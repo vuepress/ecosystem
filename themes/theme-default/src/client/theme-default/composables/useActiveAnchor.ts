@@ -110,7 +110,10 @@ export function useActiveAnchor(
         marker.value.style.opacity = '1'
       }
 
-      activeLink.scrollIntoView({ block: 'nearest', behavior: 'smooth' })
+      // Do not call `scrollIntoView()` on the link: the outline is sticky and
+      // can be taller than the viewport, so scrolling the link into view would
+      // scroll the page itself while the plugin is updating the hash on every
+      // scroll, which makes the page jump between anchors.
     } else if (marker.value) {
       marker.value.style.top = ''
       marker.value.style.opacity = '0'

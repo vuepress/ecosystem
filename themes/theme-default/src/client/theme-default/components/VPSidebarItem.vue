@@ -4,6 +4,7 @@ import { computed } from 'vue'
 import { useSidebarItemControl } from '../composables/useSidebarControl.js'
 import type { DefaultTheme } from '../shared.js'
 import VPLink from './VPLink.vue'
+import VPThemeIcon from './VPThemeIcon.vue'
 
 const props = defineProps<{
   item: DefaultTheme.SidebarItem
@@ -65,11 +66,17 @@ function onItemClick() {
         :target="item.target"
       >
         <component :is="textTag" class="text"
-          ><bdi v-html="item.text"
+          ><VPThemeIcon
+            v-if="item.icon"
+            :icon="item.icon"
+            class="text-icon" /><bdi v-html="item.text"
         /></component>
       </VPLink>
       <component v-else :is="textTag" class="text"
-        ><bdi v-html="item.text"
+        ><VPThemeIcon
+          v-if="item.icon"
+          :icon="item.icon"
+          class="text-icon" /><bdi v-html="item.text"
       /></component>
 
       <button
@@ -110,6 +117,12 @@ function onItemClick() {
   position: relative;
   display: flex;
   width: 100%;
+}
+
+.text-icon {
+  vertical-align: -0.125em;
+  margin-inline-end: 0.375rem;
+  font-size: 1.125em;
 }
 
 .vp-sidebar-item.collapsible > .item {

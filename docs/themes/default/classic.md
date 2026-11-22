@@ -47,7 +47,7 @@ classic uses a `navbar` array of `AutoLinkOptions` with `prefix` and `children`;
 | `repo` / `repoLabel`                                                    | `socialLinks: [{ icon: 'github', link: repo }]`                 |
 | `selectLanguageText` / `selectLanguageAriaLabel` / `selectLanguageName` | `langMenuLabel` + `locales.<key>.label`                         |
 
-New capabilities: `socialLinks`, `extraMenuLabel`, `skipToContentLabel`, `returnToTopLabel`, `gradedContainers`.
+New capabilities: navbar/sidebar icons (`icon` fields), hero gradient by default, `socialLinks`, `extraMenuLabel`, `skipToContentLabel`, `returnToTopLabel`, `gradedContainers`.
 
 ### Plugin switches
 
@@ -97,7 +97,7 @@ New capabilities: `socialLinks`, `extraMenuLabel`, `skipToContentLabel`, `return
 | `notFound: string[]`                      | `notFound: { title, quote, link, linkLabel, linkText, code }` | Changed to an object                         |
 | `backToHome`                              | `notFound.linkText`                                           |                                              |
 
-New capabilities: the `VPTeamPage*` / `VPTeamMembers` and `VPSponsors*` components, plus the `VPHomeContent` block components.
+New capabilities: navbar/sidebar icons (`icon` fields), hero gradient by default, the `VPTeamPage*` / `VPTeamMembers` and `VPSponsors*` components, plus the `VPHomeContent` block components.
 
 ### Accessibility texts
 

@@ -26,21 +26,23 @@
 
 ## 导航栏
 
-| 功能            | 提供方      | 说明                                                       |
-| --------------- | ----------- | ---------------------------------------------------------- |
-| 站点标题 / Logo | 主题        | `siteTitle`、`logo`、`logoLink`                            |
-| 导航菜单        | 主题        | `nav`，支持下拉分组与外部链接                              |
-| 语言菜单        | 主题        | 由主题数据中的 `locales` 自动生成                          |
-| 外观切换        | 主题        | 明暗模式切换按钮，文案 `darkModeSwitchLabel` 等            |
-| 搜索入口        | 插件 + 主题 | 主题只挂载插件注册的全局 `SearchBox` 组件                  |
-| 移动端菜单      | 主题        | 汉堡按钮 + 全屏菜单                                        |
-| 无障碍标签      | 主题        | `navMenuLabel`、`mobileMenuLabel`、`skipToContentLabel` 等 |
+| 功能            | 提供方      | 说明                                                            |
+| --------------- | ----------- | --------------------------------------------------------------- |
+| 站点标题 / Logo | 主题        | `siteTitle`、`logo`、`logoLink`                                 |
+| 导航菜单        | 主题        | `nav`，支持下拉分组与外部链接                                   |
+| 语言菜单        | 主题        | 由主题数据中的 `locales` 自动生成                               |
+| 外观切换        | 主题        | 明暗模式切换按钮，文案 `darkModeSwitchLabel` 等                 |
+| 搜索入口        | 插件 + 主题 | 主题只挂载插件注册的全局 `SearchBox` 组件                       |
+| 菜单图标        | 主题        | `nav` 条目与分组可设置 `icon`（Iconify 名称或 `vpi-` 图标类名） |
+| 移动端菜单      | 主题        | 汉堡按钮 + 全屏菜单                                             |
+| 无障碍标签      | 主题        | `navMenuLabel`、`mobileMenuLabel`、`skipToContentLabel` 等      |
 
 ## 侧边栏与文档页
 
 | 功能            | 提供方      | 说明                                                                                                                           |
 | --------------- | ----------- | ------------------------------------------------------------------------------------------------------------------------------ |
 | 侧边栏          | 主题        | `sidebar` 支持数组与按路径分组两种写法，支持分组折叠与当前项高亮；默认 `'heading'` 按页面标题自动生成，`sidebarDepth` 控制深度 |
+| 条目图标        | 主题        | 侧边栏条目与分组可设置 `icon`（Iconify 名称或 `vpi-` 图标类名）                                                                |
 | 页面贡献者      | 插件 + 主题 | `@vuepress/plugin-git` 收集，主题渲染在文档页脚，`contributors` / `contributorsText` 可配置                                    |
 | 右侧大纲        | 主题        | `outline` 控制标题级别与标签（`outline.level` 默认 `2`，即只取 h2）；滚动高亮由 `@vuepress/plugin-active-header-links` 驱动    |
 | 上一页 / 下一页 | 主题        | `docFooter` 配置文案，默认从侧边栏顺序推导                                                                                     |
@@ -53,6 +55,7 @@
 | 功能      | 提供方 | 说明                                                                                                              |
 | --------- | ------ | ----------------------------------------------------------------------------------------------------------------- |
 | Hero 区域 | 主题   | frontmatter `hero`：`name`、`text`、`tagline`、`image`、`actions`                                                 |
+| Hero 渐变 | 主题   | 默认给 `name` 与 `image` 背景加渐变，可用 `--vp-home-hero-name-background` 等变量覆盖                             |
 | 特性网格  | 主题   | frontmatter `features`：`icon`（emoji、图片或 Iconify 图标名）、`title`、`details`                                |
 | 团队页    | 主题   | 使用导出的 `VPTeamPage` / `VPTeamPageTitle` / `VPTeamPageSection` / `VPTeamMembers` 组件组合，无 frontmatter 字段 |
 | 赞助商    | 主题   | 使用导出的 `VPSponsors` / `VPHomeSponsors` / `VPDocAsideSponsors` 组件组合，无 frontmatter 字段                   |
