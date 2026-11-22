@@ -14,6 +14,7 @@ import { markdownImagePlugin } from '@vuepress/plugin-markdown-image'
 import { markdownIncludePlugin } from '@vuepress/plugin-markdown-include'
 import { markdownMathPlugin } from '@vuepress/plugin-markdown-math'
 import { markdownPreviewPlugin } from '@vuepress/plugin-markdown-preview'
+import { markdownRawPlugin } from '@vuepress/plugin-markdown-raw'
 import { markdownStylizePlugin } from '@vuepress/plugin-markdown-stylize'
 import type { MarkdownItStylizeResult } from '@vuepress/plugin-markdown-stylize'
 import { redirectPlugin } from '@vuepress/plugin-redirect'
@@ -81,6 +82,7 @@ export const plugins = [
     component: true,
     vPre: true,
   }),
+  markdownRawPlugin(),
   markdownFieldPlugin({
     fields: true,
   }),
