@@ -1,0 +1,58 @@
+{
+  "name": "@vuepress/plugin-markdown-raw",
+  "version": "2.0.0-rc.140",
+  "description": "VuePress plugin - markdown raw container",
+  "keywords": [
+    "markdown",
+    "plugin",
+    "raw",
+    "vuepress",
+    "vuepress-plugin"
+  ],
+  "homepage": "https://ecosystem.vuejs.press/plugins/markdown/markdown-raw.html",
+  "bugs": {
+    "url": "https://github.com/vuepress/ecosystem/issues"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "Mr.Hope",
+    "email": "mister-hope@outlook.com",
+    "url": "https://mister-hope.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vuepress/ecosystem.git",
+    "directory": "plugins/markdown/plugin-markdown-raw"
+  },
+  "files": [
+    "dist"
+  ],
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/node/index.d.ts",
+      "default": "./dist/node/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "tsdown",
+    "clean": "rimraf ./dist"
+  },
+  "dependencies": {
+    "@mdit/helper": "^1.2.1",
+    "@mdit/plugin-container": "^2.2.0",
+    "@vuepress/helper": "workspace:*",
+    "postcss": "^8.5.33",
+    "postcss-selector-parser": "^7.2.1"
+  },
+  "devDependencies": {
+    "markdown-it": "catalog:"
+  },
+  "peerDependencies": {
+    "vuepress": "catalog:"
+  }
+}
