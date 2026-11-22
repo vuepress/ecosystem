@@ -34,6 +34,7 @@
     "@vuepress/plugin-markdown-ext": "workspace:*",
     "@vuepress/plugin-markdown-field": "workspace:*",
     "@vuepress/plugin-markdown-file-tree": "workspace:*",
+    "@vuepress/plugin-markdown-hint": "workspace:*",
     "@vuepress/plugin-markdown-image": "workspace:*",
     "@vuepress/plugin-markdown-include": "workspace:*",
     "@vuepress/plugin-markdown-math": "workspace:*",

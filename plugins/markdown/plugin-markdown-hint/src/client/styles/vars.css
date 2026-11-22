@@ -1,6 +1,18 @@
 :root {
   --hint-font-size: 0.92rem;
 
+  /* container box */
+  --hint-container-margin: 0.75rem;
+  --hint-container-padding: 0.25em 1em;
+  --hint-container-radius: 0.5em;
+  --hint-container-no-title-padding: 0.5em;
+  --hint-title-margin: 0.75em;
+
+  /* details box */
+  --hint-details-margin: 0.75rem;
+  --hint-details-padding: 1.25rem 1rem;
+  --hint-details-radius: 0.5rem;
+
   /* important */
   --important-c-accent: var(--vp-c-purple-bg);
   --important-c-text: var(--vp-c-purple-text);
