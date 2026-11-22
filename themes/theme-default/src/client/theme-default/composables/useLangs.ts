@@ -116,7 +116,9 @@ function normalizeLink(
     ? localeLink.replace(/\/$/, '') +
         ensureStartingSlash(
           pagePath
-            .replace(/(^|\/)index\.md$/, '$1')
+            // VuePress treats both `index.md` and `README.md` as the index of a
+            // directory, so the locale link itself is enough for them.
+            .replace(/(^|\/)(?:index|README)\.md$/u, '$1')
             .replace(/\.md$/, addHtmlExt ? '.html' : ''),
         )
     : localeLink
