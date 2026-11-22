@@ -47,13 +47,13 @@
 
 ### 插件开关
 
-| 原主题                                                                                                               | 新主题等价写法                                                                                                                       |
-| -------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
-| `themePlugins: { nprogress: false, mediumZoom: false }`                                                              | 同名同义                                                                                                                             |
-| `themePlugins: { copyCode: { ... }, git: { ... }, hint: { ... }, tab: { ... }, icon: { ... }, mediumZoom: { ... } }` | `themePlugins: { copyCode: { ... }, git: { ... }, markdownHint: { ... }, markdownTab: { ... }, icon: { ... }, mediumZoom: { ... } }` |
-| `themePlugins: { activeHeaderLinks: false }`                                                                         | 同名同义                                                                                                                             |
-| `themePlugins: { backToTop, linksCheck, prismjs, seo, sitemap }`                                                     | 无等价项：这些插件不由主题接线，请在站点 `plugins` 中自行注册                                                                        |
-| 无对应开关（原主题不提供 `v-pre` / `raw` 容器）                                                                      | 新主题额外接线 `@vuepress/plugin-markdown-ext`（`vPre: true, raw: true`），可用 `themePlugins.markdownExt` 配置或关闭                |
+| 原主题                                                                                                               | 新主题等价写法                                                                                                                                                                                    |
+| -------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `themePlugins: { nprogress: false, mediumZoom: false }`                                                              | 同名同义                                                                                                                                                                                          |
+| `themePlugins: { copyCode: { ... }, git: { ... }, hint: { ... }, tab: { ... }, icon: { ... }, mediumZoom: { ... } }` | `themePlugins: { copyCode: { ... }, git: { ... }, markdownHint: { ... }, markdownTab: { ... }, icon: { ... }, mediumZoom: { ... } }`                                                              |
+| `themePlugins: { activeHeaderLinks: false }`                                                                         | 同名同义                                                                                                                                                                                          |
+| `themePlugins: { backToTop, linksCheck, prismjs, seo, sitemap }`                                                     | 无等价项：这些插件不由主题接线，请在站点 `plugins` 中自行注册                                                                                                                                     |
+| 无对应开关（原主题不提供 `v-pre` / `raw` 容器）                                                                      | 新主题额外接线 `@vuepress/plugin-markdown-ext`（`vPre: true`）与 `@vuepress/plugin-markdown-raw`（默认开启样式隔离），可分别用 `themePlugins.markdownExt` / `themePlugins.markdownRaw` 配置或关闭 |
 
 ### 侧边栏与文档页
 

@@ -88,13 +88,13 @@
 
 ## Markdown 扩展
 
-| 功能                 | 提供方                           | 说明                                                                                                                                                                                                       |
-| -------------------- | -------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 提示容器             | `@vuepress/plugin-markdown-hint` | `::: tip`、`info`、`note`、`warning`、`caution`、`important`、`details`，支持 `{no-title}`；`danger` 渲染为 `caution`；标题文案可用主题选项 `tip` / `warning` / `danger` / `important` / `note` 按语言覆盖 |
-| 代码组               | `@vuepress/plugin-markdown-tab`  | `::: code-tabs` + `@tab`，主题提供与自身风格一致的样式                                                                                                                                                     |
-| 标题锚点             | 主题                             | 标题文本内部渲染锚点链接，适配 VuePress 的标题 DOM                                                                                                                                                         |
-| 外链图标             | 主题                             | `externalLinkIcon` 控制外链图标                                                                                                                                                                            |
-| `v-pre` / `raw` 容器 | `@vuepress/plugin-markdown-ext`  | `vPre: true, raw: true`，主题已接线，可用 `themePlugins.markdownExt` 配置或关闭；插件只输出包裹标记，`raw` 的样式隔离需由站点/主题另行处理                                                                 |
+| 功能                 | 提供方                                                            | 说明                                                                                                                                                                                                       |
+| -------------------- | ----------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 提示容器             | `@vuepress/plugin-markdown-hint`                                  | `::: tip`、`info`、`note`、`warning`、`caution`、`important`、`details`，支持 `{no-title}`；`danger` 渲染为 `caution`；标题文案可用主题选项 `tip` / `warning` / `danger` / `important` / `note` 按语言覆盖 |
+| 代码组               | `@vuepress/plugin-markdown-tab`                                   | `::: code-tabs` + `@tab`，主题提供与自身风格一致的样式                                                                                                                                                     |
+| 标题锚点             | 主题                                                              | 标题文本内部渲染锚点链接，适配 VuePress 的标题 DOM                                                                                                                                                         |
+| 外链图标             | 主题                                                              | `externalLinkIcon` 控制外链图标                                                                                                                                                                            |
+| `v-pre` / `raw` 容器 | `@vuepress/plugin-markdown-ext` + `@vuepress/plugin-markdown-raw` | `v-pre` 来自 markdown-ext（`vPre: true`），`raw` 来自 markdown-raw；主题默认开启 `raw` 的样式隔离，且容器内链接不走 SPA 路由；可用 `themePlugins.markdownExt` / `themePlugins.markdownRaw` 配置或关闭      |
 
 ## 由插件提供的能力
 

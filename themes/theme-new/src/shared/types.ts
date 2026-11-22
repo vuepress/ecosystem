@@ -3,6 +3,7 @@ import type { GitPluginOptions } from '@vuepress/plugin-git'
 import type { IconPluginOptions } from '@vuepress/plugin-icon'
 import type { MarkdownExtPluginOptions } from '@vuepress/plugin-markdown-ext'
 import type { MarkdownHintPluginOptions } from '@vuepress/plugin-markdown-hint'
+import type { MarkdownRawPluginOptions } from '@vuepress/plugin-markdown-raw'
 import type { MarkdownTabPluginOptions } from '@vuepress/plugin-markdown-tab'
 import type { MediumZoomPluginOptions } from '@vuepress/plugin-medium-zoom'
 import type { ShikiPluginOptions } from '@vuepress/plugin-shiki'
@@ -226,6 +227,17 @@ export interface ThemePluginsOptions {
    * `@vuepress/plugin-markdown-hint` 的配置项
    */
   markdownHint?: MarkdownHintPluginOptions | boolean
+
+  /**
+   * Options of `@vuepress/plugin-markdown-raw` /
+   * `@vuepress/plugin-markdown-raw` 的配置项
+   *
+   * The theme isolates the page styles from the `raw` container by default, set
+   * `isolateStyles: false` to keep the container without the style isolation.
+   *
+   * 主题默认将页面样式与 `raw` 容器隔离，设置为 `isolateStyles: false` 可只保留容器而不隔离样式。
+   */
+  markdownRaw?: MarkdownRawPluginOptions | boolean
 
   /**
    * Options of `@vuepress/plugin-markdown-tab` /

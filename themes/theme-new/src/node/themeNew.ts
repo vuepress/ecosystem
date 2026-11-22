@@ -7,6 +7,7 @@ import { iconPlugin } from '@vuepress/plugin-icon'
 import { markdownExtPlugin } from '@vuepress/plugin-markdown-ext'
 import { markdownHintPlugin } from '@vuepress/plugin-markdown-hint'
 import type { MarkdownHintPluginLocaleData } from '@vuepress/plugin-markdown-hint'
+import { markdownRawPlugin } from '@vuepress/plugin-markdown-raw'
 import { markdownTabPlugin } from '@vuepress/plugin-markdown-tab'
 import { mediumZoomPlugin } from '@vuepress/plugin-medium-zoom'
 import { nprogressPlugin } from '@vuepress/plugin-nprogress'
@@ -232,12 +233,24 @@ const resolveMarkdownPlugins = (
     ? []
     : [
         markdownExtPlugin({
-          // `v-pre` and `raw` are the VitePress built-in containers, they
-          // are provided by the markdown extensions plugin
+          // `v-pre` is the VitePress built-in container, it is provided by the
+          // markdown extensions plugin
           vPre: true,
-          raw: true,
           ...(typeof plugins.markdownExt === 'object'
             ? plugins.markdownExt
+            : {}),
+        }),
+      ]),
+  ...(plugins.markdownRaw === false
+    ? []
+    : [
+        markdownRawPlugin({
+          // isolate the page styles from the `raw` container by default, so
+          // that the container works out of the box. VitePress leaves the
+          // isolation to the site (it is opt-in there).
+          isolateStyles: true,
+          ...(typeof plugins.markdownRaw === 'object'
+            ? plugins.markdownRaw
             : {}),
         }),
       ]),

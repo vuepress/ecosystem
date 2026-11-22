@@ -26,13 +26,14 @@ describe(themeNew, () => {
     expect(existsSync(theme.templateBuild!)).toBe(true)
     // some plugin factories do not set a name, so only the named ones are
     // asserted here
-    expect(theme.plugins).toHaveLength(11)
+    expect(theme.plugins).toHaveLength(12)
     expect(
       theme.plugins
         ?.map((plugin) => (plugin as { name?: string } | undefined)?.name)
         .filter(Boolean),
     ).toStrictEqual([
       '@vuepress/plugin-theme-data',
+      '@vuepress/plugin-markdown-raw',
       '@vuepress/plugin-active-header-links',
       '@vuepress/plugin-icon',
       '@vuepress/plugin-medium-zoom',
@@ -42,7 +43,12 @@ describe(themeNew, () => {
 
   it('should allow configuring or disabling the wired plugins', () => {
     const disabled = createTheme({
-      themePlugins: { icon: false, nprogress: false, mediumZoom: false },
+      themePlugins: {
+        icon: false,
+        markdownRaw: false,
+        nprogress: false,
+        mediumZoom: false,
+      },
     })
 
     expect(disabled.plugins).toHaveLength(8)
@@ -59,7 +65,7 @@ describe(themeNew, () => {
       themePlugins: { copyCode: { selector: '.custom pre' }, mediumZoom: {} },
     })
 
-    expect(configured.plugins).toHaveLength(11)
+    expect(configured.plugins).toHaveLength(12)
   })
 
   it('should convert VitePress locale keys to route locale paths', () => {
@@ -266,7 +272,7 @@ describe(getSidebar, () => {
 })
 
 describe('markdown containers', () => {
-  it('should render the v-pre and raw containers through the markdown extensions plugin', async () => {
+  it('should render the v-pre and raw containers through the plugins', async () => {
     const app = await createTestApp({ theme: createTheme() })
 
     expect(app.markdown.render('::: raw\nHello\n:::', {})).toContain(
@@ -278,13 +284,31 @@ describe('markdown containers', () => {
     )
   })
 
-  it('should not render the containers when the markdown extensions plugin is disabled', async () => {
+  it('should not render the raw container when the markdown raw plugin is disabled', async () => {
+    const app = await createTestApp({
+      theme: createTheme({ themePlugins: { markdownRaw: false } }),
+    })
+
+    expect(app.markdown.render('::: raw\nHello\n:::', {})).toContain('::: raw')
+  })
+
+  it('should keep the v-pre container when the markdown raw plugin is disabled', async () => {
+    const app = await createTestApp({
+      theme: createTheme({ themePlugins: { markdownRaw: false } }),
+    })
+
+    expect(app.markdown.render('::: v-pre\nHello\n:::', {})).toContain(
+      '<div v-pre>',
+    )
+  })
+
+  it('should not render the v-pre container when the markdown extensions plugin is disabled', async () => {
     const app = await createTestApp({
       theme: createTheme({ themePlugins: { markdownExt: false } }),
     })
 
-    expect(app.markdown.render('::: raw\nHello\n:::', {})).not.toContain(
-      'vp-raw',
+    expect(app.markdown.render('::: v-pre\nHello\n:::', {})).toContain(
+      '::: v-pre',
     )
   })
 

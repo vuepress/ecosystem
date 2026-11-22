@@ -5,6 +5,7 @@ import { readonly } from 'vue'
 import { defineClientConfig } from 'vuepress/client'
 
 import type { ThemeConfig } from '../shared/types.js'
+import { setupRawContainerLinks } from './composables/setupRawContainerLinks.js'
 import {
   createDarkModeRef,
   themeDarkModeSymbol,
@@ -28,6 +29,9 @@ export default defineClientConfig({
       if (typeof document === 'undefined') return
       document.documentElement.dataset.theme = value ? 'dark' : 'light'
     })
+
+    // the links inside the `raw` container bypass the SPA router
+    setupRawContainerLinks()
 
     theme.enhanceApp({ app })
   },

@@ -50,7 +50,7 @@
 - **移植方式**：主题启用 `markdownHintPlugin({ hint: true, alert: true })`。`tip` / `info` / `warning` / `caution` / `note` / `important` / `danger`（渲染为 `caution`，与 theme-default 一致）与 `details` 都由插件解析、渲染并自带样式：`.hint-container`、`.hint-container-title`，标题前带图标，`details` 是原生可折叠的 `<details>`。主题不再注册容器渲染器，也不再为容器写样式，只做三件事：
   1. 引入 `@vuepress/helper/colors.css`：插件样式依赖它提供的 `--vp-c-*-bg` / `-text` / `-soft` 调色板，该调色板用 `[data-theme='dark']` 切换，与主题的暗色方案一致。
   2. 在 `styles/vars.css` 覆盖少量变量：`--hint-font-size: 0.875rem` 对齐 VitePress 的容器字号；把插件调色板中的 blue 映射到 indigo（VitePress 的 info 容器用 indigo 色系）。
-  3. `v-pre`、`raw` 两个 VitePress 扩展交给 `@vuepress/plugin-markdown-ext`（`themePlugins.markdownExt` 默认 `vPre: true, raw: true`）：插件只输出 `<div v-pre>` / `<div class="vp-raw">` 包裹标记；`raw` 的样式隔离在 VitePress 里也是可选项（`postcssIsolateStyles`），本主题不内置隔离，需要时由站点用 PostCSS 排除 `.vp-raw`。
+  3. `v-pre`、`raw` 两个 VitePress 扩展分别交给 `@vuepress/plugin-markdown-ext`（`vPre: true`）与 `@vuepress/plugin-markdown-raw`：前者只输出 `<div v-pre>`；后者输出 `<div class="vp-raw">`，并由主题默认开启样式隔离（`isolateStyles: true`，VitePress 里需要站点在 `postcss.config` 手动 opt-in）。主题还会接管容器内链接的点击，让它们像 VitePress 一样不经过 SPA 路由。用 `themePlugins.markdownRaw: false` 关闭插件后，`::: raw` 会作为普通文本渲染。
 - **原因**：容器属于「功能」，应由官方插件提供；样式问题通过覆盖插件的 CSS 变量解决，而不是在主题里复刻或映射一套 VitePress 容器样式。
 - **优点**：主题里没有容器样式与渲染代码；容器图标、默认标题的多语言、打印前自动展开 `<details>` 等行为全部由插件维护；外观与 theme-default 一致，只受主题调色板影响；插件后续改进自动惠及主题。
 - **缺点（与 VitePress 的差异）**：
@@ -58,6 +58,7 @@
   - 标题前多一个图标（插件样式的一部分），VitePress 的容器标题没有图标。
   - `::: tip {no-title}` 会渲染无标题容器（插件已支持，仅认 info 串末尾的标记；`details` 忽略该标记）。
   - 容器不透传 token 上的额外属性（如 `id`、额外 `class`）。
+  - `raw` 的样式隔离由主题默认开启，需要站点打包器的 PostCSS 处理主题的 `vp-doc.css` / `base.css`：站点若自定义了 `css.postcss`（Vite）或 `postcss-loader` 选项，需要确认插件能被合并；不想要隔离时用 `themePlugins.markdownRaw: { isolateStyles: false }`。
   - `::: danger` 输出为 `caution` 类型（标题为 Caution），与 theme-default 的兼容映射一致。
 - **已完成的插件改进**：`@vuepress/plugin-markdown-hint` 现已支持 `{no-title}`，并把容器间距、圆角抽成 `--hint-container-*` / `--hint-details-*` CSS 变量，主题可以只靠变量对齐版式（见插件 PR #1136）。剩余差异是容器不向输出 DOM 透传 token 上的额外属性（如 `id`、额外 `class`）。
 

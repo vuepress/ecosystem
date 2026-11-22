@@ -2009,6 +2009,9 @@ importers:
       '@vuepress/plugin-markdown-hint':
         specifier: workspace:*
         version: link:../../plugins/markdown/plugin-markdown-hint
+      '@vuepress/plugin-markdown-raw':
+        specifier: workspace:*
+        version: link:../../plugins/markdown/plugin-markdown-raw
       '@vuepress/plugin-markdown-tab':
         specifier: workspace:*
         version: link:../../plugins/markdown/plugin-markdown-tab
