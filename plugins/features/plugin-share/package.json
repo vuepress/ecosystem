@@ -1,0 +1,63 @@
+{
+  "name": "@vuepress/plugin-share",
+  "version": "2.0.0-rc.139",
+  "description": "VuePress plugin - share",
+  "keywords": [
+    "plugin",
+    "share",
+    "social",
+    "vuepress",
+    "vuepress-plugin"
+  ],
+  "homepage": "https://ecosystem.vuejs.press/plugins/features/share.html",
+  "bugs": {
+    "url": "https://github.com/vuepress/ecosystem/issues"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "Mr.Hope",
+    "email": "mister-hope@outlook.com",
+    "url": "https://mister-hope.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vuepress/ecosystem.git",
+    "directory": "plugins/features/plugin-share"
+  },
+  "files": [
+    "dist"
+  ],
+  "type": "module",
+  "sideEffects": [
+    "./dist/**/*.css"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/node/index.d.ts",
+      "default": "./dist/node/index.js"
+    },
+    "./client": {
+      "types": "./dist/client/index.d.ts",
+      "default": "./dist/client/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "tsdown",
+    "clean": "rimraf ./dist"
+  },
+  "dependencies": {
+    "@vuepress/helper": "workspace:*",
+    "qrcode": "^1.5.4",
+    "vue": "catalog:"
+  },
+  "devDependencies": {
+    "@types/qrcode": "^1.5.6"
+  },
+  "peerDependencies": {
+    "vuepress": "catalog:"
+  }
+}

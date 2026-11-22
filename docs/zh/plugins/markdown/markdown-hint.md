@@ -70,6 +70,20 @@ const a = 1
 
 ::::
 
+若想渲染不带标题的容器，可以在容器信息字符串末尾添加 `{no-title}` 标记。该标记会被移除，并省略标题：
+
+:::: preview
+
+::: tip {no-title}
+
+一个不带标题的提示容器。
+
+:::
+
+::::
+
+`details` 容器会忽略 `{no-title}`，因为它始终需要摘要。
+
 插件也提供了 `alert` 选项，以支持 GFM 警告：
 
 ```md
@@ -139,3 +153,11 @@ const a = 1
 详情块的默认标题。
 
 :::
+
+## 样式 {#styles}
+
+你可以通过 CSS 变量自定义样式：
+
+@[code](@vuepress/plugin-markdown-hint/src/client/styles/vars.css)
+
+`details` 容器使用 `--detail-c-*` 变量，`danger` 会渲染为 `caution` 容器。

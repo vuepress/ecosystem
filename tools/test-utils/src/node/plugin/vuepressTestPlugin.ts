@@ -4,7 +4,11 @@ import path from 'node:path'
 
 import type { Alias, Plugin } from 'vite'
 
-import { getTestModuleFilePath, TEST_MODULES_DIR } from '../moduleDir.js'
+import {
+  getTestModuleFilePath,
+  resolveNodeEntryPath,
+  TEST_MODULES_DIR,
+} from '../moduleDir.js'
 
 const require = createRequire(import.meta.url)
 
@@ -32,7 +36,7 @@ export const VIRTUAL_MODULE_IDS = [
 const createVirtualAliases = (): Alias[] =>
   VIRTUAL_MODULE_IDS.map((name) => ({
     find: new RegExp(`^@internal/${name}$`, 'u'),
-    replacement: path.resolve(import.meta.dirname, '../virtual', name),
+    replacement: resolveNodeEntryPath('virtual', name),
   }))
 
 const createClientAliases = (): Alias[] =>
@@ -153,17 +157,17 @@ const getVuepressVersion = (): string => {
 /**
  * Create a Vite/Vitest plugin that makes `vuepress/client` usable in unit tests
  *
- * `vuepress/client` imports generated modules (`@internal/*`) and compile-time
- * defines (`__VUEPRESS_DEV__`, ...) at module scope, so it cannot be imported
- * in a unit test directly. This plugin injects the defines, resolves
- * `vuepress/client` to files that can be transformed, and replaces the
- * generated modules with placeholders reading the test state. The modules
- * registered with `stubModule()` are resolved to their generated file as well.
+ * `vuepress/client` imports generated client modules and compile-time defines
+ * (`__VUEPRESS_DEV__`, ...) at module scope, so it cannot be imported in a unit
+ * test directly. This plugin injects the defines, resolves `vuepress/client` to
+ * files that can be transformed, and replaces the generated modules with
+ * placeholders reading the test state. The modules registered with
+ * `stubModule()` are resolved to their generated file as well.
  *
  * 创建让 `vuepress/client` 可用于单元测试的 Vite/Vitest 插件
  *
- * `vuepress/client` 在模块作用域就引用生成模块（`@internal/*`）与编译期 define（`__VUEPRESS_DEV__`
- * 等），因此无法在单元测试中直接导入。该插件会注入 define、把 `vuepress/client`
+ * `vuepress/client` 在模块作用域就引用生成的客户端模块与编译期 define（`__VUEPRESS_DEV__` 等），
+ * 因此无法在单元测试中直接导入。该插件会注入 define、把 `vuepress/client`
  * 解析为可被转换的文件，并用读取测试状态的占位模块替换生成模块。通过 `stubModule()` 注册的模块也会被解析到其生成文件。
  *
  * @example
@@ -210,7 +214,7 @@ export const vuepressTestPlugin = (
             inline: CLIENT_INLINE_PATTERNS,
           },
         },
-        setupFiles: [path.resolve(import.meta.dirname, '../setup')],
+        setupFiles: [resolveNodeEntryPath('setup')],
       },
     }),
 

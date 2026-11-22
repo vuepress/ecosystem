@@ -13,7 +13,7 @@ VuePress 的单元测试工具。
 ## Usage
 
 ```bash
-npm i -D @vuepress/test-utils@next @vue/test-utils happy-dom
+npm i -D @vuepress/test-utils@next @vue/test-utils happy-dom vitest
 ```
 
 ```ts title="vitest.config.ts"

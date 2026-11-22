@@ -20,7 +20,7 @@
   },
   "dependencies": {
     "@iconify-json/vscode-icons": "^1.2.99",
-    "@videojs/html": "10.5.0",
+    "@videojs/html": "10.6.0",
     "@vuepress/bundler-rspack": "catalog:",
     "@vuepress/bundler-vite": "catalog:",
     "@vuepress/bundler-webpack": "catalog:",
@@ -40,6 +40,7 @@
     "@vuepress/plugin-register-components": "workspace:*",
     "@vuepress/plugin-replace-assets": "workspace:*",
     "@vuepress/plugin-sass-palette": "workspace:*",
+    "@vuepress/plugin-share": "workspace:*",
     "@vuepress/plugin-theme-data": "workspace:*",
     "@vuepress/plugin-watermark": "workspace:*",
     "@vuepress/theme-default": "workspace:*",

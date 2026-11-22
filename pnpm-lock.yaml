@@ -199,7 +199,7 @@ catalogs:
       version: 1.108.2
     sass-loader:
       specifier: ^17.1.0
-      version: 17.1.0
+      version: 17.1.1
     vue:
       specifier: ^3.5.45
       version: 3.5.46
@@ -304,13 +304,13 @@ importers:
         version: 14.2.8(supports-color@8.1.1)
       stylelint:
         specifier: ^18.0.0
-        version: 18.0.0
+        version: 18.1.0
       stylelint-config-hope:
         specifier: ^13.0.0
-        version: 13.0.0(postcss-html@2.0.1(postcss@8.5.33))(postcss@8.5.33)(stylelint@18.0.0)
+        version: 13.0.0(postcss-html@2.0.1(postcss@8.5.33))(postcss@8.5.33)(stylelint@18.1.0)
       stylelint-config-html:
         specifier: ^2.0.0
-        version: 2.0.0(postcss-html@2.0.1(postcss@8.5.33))(stylelint@18.0.0)
+        version: 2.0.0(postcss-html@2.0.1(postcss@8.5.33))(stylelint@18.1.0)
       tsconfig-vuepress:
         specifier: ^7.0.0
         version: 7.0.0
@@ -395,6 +395,9 @@ importers:
       '@vuepress/plugin-markdown-file-tree':
         specifier: workspace:*
         version: link:../plugins/markdown/plugin-markdown-file-tree
+      '@vuepress/plugin-markdown-hint':
+        specifier: workspace:*
+        version: link:../plugins/markdown/plugin-markdown-hint
       '@vuepress/plugin-markdown-image':
         specifier: workspace:*
         version: link:../plugins/markdown/plugin-markdown-image
@@ -460,7 +463,7 @@ importers:
         version: 1.108.2
       sass-loader:
         specifier: 'catalog:'
-        version: 17.1.0(@rspack/core@2.3.3)(sass-embedded@1.108.2)(sass@1.108.2)(webpack@5.113.0(clean-css@5.3.3)(cssnano@9.9.0(postcss@8.5.33))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.33)(svgo@4.1.0)(uglify-js@3.19.3))
+        version: 17.1.1(@rspack/core@2.3.3)(sass-embedded@1.108.2)(sass@1.108.2)(webpack@5.113.0(clean-css@5.3.3)(cssnano@9.9.0(postcss@8.5.33))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.33)(svgo@4.1.0)(uglify-js@3.19.3))
       vue:
         specifier: 'catalog:'
         version: 3.5.46(typescript@6.0.3)
@@ -474,8 +477,8 @@ importers:
         specifier: ^1.2.99
         version: 1.2.99
       '@videojs/html':
-        specifier: 10.5.0
-        version: 10.5.0(@videojs/dash-video@10.5.0(@svta/cml-cta@1.0.6(@svta/cml-structured-field-values@1.1.3(@svta/cml-utils@1.5.0))(@svta/cml-utils@1.5.0))(@svta/cml-structured-field-values@1.1.3(@svta/cml-utils@1.5.0))(@svta/cml-utils@1.5.0))(@videojs/hlsjs-video@10.5.0)(@videojs/spotify-audio@10.5.0)(@videojs/tiktok-video@10.5.0)(@videojs/twitch-video@10.5.0)(@videojs/vimeo-video@10.5.0)(@videojs/youtube-video@10.5.0)(react@19.3.1)
+        specifier: 10.6.0
+        version: 10.6.0(@videojs/dash-video@10.5.0)(@videojs/hlsjs-video@10.5.0)(@videojs/spotify-audio@10.5.0)(@videojs/tiktok-video@10.5.0)(@videojs/twitch-video@10.5.0)(@videojs/vimeo-video@10.5.0)(@videojs/youtube-video@10.5.0)(react@19.3.1)
       '@vuepress/bundler-rspack':
         specifier: 'catalog:'
         version: 2.0.0-rc.32(@vue/compiler-sfc@3.5.46)(esbuild@0.28.2)(rolldown@1.3.3)(rollup@4.68.7)(selfsigned@5.5.0)(supports-color@8.1.1)(typescript@6.0.3)(vite@8.3.8(@types/node@22.20.5)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.108.2)(sass@1.108.2)(terser@5.51.2)(yaml@2.9.1))(webpack@5.113.0(clean-css@5.3.3)(cssnano@9.9.0(postcss@8.5.33))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.33)(svgo@4.1.0)(uglify-js@3.19.3))
@@ -533,6 +536,9 @@ importers:
       '@vuepress/plugin-sass-palette':
         specifier: workspace:*
         version: link:../plugins/development/plugin-sass-palette
+      '@vuepress/plugin-share':
+        specifier: workspace:*
+        version: link:../plugins/features/plugin-share
       '@vuepress/plugin-theme-data':
         specifier: workspace:*
         version: link:../plugins/development/plugin-theme-data
@@ -553,7 +559,7 @@ importers:
         version: 1.108.2
       sass-loader:
         specifier: 'catalog:'
-        version: 17.1.0(@rspack/core@2.3.3)(sass-embedded@1.108.2)(sass@1.108.2)(webpack@5.113.0(clean-css@5.3.3)(cssnano@9.9.0(postcss@8.5.33))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.33)(svgo@4.1.0)(uglify-js@3.19.3))
+        version: 17.1.1(@rspack/core@2.3.3)(sass-embedded@1.108.2)(sass@1.108.2)(webpack@5.113.0(clean-css@5.3.3)(cssnano@9.9.0(postcss@8.5.33))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.33)(svgo@4.1.0)(uglify-js@3.19.3))
       vue:
         specifier: 'catalog:'
         version: 3.5.46(typescript@6.0.3)
@@ -805,7 +811,7 @@ importers:
         version: 1.108.2
       sass-loader:
         specifier: 'catalog:'
-        version: 17.1.0(@rspack/core@2.3.3)(sass-embedded@1.108.2)(sass@1.108.2)(webpack@5.113.0(clean-css@5.3.3)(cssnano@9.9.0(postcss@8.5.33))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.33)(svgo@4.1.0)(uglify-js@3.19.3))
+        version: 17.1.1(@rspack/core@2.3.3)(sass-embedded@1.108.2)(sass@1.108.2)(webpack@5.113.0(clean-css@5.3.3)(cssnano@9.9.0(postcss@8.5.33))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.33)(svgo@4.1.0)(uglify-js@3.19.3))
       vuepress:
         specifier: 'catalog:'
         version: 2.0.0-rc.32(534515f20ab12067869497424e383b6c)
@@ -963,13 +969,13 @@ importers:
         version: 1.0.0(markdown-it@15.0.3)
       '@videojs/dash-video':
         specifier: ^10.3.0
-        version: 10.5.0(@svta/cml-cta@1.0.6(@svta/cml-structured-field-values@1.1.3(@svta/cml-utils@1.5.0))(@svta/cml-utils@1.5.0))(@svta/cml-structured-field-values@1.1.3(@svta/cml-utils@1.5.0))(@svta/cml-utils@1.5.0)
+        version: 10.5.0
       '@videojs/hlsjs-video':
         specifier: ^10.3.0
         version: 10.5.0
       '@videojs/html':
         specifier: ^10.3.0
-        version: 10.5.0(@videojs/dash-video@10.5.0(@svta/cml-cta@1.0.6(@svta/cml-structured-field-values@1.1.3(@svta/cml-utils@1.5.0))(@svta/cml-utils@1.5.0))(@svta/cml-structured-field-values@1.1.3(@svta/cml-utils@1.5.0))(@svta/cml-utils@1.5.0))(@videojs/hlsjs-video@10.5.0)(@videojs/spotify-audio@10.5.0)(@videojs/tiktok-video@10.5.0)(@videojs/twitch-video@10.5.0)(@videojs/vimeo-video@10.5.0)(@videojs/youtube-video@10.5.0)(react@19.3.1)
+        version: 10.6.0(@videojs/dash-video@10.5.0)(@videojs/hlsjs-video@10.5.0)(@videojs/spotify-audio@10.5.0)(@videojs/tiktok-video@10.5.0)(@videojs/twitch-video@10.5.0)(@videojs/vimeo-video@10.5.0)(@videojs/youtube-video@10.5.0)(react@19.3.1)
       '@videojs/spotify-audio':
         specifier: ^10.3.0
         version: 10.5.0
@@ -1076,6 +1082,25 @@ importers:
       vuepress:
         specifier: 'catalog:'
         version: 2.0.0-rc.32(534515f20ab12067869497424e383b6c)
+
+  plugins/features/plugin-share:
+    dependencies:
+      '@vuepress/helper':
+        specifier: workspace:*
+        version: link:../../../tools/helper
+      qrcode:
+        specifier: ^1.5.4
+        version: 1.5.4
+      vue:
+        specifier: 'catalog:'
+        version: 3.5.46(typescript@6.0.3)
+      vuepress:
+        specifier: 'catalog:'
+        version: 2.0.0-rc.32(534515f20ab12067869497424e383b6c)
+    devDependencies:
+      '@types/qrcode':
+        specifier: ^1.5.6
+        version: 1.5.6
 
   plugins/features/plugin-watermark:
     dependencies:
@@ -1308,6 +1333,9 @@ importers:
         specifier: 'catalog:'
         version: 2.0.0-rc.32(534515f20ab12067869497424e383b6c)
     devDependencies:
+      '@mdit/plugin-attrs':
+        specifier: ^1.5.0
+        version: 1.5.1(markdown-it@15.0.3)
       markdown-it:
         specifier: 'catalog:'
         version: 15.0.3
@@ -1922,7 +1950,7 @@ importers:
         version: 1.108.2
       sass-loader:
         specifier: 'catalog:'
-        version: 17.1.0(@rspack/core@2.3.3)(sass-embedded@1.108.2)(sass@1.108.2)(webpack@5.113.0(clean-css@5.3.3)(cssnano@9.9.0(postcss@8.5.33))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.33)(svgo@4.1.0)(uglify-js@3.19.3))
+        version: 17.1.1(@rspack/core@2.3.3)(sass-embedded@1.108.2)(sass@1.108.2)(webpack@5.113.0(clean-css@5.3.3)(cssnano@9.9.0(postcss@8.5.33))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.33)(svgo@4.1.0)(uglify-js@3.19.3))
       vue:
         specifier: 'catalog:'
         version: 3.5.46(typescript@6.0.3)
@@ -2008,7 +2036,7 @@ importers:
         version: 1.108.2
       sass-loader:
         specifier: 'catalog:'
-        version: 17.1.0(@rspack/core@2.3.3)(sass-embedded@1.108.2)(sass@1.108.2)(webpack@5.113.0(clean-css@5.3.3)(cssnano@9.9.0(postcss@8.5.33))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.33)(svgo@4.1.0)(uglify-js@3.19.3))
+        version: 17.1.1(@rspack/core@2.3.3)(sass-embedded@1.108.2)(sass@1.108.2)(webpack@5.113.0(clean-css@5.3.3)(cssnano@9.9.0(postcss@8.5.33))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.33)(svgo@4.1.0)(uglify-js@3.19.3))
       vue:
         specifier: 'catalog:'
         version: 3.5.46(typescript@6.0.3)
@@ -2150,6 +2178,13 @@ importers:
       vuepress:
         specifier: 'catalog:'
         version: 2.0.0-rc.32(534515f20ab12067869497424e383b6c)
+    devDependencies:
+      vite:
+        specifier: ^8.3.8
+        version: 8.3.8(@types/node@22.20.5)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.108.2)(sass@1.108.2)(terser@5.51.2)(yaml@2.9.1)
+      vitest:
+        specifier: ^5.1.1
+        version: 5.1.1(@opentelemetry/api@1.10.0)(@types/node@22.20.5)(@vitest/coverage-istanbul@5.1.1)(happy-dom@21.0.4)(vite@8.3.8(@types/node@22.20.5)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.108.2)(sass@1.108.2)(terser@5.51.2)(yaml@2.9.1))
 
   tools/vp-update:
     dependencies:
@@ -5458,13 +5493,6 @@ packages:
       '@svta/cml-structured-field-values': 1.1.6
       '@svta/cml-utils': 1.6.1
 
-  '@svta/cml-cta@1.0.6':
-    resolution: {integrity: sha512-l13/4myTX1EbRd38nY8J1umVY5UdR/nZO6CeKqVLXnMMIayg7/fu0TueZckjTA9Loal55MGK1xbHnXVjz7OUUw==}
-    engines: {node: '>=20'}
-    peerDependencies:
-      '@svta/cml-structured-field-values': 1.1.3
-      '@svta/cml-utils': 1.5.0
-
   '@svta/cml-dash@1.0.6':
     resolution: {integrity: sha512-4XtHYlPrzL/dRe/8XmRQoLnTo9S86tISgrl67eUqKl5MtNTpZBYTncuPrspslPZPZROBBWNrBuepYfYUtU9CKA==}
     engines: {node: '>=20'}
@@ -5510,16 +5538,6 @@ packages:
       '@svta/cml-cmcd': 2.8.2
       '@svta/cml-utils': 1.6.1
       '@svta/cml-xml': 1.2.1
-
-  '@svta/cml-structured-field-values@1.1.3':
-    resolution: {integrity: sha512-XqLzQOTznz6kh/nsSh8dy1kV7GQjL4csG+2U5EvLGhAqNuNUczbVg5EAsDobKDVg8xhdthdXx2UuwM+ZHQCxSg==}
-    engines: {node: '>=20'}
-    peerDependencies:
-      '@svta/cml-utils': 1.5.0
-
-  '@svta/cml-utils@1.5.0':
-    resolution: {integrity: sha512-JMqclD7Akd+GSJiuaYNUHOP2wNtf/nauKeszlYeivSHfi0Lp3pmSW5PXDvJ2dO4aPmmSOQbF0ztTsW9Vcs2Whw==}
-    engines: {node: '>=20'}
 
   '@svta/cml-utils@1.8.0':
     resolution: {integrity: sha512-BCY/hP8oGrMB5nCDVGA0Pzs5Dek2uwEdhW+9YW8F1YWvIEg1B8xstAMhd64R+BEW71yD81mImF5DA1NcleClJA==}
@@ -5766,6 +5784,9 @@ packages:
   '@types/prismjs@1.26.6':
     resolution: {integrity: sha512-vqlvI7qlMvcCBbVe0AKAb4f97//Hy0EBTaiW8AalRnG/xAN5zOiWWyrNqNXeq8+KAuvRewjCVY1+IPxk4RdNYw==}
 
+  '@types/qrcode@1.5.6':
+    resolution: {integrity: sha512-te7NQcV2BOvdj2b1hCAHzAoMNuj65kNBMz0KBaxM6c3VGBOhU0dURQKOtH8CFNI/dsKkwlv32p26qYQTWoB5bw==}
+
   '@types/qs@6.15.1':
     resolution: {integrity: sha512-GZHUBZR9hckSUhrxmp1nG6NwdpM9fCunJwyThLW1X3AyHgd9IlHb6VANpQQqDr2o/qQp6McZ3y/IA2rVzKzSbw==}
 
@@ -5829,40 +5850,41 @@ packages:
     resolution: {integrity: sha512-UycprH3T6n3jH0k44NHMa7pnFHGu/N05MjojYr+Mc6I7obkoLIJujSWwin1pCvdy/eOxrI/l3uDLQsmcrOb4ug==}
     engines: {node: '>= 20'}
 
-  '@videojs/core@10.5.0':
-    resolution: {integrity: sha512-HzmbJntv2HC9MjNgebwjrb2P63cBLUtzp0XhetSrs5kLRC607W25JFYMd0/f8TJEFGPIFL96sizN5sodSQBiag==}
+  '@videojs/core@10.6.0':
+    resolution: {integrity: sha512-tJUghkaapzbKmi2QjcTsvbiuRzqVsHI47TLQsn3FNGWyX7KOQODKh/PgyKpnHaRmOfaK1pG7N+f0yrC5Yg0JhQ==}
 
   '@videojs/dash-video@10.5.0':
     resolution: {integrity: sha512-M50t8Y0ZnZILoflvpZwYnKTsNn+DFMSyam2Xr6dNeL2LHMuvqstMwofZKPbVmdMWopaUmC1OsJBku3LDsnXFFA==}
 
-  '@videojs/element@10.5.0':
-    resolution: {integrity: sha512-WS7j3Ym3FcmfuruGV6wssV/HduNWHm43j/tbB3DpSxDL9JgtCHAMrirDEOqdmqlj4/pAUjIyzuJ1xGH02ChU5A==}
+  '@videojs/element@10.6.0':
+    resolution: {integrity: sha512-fbJX/aeHNW3u0aH9fPbKp0O2o9qNvuXmKMILz1wonU1glQZvRcgkxNKrNLTywFWz6Iv78EU4CazeGbmNUkFa0Q==}
 
   '@videojs/hlsjs-video@10.5.0':
     resolution: {integrity: sha512-X+laYuEFyQ1My99zeIpiA2xIElOBVbHawDmN/+LMcK24AzpugwWUsUaHYs0NrkKpLfF+3EPACl9tXkknXPrbQg==}
 
-  '@videojs/html@10.5.0':
-    resolution: {integrity: sha512-rWFyDrXWRUanAwSJDcu2rwgpQ7F0kshMiB8swkfsG8JMA+CRLS+WQ5w9GpV9zxgat4LEToprFzi1nuGoqgTIZg==}
+  '@videojs/html@10.6.0':
+    resolution: {integrity: sha512-VSN0FIkNM/8NF4UfrWW5h+uwZjKI2pfNg9FD5kPGUnVoFqz+KNXKf8qsxIJs943tTkafvimdpk+Zt8HieQjhcQ==}
     peerDependencies:
-      '@videojs/cloudflare-video': 10.5.0
-      '@videojs/dailymotion-video': 10.5.0
-      '@videojs/dash-video': 10.5.0
-      '@videojs/google-analytics': 10.5.0
-      '@videojs/google-cast': 10.5.0
-      '@videojs/hlsjs-video': 10.5.0
-      '@videojs/mixcloud-audio': 10.5.0
-      '@videojs/mux-audio': 10.5.0
-      '@videojs/mux-data': 10.5.0
-      '@videojs/mux-video': 10.5.0
-      '@videojs/playerjs-video': 10.5.0
-      '@videojs/shaka-video': 10.5.0
-      '@videojs/soundcloud-audio': 10.5.0
-      '@videojs/spotify-audio': 10.5.0
-      '@videojs/tiktok-video': 10.5.0
-      '@videojs/twitch-video': 10.5.0
-      '@videojs/vimeo-video': 10.5.0
-      '@videojs/wistia-video': 10.5.0
-      '@videojs/youtube-video': 10.5.0
+      '@videojs/cloudflare-video': 10.6.0
+      '@videojs/dailymotion-video': 10.6.0
+      '@videojs/dash-video': 10.6.0
+      '@videojs/google-analytics': 10.6.0
+      '@videojs/google-cast': 10.6.0
+      '@videojs/hlsjs-video': 10.6.0
+      '@videojs/hyperframes-video': 10.6.0
+      '@videojs/mixcloud-audio': 10.6.0
+      '@videojs/mux-audio': 10.6.0
+      '@videojs/mux-data': 10.6.0
+      '@videojs/mux-video': 10.6.0
+      '@videojs/playerjs-video': 10.6.0
+      '@videojs/shaka-video': 10.6.0
+      '@videojs/soundcloud-audio': 10.6.0
+      '@videojs/spotify-audio': 10.6.0
+      '@videojs/tiktok-video': 10.6.0
+      '@videojs/twitch-video': 10.6.0
+      '@videojs/vimeo-video': 10.6.0
+      '@videojs/wistia-video': 10.6.0
+      '@videojs/youtube-video': 10.6.0
     peerDependenciesMeta:
       '@videojs/cloudflare-video':
         optional: true
@@ -5875,6 +5897,8 @@ packages:
       '@videojs/google-cast':
         optional: true
       '@videojs/hlsjs-video':
+        optional: true
+      '@videojs/hyperframes-video':
         optional: true
       '@videojs/mixcloud-audio':
         optional: true
@@ -5906,19 +5930,28 @@ packages:
   '@videojs/media@10.5.0':
     resolution: {integrity: sha512-Yls10cLVOpIjBrlBFr7iaLaKg49MzSwu4beJaQZwP2WJrSmrLiR1ivnLFj6YwHlPVg/UJtQUz6fpUB/AkSpZ/g==}
 
+  '@videojs/media@10.6.0':
+    resolution: {integrity: sha512-L8tqcihVyWShKRAg3+XAubeIDH0RPsxMqB1dkXsqvgewtuh3+hnhSNL/bZTxi76XiFnBsCaQIqHzNyKZTMa86A==}
+
   '@videojs/native-hls-video@10.5.0':
     resolution: {integrity: sha512-m+Q/FKdlVlo+skdIbnXiY92vBKI9sY/A3wgunhUnVd/Z2BPXdaSFJ6LnGnf9D44TqLU4Cs7J579QWy2AkEoCeA==}
+
+  '@videojs/native-hls-video@10.6.0':
+    resolution: {integrity: sha512-9DGA02tOpYHscymRcO7C+xW9my6qg8KL3dXDhdTTAiZ/WtAj5qtXeNN0EwNPJeX1GC0ylWkI01Nhp/VnI83ldw==}
 
   '@videojs/spf@10.5.0':
     resolution: {integrity: sha512-wKnM0jyvqKHC/BrYhGLRv+MrrcNPuwZ4tgcPFDvFshsAHMDhLIUw5iWCmt2kLxJXFIVR2CvpzM4GQ5JZXMEXEA==}
 
+  '@videojs/spf@10.6.0':
+    resolution: {integrity: sha512-0Q3GY0P5dAfFvNoFYzTmdf7MPfwmRHKA1B+0ItnXiz91xj0ngvJKmIKhqy0ySy3ooWXjMIV4jDJ7DulrjpvxDw==}
+
   '@videojs/spotify-audio@10.5.0':
     resolution: {integrity: sha512-4Ca589yCOzDtMGpagCgRcWmR0Jz93ZLbAGmOalHDMtGNs2QJXwYiwkMbKVjkpXfBh910axF/JYd+qFZhBv4XRg==}
 
-  '@videojs/store@10.5.0':
-    resolution: {integrity: sha512-j1zoWvVU9I9DlXe/aTamptsO82xxyDQHlcKXhcQrW/NSDM4xAs7rlji4yWh+s6cGW/YaA4tSjC7CUHDhSeNRwg==}
+  '@videojs/store@10.6.0':
+    resolution: {integrity: sha512-QNPAW3HB83+aDkg4FG4cnBkebJDwWFDIwjk/Dc52Pf/hEfWQn0sjDD3FKCX7yjDtG+DeUkp69DTVZlyHoH3Abw==}
     peerDependencies:
-      '@videojs/element': 10.5.0
+      '@videojs/element': 10.6.0
       react: ^18.0.0 || ^19.0.0
     peerDependenciesMeta:
       '@videojs/element':
@@ -5934,6 +5967,9 @@ packages:
 
   '@videojs/utils@10.5.0':
     resolution: {integrity: sha512-hW/8JqUxjVfYlZskkTm73uOX4vtJKHABSp3Xtcrp59MqPU81mIISRkRUqKt1keUUJRHk9ZKhmN/o66lYbuXH9A==}
+
+  '@videojs/utils@10.6.0':
+    resolution: {integrity: sha512-lQeB3CC55Hzzx3umwneyYjiyVabqdzuInObQfuBfGfqBaxAm8SwY4jIDPyGIYTo6jvMb6YMEUQ0wYZig5hhWug==}
 
   '@videojs/vimeo-video@10.5.0':
     resolution: {integrity: sha512-xS3iaMmJ7eBGtsPAcOayCYJymaTdMG5yA2WQTSp2m+TwW6enyr0xSRR0AOQsq4o4KfewlUicOzFqzat08IvqAg==}
@@ -6525,6 +6561,10 @@ packages:
   camel-case@4.1.2:
     resolution: {integrity: sha512-gxGWBrTT1JuMx6R+o5PTXMmUnhnVzLQ9SNutD4YqKtI6ap897t3tKECYla6gCWEkplXnlNybEkZg9GEGxKFCgw==}
 
+  camelcase@5.3.1:
+    resolution: {integrity: sha512-L28STB170nwWS63UjtlEOE3dldQApaJXZkOI1uMFfzf3rRuPegHaHesyee+YxQ+W6SvRDQV6UrdOdRiR153wJg==}
+    engines: {node: '>=6'}
+
   camelcase@7.0.1:
     resolution: {integrity: sha512-xlx1yCK2Oc1APsPXDL2LdlNP6+uu8OCDdhOBSVT279M/S+y75O30C2VuD8T2ogdePBBl7PfPF4504tnLgX3zfw==}
     engines: {node: '>=14.16'}
@@ -6627,6 +6667,9 @@ packages:
   cli-width@4.1.0:
     resolution: {integrity: sha512-ouuZd4/dm2Sw5Gmqy6bGyNNNe1qt9RpmxveLSO7KcgsTnU7RXfsw+/bukWGo1abgBiMAic068rclZsO4IWmmxQ==}
     engines: {node: '>= 12'}
+
+  cliui@6.0.0:
+    resolution: {integrity: sha512-t6wbgtoCXvAzst7QgXxJYqPt0usEfbgQdftEPbLL/cvv6HPE5VgvqCuAIDR0NgU52ds6rFwqrgakNLrHEjCbrQ==}
 
   cliui@8.0.1:
     resolution: {integrity: sha512-BSeNnyus75C4//NQ9gQt1/csTXyo/8Sb+afLAkzAptFuMsod9HFokGNudZpi/oQV73hnVK+sR+5PVRMd+Dr7YQ==}
@@ -7141,6 +7184,10 @@ packages:
       supports-color:
         optional: true
 
+  decamelize@1.2.0:
+    resolution: {integrity: sha512-z2S+W9X73hAUUki+N+9Za2lBlun89zigOyGrsax+KUQ6wKW4ZoWpEYBkGhQjwAjjDCkWxhY0VKEhk8wzY7F5cA==}
+    engines: {node: '>=0.10.0'}
+
   decode-named-character-reference@1.3.0:
     resolution: {integrity: sha512-GtpQYB283KrPp6nRw50q3U9/VfOutZOe103qlN7BPP6Ad27xYnOIWv4lPzo8HCAL+mMZofJ9KEy30fq6MfaK6Q==}
 
@@ -7207,6 +7254,9 @@ packages:
 
   devlop@1.1.0:
     resolution: {integrity: sha512-RWmIqhcFf1lRYBvNmr7qTNuyCt/7/ns2jbpp1+PalgE/rDQcBT0fioSMUpJ93irlUhC5hrg4cYqe6U+0ImW0rA==}
+
+  dijkstrajs@1.0.3:
+    resolution: {integrity: sha512-qiSlmBq9+BCdCA/L46dw8Uy93mloxsPSbwnm5yrKn2vMPiy8KyAskTF6zuV/j5BMsmOGZDPs7KjU+mjb670kfA==}
 
   dns-packet@5.6.1:
     resolution: {integrity: sha512-l4gcSouhcgIKRvyy99RNVOgxXiicE+2jZoNmaNmZ6JXiGajBOJAesk1OBlJuM5k2c+eudGdLxDqXuPCKIj6kpw==}
@@ -9183,6 +9233,10 @@ packages:
     engines: {node: '>=20'}
     hasBin: true
 
+  pngjs@5.0.0:
+    resolution: {integrity: sha512-40QW5YalBNfQo5yRYmiw7Yz6TKKVr3h6970B2YE+3fQpsWcrbj1PzJgxeJ19DRQjhMbKPIuMY8rFaXc8moolVw==}
+    engines: {node: '>=10.13.0'}
+
   points-on-curve@0.2.0:
     resolution: {integrity: sha512-0mYKnYYe9ZcqMCWhUjItv/oHjvgEsfKvnUTg8sAtnHr3GVy7rGkXCb6d5cSyqrWqL4k81b9CPg3urd+T7aop3A==}
 
@@ -9522,6 +9576,11 @@ packages:
     resolution: {integrity: sha512-BbubeCEyTuQjVMakvJQ/Sxbc93F2pwmbsxONT/ZRrwU7Ua38d8unYTwXpTVLAKJ4BDuH9IGztCjQcd/N/39Dvg==}
     engines: {node: '>=16.0.0'}
 
+  qrcode@1.5.4:
+    resolution: {integrity: sha512-1ca71Zgiu6ORjHqFBDpnSMTR2ReToX4l1Au1VFLyVeBTFavzQnv5JxMFr3ukHVKpSrSA2MCk0lNJSykjUfz7Zg==}
+    engines: {node: '>=10.13.0'}
+    hasBin: true
+
   qs@6.17.1:
     resolution: {integrity: sha512-jd3COkaKVgGUW+ZHyEHCG9bH7RoaaiWuMgzsIBjUMVjLAaWGWpoUAVwljVvBHxRu/2qEHnadLGZrkutYUBPQJA==}
     engines: {node: '>=0.6'}
@@ -9547,11 +9606,6 @@ packages:
   rc@1.2.8:
     resolution: {integrity: sha512-y3bGgqKj3QBdxLbLkomlohkvsA8gdAiUQlSBJnBhfn+BPxg4bc62d8TcBW15wavDfgexCgccckhcZvywyQYPOw==}
     hasBin: true
-
-  react-compiler-runtime@1.0.0:
-    resolution: {integrity: sha512-rRfjYv66HlG8896yPUDONgKzG5BxZD1nV9U6rkm+7VCuvQc903C4MjcoZR4zPw53IKSOX9wMQVpA1IAbRtzQ7w==}
-    peerDependencies:
-      react: ^17.0.0 || ^18.0.0 || ^19.0.0 || ^0.0.0-experimental
 
   react-dom@19.3.1:
     resolution: {integrity: sha512-Y0bARz53lhEC1NMCASs0/j+faB/zqt3R8hpvg1e8+61ZVJ4UL0UdC4cBbXfZMcIuhrfgeILTLe+ZeBCavQPtKQ==}
@@ -9662,6 +9716,9 @@ packages:
   require-from-string@2.0.2:
     resolution: {integrity: sha512-Xf0nWe6RseziFMu+Ap9biiUbmplq6S9/p+7w7YXP/JBHhrUDDUhwa+vANyubuqfZWTveU//DYVGsDG7RKL/vEw==}
     engines: {node: '>=0.10.0'}
+
+  require-main-filename@2.0.0:
+    resolution: {integrity: sha512-NKN5kMDylKuldxYLSUfrbo5Tuzh4hd+2E8NPPX02mZtn1VuREQToYe/ZdlJy+J3uCpfaiGF05e7B8W0iXbQHmg==}
 
   reselect@5.3.0:
     resolution: {integrity: sha512-XGoLeRAVzUTcJ1qkxPQhDJyIZ5d6zzZD9nT7AEZOaaU9UbWclhycElmhO+VD5bFeLuzhPBaOV2oXC8uG35ZSpg==}
@@ -9905,8 +9962,8 @@ packages:
     engines: {node: '>=20.19.0'}
     hasBin: true
 
-  sass-loader@17.1.0:
-    resolution: {integrity: sha512-EZ/u/bLkAErTKvIq/f81Bz6tgL/5Brt8hWOABdTsVdO+nX0PWx2rQhR6fyxVME+MhnQrrwecMDlm2G1y07hhpQ==}
+  sass-loader@17.1.1:
+    resolution: {integrity: sha512-/0DqgO+5tTsXYdbnErt5XzPbRQqD+49brZ8+vKnzOTIRbrgPlPJGghGVFq6xgAjv9pf2TLHvLdrgEYYPEKGtGQ==}
     engines: {node: '>= 22.11.0'}
     peerDependencies:
       '@rspack/core': 0.x || ^1.0.0 || ^2.0.0-0
@@ -10004,6 +10061,9 @@ packages:
     resolution: {integrity: sha512-7or7YqR3zXwHhiBGj40l9yODyQY146O+hXKaEAfQYQkcvHtMDdX95K96xr50qL9EjXScyYVJb1NIgVE8F0i5cA==}
     engines: {node: '>= 14'}
     hasBin: true
+
+  set-blocking@2.0.0:
+    resolution: {integrity: sha512-KiKBS8AnWGEyLzofFfmvKwpdPzqiy16LvQfK3yv/fVH7Bj13/wl3JSR1J+rfgRE9q7xUJK4qvgS8raSOeLUehw==}
 
   set-function-length@1.2.2:
     resolution: {integrity: sha512-pgRc4hJ4/sNjWCSS9AmnS40x3bNMDTknHgL5UaMBTMyJnU90EgWh1Rz+MC9eFu4BuN/UwZjKQuY/1v3rM7HMfg==}
@@ -10288,8 +10348,8 @@ packages:
     peerDependencies:
       stylelint: ^16.8.2 || ^17.0.0 || ^18.0.0
 
-  stylelint@18.0.0:
-    resolution: {integrity: sha512-kI10GsHXQvsH/AcklVZdQgwDuxtHi+A+h1Ujzd7h9LDf3e5jQiLQkWFlPtpynX3E6oVWHG1wo9v6dL0Mr+nnSA==}
+  stylelint@18.1.0:
+    resolution: {integrity: sha512-QbF/IY7KY6lZRhYU/vmPU1KYxc71wgkXdgeptqzTh3lbnZps6WHaskfPjpL6Fh4JaCzwkKKitVcMrpfQTSwwPA==}
     engines: {node: ^22.22.2 || ^24.15.0 || >=26.0.0}
     hasBin: true
 
@@ -10723,8 +10783,8 @@ packages:
   vfile@6.0.3:
     resolution: {integrity: sha512-KzIbH/9tXat2u30jf+smMwFCsno4wHVdNmzFyL+T/L3UGqqk6JKfVqOFOZEpZSHADH1k40ab6NUIXZq422ov3Q==}
 
-  video.js@10.5.0:
-    resolution: {integrity: sha512-QWNQ8MgF5C1T4E1D3zyhnC/9ouA7XmEkjqUH7LI59w24SUoeKBB/P+Fva413DO0N1RKxIJxwxBOsFYiRTnJKtw==}
+  video.js@10.6.0:
+    resolution: {integrity: sha512-hO2WE3H0+siU0gaDKx9tkUOCX7xpnOVlY6uL+KOnqM20yqZOcJ7/JLGpAbVGTwQ3UCJA3orxM5NG/yjYbnEMtQ==}
 
   vite@8.3.8:
     resolution: {integrity: sha512-LzOn3h9rG/0vhLdXrV4yJ4QFA9eEoqCl+Yx+kGJd7aB9w6nfNgVHKSYwLPZUHrz4ZGa+t+kXjV9itvcHDLQouA==}
@@ -10997,6 +11057,9 @@ packages:
     resolution: {integrity: sha512-K4jVyjnBdgvc86Y6BkaLZEN933SwYOuBFkdmBu9ZfkcAbdVbpITnDmjvZ/aQjRXQrv5EPkTnD1s39GiiqbngCw==}
     engines: {node: '>= 0.4'}
 
+  which-module@2.0.1:
+    resolution: {integrity: sha512-iBdZ57RDvnOR9AGBhML2vFZf7h8vmBjhoaZqODJBFWHVtKkDmKuHai3cx5PgVMrX5YDNp27AofYbAwctSS+vhQ==}
+
   which-typed-array@1.1.24:
     resolution: {integrity: sha512-wk4Mf4pR5mRP7eYuuTBCIQ9d0ud2Fv2jRLQpfgnRjbOxAFHmjKFValgTpitVKzJJS8ajnYQV2Du1SZ8j6b/EUQ==}
     engines: {node: '>= 0.4'}
@@ -11078,6 +11141,10 @@ packages:
   workbox-window@7.4.1:
     resolution: {integrity: sha512-notZDH2u8VXaqyuD7xaqIfEFi6SRM4SUSd7ewe9PDsVqADuepxX2ZMY3uvuZGxzY5ZOsGC/vD3A/3smFtJt4/A==}
 
+  wrap-ansi@6.2.0:
+    resolution: {integrity: sha512-r6lPcBGxZXlIcymEu7InxDMhdW0KDxpLgoFLcguasxCaJ/SOIZwINatK9KY/tf+ZrlywOKU0UDj3ATXUBfxJXA==}
+    engines: {node: '>=8'}
+
   wrap-ansi@7.0.0:
     resolution: {integrity: sha512-YVGIj2kamLSTxw6NsZjoBxfSwsn0ycdesmc4p+Q21c5zPuZ1pl+NfxVdxPtdHvmNVOQ6XSYG4AUtyt/Fi7D16Q==}
     engines: {node: '>=10'}
@@ -11129,6 +11196,9 @@ packages:
     resolution: {integrity: sha512-7rVi2KMfwfWFl+GpPg6m80IVMWXLRjO+PxTq7V2CDhoGak0wzYzFgUY2m4XJ47OGdXd8eLE8EmwfAmdjw7lC1g==}
     hasBin: true
 
+  y18n@4.0.3:
+    resolution: {integrity: sha512-JKhqTOwSrqNA1NY5lSztJ1GrBiUodLMmIZuLiDaMRJ+itFd+ABVE8XBjOvIWL+rSqNDC74LCSFmlb/U4UZ4hJQ==}
+
   y18n@5.0.8:
     resolution: {integrity: sha512-0pfFzegeDWJHJIAmTLRP2DwHjdF5s7jo9tuztdQxAhINCdvS+3nGINqPd00AphqJR/0LhANUS6/+7SCb98YOfA==}
     engines: {node: '>=10'}
@@ -11148,6 +11218,10 @@ packages:
     engines: {node: '>= 14.6'}
     hasBin: true
 
+  yargs-parser@18.1.3:
+    resolution: {integrity: sha512-o50j0JeToy/4K6OZcaQmW6lyXXKhq7csREXcDwk2omFPJEwUNOVtJKvmDr9EI1fAJZUyZcRF7kxGBWmRXudrCQ==}
+    engines: {node: '>=6'}
+
   yargs-parser@21.1.1:
     resolution: {integrity: sha512-tVpsJW7DdjecAiFpbIB1e3qxIQsE6NoPc5/eTdrbbIC4h0LVsWhnoa3g+m2HclBIujHzsxZ4VJVA+GUuc2/LBw==}
     engines: {node: '>=12'}
@@ -11155,6 +11229,10 @@ packages:
   yargs-parser@22.0.0:
     resolution: {integrity: sha512-rwu/ClNdSMpkSrUb+d6BRsSkLUq1fmfsY6TOpYzTwvwkg1/NRG85KBy3kq++A8LKQwX6lsu+aWad+2khvuXrqw==}
     engines: {node: ^20.19.0 || ^22.12.0 || >=23}
+
+  yargs@15.4.1:
+    resolution: {integrity: sha512-aePbxDmcYW++PaqBsJ+HYUFwCdv4LVvdnhBy78E57PIor8/OVvhMrADFFEDh8DHDFRv/O9i3lPhsENjO7QX0+A==}
+    engines: {node: '>=8'}
 
   yargs@17.7.3:
     resolution: {integrity: sha512-GZtjxm/J/4TSxuL3FNYjCmLktBTnIw/rVmKSIyKeYAZpmJB2ig9VauCC5xsa82GNKVKDAqpOn3KVzNt0zmrU0g==}
@@ -14359,29 +14437,15 @@ snapshots:
 
   '@svta/cml-608@1.1.0': {}
 
-  '@svta/cml-cmcd@2.3.2(@svta/cml-structured-field-values@1.1.3(@svta/cml-utils@1.5.0))(@svta/cml-utils@1.5.0)':
-    dependencies:
-      '@svta/cml-structured-field-values': 1.1.3(@svta/cml-utils@1.5.0)
-      '@svta/cml-utils': 1.5.0
+  '@svta/cml-cmcd@2.3.2': {}
 
   '@svta/cml-cmcd@2.8.2': {}
 
-  '@svta/cml-cmsd@1.0.6(@svta/cml-cta@1.0.6(@svta/cml-structured-field-values@1.1.3(@svta/cml-utils@1.5.0))(@svta/cml-utils@1.5.0))(@svta/cml-structured-field-values@1.1.3(@svta/cml-utils@1.5.0))(@svta/cml-utils@1.5.0)':
-    dependencies:
-      '@svta/cml-cta': 1.0.6(@svta/cml-structured-field-values@1.1.3(@svta/cml-utils@1.5.0))(@svta/cml-utils@1.5.0)
-      '@svta/cml-structured-field-values': 1.1.3(@svta/cml-utils@1.5.0)
-      '@svta/cml-utils': 1.5.0
+  '@svta/cml-cmsd@1.0.6': {}
 
   '@svta/cml-cmsd@1.1.1': {}
 
-  '@svta/cml-cta@1.0.6(@svta/cml-structured-field-values@1.1.3(@svta/cml-utils@1.5.0))(@svta/cml-utils@1.5.0)':
-    dependencies:
-      '@svta/cml-structured-field-values': 1.1.3(@svta/cml-utils@1.5.0)
-      '@svta/cml-utils': 1.5.0
-
-  '@svta/cml-dash@1.0.6(@svta/cml-utils@1.5.0)':
-    dependencies:
-      '@svta/cml-utils': 1.5.0
+  '@svta/cml-dash@1.0.6': {}
 
   '@svta/cml-dash@1.0.9': {}
 
@@ -14389,34 +14453,23 @@ snapshots:
     dependencies:
       '@svta/cml-utils': 1.8.0
 
-  '@svta/cml-id3@1.0.6(@svta/cml-utils@1.5.0)':
-    dependencies:
-      '@svta/cml-utils': 1.5.0
+  '@svta/cml-id3@1.0.6': {}
 
   '@svta/cml-id3@1.0.9': {}
 
-  '@svta/cml-request@1.0.12(@svta/cml-cmcd@2.3.2(@svta/cml-structured-field-values@1.1.3(@svta/cml-utils@1.5.0))(@svta/cml-utils@1.5.0))(@svta/cml-utils@1.5.0)(@svta/cml-xml@1.1.4(@svta/cml-utils@1.5.0))':
+  '@svta/cml-request@1.0.12(@svta/cml-cmcd@2.3.2)(@svta/cml-xml@1.1.4)':
     dependencies:
-      '@svta/cml-cmcd': 2.3.2(@svta/cml-structured-field-values@1.1.3(@svta/cml-utils@1.5.0))(@svta/cml-utils@1.5.0)
-      '@svta/cml-utils': 1.5.0
-      '@svta/cml-xml': 1.1.4(@svta/cml-utils@1.5.0)
+      '@svta/cml-cmcd': 2.3.2
+      '@svta/cml-xml': 1.1.4
 
   '@svta/cml-request@1.0.21(@svta/cml-cmcd@2.8.2)(@svta/cml-xml@1.2.1)':
     dependencies:
       '@svta/cml-cmcd': 2.8.2
       '@svta/cml-xml': 1.2.1
 
-  '@svta/cml-structured-field-values@1.1.3(@svta/cml-utils@1.5.0)':
-    dependencies:
-      '@svta/cml-utils': 1.5.0
-
-  '@svta/cml-utils@1.5.0': {}
-
   '@svta/cml-utils@1.8.0': {}
 
-  '@svta/cml-xml@1.1.4(@svta/cml-utils@1.5.0)':
-    dependencies:
-      '@svta/cml-utils': 1.5.0
+  '@svta/cml-xml@1.1.4': {}
 
   '@svta/cml-xml@1.2.1': {}
 
@@ -14678,6 +14731,10 @@ snapshots:
 
   '@types/prismjs@1.26.6': {}
 
+  '@types/qrcode@1.5.6':
+    dependencies:
+      '@types/node': 26.6.6
+
   '@types/qs@6.15.1': {}
 
   '@types/range-parser@1.2.7': {}
@@ -14739,30 +14796,30 @@ snapshots:
 
   '@vercel/oidc@3.2.0': {}
 
-  '@videojs/core@10.5.0(@videojs/element@10.5.0)(react@19.3.1)':
+  '@videojs/core@10.6.0(@videojs/element@10.6.0)(react@19.3.1)':
     dependencies:
-      '@videojs/media': 10.5.0
-      '@videojs/store': 10.5.0(@videojs/element@10.5.0)(react@19.3.1)
-      '@videojs/utils': 10.5.0
-      video.js: 10.5.0
+      '@videojs/media': 10.6.0
+      '@videojs/store': 10.6.0(@videojs/element@10.6.0)(react@19.3.1)
+      '@videojs/utils': 10.6.0
+      video.js: 10.6.0
     transitivePeerDependencies:
       - '@videojs/element'
       - react
 
-  '@videojs/dash-video@10.5.0(@svta/cml-cta@1.0.6(@svta/cml-structured-field-values@1.1.3(@svta/cml-utils@1.5.0))(@svta/cml-utils@1.5.0))(@svta/cml-structured-field-values@1.1.3(@svta/cml-utils@1.5.0))(@svta/cml-utils@1.5.0)':
+  '@videojs/dash-video@10.5.0':
     dependencies:
       '@videojs/media': 10.5.0
       '@videojs/utils': 10.5.0
-      dashjs: 5.2.0(@svta/cml-cta@1.0.6(@svta/cml-structured-field-values@1.1.3(@svta/cml-utils@1.5.0))(@svta/cml-utils@1.5.0))(@svta/cml-structured-field-values@1.1.3(@svta/cml-utils@1.5.0))(@svta/cml-utils@1.5.0)
+      dashjs: 5.2.0
     transitivePeerDependencies:
       - '@svta/cml-cta'
       - '@svta/cml-structured-field-values'
       - '@svta/cml-utils'
 
-  '@videojs/element@10.5.0':
+  '@videojs/element@10.6.0':
     dependencies:
       '@lit/context': 1.1.6
-      '@videojs/utils': 10.5.0
+      '@videojs/utils': 10.6.0
 
   '@videojs/hlsjs-video@10.5.0':
     dependencies:
@@ -14772,17 +14829,17 @@ snapshots:
       '@videojs/utils': 10.5.0
       hls.js: 1.7.4
 
-  '@videojs/html@10.5.0(@videojs/dash-video@10.5.0(@svta/cml-cta@1.0.6(@svta/cml-structured-field-values@1.1.3(@svta/cml-utils@1.5.0))(@svta/cml-utils@1.5.0))(@svta/cml-structured-field-values@1.1.3(@svta/cml-utils@1.5.0))(@svta/cml-utils@1.5.0))(@videojs/hlsjs-video@10.5.0)(@videojs/spotify-audio@10.5.0)(@videojs/tiktok-video@10.5.0)(@videojs/twitch-video@10.5.0)(@videojs/vimeo-video@10.5.0)(@videojs/youtube-video@10.5.0)(react@19.3.1)':
+  '@videojs/html@10.6.0(@videojs/dash-video@10.5.0)(@videojs/hlsjs-video@10.5.0)(@videojs/spotify-audio@10.5.0)(@videojs/tiktok-video@10.5.0)(@videojs/twitch-video@10.5.0)(@videojs/vimeo-video@10.5.0)(@videojs/youtube-video@10.5.0)(react@19.3.1)':
     dependencies:
-      '@videojs/core': 10.5.0(@videojs/element@10.5.0)(react@19.3.1)
-      '@videojs/element': 10.5.0
-      '@videojs/media': 10.5.0
-      '@videojs/native-hls-video': 10.5.0
-      '@videojs/spf': 10.5.0
-      '@videojs/store': 10.5.0(@videojs/element@10.5.0)(react@19.3.1)
-      '@videojs/utils': 10.5.0
+      '@videojs/core': 10.6.0(@videojs/element@10.6.0)(react@19.3.1)
+      '@videojs/element': 10.6.0
+      '@videojs/media': 10.6.0
+      '@videojs/native-hls-video': 10.6.0
+      '@videojs/spf': 10.6.0
+      '@videojs/store': 10.6.0(@videojs/element@10.6.0)(react@19.3.1)
+      '@videojs/utils': 10.6.0
     optionalDependencies:
-      '@videojs/dash-video': 10.5.0(@svta/cml-cta@1.0.6(@svta/cml-structured-field-values@1.1.3(@svta/cml-utils@1.5.0))(@svta/cml-utils@1.5.0))(@svta/cml-structured-field-values@1.1.3(@svta/cml-utils@1.5.0))(@svta/cml-utils@1.5.0)
+      '@videojs/dash-video': 10.5.0
       '@videojs/hlsjs-video': 10.5.0
       '@videojs/spotify-audio': 10.5.0
       '@videojs/tiktok-video': 10.5.0
@@ -14796,11 +14853,21 @@ snapshots:
     dependencies:
       '@videojs/utils': 10.5.0
 
+  '@videojs/media@10.6.0':
+    dependencies:
+      '@videojs/utils': 10.6.0
+
   '@videojs/native-hls-video@10.5.0':
     dependencies:
       '@videojs/media': 10.5.0
       '@videojs/spf': 10.5.0
       '@videojs/utils': 10.5.0
+
+  '@videojs/native-hls-video@10.6.0':
+    dependencies:
+      '@videojs/media': 10.6.0
+      '@videojs/spf': 10.6.0
+      '@videojs/utils': 10.6.0
 
   '@videojs/spf@10.5.0':
     dependencies:
@@ -14810,17 +14877,24 @@ snapshots:
       '@videojs/utils': 10.5.0
       signal-polyfill: 0.2.3
 
+  '@videojs/spf@10.6.0':
+    dependencies:
+      '@svta/cml-error-codes': 0.1.2(@svta/cml-utils@1.8.0)
+      '@svta/cml-utils': 1.8.0
+      '@videojs/media': 10.6.0
+      '@videojs/utils': 10.6.0
+      signal-polyfill: 0.2.3
+
   '@videojs/spotify-audio@10.5.0':
     dependencies:
       '@videojs/media': 10.5.0
       '@videojs/utils': 10.5.0
 
-  '@videojs/store@10.5.0(@videojs/element@10.5.0)(react@19.3.1)':
+  '@videojs/store@10.6.0(@videojs/element@10.6.0)(react@19.3.1)':
     dependencies:
-      '@videojs/utils': 10.5.0
-      react-compiler-runtime: 1.0.0(react@19.3.1)
+      '@videojs/utils': 10.6.0
     optionalDependencies:
-      '@videojs/element': 10.5.0
+      '@videojs/element': 10.6.0
       react: 19.3.1
 
   '@videojs/tiktok-video@10.5.0':
@@ -14834,6 +14908,8 @@ snapshots:
       '@videojs/utils': 10.5.0
 
   '@videojs/utils@10.5.0': {}
+
+  '@videojs/utils@10.6.0': {}
 
   '@videojs/vimeo-video@10.5.0':
     dependencies:
@@ -15779,6 +15855,8 @@ snapshots:
       pascal-case: 3.1.2
       tslib: 2.9.1
 
+  camelcase@5.3.1: {}
+
   camelcase@7.0.1: {}
 
   caniuse-api@3.0.0:
@@ -15882,6 +15960,12 @@ snapshots:
   cli-spinners@3.4.0: {}
 
   cli-width@4.1.0: {}
+
+  cliui@6.0.0:
+    dependencies:
+      string-width: 4.2.3
+      strip-ansi: 6.0.1
+      wrap-ansi: 6.2.0
 
   cliui@8.0.1:
     dependencies:
@@ -16399,15 +16483,15 @@ snapshots:
       d3: 7.9.2
       lodash-es: 4.18.1
 
-  dashjs@5.2.0(@svta/cml-cta@1.0.6(@svta/cml-structured-field-values@1.1.3(@svta/cml-utils@1.5.0))(@svta/cml-utils@1.5.0))(@svta/cml-structured-field-values@1.1.3(@svta/cml-utils@1.5.0))(@svta/cml-utils@1.5.0):
+  dashjs@5.2.0:
     dependencies:
       '@svta/cml-608': 1.0.2
-      '@svta/cml-cmcd': 2.3.2(@svta/cml-structured-field-values@1.1.3(@svta/cml-utils@1.5.0))(@svta/cml-utils@1.5.0)
-      '@svta/cml-cmsd': 1.0.6(@svta/cml-cta@1.0.6(@svta/cml-structured-field-values@1.1.3(@svta/cml-utils@1.5.0))(@svta/cml-utils@1.5.0))(@svta/cml-structured-field-values@1.1.3(@svta/cml-utils@1.5.0))(@svta/cml-utils@1.5.0)
-      '@svta/cml-dash': 1.0.6(@svta/cml-utils@1.5.0)
-      '@svta/cml-id3': 1.0.6(@svta/cml-utils@1.5.0)
-      '@svta/cml-request': 1.0.12(@svta/cml-cmcd@2.3.2(@svta/cml-structured-field-values@1.1.3(@svta/cml-utils@1.5.0))(@svta/cml-utils@1.5.0))(@svta/cml-utils@1.5.0)(@svta/cml-xml@1.1.4(@svta/cml-utils@1.5.0))
-      '@svta/cml-xml': 1.1.4(@svta/cml-utils@1.5.0)
+      '@svta/cml-cmcd': 2.3.2
+      '@svta/cml-cmsd': 1.0.6
+      '@svta/cml-dash': 1.0.6
+      '@svta/cml-id3': 1.0.6
+      '@svta/cml-request': 1.0.12(@svta/cml-cmcd@2.3.2)(@svta/cml-xml@1.1.4)
+      '@svta/cml-xml': 1.1.4
       bcp-47-match: 2.0.3
       codem-isoboxer: 0.3.10
       fast-deep-equal: 3.1.3
@@ -16472,6 +16556,8 @@ snapshots:
     optionalDependencies:
       supports-color: 8.1.1
 
+  decamelize@1.2.0: {}
+
   decode-named-character-reference@1.3.0:
     dependencies:
       character-entities: 2.0.2
@@ -16524,6 +16610,8 @@ snapshots:
   devlop@1.1.0:
     dependencies:
       dequal: 2.0.3
+
+  dijkstrajs@1.0.3: {}
 
   dns-packet@5.6.1:
     dependencies:
@@ -18827,6 +18915,8 @@ snapshots:
     dependencies:
       playwright-core: 1.65.1
 
+  pngjs@5.0.0: {}
+
   points-on-curve@0.2.0: {}
 
   points-on-path@0.2.1:
@@ -19115,6 +19205,12 @@ snapshots:
 
   pvutils@1.2.0: {}
 
+  qrcode@1.5.4:
+    dependencies:
+      dijkstrajs: 1.0.3
+      pngjs: 5.0.0
+      yargs: 15.4.1
+
   qs@6.17.1:
     dependencies:
       es-define-property: 1.0.1
@@ -19141,10 +19237,6 @@ snapshots:
       ini: 1.3.8
       minimist: 1.2.8
       strip-json-comments: 2.0.1
-
-  react-compiler-runtime@1.0.0(react@19.3.1):
-    dependencies:
-      react: 19.3.1
 
   react-dom@19.3.1(react@19.3.1):
     dependencies:
@@ -19306,6 +19398,8 @@ snapshots:
   require-directory@2.1.1: {}
 
   require-from-string@2.0.2: {}
+
+  require-main-filename@2.0.0: {}
 
   reselect@5.3.0: {}
 
@@ -19576,7 +19670,7 @@ snapshots:
       sass-embedded-win32-arm64: 1.108.2
       sass-embedded-win32-x64: 1.108.2
 
-  sass-loader@17.1.0(@rspack/core@2.3.3)(sass-embedded@1.108.2)(sass@1.108.2)(webpack@5.113.0(clean-css@5.3.3)(cssnano@9.9.0(postcss@8.5.33))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.33)(svgo@4.1.0)(uglify-js@3.19.3)):
+  sass-loader@17.1.1(@rspack/core@2.3.3)(sass-embedded@1.108.2)(sass@1.108.2)(webpack@5.113.0(clean-css@5.3.3)(cssnano@9.9.0(postcss@8.5.33))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.33)(svgo@4.1.0)(uglify-js@3.19.3)):
     optionalDependencies:
       '@rspack/core': 2.3.3
       sass: 1.108.2
@@ -19694,6 +19788,8 @@ snapshots:
       update-check: 1.5.4
     transitivePeerDependencies:
       - supports-color
+
+  set-blocking@2.0.0: {}
 
   set-function-length@1.2.2:
     dependencies:
@@ -19965,55 +20061,55 @@ snapshots:
       postcss: 8.5.33
       postcss-selector-parser: 7.2.1
 
-  stylelint-config-hope@13.0.0(postcss-html@2.0.1(postcss@8.5.33))(postcss@8.5.33)(stylelint@18.0.0):
+  stylelint-config-hope@13.0.0(postcss-html@2.0.1(postcss@8.5.33))(postcss@8.5.33)(stylelint@18.1.0):
     dependencies:
-      stylelint: 18.0.0
-      stylelint-config-standard: 41.0.0(stylelint@18.0.0)
-      stylelint-config-standard-scss: 18.0.0(postcss@8.5.33)(stylelint@18.0.0)
-      stylelint-order: 8.1.3(stylelint@18.0.0)
+      stylelint: 18.1.0
+      stylelint-config-standard: 41.0.0(stylelint@18.1.0)
+      stylelint-config-standard-scss: 18.0.0(postcss@8.5.33)(stylelint@18.1.0)
+      stylelint-order: 8.1.3(stylelint@18.1.0)
     optionalDependencies:
       postcss-html: 2.0.1(postcss@8.5.33)
     transitivePeerDependencies:
       - postcss
 
-  stylelint-config-html@2.0.0(postcss-html@2.0.1(postcss@8.5.33))(stylelint@18.0.0):
+  stylelint-config-html@2.0.0(postcss-html@2.0.1(postcss@8.5.33))(stylelint@18.1.0):
     dependencies:
       postcss-html: 2.0.1(postcss@8.5.33)
-      stylelint: 18.0.0
+      stylelint: 18.1.0
 
-  stylelint-config-recommended-scss@18.0.0(postcss@8.5.33)(stylelint@18.0.0):
+  stylelint-config-recommended-scss@18.0.0(postcss@8.5.33)(stylelint@18.1.0):
     dependencies:
       postcss-scss: 4.0.9(postcss@8.5.33)
-      stylelint: 18.0.0
-      stylelint-config-recommended: 19.0.0(stylelint@18.0.0)
-      stylelint-scss: 7.5.0(stylelint@18.0.0)
+      stylelint: 18.1.0
+      stylelint-config-recommended: 19.0.0(stylelint@18.1.0)
+      stylelint-scss: 7.5.0(stylelint@18.1.0)
     optionalDependencies:
       postcss: 8.5.33
 
-  stylelint-config-recommended@19.0.0(stylelint@18.0.0):
+  stylelint-config-recommended@19.0.0(stylelint@18.1.0):
     dependencies:
-      stylelint: 18.0.0
+      stylelint: 18.1.0
 
-  stylelint-config-standard-scss@18.0.0(postcss@8.5.33)(stylelint@18.0.0):
+  stylelint-config-standard-scss@18.0.0(postcss@8.5.33)(stylelint@18.1.0):
     dependencies:
-      stylelint: 18.0.0
-      stylelint-config-recommended-scss: 18.0.0(postcss@8.5.33)(stylelint@18.0.0)
-      stylelint-config-standard: 41.0.0(stylelint@18.0.0)
+      stylelint: 18.1.0
+      stylelint-config-recommended-scss: 18.0.0(postcss@8.5.33)(stylelint@18.1.0)
+      stylelint-config-standard: 41.0.0(stylelint@18.1.0)
     optionalDependencies:
       postcss: 8.5.33
 
-  stylelint-config-standard@41.0.0(stylelint@18.0.0):
+  stylelint-config-standard@41.0.0(stylelint@18.1.0):
     dependencies:
-      stylelint: 18.0.0
-      stylelint-config-recommended: 19.0.0(stylelint@18.0.0)
+      stylelint: 18.1.0
+      stylelint-config-recommended: 19.0.0(stylelint@18.1.0)
 
-  stylelint-order@8.1.3(stylelint@18.0.0):
+  stylelint-order@8.1.3(stylelint@18.1.0):
     dependencies:
       postcss: 8.5.33
       postcss-sorting: 10.0.0(postcss@8.5.33)
-      stylelint: 18.0.0
+      stylelint: 18.1.0
 
-  stylelint-scss@7.5.0(stylelint@18.0.0):
+  stylelint-scss@7.5.0(stylelint@18.1.0):
     dependencies:
       '@csstools/css-calc': 3.4.4(@csstools/css-parser-algorithms@4.0.3(@csstools/css-tokenizer@4.0.3))(@csstools/css-tokenizer@4.0.3)
       '@csstools/css-parser-algorithms': 4.0.3(@csstools/css-tokenizer@4.0.3)
@@ -20026,9 +20122,9 @@ snapshots:
       postcss-resolve-nested-selector: 0.1.7
       postcss-selector-parser: 7.2.1
       postcss-value-parser: 4.2.0
-      stylelint: 18.0.0
+      stylelint: 18.1.0
 
-  stylelint@18.0.0:
+  stylelint@18.1.0:
     dependencies:
       '@csstools/css-calc': 3.4.4(@csstools/css-parser-algorithms@4.0.3(@csstools/css-tokenizer@4.0.3))(@csstools/css-tokenizer@4.0.3)
       '@csstools/css-parser-algorithms': 4.0.3(@csstools/css-tokenizer@4.0.3)
@@ -20458,7 +20554,7 @@ snapshots:
       '@types/unist': 3.0.3
       vfile-message: 4.0.4
 
-  video.js@10.5.0: {}
+  video.js@10.6.0: {}
 
   vite@8.3.8(@types/node@22.20.5)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.108.2)(sass@1.108.2)(terser@5.51.2)(yaml@2.9.1):
     dependencies:
@@ -20760,6 +20856,8 @@ snapshots:
       is-weakmap: 2.0.2
       is-weakset: 2.0.4
 
+  which-module@2.0.1: {}
+
   which-typed-array@1.1.24:
     dependencies:
       available-typed-arrays: 1.0.7
@@ -20903,6 +21001,12 @@ snapshots:
       '@types/trusted-types': 2.0.7
       workbox-core: 7.4.1
 
+  wrap-ansi@6.2.0:
+    dependencies:
+      ansi-styles: 4.3.0
+      string-width: 4.2.3
+      strip-ansi: 6.0.1
+
   wrap-ansi@7.0.0:
     dependencies:
       ansi-styles: 4.3.0
@@ -20954,6 +21058,8 @@ snapshots:
     dependencies:
       sax: 1.6.1
 
+  y18n@4.0.3: {}
+
   y18n@5.0.8: {}
 
   yallist@3.1.1: {}
@@ -20964,9 +21070,28 @@ snapshots:
 
   yaml@2.9.1: {}
 
+  yargs-parser@18.1.3:
+    dependencies:
+      camelcase: 5.3.1
+      decamelize: 1.2.0
+
   yargs-parser@21.1.1: {}
 
   yargs-parser@22.0.0: {}
+
+  yargs@15.4.1:
+    dependencies:
+      cliui: 6.0.0
+      decamelize: 1.2.0
+      find-up: 4.1.0
+      get-caller-file: 2.0.5
+      require-directory: 2.1.1
+      require-main-filename: 2.0.0
+      set-blocking: 2.0.0
+      string-width: 4.2.3
+      which-module: 2.0.1
+      y18n: 4.0.3
+      yargs-parser: 18.1.3
 
   yargs@17.7.3:
     dependencies:

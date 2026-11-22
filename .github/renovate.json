@@ -20,6 +20,15 @@
       "matchPackageNames": ["vuepress", "@vuepress/**", "vuepress-**"]
     },
     {
+      "groupName": "oxc",
+      "matchPackageNames": [
+        "oxc-config-hope",
+        "oxfmt",
+        "oxlint",
+        "oxlint-tsgolint"
+      ]
+    },
+    {
       "matchPackageNames": ["vite"],
       "matchUpdateTypes": ["patch"]
     },

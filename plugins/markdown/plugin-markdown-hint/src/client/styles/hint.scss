@@ -23,7 +23,7 @@
 
   .hint-container-title {
     position: relative;
-    margin-block: 0.75em;
+    margin-block: var(--hint-title-margin);
     font-weight: 600;
     line-height: 1.25;
   }
@@ -34,9 +34,9 @@
   &.tip,
   &.warning,
   &.caution {
-    margin-block: 0.75rem;
-    padding: 0.25em 1em;
-    border-radius: 0.5em;
+    margin-block: var(--hint-container-margin);
+    padding: var(--hint-container-padding);
+    border-radius: var(--hint-container-radius);
 
     color: inherit;
 
@@ -78,6 +78,11 @@
     a {
       color: var(--vp-c-accent);
     }
+  }
+
+  // Containers rendered without a title keep a smaller vertical padding
+  &.no-title {
+    padding-block: var(--hint-container-no-title-padding);
   }
 
   &.important {
@@ -145,9 +150,9 @@
 
     display: block;
 
-    margin-block: 0.75rem;
-    padding: 1.25rem 1rem;
-    border-radius: 0.5rem;
+    margin-block: var(--hint-details-margin);
+    padding: var(--hint-details-padding);
+    border-radius: var(--hint-details-radius);
 
     background: var(--detail-c-bg);
 

@@ -70,6 +70,20 @@ The container can contain a title only:
 
 ::::
 
+To render a container without a title, add the `{no-title}` marker at the end of the container info string. The marker is removed and the title is omitted:
+
+:::: preview
+
+::: tip {no-title}
+
+An untitled tip container.
+
+:::
+
+::::
+
+`{no-title}` is ignored by the `details` container, which always needs a summary.
+
 The plugin also provides an `alert` option to support gfm alerts:
 
 ```md
@@ -139,3 +153,11 @@ Default title text for info block.
 Default title text for details block.
 
 :::
+
+## Styles
+
+You can customize the style via CSS variables:
+
+@[code](@vuepress/plugin-markdown-hint/src/client/styles/vars.css)
+
+The `details` container uses the `--detail-c-*` variables, and `danger` is rendered as a `caution` container.
