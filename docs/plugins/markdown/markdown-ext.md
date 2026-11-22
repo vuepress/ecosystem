@@ -118,6 +118,22 @@ You can use any mustache syntax as raw text in `v-pre` container:
 
 ::::
 
+### raw container {#raw-container}
+
+You can use the `raw` container to wrap content in a `<div class="vp-raw">` element. This is useful when documenting component libraries, where the wrapped content should be kept out of the theme's documentation styles.
+
+The plugin only provides the wrapper markup; it does not isolate styles itself. To keep the theme styles out of the wrapped content, the theme has to exclude `.vp-raw` from its documentation styles (for example with PostCSS, like VitePress's `postcssIsolateStyles`).
+
+:::: preview
+
+::: raw
+
+Hello.
+
+:::
+
+::::
+
 ## Options
 
 ::: fields
@@ -165,6 +181,10 @@ Whether to enable component fence support.
 @`vPre` type=boolean
 
 Whether to enable v-pre wrapper.
+
+@`raw` type=boolean
+
+Whether to enable raw wrapper.
 
 @`cjkFriendly` type=boolean
 
