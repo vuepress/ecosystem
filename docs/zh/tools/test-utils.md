@@ -27,7 +27,7 @@ export default defineConfig({
 
 若要测试 `.vue` 单文件组件，按常规在 `plugins` 中加入 Vue 插件（如 `@vitejs/plugin-vue`）即可。
 
-若你的包使用了 `resolve.alias` 无法表达的模块别名（如 `@vuepress/theme-default` 的 `@theme/*`，它可能落到不同目录），请给插件传入 `resolve` 函数。
+若你的包使用了 `resolve.alias` 无法表达的模块别名（如 `@vuepress/theme-classic` 的 `@theme/*`，它可能落到不同目录），请给插件传入 `resolve` 函数。
 
 ```ts title="vitest.config.ts"
 export default defineConfig({
@@ -89,7 +89,7 @@ await client.router.push('/other/')
 
 `content` 选项是当前页面的内容（即 page chunk），由布局渲染它。`vuepress/client` 的 `Content` 组件就是默认布局，因此未指定布局时内容会被直接渲染。若想不经过布局与客户端配置的根组件、直接渲染单个组件，请改用 `rootComponent` 选项。
 
-`clientConfigs` 接受插件与主题的客户端配置，并应用它们的 `setup`、`enhance`、`layouts` 与 `rootComponents`。当某个组合式 API 依赖客户端配置提供的 provider 时，这是必须的。例如 `@vuepress/theme-default` 的主题数据由 `useThemeData()` 读取，而它由主题数据插件提供，因此必须把该插件的客户端配置传给 `clientConfigs`。
+`clientConfigs` 接受插件与主题的客户端配置，并应用它们的 `setup`、`enhance`、`layouts` 与 `rootComponents`。当某个组合式 API 依赖客户端配置提供的 provider 时，这是必须的。例如 `@vuepress/theme-classic` 的主题数据由 `useThemeData()` 读取，而它由主题数据插件提供，因此必须把该插件的客户端配置传给 `clientConfigs`。
 
 ### 测试选项组合
 
@@ -172,7 +172,7 @@ export default defineConfig({
 
 ### 测试颜色模式
 
-`setColorMode()` 会伪造 `@vuepress/theme-default` 用来解析夜间模式的两处来源：`(prefers-color-scheme: dark)` 媒体查询与 `vuepress-color-scheme` 本地存储键，同时设置 `<html>` 上的 `data-theme`。其他媒体查询会转发给真实的 `window.matchMedia()`。
+`setColorMode()` 会伪造 `@vuepress/theme-classic` 用来解析夜间模式的两处来源：`(prefers-color-scheme: dark)` 媒体查询与 `vuepress-color-scheme` 本地存储键，同时设置 `<html>` 上的 `data-theme`。其他媒体查询会转发给真实的 `window.matchMedia()`。
 
 ```ts
 // @vitest-environment happy-dom
@@ -231,7 +231,7 @@ app.cleanup()
 
 @`resolve` type=`(id: string) => string | undefined`
 
-解析 `resolve.alias` 无法表达的模块 id，如 `@vuepress/theme-default` 的 `@theme/*`，或仅在构建期存在的子路径别名（如 `@vuepress/plugin-comment/service`）。它会对每次导入调用，需返回文件路径或 `undefined`。通过 `stubModule()` 注册的模块会先于它被解析。
+解析 `resolve.alias` 无法表达的模块 id，如 `@vuepress/theme-classic` 的 `@theme/*`，或仅在构建期存在的子路径别名（如 `@vuepress/plugin-comment/service`）。它会对每次导入调用，需返回文件路径或 `undefined`。通过 `stubModule()` 注册的模块会先于它被解析。
 
 ::::
 

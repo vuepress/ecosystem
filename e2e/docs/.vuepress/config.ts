@@ -26,7 +26,7 @@ import { replaceAssetsPlugin } from '@vuepress/plugin-replace-assets'
 import { sassPalettePlugin } from '@vuepress/plugin-sass-palette'
 import { sharePlugin } from '@vuepress/plugin-share'
 import { watermarkPlugin } from '@vuepress/plugin-watermark'
-import { defaultTheme } from '@vuepress/theme-default'
+import { themeClassic } from '@vuepress/theme-classic'
 import { defineUserConfig } from 'vuepress/cli'
 import { path } from 'vuepress/utils'
 
@@ -68,7 +68,7 @@ export default defineUserConfig({
         ? rspackBundler()
         : viteBundler(),
 
-  theme: defaultTheme({
+  theme: themeClassic({
     hostname: 'https://ecosystem-e2e-test.com',
     logo: 'https://v2.vuepress.vuejs.org/images/hero.png',
     navbar: [

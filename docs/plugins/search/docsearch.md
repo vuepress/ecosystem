@@ -82,7 +82,7 @@ new Crawler({
         return helpers.docsearch({
           recordProps: {
             lvl0: {
-              selectors: '.vp-sidebar-heading.active',
+              selectors: '.vp-sidebar-item.level-0.has-active > .item .text',
               defaultValue: 'Documentation',
             },
             lvl1: '[vp-content] h1',
@@ -170,7 +170,7 @@ new Crawler({
 })
 ```
 
-The `recordProps` above is configured for the default theme. You may need to adjust the selectors to match your custom theme structure.
+The `recordProps` above is configured for the default theme. The `lvl0` selector matches the sidebar of the default theme (`@vuepress/theme-classic` uses `.vp-sidebar-heading.active` instead). You may need to adjust the selectors to match your custom theme structure.
 
 **Note:** The `initialIndexSettings.YOUR_INDEX_NAME.attributesForFaceting` field must include `'lang'` for this plugin to function correctly with multi-language support.
 :::

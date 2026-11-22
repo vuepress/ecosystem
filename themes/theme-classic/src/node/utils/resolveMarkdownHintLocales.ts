@@ -1,0 +1,29 @@
+import type { MarkdownHintPluginLocaleData } from '@vuepress/plugin-markdown-hint'
+import type { LocaleConfig } from 'vuepress/shared'
+
+import type { ClassicThemeData } from '../../shared/index.js'
+
+/**
+ * Resolve options for `@vuepress/plugin-markdown-container`
+ *
+ * For custom containers default title
+ *
+ * @param localeOptions - Locales config from theme options
+ * @returns Locales config for `@vuepress/plugin-markdown-container`
+ */
+export const resolveMarkdownHintLocales = (
+  localeOptions: ClassicThemeData,
+): LocaleConfig<MarkdownHintPluginLocaleData> =>
+  Object.entries(localeOptions.locales ?? {}).reduce<
+    LocaleConfig<MarkdownHintPluginLocaleData>
+  >((result, [key, value]) => {
+    result[key] = {}
+
+    if (value.tip) result[key].tip = value.tip
+    if (value.warning) result[key].warning = value.warning
+    if (value.danger) result[key].caution = value.danger
+    if (value.important) result[key].important = value.important
+    if (value.note) result[key].note = value.note
+
+    return result
+  }, {})

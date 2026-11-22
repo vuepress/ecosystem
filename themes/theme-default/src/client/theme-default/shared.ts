@@ -1,0 +1,290 @@
+import type { HeadConfig, SiteData } from '../../shared/types.js'
+
+export type {
+  DefaultTheme,
+  HeadConfig,
+  Header,
+  LocaleConfig,
+  SiteData,
+  ThemeConfig,
+  ThemeContributor,
+  ThemeLayout,
+  ThemePageData,
+  ThemePluginsOptions,
+} from '../../shared/types.js'
+
+export const EXTERNAL_URL_RE = /^(?:[a-z]+:|\/\/)/i
+export const APPEARANCE_KEY = 'vuepress-color-scheme'
+
+// iconify's icon/collection name grammar
+const iconNameRE = /^[a-z0-9]+(?:-[a-z0-9]+)*$/
+
+/**
+ * Parses a fully qualified `collection:name` icon name, corresponding to the
+ * `vpi-<collection>-<name>` class. Returns null for anything else, keeping
+ * malformed input out of generated selectors and class attributes.
+ */
+export function parseIconName(
+  name: string,
+): { collection: string; icon: string } | null {
+  const colon = name.indexOf(':')
+  if (colon === -1) return null
+  const collection = name.slice(0, colon)
+  const icon = name.slice(colon + 1)
+  if (!iconNameRE.test(collection) || !iconNameRE.test(icon)) return null
+  return { collection, icon }
+}
+
+/**
+ * Placeholder prepended to SSR-emitted URLs when base is relative, later
+ * replaced with each page's `../` prefix back to the site root.
+ */
+export const RELATIVE_BASE_SENTINEL = '/__VP_BASE__/'
+
+export function isRelativeBase(base: string): boolean {
+  return base === './'
+}
+
+/**
+ * The ../-prefix that leads from `relativePath`'s directory back to the site
+ * root ('./' for root-level pages).
+ */
+export function relativePathToRoot(relativePath: string): string {
+  const depth = relativePath.split('/').length - 1
+  return depth ? '../'.repeat(depth) : './'
+}
+
+/**
+ * Join two paths, collapsing slash collisions but keeping the `//` that follows
+ * a protocol.
+ */
+export function joinPath(base: string, path: string): string {
+  const protocol = /^(?:[a-z]+:)?\/\//i.exec(base)?.[0] ?? ''
+  return protocol + `${base.slice(protocol.length)}${path}`.replace(/\/+/g, '/')
+}
+
+const HASH_WITHOUT_FRAGMENT_RE = /#.*?(?=:~:|$)/
+const HASH_OR_QUERY_RE = /[?#].*$/
+const INDEX_OR_EXT_RE = /(?:(^|\/)index)?(?:\.(?:md|html))?$/
+
+// https://github.com/rollup/rollup/blob/fec513270c6ac350072425cc045db367656c623b/src/utils/sanitizeFileName.ts
+const INVALID_CHAR_REGEX = /[\u0000-\u001F"#$&*+,:;<=>?[\]^`{|}\u007F]/g
+const DRIVE_LETTER_REGEX = /^[a-z]:/i
+
+const KNOWN_EXTENSIONS = new Set()
+
+const shellLangs = ['shellscript', 'shell', 'bash', 'sh', 'zsh']
+
+export function isActive(
+  currentPath: string,
+  currentHash: string,
+  matchPath: string,
+  asRegex: boolean = false,
+  skipHashCheck: boolean = false,
+): boolean {
+  currentPath = normalize(`/${currentPath}`)
+
+  if (asRegex) {
+    return new RegExp(matchPath).test(currentPath)
+  }
+
+  if (normalize(matchPath) !== currentPath) {
+    return false
+  }
+
+  if (skipHashCheck) {
+    return true
+  }
+
+  const hashMatch = matchPath.match(HASH_WITHOUT_FRAGMENT_RE)
+
+  if (hashMatch) {
+    return currentHash === hashMatch[0]
+  }
+
+  return true
+}
+
+export function normalize(path: string): string {
+  return decodeURI(path)
+    .replace(HASH_OR_QUERY_RE, '')
+    .replace(INDEX_OR_EXT_RE, '$1')
+}
+
+export function isExternal(path: string): boolean {
+  return EXTERNAL_URL_RE.test(path)
+}
+
+export function getLocaleForPath(
+  siteData: SiteData | undefined,
+  relativePath: string,
+): string {
+  return (
+    Object.keys(siteData?.locales || {}).find(
+      (key) =>
+        key !== 'root' &&
+        !isExternal(key) &&
+        isActive(relativePath, '', `^/${key}/`, true),
+    ) || 'root'
+  )
+}
+
+export function mergeHead(...headArrays: HeadConfig[][]): HeadConfig[] {
+  const merged: HeadConfig[] = []
+  const keyMap = new Map<string, number>()
+
+  for (const current of headArrays) {
+    for (const tag of current) {
+      const key = getHeadKey(tag)
+
+      if (key == null) {
+        merged.push(tag)
+        continue
+      }
+
+      const existingIndex = keyMap.get(key)
+
+      if (existingIndex != null) {
+        merged[existingIndex] = tag // replace existing tag
+      } else {
+        keyMap.set(key, merged.length)
+        merged.push(tag)
+      }
+    }
+  }
+
+  return merged
+}
+
+// any element is keyed by its `id`; a meta tag without one is keyed by its
+// first attribute other than `content` (e.g. `name`, `property`, `http-equiv`)
+function getHeadKey([type, attrs]: HeadConfig): string | undefined {
+  if (attrs.id) return `id=${attrs.id}`
+  if (type !== 'meta') return undefined
+  for (const name in attrs) {
+    if (name !== 'content') return `${name}=${attrs[name]}`
+  }
+
+  return undefined
+}
+
+export function sanitizeFileName(name: string): string {
+  const match = DRIVE_LETTER_REGEX.exec(name)
+  const driveLetter = match ? match[0] : ''
+
+  return (
+    driveLetter +
+    name
+      .slice(driveLetter.length)
+      .replace(INVALID_CHAR_REGEX, '_')
+      .replace(/(^|\/)_+(?=[^/]*$)/, '$1')
+  )
+}
+
+/**
+ * Output path of a page's client chunk relative to `assetsDir`, from its hash
+ * map entry. The entry is the chunk's hash, prefixed with the subdirectory the
+ * build put the chunk in when `assetsShards` is set (`<shard>/<hash>`), so the
+ * client never has to guess the layout.
+ */
+export function pageChunkPath(
+  pageName: string,
+  hashEntry: string,
+  ext = '.js',
+): string {
+  const dir = hashEntry.lastIndexOf('/') + 1
+  return `${hashEntry.slice(0, dir)}${pageName}.${hashEntry.slice(dir)}${ext}`
+}
+
+export function slash(p: string): string {
+  return p.replace(/\\/g, '/')
+}
+
+export function treatAsHtml(filename: string): boolean {
+  if (KNOWN_EXTENSIONS.size === 0) {
+    const extraExts =
+      (globalThis as any).process?.env?.VITE_EXTRA_EXTENSIONS ||
+      (import.meta as any).env?.VITE_EXTRA_EXTENSIONS ||
+      ''
+
+    // md, html? are intentionally omitted
+    ;(
+      '3g2,3gp,aac,ai,apng,au,avif,bin,bmp,cer,class,conf,crl,css,csv,dll,' +
+      'doc,eps,epub,exe,gif,gz,ics,ief,jar,jpe,jpeg,jpg,js,json,jsonld,m4a,' +
+      'man,mid,midi,mjs,mov,mp2,mp3,mp4,mpe,mpeg,mpg,mpp,oga,ogg,ogv,ogx,' +
+      'opus,otf,p10,p7c,p7m,p7s,pdf,png,ps,qt,roff,rtf,rtx,ser,svg,t,tif,' +
+      'tiff,tr,ts,tsv,ttf,txt,vtt,wav,weba,webm,webp,woff,woff2,xhtml,xml,' +
+      'yaml,yml,zip' +
+      (extraExts && typeof extraExts === 'string' ? ',' + extraExts : '')
+    )
+      .split(',')
+      .forEach((ext) => KNOWN_EXTENSIONS.add(ext))
+  }
+
+  const ext = filename.split('.').pop()
+
+  return ext == null || !KNOWN_EXTENSIONS.has(ext.toLowerCase())
+}
+
+// same as the default of MiniSearch's `tokenize`
+const SPACE_OR_PUNCTUATION_RE = /[\n\r\p{Z}\p{P}]+/u
+// runs of characters from scripts written without spaces between words
+// (`scx` also covers marks like the prolonged sound mark `ー`)
+const UNSPACED_RUN_RE =
+  /[\p{scx=Han}\p{scx=Hiragana}\p{scx=Katakana}]+|[^\p{scx=Han}\p{scx=Hiragana}\p{scx=Katakana}]+/gu
+const UNSPACED_START_RE = /^[\p{scx=Han}\p{scx=Hiragana}\p{scx=Katakana}]/u
+
+let segmenter: Intl.Segmenter | undefined
+
+/**
+ * Default `tokenize` of the local search. It splits on spaces and punctuation
+ * like MiniSearch does, and additionally segments the runs of Chinese or
+ * Japanese characters inside those words, as they are not separated by spaces.
+ * Everything else is kept as MiniSearch would.
+ *
+ * It is used both when building the index and when searching in the browser. A
+ * browser without `Intl.Segmenter` (e.g. Firefox < 125) falls back to the plain
+ * split, which can't match multi-word queries against an index that was built
+ * with segmentation.
+ *
+ * @internal
+ */
+export function tokenizeSearchText(text: string): string[] {
+  const terms = text.split(SPACE_OR_PUNCTUATION_RE)
+  if (typeof Intl.Segmenter !== 'function') return terms
+  segmenter ??= new Intl.Segmenter(undefined, { granularity: 'word' })
+  return terms.flatMap(
+    (term) =>
+      // an empty term has no runs
+      term
+        .match(UNSPACED_RUN_RE)
+        ?.flatMap((run) =>
+          UNSPACED_START_RE.test(run)
+            ? Array.from(segmenter!.segment(run), (part) => part.segment)
+            : run,
+        ) ?? term,
+  )
+}
+
+// https://github.com/sindresorhus/escape-string-regexp/blob/ba9a4473850cb367936417e97f1f2191b7cc67dd/index.js
+export function escapeRegExp(str: string) {
+  return str.replace(/[|\\{}()[\]^$+*?.]/g, '\\$&').replace(/-/g, '\\x2d')
+}
+
+/** @internal */
+export function escapeHtml(str: string): string {
+  return str
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/&(?![\w#]+;)/g, '&amp;')
+}
+
+type ObjectType = Record<PropertyKey, any>
+export function isObject(value: unknown): value is ObjectType {
+  return Object.prototype.toString.call(value) === '[object Object]'
+}
+
+export function isShell(lang: string): boolean {
+  return shellLangs.includes(lang.toLowerCase())
+}

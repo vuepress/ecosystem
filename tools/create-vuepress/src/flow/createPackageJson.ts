@@ -74,7 +74,7 @@ export const createPackageJson = async ({
     },
     devDependencies: {
       [`@vuepress/bundler-${bundler}`]: devDependencies.vuepress,
-      '@vuepress/theme-default': devDependencies['@vuepress/theme-default'],
+      '@vuepress/theme-classic': devDependencies['@vuepress/theme-classic'],
       'sass-embedded': devDependencies['sass-embedded'],
       ...(bundler === 'webpack'
         ? { 'sass-loader': devDependencies['sass-loader'] }

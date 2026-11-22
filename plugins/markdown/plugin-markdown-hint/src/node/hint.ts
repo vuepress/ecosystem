@@ -131,7 +131,7 @@ export const hint: PluginWithOptions<MarkdownItHintOptions> = (
     })
   })
 
-  // Compatible with @vuepress/theme-default
+  // Compatible with @vuepress/theme-classic
   md.use(container, {
     name: 'danger',
     openRenderer: (tokens, index, _options, env: MarkdownEnv = {}) => {

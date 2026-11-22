@@ -8,7 +8,7 @@ icon: list-checks
 
 This plugin checks for dead links in your markdown files.
 
-This plugin has been integrated into the default theme.
+This plugin has been integrated into the default theme (`@vuepress/theme-default`).
 
 ## Usage
 

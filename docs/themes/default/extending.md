@@ -1,130 +1,227 @@
 ---
-icon: cable
+icon: puzzle
 ---
 
 # Extending
 
-VuePress default theme is widely used by users, so it is designed to be extendable, allowing users to make their own customization with ease.
+The theme renders every page through a single layout component. Pages are differentiated by their [page type](./frontmatter.md#page-type) instead of by their layout name, and the parts of the layout are exposed as slots. That makes a custom page or a custom layout a matter of registering a component and, when the layout of the theme is still wanted, wrapping it.
 
-## Layout Slots
+<NpmBadge package="@vuepress/theme-default" />
 
-Default theme's `Layout` provides some slots:
+## Custom Layouts
 
-- `navbar`
-- `navbar-before`
-- `navbar-after`
-- `sidebar`
-- `sidebar-top`
-- `sidebar-bottom`
-- `page`
-- `page-top`
-- `page-bottom`
-- `page-content-top`
-- `page-content-bottom`
+The theme registers two layouts: `Layout` and `NotFound`. The `layout` frontmatter selects one of the registered layouts by name, and it defaults to `Layout`:
 
-With the help of them, you can add or replace content easily. Here comes an example to introduce how to extend default theme with layout slots.
+```md
+---
+layout: CommentPage
+---
+```
 
-Create a client config file and a local layout, and register the layout in the former:
+A layout is registered in the client config file of the site, `.vuepress/client.ts`:
 
-::: code-tree title=".vuepress" entry="client.ts"
-
-```ts title="client.ts"
+```ts
 import { defineClientConfig } from 'vuepress/client'
 
-import Layout from './layouts/Layout.vue'
+import CommentPage from './layouts/CommentPage.vue'
 
 export default defineClientConfig({
   layouts: {
-    Layout,
+    CommentPage,
   },
 })
 ```
 
-```vue title="layouts/Layout.vue"
-<script setup>
-import ParentLayout from '@vuepress/theme-default/layouts/Layout.vue'
+The name of a layout must be registered, otherwise VuePress throws `Cannot resolve layout: <name>` when the page is rendered. A layout that is registered here replaces the layout of the theme for that page, so it is responsible for the whole page markup.
+
+## Wrapping the Theme Layout
+
+The most common custom layout keeps the theme layout and adds something to it. The default export of `@vuepress/theme-default/client` exposes the layout component as `Layout`, so a wrapper renders it and fills one or more of its slots:
+
+```vue
+<!-- .vuepress/layouts/CommentPage.vue -->
+<script setup lang="ts">
+import theme, { useDarkMode } from '@vuepress/theme-default/client'
+
+const ParentLayout = theme.Layout
+const isDarkMode = useDarkMode()
 </script>
 
 <template>
   <ParentLayout>
     <template #page-bottom>
-      <div class="my-footer">This is my custom page footer</div>
+      <CommentService :darkmode="isDarkMode" />
     </template>
   </ParentLayout>
 </template>
-
-<style lang="css">
-.my-footer {
-  text-align: center;
-}
-</style>
 ```
 
+The wrapper inherits the page type, the sidebar, the navbar and the dark mode of the theme, so `page-bottom` is filled on every page type that renders it.
+
+## Layout Slots
+
+The slots below are forwarded by the layout of the theme. A slot only renders on the page types that render its area: the home slots render on a `type: home` page, the document slots on a `type: doc` page, and the page slots on a `type: page` page.
+
+### Layout
+
+| Slot            | Description                                  |
+| --------------- | -------------------------------------------- |
+| `layout-top`    | Above the navbar, inside the page container. |
+| `layout-bottom` | Below the footer, inside the page container. |
+
+### Navbar
+
+| Slot                        | Description                                                                    |
+| --------------------------- | ------------------------------------------------------------------------------ |
+| `nav-bar-title-before`      | Before the logo and the site title.                                            |
+| `nav-bar-title-after`       | After the logo and the site title.                                             |
+| `nav-bar-content-before`    | Before the navigation items.                                                   |
+| `nav-bar-content-after`     | After the navigation items, before the appearance switch and the social links. |
+| `nav-screen-content-before` | At the top of the mobile menu.                                                 |
+| `nav-screen-content-after`  | At the bottom of the mobile menu.                                              |
+
+### Sidebar
+
+| Slot                 | Description                         |
+| -------------------- | ----------------------------------- |
+| `sidebar-nav-before` | Above the sidebar navigation items. |
+| `sidebar-nav-after`  | Below the sidebar navigation items. |
+
+### Document Page
+
+| Slot                | Description                                                         |
+| ------------------- | ------------------------------------------------------------------- |
+| `doc-top`           | Above the content and the aside.                                    |
+| `doc-before`        | Above the content, below the document title.                        |
+| `doc-after`         | Below the content, above the footer of the document.                |
+| `doc-bottom`        | Below the content and the aside.                                    |
+| `doc-footer-before` | Above the edit link, the last updated time and the page navigation. |
+
+### Aside
+
+| Slot                   | Description                              |
+| ---------------------- | ---------------------------------------- |
+| `aside-top`            | Above the outline.                       |
+| `aside-outline-before` | Above the outline list, below its title. |
+| `aside-outline-after`  | Below the outline list.                  |
+| `aside-ads-before`     | Above the aside ads, below the outline.  |
+| `aside-ads-after`      | Below the aside ads.                     |
+| `aside-bottom`         | Below everything else in the aside.      |
+
+### Page
+
+| Slot          | Description                                                             |
+| ------------- | ----------------------------------------------------------------------- |
+| `page-top`    | Above the page content, inside the page container.                      |
+| `page-bottom` | Below the page content, inside the page container.                      |
+| `not-found`   | The content of the 404 page. It replaces the default not-found content. |
+
+### Home Page
+
+| Slot                               | Description                                                           |
+| ---------------------------------- | --------------------------------------------------------------------- |
+| `home-hero-before`                 | Above the hero section.                                               |
+| `home-hero-info-before`            | At the top of the hero information.                                   |
+| `home-hero-info`                   | The hero information. It replaces the name, the text and the tagline. |
+| `home-hero-info-after`             | At the bottom of the hero information.                                |
+| `home-hero-actions-before-actions` | Above the hero actions.                                               |
+| `home-hero-actions-after`          | Below the hero actions.                                               |
+| `home-hero-image`                  | The hero image.                                                       |
+| `home-hero-after`                  | Below the hero section.                                               |
+| `home-features-before`             | Above the features section.                                           |
+| `home-features-after`              | Below the features section, above the content.                        |
+
+## Enhancing the App
+
+The client config file of the site can also register a component globally or run code when the app is created:
+
+```ts
+import { defineClientConfig } from 'vuepress/client'
+
+import MyComponent from './components/MyComponent.vue'
+
+export default defineClientConfig({
+  enhance({ app }) {
+    app.component('MyComponent', MyComponent)
+  },
+})
+```
+
+The theme does the same for the `Badge` component, which is why `<Badge text="new" />` works in Markdown without importing anything.
+
+::: tip
+The enhancement runs on both the server and the client. Guard browser-only code with `onMounted` or wrap the component in `<ClientOnly>`, so that the server render does not fail.
 :::
 
-Then the default `Layout` layout has been overridden by your own local layout, which will add a custom footer to every normal pages in default theme (excluding homepage):
+## Custom Pages
 
-![extending-a-theme](/images/cookbook/extending-a-theme-01.png)
+A page with `type: content` renders its content without the layout of the theme — no navbar, no sidebar, no footer. Use it for a landing page or an embedded page whose markup is written entirely in the Markdown file:
 
-## Components Replacement
-
-The layout slots are useful, but sometimes you might find it's not flexible enough. Default theme also provides the ability to replace a single component.
-
-Default theme has registered [alias](https://v2.vuepress.vuejs.org/plugin-api.html#alias) for every [non-global components](https://github.com/vuepress/ecosystem/tree/main/themes/theme-default/src/client/components) with a `@theme` prefix. For example, the alias of `HomeFooter.vue` is `@theme/HomeFooter.vue`.
-
-Then, if you want to replace the `HomeFooter.vue` component, just override the alias in your config file `.vuepress/config.ts`:
-
-```ts title=".vuepress/config.ts"
-import { defaultTheme } from '@vuepress/theme-default'
-import { defineUserConfig } from 'vuepress'
-import { path } from 'vuepress/utils'
-
-const __dirname = import.meta.dirname
-
-export default defineUserConfig({
-  theme: defaultTheme(),
-  alias: {
-    '@theme/HomeFooter.vue': path.resolve(
-      __dirname,
-      './components/MyHomeFooter.vue',
-    ),
-  },
-})
+```md
+---
+type: content
+---
 ```
 
-## Modifying Behavior
+For a page that needs the theme around it, keep the default layout and add the content through the Markdown file or through a slot. On a home page, the Markdown body renders below the hero and the features, inside the home content container:
 
-Most of the core behaviors of the default theme have been extracted into a composable API or util function, and also provide [aliases](https://v2.vuepress.vuejs.org/zh/reference/plugin-api.html#alias) with the `@theme` prefix.
+```md
+---
+type: home
 
-For example, if you want to add some default values ​​to the theme data of the default theme, you can override the `useThemeData` function of `@theme/useThemeData`.
+hero:
+  name: My Project
+  text: A short description.
+---
 
-## Developing a Child Theme
-
-Instead of extending the default theme directly in `.vuepress/config.ts` and `.vuepress/client.ts`, you can also develop your own theme extending the default theme:
-
-```ts title=".vuepress/config.ts"
-import type { DefaultThemeOptions } from '@vuepress/theme-default'
-import { defaultTheme } from '@vuepress/theme-default'
-import type { Theme } from 'vuepress/core'
-import { path } from 'vuepress/utils'
-
-const __dirname = import.meta.dirname
-
-export const childTheme = (options: DefaultThemeOptions): Theme => ({
-  name: 'vuepress-theme-child',
-  extends: defaultTheme(options),
-
-  // override layouts in child theme's client config file
-  // notice that you would build ts to js before publishing to npm,
-  // so this should be the path to the js file
-  clientConfigFile: path.resolve(__dirname, './client.js'),
-
-  // override component alias
-  alias: {
-    '@theme/HomeFooter.vue': path.resolve(
-      __dirname,
-      './components/MyHomeFooter.vue',
-    ),
-  },
-})
+Any Markdown content here is rendered below the features section.
 ```
+
+## Reading the Layout State
+
+A custom layout can read the state of the layout with `useLayout()` from `@vuepress/theme-default/client`:
+
+```ts
+import { useLayout } from '@vuepress/theme-default/client'
+
+const {
+  isHome,
+  sidebar,
+  sidebarGroups,
+  hasSidebar,
+  isSidebarEnabled,
+  hasAside,
+  leftAside,
+  headers,
+  hasLocalNav,
+} = useLayout()
+```
+
+`headers` is the outline tree of the current page, `sidebarGroups` the sidebar items grouped by section, and `hasAside` / `leftAside` tell whether the aside renders and on which side.
+
+## Extending the Theme Options
+
+The theme factory returns a theme object that can be decorated, since `themeDefault()` returns the object VuePress consumes. Add plugins to it, for example:
+
+```ts
+import { themeDefault } from '@vuepress/theme-default'
+
+import { myPlugin } from './plugins/myPlugin.js'
+
+const theme = themeDefault({
+  siteTitle: 'My Project',
+})
+
+export default {
+  ...theme,
+  plugins: [...(theme.plugins ?? []), myPlugin()],
+}
+```
+
+Keep the `clientConfigFile` of the base theme: it registers `Layout` and `NotFound` and provides the dark mode state. The layout of the theme is not built from replaceable aliases — unlike the classic theme, the default theme exposes no `@theme/*` alias — so extend it through its slots, or write a layout that renders its own markup.
+
+## Next
+
+- [Built-in Components](./components.md) — the components the theme exports.
+- [Frontmatter](./frontmatter.md) — the `layout` and `type` frontmatter.
+- [Config](./config.md) — the theme options.

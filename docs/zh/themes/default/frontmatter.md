@@ -1,245 +1,322 @@
 ---
-icon: captions
+icon: file-text
 ---
 
 # Frontmatter
 
-<NpmBadge package="@vuepress/theme-default" />
-
-## 所有页面 {#all-pages}
-
-本章节中的 Frontmatter 会在所有类型的页面中生效。
-
-::: fields
-@`externalLinkIcon` type=boolean
-
-是否在外部链接上显示外部链接图标。
-
-参考：[externalLinkIcon](./config.md#externallinkicon)
-
-@`navbar` type=boolean
-
-是否在当前页面展示导航栏。
-
-如果你在主题配置中禁用了导航栏，那么该 Frontmatter 将不会生效。
-
-参考：[navbar](./config.md#navbar)
-
-@`pageClass` type=string
-
-为当前页面添加额外的类名。
+Frontmatter 配置单个页面，而[主题配置](./config.md)配置整个站点。本页记录的字段是主题会读取的字段；VuePress 核心和插件提供的字段（`title`、`lang`、`description`、`head`、`icon`、`date` 等）与平时一样生效，这里不再重复。
 
 ```md
 ---
-pageClass: custom-page-class
+type: doc
+outline: [2, 3]
+editLink: false
 ---
+
+# Page Title
 ```
 
-然后你可以在 `.vuepress/styles/index.scss` 文件中为这个页面添加自定义样式：
+## 页面类型 {#page-type}
 
-```scss
-[vp-container].custom-page-class {
-  /* 页面样式 */
-}
-```
+:::: fields
+@`type` type=`'home' | 'doc' | 'page' | 'content'` default=`'doc'`
 
-参考：[Style 文件](./styles.md#style-file)
+页面渲染的布局。主题只注册一个布局，并根据该字段切换外壳：
 
-:::
+- `home`：首页外壳 —— Hero、特性，然后是页面内容。
+- `doc`：文档页面外壳 —— 带大纲侧边栏和文档页脚的正文。这是默认值。
+- `page`：页面外壳 —— 只有 Markdown 内容，没有大纲侧边栏和文档页脚。
+- `content`：完全没有布局外壳。页面渲染裸 Markdown 内容，没有导航栏、侧边栏或页脚。
+
+@`layout` type=string
+
+在[客户端配置](./extending.md#custom-layouts)中注册的自定义布局的名称。设置它之后，`type` 不再使用，由该布局自行渲染页面。
+::::
+
+`type: content` 的页面适用于独立页面，例如全屏演示。使用自定义 `layout` 的页面在[继承](./extending.md#custom-layouts)中说明。
 
 ## 首页 {#home-page}
 
-本章节中的 Frontmatter 只会在首页中生效。
+首页是 `type: home` 的页面。主题会先渲染它的 `hero` 和 `features` frontmatter，然后渲染页面的 Markdown 内容，最后渲染站点页脚。
+
+```md
+---
+type: home
+hero:
+  name: Theme Default
+  text: The default theme of VuePress
+  tagline: A thin layout layer ported from VitePress
+  image:
+    src: /logo.svg
+    alt: Theme Default
+  actions:
+    - theme: brand
+      text: Get Started
+      link: /guide/
+    - theme: alt
+      text: GitHub
+      link: https://github.com/vuepress
+features:
+  - title: VitePress-like layout
+    details: Navbar, sidebar, outline, home page and footer, with the same CSS variables.
+  - title: Plugin-driven
+    details: Every non-layout feature is delegated to an ecosystem plugin.
+footer: false
+---
+```
+
+### Hero {#hero}
 
 ::: fields
-@`home` type=boolean
+@`hero.name` type=string
 
-设定该页面是首页还是普通页面。
+项目的名称，渲染为 Hero 中最大的一行。
 
-如果你不设置该 Frontmatter 或将其设为 `false`，则该页面会是一个 [普通页面](#normal-page)。
+@`hero.text` type=string
 
-```md
----
-home: true
----
-```
+Hero 的主标题，渲染在名称下方。
 
-@`heroImage` type=string
+@`hero.tagline` type=string
 
-首页图片的 URL。
+Hero 的标语，渲染在标题下方。
 
-```md
----
-# Public 文件路径
-heroImage: /images/hero.png
-# URL
-heroImage: https://vuepress.vuejs.org/images/hero.png
----
-```
+@`hero.image` type=`DefaultTheme.ThemeableImage`
 
-参考：[指南 > 静态资源 > Public 文件](https://v2.vuepress.vuejs.org/zh/guide/assets.html#public-文件)
+Hero 图片。它接受与 [Logo](./config.md#basic-config) 相同的形态：URL 字符串、`{ src, alt }`，或用于随颜色模式切换的 `{ light, dark, alt }`。图片会渲染在一个装饰框中，并在小屏幕上隐藏。
 
-@`heroImageDark` type=string
+@`hero.actions` type=`ThemeHeroAction[]`
 
-在夜间模式中使用的首页图片的 URL。
+Hero 的按钮。每个操作包含以下字段。
 
-如果你想在夜间模式中使用不同的首页图片，就可以使用该配置项。
+@@`hero.actions[*].text` type=string required
 
-参考：[heroImage](#heroimage) 与 [colorMode](./config.md#colormode)
+按钮的文本。
 
-@`heroAlt` type=string
+@@`hero.actions[*].link` type=string required
 
-首页图片的 `alt` 属性。
+按钮的链接。
 
-如果不设置，则默认使用 [heroText](#herotext)。
+@@`hero.actions[*].theme` type=`'brand' | 'alt'` default=`'brand'`
 
-@`heroHeight` type=number default=`280`
+按钮的样式：`brand` 为填充的主按钮，`alt` 为次要按钮。
 
-首页图片 `<img>` 标签的 `height` 属性。
+@@`hero.actions[*].target` type=string
 
-当你的首页图片高度小于默认值时，你可能需要减小该属性。
+链接的 `target` 属性。
 
-需要注意的是，首页图片的高度同样受到了 CSS 的约束。设置这个属性主要是为了减少由加载首页图片引起的 [累积布局偏移 (CLS)](https://web.dev/cls/)。
+@@`hero.actions[*].rel` type=string
 
-@`heroText` type=`string | null`
-
-首页的大标题。
-
-如果不设置，则默认使用站点 [title](https://v2.vuepress.vuejs.org/zh/reference/config.html#title)。
-
-设置为 `null` 来禁用首页大标题。
-
-@`tagline` type=`string | null`
-
-首页的标语。
-
-如果不设置，则默认使用站点 [description](https://v2.vuepress.vuejs.org/zh/reference/config.html#description)。
-
-设置为 `null` 来禁用首页标语。
-
-@`actions` type=`Array<{ text: string; link: string; type?: 'primary' | 'secondary' }>`
-
-配置首页按钮。
-
-```md
----
-actions:
-  - text: 快速上手
-    link: /zh/guide/getting-started.html
-    type: primary
-  - text: 项目简介
-    link: /zh/guide/introduction.html
-    type: secondary
----
-```
-
-@`features` type=`Array<{ title: string; details: string }>`
-
-配置首页特性列表。
-
-```md
----
-features:
-  - title: 简洁至上
-    details: 以 Markdown 为中心的项目结构，以最少的配置帮助你专注于写作。
-  - title: Vue 驱动
-    details: 享受 Vue 的开发体验，可以在 Markdown 中使用 Vue 组件，又可以使用 Vue 来开发自定义主题。
-  - title: 高性能
-    details: VuePress 会为每个页面预渲染生成静态的 HTML，同时，每个页面被加载的时候，将作为 SPA 运行。
----
-```
-
-@`footer` type=string
-
-首页的页脚。
-
-@`footerHtml` type=boolean
-
-是否允许页脚中使用 HTML。
-
-如果设置为 `true`，那么 [footer](#footer) 会被作为 HTML 代码处理。
-
+链接的 `rel` 属性。
 :::
 
-## 普通页面 {#normal-page}
-
-本章节中的 Frontmatter 只会在普通页面中生效。
+### 特性 {#features}
 
 ::: fields
+@`features` type=`ThemeFeature[]`
+
+显示在 Hero 下方的特性卡片。
+
+@`features[*].icon` type=`DefaultTheme.FeatureIcon`
+
+卡片的图标。它接受：
+
+- 一个 [Iconify](https://iconify.design) 名称，例如 `'mdi:github'` —— 名称必须包含冒号，并由 `@vuepress/plugin-icon` 渲染。
+- 一段 emoji 或内联 SVG 标记的字符串，会作为 HTML 渲染。
+- 一张图片：`{ src, alt? }` 或 `{ light, dark, alt? }` —— 与 Logo 相同的随主题切换图片形态，可选的 `width` 和 `height` 以像素为单位（都默认为 `48`）。
+- 一张包裹在装饰框中的图片：给图片对象加上 `wrap: true`。
+
+@`features[*].title` type=string required
+
+卡片的标题。允许使用 HTML。
+
+@`features[*].details` type=string required
+
+卡片的描述。允许使用 HTML。
+
+@`features[*].link` type=string
+
+整张卡片的链接。
+
+@`features[*].linkText` type=string
+
+设置 `link` 后，显示在卡片底部、紧挨箭头之前的文本。即使不设置它，卡片也可以点击。
+
+@`features[*].target` type=string
+
+卡片链接的 `target` 属性。
+
+@`features[*].rel` type=string
+
+卡片链接的 `rel` 属性。
+:::
+
+### 首页内容 {#home-content}
+
+首页的 Markdown 内容渲染在特性下方，位于主题的文档样式之内。书写方式与文档页面的内容完全相同，但请注意首页不会渲染大纲和文档页脚。
+
+在 frontmatter 中设置 `markdownStyles: false` 可以在不使用文档样式的情况下渲染内容，例如当整个章节都是自定义组件时：
+
+```md
+---
+type: home
+markdownStyles: false
+---
+
+<MyLandingPage />
+```
+
+### 团队与赞助 {#team-and-sponsors}
+
+团队和赞助章节没有 frontmatter 字段：它们由导出的组件在首页内容中组合而成。当它们需要铺满整个视口宽度时，请用 `VPHomeContent` 包裹它们：
+
+```md
+---
+type: home
+---
+
+<VPHomeContent>
+
+## Our Team
+
+<VPTeamPage>
+  <VPTeamPageTitle>
+    <template #title>Our Team</template>
+    <template #lead>The people behind the project.</template>
+  </VPTeamPageTitle>
+  <VPTeamPageSection>
+    <template #title>Core Team</template>
+    <template #members>
+      <VPTeamMembers :members="members" />
+    </template>
+  </VPTeamPageSection>
+</VPTeamPage>
+
+</VPHomeContent>
+
+<script setup>
+import { VPHomeContent, VPTeamPage, VPTeamPageSection, VPTeamPageTitle, VPTeamMembers } from '@vuepress/theme-default/client'
+
+const members = [
+  {
+    avatar: 'https://github.com/vuepress.png',
+    name: 'VuePress',
+    title: 'Maintainer',
+    links: [{ icon: 'github', link: 'https://github.com/vuepress' }],
+  },
+]
+</script>
+```
+
+组件的完整属性列表见[内置组件](./components.md)。
+
+### 首页页脚 {#home-footer}
+
+::: fields
+@`footer` type=boolean default=`true`
+
+是否在本页渲染站点页脚。页脚内容来自 [`footer`](./config.md#basic-config) 主题配置项。
+:::
+
+## 文档页面 {#document-page}
+
+文档页面是没有 `type` 字段、或 `type: doc` 的页面。它会渲染文档外壳：正文、大纲侧边栏，以及包含编辑链接、最后更新时间、贡献者和上一篇/下一篇链接的文档页脚。
+
+以下字段可以针对单个页面覆盖主题配置项：
+
+::: fields
+@`outline` type=`DefaultTheme.Outline | DefaultTheme.Outline['level'] | false`
+
+大纲的标题级别。见 [outline](./config.md#page)。
+
+@`aside` type=`boolean | 'left'`
+
+是否渲染侧边栏，或把它渲染在左侧。见 [aside](./config.md#page)。
+
 @`editLink` type=boolean
 
-是否在本页面中启用 _编辑此页_ 链接。
+是否在本页渲染编辑链接。它不会改变链接目标。
 
-参考：[editLink](./config.md#editlink)
+@`lastUpdated` type=`boolean | number`
 
-@`editLinkPattern` type=string
+是否在本页显示最后更新时间。数字会被用作以毫秒为单位的时间戳，这在 git 历史不可用时很有用：
 
-本页面中 _编辑此页_ 链接的 Pattern。
-
-参考：[editLinkPattern](./config.md#editlinkpattern)
-
-@`lastUpdated` type=boolean
-
-是否在本页面中启用 _最近更新时间戳_。
-
-参考：[lastUpdated](./config.md#lastupdated)
+```md
+---
+lastUpdated: 1700000000000
+---
+```
 
 @`contributors` type=boolean
 
-是否在本页面中启用 _贡献者列表_。
+是否在本页显示贡献者。
 
-参考：[contributors](./config.md#contributors)
+@`prev` type=`string | { text?: string; link?: string; rel?: string; target?: string } | false`
 
-@`sidebar` type=`false | SidebarOptions`
+本页的上一篇页面链接。字符串会被用作链接文本。将其设为 `false` 可隐藏该链接。
 
-配置本页面的侧边栏。
+@`next` type=`string | { text?: string; link?: string; rel?: string; target?: string } | false`
 
-参考：[sidebar](./config.md#sidebar)
+本页的下一篇页面链接，形态与 `prev` 相同。
+
+@`sidebar` type=`DefaultTheme.Sidebar | 'heading' | false`
+
+本页的侧边栏配置。见 [sidebar](./config.md#sidebar)。
 
 @`sidebarDepth` type=number
 
-配置本页面的侧边栏深度。
+本页 `'heading'` 侧边栏的最大标题深度。
+:::
 
-参考：[sidebarDepth](./config.md#sidebardepth)
+默认情况下，上一篇/下一篇链接是页面在侧边栏中的相邻项。链接文本会先回退到侧边栏项目的 `docFooterText`，再回退到项目文本。
 
-@`prev` type=`AutoLinkConfig | string | false`
+## 404 页面 {#404-page}
 
-上一个页面的链接。
+主题注册了一个 `NotFound` 布局。VuePress 会用该布局生成 `404.html` 页面，因此页面会显示主题的未找到界面：错误码、标题、引文和返回主页的链接。
 
-如果你不设置该 Frontmatter，该链接会自动根据侧边栏配置进行推断。
+这些文案通过 [`notFound`](./config.md#basic-config) 主题配置项配置，通常会在 [`locales`](./locale.md) 中按语言翻译。frontmatter 设置 `layout: NotFound` 的页面也会被视为未找到页面。
 
-为了手动配置上一页面的链接，你可以将其设置为一个 `AutoLinkConfig` 对象或者一个字符串：
+## 所有页面 {#all-pages}
 
-- `AutoLinkConfig` 对象应该有一个 `text` 字段和一个 `link` 字段。
-- 字符串应为目标页面文件的路径。它将会被转换为 `AutoLinkConfig` 对象，将页面标题作为 `text`，将页面路由路径作为 `link`。
-- 如果你不想显示上一个页面的链接，可以将其设置为 `false`。
+::: fields
+@`navbar` type=boolean
 
-```md
----
-# AutoLinkConfig
-prev:
-  text: Get Started
-  link: /guide/getting-started.html
+是否在本页显示导航栏。对于不应渲染导航栏的页面，将其设为 `false`。
 
-# AutoLinkConfig - 外部 URL
-prev:
-  text: GitHub
-  link: https://github.com
+@`pageClass` type=string
 
-# 字符串 - 页面文件路径
-prev: /guide/getting-started.md
+添加到本页主题容器上的额外类，便于限定自定义样式的范围：
 
-# 字符串 - 页面文件相对路径
-prev: ../../guide/getting-started.md
----
+```css
+.vp-theme-container.my-page {
+  /* page styles */
+}
 ```
 
-@`next` type=`AutoLinkConfig | string | false`
+样式文件见[样式](./styles.md)。
 
-下一个页面的链接。
+@`markdownStyles` type=boolean
 
-如果你不设置该 Frontmatter，该链接会自动根据侧边栏配置进行推断。
-
-类型和 [prev](#prev) Frontmatter 相同。
-
+是否把首页内容包裹在文档样式中。它只对首页生效。
 :::
+
+## Frontmatter 参考 {#frontmatter-reference}
+
+| 字段             | 类型                                                          | 页面类型 | 参考                                  |
+| ---------------- | ------------------------------------------------------------- | -------- | ------------------------------------- |
+| `type`           | `'home' \| 'doc' \| 'page' \| 'content'`                      | 全部     | [页面类型](#page-type)                |
+| `layout`         | `string`                                                      | 全部     | [继承](./extending.md#custom-layouts) |
+| `navbar`         | `boolean`                                                     | 全部     | [所有页面](#all-pages)                |
+| `pageClass`      | `string`                                                      | 全部     | [所有页面](#all-pages)                |
+| `markdownStyles` | `boolean`                                                     | 首页     | [所有页面](#all-pages)                |
+| `hero`           | `ThemeHero`                                                   | 首页     | [Hero](#hero)                         |
+| `features`       | `ThemeFeature[]`                                              | 首页     | [特性](#features)                     |
+| `footer`         | `boolean`                                                     | 全部     | [首页页脚](#home-footer)              |
+| `outline`        | `DefaultTheme.Outline \| number \| [number, number] \| false` | 文档     | [文档页面](#document-page)            |
+| `aside`          | `boolean \| 'left'`                                           | 文档     | [文档页面](#document-page)            |
+| `editLink`       | `boolean`                                                     | 文档     | [文档页面](#document-page)            |
+| `lastUpdated`    | `boolean \| number`                                           | 文档     | [文档页面](#document-page)            |
+| `contributors`   | `boolean`                                                     | 文档     | [文档页面](#document-page)            |
+| `prev`           | `string \| ThemePageLink \| false`                            | 文档     | [文档页面](#document-page)            |
+| `next`           | `string \| ThemePageLink \| false`                            | 文档     | [文档页面](#document-page)            |
+| `sidebar`        | `DefaultTheme.Sidebar \| 'heading' \| false`                  | 文档     | [文档页面](#document-page)            |
+| `sidebarDepth`   | `number`                                                      | 文档     | [文档页面](#document-page)            |

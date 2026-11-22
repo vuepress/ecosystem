@@ -32,7 +32,7 @@ const presets: Preset[] = ['blog', 'docs']
 export const mainAction = async function (
   this: Command,
   targetDir: string,
-  { bundler, preset, theme = '@vuepress/theme-default' }: CreateOptions,
+  { bundler, preset, theme = '@vuepress/theme-classic' }: CreateOptions,
 ): Promise<void> {
   // get language
   const { lang, locale } = await getLanguage()
@@ -52,7 +52,7 @@ export const mainAction = async function (
     return
   }
 
-  if (theme !== '@vuepress/theme-default') console.warn(locale.error.theme)
+  if (theme !== '@vuepress/theme-classic') console.warn(locale.error.theme)
 
   // check bundler
   if (bundler && !['vite', 'webpack'].includes(bundler))

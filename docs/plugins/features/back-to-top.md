@@ -8,7 +8,7 @@ icon: arrow-up-to-line
 
 This plugin adds a _back to top_ button to your site. The button appears in the bottom right corner when scrolling down and scrolls the page to the top when clicked.
 
-This plugin has been integrated into the default theme.
+This plugin has been integrated into the default theme (`@vuepress/theme-default`).
 
 ## Usage
 

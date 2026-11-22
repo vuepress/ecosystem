@@ -1,0 +1,523 @@
+/**
+ * Anchors
+ * -------------------------------------------------------------------------- */
+
+.vp-doc [id] {
+  scroll-margin-top: calc(
+    2.9375rem + var(--vp-layout-top-height, 0px) +
+      var(--vp-extra-scroll-margin, 1.5rem)
+  );
+
+  @media (min-width: 60rem) {
+    scroll-margin-top: calc(
+      var(--vp-nav-height) + 2.9375rem + var(--vp-layout-top-height, 0px) +
+        var(--vp-extra-scroll-margin, 1.5rem)
+    );
+  }
+
+  @media (min-width: 80rem) {
+    scroll-margin-top: calc(
+      var(--vp-nav-height) + var(--vp-layout-top-height, 0px) +
+        var(--vp-extra-scroll-margin, 1.5rem)
+    );
+  }
+}
+
+/**
+ * Headings
+ * -------------------------------------------------------------------------- */
+
+.vp-doc h1,
+.vp-doc h2,
+.vp-doc h3,
+.vp-doc h4,
+.vp-doc h5,
+.vp-doc h6 {
+  position: relative;
+  outline: none;
+  font-weight: 600;
+}
+
+.vp-doc h1 {
+  font-size: 1.75rem;
+  line-height: 1.4285714;
+  letter-spacing: -0.02em;
+}
+
+.vp-doc h2 {
+  /* since it already has a top padding of 1.5rem, we don't need extra scroll margin */
+  --vp-extra-scroll-margin: 0px;
+  margin: 3rem 0 1rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--vp-c-divider);
+
+  font-size: 1.5rem;
+  line-height: 1.3333333;
+  letter-spacing: -0.02em;
+}
+
+.vp-doc h3 {
+  margin: 2rem 0 0;
+  font-size: 1.25rem;
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+}
+
+.vp-doc h4 {
+  margin: 1.5rem 0 0;
+  font-size: 1.125rem;
+  line-height: 1.3333333;
+  letter-spacing: -0.01em;
+}
+
+/**
+ * Heading anchors
+ *
+ * VuePress wraps the heading text inside the anchor link
+ * (`anchorPlugin.permalink.headerLink()`), while VitePress renders the text as a
+ * sibling and the anchor as a separate `#` icon. The VitePress rules position
+ * the anchor absolutely and hide it until hover, which would hide the whole
+ * heading in VuePress. Keep the heading text visible and inline instead.
+ */
+.vp-doc .header-anchor {
+  position: static;
+
+  display: inline;
+
+  margin: 0;
+
+  color: inherit;
+
+  font-weight: inherit;
+  text-decoration: none;
+
+  opacity: 1;
+  user-select: auto;
+
+  transition: color 0.25s;
+}
+
+.vp-doc .header-anchor::before {
+  content: none;
+}
+
+.vp-doc h1:hover .header-anchor,
+.vp-doc h1 .header-anchor:focus,
+.vp-doc h2:hover .header-anchor,
+.vp-doc h2 .header-anchor:focus,
+.vp-doc h3:hover .header-anchor,
+.vp-doc h3 .header-anchor:focus,
+.vp-doc h4:hover .header-anchor,
+.vp-doc h4 .header-anchor:focus,
+.vp-doc h5:hover .header-anchor,
+.vp-doc h5 .header-anchor:focus,
+.vp-doc h6:hover .header-anchor,
+.vp-doc h6 .header-anchor:focus {
+  opacity: 1;
+}
+
+@media (min-width: 48rem) {
+  .vp-doc h1 {
+    font-size: 2rem;
+    line-height: 1.25;
+    letter-spacing: -0.02em;
+  }
+}
+
+.vp-doc h2 .header-anchor {
+  top: 1.5rem;
+}
+
+/**
+ * Paragraph and inline elements
+ * -------------------------------------------------------------------------- */
+
+.vp-doc p,
+.vp-doc img,
+.vp-doc summary {
+  margin: 1rem 0;
+}
+
+.vp-doc p {
+  line-height: 1.75;
+}
+
+.vp-doc blockquote {
+  margin: 1rem 0;
+  padding-inline-start: 1rem;
+  border-inline-start: 2px solid var(--vp-c-divider);
+
+  color: var(--vp-c-text-mute);
+
+  transition: border-color 0.5s;
+}
+
+.vp-doc blockquote > p {
+  margin: 0;
+  font-size: 1rem;
+  transition: color 0.5s;
+}
+
+.vp-doc a {
+  color: var(--vp-c-brand);
+
+  font-weight: 500;
+  text-decoration: underline;
+
+  transition:
+    color 0.25s,
+    opacity 0.25s;
+
+  text-underline-offset: 0.125rem;
+}
+
+.vp-doc a:hover {
+  color: var(--vp-c-brand-hover);
+}
+
+.vp-doc strong {
+  font-weight: 600;
+}
+
+/**
+ * Lists
+ * -------------------------------------------------------------------------- */
+
+.vp-doc ul,
+.vp-doc ol {
+  margin: 1rem 0;
+  padding-inline-start: 1.25rem;
+}
+
+.vp-doc ul {
+  list-style: disc;
+}
+
+.vp-doc ol {
+  list-style: decimal;
+}
+
+.vp-doc li + li {
+  margin-top: 0.5rem;
+}
+
+.vp-doc li > ol,
+.vp-doc li > ul {
+  margin: 0.5rem 0 0;
+}
+
+.vp-doc li > p:first-child {
+  margin-top: 0;
+}
+
+.vp-doc li > p:last-child {
+  margin-bottom: 0;
+}
+
+.vp-doc li.task-list-item {
+  list-style: none;
+}
+
+.vp-doc .task-list-item-checkbox {
+  vertical-align: middle;
+  margin-block: 0 0.125rem;
+  margin-inline: -1.25rem 0.25rem;
+  accent-color: var(--vp-c-brand);
+}
+
+/**
+ * Footnotes
+ * -------------------------------------------------------------------------- */
+
+.vp-doc sup.footnote-ref {
+  user-select: none;
+  user-select: none;
+}
+
+.vp-doc .footnote-ref a,
+.vp-doc .footnote-backref {
+  text-decoration: none;
+}
+
+.vp-doc .footnotes {
+  font-size: 0.875rem;
+}
+
+/**
+ * Table
+ * -------------------------------------------------------------------------- */
+
+.vp-doc table {
+  display: block;
+  overflow-x: auto;
+  margin: 1.25rem 0;
+  border-collapse: collapse;
+}
+
+.vp-doc tr {
+  border-top: 1px solid var(--vp-c-divider);
+  background-color: var(--vp-c-bg);
+  transition: background-color 0.5s;
+}
+
+.vp-doc tr:nth-child(2n) {
+  background-color: var(--vp-c-bg-soft);
+}
+
+.vp-doc th,
+.vp-doc td {
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--vp-c-divider);
+}
+
+.vp-doc th {
+  background-color: var(--vp-c-bg-soft);
+  color: var(--vp-c-text-mute);
+
+  font-weight: 600;
+  font-size: 0.875rem;
+  text-align: start;
+}
+
+.vp-doc td {
+  font-size: 0.875rem;
+}
+
+/**
+ * Decorational elements
+ * -------------------------------------------------------------------------- */
+
+.vp-doc hr {
+  margin: 1rem 0;
+  border: none;
+  border-top: 1px solid var(--vp-c-divider);
+}
+
+/**
+ * Code
+ * -------------------------------------------------------------------------- */
+
+/* inline code */
+.vp-doc :not(pre, h1, h2, h3, h4, h5, h6) > code {
+  color: var(--vp-code-color);
+  font-size: var(--vp-code-font-size);
+}
+
+.vp-doc :not(pre) > code {
+  padding: 0.1875rem 0.375rem;
+  border-radius: 0.25rem;
+
+  background-color: var(--vp-code-bg);
+
+  /* keep the written order of identifiers and punctuation inside rtl prose */
+  unicode-bidi: plaintext;
+
+  transition:
+    color 0.25s,
+    background-color 0.5s;
+}
+
+.vp-doc a > code {
+  color: var(--vp-code-link-color);
+}
+
+.vp-doc a:hover > code {
+  color: var(--vp-code-link-hover-color);
+}
+
+.vp-doc h1 > code,
+.vp-doc h2 > code,
+.vp-doc h3 > code,
+.vp-doc h4 > code {
+  font-size: 0.9em;
+}
+
+/* code-block wrappers carry dir="ltr" (see preWrapper.ts), so code, its
+   gutter and its controls keep their physical layout on rtl pages; the
+   logical properties in this section resolve to left/right there */
+.vp-doc div[class*='language-'],
+.vp-block {
+  position: relative;
+
+  overflow-x: auto;
+
+  margin: 1rem -1.5rem;
+
+  background-color: var(--vp-code-block-bg);
+
+  transition: background-color 0.5s;
+}
+
+@media (min-width: 40rem) {
+  .vp-doc div[class*='language-'],
+  .vp-block {
+    margin: 1rem 0;
+    border-radius: 0.5rem;
+  }
+}
+
+@media not all and (min-width: 40rem) {
+  .vp-doc li div[class*='language-'] {
+    border-radius: 0;
+    border-start-start-radius: 0.5rem;
+    border-end-start-radius: 0.5rem;
+  }
+}
+
+.vp-doc div[class*='language-'] + div[class*='language-'],
+.vp-doc div[class$='-api'] + div[class*='language-'],
+.vp-doc div[class*='language-'] + div[class$='-api'] > div[class*='language-'] {
+  margin-top: -0.5rem;
+}
+
+.vp-doc [class*='language-'] pre,
+.vp-doc [class*='language-'] code {
+  tab-size: 4;
+  tab-size: 4;
+  tab-size: 4;
+}
+
+.vp-doc [class*='language-'] pre {
+  position: relative;
+  z-index: 1;
+
+  overflow-x: auto;
+
+  margin: 0;
+  padding: 1.25rem 0;
+
+  background: transparent;
+
+  text-align: start;
+}
+
+.vp-doc [class*='language-'] code {
+  display: block;
+
+  width: fit-content;
+  min-width: 100%;
+  padding: 0 1.5rem;
+
+  color: var(--vp-code-block-color);
+
+  font-size: var(--vp-code-font-size);
+  line-height: var(--vp-code-line-height);
+
+  transition: color 0.5s;
+}
+
+.vp-doc [class*='language-'] code .highlighted {
+  display: inline-block;
+
+  width: calc(100% + 2 * 1.5rem);
+  margin: 0 -1.5rem;
+  padding: 0 1.5rem;
+
+  background-color: var(--vp-code-line-highlight-color);
+
+  transition: background-color 0.5s;
+}
+
+.vp-doc [class*='language-'] code .highlighted.error {
+  background-color: var(--vp-code-line-error-color);
+}
+
+.vp-doc [class*='language-'] code .highlighted.warning {
+  background-color: var(--vp-code-line-warning-color);
+}
+
+.vp-doc [class*='language-'] code .diff {
+  display: inline-block;
+
+  width: calc(100% + 2 * 1.5rem);
+  margin: 0 -1.5rem;
+  padding: 0 1.5rem;
+
+  transition: background-color 0.5s;
+}
+
+.vp-doc [class*='language-'] code .diff::before {
+  position: absolute;
+  inset-inline-start: 0.625rem;
+}
+
+.vp-doc [class*='language-'] .has-focused-lines .line:not(.has-focus) {
+  opacity: 0.4;
+  filter: blur(0.095rem);
+  will-change: filter;
+  transition:
+    filter 0.35s,
+    opacity 0.35s;
+}
+
+.vp-doc [class*='language-'] .has-focused-lines .line:not(.has-focus) {
+  opacity: 0.7;
+  transition:
+    filter 0.35s,
+    opacity 0.35s;
+}
+
+.vp-doc [class*='language-']:hover .has-focused-lines .line:not(.has-focus) {
+  opacity: 1;
+  filter: blur(0);
+}
+
+.vp-doc [class*='language-'] code .diff.remove {
+  background-color: var(--vp-code-line-diff-remove-color);
+  opacity: 0.7;
+}
+
+.vp-doc [class*='language-'] code .diff.remove::before {
+  content: '-';
+  color: var(--vp-code-line-diff-remove-symbol-color);
+}
+
+.vp-doc [class*='language-'] code .diff.add {
+  background-color: var(--vp-code-line-diff-add-color);
+}
+
+.vp-doc [class*='language-'] code .diff.add::before {
+  content: '+';
+  color: var(--vp-code-line-diff-add-symbol-color);
+}
+
+.vp-doc div[class*='language-'].line-numbers-mode {
+  padding-inline-start: 2rem;
+}
+
+/**
+ * External links
+ * -------------------------------------------------------------------------- */
+
+/* prettier-ignore */
+:where(
+  .vp-external-link-icon,
+  .vp-doc a:is([href*='://'], [target='_blank'])
+):not(.no-icon, svg a, :has(img, svg))::after {
+  --icon: var(--vp-icon-external-link);
+  display: inline;
+  flex-shrink: 0;
+
+  margin-inline-start: 0.25rem;
+  padding-inline-start: 0.6875rem;
+
+  background: currentcolor;
+  color: currentcolor;
+
+  mask-image: var(--icon);
+  mask-image: var(--icon);
+  mask-position: center;
+  mask-position: center;
+  mask-size: 100% 100%;
+  mask-size: 100% 100%;
+  mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+}
+
+/* prettier-ignore */
+:where(
+  .vp-external-link-icon,
+  .external-link-icon-enabled :is(.vp-doc a:is([href*='://'], [target='_blank']))
+):not(.no-icon, svg a, :has(img, svg))::after {
+  content: var(--vp-direction-mark) '\2060';
+}

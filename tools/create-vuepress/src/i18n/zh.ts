@@ -37,7 +37,7 @@ export const zh: CreateLocaleOptions = {
     version: "此版本无效，版本号应为 'x.x.x'",
     bundler: '打包器 (--bundler) 仅支持 vite 或 webpack',
     preset: '预设 (--preset) 仅支持 doc 或 blog',
-    theme: '当前主题暂不支持，将使用 @vuepress/theme-default 代替',
+    theme: '当前主题暂不支持，将使用 @vuepress/theme-classic 代替',
     dirMissing: (packageManager: PackageManager): string =>
       `你应该指定一个项目文件夹名称，例如 "my-blog", "my-docs"。\n例如: "${packageManager} init vuepress my-docs"`,
     dirNotEmpty: (dir: string) =>

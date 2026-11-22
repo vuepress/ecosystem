@@ -27,7 +27,7 @@ export default defineConfig({
 
 To test `.vue` single file components, add a Vue plugin (e.g. `@vitejs/plugin-vue`) to `plugins` as usual.
 
-If your packages use a module alias that cannot be expressed by `resolve.alias` (e.g. the `@theme/*` alias of `@vuepress/theme-default`, which may resolve to different directories), pass a `resolve` function to the plugin.
+If your packages use a module alias that cannot be expressed by `resolve.alias` (e.g. the `@theme/*` alias of `@vuepress/theme-classic`, which may resolve to different directories), pass a `resolve` function to the plugin.
 
 ```ts title="vitest.config.ts"
 export default defineConfig({
@@ -89,7 +89,7 @@ await client.router.push('/other/')
 
 The `content` option is the content of the current page (the page chunk), and the layout renders it. `vuepress/client`'s `Content` component is the default layout, so the content is rendered directly when no layout is given. To render a single component without the layout and the root components of the client configs, use the `rootComponent` option instead.
 
-`clientConfigs` accepts the client configs of the plugins and the theme, and applies their `setup`, `enhance`, `layouts` and `rootComponents`, which is required when a composable relies on a provider of a client config. For example, the theme data of `@vuepress/theme-default` is read through `useThemeData()`, which is provided by the theme data plugin, so its client config must be passed to `clientConfigs`.
+`clientConfigs` accepts the client configs of the plugins and the theme, and applies their `setup`, `enhance`, `layouts` and `rootComponents`, which is required when a composable relies on a provider of a client config. For example, the theme data of `@vuepress/theme-classic` is read through `useThemeData()`, which is provided by the theme data plugin, so its client config must be passed to `clientConfigs`.
 
 ### Testing option combinations
 
@@ -172,7 +172,7 @@ export default defineConfig({
 
 ### Testing the color mode
 
-`setColorMode()` stubs the two things that `@vuepress/theme-default` reads to resolve the dark mode: the `(prefers-color-scheme: dark)` media query and the `vuepress-color-scheme` local storage key. It also sets `data-theme` on `<html>`. All other media queries are forwarded to the real `window.matchMedia()`.
+`setColorMode()` stubs the two things that `@vuepress/theme-classic` reads to resolve the dark mode: the `(prefers-color-scheme: dark)` media query and the `vuepress-color-scheme` local storage key. It also sets `data-theme` on `<html>`. All other media queries are forwarded to the real `window.matchMedia()`.
 
 ```ts
 // @vitest-environment happy-dom
@@ -231,7 +231,7 @@ The value of `__VUEPRESS_VERSION__`. It is read from the installed `vuepress` pa
 
 @`resolve` type=`(id: string) => string | undefined`
 
-Resolve the module ids that `resolve.alias` cannot express, e.g. `@theme/*` of `@vuepress/theme-default`, or a sub-path alias that only exists at build time such as `@vuepress/plugin-comment/service`. It is called for every import, and should return the file path or `undefined`. A module registered with `stubModule()` is resolved before it is called.
+Resolve the module ids that `resolve.alias` cannot express, e.g. `@theme/*` of `@vuepress/theme-classic`, or a sub-path alias that only exists at build time such as `@vuepress/plugin-comment/service`. It is called for every import, and should return the file path or `undefined`. A module registered with `stubModule()` is resolved before it is called.
 
 ::::
 

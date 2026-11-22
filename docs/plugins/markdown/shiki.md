@@ -114,13 +114,13 @@ Line highlighting is enabled by default. Add line ranges to the code fence info 
 ::: preview
 
 ```ts {1,7-9}
-import { defaultTheme } from '@vuepress/theme-default'
+import { themeClassic } from '@vuepress/theme-classic'
 import { defineUserConfig } from 'vuepress'
 
 export default defineUserConfig({
   title: 'Hello, VuePress',
 
-  theme: defaultTheme({
+  theme: themeClassic({
     logo: 'https://vuepress.vuejs.org/images/hero.png',
   }),
 })

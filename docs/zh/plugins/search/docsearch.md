@@ -80,7 +80,7 @@ new Crawler({
         return helpers.docsearch({
           recordProps: {
             lvl0: {
-              selectors: '.vp-sidebar-heading.active',
+              selectors: '.vp-sidebar-item.level-0.has-active > .item .text',
               defaultValue: 'Documentation',
             },
             lvl1: '[vp-content] h1',
@@ -167,7 +167,7 @@ new Crawler({
 })
 ```
 
-上述代码中的 `recordProps` 是针对默认主题的配置。你可以根据正在使用的主题结构进行相应的修改。
+上述代码中的 `recordProps` 是针对默认主题的配置。其中 `lvl0` 选择器对应默认主题的侧边栏（经典主题 `@vuepress/theme-classic` 使用 `.vp-sidebar-heading.active`）。你可以根据正在使用的主题结构进行相应的修改。
 
 **注意：** 为了让插件正常工作（特别是多语言支持），`initialIndexSettings.YOUR_INDEX_NAME.attributesForFaceting` 字段必须包含 `'lang'`。
 :::

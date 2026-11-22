@@ -60,7 +60,8 @@ Plugins are grouped into sub-categories:
 
 ### `themes/`
 
-- `theme-default` — The official VuePress default theme (`@vuepress/theme-default`)
+- `theme-classic` — The classic VuePress theme (`@vuepress/theme-classic`), the former default theme
+- `theme-default` — The official VuePress default theme (`@vuepress/theme-default`), a thin layout layer ported from VitePress
 
 ### `tools/`
 

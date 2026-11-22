@@ -8,7 +8,7 @@ icon: list-checks
 
 此插件检查你的 Markdown 文件中的死链接。
 
-此插件已集成到默认主题中。
+此插件已集成到默认主题（`@vuepress/theme-default`）中。
 
 ## 使用 {#usage}
 

@@ -8,7 +8,7 @@ icon: pyramid
 
 该插件使用 [Prism.js](https://prismjs.com/) 来为 Markdown 代码块启用代码高亮。
 
-该插件已经集成到默认主题中。
+默认主题使用 [Shiki](./shiki.md) 做代码高亮，而不是这个插件。如需使用 Prism.js，请在主题配置中设置 `themePlugins: { shiki: false }`，并注册这个插件。
 
 ## 使用方法 {#usage}
 
@@ -128,13 +128,13 @@ const line4 = 'This is line 4'
 ::: preview
 
 ```ts {1,7-9}
-import { defaultTheme } from '@vuepress/theme-default'
+import { themeClassic } from '@vuepress/theme-classic'
 import { defineUserConfig } from 'vuepress'
 
 export default defineUserConfig({
   title: '你好， VuePress',
 
-  theme: defaultTheme({
+  theme: themeClassic({
     logo: 'https://vuepress.vuejs.org/images/hero.png',
   }),
 })

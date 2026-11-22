@@ -52,6 +52,7 @@
     "@vuepress/plugin-search": "workspace:*",
     "@vuepress/plugin-shiki": "workspace:*",
     "@vuepress/shiki-twoslash": "workspace:*",
+    "@vuepress/theme-classic": "workspace:*",
     "@vuepress/theme-default": "workspace:*",
     "@vueuse/core": "catalog:",
     "echarts-wordcloud": "^2.1.0",

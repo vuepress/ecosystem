@@ -1,4 +1,4 @@
-import { defaultTheme } from '@vuepress/theme-default'
+import { themeClassic } from '@vuepress/theme-classic'
 import { defineUserConfig } from 'vuepress'
 
 export default defineUserConfig({
@@ -7,7 +7,7 @@ export default defineUserConfig({
   title: 'VuePress',
   description: 'My first VuePress Site',
 
-  theme: defaultTheme({
+  theme: themeClassic({
     logo: 'https://vuejs.press/images/hero.png',
 
     navbar: ['/', '/get-started'],

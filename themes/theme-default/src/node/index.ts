@@ -1,4 +1,11 @@
-export * from './defaultTheme.js'
-export type * from './typings.js'
-export * from './utils/index.js'
-export type * from '../shared/index.js'
+export type {
+  AppearanceOptions,
+  DefaultTheme,
+  ThemeConfig,
+  ThemeContributor,
+  ThemeLayout,
+  ThemePageData,
+  ThemePluginsOptions,
+} from '../shared/types.js'
+export { themeDefault } from './defaultTheme.js'
+export type { ThemeOptions } from './defaultTheme.js'

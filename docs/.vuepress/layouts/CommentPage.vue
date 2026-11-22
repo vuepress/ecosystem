@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { useDarkMode } from '@vuepress/theme-default/client'
-import ParentLayout from '@vuepress/theme-default/layouts/Layout.vue'
+import theme, { useDarkMode } from '@vuepress/theme-default/client'
 
+const ParentLayout = theme.Layout
 const isDarkMode = useDarkMode()
 </script>
 
