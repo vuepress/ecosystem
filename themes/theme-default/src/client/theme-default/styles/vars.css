@@ -534,13 +534,28 @@
   /* the default home hero: gradient name and a blurred gradient behind the
      image, both overridable by the site */
   --vp-home-hero-name-color: transparent;
-  --vp-home-hero-name-background: linear-gradient(120deg, #3eaf7c 30%, #1b1b1f);
+
+  /* VuePress logo colors: a green to dark gray gradient. The dark end is a
+     gray rather than a pure black, so that it keeps some contrast against the
+     dark background and does not read as an empty edge on it */
+  --vp-home-hero-name-background: linear-gradient(120deg, #3eaf7c 30%, #343a42);
   --vp-home-hero-image-background-image: linear-gradient(
     -45deg,
     #3eaf7c 50%,
-    #232327 50%
+    #3d4750 50%
   );
   --vp-home-hero-image-filter: blur(44px);
+}
+
+[data-theme='dark'] {
+  /* the gradient gets lighter on the dark background, otherwise its dark end
+     disappears into the page */
+  --vp-home-hero-name-background: linear-gradient(120deg, #3eaf7c 30%, #8f97a1);
+  --vp-home-hero-image-background-image: linear-gradient(
+    -45deg,
+    #3eaf7c 50%,
+    #59626c 50%
+  );
 }
 
 /**
