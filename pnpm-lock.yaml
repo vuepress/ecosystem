@@ -410,6 +410,9 @@ importers:
       '@vuepress/plugin-markdown-preview':
         specifier: workspace:*
         version: link:../plugins/markdown/plugin-markdown-preview
+      '@vuepress/plugin-markdown-raw':
+        specifier: workspace:*
+        version: link:../plugins/markdown/plugin-markdown-raw
       '@vuepress/plugin-markdown-stylize':
         specifier: workspace:*
         version: link:../plugins/markdown/plugin-markdown-stylize
@@ -1418,6 +1421,31 @@ importers:
       vue:
         specifier: 'catalog:'
         version: 3.5.46(typescript@6.0.3)
+      vuepress:
+        specifier: 'catalog:'
+        version: 2.0.0-rc.32(534515f20ab12067869497424e383b6c)
+    devDependencies:
+      markdown-it:
+        specifier: 'catalog:'
+        version: 15.0.3
+
+  plugins/markdown/plugin-markdown-raw:
+    dependencies:
+      '@mdit/helper':
+        specifier: ^1.2.1
+        version: 1.2.1(markdown-it@15.0.3)
+      '@mdit/plugin-container':
+        specifier: ^2.2.0
+        version: 2.2.0(markdown-it@15.0.3)
+      '@vuepress/helper':
+        specifier: workspace:*
+        version: link:../../../tools/helper
+      postcss:
+        specifier: ^8.5.33
+        version: 8.5.33
+      postcss-selector-parser:
+        specifier: ^7.2.1
+        version: 7.2.1
       vuepress:
         specifier: 'catalog:'
         version: 2.0.0-rc.32(534515f20ab12067869497424e383b6c)

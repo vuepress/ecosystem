@@ -162,6 +162,7 @@ export const sidebarEn: SidebarOptions = {
     'markdown-hint',
     'markdown-math',
     'markdown-preview',
+    'markdown-raw',
     'markdown-stylize',
     'markdown-tab',
     'links-check',

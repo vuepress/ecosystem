@@ -78,15 +78,6 @@ export interface MarkdownExtPluginOptions {
   vPre?: boolean
 
   /**
-   * Whether to enable raw wrapper.
-   *
-   * 是否启用 raw 容器。
-   *
-   * @default false
-   */
-  raw?: boolean
-
-  /**
    * Whether to enable CJK-friendly support for emphasis marks.
    *
    * 是否启用对强调标记的 CJK 友好支持。

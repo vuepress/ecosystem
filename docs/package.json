@@ -39,6 +39,7 @@
     "@vuepress/plugin-markdown-include": "workspace:*",
     "@vuepress/plugin-markdown-math": "workspace:*",
     "@vuepress/plugin-markdown-preview": "workspace:*",
+    "@vuepress/plugin-markdown-raw": "workspace:*",
     "@vuepress/plugin-markdown-stylize": "workspace:*",
     "@vuepress/plugin-markdown-tab": "workspace:*",
     "@vuepress/plugin-medium-zoom": "workspace:*",
