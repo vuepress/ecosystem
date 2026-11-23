@@ -328,7 +328,7 @@ The sidebar can be generated from the file structure of the site. Set `sidebar` 
 
 ```ts title=".vuepress/config.ts"
 export default defineUserConfig({
-  theme: themeDefault({
+  theme: defaultTheme({
     // the whole site
     sidebar: 'structure',
     // or: only some paths

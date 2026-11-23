@@ -128,7 +128,7 @@ dir:
 
 ```ts
 export default defineUserConfig({
-  theme: themeDefault({
+  theme: defaultTheme({
     sidebarSorter: ['readme', 'order', 'title', 'filename'],
   }),
 })

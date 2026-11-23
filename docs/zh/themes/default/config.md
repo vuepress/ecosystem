@@ -328,7 +328,7 @@ export default defineUserConfig({
 
 ```ts title=".vuepress/config.ts"
 export default defineUserConfig({
-  theme: themeDefault({
+  theme: defaultTheme({
     // 整个站点
     sidebar: 'structure',
     // 或者：仅部分路径
