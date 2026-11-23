@@ -24,59 +24,65 @@ npm i @vuepress/theme-helper@next
 
 ### 根据文件结构生成侧边栏 {#generating-the-sidebar-from-the-file-structure}
 
-主题通过三个步骤支持该功能：
-
-1. 收集需要根据文件生成侧边栏的路由范围；
-2. 在 `onPrepared` 钩子中生成数据，并在开发模式下页面变化时于 `onWatched` 钩子中重新生成；
-3. 在客户端解析数据，并映射为主题自己的条目。
-
-路由范围通常由主题的侧边栏选项计算得出。`getSidebarStructureScopes()` 接受主题数据，以及分组条目中保存子项与前缀的字段名：
+该功能分为两部分：Node 端根据页面生成数据，客户端把数据解析为主题自己的条目。主题通过 `createSidebarStructureHelper()` 创建的工具描述自己的条目：
 
 ```ts title="src/node/myTheme.ts"
 import {
-  getSidebarStructureScopes,
-  prepareSidebarData,
-  watchSidebarData,
+  createSidebarStructureHelper,
+  extendsPageData,
 } from '@vuepress/theme-helper'
 
-const themeData = resolveThemeData(options)
-const scopes = getSidebarStructureScopes({
-  themeData,
-  // 分组条目形如 `{ children: [...], prefix: '...' }`
+import type { MyThemeItem } from '../shared/index.js'
+
+const sidebarHelper = createSidebarStructureHelper<MyThemeItem>({
+  // 主题数据，用于找到使用 `'structure'` 的范围
+  themeData: resolveThemeData(options),
+
+  // 主题选项中分组条目的形状
   childrenKey: 'children',
   prefixKey: 'prefix',
+
+  sorter: options.sidebarSorter,
+
+  // 自定义页面的条目
+  pageInfoGetter: (info, _page, defaults) => ({
+    ...defaults,
+    ...(info.frontmatter.icon ? { icon: info.frontmatter.icon } : {}),
+  }),
+
+  // 自定义目录的条目
+  dirInfoGetter: (info, _page, defaults) => ({
+    ...defaults,
+    ...(info.groupInfo.icon ? { icon: info.groupInfo.icon } : {}),
+    ...(info.groupInfo.collapsible
+      ? { collapsed: info.groupInfo.expanded !== true }
+      : {}),
+  }),
 })
 
 export const myTheme = (options: MyThemeOptions = {}): Theme => ({
   name: 'my-theme',
-  onPrepared: async (app) => {
-    // 始终调用，即使没有任何范围，也保证生成模块存在
-    await prepareSidebarData(app, { scopes, sorter: options.sidebarSorter })
-  },
-  onWatched: (_app, watchers) => {
-    if (scopes.length > 0)
-      watchSidebarData(_app, watchers, {
-        scopes,
-        sorter: options.sidebarSorter,
-      })
+  onPrepared: (app) => sidebarHelper.prepare(app),
+  onWatched: (app, watchers) => {
+    sidebarHelper.watch(app, watchers)
   },
 })
 ```
 
-`prepareSidebarData()` 会写入 `@temp/theme-helper/sidebar.js`，它按路由范围导出生成的数据。
+工具会根据主题数据自动查找范围，即侧边栏选项中的 `'structure'` 值与 `children: 'structure'` 的分组条目。如果侧边栏选项的结构不同，可以通过 `getScopes()` 自定义。
 
-在客户端，`getSidebarStructure()` 读取某个范围的数据，并返回与主题无关的条目：
+getter 会收到条目解析后的 `SidebarInfo`、它对应的页面（目录为 `README.md` 页面）以及工具默认生成的条目。默认条目只包含 `text` 与 `link`，因此 getter 可以添加主题自己的字段，也可以返回 `null` 以跳过该条目。目录的子项由工具按 `childrenKey` 附加。
+
+`prepare()` 会写入 `@temp/theme-helper/sidebar.js`，它按路由范围导出生成的数据。即使没有任何范围也必须调用，以保证生成模块存在。`watch()` 会在开发模式下监听生成的页面并重新生成数据，且只在至少有一个范围时注册监听器。
+
+在客户端，`getSidebarStructure()` 读取某个范围的数据，并返回经过 getter 自定义的条目：
 
 ```ts title="src/client/composables/useSidebar.ts"
 import { getSidebarStructure } from '@vuepress/theme-helper/client'
 
-const resolveStructureItems = (scope: string) =>
-  getSidebarStructure(scope).map(({ text, link, icon, children }) => ({
-    text,
-    ...(link ? { link } : {}),
-    ...(icon ? { icon } : {}),
-    ...(children ? { items: resolveStructureItems(...) } : {}),
-  }))
+import type { MyThemeItem } from '../shared/index.js'
+
+const guideItems = getSidebarStructure<MyThemeItem>('/guide/')
 ```
 
 范围会被规范化，因此 `'/guide/'`、`'/guide'` 与 `'guide/'` 都会解析到同一份数据。
@@ -176,6 +182,47 @@ const editLink = useEditLink()
 
 它会将相对文件路径保存到 `page.data.filePathRelative`，将页面标题保存到 `page.routeMeta.title`。
 
+### createSidebarStructureHelper
+
+创建根据文件结构生成主题侧边栏数据的工具。这是推荐的 API，下面的底层函数都基于同一套流程。
+
+::: fields
+@`themeData` type=object required
+
+主题数据，即主题的根配置与 `locales` 配置。
+
+@`getScopes` type=`(themeData: object) => string[]`
+
+自定义返回需要生成的路由范围的函数，它会取代根据侧边栏选项检测到的范围。
+
+@`childrenKey` type=string default=`'children'`
+
+分组条目中保存子项的字段名。
+
+@`prefixKey` type=string default=`'prefix'`
+
+分组条目中保存前缀的字段名。
+
+@`sorter` type=`SidebarSorter`
+
+主题的排序器选项。
+
+@`pageInfoGetter` type=`(info: SidebarFileInfo, page: Page | undefined, defaults: Item) => Partial<Item> | null`
+
+自定义页面的条目。它接收默认条目，可以返回 `null` 以跳过该页面。
+
+@`dirInfoGetter` type=`(info: SidebarDirInfo, readmePage: Page | null, defaults: Item) => Partial<Item> | null`
+
+自定义目录的条目。它接收默认条目，可以返回 `null` 以跳过该目录。
+:::
+
+工具会返回：
+
+- `scopes`：规范化后的范围。
+- `getData(app)`：生成的 `SidebarStructureData<Item>`。
+- `prepare(app)`：把生成的数据写入 `@temp/theme-helper/sidebar.js`。
+- `watch(app, watchers)`：在开发模式下监听生成的页面并重新生成数据，且只在至少有一个范围时注册监听器。
+
 ### getSidebarStructureScopes
 
 ::: fields
@@ -236,9 +283,21 @@ const editLink = useEditLink()
 @`sorter` type=`SidebarSorter`
 
 主题的排序器选项。
+
+@`childrenKey` type=string default=`'children'`
+
+分组条目中保存子项的字段名。
+
+@`pageInfoGetter` type=`SidebarPageInfoGetter`
+
+页面条目的 getter。
+
+@`dirInfoGetter` type=`SidebarDirInfoGetter`
+
+目录条目的 getter。
 :::
 
-它返回与主题无关的 `SidebarStructureData`，以规范化后的范围为键。
+它返回生成的 `SidebarStructureData<Item>`，以规范化后的范围为键。页面默认的条目只包含 `text` 与 `link`，因此主题的 getter 需要添加自己的条目字段。
 
 ### prepareSidebarData
 
@@ -322,4 +381,4 @@ const { theme, frontmatter, page } = useData<
 公共约定的类型从包入口与 `shared` 入口导出：
 
 - `EditLinkOptions`、`EditLinkThemeData`、`EditLinkFrontmatter`、`EditLinkPageData`：编辑链接的选项、主题数据、frontmatter 与页面数据。主题可以在自己的类型中扩展它们。
-- `SidebarStructureData`、`SidebarStructureItem`、`SidebarInfo`、`SidebarSorter`、`SidebarSorterFunction`、`SidebarSorterKeyword`：生成的侧边栏数据的类型。
+- `SidebarStructureData`、`SidebarStructureItem`、`SidebarStructureHelper`、`SidebarStructureHelperOptions`、`SidebarPageInfoGetter`、`SidebarDirInfoGetter`、`SidebarInfo`、`SidebarSorter`、`SidebarSorterFunction`、`SidebarSorterKeyword`：生成的侧边栏数据的类型。

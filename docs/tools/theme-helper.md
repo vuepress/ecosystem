@@ -24,60 +24,65 @@ The package is used by `@vuepress/theme-default` and `@vuepress/theme-classic`. 
 
 ### Generating the sidebar from the file structure
 
-A theme supports the feature with three steps:
-
-1. collect the route scopes whose sidebar should be generated from the files;
-2. generate the data in the `onPrepared` hook, and regenerate it in the `onWatched` hook when the pages are changed in dev;
-3. resolve the data in the client and map it to the items of the theme.
-
-The scopes are usually computed from the sidebar option of the theme. `getSidebarStructureScopes()` accepts the theme data, and the names of the fields that hold the children and the prefix of a group item:
+The feature has two sides: the node side generates the data from the pages, and the client side resolves the data into the items of the theme. A theme describes its own items with a helper created by `createSidebarStructureHelper()`:
 
 ```ts title="src/node/myTheme.ts"
 import {
-  getSidebarStructureScopes,
-  prepareSidebarData,
-  watchSidebarData,
+  createSidebarStructureHelper,
+  extendsPageData,
 } from '@vuepress/theme-helper'
 
-const themeData = resolveThemeData(options)
-const scopes = getSidebarStructureScopes({
-  themeData,
-  // a group item is `{ children: [...], prefix: '...' }`
+import type { MyThemeItem } from '../shared/index.js'
+
+const sidebarHelper = createSidebarStructureHelper<MyThemeItem>({
+  // the theme data, used to find the scopes that use `'structure'`
+  themeData: resolveThemeData(options),
+
+  // how a group item is shaped in the theme options
   childrenKey: 'children',
   prefixKey: 'prefix',
+
+  sorter: options.sidebarSorter,
+
+  // customize the item of a page
+  pageInfoGetter: (info, _page, defaults) => ({
+    ...defaults,
+    ...(info.frontmatter.icon ? { icon: info.frontmatter.icon } : {}),
+  }),
+
+  // customize the item of a directory
+  dirInfoGetter: (info, _page, defaults) => ({
+    ...defaults,
+    ...(info.groupInfo.icon ? { icon: info.groupInfo.icon } : {}),
+    ...(info.groupInfo.collapsible
+      ? { collapsed: info.groupInfo.expanded !== true }
+      : {}),
+  }),
 })
 
 export const myTheme = (options: MyThemeOptions = {}): Theme => ({
   name: 'my-theme',
-  onPrepared: async (app) => {
-    // always called, so that the generated module exists even when there is
-    // no scope
-    await prepareSidebarData(app, { scopes, sorter: options.sidebarSorter })
-  },
-  onWatched: (_app, watchers) => {
-    if (scopes.length > 0)
-      watchSidebarData(_app, watchers, {
-        scopes,
-        sorter: options.sidebarSorter,
-      })
+  onPrepared: (app) => sidebarHelper.prepare(app),
+  onWatched: (app, watchers) => {
+    sidebarHelper.watch(app, watchers)
   },
 })
 ```
 
-`prepareSidebarData()` writes `@temp/theme-helper/sidebar.js`, which exports the generated data keyed by route scope.
+The helper finds the scopes from the theme data, by looking for the `'structure'` value of the sidebar option and for the `children: 'structure'` group items. You can provide a custom `getScopes()` when the sidebar option is shaped differently.
 
-In the client, `getSidebarStructure()` reads the data of a scope and returns theme-agnostic items:
+The getters receive the resolved `SidebarInfo` of the item, its page (the `README.md` page for a directory), and the default item that the helper would generate. The default item only contains `text` and `link`, so a getter adds the fields of the theme and can return `null` to skip the item. The children of a directory are attached by the helper, under `childrenKey`.
+
+`prepare()` writes `@temp/theme-helper/sidebar.js`, which exports the generated data keyed by route scope. It must be called even when there is no scope, so that the generated module exists. `watch()` watches the generated pages in dev and regenerates the data, and it registers a watcher only when there is at least one scope.
+
+In the client, `getSidebarStructure()` reads the data of a scope and returns the items customized by the getters:
 
 ```ts title="src/client/composables/useSidebar.ts"
 import { getSidebarStructure } from '@vuepress/theme-helper/client'
 
-const resolveStructureItems = (scope: string) =>
-  getSidebarStructure(scope).map(({ text, link, icon, children }) => ({
-    text,
-    ...(link ? { link } : {}),
-    ...(icon ? { icon } : {}),
-    ...(children ? { items: resolveStructureItems(...) } : {}),
-  }))
+import type { MyThemeItem } from '../shared/index.js'
+
+const guideItems = getSidebarStructure<MyThemeItem>('/guide/')
 ```
 
 The scope is normalized, so `'/guide/'`, `'/guide'` and `'guide/'` all resolve to the same data.
@@ -177,6 +182,47 @@ The page to extend, usually the argument of the `extendsPage` hook.
 
 It saves the relative file path into `page.data.filePathRelative`, and the page title into `page.routeMeta.title`.
 
+### createSidebarStructureHelper
+
+Creates a helper that generates the sidebar data of the theme from the file structure. It is the recommended API, and the low-level functions below build on the same pipeline.
+
+::: fields
+@`themeData` type=object required
+
+The theme data, i.e. the root options and the `locales` options of the theme.
+
+@`getScopes` type=`(themeData: object) => string[]`
+
+A custom function that returns the route scopes to generate, it replaces the scopes detected from the sidebar option.
+
+@`childrenKey` type=string default=`'children'`
+
+The key of the field that holds the children of a group item.
+
+@`prefixKey` type=string default=`'prefix'`
+
+The key of the field that holds the prefix of a group item.
+
+@`sorter` type=`SidebarSorter`
+
+The sorter option of the theme.
+
+@`pageInfoGetter` type=`(info: SidebarFileInfo, page: Page | undefined, defaults: Item) => Partial<Item> | null`
+
+Customizes the item of a page. It receives the default item, and can return `null` to skip the page.
+
+@`dirInfoGetter` type=`(info: SidebarDirInfo, readmePage: Page | null, defaults: Item) => Partial<Item> | null`
+
+Customizes the item of a directory. It receives the default item, and can return `null` to skip the directory.
+:::
+
+The helper returns:
+
+- `scopes`: the normalized scopes.
+- `getData(app)`: the generated `SidebarStructureData<Item>`.
+- `prepare(app)`: writes the generated data to `@temp/theme-helper/sidebar.js`.
+- `watch(app, watchers)`: watches the generated pages in dev and regenerates the data, with a watcher registered only when there is at least one scope.
+
 ### getSidebarStructureScopes
 
 ::: fields
@@ -237,9 +283,21 @@ The route scopes, as returned by `getSidebarStructureScopes()`.
 @`sorter` type=`SidebarSorter`
 
 The sorter option of the theme.
+
+@`childrenKey` type=string default=`'children'`
+
+The key of the field that holds the children of a group item.
+
+@`pageInfoGetter` type=`SidebarPageInfoGetter`
+
+The getter of the items of the pages.
+
+@`dirInfoGetter` type=`SidebarDirInfoGetter`
+
+The getter of the items of the directories.
 :::
 
-It returns the theme-agnostic `SidebarStructureData`, keyed by the normalized scope.
+It returns the generated `SidebarStructureData<Item>`, keyed by the normalized scope. The default item of a page only contains `text` and `link`, so the getters of the theme add the fields of its own items.
 
 ### prepareSidebarData
 
@@ -254,10 +312,10 @@ It accepts the same options as `getSidebarStructureData()`, and watches the gene
 ### getSidebarStructure
 
 ```ts
-const items: SidebarStructureItem[] = getSidebarStructure(scope)
+const items = getSidebarStructure<MyThemeItem>('/guide/')
 ```
 
-It returns the generated items of a scope, or an empty array when the scope is not generated.
+It returns the generated items of a scope, typed by the generic parameter, or an empty array when the scope is not generated.
 
 ### sidebarData
 
@@ -323,4 +381,4 @@ It combines `useThemeLocaleData()`, `usePageFrontmatter()` and `usePageData()` i
 The types of the shared conventions are exported from the package root and the `shared` entry:
 
 - `EditLinkOptions`, `EditLinkThemeData`, `EditLinkFrontmatter`, `EditLinkPageData`: the options, the theme data, the frontmatter and the page data of the edit link. A theme can extend them in its own types.
-- `SidebarStructureData`, `SidebarStructureItem`, `SidebarInfo`, `SidebarSorter`, `SidebarSorterFunction`, `SidebarSorterKeyword`: the types of the generated sidebar data.
+- `SidebarStructureData`, `SidebarStructureItem`, `SidebarStructureHelper`, `SidebarStructureHelperOptions`, `SidebarPageInfoGetter`, `SidebarDirInfoGetter`, `SidebarInfo`, `SidebarSorter`, `SidebarSorterFunction`, `SidebarSorterKeyword`: the types of the generated sidebar data.
