@@ -3,6 +3,7 @@ import {
   isLinkAbsolute,
   isLinkWithProtocol,
 } from '@vuepress/helper'
+import type { SidebarOptions } from '@vuepress/theme-classic'
 
 /** Nav item shared by the navbar and sidebar configs */
 interface NavItem {
@@ -17,8 +18,9 @@ type NavArray = (NavItem | string)[]
 
 type NavConfig =
   | NavArray
-  | Record<string, NavArray | 'heading' | false>
+  | Record<string, NavArray | 'heading' | 'structure' | false>
   | 'heading'
+  | 'structure'
   | false
 
 const resolvePrefix = (prefix: string, path: string): string =>
@@ -45,7 +47,8 @@ const collectIcons = (
 
     if (path && item.icon) result.set(path, item.icon)
 
-    if (item.children) collectIcons(item.children, childPrefix, result)
+    if (Array.isArray(item.children))
+      collectIcons(item.children, childPrefix, result)
   }
 }
 
@@ -60,16 +63,23 @@ const collectIcons = (
  */
 export const getNavIcons = (
   navbars: NavConfig[],
-  sidebars: NavConfig[],
+  sidebars: SidebarOptions[],
 ): Map<string, string> => {
   const result = new Map<string, string>()
 
-  const collect = (config: NavConfig, prefix: string): void => {
-    if (config === false || config === 'heading') return
+  const collect = (
+    config: NavConfig | SidebarOptions,
+    prefix: string,
+  ): void => {
+    if (config === false || config === 'heading' || config === 'structure')
+      return
 
-    if (Array.isArray(config)) collectIcons(config, prefix, result)
-    else
-      for (const [base, items] of Object.entries(config)) collect(items, base)
+    if (Array.isArray(config)) {
+      collectIcons(config as NavArray, prefix, result)
+    } else {
+      for (const [base, items] of Object.entries(config))
+        collect(items as NavConfig | SidebarOptions, base)
+    }
   }
 
   for (const navbar of navbars) collect(navbar, '/')

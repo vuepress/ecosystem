@@ -292,6 +292,11 @@ export const sidebarZh: SidebarOptions = {
       ],
     },
     {
+      text: '@vuepress/theme-helper',
+      icon: 'hammer',
+      link: 'theme-helper',
+    },
+    {
       text: '@vuepress/test-utils',
       icon: 'flask',
       link: 'test-utils',

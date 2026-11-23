@@ -243,3 +243,27 @@ If you don't set this frontmatter, the link will be inferred from the sidebar co
 The type is the same as [prev](#prev) frontmatter.
 
 :::
+
+## Sidebar Structure
+
+The fields in this section are used when the sidebar is generated from the file structure, i.e. when [sidebar](./config.md#sidebar) is `'structure'`, `'/path/': 'structure'` or `{ children: 'structure' }`. They have no effect on a sidebar that is configured manually.
+
+:::: fields
+@`index` type=boolean
+
+Set it to `false` to hide the page from the generated sidebar.
+
+@`order` type=number
+
+The position of the item among its siblings. A positive value puts the page before the pages without an order, a negative value puts it after them.
+
+@`shortTitle` type=string
+
+The text of the item, it takes precedence over the page title.
+
+@`dir` type=`SidebarDirOptions`
+
+The options of the group that represents the directory of this page. It is only read from the `README.md` of the directory, the field of the other pages is ignored.
+
+The options are documented in [theme-helper](../../tools/theme-helper.md#frontmatter-conventions): `text`, `icon`, `collapsible`, `expanded`, `link`, `index` and `order`.
+::::
