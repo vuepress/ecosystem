@@ -14,11 +14,12 @@ import { seoPlugin } from '@vuepress/plugin-seo'
 import { sitemapPlugin } from '@vuepress/plugin-sitemap'
 import { themeDataPlugin } from '@vuepress/plugin-theme-data'
 import {
+  extendsPageData,
   getSidebarStructureScopes,
   prepareSidebarData,
   watchSidebarData,
 } from '@vuepress/theme-helper'
-import type { Page, Theme } from 'vuepress/core'
+import type { Theme } from 'vuepress/core'
 import { isPlainObject } from 'vuepress/shared'
 import { fs, getDirname, path } from 'vuepress/utils'
 
@@ -104,11 +105,8 @@ export const classicTheme = ({
       addViteOptimizeDepsExclude(bundlerOptions, app, '@theme')
     },
 
-    extendsPage: (page: Page) => {
-      // save relative file path into page data to generate edit link
-      page.data.filePathRelative = page.filePathRelative
-      // save title into route meta to generate navbar and sidebar
-      page.routeMeta.title = page.title
+    extendsPage: (page) => {
+      extendsPageData(page)
     },
 
     plugins: [
