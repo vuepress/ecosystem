@@ -10,7 +10,7 @@ VuePress 主题开发者的工具包。
 
 该包提供主题功能的公共部分，这些功能只依赖站点的页面：读取页面、解析 frontmatter 约定并为客户端生成数据。主题仍保留自己的选项、自己的条目结构与自己的渲染方式。
 
-目前它提供 _根据文件结构生成侧边栏_ 功能。
+目前它提供 _根据文件结构生成侧边栏_ 与 _编辑链接_ 功能，以及两者所需的页面数据扩展。
 
 ## Usage
 
@@ -138,7 +138,43 @@ export default defineUserConfig({
 
 函数接受两个 `SidebarInfo` 条目并返回数字，与 `Array.prototype.sort()` 的回调相同。默认值为 `['readme', 'order', 'title', 'filename']`。
 
+### 生成编辑链接 {#generating-the-edit-link}
+
+编辑链接由主题的仓库选项与页面的相对文件路径生成。主题在 `extendsPage` 钩子中调用 `extendsPageData()` 保存相对文件路径与页面标题，然后在客户端使用 `useEditLink()`：
+
+```ts title="src/node/myTheme.ts"
+import { extendsPageData } from '@vuepress/theme-helper'
+
+export const myTheme = (): Theme => ({
+  extendsPage: (page) => {
+    extendsPageData(page)
+  },
+})
+```
+
+```ts title="src/client/components/PageMeta.vue"
+import { useEditLink } from '@vuepress/theme-helper/client'
+
+const editLink = useEditLink()
+```
+
+主题选项由 `EditLinkOptions` 定义，页面 frontmatter 可以覆盖 `editLink` 与 `editLinkPattern`。支持的仓库的默认模式由 `EDIT_LINK_PATTERNS` 提供。
+
+### 扩展页面数据 {#extending-the-page-data}
+
+`extendsPageData()` 会将页面的相对文件路径保存到 `page.data.filePathRelative`，将页面标题保存到 `page.routeMeta.title`。主题使用它们生成编辑链接以及导航栏和侧边栏的链接。
+
 ## Node API
+
+### extendsPageData
+
+::: fields
+@`page` type=`Page` required
+
+需要扩展的页面，通常是 `extendsPage` 钩子的参数。
+:::
+
+它会将相对文件路径保存到 `page.data.filePathRelative`，将页面标题保存到 `page.routeMeta.title`。
 
 ### getSidebarStructureScopes
 
@@ -225,3 +261,65 @@ const items: SidebarStructureItem[] = getSidebarStructure(scope)
 ### sidebarData
 
 从生成模块读取的原始 `SidebarStructureData`，以规范化后的范围为键。
+
+### useEditLink
+
+```ts
+const editLink: ComputedRef<{ text: string; link: string } | null> =
+  useEditLink()
+```
+
+它从主题数据与页面 frontmatter 解析当前页面的编辑链接。编辑链接被禁用或无法解析时返回 `null`。
+
+### resolveEditLink
+
+::: fields
+@`docsRepo` type=string required
+
+文档仓库的链接或 `owner/repo`。
+
+@`docsBranch` type=string required
+
+文档仓库的分支。
+
+@`docsDir` type=string required
+
+文档在仓库中的目录。
+
+@`filePathRelative` type=`string | null` required
+
+页面的相对文件路径。
+
+@`editLinkPattern` type=string
+
+自定义的编辑链接模式，它会覆盖仓库的默认模式。
+:::
+
+它返回编辑链接，无法解析时返回 `null`。`EDIT_LINK_PATTERNS` 常量提供支持的仓库的默认模式。
+
+### resolveRepoType
+
+```ts
+const repoType: RepoType = resolveRepoType('vuepress/ecosystem') // 'GitHub'
+```
+
+它解析仓库的类型：`'GitHub'`、`'GitLab'`、`'Gitee'`、`'Bitbucket'` 或 `null`。
+
+### useData
+
+```ts
+const { theme, frontmatter, page } = useData<
+  MyThemeData,
+  MyFrontmatter,
+  MyPageData
+>()
+```
+
+它将 `useThemeLocaleData()`、`usePageFrontmatter()` 与 `usePageData()` 组合到一个对象中。泛型参数用于标注主题多语言数据、页面 frontmatter 与页面数据的类型。
+
+## 类型
+
+公共约定的类型从包入口与 `shared` 入口导出：
+
+- `EditLinkOptions`、`EditLinkThemeData`、`EditLinkFrontmatter`、`EditLinkPageData`：编辑链接的选项、主题数据、frontmatter 与页面数据。主题可以在自己的类型中扩展它们。
+- `SidebarStructureData`、`SidebarStructureItem`、`SidebarInfo`、`SidebarSorter`、`SidebarSorterFunction`、`SidebarSorterKeyword`：生成的侧边栏数据的类型。

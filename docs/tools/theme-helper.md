@@ -10,7 +10,7 @@ Helpers for VuePress theme authors.
 
 The package provides the shared parts of a theme feature that only depends on the pages of a site: reading the pages, resolving the frontmatter conventions and generating data for the client. The theme keeps its own options, its own item shape and its own rendering.
 
-Currently it provides the _generate the sidebar from the file structure_ feature.
+Currently it provides the _generate the sidebar from the file structure_ and the _edit link_ features, and the page data extension that both of them need.
 
 ## Usage
 
@@ -139,7 +139,43 @@ The keywords are:
 
 A function receives two `SidebarInfo` items and returns a number, like the callback of `Array.prototype.sort()`. The default is `['readme', 'order', 'title', 'filename']`.
 
+### Generating the edit link
+
+The edit link is generated from the repository options of the theme and the relative file path of the page. A theme calls `extendsPageData()` in the `extendsPage` hook to save the relative file path and the page title, then uses `useEditLink()` in the client:
+
+```ts title="src/node/myTheme.ts"
+import { extendsPageData } from '@vuepress/theme-helper'
+
+export const myTheme = (): Theme => ({
+  extendsPage: (page) => {
+    extendsPageData(page)
+  },
+})
+```
+
+```ts title="src/client/components/PageMeta.vue"
+import { useEditLink } from '@vuepress/theme-helper/client'
+
+const editLink = useEditLink()
+```
+
+The theme options are typed by `EditLinkOptions`, and the page frontmatter can override `editLink` and `editLinkPattern`. The default patterns of the supported repositories are provided by `EDIT_LINK_PATTERNS`.
+
+### Extending the page data
+
+`extendsPageData()` saves the relative file path of the page into `page.data.filePathRelative`, and the page title into `page.routeMeta.title`. Themes use them to generate the edit link and the links of the navbar and the sidebar.
+
 ## Node API
+
+### extendsPageData
+
+::: fields
+@`page` type=`Page` required
+
+The page to extend, usually the argument of the `extendsPage` hook.
+:::
+
+It saves the relative file path into `page.data.filePathRelative`, and the page title into `page.routeMeta.title`.
 
 ### getSidebarStructureScopes
 
@@ -226,3 +262,65 @@ It returns the generated items of a scope, or an empty array when the scope is n
 ### sidebarData
 
 The raw `SidebarStructureData` read from the generated module, keyed by the normalized scope.
+
+### useEditLink
+
+```ts
+const editLink: ComputedRef<{ text: string; link: string } | null> =
+  useEditLink()
+```
+
+It resolves the edit link of the current page from the theme data and the page frontmatter. It returns `null` when the edit link is disabled or cannot be resolved.
+
+### resolveEditLink
+
+::: fields
+@`docsRepo` type=string required
+
+The link or `owner/repo` of the documentation repository.
+
+@`docsBranch` type=string required
+
+The branch of the documentation repository.
+
+@`docsDir` type=string required
+
+The directory of the documentation in the repository.
+
+@`filePathRelative` type=`string | null` required
+
+The relative file path of the page.
+
+@`editLinkPattern` type=string
+
+The custom pattern of the edit link, it overrides the default pattern of the repository.
+:::
+
+It returns the edit link, or `null` when it cannot be resolved. The `EDIT_LINK_PATTERNS` constant provides the default patterns of the supported repositories.
+
+### resolveRepoType
+
+```ts
+const repoType: RepoType = resolveRepoType('vuepress/ecosystem') // 'GitHub'
+```
+
+It resolves the type of a repository: `'GitHub'`, `'GitLab'`, `'Gitee'`, `'Bitbucket'` or `null`.
+
+### useData
+
+```ts
+const { theme, frontmatter, page } = useData<
+  MyThemeData,
+  MyFrontmatter,
+  MyPageData
+>()
+```
+
+It combines `useThemeLocaleData()`, `usePageFrontmatter()` and `usePageData()` into a single object. The generic parameters type the theme locale data, the page frontmatter and the page data.
+
+## Types
+
+The types of the shared conventions are exported from the package root and the `shared` entry:
+
+- `EditLinkOptions`, `EditLinkThemeData`, `EditLinkFrontmatter`, `EditLinkPageData`: the options, the theme data, the frontmatter and the page data of the edit link. A theme can extend them in its own types.
+- `SidebarStructureData`, `SidebarStructureItem`, `SidebarInfo`, `SidebarSorter`, `SidebarSorterFunction`, `SidebarSorterKeyword`: the types of the generated sidebar data.
