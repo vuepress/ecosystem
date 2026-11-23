@@ -1,7 +1,10 @@
 import { watch } from 'chokidar'
 import type { App } from 'vuepress/core'
 
-import type { SidebarStructureData } from '../shared/index.js'
+import type {
+  SidebarStructureData,
+  SidebarStructureItem,
+} from '../shared/index.js'
 import type { SidebarStructureDataOptions } from './getSidebarStructureData.js'
 import { getSidebarStructureData } from './getSidebarStructureData.js'
 import { logger } from './logger.js'
@@ -19,10 +22,12 @@ import { logger } from './logger.js'
  * @param options - Options of the function / 函数的选项
  * @returns The sidebar structure data / 侧边栏结构数据
  */
-export const prepareSidebarData = async (
+export const prepareSidebarData = async <
+  Item extends { text: string } = SidebarStructureItem,
+>(
   app: App,
-  options: SidebarStructureDataOptions,
-): Promise<SidebarStructureData> => {
+  options: SidebarStructureDataOptions<Item>,
+): Promise<SidebarStructureData<Item>> => {
   const sidebarData = getSidebarStructureData(app, options)
 
   if (app.env.isDebug) logger.info('Sidebar structure data:', sidebarData)
@@ -48,10 +53,12 @@ export const prepareSidebarData = async (
  * @param watchers - Watchers of the app / 应用的监听器
  * @param options - Options of the function / 函数的选项
  */
-export const watchSidebarData = (
+export const watchSidebarData = <
+  Item extends { text: string } = SidebarStructureItem,
+>(
   app: App,
   watchers: { close: () => void }[],
-  options: SidebarStructureDataOptions,
+  options: SidebarStructureDataOptions<Item>,
 ): void => {
   const watcher = watch('pages', {
     cwd: app.dir.temp(),

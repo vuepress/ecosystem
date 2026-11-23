@@ -1,3 +1,4 @@
+export * from './createSidebarStructureHelper.js'
 export * from './extendsPageData.js'
 export * from './getSidebarInfo.js'
 export * from './getSidebarSorter.js'

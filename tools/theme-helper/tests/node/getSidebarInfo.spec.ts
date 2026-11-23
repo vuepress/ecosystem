@@ -75,7 +75,11 @@ describe(getSidebarInfo, () => {
           dirname: 'guide',
           title: 'Guide Group',
           order: 3,
-          groupInfo: { icon: 'guide-icon', link: '/guide/' },
+          groupInfo: {
+            collapsible: false,
+            icon: 'guide-icon',
+            link: '/guide/',
+          },
           children: [
             {
               type: 'file',
@@ -119,7 +123,7 @@ describe(getSidebarInfo, () => {
         },
         {
           dirname: 'not-expanded',
-          groupInfo: {},
+          groupInfo: { collapsible: false },
         },
       ])
     } finally {

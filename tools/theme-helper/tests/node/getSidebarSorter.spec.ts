@@ -37,7 +37,7 @@ const createDir = (
   dirname,
   title: dirname,
   order: null,
-  groupInfo: {},
+  groupInfo: { collapsible: true },
   children: [],
   frontmatter: null,
   pageData: null,

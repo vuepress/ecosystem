@@ -154,7 +154,7 @@ const getSidebarInfoFromStructure = (
 
         // group information
         groupInfo: {
-          ...(collapsible ? { collapsible } : {}),
+          collapsible,
           ...(expanded ? { expanded } : {}),
           ...(icon ? { icon } : {}),
           ...(dirOptions?.link ? { link: readmePage.path } : {}),

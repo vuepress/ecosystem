@@ -196,7 +196,7 @@ export interface SidebarGroupInfo {
    *
    * 分组是否可折叠
    */
-  collapsible?: boolean
+  collapsible: boolean
 
   /**
    * Whether the group is expanded by default
@@ -294,7 +294,13 @@ export type SidebarInfo = SidebarFileInfo | SidebarDirInfo
 /**
  * Sidebar item generated from the file structure
  *
+ * The helper only guarantees that every item has a `text`, the rest of the
+ * fields are defined by the theme. The children of a group item are attached
+ * under the `childrenKey` of the helper / theme.
+ *
  * 根据文件结构生成的侧边栏条目
+ *
+ * Helper 只保证每个条目都有 `text`，其余字段由主题定义。分组条目的子项会挂载在 helper / 主题的 `childrenKey` 下。
  */
 export interface SidebarStructureItem {
   /**
@@ -312,41 +318,34 @@ export interface SidebarStructureItem {
   link?: string
 
   /**
-   * Icon of the item
-   *
-   * 条目的图标
-   */
-  icon?: string
-
-  /**
-   * Whether the group is collapsible
-   *
-   * 分组是否可折叠
-   */
-  collapsible?: boolean
-
-  /**
-   * Whether the group is expanded by default
-   *
-   * 分组是否默认展开
-   */
-  expanded?: boolean
-
-  /**
    * Children of the item
    *
    * 条目的子项
    */
   children?: SidebarStructureItem[]
+
+  /**
+   * Other fields of the item, defined by the theme
+   *
+   * 条目的其它字段，由主题定义
+   */
+  [key: string]: unknown
 }
 
 /**
  * Sidebar items generated from the file structure, keyed by the route path
  * scope
  *
+ * The shape of the items is defined by the theme, `SidebarStructureItem` is the
+ * neutral default shape.
+ *
  * 根据文件结构生成的侧边栏条目，以路由路径范围作为键
+ *
+ * 条目的形状由主题定义，`SidebarStructureItem` 是中立的默认形状。
  */
-export type SidebarStructureData = Record<string, SidebarStructureItem[]>
+export type SidebarStructureData<
+  Item extends { text: string } = SidebarStructureItem,
+> = Record<string, Item[]>
 
 /**
  * Keyword of a built-in sorter
