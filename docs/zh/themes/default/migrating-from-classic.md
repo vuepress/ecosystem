@@ -20,16 +20,16 @@ icon: arrow-right-left
 ```
 
 ```diff
-- import { themeClassic } from '@vuepress/theme-classic'
-+ import { themeDefault } from '@vuepress/theme-default'
+- import { classicTheme } from '@vuepress/theme-classic'
++ import { defaultTheme } from '@vuepress/theme-default'
 
   export default defineUserConfig({
--   theme: themeClassic({ /* ... */ }),
-+   theme: themeDefault({ /* ... */ }),
+-   theme: classicTheme({ /* ... */ }),
++   theme: defaultTheme({ /* ... */ }),
   })
 ```
 
-如果你的站点仍在从旧的 `@vuepress/theme-default` 导入 `defaultTheme`，请改用 `themeDefault` 并安装新的包，因为该导入名已不再存在。
+新主题保留了 `defaultTheme` 导出名，因此原有的 `import { defaultTheme } from '@vuepress/theme-default'` 在升级后仍然可用。布局和主题配置项发生了变化，请按下面的说明迁移。
 
 ## 迁移主题配置项 {#migrate-the-theme-options}
 
@@ -140,7 +140,7 @@ icon: arrow-right-left
 经典主题会从 `notFound` 中随机渲染一条消息。新主题只有一个 `quote`，因此请从原来的消息中选一条：
 
 ```ts
-themeDefault({
+defaultTheme({
   notFound: {
     title: 'PAGE NOT FOUND',
     quote: "There's nothing here.",
@@ -188,7 +188,7 @@ SASS 调色板已被移除。主题不再接入 `@vuepress/plugin-palette`，因
 插件仍然用 `false` 禁用、用对象配置，和以前一样：
 
 ```ts
-themeDefault({
+defaultTheme({
   themePlugins: {
     shiki: { themes: { light: 'nord', dark: 'nord' } },
     linksCheck: { exclude: [/^#\//u] },
@@ -204,7 +204,7 @@ import { prismjsPlugin } from '@vuepress/plugin-prismjs'
 
 export default defineUserConfig({
   plugins: [prismjsPlugin()],
-  theme: themeDefault({
+  theme: defaultTheme({
     themePlugins: { shiki: false },
   }),
 })
@@ -323,7 +323,7 @@ const nav: DefaultTheme.NavItem[] = [{ text: 'Guide', link: '/guide/' }]
 
 ## 检查清单 {#checklist}
 
-1. 把 `@vuepress/theme-classic` 替换为 `@vuepress/theme-default`，把 `themeClassic` 替换为 `themeDefault`。
+1. 把 `@vuepress/theme-classic` 替换为 `@vuepress/theme-default`，把 `classicTheme` 替换为 `defaultTheme`。
 2. 把 `navbar` 转换为 `nav`，并把侧边栏条目转换为新的形状。
 3. 把 `colorMode` / `colorModeSwitch` 转换为 `appearance`，把语言切换器配置项转换为 `locales.<path>.label` 和 `langMenuLabel`。
 4. 把 `notFound`、`backToHome` 和首页 frontmatter 转换为新的 frontmatter。

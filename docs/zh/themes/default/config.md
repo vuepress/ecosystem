@@ -4,14 +4,14 @@ icon: settings-2
 
 # 配置 {#config}
 
-所有配置项都传给 `.vuepress/config.ts` 中的 `themeDefault()`：
+所有配置项都传给 `.vuepress/config.ts` 中的 `defaultTheme()`：
 
 ```ts title=".vuepress/config.ts"
-import { themeDefault } from '@vuepress/theme-default'
+import { defaultTheme } from '@vuepress/theme-default'
 import { defineUserConfig } from 'vuepress'
 
 export default defineUserConfig({
-  theme: themeDefault({
+  theme: defaultTheme({
     siteTitle: 'My Site',
     nav: [{ text: 'Guide', link: '/guide/' }],
     sidebar: 'heading',
@@ -19,7 +19,7 @@ export default defineUserConfig({
 })
 ```
 
-下面每个配置项都是 `ThemeConfig` 接口的字段，只有 `hostname` 是 `themeDefault()` 的额外配置项。不支持的配置项 —— 包括仅 VitePress 支持的配置项 —— 会被 TypeScript 类型检查拒绝，而不会被静默忽略。
+下面每个配置项都是 `ThemeConfig` 接口的字段，只有 `hostname` 是 `defaultTheme()` 的额外配置项。不支持的配置项 —— 包括仅 VitePress 支持的配置项 —— 会被 TypeScript 类型检查拒绝，而不会被静默忽略。
 
 配置项由根主题配置和 [`locales`](#locale) 中对应的条目合并而来：只在 `locales['/zh/']` 中设置的配置项不会作用于其他语言。诸如 `hostname` 这类不应被翻译的站点级配置项，只在根配置中有意义。
 
@@ -195,7 +195,7 @@ Logo 和站点标题的链接。它默认为当前语言的主页链接（根语
 
 ```ts
 export default defineUserConfig({
-  theme: themeDefault({
+  theme: defaultTheme({
     nav: [
       { text: 'Guide', link: '/guide/' },
       {
@@ -304,7 +304,7 @@ export default defineUserConfig({
 
 ```ts
 export default defineUserConfig({
-  theme: themeDefault({
+  theme: defaultTheme({
     sidebar: {
       '/guide/': [{ text: 'Guide', items: ['/guide/', '/guide/install'] }],
       '/advanced/': {
@@ -469,7 +469,7 @@ export default defineUserConfig({
     '/': { lang: 'en-US', title: 'My Site' },
     '/zh/': { lang: 'zh-CN', title: '我的站点' },
   },
-  theme: themeDefault({
+  theme: defaultTheme({
     locales: {
       '/': { label: 'English' },
       '/zh/': {
@@ -516,7 +516,7 @@ export default defineUserConfig({
 
 ```ts
 export default defineUserConfig({
-  theme: themeDefault({
+  theme: defaultTheme({
     themePlugins: {
       copyCode: false,
       shiki: { themes: { light: 'vitesse-light', dark: 'vitesse-dark' } },

@@ -87,7 +87,7 @@ npm i -D @vuepress/theme-default@next
 
 ```ts
 export default defineUserConfig({
-  theme: themeDefault({
+  theme: defaultTheme({
     themePlugins: { markdownTab: { tabs: true } },
   }),
 })
@@ -122,7 +122,7 @@ Carrot
 该插件的其他扩展 —— GFM 支持、脚注、任务列表和 `component` 围栏 —— 需要通过 `themePlugins.markdownExt` 手动开启。例如：
 
 ```ts
-themeDefault({
+defaultTheme({
   themePlugins: {
     markdownExt: { gfm: true, footnote: true, tasklist: true },
   },
@@ -154,7 +154,7 @@ themeDefault({
 把 [`externalLinkIcon`](./config.md#basic-config) 设为 `true`，即可在文档内容的外链之后显示图标：
 
 ```ts
-themeDefault({ externalLinkIcon: true })
+defaultTheme({ externalLinkIcon: true })
 ```
 
 该图标只会加在内容中的链接上 —— 不会加在导航栏、侧边栏或页脚的链接上。给链接加上 `no-icon` class 即可让它不显示图标：

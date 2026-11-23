@@ -10,15 +10,15 @@ import { getSidebar } from '../../src/client/theme-default/support/sidebar.js'
 import {
   resolveTemplateAppearance,
   resolveThemeData,
-  themeDefault,
+  defaultTheme,
 } from '../../src/node/defaultTheme.js'
 import type { DefaultTheme } from '../../src/shared/types.js'
 
 const createTheme = (
-  options?: Parameters<typeof themeDefault>[0],
-): ThemeObject => themeDefault(options)
+  options?: Parameters<typeof defaultTheme>[0],
+): ThemeObject => defaultTheme(options)
 
-describe(themeDefault, () => {
+describe(defaultTheme, () => {
   it('should create the theme with expected metadata', () => {
     const theme = createTheme()
 
@@ -239,7 +239,7 @@ describe('templateBuildRenderer', () => {
   }
 
   it('should inject the fixed appearance and render the template outlets', () => {
-    const theme = themeDefault({ appearance: 'force-dark' })
+    const theme = defaultTheme({ appearance: 'force-dark' })
 
     const html = theme.templateBuildRenderer!(template, context)
 
@@ -251,7 +251,7 @@ describe('templateBuildRenderer', () => {
   })
 
   it('should fall back to auto for the default appearance', () => {
-    const html = themeDefault().templateBuildRenderer!(template, context)
+    const html = defaultTheme().templateBuildRenderer!(template, context)
 
     expect(html).toContain('data-appearance="auto"')
   })

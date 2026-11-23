@@ -9,10 +9,10 @@ icon: unplug
 经典主题使用了一些插件，如果你确实不需要该插件，你可以选择禁用它。在禁用插件之前，请确保你已了解它的用途。
 
 ```ts title=".vuepress/config.ts"
-import { themeClassic } from '@vuepress/theme-classic'
+import { classicTheme } from '@vuepress/theme-classic'
 
 export default {
-  theme: themeClassic({
+  theme: classicTheme({
     themePlugins: {
       // 在这里自定义主题插件
     },

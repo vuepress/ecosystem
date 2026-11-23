@@ -9,10 +9,10 @@ You can configure the plugins that used by classic theme with `themePlugins`.
 Classic theme is using some plugins by default. You can disable a plugin if you really do not want to use it. Make sure you understand what the plugin is for before disabling it.
 
 ```ts title=".vuepress/config.ts"
-import { themeClassic } from '@vuepress/theme-classic'
+import { classicTheme } from '@vuepress/theme-classic'
 
 export default {
-  theme: themeClassic({
+  theme: classicTheme({
     themePlugins: {
       // customize theme plugins here
     },

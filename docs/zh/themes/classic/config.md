@@ -71,7 +71,7 @@ icon: settings-2
 
 ```ts title=".vuepress/config.ts"
 export default {
-  theme: themeClassic({
+  theme: classicTheme({
     navbar: [
       // NavbarLink
       {
@@ -93,7 +93,7 @@ export default {
 
 ```ts title=".vuepress/config.ts"
 export default {
-  theme: themeClassic({
+  theme: classicTheme({
     navbar: [
       // 嵌套 Group - 最大深度为 2
       {
@@ -162,7 +162,7 @@ Logo 图片将会显示在导航栏的左端。
 
 ```ts title=".vuepress/config.ts"
 export default {
-  theme: themeClassic({
+  theme: classicTheme({
     // Public 文件路径
     logo: '/images/hero.png',
     // URL
@@ -197,7 +197,7 @@ export default {
 
 ```ts title=".vuepress/config.ts"
 export default {
-  theme: themeClassic({
+  theme: classicTheme({
     // 如果你按照 `organization/repository` 的格式设置它
     // 我们会将它作为一个 GitHub 仓库
     repo: 'vuepress/core',
@@ -229,7 +229,7 @@ export default {
 
 ```ts title=".vuepress/config.ts"
 export default {
-  theme: themeClassic({
+  theme: classicTheme({
     // 侧边栏数组
     // 所有页面会使用相同的侧边栏
     sidebar: [
@@ -259,7 +259,7 @@ export default {
 
 ```ts title=".vuepress/config.ts"
 export default {
-  theme: themeClassic({
+  theme: classicTheme({
     // 侧边栏对象
     // 不同子路径下的页面会使用不同的侧边栏
     sidebar: {
@@ -281,7 +281,7 @@ export default {
 
 ```ts title=".vuepress/config.ts"
 export default {
-  theme: themeClassic({
+  theme: classicTheme({
     // 可折叠的侧边栏
     sidebar: {
       '/reference/': [
@@ -337,7 +337,7 @@ _编辑此页_ 链接的 Pattern。
 
 ```ts title=".vuepress/config.ts"
 export default {
-  theme: themeClassic({
+  theme: classicTheme({
     docsRepo: 'https://gitlab.com/owner/name',
     docsBranch: 'master',
     docsDir: 'docs',

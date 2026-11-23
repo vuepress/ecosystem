@@ -20,16 +20,16 @@ Replace the package of the theme and the import of the factory:
 ```
 
 ```diff
-- import { themeClassic } from '@vuepress/theme-classic'
-+ import { themeDefault } from '@vuepress/theme-default'
+- import { classicTheme } from '@vuepress/theme-classic'
++ import { defaultTheme } from '@vuepress/theme-default'
 
   export default defineUserConfig({
--   theme: themeClassic({ /* ... */ }),
-+   theme: themeDefault({ /* ... */ }),
+-   theme: classicTheme({ /* ... */ }),
++   theme: defaultTheme({ /* ... */ }),
   })
 ```
 
-If your site still imports `defaultTheme` from the former `@vuepress/theme-default`, replace it with `themeDefault` and install the new package, since that import name no longer exists.
+The new theme keeps the `defaultTheme` export name, so an existing `import { defaultTheme } from '@vuepress/theme-default'` keeps working after the upgrade. The layout and the theme options change, so migrate them as described below.
 
 ## Migrate the Theme Options
 
@@ -140,7 +140,7 @@ The storage key is still `vuepress-color-scheme`, but the dark mode is now drive
 The classic theme rendered one of the messages of `notFound` at random. The new theme has a single `quote`, so pick one of the former messages:
 
 ```ts
-themeDefault({
+defaultTheme({
   notFound: {
     title: 'PAGE NOT FOUND',
     quote: "There's nothing here.",
@@ -188,7 +188,7 @@ The SASS palette is gone. `@vuepress/plugin-palette` is not wired, since the the
 A plugin is disabled with `false` and configured with an object, as before:
 
 ```ts
-themeDefault({
+defaultTheme({
   themePlugins: {
     shiki: { themes: { light: 'nord', dark: 'nord' } },
     linksCheck: { exclude: [/^#\//u] },
@@ -204,7 +204,7 @@ import { prismjsPlugin } from '@vuepress/plugin-prismjs'
 
 export default defineUserConfig({
   plugins: [prismjsPlugin()],
-  theme: themeDefault({
+  theme: defaultTheme({
     themePlugins: { shiki: false },
   }),
 })
@@ -323,7 +323,7 @@ A few classic features were dropped rather than renamed:
 
 ## Checklist
 
-1. Replace `@vuepress/theme-classic` with `@vuepress/theme-default` and `themeClassic` with `themeDefault`.
+1. Replace `@vuepress/theme-classic` with `@vuepress/theme-default` and `classicTheme` with `defaultTheme`.
 2. Convert `navbar` to `nav`, and the sidebar items to the new shape.
 3. Convert `colorMode` / `colorModeSwitch` to `appearance`, and the language switcher options to `locales.<path>.label` and `langMenuLabel`.
 4. Convert `notFound`, `backToHome` and the home frontmatter to the new frontmatter.

@@ -75,12 +75,12 @@ The documentation lives on the documentation site:
 
 ```ts
 import { slimsearchPlugin } from '@vuepress/plugin-slimsearch'
-import { themeDefault } from '@vuepress/theme-default'
+import { defaultTheme } from '@vuepress/theme-default'
 import { defineUserConfig } from 'vuepress/cli'
 
 export default defineUserConfig({
   plugins: [slimsearchPlugin()],
-  theme: themeDefault({
+  theme: defaultTheme({
     nav: [{ text: 'Guide', link: '/guide/' }],
     sidebar: {
       '/guide/': [

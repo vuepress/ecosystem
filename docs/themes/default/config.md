@@ -4,14 +4,14 @@ icon: settings-2
 
 # Config
 
-All options are passed to `themeDefault()` in `.vuepress/config.ts`:
+All options are passed to `defaultTheme()` in `.vuepress/config.ts`:
 
 ```ts title=".vuepress/config.ts"
-import { themeDefault } from '@vuepress/theme-default'
+import { defaultTheme } from '@vuepress/theme-default'
 import { defineUserConfig } from 'vuepress'
 
 export default defineUserConfig({
-  theme: themeDefault({
+  theme: defaultTheme({
     siteTitle: 'My Site',
     nav: [{ text: 'Guide', link: '/guide/' }],
     sidebar: 'heading',
@@ -19,7 +19,7 @@ export default defineUserConfig({
 })
 ```
 
-Every option below is a field of the `ThemeConfig` interface, except `hostname`, which is an extra option of `themeDefault()`. Options that are not supported — including the VitePress-only ones — are rejected by the TypeScript type checker rather than silently ignored.
+Every option below is a field of the `ThemeConfig` interface, except `hostname`, which is an extra option of `defaultTheme()`. Options that are not supported — including the VitePress-only ones — are rejected by the TypeScript type checker rather than silently ignored.
 
 The options are merged from the root theme config and the matching entry of [`locales`](#locale): an option set only in `locales['/zh/']` does not apply to the other languages. Site-wide options that must not be translated, such as `hostname`, only make sense at the root.
 
@@ -195,7 +195,7 @@ A navbar example with a dropdown, a group and an external link:
 
 ```ts
 export default defineUserConfig({
-  theme: themeDefault({
+  theme: defaultTheme({
     nav: [
       { text: 'Guide', link: '/guide/' },
       {
@@ -304,7 +304,7 @@ The multi-sidebar object also accepts `{ items, base }` to set the base of a who
 
 ```ts
 export default defineUserConfig({
-  theme: themeDefault({
+  theme: defaultTheme({
     sidebar: {
       '/guide/': [{ text: 'Guide', items: ['/guide/', '/guide/install'] }],
       '/advanced/': {
@@ -469,7 +469,7 @@ export default defineUserConfig({
     '/': { lang: 'en-US', title: 'My Site' },
     '/zh/': { lang: 'zh-CN', title: '我的站点' },
   },
-  theme: themeDefault({
+  theme: defaultTheme({
     locales: {
       '/': { label: 'English' },
       '/zh/': {
@@ -516,7 +516,7 @@ The options of the plugins wired by the theme. Set a key to `false` to disable t
 
 ```ts
 export default defineUserConfig({
-  theme: themeDefault({
+  theme: defaultTheme({
     themePlugins: {
       copyCode: false,
       shiki: { themes: { light: 'vitesse-light', dark: 'vitesse-dark' } },

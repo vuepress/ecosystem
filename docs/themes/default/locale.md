@@ -11,12 +11,12 @@ VuePress itself also has a [site-level `locales`](https://vuepress.vuejs.org/gui
 <NpmBadge package="@vuepress/theme-default" />
 
 ```ts
-import { themeDefault } from '@vuepress/theme-default'
+import { defaultTheme } from '@vuepress/theme-default'
 import { defineUserConfig } from 'vuepress'
 
 export default defineUserConfig({
   lang: 'en-US',
-  theme: themeDefault({
+  theme: defaultTheme({
     locales: {
       '/': {
         label: 'English',
@@ -119,7 +119,7 @@ The label above the link to the next page. Set it to `false` to hide the next li
 The title of the outline. It is set on the [`outline`](./config.md#page) option:
 
 ```ts
-themeDefault({
+defaultTheme({
   outline: { level: [2, 3], label: 'On this page' },
 })
 ```

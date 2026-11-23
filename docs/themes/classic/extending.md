@@ -75,14 +75,14 @@ Classic theme has registered [alias](https://v2.vuepress.vuejs.org/plugin-api.ht
 Then, if you want to replace the `HomeFooter.vue` component, just override the alias in your config file `.vuepress/config.ts`:
 
 ```ts title=".vuepress/config.ts"
-import { themeClassic } from '@vuepress/theme-classic'
+import { classicTheme } from '@vuepress/theme-classic'
 import { defineUserConfig } from 'vuepress'
 import { path } from 'vuepress/utils'
 
 const __dirname = import.meta.dirname
 
 export default defineUserConfig({
-  theme: themeClassic(),
+  theme: classicTheme(),
   alias: {
     '@theme/HomeFooter.vue': path.resolve(
       __dirname,
@@ -104,7 +104,7 @@ Instead of extending the classic theme directly in `.vuepress/config.ts` and `.v
 
 ```ts title=".vuepress/config.ts"
 import type { ClassicThemeOptions } from '@vuepress/theme-classic'
-import { themeClassic } from '@vuepress/theme-classic'
+import { classicTheme } from '@vuepress/theme-classic'
 import type { Theme } from 'vuepress/core'
 import { path } from 'vuepress/utils'
 
@@ -112,7 +112,7 @@ const __dirname = import.meta.dirname
 
 export const childTheme = (options: ClassicThemeOptions): Theme => ({
   name: 'vuepress-theme-child',
-  extends: themeClassic(options),
+  extends: classicTheme(options),
 
   // override layouts in child theme's client config file
   // notice that you would build ts to js before publishing to npm,

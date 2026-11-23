@@ -71,7 +71,7 @@ To configure the navbar items, you can set it to a _navbar array_, each item of 
 
 ```ts title=".vuepress/config.ts"
 export default {
-  theme: themeClassic({
+  theme: classicTheme({
     navbar: [
       // NavbarLink
       {
@@ -93,7 +93,7 @@ export default {
 
 ```ts title=".vuepress/config.ts"
 export default {
-  theme: themeClassic({
+  theme: classicTheme({
     navbar: [
       // nested group - max depth is 2
       {
@@ -161,7 +161,7 @@ Set to `null` to disable logo.
 
 ```ts title=".vuepress/config.ts"
 export default {
-  theme: themeClassic({
+  theme: classicTheme({
     // public file path
     logo: '/hero.png',
     // url
@@ -196,7 +196,7 @@ This will be used as the link of the _repository link_, which will be displayed 
 
 ```ts title=".vuepress/config.ts"
 export default {
-  theme: themeClassic({
+  theme: classicTheme({
     // If you set it in the form of `organization/repository`
     // we will take it as a GitHub repo
     repo: 'vuepress/ecosystem',
@@ -228,7 +228,7 @@ If you want to set different sidebar for different sub paths, you can set this o
 
 ```ts title=".vuepress/config.ts"
 export default {
-  theme: themeClassic({
+  theme: classicTheme({
     // sidebar array
     // all pages will use the same sidebar
     sidebar: [
@@ -258,7 +258,7 @@ export default {
 
 ```ts title=".vuepress/config.ts"
 export default {
-  theme: themeClassic({
+  theme: classicTheme({
     // sidebar object
     // pages under different sub paths will use different sidebar
     sidebar: {
@@ -280,7 +280,7 @@ export default {
 
 ```ts title=".vuepress/config.ts"
 export default {
-  theme: themeClassic({
+  theme: classicTheme({
     // collapsible sidebar
     sidebar: {
       '/reference/': [
@@ -336,7 +336,7 @@ If you don't set this option, the pattern will be inferred from the [docsRepo](#
 
 ```ts title=".vuepress/config.ts"
 export default {
-  theme: themeClassic({
+  theme: classicTheme({
     docsRepo: 'https://gitlab.com/owner/name',
     docsBranch: 'master',
     docsDir: 'docs',

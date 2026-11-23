@@ -23,11 +23,11 @@ npm i -D @vuepress/theme-default@next
 在配置中使用它：
 
 ```ts title=".vuepress/config.ts"
-import { themeDefault } from '@vuepress/theme-default'
+import { defaultTheme } from '@vuepress/theme-default'
 import { defineUserConfig } from 'vuepress'
 
 export default defineUserConfig({
-  theme: themeDefault({
+  theme: defaultTheme({
     siteTitle: 'My Site',
     logo: '/logo.svg',
     nav: [{ text: 'Guide', link: '/guide/' }],
@@ -37,11 +37,11 @@ export default defineUserConfig({
 })
 ```
 
-`themeDefault()` 的每个配置项都在 [配置](./config.md) 中说明。主题还接受一个 `hostname` 配置项，它不属于主题配置本身，而是 SEO 和 sitemap 插件所必需的：
+`defaultTheme()` 的每个配置项都在 [配置](./config.md) 中说明。主题还接受一个 `hostname` 配置项，它不属于主题配置本身，而是 SEO 和 sitemap 插件所必需的：
 
 ```ts
 export default defineUserConfig({
-  theme: themeDefault({
+  theme: defaultTheme({
     hostname: 'https://example.com',
   }),
 })
@@ -65,7 +65,7 @@ export default defineUserConfig({
 
 | 关注点                                        | 通过什么配置            | 页面                                          |
 | --------------------------------------------- | ----------------------- | --------------------------------------------- |
-| 导航栏、侧边栏、大纲、编辑链接、页脚、主题 UI | `themeDefault()` 配置项 | [配置](./config.md)                           |
+| 导航栏、侧边栏、大纲、编辑链接、页脚、主题 UI | `defaultTheme()` 配置项 | [配置](./config.md)                           |
 | 页面类型、首页 Hero 与特性、单页 UI           | 页面 frontmatter        | [Frontmatter](./frontmatter.md)               |
 | 内置插件及其开关                              | `themePlugins`          | [插件](./plugin.md)                           |
 | UI 文案和按语言区分的配置项                   | `locales`               | [语言](./locale.md)                           |
@@ -104,7 +104,7 @@ export default defineUserConfig({
 
 ## 客户端 API {#client-api}
 
-Node 入口（`@vuepress/theme-default`）导出 `themeDefault` 以及描述主题的类型：`ThemeOptions`、`ThemeConfig`、`ThemeLayout`、`ThemePageData`、`ThemePluginsOptions`、`ThemeContributor`、`AppearanceOptions`，还有 `DefaultTheme` 命名空间（导航项、侧边栏项、Hero 与特性配置项、页脚、团队成员等）。
+Node 入口（`@vuepress/theme-default`）导出 `defaultTheme` 以及描述主题的类型：`ThemeOptions`、`ThemeConfig`、`ThemeLayout`、`ThemePageData`、`ThemePluginsOptions`、`ThemeContributor`、`AppearanceOptions`，还有 `DefaultTheme` 命名空间（导航项、侧边栏项、Hero 与特性配置项、页脚、团队成员等）。
 
 客户端入口（`@vuepress/theme-default/client`）导出内置组件和组合式函数。导入它还会加载主题样式和 Inter 网络字体。
 
