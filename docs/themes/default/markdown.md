@@ -87,7 +87,7 @@ The generic tab group is opt-in, because the theme only enables `codeTabs` by de
 
 ```ts
 export default defineUserConfig({
-  theme: themeDefault({
+  theme: defaultTheme({
     themePlugins: { markdownTab: { tabs: true } },
   }),
 })
@@ -122,7 +122,7 @@ The theme enables the `v-pre` container of [`@vuepress/plugin-markdown-ext`](../
 The other extensions of the plugin — the GFM support, the footnotes, the task lists and the `component` fence — are opt-in through `themePlugins.markdownExt`. For example:
 
 ```ts
-themeDefault({
+defaultTheme({
   themePlugins: {
     markdownExt: { gfm: true, footnote: true, tasklist: true },
   },
@@ -154,7 +154,7 @@ To link to a section, use its slug as the hash: `[Install](#install)`. The slug 
 Set [`externalLinkIcon`](./config.md#basic-config) to `true` to show an icon after the external links of the document content:
 
 ```ts
-themeDefault({ externalLinkIcon: true })
+defaultTheme({ externalLinkIcon: true })
 ```
 
 The icon is only added to the links in the content — not to the links of the navbar, the sidebar or the footer. Add the `no-icon` class to a link to opt it out:

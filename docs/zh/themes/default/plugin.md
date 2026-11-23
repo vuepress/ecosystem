@@ -40,11 +40,11 @@ icon: plug
 - 一个对象 —— 启用该插件，该对象会合并到主题传入的默认值之上。
 
 ```ts
-import { themeDefault } from '@vuepress/theme-default'
+import { defaultTheme } from '@vuepress/theme-default'
 import { defineUserConfig } from 'vuepress'
 
 export default defineUserConfig({
-  theme: themeDefault({
+  theme: defaultTheme({
     themePlugins: {
       copyCode: { showInMobile: true },
       mediumZoom: { selector: '.vp-doc img' },
@@ -220,7 +220,7 @@ themePlugins: {
 在配置了 [`hostname`](./config.md#basic-config) 时接入 [SEO](../../plugins/seo/seo.md)。hostname 由主题传入，对象补充其余配置：
 
 ```ts
-themeDefault({
+defaultTheme({
   hostname: 'https://example.com',
   themePlugins: {
     seo: {
@@ -236,7 +236,7 @@ themeDefault({
 在配置了 [`hostname`](./config.md#basic-config) 时接入 [Sitemap](../../plugins/seo/sitemap.md)。
 
 ```ts
-themeDefault({
+defaultTheme({
   hostname: 'https://example.com',
   themePlugins: {
     sitemap: { changefreq: 'weekly', excludePaths: ['/404.html'] },
@@ -253,7 +253,7 @@ themeDefault({
 import { slimsearchPlugin } from '@vuepress/plugin-slimsearch'
 
 export default defineUserConfig({
-  theme: themeDefault({}),
+  theme: defaultTheme({}),
   plugins: [slimsearchPlugin()],
 })
 ```

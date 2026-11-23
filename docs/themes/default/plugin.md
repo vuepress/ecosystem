@@ -40,11 +40,11 @@ A `themePlugins` entry accepts:
 - an object — the plugin is enabled, the object is merged over the defaults the theme passes.
 
 ```ts
-import { themeDefault } from '@vuepress/theme-default'
+import { defaultTheme } from '@vuepress/theme-default'
 import { defineUserConfig } from 'vuepress'
 
 export default defineUserConfig({
-  theme: themeDefault({
+  theme: defaultTheme({
     themePlugins: {
       copyCode: { showInMobile: true },
       mediumZoom: { selector: '.vp-doc img' },
@@ -220,7 +220,7 @@ Wires [NProgress](../../plugins/features/nprogress.md), the progress bar shown o
 Wires [SEO](../../plugins/seo/seo.md) when [`hostname`](./config.md#basic-config) is configured. The hostname is passed by the theme and the object adds the rest:
 
 ```ts
-themeDefault({
+defaultTheme({
   hostname: 'https://example.com',
   themePlugins: {
     seo: {
@@ -236,7 +236,7 @@ themeDefault({
 Wires [Sitemap](../../plugins/seo/sitemap.md) when [`hostname`](./config.md#basic-config) is configured.
 
 ```ts
-themeDefault({
+defaultTheme({
   hostname: 'https://example.com',
   themePlugins: {
     sitemap: { changefreq: 'weekly', excludePaths: ['/404.html'] },
@@ -253,7 +253,7 @@ The theme does not ship a search implementation. The navbar renders a `SearchBox
 import { slimsearchPlugin } from '@vuepress/plugin-slimsearch'
 
 export default defineUserConfig({
-  theme: themeDefault({}),
+  theme: defaultTheme({}),
   plugins: [slimsearchPlugin()],
 })
 ```

@@ -75,14 +75,14 @@ import ParentLayout from '@vuepress/theme-classic/layouts/Layout.vue'
 接下来，如果你想要替换 `VPHomeFooter.vue` 组件，只需要在配置文件 `.vuepress/config.ts` 中覆盖这个别名即可：
 
 ```ts title=".vuepress/config.ts"
-import { themeClassic } from '@vuepress/theme-classic'
+import { classicTheme } from '@vuepress/theme-classic'
 import { defineUserConfig } from 'vuepress'
 import { path } from 'vuepress/utils'
 
 const __dirname = import.meta.dirname
 
 export default defineUserConfig({
-  theme: themeClassic(),
+  theme: classicTheme(),
   alias: {
     '@theme/VPHomeFooter.vue': path.resolve(
       __dirname,
@@ -104,7 +104,7 @@ export default defineUserConfig({
 
 ```ts
 import type { ClassicThemeOptions } from '@vuepress/theme-classic'
-import { themeClassic } from '@vuepress/theme-classic'
+import { classicTheme } from '@vuepress/theme-classic'
 import type { Theme } from 'vuepress/core'
 import { path } from 'vuepress/utils'
 
@@ -112,7 +112,7 @@ const __dirname = import.meta.dirname
 
 export const childTheme = (options: ClassicThemeOptions): Theme => ({
   name: 'vuepress-theme-child',
-  extends: themeClassic(options),
+  extends: classicTheme(options),
 
   // 在子主题的客户端配置文件中覆盖布局
   // 注意，你在发布到 NPM 之前会将 TS 构建为 JS ，因此这里需要设置为 JS 文件的路径

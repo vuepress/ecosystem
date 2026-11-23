@@ -47,7 +47,7 @@ export default {
       lang: 'zh-CN',
     },
   },
-  theme: themeClassic({
+  theme: classicTheme({
     locales: {
       '/': {
         selectLanguageName: 'English',

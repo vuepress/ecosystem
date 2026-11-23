@@ -201,14 +201,14 @@ const {
 
 ## 扩展主题配置项 {#extending-the-theme-options}
 
-主题工厂返回一个可以被装饰的主题对象，因为 `themeDefault()` 返回的就是 VuePress 消费的那个对象。可以向其中添加插件，例如：
+主题工厂返回一个可以被装饰的主题对象，因为 `defaultTheme()` 返回的就是 VuePress 消费的那个对象。可以向其中添加插件，例如：
 
 ```ts
-import { themeDefault } from '@vuepress/theme-default'
+import { defaultTheme } from '@vuepress/theme-default'
 
 import { myPlugin } from './plugins/myPlugin.js'
 
-const theme = themeDefault({
+const theme = defaultTheme({
   siteTitle: 'My Project',
 })
 

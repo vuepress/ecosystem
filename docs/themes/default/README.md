@@ -23,11 +23,11 @@ npm i -D @vuepress/theme-default@next
 Use it in your config:
 
 ```ts title=".vuepress/config.ts"
-import { themeDefault } from '@vuepress/theme-default'
+import { defaultTheme } from '@vuepress/theme-default'
 import { defineUserConfig } from 'vuepress'
 
 export default defineUserConfig({
-  theme: themeDefault({
+  theme: defaultTheme({
     siteTitle: 'My Site',
     logo: '/logo.svg',
     nav: [{ text: 'Guide', link: '/guide/' }],
@@ -37,11 +37,11 @@ export default defineUserConfig({
 })
 ```
 
-Every option of `themeDefault()` is described in [Config](./config.md). The theme also accepts a `hostname` option, which is not part of the theme config itself but is required by the SEO and sitemap plugins:
+Every option of `defaultTheme()` is described in [Config](./config.md). The theme also accepts a `hostname` option, which is not part of the theme config itself but is required by the SEO and sitemap plugins:
 
 ```ts
 export default defineUserConfig({
-  theme: themeDefault({
+  theme: defaultTheme({
     hostname: 'https://example.com',
   }),
 })
@@ -65,7 +65,7 @@ See [Frontmatter](./frontmatter.md) for the fields each page type accepts, and [
 
 | Concern                                               | Configured with          | Page                                                  |
 | ----------------------------------------------------- | ------------------------ | ----------------------------------------------------- |
-| Navbar, sidebar, outline, edit link, footer, theme UI | `themeDefault()` options | [Config](./config.md)                                 |
+| Navbar, sidebar, outline, edit link, footer, theme UI | `defaultTheme()` options | [Config](./config.md)                                 |
 | Page type, home page hero and features, per-page UI   | Page frontmatter         | [Frontmatter](./frontmatter.md)                       |
 | Bundled plugins and their switches                    | `themePlugins`           | [Plugins](./plugin.md)                                |
 | UI texts and per-language options                     | `locales`                | [Locale](./locale.md)                                 |
@@ -104,7 +104,7 @@ A theme cannot choose a search backend for a site, so search is not part of the 
 
 ## Client API
 
-The node entry (`@vuepress/theme-default`) exports `themeDefault` together with the types describing the theme: `ThemeOptions`, `ThemeConfig`, `ThemeLayout`, `ThemePageData`, `ThemePluginsOptions`, `ThemeContributor`, `AppearanceOptions` and the `DefaultTheme` namespace (nav items, sidebar items, hero and feature options, footer, team members, and so on).
+The node entry (`@vuepress/theme-default`) exports `defaultTheme` together with the types describing the theme: `ThemeOptions`, `ThemeConfig`, `ThemeLayout`, `ThemePageData`, `ThemePluginsOptions`, `ThemeContributor`, `AppearanceOptions` and the `DefaultTheme` namespace (nav items, sidebar items, hero and feature options, footer, team members, and so on).
 
 The client entry (`@vuepress/theme-default/client`) exports the built-in components and composables. Importing it also loads the theme styles and the Inter webfont.
 

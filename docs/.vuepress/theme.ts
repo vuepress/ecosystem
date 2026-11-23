@@ -5,7 +5,7 @@ import type {
   SidebarItemOptions,
   SidebarOptions,
 } from '@vuepress/theme-classic'
-import { themeDefault } from '@vuepress/theme-default'
+import { defaultTheme } from '@vuepress/theme-default'
 import type { DefaultTheme, ThemeConfig } from '@vuepress/theme-default'
 
 import { navbarEn, navbarZh, sidebarEn, sidebarZh } from './configs/index.js'
@@ -184,7 +184,7 @@ const editLinkEn = {
   text: 'Edit this page on GitHub',
 }
 
-export default themeDefault({
+export default defaultTheme({
   logo: '/images/hero.png',
   hostname: 'https://ecosystem.vuejs.press',
   nav: navEn,

@@ -19,7 +19,7 @@ icon: git-compare
 
 ## 暗色模式：仅使用 `data-theme` {#dark-mode-data-theme-only}
 
-- **做法**：状态写成 `<html>` 上的 `data-theme="light|dark"`，而不是 `dark` class；移植样式中所有 `.dark` 选择器都改为 `[data-theme='dark']`。存储键是 `vuepress-color-scheme`（VitePress 使用 `vitepress-theme-appearance`）。状态由 `src/client/composables/useDarkMode.ts` 中的 `createDarkModeRef()` 创建（`usePreferredDark()` + `useStorage`，遵循作为 `false` / `'force-dark'` / `'force-auto'` / 对象形式的 `appearance`），并同时提供给主题数据和 `@vuepress/helper/client` 的 `darkModeSymbol`，因此生态插件读到的是同一份状态。`appearance` 会在构建时由 `themeDefault()` 的 `templateBuildRenderer` 写入 `<html data-appearance="…">`，而 `templates/build.html` 的内联脚本会在首次绘制前利用存储和系统偏好设置 `data-theme`，因此 `'force-dark'` / `'force-auto'` 在构建后的站点中不会闪出错误的颜色；开发模式绕过了构建模板，所以首次绘制由存储和系统偏好决定。
+- **做法**：状态写成 `<html>` 上的 `data-theme="light|dark"`，而不是 `dark` class；移植样式中所有 `.dark` 选择器都改为 `[data-theme='dark']`。存储键是 `vuepress-color-scheme`（VitePress 使用 `vitepress-theme-appearance`）。状态由 `src/client/composables/useDarkMode.ts` 中的 `createDarkModeRef()` 创建（`usePreferredDark()` + `useStorage`，遵循作为 `false` / `'force-dark'` / `'force-auto'` / 对象形式的 `appearance`），并同时提供给主题数据和 `@vuepress/helper/client` 的 `darkModeSymbol`，因此生态插件读到的是同一份状态。`appearance` 会在构建时由 `defaultTheme()` 的 `templateBuildRenderer` 写入 `<html data-appearance="…">`，而 `templates/build.html` 的内联脚本会在首次绘制前利用存储和系统偏好设置 `data-theme`，因此 `'force-dark'` / `'force-auto'` 在构建后的站点中不会闪出错误的颜色；开发模式绕过了构建模板，所以首次绘制由存储和系统偏好决定。
 - **原因**：生态插件和样式（`@vuepress/helper` 的 `getDarkMode()`、搜索样式、Shiki 的亮色/暗色主题）都会读取并监听 `document.documentElement.dataset.theme`。
 - **收益**：单一数据来源；`dark` class 与 `data-theme` 不可能相互矛盾；插件会自动拿到正确的暗色状态。
 - **取舍**：为 `.dark` 编写的 VitePress 自定义 CSS 必须改用 `[data-theme='dark']` 重写，上游的暗色规则无法原样复用。开发模式下站点级的 `appearance` 在首次绘制时可能不准确，而构建后的站点没有这个问题。
@@ -95,7 +95,7 @@ icon: git-compare
 
 ## 主题配置项：独立的 `ThemeConfig` {#theme-options-an-independent-themeconfig}
 
-- **做法**：主题配置项是主题自己的 `ThemeConfig`（`src/shared/types.ts`），只包含主题实际支持的字段，从包的入口导出，并由 `themeDefault(options: ThemeOptions)` 和 `useThemeData<ThemeConfig>()` 使用。嵌套类型（`NavItem`、`Sidebar`、`Hero`、`Feature`……）保留在 `DefaultTheme` 命名空间中，供组件和用户使用。
+- **做法**：主题配置项是主题自己的 `ThemeConfig`（`src/shared/types.ts`），只包含主题实际支持的字段，从包的入口导出，并由 `defaultTheme(options: ThemeOptions)` 和 `useThemeData<ThemeConfig>()` 使用。嵌套类型（`NavItem`、`Sidebar`、`Hero`、`Feature`……）保留在 `DefaultTheme` 命名空间中，供组件和用户使用。
 - **原因**：VitePress 默认主题的配置包含许多主题未实现或不需要的字段；保留它的类型会让用户写出能通过类型检查但在运行时什么都不做的配置。配置项类型应当充当文档，错误的字段应当在类型检查时报错。
 - **收益**：配置项范围与实现一致；仅 VitePress 才有的字段会被类型检查器拒绝；包的入口导出了完整的配置项类型，因此用户在编写配置时能得到准确的提示。
 - **取舍**：为 VitePress 默认主题编写的配置无法原样复用类型，必须重写；主题配置项不会自动跟随 VitePress 的新字段。

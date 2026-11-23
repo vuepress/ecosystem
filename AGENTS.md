@@ -169,7 +169,7 @@ chore(e2e): update playwright version
 ### Export Requirements
 
 - Plugin and theme factory exports:
-  - The exported function name must match the package name (camelCase, e.g. `pluginShiki`, `themeDefault`).
+  - Plugin factories are prefixed with `plugin` (e.g. `pluginShiki`), and theme factories use the `<name>Theme` suffix (e.g. `defaultTheme`, `classicTheme`).
   - All types used in the public API must also be exported from the package index.
 - Single-function files: the filename must match the exported function/class name.
 

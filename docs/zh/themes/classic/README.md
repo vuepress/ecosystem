@@ -17,10 +17,10 @@ npm i -D @vuepress/theme-classic@next
 在配置文件中指定主题：
 
 ```ts title=".vuepress/config.ts"
-import { themeClassic } from '@vuepress/theme-classic'
+import { classicTheme } from '@vuepress/theme-classic'
 
 export default {
-  theme: themeClassic({
+  theme: classicTheme({
     // 在这里添加主题配置
   }),
 }

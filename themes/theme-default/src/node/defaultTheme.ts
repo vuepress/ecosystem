@@ -417,17 +417,17 @@ const resolveThemePlugins = (
  * 创建新主题，它移植了 VitePress 的默认主题
  *
  * @example
- *   import { themeDefault } from '@vuepress/theme-default'
+ *   import { defaultTheme } from '@vuepress/theme-default'
  *   import { defineUserConfig } from 'vuepress'
  *
  *   export default defineUserConfig({
- *     theme: themeDefault({}),
+ *     theme: defaultTheme({}),
  *   })
  *
  * @param options - Theme options / 主题配置项
  * @returns The theme plugin / 主题插件
  */
-export const themeDefault = (options: ThemeOptions = {}): ThemeObject => {
+export const defaultTheme = (options: ThemeOptions = {}): ThemeObject => {
   const { hostname } = options
   const plugins: ThemePluginsOptions = options.themePlugins ?? {}
 

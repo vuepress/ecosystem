@@ -201,14 +201,14 @@ const {
 
 ## Extending the Theme Options
 
-The theme factory returns a theme object that can be decorated, since `themeDefault()` returns the object VuePress consumes. Add plugins to it, for example:
+The theme factory returns a theme object that can be decorated, since `defaultTheme()` returns the object VuePress consumes. Add plugins to it, for example:
 
 ```ts
-import { themeDefault } from '@vuepress/theme-default'
+import { defaultTheme } from '@vuepress/theme-default'
 
 import { myPlugin } from './plugins/myPlugin.js'
 
-const theme = themeDefault({
+const theme = defaultTheme({
   siteTitle: 'My Project',
 })
 

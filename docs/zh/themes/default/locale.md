@@ -11,12 +11,12 @@ VuePress 本身也有[站点级 `locales`](https://vuepress.vuejs.org/zh/guide/i
 <NpmBadge package="@vuepress/theme-default" />
 
 ```ts
-import { themeDefault } from '@vuepress/theme-default'
+import { defaultTheme } from '@vuepress/theme-default'
 import { defineUserConfig } from 'vuepress'
 
 export default defineUserConfig({
   lang: 'en-US',
-  theme: themeDefault({
+  theme: defaultTheme({
     locales: {
       '/': {
         label: 'English',
@@ -119,7 +119,7 @@ export default defineUserConfig({
 大纲的标题。它在 [`outline`](./config.md#page) 配置项上设置：
 
 ```ts
-themeDefault({
+defaultTheme({
   outline: { level: [2, 3], label: 'On this page' },
 })
 ```

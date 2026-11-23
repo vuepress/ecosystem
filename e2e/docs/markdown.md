@@ -25,13 +25,13 @@
 Title:
 
 ```ts title=".vuepress/config.ts"
-import { themeClassic } from '@vuepress/theme-classic'
+import { classicTheme } from '@vuepress/theme-classic'
 import { defineUserConfig } from 'vuepress'
 
 export default defineUserConfig({
   title: 'Hello, VuePress',
 
-  theme: themeClassic({
+  theme: classicTheme({
     logo: 'https://vuepress.vuejs.org/images/hero.png',
   }),
 })
@@ -40,13 +40,13 @@ export default defineUserConfig({
 Line highlighting:
 
 ```ts{1,7-9}
-import { themeClassic } from '@vuepress/theme-classic'
+import { classicTheme } from '@vuepress/theme-classic'
 import { defineUserConfig } from 'vuepress'
 
 export default defineUserConfig({
   title: 'Hello, VuePress',
 
-  theme: themeClassic({
+  theme: classicTheme({
     logo: 'https://vuepress.vuejs.org/images/hero.png',
   }),
 })

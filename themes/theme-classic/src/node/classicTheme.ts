@@ -41,7 +41,7 @@ export interface ClassicThemeOptions extends ClassicThemeLocaleOptions {
   themePlugins?: ClassicThemePluginsOptions
 }
 
-export const themeClassic = ({
+export const classicTheme = ({
   hostname,
   themePlugins = {},
   ...localeOptions

@@ -7,5 +7,5 @@ export type {
   ThemePageData,
   ThemePluginsOptions,
 } from '../shared/types.js'
-export { themeDefault } from './defaultTheme.js'
+export { defaultTheme } from './defaultTheme.js'
 export type { ThemeOptions } from './defaultTheme.js'
