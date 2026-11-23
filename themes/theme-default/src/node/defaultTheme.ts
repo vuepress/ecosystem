@@ -18,6 +18,7 @@ import { shikiPlugin } from '@vuepress/plugin-shiki'
 import { sitemapPlugin } from '@vuepress/plugin-sitemap'
 import { themeDataPlugin } from '@vuepress/plugin-theme-data'
 import {
+  extendsPageData,
   getSidebarStructureScopes,
   prepareSidebarData,
   watchSidebarData,
@@ -461,8 +462,7 @@ export const defaultTheme = (options: ThemeOptions = {}): ThemeObject => {
     clientConfigFile: path.resolve(__dirname, '../client/config.js'),
 
     extendsPage: (page) => {
-      page.data.filePathRelative = page.filePathRelative
-      page.routeMeta.title = page.title
+      extendsPageData(page)
     },
 
     // the client reads the sidebar generated from the file structure from a
