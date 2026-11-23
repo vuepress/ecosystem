@@ -1,6 +1,10 @@
 // @vitest-environment happy-dom
 import { mountVuePress, renderVuePress } from '@vuepress/test-utils/client'
-import { describe, expect, it } from 'vitest'
+import type {
+  SidebarStructureData,
+  SidebarStructureItem,
+} from '@vuepress/theme-helper'
+import { describe, expect, it, vi } from 'vitest'
 import type { Component, VNode } from 'vue'
 import { defineComponent, h } from 'vue'
 
@@ -10,6 +14,34 @@ import { useSidebarItems } from '../../src/client/composables/useSidebarItems.js
 import themeClassicClientConfig from '../../src/client/config.js'
 import type { SidebarItem } from '../../src/client/typings.js'
 
+// the structure data is generated at build time and read by the client of the
+// helper, it is replaced with a fixture so that the mapping of the theme can
+// be tested
+const { structureData } = vi.hoisted(
+  (): {
+    structureData: SidebarStructureData
+  } => ({
+    structureData: {
+      '/': [
+        { text: 'Home', link: '/' },
+        {
+          text: 'Guide',
+          link: '/guide/',
+          children: [{ text: 'A', link: '/guide/a.html' }],
+        },
+      ],
+      '/guide/': [
+        { text: 'A', link: '/guide/a.html' },
+        { text: 'B', link: '/guide/b.html' },
+      ],
+    },
+  }),
+)
+
+vi.mock(import('@vuepress/theme-helper/client'), () => ({
+  getSidebarStructure: (scope: string): SidebarStructureItem[] =>
+    structureData[scope] ?? [],
+}))
 /**
  * The client configs that a default theme site applies
  *
@@ -219,5 +251,59 @@ describe('sidebar item', () => {
 
     expect(label.text()).toBe('Foo')
     expect(label.attributes('tabindex')).toBeUndefined()
+  })
+})
+
+describe('structure sidebar', () => {
+  it('should resolve the sidebar from the file structure', async () => {
+    const html = await renderVuePress({
+      clientConfigs,
+      rootComponent: SidebarTree,
+      page: { path: '/', title: 'Home' },
+      site: { title: 'My Site' },
+      themeData: { locales: { '/': { sidebar: 'structure' } } },
+    })
+
+    expect(html).toContain(
+      ['Home | /', 'Guide | /guide/', '  A | /guide/a.html'].join('\n'),
+    )
+  })
+
+  it('should resolve a `structure` sidebar of a path', async () => {
+    const html = await renderVuePress({
+      clientConfigs,
+      rootComponent: SidebarTree,
+      page: { path: '/guide/a.html', title: 'A' },
+      site: { title: 'My Site' },
+      themeData: {
+        locales: { '/': { sidebar: { '/guide/': 'structure' } } },
+      },
+    })
+
+    expect(html).toContain(
+      ['A | /guide/a.html', 'B | /guide/b.html'].join('\n'),
+    )
+  })
+
+  it('should resolve the structure items of a nested group', async () => {
+    const html = await renderVuePress({
+      clientConfigs,
+      rootComponent: SidebarTree,
+      page: { path: '/guide/a.html', title: 'A' },
+      site: { title: 'My Site' },
+      themeData: {
+        locales: {
+          '/': {
+            sidebar: [
+              { text: 'Docs', prefix: '/guide/', children: 'structure' },
+            ],
+          },
+        },
+      },
+    })
+
+    expect(html).toContain(
+      ['Docs', '  A | /guide/a.html', '  B | /guide/b.html'].join('\n'),
+    )
   })
 })

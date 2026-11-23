@@ -1,4 +1,5 @@
 import type { ThemeData } from '@vuepress/plugin-theme-data'
+import type { SidebarSorter } from '@vuepress/theme-helper'
 import type { LocaleData } from 'vuepress/shared'
 
 import type { NavbarOptions } from './navbar.js'
@@ -130,6 +131,15 @@ export interface ClassicThemeLocaleData extends LocaleData {
    * max value of `sidebarDepth` is `2`
    */
   sidebarDepth?: number
+
+  /**
+   * Sorters of the sidebar generated from the file structure
+   *
+   * 由文件结构生成的侧边栏的排序器
+   *
+   * @default ['readme', 'order', 'title', 'filename']
+   */
+  sidebarSorter?: SidebarSorter
 
   /**
    * Page meta - edit link config

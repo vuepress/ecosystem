@@ -13,6 +13,11 @@ import { prismjsPlugin } from '@vuepress/plugin-prismjs'
 import { seoPlugin } from '@vuepress/plugin-seo'
 import { sitemapPlugin } from '@vuepress/plugin-sitemap'
 import { themeDataPlugin } from '@vuepress/plugin-theme-data'
+import {
+  getSidebarStructureScopes,
+  prepareSidebarData,
+  watchSidebarData,
+} from '@vuepress/theme-helper'
 import type { Page, Theme } from 'vuepress/core'
 import { isPlainObject } from 'vuepress/shared'
 import { fs, getDirname, path } from 'vuepress/utils'
@@ -44,9 +49,16 @@ export interface ClassicThemeOptions extends ClassicThemeLocaleOptions {
 export const classicTheme = ({
   hostname,
   themePlugins = {},
+  sidebarSorter,
   ...localeOptions
 }: ClassicThemeOptions = {}): Theme => {
   assignDefaultLocaleOptions(localeOptions)
+
+  const structureScopes = getSidebarStructureScopes({
+    themeData: localeOptions,
+    childrenKey: 'children',
+    prefixKey: 'prefix',
+  })
 
   return {
     name: '@vuepress/theme-classic',
@@ -197,5 +209,24 @@ export const classicTheme = ({
       // @vuepress/plugin-theme-data
       themeDataPlugin({ themeData: localeOptions }),
     ],
+
+    // the client reads the sidebar generated from the file structure from a
+    // generated module, which must exist even when no sidebar uses
+    // `'structure'`, so the data is always prepared
+    onPrepared: async (app): Promise<void> => {
+      await prepareSidebarData(app, {
+        scopes: structureScopes,
+        sorter: sidebarSorter,
+      })
+    },
+
+    onWatched: (_app, watchers): void => {
+      if (structureScopes.length > 0) {
+        watchSidebarData(_app, watchers, {
+          scopes: structureScopes,
+          sorter: sidebarSorter,
+        })
+      }
+    },
   }
 }
