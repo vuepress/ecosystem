@@ -1,5 +1,6 @@
 import { useThemeLocaleData } from '@vuepress/plugin-theme-data/client'
 import { computed } from 'vue'
+import { useRouteLocale } from 'vuepress/client'
 
 import {
   usePageRelativePath,
@@ -17,13 +18,19 @@ export function usePrevNext() {
   const theme = useThemeLocaleData<ThemeConfig>()
   const relativePath = usePageRelativePath()
   const frontmatter = useThemePageFrontmatter()
+  const routeLocale = useRouteLocale()
 
   return computed<{
     prev?: { text?: string; link?: string; target?: string; rel?: string }
     next?: { text?: string; link?: string; target?: string; rel?: string }
   }>(() => {
     const sidebar = resolveSidebarData(
-      getSidebar(theme.value.sidebar, relativePath.value),
+      getSidebar(
+        theme.value.sidebar,
+        relativePath.value,
+        undefined,
+        routeLocale.value,
+      ),
     )
     const links = getFlatSideBarLinks(sidebar)
 

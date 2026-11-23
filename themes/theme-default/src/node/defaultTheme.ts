@@ -17,6 +17,11 @@ import { seoPlugin } from '@vuepress/plugin-seo'
 import { shikiPlugin } from '@vuepress/plugin-shiki'
 import { sitemapPlugin } from '@vuepress/plugin-sitemap'
 import { themeDataPlugin } from '@vuepress/plugin-theme-data'
+import {
+  getSidebarStructureScopes,
+  prepareSidebarData,
+  watchSidebarData,
+} from '@vuepress/theme-helper'
 import type { ThemeObject } from 'vuepress'
 
 import type {
@@ -66,9 +71,14 @@ const resolveLocalePath = (key: string, link?: string): string => {
 export const resolveThemeData = (
   options: ThemeOptions,
 ): Record<string, unknown> => {
-  // `hostname` is used by the SEO and sitemap plugins, it is not part of the
-  // theme data
-  const { hostname: _hostname, locales, ...rest } = options
+  // `hostname` is used by the SEO and sitemap plugins, while `sidebarSorter`
+  // may contain functions, neither of them is part of the theme data
+  const {
+    hostname: _hostname,
+    locales,
+    sidebarSorter: _sidebarSorter,
+    ...rest
+  } = options
 
   if (!locales) return rest
 
@@ -428,8 +438,14 @@ const resolveThemePlugins = (
  * @returns The theme plugin / 主题插件
  */
 export const defaultTheme = (options: ThemeOptions = {}): ThemeObject => {
-  const { hostname } = options
+  const { hostname, sidebarSorter, ...themeOptions } = options
   const plugins: ThemePluginsOptions = options.themePlugins ?? {}
+
+  const structureScopes = getSidebarStructureScopes({
+    themeData: resolveThemeData(themeOptions),
+    childrenKey: 'items',
+    prefixKey: 'base',
+  })
 
   return {
     name: '@vuepress/theme-default',
@@ -449,6 +465,25 @@ export const defaultTheme = (options: ThemeOptions = {}): ThemeObject => {
       page.routeMeta.title = page.title
     },
 
-    plugins: resolveThemePlugins(options, plugins, hostname),
+    // the client reads the sidebar generated from the file structure from a
+    // generated module, which must exist even when no sidebar uses
+    // `'structure'`, so the data is always prepared
+    onPrepared: async (app): Promise<void> => {
+      await prepareSidebarData(app, {
+        scopes: structureScopes,
+        sorter: sidebarSorter,
+      })
+    },
+
+    onWatched: (_app, watchers): void => {
+      if (structureScopes.length > 0) {
+        watchSidebarData(_app, watchers, {
+          scopes: structureScopes,
+          sorter: sidebarSorter,
+        })
+      }
+    },
+
+    plugins: resolveThemePlugins(themeOptions, plugins, hostname),
   }
 }

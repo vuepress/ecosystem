@@ -71,6 +71,7 @@
     "@vuepress/plugin-shiki": "workspace:*",
     "@vuepress/plugin-sitemap": "workspace:*",
     "@vuepress/plugin-theme-data": "workspace:*",
+    "@vuepress/theme-helper": "workspace:*",
     "@vueuse/core": "catalog:",
     "markdown-it": "catalog:",
     "vue": "catalog:"
