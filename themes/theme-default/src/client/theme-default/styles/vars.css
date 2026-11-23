@@ -213,10 +213,12 @@
   --vp-c-default-hover: var(--vp-c-gray-light);
   --vp-c-default-bg: var(--vp-c-gray-dark);
   --vp-c-default-soft: var(--vp-c-gray-soft);
-  --vp-c-brand: var(--vp-c-indigo-1);
-  --vp-c-brand-hover: var(--vp-c-indigo-2);
-  --vp-c-brand-bg: var(--vp-c-indigo-3);
-  --vp-c-brand-soft: var(--vp-c-indigo-soft);
+
+  /* The brand color is restored from the classic default theme. */
+  --vp-c-brand: #299764;
+  --vp-c-brand-hover: #4abf8a;
+  --vp-c-brand-bg: #3eaf7c;
+  --vp-c-brand-soft: rgb(16 185 129 / 14%);
   --vp-c-tip: var(--vp-c-brand);
   --vp-c-tip-hover: var(--vp-c-brand-hover);
   --vp-c-tip-bg: var(--vp-c-brand-bg);
@@ -277,6 +279,13 @@
   --vp-c-gray-1: var(--vp-c-gray);
   --vp-c-gray-2: var(--vp-c-gray-light);
   --vp-c-gray-3: var(--vp-c-gray-dark);
+}
+
+[data-theme='dark'] {
+  --vp-c-brand: #3dd68c;
+  --vp-c-brand-hover: #349469;
+  --vp-c-brand-bg: #3aa675;
+  --vp-c-brand-soft: rgb(16 185 129 / 16%);
 }
 
 :root:where(:has(.vp-graded-containers)) {

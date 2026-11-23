@@ -60,24 +60,24 @@ icon: paintbrush-vertical
 
 ### 品牌色 {#brand-colors}
 
-主题使用靛蓝色板作为品牌色。`--vp-c-brand` 是主色，`--vp-c-brand-hover` 是悬停状态，`--vp-c-brand-bg` 是实心背景状态（例如填充按钮的背景），`--vp-c-brand-soft` 是用于背景的半透明版本。
+主题使用经典默认主题的绿色作为品牌色。`--vp-c-brand` 是主色，`--vp-c-brand-hover` 是悬停状态，`--vp-c-brand-bg` 是实心背景状态（例如填充按钮的背景），`--vp-c-brand-soft` 是用于背景的半透明版本。
 
 ::: fields
-@`--vp-c-brand` type=color default=`#3451b2`
+@`--vp-c-brand` type=color default=`#299764`
 
-主要的品牌色，用于链接、当前大纲条目和代码链接。暗色取值：`#a8b1ff`。
+主要的品牌色，用于链接、当前大纲条目和代码链接。暗色取值：`#3dd68c`。
 
-@`--vp-c-brand-hover` type=color default=`#3a5ccc`
+@`--vp-c-brand-hover` type=color default=`#4abf8a`
 
-品牌色的悬停状态。暗色取值：`#5c73e7`。
+品牌色的悬停状态。暗色取值：`#349469`。
 
-@`--vp-c-brand-bg` type=color default=`#5672cd`
+@`--vp-c-brand-bg` type=color default=`#3eaf7c`
 
-品牌色最深的背景状态，用于品牌按钮。暗色取值：`#3e63dd`。
+品牌色最深的背景状态，用于品牌按钮。暗色取值：`#3aa675`。
 
-@`--vp-c-brand-soft` type=color default=`rgb(100 108 255 / 14%)`
+@`--vp-c-brand-soft` type=color default=`rgb(16 185 129 / 14%)`
 
-半透明的品牌色，用于高亮的代码行和柔和的背景。暗色取值：`rgb(100 108 255 / 16%)`。
+半透明的品牌色，用于高亮的代码行和柔和的背景。暗色取值：`rgb(16 185 129 / 16%)`。
 
 :::
 
@@ -85,18 +85,18 @@ icon: paintbrush-vertical
 
 提示容器、徽标和 diff 标记按功能而非按色板着色，因此可以在一处统一重新定制：
 
-| 变量                 | 默认值   | 用于                     |
-| -------------------- | -------- | ------------------------ |
-| `--vp-c-default-*`   | 灰色板   | 中性表面                 |
-| `--vp-c-tip-*`       | 品牌色板 | 提示和笔记               |
-| `--vp-c-note-*`      | 品牌色板 | 笔记                     |
-| `--vp-c-success-*`   | 绿色板   | diff 的新增内容          |
-| `--vp-c-important-*` | 紫色板   | 重要容器                 |
-| `--vp-c-warning-*`   | 黄色板   | 警告                     |
-| `--vp-c-danger-*`    | 红色板   | 危险和 diff 的删除内容   |
-| `--vp-c-caution-*`   | 红色板   | 注意，以及 `danger` 容器 |
+| 变量                 | 默认值 | 用于                     |
+| -------------------- | ------ | ------------------------ |
+| `--vp-c-default-*`   | 灰色板 | 中性表面                 |
+| `--vp-c-tip-*`       | 品牌色 | 提示和笔记               |
+| `--vp-c-note-*`      | 品牌色 | 笔记                     |
+| `--vp-c-success-*`   | 绿色板 | diff 的新增内容          |
+| `--vp-c-important-*` | 紫色板 | 重要容器                 |
+| `--vp-c-warning-*`   | 黄色板 | 警告                     |
+| `--vp-c-danger-*`    | 红色板 | 危险和 diff 的删除内容   |
+| `--vp-c-caution-*`   | 红色板 | 注意，以及 `danger` 容器 |
 
-每组都有 `<group>`、`<group>-hover`、`<group>-bg` 和 `<group>-soft` 变体，与品牌色完全一致：第一个是文字颜色，`-hover` 是悬停状态，`-bg` 是实心背景状态，`-soft` 是半透明背景。每一组都定义为某个色板的别名，因此覆盖该色板也会改变对应的组。
+每组都有 `<group>`、`<group>-hover`、`<group>-bg` 和 `<group>-soft` 变体，与品牌色完全一致：第一个是文字颜色，`-hover` 是悬停状态，`-bg` 是实心背景状态，`-soft` 是半透明背景。除品牌色外，各组都定义为某个色板的别名，其中提示和笔记组跟随品牌色。
 
 启用 [`gradedContainers`](./config.md#basic-config) 后，主题会把警告色重新映射到橙色板、把注意色重新映射到黄色板，从而形成绿 → 橙 → 黄 → 红的色阶。
 

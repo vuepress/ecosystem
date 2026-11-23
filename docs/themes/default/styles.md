@@ -60,24 +60,24 @@ The variables below are defined in `vars.css`. Their names are stable, and the t
 
 ### Brand Colors
 
-The theme uses the indigo palette as its brand color. `--vp-c-brand` is the primary color, `--vp-c-brand-hover` is its hover state, `--vp-c-brand-bg` is the solid background state, and `--vp-c-brand-soft` is a translucent version for backgrounds.
+The theme uses the green of the classic default theme as its brand color. `--vp-c-brand` is the primary color, `--vp-c-brand-hover` is its hover state, `--vp-c-brand-bg` is the solid background state, and `--vp-c-brand-soft` is a translucent version for backgrounds.
 
 ::: fields
-@`--vp-c-brand` type=color default=`#3451b2`
+@`--vp-c-brand` type=color default=`#299764`
 
-The main brand color, used for the links, the active outline entry and the code links. Dark value: `#a8b1ff`.
+The main brand color, used for the links, the active outline entry and the code links. Dark value: `#3dd68c`.
 
-@`--vp-c-brand-hover` type=color default=`#3a5ccc`
+@`--vp-c-brand-hover` type=color default=`#4abf8a`
 
-The hover state of the brand color. Dark value: `#5c73e7`.
+The hover state of the brand color. Dark value: `#349469`.
 
-@`--vp-c-brand-bg` type=color default=`#5672cd`
+@`--vp-c-brand-bg` type=color default=`#3eaf7c`
 
-The strongest background state of the brand color, used by the brand button. Dark value: `#3e63dd`.
+The strongest background state of the brand color, used by the brand button. Dark value: `#3aa675`.
 
-@`--vp-c-brand-soft` type=color default=`rgb(100 108 255 / 14%)`
+@`--vp-c-brand-soft` type=color default=`rgb(16 185 129 / 14%)`
 
-A translucent brand color, used for the highlighted code lines and the soft backgrounds. Dark value: `rgb(100 108 255 / 16%)`.
+A translucent brand color, used for the highlighted code lines and the soft backgrounds. Dark value: `rgb(16 185 129 / 16%)`.
 
 :::
 
@@ -88,15 +88,15 @@ The hint containers, the badges and the diff markers are colored by function rat
 | Variable             | Default            | Used by                          |
 | -------------------- | ------------------ | -------------------------------- |
 | `--vp-c-default-*`   | the gray palette   | neutral surfaces                 |
-| `--vp-c-tip-*`       | the brand palette  | tips and notes                   |
-| `--vp-c-note-*`      | the brand palette  | notes                            |
+| `--vp-c-tip-*`       | the brand color    | tips and notes                   |
+| `--vp-c-note-*`      | the brand color    | notes                            |
 | `--vp-c-success-*`   | the green palette  | the diff additions               |
 | `--vp-c-important-*` | the purple palette | important containers             |
 | `--vp-c-warning-*`   | the yellow palette | warnings                         |
 | `--vp-c-danger-*`    | the red palette    | dangers and the diff removals    |
 | `--vp-c-caution-*`   | the red palette    | cautions, the `danger` container |
 
-Each group has the `<group>`, `<group>-hover`, `<group>-bg` and `<group>-soft` variants, following the same naming as the brand color: the first one is the text color, `-hover` is the hover state, `-bg` is the solid background state, and `-soft` is the translucent background. A group is defined as an alias of a palette, so overriding the palette changes the group too.
+Each group has the `<group>`, `<group>-hover`, `<group>-bg` and `<group>-soft` variants, following the same naming as the brand color: the first one is the text color, `-hover` is the hover state, `-bg` is the solid background state, and `-soft` is the translucent background. Groups other than the brand are defined as aliases of a palette, and the tip and note groups follow the brand color.
 
 The numeric names of the VitePress port (`--vp-c-brand-1`, `--vp-c-text-2`, `--vp-c-gray-3`, …) are still available as compatibility aliases for the ecosystem plugins. New styles should use the semantic names above.
 
