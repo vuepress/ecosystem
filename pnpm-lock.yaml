@@ -2246,9 +2246,15 @@ importers:
       '@vuepress/helper':
         specifier: workspace:*
         version: link:../helper
+      '@vuepress/plugin-theme-data':
+        specifier: workspace:*
+        version: link:../../plugins/development/plugin-theme-data
       chokidar:
         specifier: 'catalog:'
         version: 6.0.0
+      vue:
+        specifier: 'catalog:'
+        version: 3.5.46(typescript@6.0.3)
       vuepress:
         specifier: 'catalog:'
         version: 2.0.0-rc.32(534515f20ab12067869497424e383b6c)

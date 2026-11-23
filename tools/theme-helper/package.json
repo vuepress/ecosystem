@@ -3,6 +3,7 @@
   "version": "2.0.0-rc.141",
   "description": "VuePress theme helper",
   "keywords": [
+    "edit-link",
     "helper",
     "sidebar",
     "theme",
@@ -51,7 +52,9 @@
   },
   "dependencies": {
     "@vuepress/helper": "workspace:*",
-    "chokidar": "catalog:"
+    "@vuepress/plugin-theme-data": "workspace:*",
+    "chokidar": "catalog:",
+    "vue": "catalog:"
   },
   "peerDependencies": {
     "vuepress": "catalog:"

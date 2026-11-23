@@ -7,6 +7,8 @@ import type {
   SidebarStructureItem,
 } from '../shared/index.js'
 
+export * from './composables/index.js'
+export * from './utils/index.js'
 export type * from '../shared/index.js'
 export { sidebarData } from '@temp/theme-helper/sidebar.js'
 
