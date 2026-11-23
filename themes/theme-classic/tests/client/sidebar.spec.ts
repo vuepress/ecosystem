@@ -1,9 +1,5 @@
 // @vitest-environment happy-dom
 import { mountVuePress, renderVuePress } from '@vuepress/test-utils/client'
-import type {
-  SidebarStructureData,
-  SidebarStructureItem,
-} from '@vuepress/theme-helper'
 import { describe, expect, it, vi } from 'vitest'
 import type { Component, VNode } from 'vue'
 import { defineComponent, h } from 'vue'
@@ -15,11 +11,11 @@ import themeClassicClientConfig from '../../src/client/config.js'
 import type { SidebarItem } from '../../src/client/typings.js'
 
 // the structure data is generated at build time and read by the client of the
-// helper, it is replaced with a fixture so that the mapping of the theme can
+// helper, it is replaced with a fixture so that the resolution of the theme can
 // be tested
 const { structureData } = vi.hoisted(
   (): {
-    structureData: SidebarStructureData
+    structureData: Record<string, SidebarItem[]>
   } => ({
     structureData: {
       '/': [
@@ -39,8 +35,8 @@ const { structureData } = vi.hoisted(
 )
 
 vi.mock(import('@vuepress/theme-helper/client'), () => ({
-  getSidebarStructure: (scope: string): SidebarStructureItem[] =>
-    structureData[scope] ?? [],
+  getSidebarStructure: <Item>(scope: string): Item[] =>
+    (structureData[scope] ?? []) as unknown as Item[],
 }))
 /**
  * The client configs that a default theme site applies

@@ -14,10 +14,8 @@ import { seoPlugin } from '@vuepress/plugin-seo'
 import { sitemapPlugin } from '@vuepress/plugin-sitemap'
 import { themeDataPlugin } from '@vuepress/plugin-theme-data'
 import {
+  createSidebarStructureHelper,
   extendsPageData,
-  getSidebarStructureScopes,
-  prepareSidebarData,
-  watchSidebarData,
 } from '@vuepress/theme-helper'
 import type { Theme } from 'vuepress/core'
 import { isPlainObject } from 'vuepress/shared'
@@ -55,10 +53,16 @@ export const classicTheme = ({
 }: ClassicThemeOptions = {}): Theme => {
   assignDefaultLocaleOptions(localeOptions)
 
-  const structureScopes = getSidebarStructureScopes({
+  const sidebarHelper = createSidebarStructureHelper({
     themeData: localeOptions,
     childrenKey: 'children',
     prefixKey: 'prefix',
+    sorter: sidebarSorter,
+
+    dirInfoGetter: (info, _page, defaults) => ({
+      ...defaults,
+      collapsible: info.groupInfo.collapsible,
+    }),
   })
 
   return {
@@ -211,20 +215,10 @@ export const classicTheme = ({
     // the client reads the sidebar generated from the file structure from a
     // generated module, which must exist even when no sidebar uses
     // `'structure'`, so the data is always prepared
-    onPrepared: async (app): Promise<void> => {
-      await prepareSidebarData(app, {
-        scopes: structureScopes,
-        sorter: sidebarSorter,
-      })
-    },
+    onPrepared: (app) => sidebarHelper.prepare(app),
 
-    onWatched: (_app, watchers): void => {
-      if (structureScopes.length > 0) {
-        watchSidebarData(_app, watchers, {
-          scopes: structureScopes,
-          sorter: sidebarSorter,
-        })
-      }
+    onWatched: (app, watchers): void => {
+      sidebarHelper.watch(app, watchers)
     },
   }
 }
