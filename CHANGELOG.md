@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.0-rc.141](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.140...v2.0.0-rc.141) (2026-11-23)
+
+### ✨ Features
+
+- add the new default theme and rename the former one to classic ([#1134](https://github.com/vuepress/ecosystem/issues/1134)) ([0284277](https://github.com/vuepress/ecosystem/commit/028427790f5d7085224f6f365d0890809217cfa7))
+- **plugin-markdown-ext:** add raw container ([#1138](https://github.com/vuepress/ecosystem/issues/1138)) ([c7c4b1a](https://github.com/vuepress/ecosystem/commit/c7c4b1a58cc7bdced8b82e85750fda717a9a21d5))
+- **plugin-markdown-raw:** add raw plugin ([#1140](https://github.com/vuepress/ecosystem/issues/1140)) ([c724f35](https://github.com/vuepress/ecosystem/commit/c724f3539940964b1080f98e4b092d2a7f585f8a)), references [#1139](https://github.com/vuepress/ecosystem/issues/1139)
+
+### Miscellaneous Chores
+
+- **deps:** update dependency @iconify-json/lucide to v1.2.158 ([#1143](https://github.com/vuepress/ecosystem/issues/1143)) ([392bad9](https://github.com/vuepress/ecosystem/commit/392bad9395ec3e84dde60d3ee9b5ebf424d82184))
+- **deps:** update dependency oxlint-tsgolint to v7.0.2008 ([#1141](https://github.com/vuepress/ecosystem/issues/1141)) ([c45f4d3](https://github.com/vuepress/ecosystem/commit/c45f4d3b0dcac117de8872e3898aaadae194f558))
+- **plugin-markdown-ext:** revert raw container ([#1139](https://github.com/vuepress/ecosystem/issues/1139)) ([959a706](https://github.com/vuepress/ecosystem/commit/959a7069d78ee79da49bf7cf5728331b54f51325))
+
 ## [2.0.0-rc.140](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.139...v2.0.0-rc.140) (2026-11-22)
 
 ### ✨ Features

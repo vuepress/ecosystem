@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-markdown-raw",
-  "version": "2.0.0-rc.140",
+  "version": "2.0.0-rc.141",
   "description": "VuePress plugin - markdown raw container",
   "keywords": [
     "markdown",
