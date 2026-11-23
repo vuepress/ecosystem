@@ -1,6 +1,10 @@
 import { computed } from 'vue'
 import type { ComputedRef } from 'vue'
-import { usePageData, usePageFrontmatter } from 'vuepress/client'
+import {
+  usePageData,
+  usePageFrontmatter,
+  useSiteLocaleData,
+} from 'vuepress/client'
 import type { PageDataRef } from 'vuepress/client'
 
 import type {
@@ -42,6 +46,19 @@ export type ThemePageLinkConfig = string | ThemePageLink | false
 export interface ThemeHeroAction {
   /** Theme of the action / 按钮主题 */
   theme?: 'brand' | 'alt'
+  /**
+   * Type of the action, as used by the classic theme
+   *
+   * `primary` is equivalent to `theme: 'brand'`, and `secondary` is equivalent
+   * to `theme: 'alt'`.
+   *
+   * 按钮类型，与经典主题保持一致
+   *
+   * `primary` 等价于 `theme: 'brand'`，`secondary` 等价于 `theme: 'alt'`。
+   *
+   * @default 'primary'
+   */
+  type?: 'primary' | 'secondary'
   /** Text of the action / 按钮文本 */
   text: string
   /** Link of the action / 按钮链接 */
@@ -110,10 +127,65 @@ export interface ThemePageFrontmatter {
   editLink?: boolean
   /** Features of the home page / 首页的特性列表 */
   features?: ThemeFeature[]
-  /** Whether to show the footer / 是否显示页脚 */
-  footer?: boolean
+  /**
+   * Whether to show the footer, or the footer text of the page
+   *
+   * A string renders that text as the footer of the page, replacing the site
+   * footer configured by the theme.
+   *
+   * 是否显示页脚，或页面的页脚文本
+   *
+   * 字符串会作为页面的页脚渲染，替代主题配置的站点页脚。
+   */
+  footer?: boolean | string
+  /**
+   * Whether to render a string footer as HTML
+   *
+   * 是否将字符串页脚作为 HTML 渲染
+   *
+   * @default false
+   */
+  footerHtml?: boolean
   /** Hero section of the home page / 首页的 hero 区域 */
   hero?: ThemeHero
+  /**
+   * Whether the page is a home page
+   *
+   * It is the classic-theme equivalent of `type: 'home'`.
+   *
+   * 页面是否为首页
+   *
+   * 它是 `type: 'home'` 在经典主题中的等价写法。
+   */
+  home?: boolean
+  /** Alternative text of the classic hero image / 经典主题 hero 图片的替代文本 */
+  heroAlt?: string
+  /** Image of the classic hero / 经典主题的 hero 图片 */
+  heroImage?: string
+  /** Dark image of the classic hero / 经典主题 hero 图片的暗色版本 */
+  heroImageDark?: string
+  /**
+   * Name of the classic hero
+   *
+   * It defaults to the site title. Set it to `null` to hide the name.
+   *
+   * 经典主题 hero 的名称
+   *
+   * 默认使用站点标题，设为 `null` 可隐藏名称。
+   */
+  heroText?: string | null
+  /**
+   * Tagline of the classic hero
+   *
+   * It defaults to the site description. Set it to `null` to hide the tagline.
+   *
+   * 经典主题 hero 的标语
+   *
+   * 默认使用站点描述，设为 `null` 可隐藏标语。
+   */
+  tagline?: string | null
+  /** Actions of the classic hero / 经典主题 hero 的按钮 */
+  actions?: ThemeHeroAction[]
   /**
    * Layout name of the page, only used as the VuePress layout name (e.g. a
    * custom layout or `NotFound`)
@@ -199,11 +271,11 @@ export const useThemePageFrontmatter = (): ComputedRef<ThemePageFrontmatter> =>
  * Page type of the current page
  *
  * The default type is `doc`, which is also used when the frontmatter does not
- * set a type.
+ * set a type. A page with `home: true` is treated as `type: 'home'`.
  *
  * 当前页面的页面类型
  *
- * 默认类型为 `doc`，frontmatter 未设置类型时也会使用该值。
+ * 默认类型为 `doc`，frontmatter 未设置类型时也会使用该值。设置 `home: true` 的页面会被当作 `type: 'home'`。
  *
  * @returns Computed page type / 计算得到的页面类型
  */
@@ -212,7 +284,80 @@ export const usePageType = (): ComputedRef<
 > => {
   const frontmatter = useThemePageFrontmatter()
 
-  return computed(() => frontmatter.value.type ?? 'doc')
+  return computed(
+    () => frontmatter.value.type ?? (frontmatter.value.home ? 'home' : 'doc'),
+  )
+}
+
+const normalizeHeroAction = (action: ThemeHeroAction): ThemeHeroAction => ({
+  ...action,
+  theme: action.theme ?? (action.type === 'secondary' ? 'alt' : 'brand'),
+})
+
+/**
+ * Hero section of the current page
+ *
+ * The nested `hero` frontmatter takes precedence. When it is not set, the flat
+ * home frontmatter of the classic theme (`heroText`, `tagline`, `heroImage`, …)
+ * is used, with the site title and description as defaults.
+ *
+ * 当前页面的 hero 区域
+ *
+ * 嵌套的 `hero` frontmatter 优先。未设置时，会使用经典主题的扁平首页 frontmatter（`heroText`、
+ * `tagline`、`heroImage` 等），并以站点标题和描述作为默认值。
+ *
+ * @returns Computed hero section / 计算得到的 hero 区域
+ */
+export const useHomeHero = (): ComputedRef<ThemeHero | undefined> => {
+  const frontmatter = useThemePageFrontmatter()
+  const site = useSiteLocaleData()
+
+  return computed(() => {
+    const {
+      actions,
+      hero,
+      heroAlt,
+      heroImage,
+      heroImageDark,
+      heroText,
+      home,
+      tagline,
+      type,
+    } = frontmatter.value
+
+    if (hero) {
+      return {
+        ...hero,
+        actions: hero.actions?.map(normalizeHeroAction),
+      }
+    }
+
+    // oxlint-disable-next-line unicorn/no-useless-undefined
+    if (!home && type !== 'home') return undefined
+
+    const name =
+      // oxlint-disable-next-line eqeqeq
+      heroText === null ? undefined : heroText || site.value.title || 'Hello'
+    const text =
+      // oxlint-disable-next-line eqeqeq
+      tagline === null
+        ? undefined
+        : tagline || site.value.description || 'Welcome to your VuePress site'
+
+    const alt = heroAlt || name || 'hero'
+    const image: DefaultTheme.ThemeableImage | undefined = heroImage
+      ? heroImageDark
+        ? { light: heroImage, dark: heroImageDark, alt }
+        : { src: heroImage, alt }
+      : undefined
+
+    return {
+      name,
+      text,
+      image,
+      actions: actions?.map((action) => normalizeHeroAction(action)),
+    }
+  })
 }
 
 /**

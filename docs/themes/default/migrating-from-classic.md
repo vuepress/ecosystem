@@ -120,22 +120,24 @@ The storage key is still `vuepress-color-scheme`, but the dark mode is now drive
 
 ### Home Page and 404
 
-| Classic (frontmatter)           | New (frontmatter)                                      | Notes                                                                      |
-| ------------------------------- | ------------------------------------------------------ | -------------------------------------------------------------------------- |
-| `home: true`                    | `type: home`                                           | The page type replaces the boolean flag.                                   |
-| `heroImage`                     | `hero.image`                                           | A string, or `{ src }`.                                                    |
-| `heroImageDark`                 | `hero.image: { light, dark }`                          | The two variants of the image.                                             |
-| `heroAlt`                       | `hero.image: { alt }`                                  | The alternative text.                                                      |
-| `heroHeight`                    | —                                                      | Not configurable.                                                          |
-| `heroText`                      | `hero.name`                                            | The name of the project.                                                   |
-| `tagline`                       | `hero.text`                                            | The text of the hero.                                                      |
-| `actions[{ text, link, type }]` | `hero.actions[{ text, link, theme }]`                  | `type: 'primary'` becomes `theme: 'brand'`, `'secondary'` becomes `'alt'`. |
-| `features[{ title, details }]`  | `features[{ title, details }]`                         | The new items also accept `icon`, `link` and `linkText`.                   |
-| `footer`                        | `footer.message` (theme option)                        | The home footer is the site footer now.                                    |
-| `footerHtml`                    | —                                                      | The footer content is always rendered as HTML.                             |
-| `notFound` (string array)       | `notFound` (object)                                    | See below.                                                                 |
-| `backToHome`                    | `notFound.linkText`                                    | Defaults to `'Take me home'`.                                              |
-| —                               | `notFound.title`, `quote`, `link`, `linkLabel`, `code` | The pieces of the 404 page.                                                |
+The classic home frontmatter is supported unchanged. `home: true` is treated as `type: home`, and the flat fields below are read as the matching `hero` fields. The nested `hero` shape is still available and takes precedence when both are set. `heroHeight` is not configurable.
+
+| Classic (frontmatter)           | New (frontmatter)                                      | Notes                                                                     |
+| ------------------------------- | ------------------------------------------------------ | ------------------------------------------------------------------------- |
+| `home: true`                    | `home: true`                                           | Supported as an alias of `type: home`.                                    |
+| `heroImage`                     | `heroImage`                                            | A string, or `{ src }` when using `hero.image`.                           |
+| `heroImageDark`                 | `heroImageDark`                                        | The dark variant of the image.                                            |
+| `heroAlt`                       | `heroAlt`                                              | The alternative text.                                                     |
+| `heroHeight`                    | —                                                      | Not configurable.                                                         |
+| `heroText`                      | `heroText`                                             | The name of the project.                                                  |
+| `tagline`                       | `tagline`                                              | The text of the hero.                                                     |
+| `actions[{ text, link, type }]` | `actions[{ text, link, type }]`                        | `type: 'primary'` is supported, and `theme: 'brand' \| 'alt'` also works. |
+| `features[{ title, details }]`  | `features[{ title, details }]`                         | The new items also accept `icon`, `link` and `linkText`.                  |
+| `footer`                        | `footer`                                               | A string renders the page footer; a boolean controls the site footer.     |
+| `footerHtml`                    | `footerHtml`                                           | Whether to render the string footer as HTML.                              |
+| `notFound` (string array)       | `notFound` (object)                                    | See below.                                                                |
+| `backToHome`                    | `notFound.linkText`                                    | Defaults to `'Take me home'`.                                             |
+| —                               | `notFound.title`, `quote`, `link`, `linkLabel`, `code` | The pieces of the 404 page.                                               |
 
 The classic theme rendered one of the messages of `notFound` at random. The new theme has a single `quote`, so pick one of the former messages:
 
@@ -212,22 +214,22 @@ export default defineUserConfig({
 
 ## Migrate the Frontmatter
 
-| Classic             | New                             | Notes                                                                                                   |
-| ------------------- | ------------------------------- | ------------------------------------------------------------------------------------------------------- |
-| `home: true`        | `type: home`                    | The other pages default to `type: doc`.                                                                 |
-| `navbar`            | `navbar`                        | Same.                                                                                                   |
-| `externalLinkIcon`  | `externalLinkIcon`              | Same.                                                                                                   |
-| `pageClass`         | `pageClass`                     | Same, and the class is added on the page container.                                                     |
-| `editLink`          | `editLink`                      | A boolean that enables or disables the link of the page.                                                |
-| `editLinkPattern`   | —                               | The pattern is a theme option now.                                                                      |
-| `lastUpdated`       | `lastUpdated`                   | Same, a boolean or a timestamp.                                                                         |
-| `contributors`      | `contributors`                  | Same.                                                                                                   |
-| `sidebar`           | `sidebar`                       | Same shapes, with the item changes above.                                                               |
-| `sidebarDepth`      | `sidebarDepth`                  | Same.                                                                                                   |
-| `prev` / `next`     | `prev` / `next`                 | A string is the text, an object accepts `text`, `link`, `target` and `rel`, and `false` hides the link. |
-| `footer` (a string) | `footer.message` (theme option) | The home footer is the site footer now.                                                                 |
-| `footerHtml`        | —                               | The footer content is always rendered as HTML.                                                          |
-| —                   | `footer: false`                 | Hides the site footer on this page.                                                                     |
+| Classic             | New                 | Notes                                                                                                   |
+| ------------------- | ------------------- | ------------------------------------------------------------------------------------------------------- |
+| `home: true`        | `home: true`        | Supported as an alias of `type: home`; the other pages default to `type: doc`.                          |
+| `navbar`            | `navbar`            | Same.                                                                                                   |
+| `externalLinkIcon`  | `externalLinkIcon`  | Same.                                                                                                   |
+| `pageClass`         | `pageClass`         | Same, and the class is added on the page container.                                                     |
+| `editLink`          | `editLink`          | A boolean that enables or disables the link of the page.                                                |
+| `editLinkPattern`   | —                   | The pattern is a theme option now.                                                                      |
+| `lastUpdated`       | `lastUpdated`       | Same, a boolean or a timestamp.                                                                         |
+| `contributors`      | `contributors`      | Same.                                                                                                   |
+| `sidebar`           | `sidebar`           | Same shapes, with the item changes above.                                                               |
+| `sidebarDepth`      | `sidebarDepth`      | Same.                                                                                                   |
+| `prev` / `next`     | `prev` / `next`     | A string is the text, an object accepts `text`, `link`, `target` and `rel`, and `false` hides the link. |
+| `footer` (a string) | `footer` (a string) | The string is rendered as the page footer.                                                              |
+| `footerHtml`        | `footerHtml`        | Whether to render the string footer as HTML.                                                            |
+| —                   | `footer: false`     | Hides the site footer on this page.                                                                     |
 
 The behaviour of the previous/next frontmatter changed. In the classic theme a string was a path to a page file and was converted to a link. In the new theme a string is the text of the link, and the target comes from the sidebar order:
 
@@ -326,7 +328,7 @@ A few classic features were dropped rather than renamed:
 1. Replace `@vuepress/theme-classic` with `@vuepress/theme-default` and `themeClassic` with `themeDefault`.
 2. Convert `navbar` to `nav`, and the sidebar items to the new shape.
 3. Convert `colorMode` / `colorModeSwitch` to `appearance`, and the language switcher options to `locales.<path>.label` and `langMenuLabel`.
-4. Convert `notFound`, `backToHome` and the home frontmatter to the new frontmatter.
+4. Convert `notFound` and `backToHome`; the classic home frontmatter is supported unchanged.
 5. Rename the theme plugin switches, and opt out of Shiki if the site must keep Prism.
 6. Move the SASS palette to CSS variables in `.vuepress/styles/index.css`.
 7. Replace `ParentLayout` and the `@theme/*` imports with `theme.Layout` and the public components.

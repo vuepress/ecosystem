@@ -65,6 +65,38 @@ footer: false
 ---
 ```
 
+也支持经典主题的首页 frontmatter。`home: true` 等价于 `type: home`，未设置 `hero` 时会使用下面的扁平字段：
+
+::: fields
+@`home` type=boolean
+
+页面是否为首页。它是 `type: home` 在经典主题中的等价写法。
+
+@`heroText` type=`string | null`
+
+项目的名称。默认使用站点标题；设为 `null` 可隐藏名称。
+
+@`tagline` type=`string | null`
+
+Hero 的文本。默认使用站点描述；设为 `null` 可隐藏文本。
+
+@`heroImage` type=string
+
+Hero 图片。它会被用作 `hero.image` 的来源。
+
+@`heroImageDark` type=string
+
+Hero 图片的暗色版本。
+
+@`heroAlt` type=string
+
+Hero 图片的替代文本。
+
+@`actions` type=`ThemeHeroAction[]`
+
+Hero 的按钮。`type: 'primary'` 等价于 `theme: 'brand'`，`type: 'secondary'` 等价于 `theme: 'alt'`。
+:::
+
 ### Hero {#hero}
 
 ::: fields
@@ -212,9 +244,13 @@ const members = [
 ### 首页页脚 {#home-footer}
 
 ::: fields
-@`footer` type=boolean default=`true`
+@`footer` type=`boolean | string` default=`true`
 
-是否在本页渲染站点页脚。页脚内容来自 [`footer`](./config.md#basic-config) 主题配置项。
+是否在本页渲染站点页脚，或页面的页脚文本。字符串会作为页面的页脚渲染，替代站点页脚。
+
+@`footerHtml` type=boolean default=`false`
+
+是否将字符串 `footer` 作为 HTML 渲染。
 :::
 
 ## 文档页面 {#document-page}
@@ -309,8 +345,16 @@ lastUpdated: 1700000000000
 | `pageClass`      | `string`                                                      | 全部     | [所有页面](#all-pages)                |
 | `markdownStyles` | `boolean`                                                     | 首页     | [所有页面](#all-pages)                |
 | `hero`           | `ThemeHero`                                                   | 首页     | [Hero](#hero)                         |
+| `home`           | `boolean`                                                     | 首页     | [首页](#home-page)                    |
+| `heroText`       | `string \| null`                                              | 首页     | [首页](#home-page)                    |
+| `tagline`        | `string \| null`                                              | 首页     | [首页](#home-page)                    |
+| `heroImage`      | `string`                                                      | 首页     | [首页](#home-page)                    |
+| `heroImageDark`  | `string`                                                      | 首页     | [首页](#home-page)                    |
+| `heroAlt`        | `string`                                                      | 首页     | [首页](#home-page)                    |
+| `actions`        | `ThemeHeroAction[]`                                           | 首页     | [首页](#home-page)                    |
 | `features`       | `ThemeFeature[]`                                              | 首页     | [特性](#features)                     |
-| `footer`         | `boolean`                                                     | 全部     | [首页页脚](#home-footer)              |
+| `footer`         | `boolean \| string`                                           | 全部     | [首页页脚](#home-footer)              |
+| `footerHtml`     | `boolean`                                                     | 全部     | [首页页脚](#home-footer)              |
 | `outline`        | `DefaultTheme.Outline \| number \| [number, number] \| false` | 文档     | [文档页面](#document-page)            |
 | `aside`          | `boolean \| 'left'`                                           | 文档     | [文档页面](#document-page)            |
 | `editLink`       | `boolean`                                                     | 文档     | [文档页面](#document-page)            |

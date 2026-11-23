@@ -1,19 +1,19 @@
 <script setup lang="ts">
-import { useThemePageFrontmatter } from '../../composables/useThemePageData.js'
+import { useHomeHero } from '../../composables/useThemePageData.js'
 import VPHero from './VPHero.vue'
 
-const fm = useThemePageFrontmatter()
+const hero = useHomeHero()
 </script>
 
 <template>
   <VPHero
-    v-if="fm.hero"
+    v-if="hero"
     class="vp-home-hero"
-    :name="fm.hero.name"
-    :text="fm.hero.text"
-    :tagline="fm.hero.tagline"
-    :image="fm.hero.image"
-    :actions="fm.hero.actions"
+    :name="hero.name"
+    :text="hero.text"
+    :tagline="hero.tagline"
+    :image="hero.image"
+    :actions="hero.actions"
   >
     <template #home-hero-info-before
       ><slot name="home-hero-info-before"
