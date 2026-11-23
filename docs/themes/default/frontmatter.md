@@ -65,6 +65,38 @@ footer: false
 ---
 ```
 
+The classic home frontmatter is still supported. `home: true` is deprecated: use `type: home` instead, and the theme logs a warning when this key is set. The flat fields below keep their classic names and are used when `hero` is not set:
+
+::: fields
+@`home` type=boolean deprecated
+
+Whether the page is a home page. Deprecated: use `type: home` instead. The theme logs a warning when this key is set.
+
+@`heroText` type=`string | null`
+
+The name of the project. It defaults to the site title; set it to `null` to hide the name.
+
+@`tagline` type=`string | null`
+
+The text of the hero. It defaults to the site description; set it to `null` to hide the text.
+
+@`heroImage` type=string
+
+The hero image. It is used as the source of `hero.image`.
+
+@`heroImageDark` type=string
+
+The dark variant of the hero image.
+
+@`heroAlt` type=string
+
+The alternative text of the hero image.
+
+@`actions` type=`ThemeHeroAction[]`
+
+The buttons of the hero. The classic `type: 'primary' | 'secondary'` is supported; `theme: 'brand' | 'alt'` is also accepted.
+:::
+
 ### Hero
 
 ::: fields
@@ -212,9 +244,13 @@ The complete prop list of the components is in [Built-in Components](./component
 ### Home Footer
 
 ::: fields
-@`footer` type=boolean default=`true`
+@`footer` type=`boolean | string` default=`true`
 
-Whether to render the site footer on this page. The content of the footer comes from the [`footer`](./config.md#basic-config) theme option.
+Whether to render the site footer on this page, or the footer text of the page. A string renders that text as the page footer instead of the site footer.
+
+@`footerHtml` type=boolean default=`false`
+
+Whether to render a string `footer` as HTML.
 :::
 
 ## Document Page
@@ -309,8 +345,16 @@ Whether to wrap the home page content in the document styles. It only applies to
 | `pageClass`      | `string`                                                      | all       | [All Pages](#all-pages)                    |
 | `markdownStyles` | `boolean`                                                     | home      | [All Pages](#all-pages)                    |
 | `hero`           | `ThemeHero`                                                   | home      | [Hero](#hero)                              |
+| `home`           | `boolean`                                                     | home      | [Home Page](#home-page)                    |
+| `heroText`       | `string \| null`                                              | home      | [Home Page](#home-page)                    |
+| `tagline`        | `string \| null`                                              | home      | [Home Page](#home-page)                    |
+| `heroImage`      | `string`                                                      | home      | [Home Page](#home-page)                    |
+| `heroImageDark`  | `string`                                                      | home      | [Home Page](#home-page)                    |
+| `heroAlt`        | `string`                                                      | home      | [Home Page](#home-page)                    |
+| `actions`        | `ThemeHeroAction[]`                                           | home      | [Home Page](#home-page)                    |
 | `features`       | `ThemeFeature[]`                                              | home      | [Features](#features)                      |
-| `footer`         | `boolean`                                                     | all       | [Home Footer](#home-footer)                |
+| `footer`         | `boolean \| string`                                           | all       | [Home Footer](#home-footer)                |
+| `footerHtml`     | `boolean`                                                     | all       | [Home Footer](#home-footer)                |
 | `outline`        | `DefaultTheme.Outline \| number \| [number, number] \| false` | doc       | [Document Page](#document-page)            |
 | `aside`          | `boolean \| 'left'`                                           | doc       | [Document Page](#document-page)            |
 | `editLink`       | `boolean`                                                     | doc       | [Document Page](#document-page)            |

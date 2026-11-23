@@ -1,5 +1,5 @@
 ---
-home: true
+type: home
 title: Home
 icon: home
 heroImage: /images/hero.png

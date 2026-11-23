@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { useThemeLocaleData } from '@vuepress/plugin-theme-data/client'
+import { computed } from 'vue'
 
 import { useThemePageFrontmatter } from '../../composables/useThemePageData.js'
 import { useLayout } from '../composables/useLayout.js'
@@ -8,21 +9,38 @@ import type { ThemeConfig } from '../shared.js'
 const theme = useThemeLocaleData<ThemeConfig>()
 const frontmatter = useThemePageFrontmatter()
 const { hasSidebar } = useLayout()
+
+const pageFooter = computed(() =>
+  typeof frontmatter.value.footer === 'string'
+    ? frontmatter.value.footer
+    : undefined,
+)
+const showFooter = computed(() =>
+  pageFooter.value === undefined
+    ? Boolean(theme.value.footer) && frontmatter.value.footer !== false
+    : pageFooter.value.length > 0,
+)
 </script>
 
 <template>
   <footer
-    v-if="theme.footer && frontmatter.footer !== false"
+    v-if="showFooter"
     class="vp-footer"
     :class="{ 'has-sidebar': hasSidebar }"
   >
     <div class="container">
-      <p v-if="theme.footer.message" class="message">
-        <bdi v-html="theme.footer.message" />
+      <p v-if="pageFooter" class="message">
+        <bdi v-if="frontmatter.footerHtml" v-html="pageFooter" />
+        <bdi v-else>{{ pageFooter }}</bdi>
       </p>
-      <p v-if="theme.footer.copyright" class="copyright">
-        <bdi v-html="theme.footer.copyright" />
-      </p>
+      <template v-else>
+        <p v-if="theme.footer?.message" class="message">
+          <bdi v-html="theme.footer.message" />
+        </p>
+        <p v-if="theme.footer?.copyright" class="copyright">
+          <bdi v-html="theme.footer.copyright" />
+        </p>
+      </template>
     </div>
   </footer>
 </template>

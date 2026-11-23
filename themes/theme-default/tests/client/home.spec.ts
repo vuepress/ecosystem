@@ -1,5 +1,5 @@
 import { renderVuePress } from '@vuepress/test-utils/client'
-import { describe, expect, it } from 'vitest'
+import { describe, expect, it, vi } from 'vitest'
 
 import { createClientConfigs } from './utils.js'
 
@@ -41,6 +41,70 @@ describe('theme home page', () => {
     expect(html).toContain('href="/guide/"')
     expect(html).toContain('Get Started')
     expect(html).toMatch(/href="https:\/\/github\.com\/vuepress\/ecosystem"/u)
+  })
+
+  it('should render a classic home page from flat frontmatter', async () => {
+    const warn = vi.spyOn(console, 'warn').mockImplementation(() => {})
+
+    const html = await renderVuePress({
+      clientConfigs: await createClientConfigs(),
+      content: '<h2>Welcome</h2>',
+      page: {
+        path: '/',
+        title: 'Home',
+        frontmatter: {
+          home: true,
+          heroImage: '/images/hero.png',
+          actions: [
+            { text: 'Get Started', link: './guide/', type: 'primary' },
+            {
+              text: 'GitHub',
+              link: 'https://github.com/vuepress',
+              type: 'secondary',
+            },
+          ],
+          footer: 'MIT Licensed | Copyright © VuePress Community',
+        },
+      },
+      site: {
+        title: 'VuePress Ecosystem',
+        description: 'The official themes and plugins',
+      },
+      themeData: {},
+    })
+
+    expect(html).toMatch(/class="name clip"[^>]*>VuePress Ecosystem<\/span>/u)
+    expect(html).toMatch(
+      /class="text"[^>]*>The official themes and plugins<\/span>/u,
+    )
+    expect(html).toContain('src="/images/hero.png"')
+    expect(html).toContain('vp-button no-icon medium brand')
+    expect(html).toContain('vp-button no-icon medium alt')
+    expect(html).toMatch(/Get Started[\s\S]*GitHub/u)
+    expect(html).toContain('MIT Licensed | Copyright © VuePress Community')
+    expect(warn.mock.calls[0]?.[0]).toContain(
+      '`home: true` frontmatter is deprecated',
+    )
+    warn.mockRestore()
+  })
+
+  it('should render a classic footer as HTML', async () => {
+    const html = await renderVuePress({
+      clientConfigs: await createClientConfigs(),
+      page: {
+        path: '/',
+        title: 'Home',
+        frontmatter: {
+          type: 'home',
+          footer: 'MIT Licensed | <a href="/license/">License</a>',
+          footerHtml: true,
+        },
+      },
+      site: { title: 'VuePress Ecosystem' },
+      themeData: {},
+    })
+
+    expect(html).toContain('MIT Licensed | <a href="/license/">License</a>')
   })
 
   it('should render the features from the frontmatter', async () => {

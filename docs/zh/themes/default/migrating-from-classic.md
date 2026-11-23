@@ -120,22 +120,24 @@ icon: arrow-right-left
 
 ### 首页与 404 {#home-page-and-404}
 
-| 经典主题（frontmatter）         | 新主题（frontmatter）                                  | 说明                                                                  |
-| ------------------------------- | ------------------------------------------------------ | --------------------------------------------------------------------- |
-| `home: true`                    | `type: home`                                           | 页面类型取代了布尔标记。                                              |
-| `heroImage`                     | `hero.image`                                           | 一个字符串，或 `{ src }`。                                            |
-| `heroImageDark`                 | `hero.image: { light, dark }`                          | 图片的两个变体。                                                      |
-| `heroAlt`                       | `hero.image: { alt }`                                  | 替代文本。                                                            |
-| `heroHeight`                    | —                                                      | 不可配置。                                                            |
-| `heroText`                      | `hero.name`                                            | 项目的名称。                                                          |
-| `tagline`                       | `hero.text`                                            | hero 的文本。                                                         |
-| `actions[{ text, link, type }]` | `hero.actions[{ text, link, theme }]`                  | `type: 'primary'` 变为 `theme: 'brand'`，`'secondary'` 变为 `'alt'`。 |
-| `features[{ title, details }]`  | `features[{ title, details }]`                         | 新条目还接受 `icon`、`link` 和 `linkText`。                           |
-| `footer`                        | `footer.message`（主题配置项）                         | 首页页脚现在就是站点页脚。                                            |
-| `footerHtml`                    | —                                                      | 页脚内容始终以 HTML 渲染。                                            |
-| `notFound`（字符串数组）        | `notFound`（对象）                                     | 见下文。                                                              |
-| `backToHome`                    | `notFound.linkText`                                    | 默认值为 `'Take me home'`。                                           |
-| —                               | `notFound.title`、`quote`、`link`、`linkLabel`、`code` | 404 页面的各个部分。                                                  |
+除 `home` 外，经典主题的首页字段保持原来的名称。`home: true` 已弃用，请改用 `type: home`，使用时会输出警告；下面的扁平字段会作为对应的 `hero` 字段读取。嵌套的 `hero` 写法仍然可用，两者同时设置时 `hero` 优先。`heroHeight` 不可配置。
+
+| 经典主题（frontmatter）         | 新主题（frontmatter）                                  | 说明                                                       |
+| ------------------------------- | ------------------------------------------------------ | ---------------------------------------------------------- |
+| `home: true`                    | `type: home`                                           | `home: true` 仍可使用，但已弃用并会输出警告。              |
+| `heroImage`                     | `heroImage`                                            | 字符串；使用 `hero.image` 时也可以是 `{ src }`。           |
+| `heroImageDark`                 | `heroImageDark`                                        | 图片的暗色变体。                                           |
+| `heroAlt`                       | `heroAlt`                                              | 替代文本。                                                 |
+| `heroHeight`                    | —                                                      | 不可配置。                                                 |
+| `heroText`                      | `heroText`                                             | 项目的名称。                                               |
+| `tagline`                       | `tagline`                                              | hero 的文本。                                              |
+| `actions[{ text, link, type }]` | `actions[{ text, link, type }]`                        | 支持 `type: 'primary'`，也支持 `theme: 'brand' \| 'alt'`。 |
+| `features[{ title, details }]`  | `features[{ title, details }]`                         | 新条目还接受 `icon`、`link` 和 `linkText`。                |
+| `footer`                        | `footer`                                               | 字符串渲染为页面页脚；布尔值控制站点页脚。                 |
+| `footerHtml`                    | `footerHtml`                                           | 是否将字符串页脚作为 HTML 渲染。                           |
+| `notFound`（字符串数组）        | `notFound`（对象）                                     | 见下文。                                                   |
+| `backToHome`                    | `notFound.linkText`                                    | 默认值为 `'Take me home'`。                                |
+| —                               | `notFound.title`、`quote`、`link`、`linkLabel`、`code` | 404 页面的各个部分。                                       |
 
 经典主题会从 `notFound` 中随机渲染一条消息。新主题只有一个 `quote`，因此请从原来的消息中选一条：
 
@@ -212,22 +214,22 @@ export default defineUserConfig({
 
 ## 迁移 frontmatter {#migrate-the-frontmatter}
 
-| 经典主题           | 新主题                         | 说明                                                                         |
-| ------------------ | ------------------------------ | ---------------------------------------------------------------------------- |
-| `home: true`       | `type: home`                   | 其他页面默认为 `type: doc`。                                                 |
-| `navbar`           | `navbar`                       | 相同。                                                                       |
-| `externalLinkIcon` | `externalLinkIcon`             | 相同。                                                                       |
-| `pageClass`        | `pageClass`                    | 相同，且该 class 会加在页面容器上。                                          |
-| `editLink`         | `editLink`                     | 一个布尔值，用于启用或禁用该页面的链接。                                     |
-| `editLinkPattern`  | —                              | pattern 现在是主题配置项。                                                   |
-| `lastUpdated`      | `lastUpdated`                  | 相同，一个布尔值或一个时间戳。                                               |
-| `contributors`     | `contributors`                 | 相同。                                                                       |
-| `sidebar`          | `sidebar`                      | 形状相同，只是条目有上面的变化。                                             |
-| `sidebarDepth`     | `sidebarDepth`                 | 相同。                                                                       |
-| `prev` / `next`    | `prev` / `next`                | 字符串即文本；对象接受 `text`、`link`、`target` 和 `rel`；`false` 隐藏链接。 |
-| `footer`（字符串） | `footer.message`（主题配置项） | 首页页脚现在就是站点页脚。                                                   |
-| `footerHtml`       | —                              | 页脚内容始终以 HTML 渲染。                                                   |
-| —                  | `footer: false`                | 在该页面隐藏站点页脚。                                                       |
+| 经典主题           | 新主题             | 说明                                                                         |
+| ------------------ | ------------------ | ---------------------------------------------------------------------------- |
+| `home: true`       | `type: home`       | `home: true` 仍可使用，但已弃用并会输出警告；其他页面默认为 `type: doc`。    |
+| `navbar`           | `navbar`           | 相同。                                                                       |
+| `externalLinkIcon` | `externalLinkIcon` | 相同。                                                                       |
+| `pageClass`        | `pageClass`        | 相同，且该 class 会加在页面容器上。                                          |
+| `editLink`         | `editLink`         | 一个布尔值，用于启用或禁用该页面的链接。                                     |
+| `editLinkPattern`  | —                  | pattern 现在是主题配置项。                                                   |
+| `lastUpdated`      | `lastUpdated`      | 相同，一个布尔值或一个时间戳。                                               |
+| `contributors`     | `contributors`     | 相同。                                                                       |
+| `sidebar`          | `sidebar`          | 形状相同，只是条目有上面的变化。                                             |
+| `sidebarDepth`     | `sidebarDepth`     | 相同。                                                                       |
+| `prev` / `next`    | `prev` / `next`    | 字符串即文本；对象接受 `text`、`link`、`target` 和 `rel`；`false` 隐藏链接。 |
+| `footer`（字符串） | `footer`（字符串） | 字符串会渲染为页面页脚。                                                     |
+| `footerHtml`       | `footerHtml`       | 是否将字符串页脚作为 HTML 渲染。                                             |
+| —                  | `footer: false`    | 在该页面隐藏站点页脚。                                                       |
 
 上一篇/下一篇 frontmatter 的行为变了。在经典主题中，字符串是页面文件的路径，会被转换成链接。在新主题中，字符串就是链接的文本，目标来自侧边栏顺序：
 
@@ -326,7 +328,7 @@ const nav: DefaultTheme.NavItem[] = [{ text: 'Guide', link: '/guide/' }]
 1. 把 `@vuepress/theme-classic` 替换为 `@vuepress/theme-default`，把 `classicTheme` 替换为 `defaultTheme`。
 2. 把 `navbar` 转换为 `nav`，并把侧边栏条目转换为新的形状。
 3. 把 `colorMode` / `colorModeSwitch` 转换为 `appearance`，把语言切换器配置项转换为 `locales.<path>.label` 和 `langMenuLabel`。
-4. 把 `notFound`、`backToHome` 和首页 frontmatter 转换为新的 frontmatter。
+4. 将 `home: true` 转换为 `type: home`，并转换 `notFound` / `backToHome`；其他经典首页字段保持原来的名称。
 5. 重命名主题插件开关，如果站点必须保留 Prism 则关掉 Shiki。
 6. 把 SASS 调色板迁移为 `.vuepress/styles/index.css` 中的 CSS 变量。
 7. 用 `theme.Layout` 和公共组件替换 `ParentLayout` 与 `@theme/*` 导入。
