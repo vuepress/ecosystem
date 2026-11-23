@@ -18,18 +18,24 @@ import { shikiPlugin } from '@vuepress/plugin-shiki'
 import { sitemapPlugin } from '@vuepress/plugin-sitemap'
 import { themeDataPlugin } from '@vuepress/plugin-theme-data'
 import {
+  createSidebarStructureHelper,
   extendsPageData,
-  getSidebarStructureScopes,
-  prepareSidebarData,
-  watchSidebarData,
 } from '@vuepress/theme-helper'
 import type { ThemeObject } from 'vuepress'
 
 import type {
   AppearanceOptions,
+  DefaultTheme,
   ThemeConfig,
   ThemePluginsOptions,
 } from '../shared/types.js'
+
+/**
+ * The sidebar item of the theme generated from the file structure
+ *
+ * 根据文件结构生成的主题侧边栏条目
+ */
+type StructureSidebarItem = DefaultTheme.SidebarItem & { text: string }
 
 /**
  * Plugin list of the theme
@@ -442,10 +448,26 @@ export const defaultTheme = (options: ThemeOptions = {}): ThemeObject => {
   const { hostname, sidebarSorter, ...themeOptions } = options
   const plugins: ThemePluginsOptions = options.themePlugins ?? {}
 
-  const structureScopes = getSidebarStructureScopes({
+  const sidebarHelper = createSidebarStructureHelper<StructureSidebarItem>({
     themeData: resolveThemeData(themeOptions),
     childrenKey: 'items',
     prefixKey: 'base',
+    sorter: sidebarSorter,
+
+    pageInfoGetter: (info, _page, defaults) => ({
+      ...defaults,
+      ...(info.frontmatter.icon ? { icon: info.frontmatter.icon } : {}),
+    }),
+
+    dirInfoGetter: (info, _page, defaults) => ({
+      ...defaults,
+      ...(info.groupInfo.icon ? { icon: info.groupInfo.icon } : {}),
+      // the groups are collapsible by default, and they are collapsed unless
+      // the `dir` frontmatter option expands them
+      ...(info.groupInfo.collapsible
+        ? { collapsed: info.groupInfo.expanded !== true }
+        : {}),
+    }),
   })
 
   return {
@@ -468,20 +490,10 @@ export const defaultTheme = (options: ThemeOptions = {}): ThemeObject => {
     // the client reads the sidebar generated from the file structure from a
     // generated module, which must exist even when no sidebar uses
     // `'structure'`, so the data is always prepared
-    onPrepared: async (app): Promise<void> => {
-      await prepareSidebarData(app, {
-        scopes: structureScopes,
-        sorter: sidebarSorter,
-      })
-    },
+    onPrepared: (app) => sidebarHelper.prepare(app),
 
-    onWatched: (_app, watchers): void => {
-      if (structureScopes.length > 0) {
-        watchSidebarData(_app, watchers, {
-          scopes: structureScopes,
-          sorter: sidebarSorter,
-        })
-      }
+    onWatched: (app, watchers): void => {
+      sidebarHelper.watch(app, watchers)
     },
 
     plugins: resolveThemePlugins(themeOptions, plugins, hostname),

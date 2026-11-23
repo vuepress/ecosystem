@@ -1,17 +1,25 @@
-import type {
-  SidebarStructureData,
-  SidebarStructureItem,
-} from '@vuepress/theme-helper'
 import { describe, expect, it, vi } from 'vitest'
 import type { resolveRoute as resolveRouteType } from 'vuepress/client'
 
+/**
+ * The item shape of the default theme, the theme data is generated at build
+ * time so the client only reads it
+ *
+ * 默认主题的条目形状，主题数据在构建时生成，客户端只负责读取
+ */
+interface StructureItem {
+  text: string
+  link?: string
+  icon?: string
+  items?: StructureItem[]
+  collapsed?: boolean
+}
+
 // the structure data is generated at build time and read by the client of the
-// helper, it is replaced with a fixture so that the mapping of the theme can
+// helper, it is replaced with a fixture so that the resolution of the theme can
 // be tested
 const { structureData } = vi.hoisted(
-  (): {
-    structureData: SidebarStructureData
-  } => ({
+  (): { structureData: Record<string, StructureItem[]> } => ({
     structureData: {
       '/': [
         { text: 'Home', link: '/' },
@@ -22,13 +30,12 @@ const { structureData } = vi.hoisted(
         { text: 'A', link: '/guide/a.html' },
         {
           text: 'Static Group',
-          collapsible: false,
-          children: [{ text: 'B', link: '/guide/b.html' }],
+          items: [{ text: 'B', link: '/guide/b.html' }],
         },
         {
           text: 'Expanded Group',
-          expanded: true,
-          children: [{ text: 'C', link: '/guide/c.html' }],
+          collapsed: false,
+          items: [{ text: 'C', link: '/guide/c.html' }],
         },
       ],
       '/zh/': [{ text: 'Home', link: '/zh/' }],
@@ -46,32 +53,14 @@ const resolveRoute = ((link: string) => ({
 vi.mock(import('vuepress/client'), () => ({ resolveRoute }))
 
 vi.mock(import('@vuepress/theme-helper/client'), () => ({
-  getSidebarStructure: (scope: string): SidebarStructureItem[] =>
-    structureData[scope] ?? [],
+  getSidebarStructure: <Item>(scope: string): Item[] =>
+    (structureData[scope] ?? []) as unknown as Item[],
 }))
 
 const { getSidebar } =
   await import('../../src/client/theme-default/support/sidebar.js')
 
-/**
- * The structure items of `/guide/` mapped to the sidebar items of the theme
- *
- * 映射为默认主题侧边栏条目的 `/guide/` 结构条目
- */
-const guideItems = [
-  { text: 'Guide', link: '/guide/' },
-  { text: 'A', link: '/guide/a.html' },
-  // `collapsible: false` keeps the group static, so `collapsed` is absent
-  {
-    text: 'Static Group',
-    items: [{ text: 'B', link: '/guide/b.html' }],
-  },
-  {
-    text: 'Expanded Group',
-    collapsed: false,
-    items: [{ text: 'C', link: '/guide/c.html' }],
-  },
-]
+const guideItems = structureData['/guide/']
 
 describe(getSidebar, () => {
   it('should resolve a `structure` sidebar of the matching locale', () => {

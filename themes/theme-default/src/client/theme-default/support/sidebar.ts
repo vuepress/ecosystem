@@ -1,6 +1,5 @@
 import { ensureEndingSlash } from '@vuepress/helper/client'
 import { getSidebarStructure } from '@vuepress/theme-helper/client'
-import type { SidebarStructureItem } from '@vuepress/theme-helper/client'
 import { resolveRoute } from 'vuepress/client'
 
 import type { DefaultTheme } from '../shared.js'
@@ -75,36 +74,6 @@ const resolveItemScope = (base: string | undefined, scope: string): string =>
     : scope
 
 /**
- * Convert a structure item to a sidebar item of the theme
- *
- * 将结构条目转换为主题的侧边栏条目
- *
- * @param item - The structure item / 结构条目
- * @returns The sidebar item / 侧边栏条目
- */
-const resolveStructureItem = (item: SidebarStructureItem): SidebarItem => {
-  const children = item.children?.length
-    ? item.children.map(resolveStructureItem)
-    : undefined
-
-  return {
-    text: item.text,
-    ...(item.link ? { link: item.link } : {}),
-    ...(item.icon ? { icon: item.icon } : {}),
-    ...(children
-      ? {
-          items: children,
-          // the groups are collapsible by default, and they are collapsed
-          // unless the `dir` frontmatter option expands them
-          ...(item.collapsible === false
-            ? {}
-            : { collapsed: item.expanded !== true }),
-        }
-      : {}),
-  }
-}
-
-/**
  * Get the sidebar generated from the file structure of a route scope
  *
  * 获取根据路由范围的文件结构生成的侧边栏
@@ -113,7 +82,7 @@ const resolveStructureItem = (item: SidebarStructureItem): SidebarItem => {
  * @returns The sidebar items / 侧边栏条目
  */
 const resolveStructureSidebar = (scope: string): SidebarItem[] =>
-  getSidebarStructure(scope).map((info) => resolveStructureItem(info))
+  getSidebarStructure<SidebarItem>(scope)
 
 /**
  * Get the `Sidebar` from sidebar option. This method will ensure to get correct
