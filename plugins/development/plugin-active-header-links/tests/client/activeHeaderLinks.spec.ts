@@ -8,7 +8,8 @@ import {
 import { createTestClient } from '@vuepress/test-utils/client'
 import { describe, expect, it, vi } from 'vitest'
 import type { VNode } from 'vue'
-import { defineComponent, h } from 'vue'
+import { defineComponent, h, watch } from 'vue'
+import { useRouter } from 'vuepress/client'
 
 import { useActiveHeaderLinks } from '../../src/client/index.js'
 import { activeHeaderLinksPlugin } from '../../src/node/index.js'
@@ -60,11 +61,14 @@ const triggerScroll = async (): Promise<void> => {
 
 const createProbe = (
   options: Parameters<typeof useActiveHeaderLinks>[0],
+  onSetup?: () => void,
 ): ReturnType<typeof defineComponent> =>
   defineComponent({
     name: 'ActiveHeaderLinksProbe',
     setup() {
       useActiveHeaderLinks(options)
+
+      onSetup?.()
 
       return (): VNode =>
         h('div', { class: 'probe' }, [
@@ -109,6 +113,47 @@ const setSectionOffsets = (offsetA = 100, offsetB = 200): void => {
     value: offsetB,
   })
 }
+
+interface ScrollToMock {
+  scrollTo: { mockRestore: () => void }
+  getPendingScrollTop: () => number | null
+  resetPendingScrollTop: () => void
+}
+
+/**
+ * Mock `window.scrollTo` to simulate how the browser handles smooth scrolling
+ *
+ * A smooth scroll does not move the page until the animation advances, so its
+ * target is recorded as pending until an instant scroll aborts it.
+ *
+ * @returns The mocked `window.scrollTo` and the pending scroll target
+ */
+const mockScrollTo = (): ScrollToMock => {
+  let pendingScrollTop: number | null = null
+
+  const scrollTo = vi
+    .spyOn(window, 'scrollTo')
+    .mockImplementation((options: ScrollToOptions | number, y = 0) => {
+      if (typeof options === 'number') {
+        window.scrollY = y
+      } else if (options.behavior === 'instant') {
+        pendingScrollTop = null
+        window.scrollY = options.top ?? 0
+      } else {
+        pendingScrollTop = options.top ?? 0
+      }
+    })
+
+  return {
+    scrollTo,
+    getPendingScrollTop: () => pendingScrollTop,
+    resetPendingScrollTop: () => {
+      pendingScrollTop = null
+    },
+  }
+}
+
+const getRestoredScrollTop = (hash: string): number => (hash ? 200 : 0)
 
 describe('active header links composable', () => {
   it('should set the route hash of the anchor at the scroll position', async () => {
@@ -155,13 +200,7 @@ describe('active header links composable', () => {
 
       return result
     })
-    // the router scrolls to the hash element with the options signature while
-    // the composable restores the scroll position with the numbers signature
-    const scrollTo = vi
-      .spyOn(window, 'scrollTo')
-      .mockImplementation((_options: ScrollToOptions | number, y = 0) => {
-        window.scrollY = y
-      })
+    const { scrollTo } = mockScrollTo()
 
     try {
       setSectionOffsets()
@@ -170,7 +209,63 @@ describe('active header links composable', () => {
       await triggerScroll()
 
       expect(client.router.currentRoute.value.hash).toBe('#b')
-      expect(scrollTo).toHaveBeenCalledWith(window.scrollX, 250)
+      expect(scrollTo).toHaveBeenLastCalledWith({
+        behavior: 'instant',
+        left: window.scrollX,
+        top: 250,
+      })
+      expect(window.scrollY).toBe(250)
+    } finally {
+      scrollTo.mockRestore()
+      wrapper.unmount()
+    }
+  })
+
+  it('should abort the smooth scroll of the client scroll restoration', async () => {
+    document.body.innerHTML = ''
+
+    const { scrollTo, getPendingScrollTop, resetPendingScrollTop } =
+      mockScrollTo()
+
+    const client = await createTestClient({
+      page: { path: '/guide/', title: 'Guide' },
+      rootComponent: createProbe(probeOptions, () => {
+        const router = useRouter()
+
+        // mimic the client, which restores the scroll position of the route
+        // after each route change, respecting `scroll-behavior: smooth`
+        watch(
+          () => router.currentRoute.value.fullPath,
+          () => {
+            window.scrollTo({
+              top: getRestoredScrollTop(router.currentRoute.value.hash),
+            })
+          },
+          { flush: 'post' },
+        )
+      }),
+      route: '/guide/',
+    })
+    const wrapper = await client.mount({ attachTo: document.body })
+
+    try {
+      setSectionOffsets()
+
+      // the router may have restored the scroll position of the initial route
+      resetPendingScrollTop()
+
+      setScrollMetrics({ innerHeight: 600, scrollHeight: 3000, scrollTop: 250 })
+      await triggerScroll()
+
+      expect(client.router.currentRoute.value.hash).toBe('#b')
+      // the composable aborts the pending smooth scroll and restores the
+      // position at once
+      expect(scrollTo).toHaveBeenLastCalledWith({
+        behavior: 'instant',
+        left: window.scrollX,
+        top: 250,
+      })
+      expect(getPendingScrollTop()).toBeNull()
       expect(window.scrollY).toBe(250)
     } finally {
       scrollTo.mockRestore()

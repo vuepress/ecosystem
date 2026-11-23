@@ -1,4 +1,5 @@
 import { useDebounceFn, useEventListener } from '@vueuse/core'
+import { nextTick } from 'vue'
 import type { Router } from 'vuepress/client'
 import { useRouter } from 'vuepress/client'
 
@@ -10,7 +11,7 @@ export interface UseActiveHeaderLinksOptions {
 }
 
 /**
- * Update current hash and do not trigger `scrollBehavior`
+ * Update current hash without moving the viewport
  *
  * @param router - Vue Router instance / Vue Router 实例
  * @param hash - Hash to update / 要更新的 hash
@@ -18,22 +19,34 @@ export interface UseActiveHeaderLinksOptions {
 const updateHash = async (router: Router, hash: string): Promise<void> => {
   const { path, query } = router.currentRoute.value
   const { scrollX, scrollY } = window
+  // Themes may still set the deprecated `scrollBehavior` option, and Vue Router
+  // executes it on navigation to scroll to the hash element. Disable it
+  // temporarily, otherwise it would move the page away from the scroll position.
   // oxlint-disable-next-line typescript/no-deprecated
   const { scrollBehavior } = router.options
-
-  // temporarily disable `scrollBehavior`
   // oxlint-disable-next-line typescript/no-deprecated
   router.options.scrollBehavior = undefined
-  await router.replace({ path, query, hash })
-  // restore it after navigation
-  // oxlint-disable-next-line typescript/no-deprecated
-  router.options.scrollBehavior = scrollBehavior
+
+  try {
+    await router.replace({ path, query, hash })
+  } finally {
+    // oxlint-disable-next-line typescript/no-deprecated
+    router.options.scrollBehavior = scrollBehavior
+  }
 
   // The client restores the scroll position of the route after the navigation,
-  // which moves the page to the hash element. Restore the position the user has
-  // scrolled to, otherwise scrolling the page would jump between the headings.
-  if (window.scrollX !== scrollX || window.scrollY !== scrollY)
-    window.scrollTo(scrollX, scrollY)
+  // which scrolls the page to the hash element. Wait for the restoration to run,
+  // then move the page back to the position the user has scrolled to, otherwise
+  // scrolling the page would jump between the headings.
+  //
+  // The restoration may start a smooth scroll instead of jumping, because of the
+  // `scroll-behavior: smooth` CSS property. The scroll position is not changed
+  // yet when the navigation is done, so the restoration cannot be detected by
+  // comparing positions. The `instant` behavior always moves the page back and
+  // aborts the pending smooth scroll at the same time, otherwise the page would
+  // keep moving to the hash element and trigger another hash update.
+  await nextTick()
+  window.scrollTo({ behavior: 'instant', left: scrollX, top: scrollY })
 }
 
 export const useActiveHeaderLinks = ({
