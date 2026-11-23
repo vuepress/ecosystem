@@ -120,11 +120,11 @@ icon: arrow-right-left
 
 ### 首页与 404 {#home-page-and-404}
 
-经典主题的首页 frontmatter 可以原样使用。`home: true` 会被当作 `type: home`，下面的扁平字段会作为对应的 `hero` 字段读取。嵌套的 `hero` 写法仍然可用，两者同时设置时 `hero` 优先。`heroHeight` 不可配置。
+除 `home` 外，经典主题的首页字段保持原来的名称。`home: true` 已弃用，请改用 `type: home`，使用时会输出警告；下面的扁平字段会作为对应的 `hero` 字段读取。嵌套的 `hero` 写法仍然可用，两者同时设置时 `hero` 优先。`heroHeight` 不可配置。
 
 | 经典主题（frontmatter）         | 新主题（frontmatter）                                  | 说明                                                       |
 | ------------------------------- | ------------------------------------------------------ | ---------------------------------------------------------- |
-| `home: true`                    | `home: true`                                           | 支持，作为 `type: home` 的别名。                           |
+| `home: true`                    | `type: home`                                           | `home: true` 仍可使用，但已弃用并会输出警告。              |
 | `heroImage`                     | `heroImage`                                            | 字符串；使用 `hero.image` 时也可以是 `{ src }`。           |
 | `heroImageDark`                 | `heroImageDark`                                        | 图片的暗色变体。                                           |
 | `heroAlt`                       | `heroAlt`                                              | 替代文本。                                                 |
@@ -216,7 +216,7 @@ export default defineUserConfig({
 
 | 经典主题           | 新主题             | 说明                                                                         |
 | ------------------ | ------------------ | ---------------------------------------------------------------------------- |
-| `home: true`       | `home: true`       | 支持，作为 `type: home` 的别名；其他页面默认为 `type: doc`。                 |
+| `home: true`       | `type: home`       | `home: true` 仍可使用，但已弃用并会输出警告；其他页面默认为 `type: doc`。    |
 | `navbar`           | `navbar`           | 相同。                                                                       |
 | `externalLinkIcon` | `externalLinkIcon` | 相同。                                                                       |
 | `pageClass`        | `pageClass`        | 相同，且该 class 会加在页面容器上。                                          |
@@ -328,7 +328,7 @@ const nav: DefaultTheme.NavItem[] = [{ text: 'Guide', link: '/guide/' }]
 1. 把 `@vuepress/theme-classic` 替换为 `@vuepress/theme-default`，把 `themeClassic` 替换为 `themeDefault`。
 2. 把 `navbar` 转换为 `nav`，并把侧边栏条目转换为新的形状。
 3. 把 `colorMode` / `colorModeSwitch` 转换为 `appearance`，把语言切换器配置项转换为 `locales.<path>.label` 和 `langMenuLabel`。
-4. 转换 `notFound` 和 `backToHome`；经典主题的首页 frontmatter 可以原样使用。
+4. 将 `home: true` 转换为 `type: home`，并转换 `notFound` / `backToHome`；其他经典首页字段保持原来的名称。
 5. 重命名主题插件开关，如果站点必须保留 Prism 则关掉 Shiki。
 6. 把 SASS 调色板迁移为 `.vuepress/styles/index.css` 中的 CSS 变量。
 7. 用 `theme.Layout` 和公共组件替换 `ParentLayout` 与 `@theme/*` 导入。

@@ -1,5 +1,5 @@
 ---
-home: true
+type: home
 title: 首页
 icon: home
 heroImage: /images/hero.png

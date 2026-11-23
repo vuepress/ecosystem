@@ -65,12 +65,12 @@ footer: false
 ---
 ```
 
-也支持经典主题的首页 frontmatter。`home: true` 等价于 `type: home`，未设置 `hero` 时会使用下面的扁平字段：
+经典主题的首页 frontmatter 仍然受支持。`home: true` 已弃用：请改用 `type: home`，设置该字段时主题会输出警告。下面的扁平字段保持原来的名称，未设置 `hero` 时生效：
 
 ::: fields
-@`home` type=boolean
+@`home` type=boolean deprecated
 
-页面是否为首页。它是 `type: home` 在经典主题中的等价写法。
+页面是否为首页。已弃用：请改用 `type: home`。使用该字段时主题会输出警告。
 
 @`heroText` type=`string | null`
 
@@ -94,7 +94,7 @@ Hero 图片的替代文本。
 
 @`actions` type=`ThemeHeroAction[]`
 
-Hero 的按钮。`type: 'primary'` 等价于 `theme: 'brand'`，`type: 'secondary'` 等价于 `theme: 'alt'`。
+Hero 的按钮。支持经典主题的 `type: 'primary' | 'secondary'`，也接受 `theme: 'brand' | 'alt'`。
 :::
 
 ### Hero {#hero}

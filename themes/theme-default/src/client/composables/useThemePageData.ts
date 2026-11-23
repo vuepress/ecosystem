@@ -151,11 +151,9 @@ export interface ThemePageFrontmatter {
   /**
    * Whether the page is a home page
    *
-   * It is the classic-theme equivalent of `type: 'home'`.
+   * @deprecated Use `type: 'home'` instead. / 请改用 `type: 'home'`。
    *
    * 页面是否为首页
-   *
-   * 它是 `type: 'home'` 在经典主题中的等价写法。
    */
   home?: boolean
   /** Alternative text of the classic hero image / 经典主题 hero 图片的替代文本 */
@@ -267,15 +265,31 @@ export const useThemePageData = (): PageDataRef<ThemePageData> =>
 export const useThemePageFrontmatter = (): ComputedRef<ThemePageFrontmatter> =>
   usePageFrontmatter<ThemePageFrontmatter>()
 
+const warnedHomeFrontmatter = new WeakSet<ThemePageFrontmatter>()
+
+const warnDeprecatedHome = (frontmatter: ThemePageFrontmatter): void => {
+  if (warnedHomeFrontmatter.has(frontmatter)) return
+
+  warnedHomeFrontmatter.add(frontmatter)
+  // oxlint-disable-next-line no-console
+  console.warn(
+    '[theme-default] The `home: true` frontmatter is deprecated. Use `type: home` instead.',
+  )
+}
+
 /**
  * Page type of the current page
  *
- * The default type is `doc`, which is also used when the frontmatter does not
- * set a type. A page with `home: true` is treated as `type: 'home'`.
+ * The default type is `doc`.
+ *
+ * A page with the deprecated `home` key is treated as a home page and logs a
+ * warning.
  *
  * 当前页面的页面类型
  *
- * 默认类型为 `doc`，frontmatter 未设置类型时也会使用该值。设置 `home: true` 的页面会被当作 `type: 'home'`。
+ * 默认类型为 `doc`。
+ *
+ * 使用已弃用的 `home` 字段的页面会被当作首页，并输出警告。
  *
  * @returns Computed page type / 计算得到的页面类型
  */
@@ -284,9 +298,14 @@ export const usePageType = (): ComputedRef<
 > => {
   const frontmatter = useThemePageFrontmatter()
 
-  return computed(
-    () => frontmatter.value.type ?? (frontmatter.value.home ? 'home' : 'doc'),
-  )
+  return computed(() => {
+    // oxlint-disable-next-line typescript/no-deprecated
+    const { home, type } = frontmatter.value
+
+    if (home) warnDeprecatedHome(frontmatter.value)
+
+    return type ?? (home ? 'home' : 'doc')
+  })
 }
 
 const normalizeHeroAction = (action: ThemeHeroAction): ThemeHeroAction => ({
@@ -320,6 +339,7 @@ export const useHomeHero = (): ComputedRef<ThemeHero | undefined> => {
       heroImage,
       heroImageDark,
       heroText,
+      // oxlint-disable-next-line typescript/no-deprecated
       home,
       tagline,
       type,

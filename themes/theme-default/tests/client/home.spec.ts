@@ -1,5 +1,5 @@
 import { renderVuePress } from '@vuepress/test-utils/client'
-import { describe, expect, it } from 'vitest'
+import { describe, expect, it, vi } from 'vitest'
 
 import { createClientConfigs } from './utils.js'
 
@@ -44,6 +44,8 @@ describe('theme home page', () => {
   })
 
   it('should render a classic home page from flat frontmatter', async () => {
+    const warn = vi.spyOn(console, 'warn').mockImplementation(() => {})
+
     const html = await renderVuePress({
       clientConfigs: await createClientConfigs(),
       content: '<h2>Welcome</h2>',
@@ -78,9 +80,12 @@ describe('theme home page', () => {
     expect(html).toContain('src="/images/hero.png"')
     expect(html).toContain('vp-button no-icon medium brand')
     expect(html).toContain('vp-button no-icon medium alt')
-    expect(html).toContain('Get Started')
-    expect(html).toContain('GitHub')
+    expect(html).toMatch(/Get Started[\s\S]*GitHub/u)
     expect(html).toContain('MIT Licensed | Copyright © VuePress Community')
+    expect(warn.mock.calls[0]?.[0]).toContain(
+      '`home: true` frontmatter is deprecated',
+    )
+    warn.mockRestore()
   })
 
   it('should render a classic footer as HTML', async () => {
@@ -90,7 +95,7 @@ describe('theme home page', () => {
         path: '/',
         title: 'Home',
         frontmatter: {
-          home: true,
+          type: 'home',
           footer: 'MIT Licensed | <a href="/license/">License</a>',
           footerHtml: true,
         },

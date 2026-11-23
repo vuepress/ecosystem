@@ -65,12 +65,12 @@ footer: false
 ---
 ```
 
-The home frontmatter of the classic theme is also supported. `home: true` is equivalent to `type: home`, and the flat fields below are used when `hero` is not set:
+The classic home frontmatter is still supported. `home: true` is deprecated: use `type: home` instead, and the theme logs a warning when this key is set. The flat fields below keep their classic names and are used when `hero` is not set:
 
 ::: fields
-@`home` type=boolean
+@`home` type=boolean deprecated
 
-Whether the page is a home page. It is the classic-theme equivalent of `type: home`.
+Whether the page is a home page. Deprecated: use `type: home` instead. The theme logs a warning when this key is set.
 
 @`heroText` type=`string | null`
 
@@ -94,7 +94,7 @@ The alternative text of the hero image.
 
 @`actions` type=`ThemeHeroAction[]`
 
-The buttons of the hero. `type: 'primary'` is equivalent to `theme: 'brand'`, and `type: 'secondary'` is equivalent to `theme: 'alt'`.
+The buttons of the hero. The classic `type: 'primary' | 'secondary'` is supported; `theme: 'brand' | 'alt'` is also accepted.
 :::
 
 ### Hero
