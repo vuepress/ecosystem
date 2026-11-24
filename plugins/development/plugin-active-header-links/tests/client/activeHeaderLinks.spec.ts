@@ -278,6 +278,43 @@ describe('active header links composable', () => {
     }
   })
 
+  it('should not restore the scroll position when the route changes during the update', async () => {
+    document.body.innerHTML = ''
+
+    const client = await createTestClient({
+      page: { path: '/guide/', title: 'Guide' },
+      rootComponent: createProbe(probeOptions),
+      route: '/guide/',
+    })
+    const wrapper = await client.mount({ attachTo: document.body })
+    const { scrollTo } = mockScrollTo()
+    const originalReplace = client.router.replace
+    const replace = vi
+      .spyOn(client.router, 'replace')
+      .mockImplementation(async () => {
+        // another navigation (e.g. browser back/forward or a programmatic
+        // push) wins while the hash update is in flight
+        await originalReplace({ hash: '#a' })
+      })
+
+    try {
+      setSectionOffsets()
+
+      setScrollMetrics({ innerHeight: 600, scrollHeight: 3000, scrollTop: 250 })
+      await triggerScroll()
+
+      expect(replace).toHaveBeenCalledTimes(1)
+      expect(client.router.currentRoute.value.hash).toBe('#a')
+      expect(scrollTo).not.toHaveBeenCalledWith(
+        expect.objectContaining({ behavior: 'instant' }),
+      )
+    } finally {
+      scrollTo.mockRestore()
+      replace.mockRestore()
+      wrapper.unmount()
+    }
+  })
+
   it('should reconcile the hash when the page scrolls during an update', async () => {
     document.body.innerHTML = ''
 

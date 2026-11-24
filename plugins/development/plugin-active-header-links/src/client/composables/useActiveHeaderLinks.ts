@@ -48,7 +48,13 @@ const disableDeprecatedScrollBehavior = (
     router.options.scrollBehavior = undefined
   }
 
+  let restored = false
+
   return () => {
+    if (restored) return
+
+    restored = true
+
     if (scrollBehavior) {
       // oxlint-disable-next-line typescript/no-deprecated
       router.options.scrollBehavior = scrollBehavior
@@ -75,6 +81,7 @@ const createUserInteractionTracker = (): {
     'wheel',
     'touchmove',
     'keydown',
+    'click',
     'pointerdown',
   ] as const
 
@@ -125,6 +132,8 @@ export const useActiveHeaderLinks = ({
     isUpdating = true
 
     const { path, query } = router.currentRoute.value
+    const target = { path, query, hash }
+    const targetFullPath = router.resolve(target).fullPath
     const { scrollX, scrollY } = window
     const interaction = createUserInteractionTracker()
 
@@ -134,7 +143,11 @@ export const useActiveHeaderLinks = ({
     const restoreScrollBehavior = disableDeprecatedScrollBehavior(router)
 
     try {
-      await router.replace({ path, query, hash })
+      await router.replace(target)
+
+      // The navigation has already captured the deprecated option, so restore
+      // it before waiting for the next tick to narrow the disabled window.
+      restoreScrollBehavior()
 
       // The client restores the scroll position of the route after the
       // navigation, which scrolls the page to the hash element. Wait for the
@@ -151,9 +164,12 @@ export const useActiveHeaderLinks = ({
       // another hash update.
       await nextTick()
 
+      // If the user navigated during the update, the route may have changed.
+      // In that case, the page should follow the new route instead of going
+      // back to the position captured before the update.
       if (
         !interaction.hasInteracted() &&
-        router.currentRoute.value.path === path
+        router.currentRoute.value.fullPath === targetFullPath
       )
         window.scrollTo({ behavior: 'instant', left: scrollX, top: scrollY })
     } finally {
