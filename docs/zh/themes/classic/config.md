@@ -69,6 +69,12 @@ icon: settings-2
 - `NavbarGroup` 对象应该有一个 `text` 字段和一个 `children` 字段，还有可选的 `prefix` 字段与 `icon` 字段。`children` 字段同样是一个 _导航栏数组_，而 `prefix` 会作为 _导航栏数组_ 的路径前缀。
 - 字符串应为目标页面文件的路径。它将会被转换为 `NavbarLink` 对象，将页面标题作为 `text`，将页面路由路径作为 `link`。
 
+::: tip
+
+条目的图标由主题渲染。Iconify 图标由 [`@vuepress/plugin-icon`](../../plugins/features/icon.md) 提供的全局 `VPIcon` 组件渲染，经典主题没有内置该插件，因此需要在站点中添加它。以 `vpi-` 开头的类名图标会直接作为 CSS 类渲染。
+
+:::
+
 ```ts title=".vuepress/config.ts"
 export default {
   theme: classicTheme({

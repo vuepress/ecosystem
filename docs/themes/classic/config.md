@@ -69,6 +69,12 @@ To configure the navbar items, you can set it to a _navbar array_, each item of 
 - A `NavbarGroup` object should have a `text` field and a `children` field, could have an optional `prefix` field and an optional `icon` field. The `children` field should be a _navbar array_ too, and `prefix` will be prepended before every link inside it.
 - A string should be the path to the target page file. It will be converted to a `NavbarLink` object, using the page title as `text`, and the page route path as `link`.
 
+::: tip
+
+The icon of an item is rendered by the theme. Iconify icons are rendered by the global `VPIcon` component of [`@vuepress/plugin-icon`](../../plugins/features/icon.md), which the classic theme does not include, so add the plugin to your site to use them. Class icons whose name starts with `vpi-` are rendered as CSS classes directly.
+
+:::
+
 ```ts title=".vuepress/config.ts"
 export default {
   theme: classicTheme({
