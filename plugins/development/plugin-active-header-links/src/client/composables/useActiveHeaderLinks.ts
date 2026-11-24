@@ -1,6 +1,5 @@
 import { useDebounceFn, useEventListener } from '@vueuse/core'
 import { nextTick } from 'vue'
-import type { Router } from 'vuepress/client'
 import { useRouter } from 'vuepress/client'
 
 export interface UseActiveHeaderLinksOptions {
@@ -10,43 +9,91 @@ export interface UseActiveHeaderLinksOptions {
   offset?: number
 }
 
+let warnedDeprecatedScrollBehavior = false
+
 /**
- * Update current hash without moving the viewport
+ * Warn once when the router still uses the deprecated `scrollBehavior` option
  *
- * @param router - Vue Router instance / Vue Router 实例
- * @param hash - Hash to update / 要更新的 hash
+ * @param scrollBehavior - The deprecated `scrollBehavior` option / 已废弃的
+ *   `scrollBehavior` 选项
  */
-const updateHash = async (router: Router, hash: string): Promise<void> => {
-  const { path, query } = router.currentRoute.value
-  const { scrollX, scrollY } = window
-  // Themes may still set the deprecated `scrollBehavior` option, and Vue Router
-  // executes it on navigation to scroll to the hash element. Disable it
-  // temporarily, otherwise it would move the page away from the scroll position.
+const warnDeprecatedScrollBehavior = (scrollBehavior: unknown): void => {
+  if (!__VUEPRESS_DEV__ || warnedDeprecatedScrollBehavior || !scrollBehavior)
+    return
+
+  warnedDeprecatedScrollBehavior = true
+  // oxlint-disable-next-line no-console
+  console.warn(
+    '[plugin-active-header-links] The `scrollBehavior` router option is deprecated by Vue Router and may conflict with active header links. ' +
+      'Remove it and migrate to `ScrollRestoration`. See https://router.vuejs.org/guide/advanced/scroll-behavior.html',
+  )
+}
+
+/**
+ * Temporarily disable the deprecated `scrollBehavior` option
+ *
+ * @param router - The router instance / 路由实例
+ * @returns A function that restores the option
+ */
+const disableDeprecatedScrollBehavior = (
+  router: ReturnType<typeof useRouter>,
+): (() => void) => {
   // oxlint-disable-next-line typescript/no-deprecated
   const { scrollBehavior } = router.options
-  // oxlint-disable-next-line typescript/no-deprecated
-  router.options.scrollBehavior = undefined
 
-  try {
-    await router.replace({ path, query, hash })
-  } finally {
+  warnDeprecatedScrollBehavior(scrollBehavior)
+
+  if (scrollBehavior) {
     // oxlint-disable-next-line typescript/no-deprecated
-    router.options.scrollBehavior = scrollBehavior
+    router.options.scrollBehavior = undefined
   }
 
-  // The client restores the scroll position of the route after the navigation,
-  // which scrolls the page to the hash element. Wait for the restoration to run,
-  // then move the page back to the position the user has scrolled to, otherwise
-  // scrolling the page would jump between the headings.
-  //
-  // The restoration may start a smooth scroll instead of jumping, because of the
-  // `scroll-behavior: smooth` CSS property. The scroll position is not changed
-  // yet when the navigation is done, so the restoration cannot be detected by
-  // comparing positions. The `instant` behavior always moves the page back and
-  // aborts the pending smooth scroll at the same time, otherwise the page would
-  // keep moving to the hash element and trigger another hash update.
-  await nextTick()
-  window.scrollTo({ behavior: 'instant', left: scrollX, top: scrollY })
+  return () => {
+    if (scrollBehavior) {
+      // oxlint-disable-next-line typescript/no-deprecated
+      router.options.scrollBehavior = scrollBehavior
+    }
+  }
+}
+
+/**
+ * Track whether the user interacts with the page before an update finishes
+ *
+ * @returns The interaction state and the cleanup function
+ */
+const createUserInteractionTracker = (): {
+  hasInteracted: () => boolean
+  cleanup: () => void
+} => {
+  let interacted = false
+
+  const markInteracted = (): void => {
+    interacted = true
+  }
+
+  const interactionEvents = [
+    'wheel',
+    'touchmove',
+    'keydown',
+    'pointerdown',
+  ] as const
+
+  // If the user takes over during the update, keep the viewport with the user
+  // instead of restoring the position captured before the update.
+  for (const event of interactionEvents) {
+    window.addEventListener(event, markInteracted, {
+      passive: true,
+      once: true,
+    })
+  }
+
+  return {
+    hasInteracted: () => interacted,
+    cleanup: () => {
+      for (const event of interactionEvents)
+        window.removeEventListener(event, markInteracted)
+    },
+  }
 }
 
 export const useActiveHeaderLinks = ({
@@ -59,7 +106,78 @@ export const useActiveHeaderLinks = ({
 
   const router = useRouter()
 
-  const setActiveRouteHash = (): void => {
+  // oxlint-disable-next-line typescript/no-deprecated
+  warnDeprecatedScrollBehavior(router.options.scrollBehavior)
+
+  let isUpdating = false
+  let needsUpdate = false
+  // assigned after `updateHash`, which references it
+  // oxlint-disable-next-line prefer-const
+  let setActiveRouteHash: () => void
+
+  const updateHash = async (hash: string): Promise<void> => {
+    if (isUpdating) {
+      needsUpdate = true
+
+      return
+    }
+
+    isUpdating = true
+
+    const { path, query } = router.currentRoute.value
+    const { scrollX, scrollY } = window
+    const interaction = createUserInteractionTracker()
+
+    // Themes may still set the deprecated `scrollBehavior` option, and Vue Router
+    // executes it on navigation to scroll to the hash element. Disable it
+    // temporarily, otherwise it would move the page away from the scroll position.
+    const restoreScrollBehavior = disableDeprecatedScrollBehavior(router)
+
+    try {
+      await router.replace({ path, query, hash })
+
+      // The client restores the scroll position of the route after the
+      // navigation, which scrolls the page to the hash element. Wait for the
+      // restoration to run, then move the page back to the position the user
+      // has scrolled to, otherwise scrolling the page would jump between the
+      // headings.
+      //
+      // The restoration may start a smooth scroll instead of jumping, because
+      // of the `scroll-behavior: smooth` CSS property. The scroll position is
+      // not changed yet when the navigation is done, so the restoration cannot
+      // be detected by comparing positions. The `instant` behavior always moves
+      // the page back and aborts the pending smooth scroll at the same time,
+      // otherwise the page would keep moving to the hash element and trigger
+      // another hash update.
+      await nextTick()
+
+      if (
+        !interaction.hasInteracted() &&
+        router.currentRoute.value.path === path
+      )
+        window.scrollTo({ behavior: 'instant', left: scrollX, top: scrollY })
+    } finally {
+      restoreScrollBehavior()
+      interaction.cleanup()
+
+      isUpdating = false
+
+      // The scroll position may have changed during the update, so the active
+      // header may be different now. Reconcile the hash after the update.
+      if (needsUpdate) {
+        needsUpdate = false
+        setActiveRouteHash()
+      }
+    }
+  }
+
+  setActiveRouteHash = (): void => {
+    if (isUpdating) {
+      needsUpdate = true
+
+      return
+    }
+
     // get current scrollTop
     const scrollTop = Math.max(
       window.scrollY,
@@ -71,7 +189,7 @@ export const useActiveHeaderLinks = ({
 
     // replace current route hash with empty string when scrolling back to the top
     if (isAtPageTop) {
-      void updateHash(router, '')
+      void updateHash('')
 
       return
     }
@@ -140,7 +258,7 @@ export const useActiveHeaderLinks = ({
       }
 
       // replace current route hash with the active anchor hash
-      void updateHash(router, anchorHash)
+      void updateHash(anchorHash)
 
       return
     }

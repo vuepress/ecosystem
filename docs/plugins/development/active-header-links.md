@@ -8,6 +8,8 @@ icon: link-2
 
 This plugin will listen to page scroll event. When the page scrolls to a certain _header anchor_, this plugin will change the route hash to that _header anchor_ if there is a corresponding _header link_.
 
+Changing the route hash does not move the viewport, even when `scroll-behavior: smooth` is enabled.
+
 This plugin is mainly used to develop themes, and has been integrated into the default theme. You won't need to use it directly in most cases.
 
 ## Usage

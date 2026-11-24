@@ -155,6 +155,21 @@ const mockScrollTo = (): ScrollToMock => {
 
 const getRestoredScrollTop = (hash: string): number => (hash ? 200 : 0)
 
+/**
+ * Create a promise that can be resolved from the test
+ *
+ * @returns The promise and its resolver
+ */
+const createDeferred = (): { promise: Promise<void>; resolve: () => void } => {
+  let resolveDeferred: () => void = () => {}
+
+  const promise = new Promise<void>((resolve) => {
+    resolveDeferred = resolve
+  })
+
+  return { promise, resolve: resolveDeferred }
+}
+
 describe('active header links composable', () => {
   it('should set the route hash of the anchor at the scroll position', async () => {
     document.body.innerHTML = ''
@@ -217,6 +232,94 @@ describe('active header links composable', () => {
       expect(window.scrollY).toBe(250)
     } finally {
       scrollTo.mockRestore()
+      wrapper.unmount()
+    }
+  })
+
+  it('should not restore the scroll position when the user scrolls during the update', async () => {
+    document.body.innerHTML = ''
+
+    const client = await createTestClient({
+      page: { path: '/guide/', title: 'Guide' },
+      rootComponent: createProbe(probeOptions),
+      route: '/guide/',
+    })
+    const wrapper = await client.mount({ attachTo: document.body })
+    const { scrollTo } = mockScrollTo()
+    const replaceDeferred = createDeferred()
+    const originalReplace = client.router.replace
+    const replace = vi
+      .spyOn(client.router, 'replace')
+      .mockImplementation(async (to) => {
+        await replaceDeferred.promise
+
+        return originalReplace(to)
+      })
+
+    try {
+      setSectionOffsets()
+
+      setScrollMetrics({ innerHeight: 600, scrollHeight: 3000, scrollTop: 250 })
+      await triggerScroll()
+
+      // the user takes over while the hash update is pending
+      window.dispatchEvent(new Event('wheel'))
+      replaceDeferred.resolve()
+      await flushPromises()
+
+      expect(replace).toHaveBeenCalledTimes(1)
+      expect(scrollTo).not.toHaveBeenCalledWith(
+        expect.objectContaining({ behavior: 'instant' }),
+      )
+    } finally {
+      scrollTo.mockRestore()
+      replace.mockRestore()
+      wrapper.unmount()
+    }
+  })
+
+  it('should reconcile the hash when the page scrolls during an update', async () => {
+    document.body.innerHTML = ''
+
+    const client = await createTestClient({
+      page: { path: '/guide/', title: 'Guide' },
+      rootComponent: createProbe(probeOptions),
+      route: '/guide/',
+    })
+    const wrapper = await client.mount({ attachTo: document.body })
+    const replaceDeferred = createDeferred()
+    const originalReplace = client.router.replace
+    const replace = vi
+      .spyOn(client.router, 'replace')
+      .mockImplementation(async (to) => {
+        await replaceDeferred.promise
+
+        return originalReplace(to)
+      })
+
+    try {
+      setSectionOffsets()
+
+      // the first update targets `#b` and stays pending
+      setScrollMetrics({ innerHeight: 600, scrollHeight: 3000, scrollTop: 250 })
+      await triggerScroll()
+
+      // the user scrolls back to `#a` during the update
+      setScrollMetrics({ innerHeight: 600, scrollHeight: 3000, scrollTop: 150 })
+      window.dispatchEvent(new Event('wheel'))
+      window.dispatchEvent(new Event('scroll'))
+      await new Promise((resolve) => {
+        setTimeout(resolve, 20)
+      })
+
+      replaceDeferred.resolve()
+      await flushPromises()
+      await flushPromises()
+
+      expect(replace).toHaveBeenCalledTimes(2)
+      expect(client.router.currentRoute.value.hash).toBe('#a')
+    } finally {
+      replace.mockRestore()
       wrapper.unmount()
     }
   })
