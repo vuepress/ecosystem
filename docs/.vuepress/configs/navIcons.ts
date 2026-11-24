@@ -6,7 +6,7 @@ import {
 
 /** Nav item shared by the navbar and sidebar configs */
 interface NavItem {
-  text: string
+  text?: string
   icon?: string
   prefix?: string
   link?: string

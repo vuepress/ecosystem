@@ -14,7 +14,7 @@ import { seoPlugin } from '@vuepress/plugin-seo'
 import { sitemapPlugin } from '@vuepress/plugin-sitemap'
 import { themeDataPlugin } from '@vuepress/plugin-theme-data'
 import type { Page, Theme } from 'vuepress/core'
-import { isPlainObject } from 'vuepress/shared'
+import { isPlainObject, isString } from 'vuepress/shared'
 import { fs, getDirname, path } from 'vuepress/utils'
 
 import type { ClassicThemeLocaleOptions } from '../shared/index.js'
@@ -97,6 +97,10 @@ export const classicTheme = ({
       page.data.filePathRelative = page.filePathRelative
       // save title into route meta to generate navbar and sidebar
       page.routeMeta.title = page.title
+
+      // save icon into route meta to generate navbar and sidebar
+      if (isString(page.frontmatter.icon))
+        page.routeMeta.icon = page.frontmatter.icon
     },
 
     plugins: [
