@@ -4,53 +4,43 @@ export const sidebarEn: SidebarOptions = {
   '/plugins/': [
     {
       text: 'Common Features',
-      icon: 'sparkles',
       link: 'features/',
     },
     {
       text: 'Markdown',
-      icon: 'octicon:markdown-16',
       link: 'markdown/',
     },
     {
       text: 'Content Search',
-      icon: 'search',
       link: 'search/',
     },
     {
       text: 'Blogging',
-      icon: 'la:blog',
       link: 'blog/',
     },
 
     {
       text: 'Analytics',
-      icon: 'chart-no-axes-combined',
       link: 'analytics/',
     },
     {
       text: 'SEO',
-      icon: 'scan-search',
       link: 'seo/',
     },
     {
       text: 'PWA',
-      icon: 'layout-grid',
       link: 'pwa/',
     },
     {
       text: 'Theme Development',
-      icon: 'server-cog',
       link: 'development/',
     },
     {
       text: 'Tools',
-      icon: 'hammer',
       link: 'tools/',
     },
     {
       text: 'AI',
-      icon: 'eos-icons:ai',
       link: 'ai/',
     },
   ],
@@ -65,43 +55,27 @@ export const sidebarEn: SidebarOptions = {
   '/plugins/blog/': [
     {
       text: 'Blog',
-      icon: 'la:blog',
       link: 'blog',
     },
     {
       text: 'Comment',
-      icon: 'message-circle-more',
       prefix: 'comment/',
       link: 'comment/',
       children: [
         'guide',
-        {
-          text: 'Giscus',
-          icon: 'github',
-          link: 'giscus',
-        },
+        'giscus',
         {
           text: 'Waline',
-          icon: 'https://waline.js.org/favicon.ico',
           prefix: 'waline/',
           link: 'waline/',
           children: ['', 'config'],
         },
-        {
-          text: 'Artalk',
-          icon: 'https://artalk.js.org/favicon.png',
-          link: 'artalk',
-        },
-        {
-          text: 'Twikoo',
-          icon: 'https://twikoo.js.org/twikoo-logo-mini.png',
-          link: 'twikoo',
-        },
+        'artalk',
+        'twikoo',
       ],
     },
     {
       text: 'Feed',
-      icon: 'rss',
       link: 'feed',
     },
   ],
@@ -114,7 +88,6 @@ export const sidebarEn: SidebarOptions = {
     'rtl',
     {
       text: 'Sass Palette',
-      icon: 'palette',
       link: 'sass-palette',
     },
     'theme-data',
@@ -140,7 +113,6 @@ export const sidebarEn: SidebarOptions = {
     'append-date',
     {
       text: 'markdown-chart',
-      icon: 'chart-no-axes-combined',
       prefix: 'markdown-chart/',
       link: 'markdown-chart/',
       children: [
@@ -169,7 +141,6 @@ export const sidebarEn: SidebarOptions = {
     'prismjs',
     {
       text: 'revealjs',
-      icon: 'presentation',
       prefix: 'revealjs/',
       link: 'revealjs/',
       children: ['', 'demo', 'themes'],
@@ -180,7 +151,6 @@ export const sidebarEn: SidebarOptions = {
   '/plugins/pwa/': [
     {
       text: 'PWA',
-      icon: 'layout-grid',
       link: 'pwa',
     },
     '/plugins/pwa/remove-pwa',
@@ -208,12 +178,10 @@ export const sidebarEn: SidebarOptions = {
   '/plugins/seo/': [
     {
       text: 'SEO',
-      icon: 'scan-search',
       link: 'seo',
     },
     {
       text: 'Sitemap',
-      icon: 'network',
       link: 'sitemap',
     },
   ],
@@ -224,7 +192,6 @@ export const sidebarEn: SidebarOptions = {
     'guidelines',
     {
       text: 'Default Theme',
-      icon: 'palette',
       prefix: 'default/',
       link: 'default/',
       children: [
@@ -242,7 +209,6 @@ export const sidebarEn: SidebarOptions = {
     },
     {
       text: 'Classic Theme',
-      icon: 'palette',
       prefix: 'classic/',
       link: 'classic/',
       children: [
@@ -276,7 +242,6 @@ export const sidebarEn: SidebarOptions = {
   '/tools/': [
     {
       text: '@vuepress/helper',
-      icon: 'hammer',
       prefix: 'helper/',
       link: 'helper/',
       children: [
@@ -293,7 +258,6 @@ export const sidebarEn: SidebarOptions = {
     },
     {
       text: '@vuepress/test-utils',
-      icon: 'flask',
       link: 'test-utils',
     },
   ],

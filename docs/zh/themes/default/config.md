@@ -273,7 +273,7 @@ export default defineUserConfig({
 
 @`sidebar[*].icon` type=string
 
-项目的图标，形式与 `nav[*].icon` 相同。省略时，侧边栏会从被链接页面的路由元信息中解析图标，因此站点可以在 `extendsPage` 钩子中把页面图标写入 `page.routeMeta.icon`，从而为页面添加图标。
+项目的图标，形式与 `nav[*].icon` 相同。省略时，侧边栏会从被链接页面的路由元信息中解析图标：主题会把页面的 frontmatter `icon` 写入 `page.routeMeta.icon`。
 
 @`sidebar[*].items` type=`DefaultTheme.SidebarItem[]`
 

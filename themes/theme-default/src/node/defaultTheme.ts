@@ -18,6 +18,7 @@ import { shikiPlugin } from '@vuepress/plugin-shiki'
 import { sitemapPlugin } from '@vuepress/plugin-sitemap'
 import { themeDataPlugin } from '@vuepress/plugin-theme-data'
 import type { ThemeObject } from 'vuepress'
+import { isString } from 'vuepress/shared'
 
 import type {
   AppearanceOptions,
@@ -445,8 +446,15 @@ export const defaultTheme = (options: ThemeOptions = {}): ThemeObject => {
     clientConfigFile: path.resolve(__dirname, '../client/config.js'),
 
     extendsPage: (page) => {
+      // save the file path into the page data to resolve the edit link
       page.data.filePathRelative = page.filePathRelative
+      // save the title and the icon into the route meta, so that the navbar
+      // and the sidebar fill the text and the icon of the items that only
+      // define a link
       page.routeMeta.title = page.title
+
+      if (isString(page.frontmatter.icon))
+        page.routeMeta.icon = page.frontmatter.icon
     },
 
     plugins: resolveThemePlugins(options, plugins, hostname),

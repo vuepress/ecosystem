@@ -201,13 +201,26 @@ describe(defaultTheme, () => {
     const app = await createTestApp()
     const page = await createTestPage(app, {
       filePath: path.join(app.dir.source(), 'guide/index.md'),
-      frontmatter: { title: 'Guide' },
+      frontmatter: { icon: 'lucide:book', title: 'Guide' },
     })
 
     await createTheme().extendsPage?.(page, app)
 
     expect(page.data.filePathRelative).toBe('guide/index.md')
     expect(page.routeMeta.title).toBe(page.title)
+    expect(page.routeMeta.icon).toBe('lucide:book')
+  })
+
+  it('should only save a string icon into the route meta', async () => {
+    const app = await createTestApp()
+    const page = await createTestPage(app, {
+      filePath: path.join(app.dir.source(), 'guide/svg.md'),
+      frontmatter: { icon: { svg: '<svg></svg>' }, title: 'SVG' },
+    })
+
+    await createTheme().extendsPage?.(page, app)
+
+    expect(page.routeMeta.icon).toBeUndefined()
   })
 })
 
