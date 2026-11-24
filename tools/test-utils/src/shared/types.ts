@@ -25,6 +25,15 @@ export interface TestRouteOptions {
    * 路由的页面数据
    */
   pageData?: Partial<PageData>
+
+  /**
+   * Route meta of the route
+   *
+   * 路由的元数据
+   *
+   * @default {}
+   */
+  meta?: Record<string, unknown>
 }
 
 /**

@@ -78,7 +78,7 @@ export const createTestRoute = (
 
   return {
     loader: () => Promise.resolve(chunk),
-    meta: {},
+    meta: options.meta ?? {},
   }
 }
 

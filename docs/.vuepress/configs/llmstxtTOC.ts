@@ -33,7 +33,7 @@ const flattenSidebar = (
     } else {
       if (item.link) {
         if (isLinkHttp(item.link)) {
-          externalLinks.push({ link: item.link, text: item.text })
+          externalLinks.push({ link: item.link, text: item.text ?? item.link })
           result.push(item.link)
         } else {
           result.push(normalizePath(prefix, item.link))

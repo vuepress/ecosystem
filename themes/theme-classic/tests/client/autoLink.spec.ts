@@ -35,6 +35,30 @@ const AutoLinks = defineComponent({
 })
 
 describe('auto link', () => {
+  it('should render the icon of the link', async () => {
+    const IconLink = defineComponent({
+      name: 'TestIconLink',
+      setup(): () => VNode {
+        return () =>
+          h(VPAutoLink, {
+            config: {
+              icon: 'vpi-github',
+              link: '/guide/foo.html',
+              text: 'GitHub',
+            },
+          })
+      },
+    })
+
+    const wrapper = await mountVuePress({
+      rootComponent: IconLink,
+      page: { path: '/guide/foo.html', title: 'Foo' },
+      site: { title: 'My Site' },
+    })
+
+    expect(wrapper.find('.vp-theme-icon.vpi-github').exists()).toBe(true)
+  })
+
   it('should mark only the links to the current page', async () => {
     const wrapper = await mountVuePress({
       rootComponent: AutoLinks,
