@@ -63,21 +63,15 @@ export const sidebarZh: SidebarOptions = {
       link: 'comment/',
       children: [
         'guide',
-        {
-          link: 'giscus',
-        },
+        'giscus',
         {
           text: 'Waline',
           prefix: 'waline/',
           link: 'waline/',
           children: ['', 'config'],
         },
-        {
-          link: 'artalk',
-        },
-        {
-          link: 'twikoo',
-        },
+        'artalk',
+        'twikoo',
       ],
     },
     {
