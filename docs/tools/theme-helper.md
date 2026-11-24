@@ -8,7 +8,7 @@ icon: hammer
 
 Helpers for VuePress theme authors.
 
-The package provides the shared parts of a theme feature that only depends on the pages of a site: reading the pages, resolving the frontmatter conventions and generating data for the client. The theme keeps its own options, its own item shape and its own rendering.
+The package provides the shared parts of a theme feature that only depends on the pages of a site: reading the pages, normalizing them into a fixed data shape and generating data for the client. The theme keeps its own options, its own item shape and its own rendering.
 
 Currently it provides the _generate the sidebar from the file structure_ and the _edit link_ features, and the page data extension that both of them need.
 
@@ -18,7 +18,7 @@ Currently it provides the _generate the sidebar from the file structure_ and the
 npm i @vuepress/theme-helper@next
 ```
 
-The package is used by `@vuepress/theme-default` and `@vuepress/theme-classic`. A theme author can depend on it to support the same conventions.
+The package is used by `@vuepress/theme-default` and `@vuepress/theme-classic`. A theme author can depend on it to support the sidebar structure and the edit link features.
 
 ## Guide
 
@@ -45,18 +45,18 @@ const sidebarHelper = createSidebarStructureHelper<MyThemeItem>({
   sorter: options.sidebarSorter,
 
   // customize the item of a page
-  pageInfoGetter: (info, _page, defaults) => ({
+  pageInfoGetter: (info, page, defaults) => ({
     ...defaults,
-    ...(info.frontmatter.icon ? { icon: info.frontmatter.icon } : {}),
+    // `badge` is a custom frontmatter field of the theme, the helper does not
+    // know it
+    ...(page?.frontmatter.badge ? { badge: page.frontmatter.badge } : {}),
   }),
 
   // customize the item of a directory
   dirInfoGetter: (info, _page, defaults) => ({
     ...defaults,
-    ...(info.groupInfo.icon ? { icon: info.groupInfo.icon } : {}),
-    ...(info.groupInfo.collapsible
-      ? { collapsed: info.groupInfo.expanded !== true }
-      : {}),
+    // the default theme uses `collapsed` instead of `collapsible` / `expanded`
+    ...(info.collapsible ? { collapsed: !info.expanded } : {}),
   }),
 })
 
@@ -71,7 +71,7 @@ export const myTheme = (options: MyThemeOptions = {}): Theme => ({
 
 The helper finds the scopes from the theme data, by looking for the `'structure'` value of the sidebar option and for the `children: 'structure'` group items. You can provide a custom `getScopes()` when the sidebar option is shaped differently.
 
-The getters receive the resolved `SidebarInfo` of the item, its page (the `README.md` page for a directory), and the default item that the helper would generate. The default item only contains `text` and `link`, so a getter adds the fields of the theme and can return `null` to skip the item. The children of a directory are attached by the helper, under `childrenKey`.
+The getters receive the normalized `SidebarInfo` of the item, its page (the `README.md` page for a directory), and the default item that the helper would generate. The item is built from the normalized fields, see [Normalized sidebar information](#normalized-sidebar-information). A getter adds the fields of the theme and can return `null` to skip the item. The children of a directory are attached by the helper, under `childrenKey`.
 
 `prepare()` writes `@temp/theme-helper/sidebar.js`, which exports the generated data keyed by route scope. It must be called even when there is no scope, so that the generated module exists. `watch()` watches the generated pages in dev and regenerates the data, and it registers a watcher only when there is at least one scope.
 
@@ -87,17 +87,27 @@ const guideItems = getSidebarStructure<MyThemeItem>('/guide/')
 
 The scope is normalized, so `'/guide/'`, `'/guide'` and `'guide/'` all resolve to the same data.
 
-### Frontmatter conventions
+### Normalized sidebar information
 
-The pages control the generated items with their frontmatter, so every theme that uses the helper supports the same conventions.
+`getSidebarInfo()` reads the pages and normalizes every page and directory into the same data shape, so a theme does not need to walk the pages itself:
 
-| Field        | Where       | Description                                                                                                |
-| ------------ | ----------- | ---------------------------------------------------------------------------------------------------------- |
-| `index`      | any page    | Set it to `false` to hide the page from the sidebar.                                                       |
-| `order`      | any page    | The position of the item. A positive value puts it before the unordered ones, a negative value after them. |
-| `shortTitle` | any page    | The text of the item, it takes precedence over the page title.                                             |
-| `icon`       | any page    | The icon of the item. Themes that do not support item icons ignore it.                                     |
-| `dir`        | `README.md` | The options of the group that represents the directory.                                                    |
+- a page becomes a `SidebarFileInfo` with `text`, `link`, `icon`, `date` (normalized to a `Date`), `order` and `pageData`;
+- a directory becomes a `SidebarDirInfo` with the same fields, plus `collapsible`, `expanded`, `children` and the `pageData` of its `README.md` (or `null`).
+
+The default item generated by the helper is built from these fields: it always contains `text`, contains `link` and `icon` when the page or directory has them, and a directory item additionally contains `collapsible` and `expanded`. A theme maps the normalized fields to its own item fields in its getters, e.g. the default theme converts `collapsible` and `expanded` into its own `collapsed` field.
+
+### Default frontmatter mapping
+
+The built-in info builder reads some frontmatter fields and normalizes them into the internal keys of the same name. They are the **default convention of the helper, not a requirement of a theme**: a theme can read any other frontmatter in its own getters, and the normalized data does not depend on these fields.
+
+| Field        | Where       | Normalized as                           |
+| ------------ | ----------- | --------------------------------------- |
+| `shortTitle` | any page    | `text`, it falls back to the page title |
+| `icon`       | any page    | `icon`                                  |
+| `order`      | any page    | `order`, `null` when it is not set      |
+| `date`       | any page    | `date`, parsed as a `Date`              |
+| `index`      | any page    | the page is skipped when it is `false`  |
+| `dir`        | `README.md` | the fields of the group, see below      |
 
 The `dir` options of a directory are read from the frontmatter of its `README.md`:
 
@@ -114,13 +124,13 @@ dir:
 ---
 ```
 
-- `text`: the text of the group, it falls back to the title of the `README.md` page.
-- `icon`: the icon of the group.
-- `collapsible`: whether the group is collapsible, `true` by default.
-- `expanded`: whether the group is expanded, `false` by default. It only takes effect when the group is collapsible.
+- `text`: normalized to the `text` of the group, it falls back to the title of the `README.md` page.
+- `icon`: normalized to the `icon` of the group.
+- `collapsible`: normalized to the `collapsible` of the group, `true` by default.
+- `expanded`: normalized to the `expanded` of the group, `false` by default. It only takes effect when the group is collapsible.
 - `link`: whether the `README.md` page is the link of the group instead of a child item, `false` by default.
 - `index`: set it to `false` to hide the whole directory from the sidebar.
-- `order`: the position of the group, `0` by default.
+- `order`: normalized to the `order` of the group, `null` when it is not set.
 
 ### Sorting the items
 
@@ -137,8 +147,8 @@ export default defineUserConfig({
 The keywords are:
 
 - `'readme'`: put the `README.md` page of a directory first.
-- `'order'`: sort by the `order` frontmatter field: the positive values ascending, then the pages without an order, then the negative values descending.
-- `'date'` and `'date-desc'`: sort by the `date` frontmatter field, ascending and descending.
+- `'order'`: sort by the normalized `order`: the positive values ascending, then the items without an order, then the negative values ascending, so `-2` comes before `-1`.
+- `'date'` and `'date-desc'`: sort by the normalized `date`, ascending and descending.
 - `'filename'`: sort by the file name with a natural order, and put a file before a directory of the same name.
 - `'title'`: sort by the item text with a natural order.
 
@@ -271,7 +281,7 @@ The comparator functions, usually resolved by `getSidebarSorter()`.
 The route scope as a file path, without a leading slash and with a trailing slash.
 :::
 
-It converts the structure of the scope to `SidebarInfo` items, which resolve the frontmatter conventions: hidden pages, titles, icons, orders, directory groups and their options.
+It converts the structure of the scope to normalized `SidebarInfo` items: hidden pages are skipped, and the text, link, icon, date, order and the group state of every item are resolved by the default frontmatter mapping.
 
 ### getSidebarStructureData
 
@@ -297,7 +307,7 @@ The getter of the items of the pages.
 The getter of the items of the directories.
 :::
 
-It returns the generated `SidebarStructureData<Item>`, keyed by the normalized scope. The default item of a page only contains `text` and `link`, so the getters of the theme add the fields of its own items.
+It returns the generated `SidebarStructureData<Item>`, keyed by the normalized scope. The default item always contains `text`, contains `link` and `icon` when the page or directory has them, and the one of a directory also contains `collapsible` and `expanded`, so the getters of the theme add or override the fields of its own items.
 
 ### prepareSidebarData
 
@@ -381,4 +391,6 @@ It combines `useThemeLocaleData()`, `usePageFrontmatter()` and `usePageData()` i
 The types of the shared conventions are exported from the package root and the `shared` entry:
 
 - `EditLinkOptions`, `EditLinkThemeData`, `EditLinkFrontmatter`, `EditLinkPageData`: the options, the theme data, the frontmatter and the page data of the edit link. A theme can extend them in its own types.
-- `SidebarStructureData`, `SidebarStructureItem`, `SidebarStructureHelper`, `SidebarStructureHelperOptions`, `SidebarPageInfoGetter`, `SidebarDirInfoGetter`, `SidebarInfo`, `SidebarSorter`, `SidebarSorterFunction`, `SidebarSorterKeyword`: the types of the generated sidebar data.
+- `SidebarItemInfo`, `SidebarFileInfo`, `SidebarDirInfo`, `SidebarInfo`: the normalized information of a page or a directory.
+- `SidebarFrontmatter`, `SidebarDirOptions`: the default frontmatter fields and the directory group options read by the built-in `getSidebarInfo()`.
+- `SidebarStructureData`, `SidebarStructureItem`, `SidebarStructureHelper`, `SidebarStructureHelperOptions`, `SidebarPageInfoGetter`, `SidebarDirInfoGetter`, `SidebarSorter`, `SidebarSorterFunction`, `SidebarSorterKeyword`: the types of the generated sidebar data.

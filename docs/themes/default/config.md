@@ -339,7 +339,7 @@ export default defineUserConfig({
 })
 ```
 
-The items are read from the pages under the scope, and they are nested by directories. The frontmatter of the pages controls the generated items:
+The items are read from the pages under the scope, and they are nested by directories. The structure helper reads the following frontmatter fields by default:
 
 - `index: false` hides the page from the sidebar.
 - `order` puts the page before (positive) or after (negative) the pages without an order.
@@ -364,7 +364,7 @@ dir:
 ---
 ```
 
-See [theme-helper](../../tools/theme-helper.md#frontmatter-conventions) for the complete conventions of the frontmatter, and [Sorting the items](../../tools/theme-helper.md#sorting-the-items) for the `sidebarSorter` option.
+See [theme-helper](../../tools/theme-helper.md#default-frontmatter-mapping) for the default frontmatter mapping, and [Sorting the items](../../tools/theme-helper.md#sorting-the-items) for the `sidebarSorter` option.
 
 ::: tip
 

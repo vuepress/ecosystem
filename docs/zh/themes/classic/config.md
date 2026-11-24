@@ -217,7 +217,7 @@ export default {
 
 如果你设置为 `'heading'`，侧边栏会根据页面标题自动生成。
 
-如果你设置为 `'structure'`，侧边栏会根据页面的文件结构生成。页面的 frontmatter 会控制生成的条目，参考[侧边栏结构](./frontmatter.md#sidebar-structure)：
+如果你设置为 `'structure'`，侧边栏会根据页面的文件结构生成。结构工具默认会读取一些 frontmatter 字段，参考[侧边栏结构](./frontmatter.md#sidebar-structure)：
 
 ```ts title=".vuepress/config.ts"
 export default {

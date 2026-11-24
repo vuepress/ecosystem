@@ -16,13 +16,16 @@ import { getSidebarSorter } from './getSidebarSorter.js'
 /**
  * Getter of the sidebar item of a page file
  *
- * The `defaults` argument contains the text and the link resolved by the
- * helper, the returned fields override them and the item of the theme is
- * created by merging both. Returning `null` skips the page.
+ * The `info` argument is the normalized information of the page, and the
+ * `defaults` argument contains the normalized fields resolved by the helper
+ * (`text`, `link` and `icon`). The returned fields override the defaults and
+ * the item of the theme is created by merging both. Returning `null` skips the
+ * page.
  *
  * 页面文件的侧边栏条目的 getter
  *
- * `defaults` 参数包含 helper 解析出的文本与链接，返回的字段会覆盖它们，主题的条目由两者合并而成。 返回 `null` 会跳过该页面。
+ * `info` 参数是页面的规范化信息，`defaults` 参数包含 helper 解析出的规范化字段（`text`、`link` 与 `icon`）。
+ * 返回的字段会覆盖默认值，主题的条目由两者合并而成。返回 `null` 会跳过该页面。
  */
 export type SidebarPageInfoGetter<Item extends { text: string }> = (
   info: SidebarFileInfo,
@@ -33,15 +36,19 @@ export type SidebarPageInfoGetter<Item extends { text: string }> = (
 /**
  * Getter of the sidebar item of a directory group
  *
- * The `readmePage` argument is `null` when the directory has no `README.md`.
- * The children of the group are attached by the helper under `childrenKey`, so
- * the getter does not need to handle them. Returning `null` skips the
- * directory.
+ * The `info` argument is the normalized information of the directory, and the
+ * `defaults` argument contains the normalized fields resolved by the helper
+ * (`text`, `link`, `icon`, `collapsible` and `expanded`). The `readmePage`
+ * argument is `null` when the directory has no `README.md`. The children of the
+ * group are attached by the helper under `childrenKey`, so the getter does not
+ * need to handle them. Returning `null` skips the directory.
  *
  * 目录分组的侧边栏条目的 getter
  *
- * 目录没有 `README.md` 时 `readmePage` 为 `null`。分组的子项由 helper 挂载到 `childrenKey` 下，因此
- * getter 无需处理它们。返回 `null` 会跳过该目录。
+ * `info` 参数是目录的规范化信息，`defaults` 参数包含 helper
+ * 解析出的规范化字段（`text`、`link`、`icon`、`collapsible` 与 `expanded`）。目录没有 `README.md` 时
+ * `readmePage` 为 `null`。分组的子项由 helper 挂载到 `childrenKey` 下，因此 getter 无需处理它们。返回
+ * `null` 会跳过该目录。
  */
 export type SidebarDirInfoGetter<Item extends { text: string }> = (
   info: SidebarDirInfo,
@@ -144,9 +151,20 @@ export const getSidebarStructureData = <
   const getPage = (pageData: PageData | null): Page | undefined =>
     pageData ? pageMap.get(pageData) : undefined
 
+  const getDefaults = (info: SidebarInfo): Partial<Item> =>
+    ({
+      text: info.text,
+      ...(info.link ? { link: info.link } : {}),
+      ...(info.icon ? { icon: info.icon } : {}),
+      ...(info.type === 'dir'
+        ? { collapsible: info.collapsible, expanded: info.expanded }
+        : {}),
+    }) as Partial<Item>
+
   const getItem = (info: SidebarInfo): Item | null => {
+    const defaults = getDefaults(info) as Item
+
     if (info.type === 'file') {
-      const defaults = { text: info.title, link: info.path } as unknown as Item
       let custom: Partial<Item> | null | undefined
 
       if (pageInfoGetter) {
@@ -158,11 +176,6 @@ export const getSidebarStructureData = <
       return { ...defaults, ...custom }
     }
 
-    const { link } = info.groupInfo
-    const defaults = {
-      text: info.title,
-      ...(link ? { link } : {}),
-    } as unknown as Item
     let custom: Partial<Item> | null | undefined
 
     if (dirInfoGetter) {

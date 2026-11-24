@@ -42,6 +42,21 @@ export interface SidebarInfoOptions {
 
 type SidebarPage = Page<Record<string, unknown>, SidebarFrontmatter>
 
+/**
+ * Normalize a frontmatter date to a `Date` instance
+ *
+ * @param value - Date value of the frontmatter / frontmatter 的日期值
+ * @returns The normalized date, `undefined` when it is invalid / 规范化后的日期，无效时为
+ *   `undefined`
+ */
+const normalizeDate = (value?: Date | string): Date | undefined => {
+  if (value == null) return undefined
+
+  const date = value instanceof Date ? value : new Date(value)
+
+  return Number.isNaN(date.getTime()) ? undefined : date
+}
+
 const sortItems = (
   items: SidebarInfo[],
   sorters: SidebarSorterFunction[],
@@ -89,15 +104,19 @@ const getSidebarInfoFromStructure = (
 
     if (page.frontmatter.index === false) return null
 
+    const date = normalizeDate(page.frontmatter.date)
+    const { icon } = page.frontmatter
+
     const fileInfo: SidebarFileInfo = {
       type: 'file',
       filename: info.filename,
 
-      title: page.frontmatter.shortTitle ?? page.title,
+      text: page.frontmatter.shortTitle ?? page.title,
+      link: page.path,
+      ...(icon ? { icon } : {}),
       order: page.frontmatter.order ?? null,
-      path: page.path,
+      ...(date ? { date } : {}),
 
-      frontmatter: page.frontmatter,
       pageData: page.data,
     }
 
@@ -124,15 +143,16 @@ const getSidebarInfoFromStructure = (
       // get dir information
       const dirOptions = readmePage.frontmatter.dir
 
-      const title =
+      if (dirOptions?.index === false) return null
+
+      const text =
         dirOptions?.text ??
         readmePage.frontmatter.shortTitle ??
         readmePage.title
       const icon = dirOptions?.icon ?? readmePage.frontmatter.icon
+      const date = normalizeDate(readmePage.frontmatter.date)
       const collapsible = dirOptions?.collapsible ?? true
       const expanded = collapsible && dirOptions?.expanded === true
-
-      if (dirOptions?.index === false) return null
 
       const dirInfo: SidebarDirInfo = {
         type: 'dir',
@@ -149,18 +169,15 @@ const getSidebarInfoFromStructure = (
             : info.children,
         ),
 
-        title,
+        text,
+        link: dirOptions?.link ? readmePage.path : undefined,
+        ...(icon ? { icon } : {}),
         order: dirOptions?.order ?? null,
+        ...(date ? { date } : {}),
 
-        // group information
-        groupInfo: {
-          collapsible,
-          ...(expanded ? { expanded } : {}),
-          ...(icon ? { icon } : {}),
-          ...(dirOptions?.link ? { link: readmePage.path } : {}),
-        },
+        collapsible,
+        expanded,
 
-        frontmatter: readmePage.frontmatter,
         pageData: readmePage.data,
       }
 
@@ -176,15 +193,12 @@ const getSidebarInfoFromStructure = (
       info.children,
     ),
 
-    title: getTitleFromFilename(info.dirname),
+    text: getTitleFromFilename(info.dirname),
     order: null,
 
-    // group information
-    groupInfo: {
-      collapsible: true,
-    },
+    collapsible: true,
+    expanded: false,
 
-    frontmatter: null,
     pageData: null,
   }
 
@@ -192,12 +206,20 @@ const getSidebarInfoFromStructure = (
 }
 
 /**
- * Get the sidebar information of pages inside a scope from the file structure
+ * Get the normalized sidebar information of the pages inside a scope from the
+ * file structure
  *
- * 根据文件结构获取范围内页面的侧边栏信息
+ * The frontmatter fields read by this function are documented in
+ * `SidebarFrontmatter`. They are the default conventions, a theme can read any
+ * other frontmatter in its own getters.
+ *
+ * 根据文件结构获取范围内页面的规范化侧边栏信息
+ *
+ * 此函数读取的 frontmatter 字段记录在 `SidebarFrontmatter` 中，它们只是默认约定，主题可以在自己的获取器中读取任何其它
+ * frontmatter。
  *
  * @param options - Options of the function / 函数的选项
- * @returns The sidebar information / 侧边栏信息
+ * @returns The normalized sidebar information / 规范化后的侧边栏信息
  */
 export const getSidebarInfo = ({
   pages,

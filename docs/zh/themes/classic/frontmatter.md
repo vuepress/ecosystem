@@ -265,5 +265,5 @@ prev: ../../guide/getting-started.md
 
 表示本页面所在目录的分组的选项。它只会从目录的 `README.md` 中读取，其他页面的该字段会被忽略。
 
-选项记录在 [theme-helper](../../tools/theme-helper.md#frontmatter-conventions) 中：`text`、`icon`、`collapsible`、`expanded`、`link`、`index` 与 `order`。
+选项的默认映射记录在 [theme-helper](../../tools/theme-helper.md#default-frontmatter-mapping) 中：`text`、`icon`、`collapsible`、`expanded`、`link`、`index` 与 `order`。
 ::::

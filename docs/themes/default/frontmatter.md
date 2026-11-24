@@ -330,7 +330,7 @@ The icon of the item, in the same form as `sidebar[*].icon`.
 
 The options of the group that represents the directory of this page. It is only read from the `README.md` of the directory, the field of the other pages is ignored.
 
-The options are documented in [theme-helper](../../tools/theme-helper.md#frontmatter-conventions): `text`, `icon`, `collapsible`, `expanded`, `link`, `index` and `order`.
+The options are documented in [theme-helper](../../tools/theme-helper.md#default-frontmatter-mapping): `text`, `icon`, `collapsible`, `expanded`, `link`, `index` and `order`.
 ::::
 
 ## 404 Page

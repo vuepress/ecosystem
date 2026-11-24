@@ -216,7 +216,7 @@ Set to `false` to disable sidebar.
 
 If you set it to `'heading'`, the sidebar will be automatically generated from the page headers.
 
-If you set it to `'structure'`, the sidebar will be generated from the file structure of your pages. The frontmatter of the pages controls the generated items, see [sidebar structure](./frontmatter.md#sidebar-structure):
+If you set it to `'structure'`, the sidebar will be generated from the file structure of your pages. The structure helper reads some frontmatter fields by default, see [sidebar structure](./frontmatter.md#sidebar-structure):
 
 ```ts title=".vuepress/config.ts"
 export default {

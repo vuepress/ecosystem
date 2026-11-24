@@ -58,11 +58,6 @@ export const classicTheme = ({
     childrenKey: 'children',
     prefixKey: 'prefix',
     sorter: sidebarSorter,
-
-    dirInfoGetter: (info, _page, defaults) => ({
-      ...defaults,
-      collapsible: info.groupInfo.collapsible,
-    }),
   })
 
   return {

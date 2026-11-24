@@ -265,5 +265,5 @@ The text of the item, it takes precedence over the page title.
 
 The options of the group that represents the directory of this page. It is only read from the `README.md` of the directory, the field of the other pages is ignored.
 
-The options are documented in [theme-helper](../../tools/theme-helper.md#frontmatter-conventions): `text`, `icon`, `collapsible`, `expanded`, `link`, `index` and `order`.
+The options are documented in [theme-helper](../../tools/theme-helper.md#default-frontmatter-mapping): `text`, `icon`, `collapsible`, `expanded`, `link`, `index` and `order`.
 ::::

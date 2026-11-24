@@ -454,19 +454,11 @@ export const defaultTheme = (options: ThemeOptions = {}): ThemeObject => {
     prefixKey: 'base',
     sorter: sidebarSorter,
 
-    pageInfoGetter: (info, _page, defaults) => ({
-      ...defaults,
-      ...(info.frontmatter.icon ? { icon: info.frontmatter.icon } : {}),
-    }),
-
+    // the groups are collapsible by default, and they are collapsed unless
+    // the normalized `expanded` state tells them to be expanded
     dirInfoGetter: (info, _page, defaults) => ({
       ...defaults,
-      ...(info.groupInfo.icon ? { icon: info.groupInfo.icon } : {}),
-      // the groups are collapsible by default, and they are collapsed unless
-      // the `dir` frontmatter option expands them
-      ...(info.groupInfo.collapsible
-        ? { collapsed: info.groupInfo.expanded !== true }
-        : {}),
+      ...(info.collapsible ? { collapsed: !info.expanded } : {}),
     }),
   })
 

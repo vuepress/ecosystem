@@ -1,56 +1,58 @@
 import type { PageData, PageFrontmatter } from 'vuepress/shared'
 
 /**
- * Options of a sidebar group generated from a directory
+ * Options of a directory group, read from the frontmatter of its `README.md`
  *
- * 由目录生成的侧边栏分组的选项
+ * 目录分组的选项，从目录 `README.md` 的 frontmatter 中读取
  */
 export interface SidebarDirOptions {
   /**
-   * Text of the group
+   * Text of the group, falls back to the title of the `README.md` page
    *
-   * 分组的文本
+   * 分组的文本，省略时回退到 `README.md` 页面的标题
    */
   text?: string
 
   /**
-   * Icon of the group
+   * Icon of the group, falls back to the icon of the `README.md` page
    *
-   * 分组的图标
+   * 分组的图标，省略时回退到 `README.md` 页面的图标
    */
   icon?: string
 
   /**
    * Whether the group is collapsible
    *
-   * 分组是否可折叠
+   * 分组是否可以展开和收起
    *
    * @default true
    */
   collapsible?: boolean
 
   /**
-   * Whether the group is expanded by default
+   * Whether the group is expanded by default, only takes effect when the group
+   * is collapsible
    *
-   * 分组是否默认展开
+   * 分组是否默认展开，仅在分组可以展开和收起时生效
    *
    * @default false
    */
   expanded?: boolean
 
   /**
-   * Whether the group links to its `README.md`
+   * Whether the `README.md` page is the link of the group instead of a child
+   * item
    *
-   * 分组是否链接到其 `README.md`
+   * `README.md` 页面是否是分组的链接，而不是分组的子项
    *
    * @default false
    */
   link?: boolean
 
   /**
-   * Whether the group is included in the sidebar
+   * Whether the directory is included in the sidebar
    *
-   * 分组是否包含在侧边栏中
+   * 目录是否包含在侧边栏中
    *
    * @default true
    */
@@ -59,28 +61,32 @@ export interface SidebarDirOptions {
   /**
    * Order of the group in its parent group
    *
-   * Positive values are sorted before the items without order, negative values
-   * are sorted after them.
+   * Positive values are sorted in ascending order before the items without an
+   * order, negative values are sorted in ascending order after them.
    *
-   * 分组在其父分组中的顺序
+   * 分组在其上层分组中的顺序
    *
-   * 正值会排在未设置顺序的条目之前，负值会排在它们之后。
-   *
-   * @default 0
+   * 正数按升序排在未设置顺序的条目之前，负数按升序排在它们之后。
    */
   order?: number
 }
 
 /**
- * Frontmatter fields that are used by the structure sidebar
+ * Page frontmatter fields read by the default sidebar info getters
  *
- * 侧边栏结构功能使用的 frontmatter 字段
+ * The helper does not require these fields: they are the conventions of the
+ * built-in `getSidebarInfo()`, and a theme can read any other frontmatter in
+ * its own getters.
+ *
+ * 默认侧边栏信息获取器读取的页面 frontmatter 字段
+ *
+ * Helper 并不要求这些字段：它们是内置 `getSidebarInfo()` 的约定，主题可以在自己的获取器中读取任何其它 frontmatter。
  */
-export type SidebarFrontmatter = PageFrontmatter & {
+export interface SidebarFrontmatter extends PageFrontmatter {
   /**
    * Date of the page, used by the `date` and `date-desc` sorters
    *
-   * 页面日期，供 `date` 与 `date-desc` 排序器使用
+   * 页面的日期，用于 `date` 与 `date-desc` 排序器
    */
   date?: Date | string
 
@@ -92,9 +98,9 @@ export type SidebarFrontmatter = PageFrontmatter & {
   dir?: SidebarDirOptions
 
   /**
-   * Icon of the page
+   * Icon of the item
    *
-   * 页面图标
+   * 条目的图标
    */
   icon?: string
 
@@ -108,16 +114,14 @@ export type SidebarFrontmatter = PageFrontmatter & {
   index?: boolean
 
   /**
-   * Order of the page in its group
+   * Order of the page in its group, `null` when it is not set
    *
-   * Positive values are sorted before the items without order, negative values
-   * are sorted after them.
+   * Positive values are sorted in ascending order before the items without an
+   * order, negative values are sorted in ascending order after them.
    *
-   * 页面在其分组中的顺序
+   * 页面在其分组中的顺序，未设置时为 `null`
    *
-   * 正值会排在未设置顺序的条目之前，负值会排在它们之后。
-   *
-   * @default 0
+   * 正数按升序排在未设置顺序的条目之前，负数按升序排在它们之后。
    */
   order?: number
 
@@ -130,11 +134,58 @@ export type SidebarFrontmatter = PageFrontmatter & {
 }
 
 /**
- * Information of a page file
+ * Normalized information of a sidebar item generated from the file structure
  *
- * 页面文件的信息
+ * Every page and directory is resolved to the same fields, so that themes only
+ * deal with the normalized data and never parse the frontmatter themselves.
+ *
+ * 根据文件结构生成的侧边栏条目的规范化信息
+ *
+ * 每个页面和目录都会解析到相同的字段，主题只需处理规范化后的数据，无需自行解析 frontmatter。
  */
-export interface SidebarFileInfo {
+export interface SidebarItemInfo {
+  /**
+   * Text of the item
+   *
+   * 条目的文本
+   */
+  text: string
+
+  /**
+   * Route path of the item
+   *
+   * 条目的路由路径
+   */
+  link?: string
+
+  /**
+   * Icon of the item
+   *
+   * 条目的图标
+   */
+  icon?: string
+
+  /**
+   * Order of the item, `null` when the order is not set
+   *
+   * 条目的顺序，未设置时为 `null`
+   */
+  order: number | null
+
+  /**
+   * Date of the item, used by the `date` and `date-desc` sorters
+   *
+   * 条目的日期，用于 `date` 与 `date-desc` 排序器
+   */
+  date?: Date
+}
+
+/**
+ * Normalized information of a page
+ *
+ * 页面的规范化信息
+ */
+export interface SidebarFileInfo extends SidebarItemInfo {
   /**
    * Type of the item
    *
@@ -150,34 +201,6 @@ export interface SidebarFileInfo {
   filename: string
 
   /**
-   * Title of the item
-   *
-   * 条目标题
-   */
-  title: string
-
-  /**
-   * Order of the item, `null` when the order is not set
-   *
-   * 条目的顺序，未设置时为 `null`
-   */
-  order: number | null
-
-  /**
-   * Route path of the page
-   *
-   * 页面的路由路径
-   */
-  path: string
-
-  /**
-   * Frontmatter of the page
-   *
-   * 页面的 frontmatter
-   */
-  frontmatter: SidebarFrontmatter
-
-  /**
    * Data of the page
    *
    * 页面的数据
@@ -186,46 +209,11 @@ export interface SidebarFileInfo {
 }
 
 /**
- * Group information of a directory item
+ * Normalized information of a directory group
  *
- * 目录条目的分组信息
+ * 目录分组的规范化信息
  */
-export interface SidebarGroupInfo {
-  /**
-   * Whether the group is collapsible
-   *
-   * 分组是否可折叠
-   */
-  collapsible: boolean
-
-  /**
-   * Whether the group is expanded by default
-   *
-   * 分组是否默认展开
-   */
-  expanded?: boolean
-
-  /**
-   * Icon of the group
-   *
-   * 分组图标
-   */
-  icon?: string
-
-  /**
-   * Link of the group
-   *
-   * 分组链接
-   */
-  link?: string
-}
-
-/**
- * Information of a directory
- *
- * 目录的信息
- */
-export interface SidebarDirInfo {
+export interface SidebarDirInfo extends SidebarItemInfo {
   /**
    * Type of the item
    *
@@ -241,40 +229,25 @@ export interface SidebarDirInfo {
   dirname: string
 
   /**
-   * Title of the item
+   * Whether the group is collapsible
    *
-   * 条目标题
+   * 分组是否可以展开和收起
    */
-  title: string
+  collapsible: boolean
 
   /**
-   * Order of the item, `null` when the order is not set
+   * Whether the group is expanded by default
    *
-   * 条目的顺序，未设置时为 `null`
+   * 分组是否默认展开
    */
-  order: number | null
+  expanded: boolean
 
   /**
-   * Group information of the directory
+   * Children of the group
    *
-   * 目录的分组信息
-   */
-  groupInfo: SidebarGroupInfo
-
-  /**
-   * Children of the directory
-   *
-   * 目录的子项
+   * 分组的子项
    */
   children: SidebarInfo[]
-
-  /**
-   * Frontmatter of the `README.md` page, `null` when the directory has no
-   * `README.md`
-   *
-   * `README.md` 页面的 frontmatter，目录没有 `README.md` 时为 `null`
-   */
-  frontmatter: SidebarFrontmatter | null
 
   /**
    * Data of the `README.md` page, `null` when the directory has no `README.md`
@@ -285,22 +258,26 @@ export interface SidebarDirInfo {
 }
 
 /**
- * Information of a sidebar item generated from the file structure
+ * Normalized information of a sidebar item generated from the file structure
  *
- * 根据文件结构生成的侧边栏条目的信息
+ * 根据文件结构生成的侧边栏条目的规范化信息
  */
 export type SidebarInfo = SidebarFileInfo | SidebarDirInfo
 
 /**
  * Sidebar item generated from the file structure
  *
- * The helper only guarantees that every item has a `text`, the rest of the
- * fields are defined by the theme. The children of a group item are attached
- * under the `childrenKey` of the helper / theme.
+ * The helper always sets `text`. It also sets `link`, `icon`, `collapsible` and
+ * `expanded` when they apply: `link` and `icon` when the page or directory has
+ * them, and `collapsible` / `expanded` on a directory item. The theme can add
+ * its own fields. The children of a group item are attached under the
+ * `childrenKey` of the helper / theme.
  *
  * 根据文件结构生成的侧边栏条目
  *
- * Helper 只保证每个条目都有 `text`，其余字段由主题定义。分组条目的子项会挂载在 helper / 主题的 `childrenKey` 下。
+ * Helper 总会设置 `text`。适用时它也会设置 `link`、`icon`、`collapsible` 与
+ * `expanded`：页面或目录有链接与图标时设置 `link` 与 `icon`，目录条目还会设置 `collapsible` 与
+ * `expanded`。主题可以添加自己的字段。分组条目的子项会挂载在 helper / 主题的 `childrenKey` 下。
  */
 export interface SidebarStructureItem {
   /**
@@ -316,6 +293,27 @@ export interface SidebarStructureItem {
    * 条目的路由路径
    */
   link?: string
+
+  /**
+   * Icon of the item
+   *
+   * 条目的图标
+   */
+  icon?: string
+
+  /**
+   * Whether the group is collapsible
+   *
+   * 分组是否可以展开和收起
+   */
+  collapsible?: boolean
+
+  /**
+   * Whether the group is expanded by default
+   *
+   * 分组是否默认展开
+   */
+  expanded?: boolean
 
   /**
    * Children of the item

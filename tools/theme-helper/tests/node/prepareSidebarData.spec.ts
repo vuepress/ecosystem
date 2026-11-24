@@ -33,17 +33,20 @@ describe(getSidebarStructureData, () => {
           { text: 'Home', link: '/' },
           {
             text: 'Guide',
+            icon: 'guide-icon',
+            collapsible: false,
+            expanded: false,
             children: [
               { text: 'Guide', link: '/guide/' },
               { text: 'B', link: '/guide/b.html' },
-              { text: 'A', link: '/guide/a.html' },
+              { text: 'A', link: '/guide/a.html', icon: 'a-icon' },
             ],
           },
         ],
         '/guide/': [
           { text: 'Guide', link: '/guide/' },
           { text: 'B', link: '/guide/b.html' },
-          { text: 'A', link: '/guide/a.html' },
+          { text: 'A', link: '/guide/a.html', icon: 'a-icon' },
         ],
         '/missing/': [],
       })
@@ -72,7 +75,7 @@ describe(prepareSidebarData, () => {
         '/guide/': [
           { text: 'Guide', link: '/guide/' },
           { text: 'B', link: '/guide/b.html' },
-          { text: 'A', link: '/guide/a.html' },
+          { text: 'A', link: '/guide/a.html', icon: 'a-icon' },
         ],
       })
     } finally {

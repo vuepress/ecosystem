@@ -11,27 +11,36 @@ export interface TestItem {
   text: string
   link?: string
   icon?: string
-  collapsed?: boolean
+  collapsible?: boolean
+  expanded?: boolean
+  badge?: string
   items?: TestItem[]
 }
 
 /**
- * Add the icon of the page to the structure item
+ * Read the `badge` frontmatter of the page into the structure item
  *
- * 将页面的图标添加到结构条目中
+ * The helper does not know the `badge` frontmatter, the theme reads it in its
+ * own getter.
  *
- * @param info - The sidebar info of the page / 页面的侧边栏信息
- * @param _page - The page of the info / 信息对应的页面
+ * 将页面的 `badge` frontmatter 读取到结构条目中
+ *
+ * Helper 并不认识 `badge` frontmatter，主题在自己的获取器中读取它。
+ *
+ * @param _info - The sidebar info of the page / 页面的侧边栏信息
+ * @param page - The page of the info / 信息对应的页面
  * @param defaults - The default structure item / 默认结构条目
  * @returns The customized structure item / 自定义结构条目
  */
 export const pageInfoGetter = (
-  info: SidebarFileInfo,
-  _page: Page | undefined,
+  _info: SidebarFileInfo,
+  page: Page | undefined,
   defaults: TestItem,
 ): Partial<TestItem> => ({
   ...defaults,
-  ...(info.frontmatter.icon ? { icon: info.frontmatter.icon } : {}),
+  ...(page?.frontmatter.badge
+    ? { badge: page.frontmatter.badge as string }
+    : {}),
 })
 
 /**
@@ -39,37 +48,37 @@ export const pageInfoGetter = (
  *
  * 跳过 frontmatter 设置 `hide: true` 的页面
  *
- * @param info - The sidebar info of the page / 页面的侧边栏信息
- * @param _page - The page of the info / 信息对应的页面
+ * @param _info - The sidebar info of the page / 页面的侧边栏信息
+ * @param page - The page of the info / 信息对应的页面
  * @param defaults - The default structure item / 默认结构条目
  * @returns The customized structure item or `null` to skip / 自定义结构条目，返回 `null`
  *   时跳过
  */
 export const skipPageInfoGetter = (
-  info: SidebarFileInfo,
-  _page: Page | undefined,
+  _info: SidebarFileInfo,
+  page: Page | undefined,
   defaults: TestItem,
 ): Partial<TestItem> | null =>
-  info.frontmatter.hide === true ? null : defaults
+  page?.frontmatter.hide === true ? null : defaults
 
 /**
- * Add the icon and the collapsed state of the directory to the structure item
+ * Read the `badge` frontmatter of the `README.md` page into the group item
  *
- * 将目录的图标和折叠状态添加到结构条目中
+ * 将 `README.md` 页面的 `badge` frontmatter 读取到分组条目中
  *
- * @param info - The sidebar info of the directory / 目录的侧边栏信息
- * @param _page - The README page of the directory / 目录的 README 页面
+ * @param _info - The sidebar info of the directory / 目录的侧边栏信息
+ * @param readmePage - The `README.md` page of the directory / 目录的 `README.md`
+ *   页面
  * @param defaults - The default structure item / 默认结构条目
  * @returns The customized structure item / 自定义结构条目
  */
 export const dirInfoGetter = (
-  info: SidebarDirInfo,
-  _page: Page | null,
+  _info: SidebarDirInfo,
+  readmePage: Page | null,
   defaults: TestItem,
 ): Partial<TestItem> => ({
   ...defaults,
-  ...(info.groupInfo.icon ? { icon: info.groupInfo.icon } : {}),
-  ...(info.groupInfo.collapsible
-    ? { collapsed: info.groupInfo.expanded !== true }
+  ...(readmePage?.frontmatter.badge
+    ? { badge: readmePage.frontmatter.badge as string }
     : {}),
 })

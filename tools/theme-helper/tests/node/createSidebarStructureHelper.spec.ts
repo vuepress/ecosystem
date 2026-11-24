@@ -17,8 +17,8 @@ const createApp = (): ReturnType<typeof createTestApp> =>
     files: {
       'README.md': '---\ntitle: Home\n---\n',
       'guide/README.md':
-        '---\ntitle: Guide\ndir:\n  text: Guide\n  icon: guide-icon\n  collapsible: false\n---\n',
-      'guide/a.md': '---\ntitle: A\nicon: a-icon\n---\n',
+        '---\ntitle: Guide\nbadge: guide-badge\ndir:\n  text: Guide\n  icon: guide-icon\n  collapsible: false\n---\n',
+      'guide/a.md': '---\ntitle: A\nicon: a-icon\nbadge: a-badge\n---\n',
       'guide/b.md': '---\ntitle: B\norder: 1\n---\n',
     },
   })
@@ -37,10 +37,13 @@ describe(createSidebarStructureHelper, () => {
           { text: 'Home', link: '/' },
           {
             text: 'Guide',
+            icon: 'guide-icon',
+            collapsible: false,
+            expanded: false,
             children: [
               { text: 'Guide', link: '/guide/' },
               { text: 'B', link: '/guide/b.html' },
-              { text: 'A', link: '/guide/a.html' },
+              { text: 'A', link: '/guide/a.html', icon: 'a-icon' },
             ],
           },
         ],
@@ -66,10 +69,18 @@ describe(createSidebarStructureHelper, () => {
           {
             text: 'Guide',
             icon: 'guide-icon',
+            collapsible: false,
+            expanded: false,
+            badge: 'guide-badge',
             children: [
-              { text: 'Guide', link: '/guide/' },
+              { text: 'Guide', link: '/guide/', badge: 'guide-badge' },
               { text: 'B', link: '/guide/b.html' },
-              { text: 'A', link: '/guide/a.html', icon: 'a-icon' },
+              {
+                text: 'A',
+                link: '/guide/a.html',
+                icon: 'a-icon',
+                badge: 'a-badge',
+              },
             ],
           },
         ],
@@ -117,7 +128,7 @@ describe(createSidebarStructureHelper, () => {
         '/guide/': [
           { text: 'Guide', link: '/guide/' },
           { text: 'B', link: '/guide/b.html' },
-          { text: 'A', link: '/guide/a.html' },
+          { text: 'A', link: '/guide/a.html', icon: 'a-icon' },
         ],
       })
     } finally {
@@ -138,7 +149,7 @@ describe(createSidebarStructureHelper, () => {
         '/guide/': [
           { text: 'Guide', link: '/guide/' },
           { text: 'B', link: '/guide/b.html' },
-          { text: 'A', link: '/guide/a.html' },
+          { text: 'A', link: '/guide/a.html', icon: 'a-icon' },
         ],
       })
     } finally {
@@ -157,8 +168,11 @@ describe(createSidebarStructureHelper, () => {
       expect(helper.getData(app)['/']).toStrictEqual([
         {
           text: 'Guide',
+          icon: 'guide-icon',
+          collapsible: false,
+          expanded: false,
           children: [
-            { text: 'A', link: '/guide/a.html' },
+            { text: 'A', link: '/guide/a.html', icon: 'a-icon' },
             { text: 'B', link: '/guide/b.html' },
             { text: 'Guide', link: '/guide/' },
           ],

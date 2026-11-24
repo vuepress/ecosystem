@@ -8,7 +8,7 @@ import type { SidebarDirInfo } from '../../src/shared/index.js'
 const sorters = getSidebarSorter(['filename'])
 
 describe(getSidebarInfo, () => {
-  it('should resolve the information of the pages and skip the hidden ones', async () => {
+  it('should resolve the normalized information of the pages and skip the hidden ones', async () => {
     const app = await createTestApp({
       files: {
         'README.md': '---\ntitle: Home\n---\n',
@@ -28,24 +28,24 @@ describe(getSidebarInfo, () => {
         {
           type: 'file',
           filename: 'page1.md',
-          title: 'Page 1',
+          text: 'Page 1',
           order: 1,
-          path: '/page1.html',
+          link: '/page1.html',
         },
         {
           type: 'file',
           filename: 'page2.md',
-          title: 'P2',
+          text: 'P2',
           order: 2,
-          path: '/page2.html',
-          frontmatter: { icon: 'page-icon', shortTitle: 'P2' },
+          link: '/page2.html',
+          icon: 'page-icon',
         },
         {
           type: 'file',
           filename: 'README.md',
-          title: 'Home',
+          text: 'Home',
           order: null,
-          path: '/',
+          link: '/',
         },
       ])
       expect(items).toHaveLength(3)
@@ -56,7 +56,7 @@ describe(getSidebarInfo, () => {
     }
   })
 
-  it('should resolve the group of a directory from its README.md', async () => {
+  it('should resolve the normalized group of a directory from its README.md', async () => {
     const app = await createTestApp({
       files: {
         'guide/README.md':
@@ -73,26 +73,25 @@ describe(getSidebarInfo, () => {
         {
           type: 'dir',
           dirname: 'guide',
-          title: 'Guide Group',
+          text: 'Guide Group',
+          link: '/guide/',
+          icon: 'guide-icon',
           order: 3,
-          groupInfo: {
-            collapsible: false,
-            icon: 'guide-icon',
-            link: '/guide/',
-          },
+          collapsible: false,
+          expanded: false,
           children: [
             {
               type: 'file',
               filename: 'a.md',
-              title: 'A',
-              path: '/guide/a.html',
+              text: 'A',
+              link: '/guide/a.html',
             },
             {
               type: 'file',
               filename: 'b.md',
-              title: 'B',
-              path: '/guide/b.html',
-              frontmatter: { title: 'B', icon: 'b-icon' },
+              text: 'B',
+              link: '/guide/b.html',
+              icon: 'b-icon',
             },
           ],
         },
@@ -119,11 +118,13 @@ describe(getSidebarInfo, () => {
       expect(items).toMatchObject([
         {
           dirname: 'expanded',
-          groupInfo: { collapsible: true, expanded: true },
+          collapsible: true,
+          expanded: true,
         },
         {
           dirname: 'not-expanded',
-          groupInfo: { collapsible: false },
+          collapsible: false,
+          expanded: false,
         },
       ])
     } finally {
@@ -143,10 +144,10 @@ describe(getSidebarInfo, () => {
         {
           type: 'dir',
           dirname: 'no_readme',
-          title: 'No Readme',
+          text: 'No Readme',
           order: null,
-          groupInfo: { collapsible: true },
-          frontmatter: null,
+          collapsible: true,
+          expanded: false,
           pageData: null,
         },
       ])
@@ -170,6 +171,32 @@ describe(getSidebarInfo, () => {
         .map((item) => item.dirname)
 
       expect(dirnames).toStrictEqual(['visible'])
+    } finally {
+      app.cleanup()
+    }
+  })
+
+  it('should normalize the date of the pages', async () => {
+    const app = await createTestApp({
+      files: {
+        'a.md': '---\ndate: 2024-01-01\n---\n',
+        'b.md': '---\ndate: not-a-date\n---\n',
+      },
+    })
+
+    try {
+      const items = getSidebarInfo({
+        pages: app.pages,
+        sorters: getSidebarSorter(['date']),
+        scope: '',
+      })
+
+      expect(items[0]).toMatchObject({
+        filename: 'a.md',
+        date: new Date('2024-01-01'),
+      })
+      expect(items[0].date).toBeInstanceOf(Date)
+      expect(items[1].date).toBeUndefined()
     } finally {
       app.cleanup()
     }

@@ -8,7 +8,7 @@ icon: hammer
 
 VuePress 主题开发者的工具包。
 
-该包提供主题功能的公共部分，这些功能只依赖站点的页面：读取页面、解析 frontmatter 约定并为客户端生成数据。主题仍保留自己的选项、自己的条目结构与自己的渲染方式。
+该包提供主题功能的公共部分，这些功能只依赖站点的页面：读取页面、把它们规范化为固定的数据结构并为客户端生成数据。主题仍保留自己的选项、自己的条目结构与自己的渲染方式。
 
 目前它提供 _根据文件结构生成侧边栏_ 与 _编辑链接_ 功能，以及两者所需的页面数据扩展。
 
@@ -18,7 +18,7 @@ VuePress 主题开发者的工具包。
 npm i @vuepress/theme-helper@next
 ```
 
-`@vuepress/theme-default` 与 `@vuepress/theme-classic` 都使用了该包。主题开发者可以依赖它来支持相同的约定。
+`@vuepress/theme-default` 与 `@vuepress/theme-classic` 都使用了该包。主题开发者可以依赖它来支持侧边栏结构与编辑链接功能。
 
 ## Guide
 
@@ -45,18 +45,17 @@ const sidebarHelper = createSidebarStructureHelper<MyThemeItem>({
   sorter: options.sidebarSorter,
 
   // 自定义页面的条目
-  pageInfoGetter: (info, _page, defaults) => ({
+  pageInfoGetter: (info, page, defaults) => ({
     ...defaults,
-    ...(info.frontmatter.icon ? { icon: info.frontmatter.icon } : {}),
+    // `badge` 是主题自己的 frontmatter 字段，工具并不知道它
+    ...(page?.frontmatter.badge ? { badge: page.frontmatter.badge } : {}),
   }),
 
   // 自定义目录的条目
   dirInfoGetter: (info, _page, defaults) => ({
     ...defaults,
-    ...(info.groupInfo.icon ? { icon: info.groupInfo.icon } : {}),
-    ...(info.groupInfo.collapsible
-      ? { collapsed: info.groupInfo.expanded !== true }
-      : {}),
+    // 默认主题用 `collapsed` 而不是 `collapsible` / `expanded` 表示分组状态
+    ...(info.collapsible ? { collapsed: !info.expanded } : {}),
   }),
 })
 
@@ -71,7 +70,7 @@ export const myTheme = (options: MyThemeOptions = {}): Theme => ({
 
 工具会根据主题数据自动查找范围，即侧边栏选项中的 `'structure'` 值与 `children: 'structure'` 的分组条目。如果侧边栏选项的结构不同，可以通过 `getScopes()` 自定义。
 
-getter 会收到条目解析后的 `SidebarInfo`、它对应的页面（目录为 `README.md` 页面）以及工具默认生成的条目。默认条目只包含 `text` 与 `link`，因此 getter 可以添加主题自己的字段，也可以返回 `null` 以跳过该条目。目录的子项由工具按 `childrenKey` 附加。
+getter 会收到条目规范化的 `SidebarInfo`、它对应的页面（目录为 `README.md` 页面）以及工具默认生成的条目。默认条目由规范化字段构建，见[规范化的侧边栏信息](#normalized-sidebar-information)。getter 可以添加主题自己的字段，也可以返回 `null` 以跳过该条目。目录的子项由工具按 `childrenKey` 附加。
 
 `prepare()` 会写入 `@temp/theme-helper/sidebar.js`，它按路由范围导出生成的数据。即使没有任何范围也必须调用，以保证生成模块存在。`watch()` 会在开发模式下监听生成的页面并重新生成数据，且只在至少有一个范围时注册监听器。
 
@@ -87,17 +86,27 @@ const guideItems = getSidebarStructure<MyThemeItem>('/guide/')
 
 范围会被规范化，因此 `'/guide/'`、`'/guide'` 与 `'guide/'` 都会解析到同一份数据。
 
-### Frontmatter 约定 {#frontmatter-conventions}
+### 规范化的侧边栏信息 {#normalized-sidebar-information}
 
-页面通过 frontmatter 控制生成的条目，因此所有使用该工具的主题都支持相同的约定。
+`getSidebarInfo()` 读取页面并把每个页面与目录规范化为同一种数据结构，因此主题不需要自己遍历页面：
 
-| 字段         | 位置        | 说明                                             |
-| ------------ | ----------- | ------------------------------------------------ |
-| `index`      | 任意页面    | 设为 `false` 可将该页面从侧边栏中隐藏。          |
-| `order`      | 任意页面    | 条目的位置。正数排在无序条目之前，负数排在其后。 |
-| `shortTitle` | 任意页面    | 条目的文本，优先于页面标题。                     |
-| `icon`       | 任意页面    | 条目的图标。不支持条目图标的主题会忽略它。       |
-| `dir`        | `README.md` | 表示目录的分组的选项。                           |
+- 页面会成为 `SidebarFileInfo`，包含 `text`、`link`、`icon`、`date`（规范化为 `Date`）、`order` 与 `pageData`；
+- 目录会成为 `SidebarDirInfo`，包含相同的字段，外加 `collapsible`、`expanded`、`children`，以及其 `README.md` 的 `pageData`（没有 `README.md` 时为 `null`）。
+
+工具生成的默认条目由这些字段构建：它始终包含 `text`，页面或目录有链接与图标时会包含 `link` 与 `icon`，目录条目还包含 `collapsible` 与 `expanded`。主题在 getter 中把规范化字段映射为自己的字段，例如默认主题把 `collapsible` 与 `expanded` 转换为自己的 `collapsed`。
+
+### 默认的 frontmatter 映射 {#default-frontmatter-mapping}
+
+内置的信息构建器会读取一些 frontmatter 字段，并把它们规范化到同名的内部 key。它们只是工具的默认约定，而不是主题的要求：主题可以在自己的 getter 中读取任意其他 frontmatter，规范化后的数据也不依赖这些字段。
+
+| 字段         | 位置        | 规范化结果                   |
+| ------------ | ----------- | ---------------------------- |
+| `shortTitle` | 任意页面    | `text`，没有时回退到页面标题 |
+| `icon`       | 任意页面    | `icon`                       |
+| `order`      | 任意页面    | `order`，未设置时为 `null`   |
+| `date`       | 任意页面    | `date`，解析为 `Date`        |
+| `index`      | 任意页面    | 为 `false` 时跳过该页面      |
+| `dir`        | `README.md` | 分组的字段，见下文           |
 
 目录的 `dir` 选项从其 `README.md` 的 frontmatter 中读取：
 
@@ -114,13 +123,13 @@ dir:
 ---
 ```
 
-- `text`：分组的文本，默认为 `README.md` 页面的标题。
-- `icon`：分组的图标。
-- `collapsible`：分组是否可折叠，默认为 `true`。
-- `expanded`：分组是否展开，默认为 `false`。仅在分组可折叠时生效。
+- `text`：规范化为分组的 `text`，没有时回退到 `README.md` 页面的标题。
+- `icon`：规范化为分组的 `icon`。
+- `collapsible`：规范化为分组的 `collapsible`，默认为 `true`。
+- `expanded`：规范化为分组的 `expanded`，默认为 `false`。仅在分组可折叠时生效。
 - `link`：`README.md` 页面是否作为分组的链接而不是子条目，默认为 `false`。
 - `index`：设为 `false` 可将整个目录从侧边栏中隐藏。
-- `order`：分组的位置，默认为 `0`。
+- `order`：规范化为分组的 `order`，未设置时为 `null`。
 
 ### 排序条目 {#sorting-the-items}
 
@@ -137,8 +146,8 @@ export default defineUserConfig({
 关键字有：
 
 - `'readme'`：把目录的 `README.md` 页面排在最前。
-- `'order'`：按 `order` frontmatter 字段排序：正数升序，其次是没有 order 的页面，最后是负数降序。
-- `'date'` 与 `'date-desc'`：按 `date` frontmatter 字段升序、降序排序。
+- `'order'`：按规范化后的 `order` 排序：正数升序，其次是没有 order 的条目，最后是负数升序，因此 `-2` 排在 `-1` 之前。
+- `'date'` 与 `'date-desc'`：按规范化后的 `date` 升序、降序排序。
 - `'filename'`：按文件名自然排序，同名时文件排在目录之前。
 - `'title'`：按条目文本自然排序。
 
@@ -271,7 +280,7 @@ const editLink = useEditLink()
 作为文件路径的路由范围，不带前导斜线并带结尾斜线。
 :::
 
-它把该范围的结构转换为 `SidebarInfo` 条目，并解析 frontmatter 约定：隐藏页面、标题、图标、顺序、目录分组及其选项。
+它把该范围的结构转换为规范化的 `SidebarInfo` 条目：隐藏的页面会被跳过，每个条目的文本、链接、图标、日期、顺序与分组状态由默认的 frontmatter 映射解析。
 
 ### getSidebarStructureData
 
@@ -297,7 +306,7 @@ const editLink = useEditLink()
 目录条目的 getter。
 :::
 
-它返回生成的 `SidebarStructureData<Item>`，以规范化后的范围为键。页面默认的条目只包含 `text` 与 `link`，因此主题的 getter 需要添加自己的条目字段。
+它返回生成的 `SidebarStructureData<Item>`，以规范化后的范围为键。默认条目始终包含 `text`，页面或目录有链接与图标时会包含 `link` 与 `icon`，目录条目还包含 `collapsible` 与 `expanded`，因此主题的 getter 在此基础上添加或覆盖自己的条目字段。
 
 ### prepareSidebarData
 
@@ -312,10 +321,10 @@ const editLink = useEditLink()
 ### getSidebarStructure
 
 ```ts
-const items: SidebarStructureItem[] = getSidebarStructure(scope)
+const items = getSidebarStructure<MyThemeItem>('/guide/')
 ```
 
-它返回某个范围生成的条目，当该范围未被生成时返回空数组。
+它返回某个范围生成的条目，类型由泛型参数指定；当该范围未被生成时返回空数组。
 
 ### sidebarData
 
@@ -381,4 +390,6 @@ const { theme, frontmatter, page } = useData<
 公共约定的类型从包入口与 `shared` 入口导出：
 
 - `EditLinkOptions`、`EditLinkThemeData`、`EditLinkFrontmatter`、`EditLinkPageData`：编辑链接的选项、主题数据、frontmatter 与页面数据。主题可以在自己的类型中扩展它们。
-- `SidebarStructureData`、`SidebarStructureItem`、`SidebarStructureHelper`、`SidebarStructureHelperOptions`、`SidebarPageInfoGetter`、`SidebarDirInfoGetter`、`SidebarInfo`、`SidebarSorter`、`SidebarSorterFunction`、`SidebarSorterKeyword`：生成的侧边栏数据的类型。
+- `SidebarItemInfo`、`SidebarFileInfo`、`SidebarDirInfo`、`SidebarInfo`：页面或目录的规范化信息。
+- `SidebarFrontmatter`、`SidebarDirOptions`：内置 `getSidebarInfo()` 读取的默认 frontmatter 字段与目录分组选项。
+- `SidebarStructureData`、`SidebarStructureItem`、`SidebarStructureHelper`、`SidebarStructureHelperOptions`、`SidebarPageInfoGetter`、`SidebarDirInfoGetter`、`SidebarSorter`、`SidebarSorterFunction`、`SidebarSorterKeyword`：生成的侧边栏数据的类型。

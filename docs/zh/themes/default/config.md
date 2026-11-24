@@ -339,7 +339,7 @@ export default defineUserConfig({
 })
 ```
 
-条目读取自该范围下的页面，并按目录嵌套。页面的 frontmatter 控制生成的条目：
+条目读取自该范围下的页面，并按目录嵌套。结构工具默认会读取以下 frontmatter 字段：
 
 - `index: false` 将该页面从侧边栏中隐藏。
 - `order` 把页面排在无序页面之前（正数）或之后（负数）。
@@ -364,7 +364,7 @@ dir:
 ---
 ```
 
-完整的 frontmatter 约定参考 [theme-helper](../../tools/theme-helper.md#frontmatter-conventions)，`sidebarSorter` 选项参考[排序条目](../../tools/theme-helper.md#sorting-the-items)。
+默认的 frontmatter 映射参考 [theme-helper](../../tools/theme-helper.md#default-frontmatter-mapping)，`sidebarSorter` 选项参考[排序条目](../../tools/theme-helper.md#sorting-the-items)。
 
 ::: tip
 

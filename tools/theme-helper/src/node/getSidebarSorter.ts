@@ -29,14 +29,14 @@ export const sidebarReadmeSorter = (
 }
 
 /**
- * Sort the items by their `order` frontmatter
+ * Sort the items by their normalized `order`
  *
  * Positive orders are sorted in ascending order before the items without order,
- * negative orders are sorted after them.
+ * negative orders are sorted in ascending order after them.
  *
- * 按条目的 `order` frontmatter 排序
+ * 按条目的规范化 `order` 排序
  *
- * 正序按升序排在未设置顺序的条目之前，负序排在它们之后。
+ * 正数按升序排在未设置顺序的条目之前，负数按升序排在它们之后。
  *
  * @param infoA - First sidebar item / 第一个侧边栏条目
  * @param infoB - Second sidebar item / 第二个侧边栏条目
@@ -77,9 +77,9 @@ export const sidebarOrderSorter = (
 }
 
 /**
- * Sort the items by their `date` frontmatter in ascending order
+ * Sort the items by their normalized `date` in ascending order
  *
- * 按条目的 `date` frontmatter 升序排序
+ * 按条目的规范化 `date` 升序排序
  *
  * @param infoA - First sidebar item / 第一个侧边栏条目
  * @param infoB - Second sidebar item / 第二个侧边栏条目
@@ -89,22 +89,21 @@ export const sidebarDateSorter = (
   infoA: SidebarInfo,
   infoB: SidebarInfo,
 ): number => {
-  if (infoA.frontmatter?.date instanceof Date) {
-    if (infoB.frontmatter?.date instanceof Date)
-      return infoA.frontmatter.date.getTime() - infoB.frontmatter.date.getTime()
+  if (infoA.date) {
+    if (infoB.date) return infoA.date.getTime() - infoB.date.getTime()
 
     return -1
   }
 
-  if (infoB.frontmatter?.date instanceof Date) return 1
+  if (infoB.date) return 1
 
   return 0
 }
 
 /**
- * Sort the items by their `date` frontmatter in descending order
+ * Sort the items by their normalized `date` in descending order
  *
- * 按条目的 `date` frontmatter 降序排序
+ * 按条目的规范化 `date` 降序排序
  *
  * @param infoA - First sidebar item / 第一个侧边栏条目
  * @param infoB - Second sidebar item / 第二个侧边栏条目
@@ -114,14 +113,13 @@ export const sidebarDateDescSorter = (
   infoA: SidebarInfo,
   infoB: SidebarInfo,
 ): number => {
-  if (infoA.frontmatter?.date instanceof Date) {
-    if (infoB.frontmatter?.date instanceof Date)
-      return infoB.frontmatter.date.getTime() - infoA.frontmatter.date.getTime()
+  if (infoA.date) {
+    if (infoB.date) return infoB.date.getTime() - infoA.date.getTime()
 
     return -1
   }
 
-  if (infoB.frontmatter?.date instanceof Date) return 1
+  if (infoB.date) return 1
 
   return 0
 }
@@ -164,9 +162,9 @@ export const sidebarFilenameSorter = (
 }
 
 /**
- * Sort the items by their title
+ * Sort the items by their text
  *
- * 按条目标题排序
+ * 按条目文本排序
  *
  * @param infoA - First sidebar item / 第一个侧边栏条目
  * @param infoB - Second sidebar item / 第二个侧边栏条目
@@ -176,7 +174,7 @@ export const sidebarTitleSorter = (
   infoA: SidebarInfo,
   infoB: SidebarInfo,
 ): number =>
-  infoA.title.localeCompare(infoB.title, undefined, {
+  infoA.text.localeCompare(infoB.text, undefined, {
     numeric: true,
   })
 

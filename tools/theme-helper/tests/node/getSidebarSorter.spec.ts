@@ -21,10 +21,9 @@ const createFile = (
 ): SidebarFileInfo => ({
   type: 'file',
   filename,
-  title: filename.replace(/\.md$/u, ''),
+  text: filename.replace(/\.md$/u, ''),
+  link: `/${filename.replace(/\.md$/u, '.html')}`,
   order: null,
-  path: `/${filename}`,
-  frontmatter: {},
   pageData: null,
   ...options,
 })
@@ -35,11 +34,11 @@ const createDir = (
 ): SidebarDirInfo => ({
   type: 'dir',
   dirname,
-  title: dirname,
+  text: dirname,
   order: null,
-  groupInfo: { collapsible: true },
+  collapsible: true,
+  expanded: false,
   children: [],
-  frontmatter: null,
   pageData: null,
   ...options,
 })
@@ -97,7 +96,7 @@ describe(getSidebarSorter, () => {
     ).toStrictEqual(['README.md', 'a.md'])
   })
 
-  it('should sort by the order frontmatter', () => {
+  it('should sort by the order', () => {
     const items = [
       createFile('none.md'),
       createFile('negative.md', { order: -1 }),
@@ -127,12 +126,12 @@ describe(getSidebarSorter, () => {
     ).toStrictEqual(['guide.md', 'guide', 'page2.md', 'page10.md'])
   })
 
-  it('should sort by the date frontmatter', () => {
+  it('should sort by the date', () => {
     const older = createFile('older.md', {
-      frontmatter: { date: new Date('2024-01-01') },
+      date: new Date('2024-01-01'),
     })
     const newer = createFile('newer.md', {
-      frontmatter: { date: new Date('2025-01-01') },
+      date: new Date('2025-01-01'),
     })
     const noDate = createFile('no-date.md')
 
@@ -153,8 +152,8 @@ describe(getSidebarSorter, () => {
     expect(
       sort(
         [
-          createFile('b.md', { title: 'Item 10' }),
-          createFile('a.md', { title: 'Item 2' }),
+          createFile('b.md', { text: 'Item 10' }),
+          createFile('a.md', { text: 'Item 2' }),
         ],
         'title',
       ),
