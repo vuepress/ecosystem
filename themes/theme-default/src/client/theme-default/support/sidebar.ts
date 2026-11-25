@@ -1,3 +1,5 @@
+import { ensureEndingSlash } from '@vuepress/helper/client'
+import { getSidebarStructure } from '@vuepress/theme-helper/client'
 import { resolveRoute } from 'vuepress/client'
 
 import type { DefaultTheme } from '../shared.js'
@@ -57,6 +59,32 @@ export const resolveHeadingSidebar = (
   page ? [{ text: page.title, items: resolveHeadingItems(page.headers) }] : []
 
 /**
+ * Normalize the route scope of an item to start and end with a slash
+ *
+ * 将条目的路由范围规范化为以斜线开头和结尾
+ *
+ * @param base - The `base` of the item, which may be relative to `scope` / 条目的
+ *   `base`，可能相对于 `scope`
+ * @param scope - The route scope of the parent / 父级的路由范围
+ * @returns The normalized route scope / 规范化后的路由范围
+ */
+const resolveItemScope = (base: string | undefined, scope: string): string =>
+  base
+    ? ensureEndingSlash(base.startsWith('/') ? base : `${scope}${base}`)
+    : scope
+
+/**
+ * Get the sidebar generated from the file structure of a route scope
+ *
+ * 获取根据路由范围的文件结构生成的侧边栏
+ *
+ * @param scope - The route scope / 路由范围
+ * @returns The sidebar items / 侧边栏条目
+ */
+const resolveStructureSidebar = (scope: string): SidebarItem[] =>
+  getSidebarStructure<SidebarItem>(scope)
+
+/**
  * Get the `Sidebar` from sidebar option. This method will ensure to get correct
  * sidebar config from `MultiSideBarConfig` with various path combinations such
  * as matching `guide/` and `/guide/`. If no matching config was found, it will
@@ -66,10 +94,12 @@ export function getSidebar(
   _sidebar: DefaultTheme.Sidebar | 'heading' | false | undefined,
   path: string,
   page?: SidebarPage,
+  routeLocale = '/',
 ): SidebarItem[] {
   if (_sidebar === 'heading') return resolveHeadingSidebar(page)
+  if (_sidebar === 'structure') return resolveStructureSidebar(routeLocale)
   if (_sidebar === false || _sidebar == null) return []
-  if (Array.isArray(_sidebar)) return addBase(_sidebar)
+  if (Array.isArray(_sidebar)) return addBase(_sidebar, undefined, routeLocale)
 
   path = ensureStartingSlash(path)
 
@@ -82,13 +112,20 @@ export function getSidebar(
       return path.startsWith(ensureStartingSlash(dir))
     })
 
+  const dirScope = dir
+    ? ensureEndingSlash(dir.startsWith('/') ? dir : `/${dir}`)
+    : '/'
   const sidebar = dir ? (_sidebar[dir] ?? []) : []
 
   if (sidebar === 'heading') return resolveHeadingSidebar(page)
+  if (sidebar === 'structure') return resolveStructureSidebar(dirScope)
+  if (Array.isArray(sidebar)) return addBase(sidebar, undefined, dirScope)
 
-  return Array.isArray(sidebar)
-    ? addBase(sidebar)
-    : addBase(sidebar.items, sidebar.base)
+  return addBase(
+    sidebar.items,
+    sidebar.base,
+    resolveItemScope(sidebar.base, routeLocale),
+  )
 }
 
 /** Get or generate sidebar group from the given sidebar items. */
@@ -165,13 +202,27 @@ export function hasActiveLink(
   return false
 }
 
-function addBase(items: SidebarItem[], _base?: string): SidebarItem[] {
-  return [...items].map((_item) => {
-    const item = { ..._item }
-    const base = item.base || _base
+function addBase(
+  items: DefaultTheme.SidebarArray,
+  _base?: string,
+  scope = '/',
+): SidebarItem[] {
+  return items.map((_item) => {
+    const itemScope = resolveItemScope(_item.base, scope)
+    const base = _item.base || _base
+
+    if ('items' in _item && _item.items === 'structure') {
+      const { items: _children, ...item } = _item
+
+      return { ...item, items: resolveStructureSidebar(itemScope) }
+    }
+
+    const item: SidebarItem = { ..._item }
+
     if (base && item.link && !isExternal(item.link))
       item.link = base + item.link.replace(/^\//, base.endsWith('/') ? '' : '/')
-    if (item.items) item.items = addBase(item.items, base)
+    if (item.items) item.items = addBase(item.items, base, itemScope)
+
     return item
   })
 }

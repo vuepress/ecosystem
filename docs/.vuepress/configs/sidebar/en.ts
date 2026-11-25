@@ -257,6 +257,11 @@ export const sidebarEn: SidebarOptions = {
       ],
     },
     {
+      text: '@vuepress/theme-helper',
+      icon: 'hammer',
+      link: 'theme-helper',
+    },
+    {
       text: '@vuepress/test-utils',
       link: 'test-utils',
     },

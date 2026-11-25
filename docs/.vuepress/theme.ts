@@ -4,6 +4,7 @@ import type {
   NavbarOptions,
   SidebarItemOptions,
   SidebarOptions,
+  SidebarStructureOptions,
 } from '@vuepress/theme-classic'
 import { defaultTheme } from '@vuepress/theme-default'
 import type { DefaultTheme, ThemeConfig } from '@vuepress/theme-default'
@@ -115,12 +116,26 @@ const toNav = (navbar: NavbarOptions): DefaultTheme.NavItem[] => {
 }
 
 const toSidebarItem = (
-  item: SidebarItemOptions,
+  item: SidebarItemOptions | SidebarStructureOptions,
   prefix: string,
 ): DefaultTheme.SidebarItem => {
   // The theme resolves the text and the icon from the page meta, so a plain
   // string only needs its link resolved here.
   if (typeof item === 'string') return { link: resolveLink(prefix, item) }
+
+  // the docs site does not generate a sidebar from the file structure, so the
+  // generated children are left empty
+  if ('children' in item && item.children === 'structure') {
+    return {
+      text: item.text ?? toTitle(item.link ?? item.prefix ?? ''),
+      ...toIcon(item),
+      ...(item.link === undefined
+        ? {}
+        : { link: resolveLink(prefix, item.link) }),
+      items: [],
+      ...(item.collapsible ? { collapsed: false } : {}),
+    }
+  }
 
   if ('children' in item && Array.isArray(item.children)) {
     const childPrefix = resolveLink(prefix, item.prefix ?? '')
@@ -152,16 +167,19 @@ const toSidebarItem = (
 const toSidebar = (sidebar: SidebarOptions | false): ThemeConfig['sidebar'] => {
   if (sidebar === false) return false
   if (sidebar === 'heading') return 'heading'
+  if (sidebar === 'structure') return 'structure'
 
   if (Array.isArray(sidebar))
     return sidebar.map((item) => toSidebarItem(item, ''))
 
-  const result: Record<string, DefaultTheme.SidebarItem[] | 'heading' | false> =
-    {}
+  const result: Record<
+    string,
+    DefaultTheme.SidebarItem[] | 'heading' | 'structure' | false
+  > = {}
 
   for (const [prefix, items] of Object.entries(sidebar)) {
     result[prefix] =
-      items === false || items === 'heading'
+      items === false || items === 'heading' || items === 'structure'
         ? items
         : items.map((item) => toSidebarItem(item, prefix))
   }

@@ -243,3 +243,27 @@ prev: ../../guide/getting-started.md
 类型和 [prev](#prev) Frontmatter 相同。
 
 :::
+
+## 侧边栏结构 {#sidebar-structure}
+
+当侧边栏根据文件结构生成时，即 [sidebar](./config.md#sidebar) 为 `'structure'`、`'/path/': 'structure'` 或 `{ children: 'structure' }` 时，本节中的字段会生效。它们对手动配置的侧边栏没有影响。
+
+:::: fields
+@`index` type=boolean
+
+设为 `false` 可将该页面从生成的侧边栏中隐藏。
+
+@`order` type=number
+
+条目在同级中的位置。正数会把页面排在无序页面之前，负数会排在其后。
+
+@`shortTitle` type=string
+
+条目的文本，优先于页面标题。
+
+@`dir` type=`SidebarDirOptions`
+
+表示本页面所在目录的分组的选项。它只会从目录的 `README.md` 中读取，其他页面的该字段会被忽略。
+
+选项的默认映射记录在 [theme-helper](../../tools/theme-helper.md#default-frontmatter-mapping) 中：`text`、`icon`、`collapsible`、`expanded`、`link`、`index` 与 `order`。
+::::

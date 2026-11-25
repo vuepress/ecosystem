@@ -11,6 +11,7 @@ import type { MediumZoomPluginOptions } from '@vuepress/plugin-medium-zoom'
 import type { SeoPluginOptions } from '@vuepress/plugin-seo'
 import type { ShikiPluginOptions } from '@vuepress/plugin-shiki'
 import type { SitemapPluginOptions } from '@vuepress/plugin-sitemap'
+import type { SidebarSorter } from '@vuepress/theme-helper'
 /* oxlint-disable typescript/no-explicit-any, typescript/no-namespace -- Theme types ported from VitePress, the namespace keeps the component-facing shapes */
 import type { UseDarkOptions } from '@vueuse/core'
 import type { Ref } from 'vue'
@@ -324,14 +325,23 @@ export interface ThemeConfig {
   nav?: DefaultTheme.NavItem[]
 
   /**
-   * The sidebar items, or `'heading'` to generate the sidebar from the page
-   * headings
+   * The sidebar items, `'heading'` to generate the sidebar from the page
+   * headings, or `'structure'` to generate it from the file structure
    *
-   * 侧边栏条目，或设为 `'heading'` 使用页面标题自动生成侧边栏
+   * 侧边栏条目，设为 `'heading'` 使用页面标题自动生成侧边栏，或设为 `'structure'` 使用文件结构自动生成侧边栏
    *
    * @default 'heading'
    */
   sidebar?: DefaultTheme.Sidebar | 'heading' | false
+
+  /**
+   * Sorters of the sidebar generated from the file structure
+   *
+   * 由文件结构生成的侧边栏的排序器
+   *
+   * @default ['readme', 'order', 'title', 'filename']
+   */
+  sidebarSorter?: SidebarSorter
 
   /**
    * The maximum depth of the sidebar headings, only used when `sidebar` is
@@ -621,13 +631,29 @@ export namespace DefaultTheme {
   // sidebar -------------------------------------------------------------------
 
   /** The sidebar config / 侧边栏配置 */
-  export type Sidebar = SidebarItem[] | SidebarMulti
+  export type Sidebar = SidebarArray | SidebarMulti | 'structure'
+
+  /** The sidebar items of a single sidebar / 单个侧边栏的条目 */
+  export type SidebarArray = (SidebarItem | SidebarStructureItem)[]
 
   /** The sidebar config of each path / 各路径的侧边栏配置 */
   export type SidebarMulti = Record<
     string,
-    SidebarItem[] | { items: SidebarItem[]; base: string } | 'heading'
+    | SidebarArray
+    | { items: SidebarArray; base: string }
+    | 'heading'
+    | 'structure'
   >
+
+  /**
+   * A sidebar group whose children are generated from the file structure
+   *
+   * 子项由文件结构生成的侧边栏分组
+   */
+  export interface SidebarStructureItem extends Omit<SidebarItem, 'items'> {
+    /** Generate the children from the file structure / 由文件结构生成子项 */
+    items: 'structure'
+  }
 
   /** A sidebar item / 侧边栏条目 */
   export interface SidebarItem {

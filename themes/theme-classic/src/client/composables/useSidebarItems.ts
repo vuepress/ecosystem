@@ -1,4 +1,6 @@
 import { isLinkRelative, keys, startsWith } from '@vuepress/helper/client'
+import { getSidebarStructure } from '@vuepress/theme-helper/client'
+import type { SidebarStructureItem } from '@vuepress/theme-helper/client'
 import type { ComputedRef, InjectionKey } from 'vue'
 import { computed, inject, provide } from 'vue'
 import type { PageData, PageHeader } from 'vuepress/client'
@@ -18,6 +20,7 @@ import type {
   SidebarItemOptions,
   SidebarObjectOptions,
   SidebarOptions,
+  SidebarStructureOptions,
 } from '../../shared/index.js'
 import type {
   SidebarGroupItem,
@@ -71,6 +74,74 @@ export const resolveSidebarHeadingItem = (
 ]
 
 /**
+ * Convert the sidebar structure items to the sidebar items of the classic theme
+ *
+ * When an item points to the current page and has no children, the headers of
+ * the current page are used as its children.
+ *
+ * 将侧边栏结构条目转换为经典主题的侧边栏条目
+ *
+ * 当条目指向当前页面且没有子项时，当前页面的标题会作为它的子项。
+ *
+ * @param items - The sidebar structure items / 侧边栏结构条目
+ * @param path - Current page path / 当前页面路径
+ * @param headers - Current page headers / 当前页面的标题列表
+ * @returns The resolved sidebar items / 解析后的侧边栏条目
+ */
+const resolveStructureItems = (
+  items: SidebarStructureItem[],
+  path: string,
+  headers: PageHeader[],
+): SidebarItem[] =>
+  items.map((item) => {
+    const children = item.children
+      ? resolveStructureItems(item.children, path, headers)
+      : []
+
+    // use the headers of the current page as children when the item points to
+    // the current page and has no children
+    const itemChildren =
+      children.length === 0 && item.link === path
+        ? resolveSidebarPageHeaders(
+            headers[0]?.level === 1 ? headers[0].children : headers,
+          )
+        : children
+
+    if (itemChildren.length > 0 || !item.link) {
+      return {
+        text: item.text,
+        ...(item.link ? { link: item.link } : {}),
+        ...(item.icon ? { icon: item.icon } : {}),
+        collapsible: item.collapsible !== false,
+        children: itemChildren,
+      }
+    }
+
+    return {
+      text: item.text,
+      link: item.link,
+      ...(item.icon ? { icon: item.icon } : {}),
+    }
+  })
+
+/**
+ * Get the sidebar items generated from the file structure of a route scope
+ *
+ * 获取根据路由范围的文件结构生成的侧边栏条目
+ *
+ * @param scope - The route scope / 路由范围
+ * @param path - Current page path / 当前页面路径
+ * @param headers - Current page headers / 当前页面的标题列表
+ * @returns The resolved sidebar items / 解析后的侧边栏条目
+ */
+const resolveStructureSidebarItems = (
+  scope: string,
+  path: string,
+  headers: PageHeader[],
+): SidebarItem[] =>
+  resolveStructureItems(getSidebarStructure(scope), path, headers)
+
+/**
  * Resolve sidebar items if the config is an array
  *
  * @param sidebarConfig Sidebar config array
@@ -86,10 +157,33 @@ export const resolveArraySidebarItems = (
   prefix = '',
 ): SidebarItem[] => {
   const handleChildItem = (
-    item: SidebarItemOptions,
+    item: SidebarItemOptions | SidebarStructureOptions,
     pathPrefix: string,
   ): SidebarItem => {
     if (isString(item)) return resolveAutoLink(resolvePrefix(pathPrefix, item))
+
+    if ('children' in item && item.children === 'structure') {
+      const { children: _children, link: groupLink, ...group } = item
+
+      const resolvedGroup = isString(groupLink)
+        ? isLinkRelative(groupLink)
+          ? resolveLinkItem(
+              { ...group, link: groupLink },
+              resolvePrefix(pathPrefix, groupLink),
+            )
+          : { ...group, link: groupLink }
+        : group
+
+      return {
+        ...resolvedGroup,
+        collapsible: item.collapsible !== false,
+        children: resolveStructureSidebarItems(
+          resolvePrefix(pathPrefix, item.prefix ?? ''),
+          path,
+          headers,
+        ),
+      }
+    }
 
     if ('children' in item) {
       const groupItem = item as unknown as SidebarGroupItem
@@ -172,7 +266,9 @@ export const resolveMultiSidebarItems = (
         ? []
         : matched === 'heading'
           ? resolveSidebarHeadingItem(page, headers)
-          : resolveArraySidebarItems(matched, headers, path, base)
+          : matched === 'structure'
+            ? resolveStructureSidebarItems(base, path, headers)
+            : resolveArraySidebarItems(matched, headers, path, base)
     }
   }
 
@@ -225,6 +321,9 @@ export const resolveSidebarItems = (
 
   if (sidebarConfig === 'heading')
     return resolveSidebarHeadingItem(page, headers)
+
+  if (sidebarConfig === 'structure')
+    return resolveStructureSidebarItems(routeLocale, path, headers)
 
   if (Array.isArray(sidebarConfig))
     return resolveArraySidebarItems(sidebarConfig, headers, path, routeLocale)

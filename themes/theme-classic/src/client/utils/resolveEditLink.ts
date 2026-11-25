@@ -1,61 +1,6 @@
-import {
-  isLinkHttp,
-  removeEndingSlash,
-  removeLeadingSlash,
-} from 'vuepress/shared'
-
-import type { RepoType } from '@theme/resolveRepoType'
-import { resolveRepoType } from '@theme/resolveRepoType'
-
-export const EDIT_LINK_PATTERNS: Record<Exclude<RepoType, null>, string> = {
-  GitHub: ':repo/edit/:branch/:path',
-  GitLab: ':repo/-/edit/:branch/:path',
-  Gitee: ':repo/edit/:branch/:path',
-  Bitbucket:
-    ':repo/src/:branch/:path?mode=edit&spa=0&at=:branch&fileviewer=file-view-default',
-}
-
-const resolveEditLinkPatterns = ({
-  docsRepo,
-  editLinkPattern,
-}: {
-  docsRepo: string
-  editLinkPattern?: string
-}): string | null => {
-  if (editLinkPattern) return editLinkPattern
-
-  const repoType = resolveRepoType(docsRepo)
-  if (repoType != null) return EDIT_LINK_PATTERNS[repoType]
-
-  return null
-}
-
-export const resolveEditLink = ({
-  docsRepo,
-  docsBranch,
-  docsDir,
-  filePathRelative,
-  editLinkPattern,
-}: {
-  docsRepo: string
-  docsBranch: string
-  docsDir: string
-  filePathRelative: string | null
-  editLinkPattern?: string
-}): string | null => {
-  if (!filePathRelative) return null
-
-  const pattern = resolveEditLinkPatterns({ docsRepo, editLinkPattern })
-  if (!pattern) return null
-
-  return pattern
-    .replace(
-      /:repo/u,
-      isLinkHttp(docsRepo) ? docsRepo : `https://github.com/${docsRepo}`,
-    )
-    .replace(/:branch/u, docsBranch)
-    .replace(
-      /:path/u,
-      removeLeadingSlash(`${removeEndingSlash(docsDir)}/${filePathRelative}`),
-    )
-}
+// the edit link utils are provided by `@vuepress/theme-helper` so they can be
+// shared by other themes
+export {
+  EDIT_LINK_PATTERNS,
+  resolveEditLink,
+} from '@vuepress/theme-helper/client'

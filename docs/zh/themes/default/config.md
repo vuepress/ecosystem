@@ -244,11 +244,12 @@ export default defineUserConfig({
 :::: fields
 @`sidebar` type=`DefaultTheme.Sidebar | 'heading' | false` default=`'heading'`
 
-侧边栏配置。它接受四种形态：
+侧边栏配置。它接受五种形态：
 
 - `'heading'`：根据当前页面的标题生成侧边栏。这是默认值。
+- `'structure'`：根据文件结构生成侧边栏。参考[根据文件结构生成](#generate-from-the-file-structure)。
 - 一个[侧边栏项目](#sidebar-items)数组：所有页面使用相同的侧边栏。
-- 一个以路径为键的对象：每个路径使用不同的侧边栏。键按路径前缀匹配，最长的匹配键生效。
+- 一个以路径为键的对象：每个路径使用不同的侧边栏。键按路径前缀匹配，最长的匹配键生效。值为侧边栏数组、`'heading'` 或 `'structure'`。
 - `false`：不显示侧边栏。
 
 `sidebar` 可以在 frontmatter 中按页面覆盖。
@@ -256,6 +257,10 @@ export default defineUserConfig({
 @`sidebarDepth` type=number default=`2`
 
 侧边栏的最大标题深度，包含页面标题本身。它仅在 `sidebar` 为 `'heading'` 时使用。`1` 显示页面标题和 `h2` 标题，`2` 还会显示 `h3` 标题，依此类推。
+
+@`sidebarSorter` type=`SidebarSorter` default=`['readme', 'order', 'title', 'filename']`
+
+根据文件结构生成的条目的排序器。它接受关键字、函数或它们的数组。参考[排序条目](../../tools/theme-helper.md#sorting-the-items)。
 ::::
 
 ### 侧边栏项目 {#sidebar-items}
@@ -316,6 +321,56 @@ export default defineUserConfig({
   }),
 })
 ```
+
+### 根据文件结构生成 {#generate-from-the-file-structure}
+
+侧边栏可以根据站点的文件结构生成。将 `sidebar` 设为 `'structure'` 以生成所有路由范围的侧边栏，把它作为路径对象的值以生成对应路径的侧边栏，或把分组的 `items` 设为 `'structure'` 以只生成该分组的子项：
+
+```ts title=".vuepress/config.ts"
+export default defineUserConfig({
+  theme: defaultTheme({
+    // 整个站点
+    sidebar: 'structure',
+    // 或者：仅部分路径
+    // sidebar: { '/guide/': 'structure' },
+    // 或者：仅生成分组的子项
+    // sidebar: [{ text: 'Guide', base: '/guide/', items: 'structure' }],
+  }),
+})
+```
+
+条目读取自该范围下的页面，并按目录嵌套。结构工具默认会读取以下 frontmatter 字段：
+
+- `index: false` 将该页面从侧边栏中隐藏。
+- `order` 把页面排在无序页面之前（正数）或之后（负数）。
+- `shortTitle` 覆盖条目文本。
+- `icon` 设置条目图标。
+- `README.md` 的 `dir` 字段配置其目录的分组：`text`、`icon`、`collapsible`、`expanded`、`link`、`index` 与 `order`。
+
+```md title="guide/a.md"
+---
+order: 1
+icon: a
+---
+```
+
+```md title="guide/README.md"
+---
+dir:
+  text: Guide
+  icon: guide
+  collapsible: true
+  expanded: true
+---
+```
+
+默认的 frontmatter 映射参考 [theme-helper](../../tools/theme-helper.md#default-frontmatter-mapping)，`sidebarSorter` 选项参考[排序条目](../../tools/theme-helper.md#sorting-the-items)。
+
+::: tip
+
+`'structure'` 只支持在主题配置中使用，不支持在页面的 frontmatter 中使用。
+
+:::
 
 ## 页面 {#page}
 

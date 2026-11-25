@@ -225,6 +225,23 @@ export default {
 
 如果你设置为 `'heading'`，侧边栏会根据页面标题自动生成。
 
+如果你设置为 `'structure'`，侧边栏会根据页面的文件结构生成。结构工具默认会读取一些 frontmatter 字段，参考[侧边栏结构](./frontmatter.md#sidebar-structure)：
+
+```ts title=".vuepress/config.ts"
+export default {
+  theme: classicTheme({
+    // 整个站点
+    sidebar: 'structure',
+    // 或者：仅部分路径
+    // sidebar: { '/guide/': 'structure' },
+    // 或者：生成分组的子项，`prefix` 即范围
+    // sidebar: [{ text: 'Guide', prefix: '/guide/', children: 'structure' }],
+  }),
+}
+```
+
+为了手动配置侧边栏元素，你可以将其设置为 _侧边栏数组_，其中的每个元素是一个 `SidebarItem` 对象或者一个字符串：
+
 为了手动配置侧边栏元素，你可以将其设置为 _侧边栏数组_。普通的链接条目推荐使用字符串形式，即目标页面文件的路径。它将会被转换为 `SidebarItem` 对象，将页面标题作为 `text`，将页面路由路径作为 `link`，将页面的 frontmatter `icon` 作为 `icon`，并根据页面小标题自动生成 `children`。
 
 当条目需要更多控制时，你也可以使用对象：
@@ -235,7 +252,9 @@ export default {
 如果你想在不同子路径中使用不同的侧边栏，你可以将该配置项设置为 _侧边栏对象_：
 
 - Key 为路径前缀。
-- Value 为 _侧边栏数组_ 或 `"heading"` 以自动为相应路径生成基于标题的侧边栏。
+- Value 为 _侧边栏数组_、`'heading'` 以自动为相应路径生成基于标题的侧边栏，或 `'structure'` 以根据文件结构生成。
+
+若要根据文件结构生成分组的子项，请把分组的 `children` 设为 `'structure'`。分组的 `prefix` 即生成子项的范围。
 
 ```ts title=".vuepress/config.ts"
 export default {
@@ -328,6 +347,12 @@ export default {
 - ...
 
 你可以通过页面的 [sidebarDepth](./frontmatter.md#sidebardepth) frontmatter 来覆盖这个全局配置。
+
+@`sidebarSorter` type=`SidebarSorter` default=`['readme', 'order', 'title', 'filename']`
+
+根据文件结构生成的条目的排序器。它接受关键字、函数或它们的数组。
+
+参考：[排序条目](../../tools/theme-helper.md#sorting-the-items)
 
 @`editLink` type=boolean default=`true`
 

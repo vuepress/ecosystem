@@ -305,6 +305,34 @@ lastUpdated: 1700000000000
 
 默认情况下，上一篇/下一篇链接是页面在侧边栏中的相邻项。链接文本会先回退到侧边栏项目的 `docFooterText`，再回退到项目文本。
 
+## 侧边栏结构 {#sidebar-structure}
+
+当侧边栏根据文件结构生成时，即 [sidebar](./config.md#generate-from-the-file-structure) 为 `'structure'`、`'/path/': 'structure'` 或 `{ items: 'structure' }` 时，本节中的字段会生效。它们对手动配置的侧边栏没有影响。
+
+:::: fields
+@`index` type=boolean
+
+设为 `false` 可将该页面从生成的侧边栏中隐藏。
+
+@`order` type=number
+
+条目在同级中的位置。正数会把页面排在无序页面之前，负数会排在其后。
+
+@`shortTitle` type=string
+
+条目的文本，优先于页面标题。
+
+@`icon` type=string
+
+条目的图标，形式与 `sidebar[*].icon` 相同。
+
+@`dir` type=`SidebarDirOptions`
+
+表示本页面所在目录的分组的选项。它只会从目录的 `README.md` 中读取，其他页面的该字段会被忽略。
+
+选项的默认映射记录在 [theme-helper](../../tools/theme-helper.md#default-frontmatter-mapping) 中：`text`、`icon`、`collapsible`、`expanded`、`link`、`index` 与 `order`。
+::::
+
 ## 404 页面 {#404-page}
 
 主题注册了一个 `NotFound` 布局。VuePress 会用该布局生成 `404.html` 页面，因此页面会显示主题的未找到界面：错误码、标题、引文和返回主页的链接。
@@ -364,3 +392,8 @@ lastUpdated: 1700000000000
 | `next`           | `string \| ThemePageLink \| false`                            | 文档     | [文档页面](#document-page)            |
 | `sidebar`        | `DefaultTheme.Sidebar \| 'heading' \| false`                  | 文档     | [文档页面](#document-page)            |
 | `sidebarDepth`   | `number`                                                      | 文档     | [文档页面](#document-page)            |
+| `index`          | `boolean`                                                     | 文档     | [侧边栏结构](#sidebar-structure)      |
+| `order`          | `number`                                                      | 文档     | [侧边栏结构](#sidebar-structure)      |
+| `shortTitle`     | `string`                                                      | 文档     | [侧边栏结构](#sidebar-structure)      |
+| `icon`           | `string`                                                      | 文档     | [侧边栏结构](#sidebar-structure)      |
+| `dir`            | `SidebarDirOptions`                                           | 文档     | [侧边栏结构](#sidebar-structure)      |

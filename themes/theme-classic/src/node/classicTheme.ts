@@ -13,7 +13,11 @@ import { prismjsPlugin } from '@vuepress/plugin-prismjs'
 import { seoPlugin } from '@vuepress/plugin-seo'
 import { sitemapPlugin } from '@vuepress/plugin-sitemap'
 import { themeDataPlugin } from '@vuepress/plugin-theme-data'
-import type { Page, Theme } from 'vuepress/core'
+import {
+  createSidebarStructureHelper,
+  extendsPageData,
+} from '@vuepress/theme-helper'
+import type { Theme } from 'vuepress/core'
 import { isPlainObject, isString } from 'vuepress/shared'
 import { fs, getDirname, path } from 'vuepress/utils'
 
@@ -44,9 +48,17 @@ export interface ClassicThemeOptions extends ClassicThemeLocaleOptions {
 export const classicTheme = ({
   hostname,
   themePlugins = {},
+  sidebarSorter,
   ...localeOptions
 }: ClassicThemeOptions = {}): Theme => {
   assignDefaultLocaleOptions(localeOptions)
+
+  const sidebarHelper = createSidebarStructureHelper({
+    themeData: localeOptions,
+    childrenKey: 'children',
+    prefixKey: 'prefix',
+    sorter: sidebarSorter,
+  })
 
   return {
     name: '@vuepress/theme-classic',
@@ -92,11 +104,8 @@ export const classicTheme = ({
       addViteOptimizeDepsExclude(bundlerOptions, app, '@theme')
     },
 
-    extendsPage: (page: Page) => {
-      // save relative file path into page data to generate edit link
-      page.data.filePathRelative = page.filePathRelative
-      // save title into route meta to generate navbar and sidebar
-      page.routeMeta.title = page.title
+    extendsPage: (page) => {
+      extendsPageData(page)
 
       // save icon into route meta to generate navbar and sidebar
       if (isString(page.frontmatter.icon))
@@ -201,5 +210,14 @@ export const classicTheme = ({
       // @vuepress/plugin-theme-data
       themeDataPlugin({ themeData: localeOptions }),
     ],
+
+    // the client reads the sidebar generated from the file structure from a
+    // generated module, which must exist even when no sidebar uses
+    // `'structure'`, so the data is always prepared
+    onPrepared: (app) => sidebarHelper.prepare(app),
+
+    onWatched: (app, watchers): void => {
+      sidebarHelper.watch(app, watchers)
+    },
   }
 }

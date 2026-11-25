@@ -10,6 +10,7 @@ import type {
   SidebarGroupOptions,
   SidebarItemOptions,
   SidebarOptions,
+  SidebarStructureOptions,
 } from '@vuepress/theme-classic'
 
 type NavItem =
@@ -17,6 +18,7 @@ type NavItem =
   | NavbarLinkOptions
   | SidebarGroupOptions
   | SidebarItemOptions
+  | SidebarStructureOptions
 
 const resolvePrefix = (prefix: string, path: string): string =>
   isLinkAbsolute(path) || isLinkWithProtocol(path)
@@ -42,7 +44,8 @@ const collectIcons = (
 
     if (path && item.icon) result.set(path, item.icon)
 
-    if ('children' in item) collectIcons(item.children, childPrefix, result)
+    if ('children' in item && Array.isArray(item.children))
+      collectIcons(item.children, childPrefix, result)
   }
 }
 
