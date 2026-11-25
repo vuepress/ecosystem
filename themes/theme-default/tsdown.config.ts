@@ -32,13 +32,13 @@ const clientAssets = (): Rolldown.Plugin => {
 
   return {
     name: 'vuepress:theme-default-client-assets',
-    resolveId(id) {
+    resolveId(id): { id: string; external: 'relative' } | null {
       if (id.endsWith('.css') && id[0] === '.')
         return { id, external: 'relative' }
 
       return null
     },
-    buildStart() {
+    buildStart(): void {
       for (const entry of readdirSync(clientDir, {
         recursive: true,
         encoding: 'utf8',

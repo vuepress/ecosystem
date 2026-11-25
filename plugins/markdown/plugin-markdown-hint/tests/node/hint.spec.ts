@@ -18,7 +18,7 @@ const locales = {
 }
 
 const createMarkdown = (): Markdown =>
-  createTestMarkdown({ plugins: [(md) => hint(md, locales)] })
+  createTestMarkdown({ plugins: [(md): void => hint(md, locales)] })
 
 describe('markdown-hint', () => {
   it('should render the container with the default title', () => {

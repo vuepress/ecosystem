@@ -84,7 +84,7 @@ export const generateScraperConfig = async (
     debug,
     fullScrape,
     diffDepth = 1,
-    convertDiffFilesToMarkdown = (files) => files,
+    convertDiffFilesToMarkdown = (files): string[] => files,
   }: GenerateOnlyUrlOptions = {},
 ): Promise<GenerateScrapeStatus> => {
   // ensure NODE_ENV is set

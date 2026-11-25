@@ -29,7 +29,7 @@ const replaceAssetsFactory: UnpluginFactory<ReplaceAssetsFactoryOptions> = (
     enforce: meta?.framework === 'vite' ? 'pre' : undefined,
     transform: {
       filter: { id: { exclude: [/\.json(?:$|\?)/u, /\.html?$/u] } },
-      handler(code) {
+      handler(code): string {
         return transformAssets(code, pattern, options)
       },
     },

@@ -123,7 +123,7 @@ export const createTwoslashTransformer = async (
 
     ...twoslashTransformer,
 
-    preprocess(code, preprocessOptions) {
+    preprocess(code, preprocessOptions): string | void {
       const { transformers } = preprocessOptions
 
       if (transformers) {
@@ -149,7 +149,7 @@ export const createTwoslashTransformer = async (
       return twoslashTransformer.preprocess!.call(this, code, preprocessOptions)
     },
 
-    postprocess(html) {
+    postprocess(html): string {
       return this.meta.twoslash ? html.replaceAll('{', '&#123;') : html
     },
   }

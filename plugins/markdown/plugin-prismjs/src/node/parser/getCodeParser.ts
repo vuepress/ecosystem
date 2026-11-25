@@ -67,7 +67,7 @@ const createOpenTag = (
       classList,
       after: hashHtml ? snippet.slice(-1) : '',
       content,
-      toString() {
+      toString(): string {
         // oxlint-disable-next-line no-shadow
         const { before, after, classList, content } = this
         const className = uniq(classList).join(' ')
@@ -82,7 +82,7 @@ const createOpenTag = (
     classList: [...classList, ...match.groups!.class.split(' ')],
     after: snippet.slice(match.index + match[0].length),
     content,
-    toString() {
+    toString(): string {
       // oxlint-disable-next-line no-shadow
       const { before, after, classList, content } = this
       const className = uniq(classList).join(' ')
