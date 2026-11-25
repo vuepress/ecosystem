@@ -111,12 +111,17 @@ const resolveStructureItems = (
       return {
         text: item.text,
         ...(item.link ? { link: item.link } : {}),
+        ...(item.icon ? { icon: item.icon } : {}),
         collapsible: item.collapsible !== false,
         children: itemChildren,
       }
     }
 
-    return { text: item.text, link: item.link }
+    return {
+      text: item.text,
+      link: item.link,
+      ...(item.icon ? { icon: item.icon } : {}),
+    }
   })
 
 /**

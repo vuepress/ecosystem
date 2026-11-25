@@ -19,10 +19,11 @@ const { structureData } = vi.hoisted(
   } => ({
     structureData: {
       '/': [
-        { text: 'Home', link: '/' },
+        { text: 'Home', link: '/', icon: 'home-icon' },
         {
           text: 'Guide',
           link: '/guide/',
+          icon: 'guide-icon',
           children: [{ text: 'A', link: '/guide/a.html' }],
         },
       ],
@@ -75,6 +76,19 @@ const SidebarTree = defineComponent({
     const sidebarItems = useSidebarItems()
 
     return () => h('pre', serializeSidebar(sidebarItems.value))
+  },
+})
+
+/**
+ * Serialize the raw sidebar items, so that the fields other than the text and
+ * the link can be asserted.
+ */
+const SidebarData = defineComponent({
+  name: 'TestSidebarData',
+  setup(): () => VNode {
+    const sidebarItems = useSidebarItems()
+
+    return () => h('pre', JSON.stringify(sidebarItems.value))
   },
 })
 
@@ -263,6 +277,19 @@ describe('structure sidebar', () => {
     expect(html).toContain(
       ['Home | /', 'Guide | /guide/', '  A | /guide/a.html'].join('\n'),
     )
+  })
+
+  it('should keep the icons of the structure items', async () => {
+    const html = await renderVuePress({
+      clientConfigs,
+      rootComponent: SidebarData,
+      page: { path: '/', title: 'Home' },
+      site: { title: 'My Site' },
+      themeData: { locales: { '/': { sidebar: 'structure' } } },
+    })
+
+    expect(html).toContain('&quot;icon&quot;:&quot;home-icon&quot;')
+    expect(html).toContain('&quot;icon&quot;:&quot;guide-icon&quot;')
   })
 
   it('should resolve a `structure` sidebar of a path', async () => {
