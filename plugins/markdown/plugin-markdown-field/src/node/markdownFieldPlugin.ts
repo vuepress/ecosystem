@@ -67,7 +67,6 @@ export const markdownFieldPlugin =
 
       extendsMarkdown: (md) => {
         const { anchor, slugify } = app.options.markdown
-        // oxlint-disable-next-line typescript/unbound-method -- slugify never uses `this`
         const anchorSlugify = isPlainObject(anchor) ? anchor.slugify : undefined
 
         md.use(field, {
