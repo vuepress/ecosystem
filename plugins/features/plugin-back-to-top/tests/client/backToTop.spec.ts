@@ -115,7 +115,12 @@ describe('back to top button', () => {
     expect(progress.attributes('role')).toBe('progressbar')
     // the progressbar must not reference a label that does not exist
     expect(progress.attributes('aria-labelledby')).toBeUndefined()
-    expect(Number(progress.attributes('aria-valuenow'))).not.toBeNaN()
+    // an unmeasurable body must not leak `NaN` or a negative number into the
+    // progress bar, so the value always stays inside a finite 0-100 range
+    const value = Number(progress.attributes('aria-valuenow'))
+
+    expect(value).toBeGreaterThanOrEqual(0)
+    expect(value).toBeLessThanOrEqual(100)
     expect(progress.find('circle').attributes('stroke-dasharray')).toBeDefined()
   })
 
