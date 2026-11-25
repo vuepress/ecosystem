@@ -35,7 +35,9 @@ describe(chainRspack, () => {
 
     expect(wrapped).toBeTypeOf('function')
 
-    const config = {} as RspackChainConfig
+    // The config is only forwarded to the mocks, so a real `RspackChain`
+    // instance is not needed here.
+    const config = {} as unknown as RspackChainConfig
     wrapped?.(config, true, false)
 
     expect(originalChain).toHaveBeenCalledWith(config, true, false)

@@ -34,7 +34,7 @@ describe(createTestMarkdown, () => {
     const app = await createTestApp({
       plugins: [
         (): PluginObject => ({
-          extendsMarkdown: (md) => {
+          extendsMarkdown: (md): void => {
             md.renderer.rules.test_rule = (): string => 'mocked'
           },
           name: 'test-markdown-plugin',

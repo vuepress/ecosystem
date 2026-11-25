@@ -24,7 +24,7 @@ const createCanvasContext = (): CanvasRenderingContext2D => {
   const target: Record<string | symbol, unknown> = {}
 
   return new Proxy(target, {
-    get: (source, property) => {
+    get: (source, property): unknown => {
       if (property in source) return source[property]
 
       switch (property) {
@@ -57,7 +57,7 @@ const createCanvasContext = (): CanvasRenderingContext2D => {
         }
       }
     },
-    set: (source, property, value) => {
+    set: (source, property, value): boolean => {
       source[property] = value
 
       return true
