@@ -491,7 +491,7 @@ importers:
     dependencies:
       '@iconify-json/vscode-icons':
         specifier: ^1.2.99
-        version: 1.2.99
+        version: 1.2.100
       '@videojs/html':
         specifier: 10.6.0
         version: 10.6.0(@videojs/dash-video@10.5.0)(@videojs/hlsjs-video@10.5.0)(@videojs/spotify-audio@10.5.0)(@videojs/tiktok-video@10.5.0)(@videojs/twitch-video@10.5.0)(@videojs/vimeo-video@10.5.0)(@videojs/youtube-video@10.5.0)(react@19.3.1)
@@ -1314,7 +1314,7 @@ importers:
     devDependencies:
       '@iconify-json/vscode-icons':
         specifier: ^1.2.99
-        version: 1.2.99
+        version: 1.2.100
       '@vuepress/highlighter-helper':
         specifier: workspace:*
         version: link:../../../tools/highlighter-helper
@@ -3649,8 +3649,8 @@ packages:
   '@iconify-json/mdi@1.2.3':
     resolution: {integrity: sha512-O3cLwbDOK7NNDf2ihaQOH5F9JglnulNDFV7WprU2dSoZu3h3cWH//h74uQAB87brHmvFVxIOkuBX2sZSzYhScg==}
 
-  '@iconify-json/vscode-icons@1.2.99':
-    resolution: {integrity: sha512-1wYd60jxxMXxOj4vj3sXVN99Xjk4tyKjvdqmS+C3D91dGwuXUcwW60tzQwEUt5TPI4icWqFMoUY0GTOhr6syJA==}
+  '@iconify-json/vscode-icons@1.2.100':
+    resolution: {integrity: sha512-CUhMfmjYpRRRyC+KM4Zzrft8XE4VIx9EAt1gnA6Xgyg6gz9Dpsf2NVDd1MAowKM3uYfRk1/6vYc01tlE7WQVXw==}
 
   '@iconify/types@2.0.0':
     resolution: {integrity: sha512-+wluvCrRhXrhyOmRDJ3q8mux9JkKy5SJ/v8ol2tu4FVjyYvtEzkc/3pK15ET6RKg4b4w4BmTk1+gsCUhf21Ykg==}
@@ -12862,7 +12862,7 @@ snapshots:
     dependencies:
       '@iconify/types': 2.0.0
 
-  '@iconify-json/vscode-icons@1.2.99':
+  '@iconify-json/vscode-icons@1.2.100':
     dependencies:
       '@iconify/types': 2.0.0
 
