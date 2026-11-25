@@ -4,6 +4,7 @@ import { resolveRoute, useRoutePath } from 'vuepress/client'
 import { isPlainObject, isString } from 'vuepress/shared'
 
 import { resolveAutoLink } from '@theme/resolveAutoLink'
+import { resolveLinkItem } from '@theme/resolveLinkItem'
 import { useData } from '@theme/useData'
 import { useSidebarItems } from '@theme/useSidebarItems'
 
@@ -19,10 +20,10 @@ const resolveFromFrontmatterConfig = (
   if (isString(config)) return resolveAutoLink(config, currentPath)
 
   if (isPlainObject(config)) {
-    return {
-      ...config,
-      link: resolveAutoLink(config.link, currentPath).link,
-    }
+    return resolveLinkItem(
+      config,
+      resolveAutoLink(config.link, currentPath).link,
+    )
   }
 
   return null

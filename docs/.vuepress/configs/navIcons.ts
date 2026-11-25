@@ -3,25 +3,22 @@ import {
   isLinkAbsolute,
   isLinkWithProtocol,
 } from '@vuepress/helper'
-import type { SidebarOptions } from '@vuepress/theme-classic'
+import type {
+  NavbarGroupOptions,
+  NavbarLinkOptions,
+  NavbarOptions,
+  SidebarGroupOptions,
+  SidebarItemOptions,
+  SidebarOptions,
+  SidebarStructureOptions,
+} from '@vuepress/theme-classic'
 
-/** Nav item shared by the navbar and sidebar configs */
-interface NavItem {
-  text: string
-  icon?: string
-  prefix?: string
-  link?: string
-  children?: (NavItem | string)[]
-}
-
-type NavArray = (NavItem | string)[]
-
-type NavConfig =
-  | NavArray
-  | Record<string, NavArray | 'heading' | 'structure' | false>
-  | 'heading'
-  | 'structure'
-  | false
+type NavItem =
+  | NavbarGroupOptions
+  | NavbarLinkOptions
+  | SidebarGroupOptions
+  | SidebarItemOptions
+  | SidebarStructureOptions
 
 const resolvePrefix = (prefix: string, path: string): string =>
   isLinkAbsolute(path) || isLinkWithProtocol(path)
@@ -29,25 +26,25 @@ const resolvePrefix = (prefix: string, path: string): string =>
     : `${ensureEndingSlash(prefix)}${path}`
 
 const collectIcons = (
-  items: NavArray,
+  items: NavItem[],
   prefix: string,
   result: Map<string, string>,
 ): void => {
   for (const item of items) {
     if (typeof item === 'string') continue
 
-    const childPrefix = item.prefix
-      ? resolvePrefix(prefix, item.prefix)
-      : prefix
-    const path = item.link
-      ? resolvePrefix(prefix, item.link)
-      : item.prefix
+    const itemPrefix = 'prefix' in item ? item.prefix : undefined
+    const link = 'link' in item ? item.link : undefined
+    const childPrefix = itemPrefix ? resolvePrefix(prefix, itemPrefix) : prefix
+    const path = link
+      ? resolvePrefix(prefix, link)
+      : itemPrefix
         ? childPrefix
         : ''
 
     if (path && item.icon) result.set(path, item.icon)
 
-    if (Array.isArray(item.children))
+    if ('children' in item && Array.isArray(item.children))
       collectIcons(item.children, childPrefix, result)
   }
 }
@@ -62,24 +59,20 @@ const collectIcons = (
  * @returns A map of page path to icon
  */
 export const getNavIcons = (
-  navbars: NavConfig[],
+  navbars: NavbarOptions[],
   sidebars: SidebarOptions[],
 ): Map<string, string> => {
   const result = new Map<string, string>()
 
   const collect = (
-    config: NavConfig | SidebarOptions,
+    config: NavbarOptions | SidebarOptions,
     prefix: string,
   ): void => {
-    if (config === false || config === 'heading' || config === 'structure')
-      return
+    if (config === false || typeof config === 'string') return
 
-    if (Array.isArray(config)) {
-      collectIcons(config as NavArray, prefix, result)
-    } else {
-      for (const [base, items] of Object.entries(config))
-        collect(items as NavConfig | SidebarOptions, base)
-    }
+    if (Array.isArray(config)) collectIcons(config, prefix, result)
+    else
+      for (const [base, items] of Object.entries(config)) collect(items, base)
   }
 
   for (const navbar of navbars) collect(navbar, '/')

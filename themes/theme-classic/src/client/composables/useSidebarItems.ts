@@ -8,6 +8,7 @@ import { useRoutePath } from 'vuepress/client'
 import { isPlainObject, isString } from 'vuepress/shared'
 
 import { resolveAutoLink } from '@theme/resolveAutoLink'
+import { resolveLinkItem } from '@theme/resolveLinkItem'
 import { resolvePrefix } from '@theme/resolvePrefix'
 import { useData } from '@theme/useData'
 import { useHeaders } from '@theme/useHeaders'
@@ -21,7 +22,12 @@ import type {
   SidebarOptions,
   SidebarStructureOptions,
 } from '../../shared/index.js'
-import type { SidebarHeaderItem, SidebarItem } from '../typings.js'
+import type {
+  SidebarGroupItem,
+  SidebarHeaderItem,
+  SidebarItem,
+  SidebarLinkItem,
+} from '../typings.js'
 
 /**
  * Util to transform page header to sidebar item
@@ -149,15 +155,22 @@ export const resolveArraySidebarItems = (
     item: SidebarItemOptions | SidebarStructureOptions,
     pathPrefix: string,
   ): SidebarItem => {
-    if (
-      !isString(item) &&
-      'children' in item &&
-      item.children === 'structure'
-    ) {
-      const { children: _children, ...group } = item
+    if (isString(item)) return resolveAutoLink(resolvePrefix(pathPrefix, item))
+
+    if ('children' in item && item.children === 'structure') {
+      const { children: _children, link: groupLink, ...group } = item
+
+      const resolvedGroup = isString(groupLink)
+        ? isLinkRelative(groupLink)
+          ? resolveLinkItem(
+              { ...group, link: groupLink },
+              resolvePrefix(pathPrefix, groupLink),
+            )
+          : { ...group, link: groupLink }
+        : group
 
       return {
-        ...group,
+        ...resolvedGroup,
         collapsible: item.collapsible !== false,
         children: resolveStructureSidebarItems(
           resolvePrefix(pathPrefix, item.prefix ?? ''),
@@ -167,24 +180,39 @@ export const resolveArraySidebarItems = (
       }
     }
 
-    const childItem: SidebarItemOptions = isString(item)
-      ? resolveAutoLink(resolvePrefix(pathPrefix, item))
-      : isString(item.link)
-        ? {
-            ...item,
-            link: isLinkRelative(item.link)
-              ? resolveAutoLink(resolvePrefix(pathPrefix, item.link)).link
-              : item.link,
-          }
-        : item
+    if ('children' in item) {
+      const groupItem = item as unknown as SidebarGroupItem
+      const { link: groupLink } = groupItem
 
-    if ('children' in childItem) {
+      const resolvedGroup =
+        isString(groupLink) && isLinkRelative(groupLink)
+          ? resolveLinkItem(
+              { ...groupItem, link: groupLink },
+              resolvePrefix(pathPrefix, groupLink),
+            )
+          : groupItem
+
       return {
-        ...childItem,
-        children: childItem.children.map((child) =>
-          handleChildItem(child, resolvePrefix(pathPrefix, childItem.prefix)),
+        ...resolvedGroup,
+        text: groupItem.text,
+        children: groupItem.children.map(
+          (child) =>
+            handleChildItem(
+              child,
+              resolvePrefix(pathPrefix, groupItem.prefix),
+            ) as SidebarHeaderItem | SidebarItem,
         ),
       }
+    }
+
+    let childItem: SidebarLinkItem
+
+    if (isString(item.link)) {
+      childItem = isLinkRelative(item.link)
+        ? resolveLinkItem(item, resolvePrefix(pathPrefix, item.link))
+        : { ...item, text: item.text || item.link }
+    } else {
+      childItem = item as SidebarLinkItem
     }
 
     // if the sidebar item is current page and children is not set

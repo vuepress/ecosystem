@@ -5,6 +5,7 @@ import { computed, useId } from 'vue'
 import { onContentUpdated } from 'vuepress/client'
 
 import VPAutoLink from '@theme/VPAutoLink.vue'
+import VPThemeIcon from '@theme/VPThemeIcon.vue'
 
 import type { AutoLinkOptions, NavGroup } from '../../shared/index.js'
 
@@ -53,6 +54,11 @@ onContentUpdated(() => {
       :aria-label="dropdownAriaLabel"
       @click="handleDropdown"
     >
+      <VPThemeIcon
+        v-if="config.icon"
+        :icon="config.icon"
+        class="vp-navbar-dropdown-icon"
+      />
       <span class="title">{{ config.text }}</span>
       <span class="arrow down" />
     </button>
@@ -65,6 +71,11 @@ onContentUpdated(() => {
       :aria-label="dropdownAriaLabel"
       @click="() => toggleOpen()"
     >
+      <VPThemeIcon
+        v-if="config.icon"
+        :icon="config.icon"
+        class="vp-navbar-dropdown-icon"
+      />
       <span class="title">{{ config.text }}</span>
       <span class="arrow" :class="open ? 'down' : 'right'" />
     </button>
@@ -93,7 +104,14 @@ onContentUpdated(() => {
                 "
               />
 
-              <span v-else>{{ child.text }}</span>
+              <span v-else>
+                <VPThemeIcon
+                  v-if="child.icon"
+                  :icon="child.icon"
+                  class="vp-navbar-dropdown-icon"
+                />
+                {{ child.text }}
+              </span>
             </h4>
 
             <ul class="vp-navbar-dropdown-subitem-wrapper">
@@ -188,6 +206,11 @@ onContentUpdated(() => {
     text-align: start;
     white-space: nowrap;
   }
+}
+
+.vp-navbar-dropdown-icon {
+  vertical-align: middle;
+  margin-inline-end: 0.25rem;
 }
 
 .vp-navbar-dropdown-title {

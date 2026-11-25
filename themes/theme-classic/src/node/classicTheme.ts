@@ -18,7 +18,7 @@ import {
   extendsPageData,
 } from '@vuepress/theme-helper'
 import type { Theme } from 'vuepress/core'
-import { isPlainObject } from 'vuepress/shared'
+import { isPlainObject, isString } from 'vuepress/shared'
 import { fs, getDirname, path } from 'vuepress/utils'
 
 import type { ClassicThemeLocaleOptions } from '../shared/index.js'
@@ -106,6 +106,10 @@ export const classicTheme = ({
 
     extendsPage: (page) => {
       extendsPageData(page)
+
+      // save icon into route meta to generate navbar and sidebar
+      if (isString(page.frontmatter.icon))
+        page.routeMeta.icon = page.frontmatter.icon
     },
 
     plugins: [

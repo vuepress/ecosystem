@@ -22,6 +22,7 @@ import {
   extendsPageData,
 } from '@vuepress/theme-helper'
 import type { ThemeObject } from 'vuepress'
+import { isString } from 'vuepress/shared'
 
 import type {
   AppearanceOptions,
@@ -477,6 +478,11 @@ export const defaultTheme = (options: ThemeOptions = {}): ThemeObject => {
 
     extendsPage: (page) => {
       extendsPageData(page)
+
+      // save the icon into the route meta, so that the navbar and the sidebar
+      // fill the icon of the items that only define a link
+      if (isString(page.frontmatter.icon))
+        page.routeMeta.icon = page.frontmatter.icon
     },
 
     // the client reads the sidebar generated from the file structure from a

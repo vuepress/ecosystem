@@ -4,6 +4,9 @@ import type { AutoLinkOptions, NavItemOptions } from './nav.js'
 export type SidebarLinkOptions = AutoLinkOptions
 
 export interface SidebarGroupOptions extends NavItemOptions {
+  /** The text of the group / 分组文本 */
+  text: string
+
   /** Link prefix of current group */
   prefix?: string
 

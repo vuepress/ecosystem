@@ -63,29 +63,37 @@ icon: settings-2
 
 设置为 `false` 可以禁用导航栏。
 
-为了配置导航栏元素，你可以将其设置为 _导航栏数组_，其中的每个元素是 `NavbarLink` 对象、`NavbarGroup` 对象、或者字符串：
+为了配置导航栏元素，你可以将其设置为 _导航栏数组_。普通的链接条目推荐使用字符串形式，即目标页面文件的路径。它将会被转换为 `NavbarLink` 对象，将页面路由路径作为 `link`，将页面标题与页面的 frontmatter `icon` 分别作为 `text` 与 `icon`。
 
-- `NavbarLink` 对象应该有一个 `text` 字段和一个 `link` 字段，还有一个可选的 `activeMatch` 字段。
-- `NavbarGroup` 对象应该有一个 `text` 字段和一个 `children` 字段，还有一个可选的 `prefix` 字段。`children` 字段同样是一个 _导航栏数组_，而 `prefix` 会作为 _导航栏数组_ 的路径前缀。
-- 字符串应为目标页面文件的路径。它将会被转换为 `NavbarLink` 对象，将页面标题作为 `text`，将页面路由路径作为 `link`。
+当条目需要更多控制时，你也可以使用对象：
+
+- `NavbarLink` 对象应该有一个 `link` 字段，还有可选的 `text` 字段与 `activeMatch` 字段。省略 `text` 时会使用页面标题，并使用页面的 frontmatter `icon` 作为图标。
+- `NavbarGroup` 对象应该有一个 `text` 字段和一个 `children` 字段，还有可选的 `prefix` 字段与 `icon` 字段。`children` 字段同样是一个 _导航栏数组_，而 `prefix` 会作为 _导航栏数组_ 的路径前缀。
+
+::: tip
+
+条目的图标由主题渲染。Iconify 图标由 [`@vuepress/plugin-icon`](../../plugins/features/icon.md) 提供的全局 `VPIcon` 组件渲染，经典主题没有内置该插件，因此需要在站点中添加它。以 `vpi-` 开头的类名图标会直接作为 CSS 类渲染。
+
+:::
 
 ```ts title=".vuepress/config.ts"
 export default {
   theme: classicTheme({
     navbar: [
-      // NavbarLink
-      {
-        text: 'Foo',
-        link: '/foo/',
-      },
+      // 字符串 - 页面文件路径，使用页面标题与图标解析
+      '/bar/README.md',
       // NavbarGroup
       {
         text: 'Group',
         prefix: '/group/',
         children: ['foo.md', 'bar.md'],
       },
-      // 字符串 - 页面文件路径
-      '/bar/README.md',
+      // NavbarLink - 自定义文本与激活匹配
+      {
+        text: 'Foo',
+        link: '/foo/',
+        activeMatch: '^/foo/',
+      },
     ],
   }),
 }
@@ -221,7 +229,7 @@ export default {
 
 ```ts title=".vuepress/config.ts"
 export default {
-  theme: themeClassic({
+  theme: classicTheme({
     // 整个站点
     sidebar: 'structure',
     // 或者：仅部分路径
@@ -234,8 +242,12 @@ export default {
 
 为了手动配置侧边栏元素，你可以将其设置为 _侧边栏数组_，其中的每个元素是一个 `SidebarItem` 对象或者一个字符串：
 
-- `SidebarItem` 对象应该有一个 `text` 字段，有一个可选的 `link` 字段、一个可选的 `children` 字段、一个可选的 `collapsible` 字段和一个可选的 `prefix` 字段。`children` 字段同样是一个 _侧边栏数组_，`prefix` 会作为每个子项目的路径前缀。`collapsible` 字段来控制它是否可折叠。
-- 字符串应为目标页面文件的路径。它将会被转换为 `SidebarItem` 对象，将页面标题作为 `text`，将页面路由路径作为 `link`，并根据页面小标题自动生成 `children`。
+为了手动配置侧边栏元素，你可以将其设置为 _侧边栏数组_。普通的链接条目推荐使用字符串形式，即目标页面文件的路径。它将会被转换为 `SidebarItem` 对象，将页面标题作为 `text`，将页面路由路径作为 `link`，将页面的 frontmatter `icon` 作为 `icon`，并根据页面小标题自动生成 `children`。
+
+当条目需要更多控制时，你也可以使用对象：
+
+- 链接条目对象应该有一个 `link` 字段，并且可以和 `NavbarLink` 对象一样省略 `text` 与 `icon`：使用页面标题作为文本，使用页面的 frontmatter `icon` 作为图标。与字符串不同，它不会根据页面小标题生成 `children`，并且可以设置 `activeMatch`。
+- 分组条目对象应该有一个 `text` 字段和一个 `children` 字段，可以有可选的 `link` 字段、可选的 `icon` 字段、可选的 `collapsible` 字段和可选的 `prefix` 字段。`children` 字段同样是一个 _侧边栏数组_，`prefix` 会作为每个子项目的路径前缀。`collapsible` 字段来控制它是否可折叠。
 
 如果你想在不同子路径中使用不同的侧边栏，你可以将该配置项设置为 _侧边栏对象_：
 
@@ -250,25 +262,29 @@ export default {
     // 侧边栏数组
     // 所有页面会使用相同的侧边栏
     sidebar: [
-      // SidebarItem
+      // 字符串 - 页面文件路径，使用页面标题与图标解析
+      '/bar/README.md',
+      // 分组条目
       {
         text: 'Foo',
         prefix: '/foo/',
         link: '/foo/',
         children: [
-          // SidebarItem
-          {
-            text: 'github',
-            link: 'https://github.com',
-            children: [],
-          },
-          // 字符串 - 页面文件路径
           'bar.md', // 解析为 `/foo/bar.md`
           '/ray.md', // 解析为 `/ray.md`
+          // 一个外部链接
+          {
+            text: 'GitHub',
+            link: 'https://github.com',
+          },
         ],
       },
-      // 字符串 - 页面文件路径
-      '/bar/README.md',
+      // 链接条目对象 - 自定义文本与激活匹配
+      {
+        text: 'Baz',
+        link: '/baz/',
+        activeMatch: '^/baz/',
+      },
     ],
   }),
 }

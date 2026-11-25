@@ -278,7 +278,7 @@ The link of the item. An item without a link is a group.
 
 @`sidebar[*].icon` type=string
 
-The icon of the item, in the same form as `nav[*].icon`. When it is omitted, the sidebar resolves the icon from the route meta of the linked page, so a site can add page icons by writing them into `page.routeMeta.icon` in an `extendsPage` hook.
+The icon of the item, in the same form as `nav[*].icon`. When it is omitted, the sidebar resolves the icon from the route meta of the linked page: the theme saves the frontmatter `icon` of the page into `page.routeMeta.icon`.
 
 @`sidebar[*].items` type=`DefaultTheme.SidebarItem[]`
 
