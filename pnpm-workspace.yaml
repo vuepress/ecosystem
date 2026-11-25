@@ -11,7 +11,7 @@ catalog:
   '@vuepress/bundler-rspack': 2.0.0-rc.32
   '@vuepress/bundler-vite': 2.0.0-rc.32
   '@vuepress/bundler-webpack': 2.0.0-rc.32
-  '@vueuse/core': ^15.0.0
+  '@vueuse/core': ^15.1.0
   chokidar: ^6.0.0
   markdown-it: ^15.0.3
   sass: ^1.108.2
