@@ -41,9 +41,12 @@ export const BackToTop = defineComponent({
         y.value > __BACK_TO_TOP_THRESHOLD__,
     )
 
-    const progress = computed(
-      () => (y.value / (bodyHeight.value - windowHeight.value)) * 100,
-    )
+    const progress = computed(() => {
+      const total = bodyHeight.value - windowHeight.value
+
+      // guard against an unmeasurable body, which would produce `NaN` progress
+      return total > 0 ? (y.value / total) * 100 : 0
+    })
 
     onMounted(() => {
       body.value = document.body
