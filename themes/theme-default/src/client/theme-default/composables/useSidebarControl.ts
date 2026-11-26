@@ -12,7 +12,7 @@ import { useRoute } from 'vuepress/client'
 
 import { useThemePageData } from '../../composables/useThemePageData.js'
 import type { DefaultTheme } from '../shared.js'
-import { isActive } from '../shared.js'
+import { isActive, isLinkActive } from '../shared.js'
 import { hasActiveLink as containsActiveLink } from '../support/sidebar.js'
 
 const isOpen = ref(false)
@@ -79,9 +79,9 @@ export function useSidebarItemControl(
 
   const collapsed = ref(false)
 
-  const collapsible = computed(() => {
-    return item.value.collapsed != null
-  })
+  const collapsible = computed(() =>
+    Boolean(item.value.collapsible && item.value.items?.length),
+  )
 
   const isLink = computed(() => {
     return Boolean(item.value.link)
@@ -92,15 +92,18 @@ export function useSidebarItemControl(
 
   function updateActiveLink(skipHashCheck = false): void {
     if (item.value.link) {
-      isActiveLink.value = item.value.link.startsWith('#')
-        ? route.hash === item.value.link
-        : isActive(
-            page.value.filePathRelative ?? '',
-            route.hash,
-            item.value.link,
-            false,
-            skipHashCheck,
-          )
+      isActiveLink.value = isLinkActive(
+        page.value.filePathRelative ?? '',
+        route.hash,
+        item.value.link,
+        {
+          activeMatch: item.value.activeMatch,
+          // sidebar links are exact by default, sub paths are active only when
+          // `exact: false` is set explicitly
+          exact: item.value.exact ?? true,
+          skipHashCheck,
+        },
+      )
     } else {
       isActiveLink.value = false
     }
@@ -148,7 +151,7 @@ export function useSidebarItemControl(
   })
 
   watchEffect(() => {
-    collapsed.value = Boolean(collapsible.value && item.value.collapsed)
+    collapsed.value = collapsible.value && !item.value.expanded
   })
 
   function toggle(): void {

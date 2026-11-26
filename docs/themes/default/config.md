@@ -13,8 +13,8 @@ import { defineUserConfig } from 'vuepress'
 export default defineUserConfig({
   theme: defaultTheme({
     siteTitle: 'My Site',
-    nav: [{ text: 'Guide', link: '/guide/' }],
-    sidebar: 'heading',
+    navbar: [{ text: 'Guide', link: '/guide/' }],
+    sidebar: ['/guide/', '/guide/install'],
   }),
 })
 ```
@@ -122,71 +122,90 @@ See [Markdown containers](./markdown.md#hint-containers) for the container synta
 ## Navbar
 
 :::: fields
-@`nav` type=`DefaultTheme.NavItem[]`
+@`navbar` type=`DefaultTheme.NavbarOptions` default=`[]`
 
-The navbar items. Every item is one of three shapes:
+The navbar items, or `false` to hide the navbar. Every item is one of four shapes:
 
+- a string: a link item written as its link, which the theme labels with the page title.
 - a link item, rendered as a link in the navbar.
 - a children item, rendered as a dropdown that contains link items and groups.
 - a component item, rendered by a component registered in the VuePress app.
 
-@`nav[*].text` type=string
+String items, `children` and `prefix` are the syntax of the classic theme; they are normalized at build time.
+
+@`navbar[*].text` type=string
 
 The text of a link item or a children item. It is required for a children item.
 
 For a link item it can be omitted: the theme falls back to the `title` of the page metadata, so a navbar item only needs its `link` and is labelled like the page it leads to.
 
-@`nav[*].link` type=`string | ((payload: ThemePageData) => string)`
+@`navbar[*].link` type=`string | ((payload: ThemePageData) => string)`
 
 The link of a link item. Pass a function to compute the link from the current page data, e.g. to keep the reader inside a versioned directory.
 
-@`nav[*].icon` type=string
+@`navbar[*].icon` type=string
 
 The icon of the item. Icon classes of the theme start with `vpi-` (for example `vpi-github`), and any [Iconify](https://iconify.design) name is also accepted. See [Icons](../../plugins/features/icon.md).
 
 When the icon of a link item or of a group is omitted, the theme falls back to the `icon` of the page metadata — the frontmatter `icon` of the page that the link leads to.
 
-@`nav[*].activeMatch` type=string
+@`navbar[*].activeMatch` type=string
 
-A regular expression, as a string, that decides whether the item is active. By default an item is active only when the current page matches its link exactly; use `'^/guide/'` to mark the item active for a whole directory.
+A regular expression, as a string, that decides whether the item is active. It tests the current page path and takes precedence over `exact`.
 
-@`nav[*].rel` type=string
+@`navbar[*].exact` type=boolean default=`false`
+
+Whether the item is active only on the exact page of its link. By default the item is also active on the pages under its link, e.g. a `/guide/` item is active on `/guide/install.html`.
+
+@`navbar[*].base` type=string
+
+The base path prepended to the links of the children of a children item, so that they can be written relatively. It is not applied to the link of the item itself.
+
+@`navbar[*].rel` type=string
 
 The `rel` attribute of the link.
 
-@`nav[*].target` type=string
+@`navbar[*].target` type=string
 
 The `target` attribute of the link, e.g. `'_blank'`.
 
-@`nav[*].noIcon` type=boolean
+@`navbar[*].noIcon` type=boolean
 
 Whether to hide the external link icon of the item.
 
-@`nav[*].items` type=`(NavItemComponent | NavItemChildren | NavItemWithLink)[]`
+@`navbar[*].items` type=`(NavItemComponent | NavItemChildren | NavItemWithLink)[]`
 
 The children of a children item. This field is not allowed on a link item.
 
-@@`nav[*].items[*].component` type=string
+@@`navbar[*].items[*].component` type=string
 
 The name of a globally registered component that renders the item. Mutually exclusive with `link`.
 
-@@`nav[*].items[*].props` type=`Record<string, any>`
+@@`navbar[*].items[*].props` type=`Record<string, any>`
 
 The props passed to that component.
 
-@@`nav[*].items[*].items` type=`NavItemWithLink[]`
+@@`navbar[*].items[*].items` type=`(NavItemChildren | NavItemWithChildren | NavItemWithLink)[]`
 
-The items of a group. A group is rendered as a column with a title inside the dropdown.
+The items of a group. A group is rendered as a column with a title inside the dropdown, and it can contain nested groups.
 
-@@@`nav[*].items[*].items[*].text` type=string
+@@`navbar[*].items[*].children` type=`(NavbarGroupOptions | NavItem | string)[]`
+
+The deprecated alias of `items` kept for the classic theme syntax. Use `items` instead.
+
+@@`navbar[*].items[*].prefix` type=string
+
+The deprecated alias of `base` kept for the classic theme syntax. Use `base` instead.
+
+@@@`navbar[*].items[*].items[*].text` type=string
 
 The text of the link inside the group. It falls back to the `title` of the page metadata when omitted.
 
-@@@`nav[*].items[*].items[*].link` type=`string | ((payload: ThemePageData) => string)`
+@@@`navbar[*].items[*].items[*].link` type=`string | ((payload: ThemePageData) => string)`
 
 The link of the link inside the group.
 
-@@@`nav[*].items[*].items[*].icon` type=string
+@@@`navbar[*].items[*].items[*].icon` type=string
 
 The icon of the link inside the group. It falls back to the page metadata when omitted.
 ::::
@@ -196,7 +215,8 @@ A navbar example with a dropdown, a group and an external link:
 ```ts
 export default defineUserConfig({
   theme: defaultTheme({
-    nav: [
+    navbar: [
+      '/guide/',
       { text: 'Guide', link: '/guide/' },
       {
         text: 'Ecosystem',
@@ -224,7 +244,7 @@ The social links shown at the end of the navbar and in the mobile menu.
 
 @`socialLinks[*].icon` type=`string | { svg: string }`
 
-The icon of the link: an icon name or class as in `nav[*].icon`, or `{ svg: '<svg>…</svg>' }` to inline an SVG.
+The icon of the link: an icon name or class as in `navbar[*].icon`, or `{ svg: '<svg>…</svg>' }` to inline an SVG.
 
 @`socialLinks[*].link` type=string required
 
@@ -242,21 +262,16 @@ The `target` attribute of the link.
 ## Sidebar
 
 :::: fields
-@`sidebar` type=`DefaultTheme.Sidebar | 'heading' | false` default=`'heading'`
+@`sidebar` type=`DefaultTheme.SidebarOptions | false` default=`false`
 
-The sidebar configuration. It accepts five shapes:
+The sidebar configuration. It accepts four shapes:
 
-- `'heading'`: generate the sidebar from the headings of the current page. This is the default.
-- `'structure'`: generate the sidebar from the file structure. See [Generate from the file structure](#generate-from-the-file-structure).
 - an array of [sidebar items](#sidebar-items): the same sidebar on every page.
-- an object keyed by path: a different sidebar for each path. The key is matched as a path prefix and the longest matching key wins. The value is a sidebar array, `'heading'` or `'structure'`.
+- an object keyed by path: a different sidebar for each path. The key is matched as a path prefix and the longest matching key wins. The value is a sidebar array, `'structure'`, `false` or `{ items, base }`.
+- `'structure'`: generate the sidebar from the file structure. See [Generate from the file structure](#generate-from-the-file-structure).
 - `false`: no sidebar.
 
 `sidebar` can be overridden per page in the frontmatter.
-
-@`sidebarDepth` type=number default=`2`
-
-The maximum heading depth of the sidebar, including the page title heading. It is only used when `sidebar` is `'heading'`. `1` shows the page title and the `h2` headings, `2` also shows the `h3` headings, and so on.
 
 @`sidebarSorter` type=`SidebarSorter` default=`['readme', 'order', 'title', 'filename']`
 
@@ -265,7 +280,9 @@ The comparator of the items generated from the file structure. It accepts a keyw
 
 ### Sidebar items
 
-A sidebar item is a link, or a group that contains items. A group without a link is collapsible; a group with a link renders the link and its children below it.
+A sidebar item is a link, or a group that contains items. A group without a link toggles its children when `collapsible` is enabled; a group with a link renders the link and its children below it.
+
+String items are supported: a string is a link item, and its text is resolved from the page title. `children` and `prefix` are the syntax of the classic theme; they are normalized to `items` and `base` at build time.
 
 :::: fields
 @`sidebar[*].text` type=string
@@ -278,19 +295,39 @@ The link of the item. An item without a link is a group.
 
 @`sidebar[*].icon` type=string
 
-The icon of the item, in the same form as `nav[*].icon`. When it is omitted, the sidebar resolves the icon from the route meta of the linked page: the theme saves the frontmatter `icon` of the page into `page.routeMeta.icon`.
+The icon of the item, in the same form as `navbar[*].icon`. When it is omitted, the sidebar resolves the icon from the route meta of the linked page: the theme saves the frontmatter `icon` of the page into `page.routeMeta.icon`.
 
-@`sidebar[*].items` type=`DefaultTheme.SidebarItem[]`
+@`sidebar[*].items` type=`(SidebarItemOptions | string)[]`
 
-The children of the item. A group can itself contain groups.
+The children of the item. A group can itself contain groups, and its children can be written as strings.
 
-@`sidebar[*].collapsed` type=boolean
+@`sidebar[*].collapsible` type=boolean default=`false`
 
-Whether the group is collapsible. When the field is omitted, the group is not collapsible and its children are always shown. When it is set, the group gets a toggle and starts collapsed if `true`.
+Whether the group can be folded by the reader. When it is enabled, the group gets a toggle and starts collapsed unless `expanded` is `true`. A group that contains the current page is expanded automatically.
+
+@`sidebar[*].expanded` type=boolean default=`false`
+
+Whether the group starts expanded. It only takes effect when `collapsible` is enabled.
+
+@`sidebar[*].activeMatch` type=string
+
+A regular expression, as a string, that decides whether the item is active. It tests the current page path and takes precedence over `exact`.
+
+@`sidebar[*].exact` type=boolean default=`true`
+
+Whether the item is active only on the exact page of its link. Sidebar items keep the exact behavior of the classic theme by default; set it to `false` to also activate the item on the pages under its link.
 
 @`sidebar[*].base` type=string
 
 The base path prepended to the links of the item and its children, so that child links can be written relatively.
+
+@`sidebar[*].prefix` type=string
+
+The deprecated alias of `base` kept for the classic theme syntax. Use `base` instead.
+
+@`sidebar[*].children` type=`(SidebarItemOptions | string)[] | 'structure'`
+
+The deprecated alias of `items` kept for the classic theme syntax. Use `items` instead.
 
 @`sidebar[*].docFooterText` type=string
 
@@ -305,18 +342,18 @@ The `rel` attribute of the link.
 The `target` attribute of the link.
 ::::
 
-The multi-sidebar object also accepts `{ items, base }` to set the base of a whole sidebar group, and `'heading'` to use the heading sidebar under that path:
+The multi-sidebar object also accepts `{ items, base }` to set the base of a whole sidebar group, and `false` to disable the sidebar under that path:
 
 ```ts
 export default defineUserConfig({
   theme: defaultTheme({
     sidebar: {
-      '/guide/': [{ text: 'Guide', items: ['/guide/', '/guide/install'] }],
+      '/guide/': ['/guide/', '/guide/install'],
       '/advanced/': {
         base: '/advanced/',
         items: ['intro', 'options'],
       },
-      '/reference/': 'heading',
+      '/reference/': false,
     },
   }),
 })

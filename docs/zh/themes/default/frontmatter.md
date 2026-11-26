@@ -294,13 +294,9 @@ lastUpdated: 1700000000000
 
 本页的下一篇页面链接，形态与 `prev` 相同。
 
-@`sidebar` type=`DefaultTheme.Sidebar | 'heading' | false`
+@`sidebar` type=`DefaultTheme.SidebarOptions | false`
 
-本页的侧边栏配置。见 [sidebar](./config.md#sidebar)。
-
-@`sidebarDepth` type=number
-
-本页 `'heading'` 侧边栏的最大标题深度。
+本页的侧边栏配置。classic 的写法，包括字符串项目、`children` 与 `prefix`，会在构建时归一化。见 [sidebar](./config.md#sidebar)。
 :::
 
 默认情况下，上一篇/下一篇链接是页面在侧边栏中的相邻项。链接文本会先回退到侧边栏项目的 `docFooterText`，再回退到项目文本。
@@ -390,8 +386,7 @@ lastUpdated: 1700000000000
 | `contributors`   | `boolean`                                                     | 文档     | [文档页面](#document-page)            |
 | `prev`           | `string \| ThemePageLink \| false`                            | 文档     | [文档页面](#document-page)            |
 | `next`           | `string \| ThemePageLink \| false`                            | 文档     | [文档页面](#document-page)            |
-| `sidebar`        | `DefaultTheme.Sidebar \| 'heading' \| false`                  | 文档     | [文档页面](#document-page)            |
-| `sidebarDepth`   | `number`                                                      | 文档     | [文档页面](#document-page)            |
+| `sidebar`        | `DefaultTheme.SidebarOptions \| false`                        | 文档     | [文档页面](#document-page)            |
 | `index`          | `boolean`                                                     | 文档     | [侧边栏结构](#sidebar-structure)      |
 | `order`          | `number`                                                      | 文档     | [侧边栏结构](#sidebar-structure)      |
 | `shortTitle`     | `string`                                                      | 文档     | [侧边栏结构](#sidebar-structure)      |

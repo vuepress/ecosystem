@@ -1,6 +1,7 @@
-import type { SidebarOptions } from '@vuepress/theme-classic'
+// oxlint-disable typescript/no-deprecated -- the docs site is written in the classic theme syntax
+import type { DefaultTheme } from '@vuepress/theme-default'
 
-export const sidebarEn: SidebarOptions = {
+export const sidebarEn: DefaultTheme.SidebarOptions = {
   '/plugins/': [
     {
       text: 'Common Features',

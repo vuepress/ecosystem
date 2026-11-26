@@ -1,17 +1,20 @@
 <script setup lang="ts">
+import { useThemeLocaleData } from '@vuepress/plugin-theme-data/client'
 import { computed, provide, watchEffect } from 'vue'
 
 import { inBrowser } from '../../composables/inBrowser.js'
 import { useThemePageFrontmatter } from '../../composables/useThemePageData.js'
 import { navInjectionKey, useNav } from '../composables/useNav.js'
+import type { ThemeConfig } from '../shared.js'
 import VPNavBar from './VPNavBar.vue'
 import VPNavScreen from './VPNavScreen.vue'
 
 const { isScreenOpen, closeScreen, toggleScreen } = useNav()
 const frontmatter = useThemePageFrontmatter()
+const theme = useThemeLocaleData<ThemeConfig>()
 
 const hasNavbar = computed(() => {
-  return frontmatter.value.navbar !== false
+  return frontmatter.value.navbar !== false && theme.value.navbar !== false
 })
 
 provide(navInjectionKey, { closeScreen })

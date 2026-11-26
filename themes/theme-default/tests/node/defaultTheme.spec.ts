@@ -1,3 +1,4 @@
+// oxlint-disable typescript/no-deprecated -- the classic theme syntax is asserted here
 import { existsSync } from 'node:fs'
 import path from 'node:path'
 
@@ -12,7 +13,6 @@ import {
   resolveThemeData,
   defaultTheme,
 } from '../../src/node/defaultTheme.js'
-import type { DefaultTheme } from '../../src/shared/types.js'
 
 const createTheme = (
   options?: Parameters<typeof defaultTheme>[0],
@@ -92,11 +92,11 @@ describe(defaultTheme, () => {
         ja: { label: '日本語', lang: 'ja-JP' },
         zh: { label: '简体中文', lang: 'zh-CN', link: '/zh/' },
       },
-      nav: [{ text: 'Guide', link: '/guide/' }],
+      navbar: [{ text: 'Guide', link: '/guide/' }],
     })
 
     expect(themeData).toStrictEqual({
-      nav: [{ text: 'Guide', link: '/guide/' }],
+      navbar: [{ text: 'Guide', link: '/guide/' }],
       locales: {
         '/': { label: 'English', lang: 'en-US' },
         '/ja/': { label: '日本語', lang: 'ja-JP' },
@@ -271,33 +271,107 @@ describe('templateBuildRenderer', () => {
 })
 
 describe(getSidebar, () => {
-  it('should resolve the heading sidebar from the page headings', () => {
-    const headers = [
-      {
-        title: 'Installation',
-        link: '#installation',
-        level: 2,
-        children: [{ title: 'Usage', link: '#usage', level: 3 }],
-      },
-    ] as DefaultTheme.OutlineItem[]
+  it('should disable the sidebar with `false`', () => {
+    expect(getSidebar(false, '/guide/')).toStrictEqual([])
+    expect(getSidebar(undefined, '/guide/')).toStrictEqual([])
+  })
 
-    expect(
-      getSidebar('heading', '/guide/', { title: 'Guide', headers }),
-    ).toStrictEqual([
+  it('should resolve string items and the deprecated classic theme keys', () => {
+    const themeData = resolveThemeData({
+      sidebar: [
+        '/guide/',
+        {
+          text: 'Guide',
+          prefix: '/guide/',
+          children: ['/guide/install', { text: 'Usage', link: '/guide/usage' }],
+        },
+        {
+          text: 'Collapsible',
+          collapsible: true,
+          expanded: true,
+          children: ['/config/'],
+        },
+      ],
+    })
+
+    expect(themeData.sidebar).toStrictEqual([
+      { link: '/guide/' },
       {
         text: 'Guide',
+        base: '/guide/',
         items: [
-          {
-            text: 'Installation',
-            link: '#installation',
-            items: [{ text: 'Usage', link: '#usage' }],
-          },
+          { link: '/guide/install' },
+          { text: 'Usage', link: '/guide/usage' },
         ],
       },
+      {
+        text: 'Collapsible',
+        collapsible: true,
+        expanded: true,
+        items: [{ link: '/config/' }],
+      },
     ])
+  })
 
-    expect(getSidebar('heading', '/guide/')).toStrictEqual([])
-    expect(getSidebar(false, '/guide/')).toStrictEqual([])
+  it('should not crash on the removed modes of the multi sidebar config', () => {
+    const themeData = resolveThemeData({
+      sidebar: {
+        '/legacy/': 'heading',
+        '/structure/': { items: 'structure', base: '/structure/' },
+      } as never,
+    })
+
+    expect(themeData.sidebar).toStrictEqual({
+      '/legacy/': [],
+      '/structure/': { items: 'structure', base: '/structure/' },
+    })
+  })
+
+  it('should support `false` in the multi sidebar config', () => {
+    const themeData = resolveThemeData({
+      sidebar: { '/guide/': ['/guide/a'], '/config/': false },
+    })
+
+    expect(themeData.sidebar).toStrictEqual({
+      '/guide/': [{ link: '/guide/a' }],
+      '/config/': false,
+    })
+  })
+})
+
+describe('navbar', () => {
+  it('should normalize the classic theme syntax', () => {
+    const themeData = resolveThemeData({
+      navbar: [
+        '/guide/',
+        {
+          text: 'Themes',
+          prefix: '/themes/',
+          children: [
+            'default/',
+            { text: 'Help', link: 'https://vuepress.vuejs.org/' },
+          ],
+        },
+        { component: 'MyNavbarComponent' },
+      ],
+    })
+
+    expect(themeData.navbar).toStrictEqual([
+      { link: '/guide/' },
+      {
+        text: 'Themes',
+        base: '/themes/',
+        items: [
+          { link: 'default/' },
+          { text: 'Help', link: 'https://vuepress.vuejs.org/' },
+        ],
+      },
+      { component: 'MyNavbarComponent' },
+    ])
+  })
+
+  it('should keep `false` to hide the navbar', () => {
+    expect(resolveThemeData({ navbar: false }).navbar).toBe(false)
   })
 })
 

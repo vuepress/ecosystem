@@ -1,7 +1,31 @@
 import { resolveRoute } from 'vuepress/client'
 
 import type { DefaultTheme } from '../shared.js'
-import { isExternal } from '../shared.js'
+import { isExternal, joinPath } from '../shared.js'
+
+const ensureEndingSlash = (path: string): string =>
+  path.endsWith('/') ? path : `${path}/`
+
+/**
+ * Prepend the `base` of the parent group to a link
+ *
+ * 将父分组的 `base` 拼接到链接前
+ */
+const withBase = (
+  link: string | undefined,
+  base: string | undefined,
+): string | undefined => {
+  if (
+    !link ||
+    !base ||
+    link.startsWith('/') ||
+    link.startsWith('#') ||
+    isExternal(link)
+  )
+    return link
+
+  return `${ensureEndingSlash(base)}${link}`
+}
 
 /**
  * Resolve the nav items
@@ -18,14 +42,26 @@ import { isExternal } from '../shared.js'
  */
 export const resolveNavData = (
   items: DefaultTheme.NavItem[],
+  base?: string,
 ): DefaultTheme.NavItem[] =>
   items.map((item) => {
     if ('component' in item) return item
 
-    if (!('link' in item)) {
+    if ('items' in item && item.items) {
+      const itemBase = item.base
+        ? ensureEndingSlash(
+            item.base.startsWith('/')
+              ? item.base
+              : joinPath(base ?? '/', item.base),
+          )
+        : base
+
       return {
         ...item,
-        items: resolveNavData(item.items) as DefaultTheme.NavItemWithLink[],
+        items: resolveNavData(
+          item.items,
+          itemBase,
+        ) as DefaultTheme.NavItemWithLink[],
       }
     }
 
@@ -33,15 +69,21 @@ export const resolveNavData = (
 
     if (typeof link !== 'string' || isExternal(link)) return item
 
+    const resolvedLink = withBase(link, base)
+
+    if (!resolvedLink) return item
+
     const { notFound, meta } = resolveRoute<{
       title?: string
       icon?: string
-    }>(link)
+    }>(resolvedLink)
 
-    if (notFound) return item
+    if (notFound)
+      return { ...item, link: resolvedLink, text: item.text ?? resolvedLink }
 
     return {
       ...item,
+      link: resolvedLink,
       ...(!item.text && meta.title ? { text: meta.title } : {}),
       ...(!item.icon && meta.icon ? { icon: meta.icon } : {}),
     }

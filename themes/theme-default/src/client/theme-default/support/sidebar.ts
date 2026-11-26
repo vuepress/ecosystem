@@ -3,7 +3,7 @@ import { getSidebarStructure } from '@vuepress/theme-helper/client'
 import { resolveRoute } from 'vuepress/client'
 
 import type { DefaultTheme } from '../shared.js'
-import { isActive, isExternal } from '../shared.js'
+import { isExternal, isLinkActive } from '../shared.js'
 import { ensureStartingSlash } from './utils.js'
 
 export interface SidebarLink {
@@ -15,48 +15,6 @@ export interface SidebarLink {
 }
 
 type SidebarItem = DefaultTheme.SidebarItem
-
-/**
- * The page information used to resolve the `heading` sidebar
- *
- * 用于解析 `heading` 侧边栏的页面信息
- */
-export interface SidebarPage {
-  /** Title of the page / 页面标题 */
-  title: string
-  /** Headings of the page / 页面的标题列表 */
-  headers: DefaultTheme.OutlineItem[]
-}
-
-/**
- * Convert the page headings to sidebar items
- *
- * 将页面标题转换为侧边栏条目
- *
- * @param headers - Headings of the page / 页面的标题列表
- * @returns The sidebar items / 侧边栏条目
- */
-const resolveHeadingItems = (
-  headers: DefaultTheme.OutlineItem[],
-): SidebarItem[] =>
-  headers.map(({ title, link, children }) => ({
-    text: title,
-    link,
-    ...(children?.length ? { items: resolveHeadingItems(children) } : {}),
-  }))
-
-/**
- * Resolve the sidebar items from the page headings
- *
- * 从页面标题解析侧边栏条目
- *
- * @param page - Page information / 页面信息
- * @returns The sidebar items / 侧边栏条目
- */
-export const resolveHeadingSidebar = (
-  page: SidebarPage | undefined,
-): SidebarItem[] =>
-  page ? [{ text: page.title, items: resolveHeadingItems(page.headers) }] : []
 
 /**
  * Normalize the route scope of an item to start and end with a slash
@@ -91,12 +49,10 @@ const resolveStructureSidebar = (scope: string): SidebarItem[] =>
  * return empty array.
  */
 export function getSidebar(
-  _sidebar: DefaultTheme.Sidebar | 'heading' | false | undefined,
+  _sidebar: DefaultTheme.Sidebar | false | undefined,
   path: string,
-  page?: SidebarPage,
   routeLocale = '/',
 ): SidebarItem[] {
-  if (_sidebar === 'heading') return resolveHeadingSidebar(page)
   if (_sidebar === 'structure') return resolveStructureSidebar(routeLocale)
   if (_sidebar === false || _sidebar == null) return []
   if (Array.isArray(_sidebar)) return addBase(_sidebar, undefined, routeLocale)
@@ -117,15 +73,20 @@ export function getSidebar(
     : '/'
   const sidebar = dir ? (_sidebar[dir] ?? []) : []
 
-  if (sidebar === 'heading') return resolveHeadingSidebar(page)
+  if (sidebar === false) return []
   if (sidebar === 'structure') return resolveStructureSidebar(dirScope)
-  if (Array.isArray(sidebar)) return addBase(sidebar, undefined, dirScope)
+  // the matched scope also acts as the base, so that the links of the items
+  // can stay relative to it
+  if (Array.isArray(sidebar)) return addBase(sidebar, dirScope, dirScope)
 
-  return addBase(
-    sidebar.items,
-    sidebar.base,
-    resolveItemScope(sidebar.base, routeLocale),
-  )
+  const itemScope = resolveItemScope(sidebar.base, routeLocale)
+
+  // tolerate `{ items: 'structure' }`, which is not part of the public types
+  // but may come from a hand written config
+  if ((sidebar.items as unknown) === 'structure')
+    return resolveStructureSidebar(itemScope)
+
+  return addBase(sidebar.items, sidebar.base, itemScope)
 }
 
 /** Get or generate sidebar group from the given sidebar items. */
@@ -189,12 +150,17 @@ export function hasActiveLink(
   if (Array.isArray(items)) {
     return items.some((item) => hasActiveLink(path, hash, item, skipHashCheck))
   }
-  if (items.link) {
-    if (items.link.startsWith('#')) {
-      if (items.link === hash) return true
-    } else if (isActive(path, hash, items.link, false, skipHashCheck)) {
-      return true
-    }
+  if (
+    items.link &&
+    isLinkActive(path, hash, items.link, {
+      activeMatch: items.activeMatch,
+      // sidebar links are exact by default, sub paths are active only when
+      // `exact: false` is set explicitly
+      exact: items.exact ?? true,
+      skipHashCheck,
+    })
+  ) {
+    return true
   }
   if (items.items) {
     return hasActiveLink(path, hash, items.items, skipHashCheck)
@@ -219,8 +185,16 @@ function addBase(
 
     const item: SidebarItem = { ..._item }
 
-    if (base && item.link && !isExternal(item.link))
-      item.link = base + item.link.replace(/^\//, base.endsWith('/') ? '' : '/')
+    // only the relative links are prefixed with the base, absolute and hash
+    // links are already resolvable
+    if (
+      base &&
+      item.link &&
+      !isExternal(item.link) &&
+      !item.link.startsWith('/') &&
+      !item.link.startsWith('#')
+    )
+      item.link = ensureEndingSlash(base) + item.link
     if (item.items) item.items = addBase(item.items, base, itemScope)
 
     return item
@@ -253,7 +227,10 @@ export const resolveSidebarData = (items: SidebarItem[]): SidebarItem[] =>
       icon?: string
     }>(item.link)
 
-    if (notFound) return { ...item, ...children }
+    if (notFound)
+      // keep the item visible when the page metadata is missing, the link is
+      // the only information left (the classic theme did the same)
+      return { ...item, ...children, text: item.text ?? item.link }
 
     return {
       ...item,

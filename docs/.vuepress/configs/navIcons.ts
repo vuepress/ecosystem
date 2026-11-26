@@ -1,24 +1,15 @@
+// oxlint-disable typescript/no-deprecated -- the docs site is written in the classic theme syntax
 import {
   ensureEndingSlash,
   isLinkAbsolute,
   isLinkWithProtocol,
 } from '@vuepress/helper'
-import type {
-  NavbarGroupOptions,
-  NavbarLinkOptions,
-  NavbarOptions,
-  SidebarGroupOptions,
-  SidebarItemOptions,
-  SidebarOptions,
-  SidebarStructureOptions,
-} from '@vuepress/theme-classic'
+import type { DefaultTheme } from '@vuepress/theme-default'
 
 type NavItem =
-  | NavbarGroupOptions
-  | NavbarLinkOptions
-  | SidebarGroupOptions
-  | SidebarItemOptions
-  | SidebarStructureOptions
+  | DefaultTheme.NavbarGroupOptions
+  | DefaultTheme.NavbarItemOptions
+  | DefaultTheme.SidebarItemOptions
 
 const resolvePrefix = (prefix: string, path: string): string =>
   isLinkAbsolute(path) || isLinkWithProtocol(path)
@@ -35,14 +26,15 @@ const collectIcons = (
 
     const itemPrefix = 'prefix' in item ? item.prefix : undefined
     const link = 'link' in item ? item.link : undefined
+    const linkPath = typeof link === 'string' ? link : undefined
     const childPrefix = itemPrefix ? resolvePrefix(prefix, itemPrefix) : prefix
-    const path = link
-      ? resolvePrefix(prefix, link)
+    const path = linkPath
+      ? resolvePrefix(prefix, linkPath)
       : itemPrefix
         ? childPrefix
         : ''
 
-    if (path && item.icon) result.set(path, item.icon)
+    if (path && 'icon' in item && item.icon) result.set(path, item.icon)
 
     if ('children' in item && Array.isArray(item.children))
       collectIcons(item.children, childPrefix, result)
@@ -59,20 +51,22 @@ const collectIcons = (
  * @returns A map of page path to icon
  */
 export const getNavIcons = (
-  navbars: NavbarOptions[],
-  sidebars: SidebarOptions[],
+  navbars: (DefaultTheme.NavbarOptions | undefined)[],
+  sidebars: (DefaultTheme.SidebarOptions | undefined)[],
 ): Map<string, string> => {
   const result = new Map<string, string>()
 
-  const collect = (
-    config: NavbarOptions | SidebarOptions,
-    prefix: string,
-  ): void => {
-    if (config === false || typeof config === 'string') return
+  const collect = (config: unknown, prefix: string): void => {
+    if (!config || config === false || config === 'structure') return
 
-    if (Array.isArray(config)) collectIcons(config, prefix, result)
-    else
-      for (const [base, items] of Object.entries(config)) collect(items, base)
+    if (Array.isArray(config)) {
+      collectIcons(config as NavItem[], prefix, result)
+    } else {
+      for (const [base, items] of Object.entries(
+        config as Record<string, unknown>,
+      ))
+        collect(items, base)
+    }
   }
 
   for (const navbar of navbars) collect(navbar, '/')

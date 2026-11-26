@@ -294,13 +294,9 @@ The previous page link of this page. A string is used as the link text. Set it t
 
 The next page link of this page, with the same shapes as `prev`.
 
-@`sidebar` type=`DefaultTheme.Sidebar | 'heading' | false`
+@`sidebar` type=`DefaultTheme.SidebarOptions | false`
 
-The sidebar configuration of this page. See [sidebar](./config.md#sidebar).
-
-@`sidebarDepth` type=number
-
-The maximum heading depth of the `'heading'` sidebar of this page.
+The sidebar configuration of this page. The classic syntax, including string items, `children` and `prefix`, is normalized at build time. See [sidebar](./config.md#sidebar).
 :::
 
 By default the previous/next links are the neighbours of the page in the sidebar. The link text falls back to the `docFooterText` of the sidebar item, then to the item text.
@@ -390,8 +386,7 @@ Whether to wrap the home page content in the document styles. It only applies to
 | `contributors`   | `boolean`                                                     | doc       | [Document Page](#document-page)            |
 | `prev`           | `string \| ThemePageLink \| false`                            | doc       | [Document Page](#document-page)            |
 | `next`           | `string \| ThemePageLink \| false`                            | doc       | [Document Page](#document-page)            |
-| `sidebar`        | `DefaultTheme.Sidebar \| 'heading' \| false`                  | doc       | [Document Page](#document-page)            |
-| `sidebarDepth`   | `number`                                                      | doc       | [Document Page](#document-page)            |
+| `sidebar`        | `DefaultTheme.SidebarOptions \| false`                        | doc       | [Document Page](#document-page)            |
 | `index`          | `boolean`                                                     | doc       | [Sidebar Structure](#sidebar-structure)    |
 | `order`          | `number`                                                      | doc       | [Sidebar Structure](#sidebar-structure)    |
 | `shortTitle`     | `string`                                                      | doc       | [Sidebar Structure](#sidebar-structure)    |

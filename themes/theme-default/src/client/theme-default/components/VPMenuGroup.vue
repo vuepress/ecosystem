@@ -5,6 +5,7 @@
     T extends
       | DefaultTheme.NavItemComponent
       | DefaultTheme.NavItemChildren
+      | DefaultTheme.NavItemWithChildren
       | DefaultTheme.NavItemWithLink
   "
 >

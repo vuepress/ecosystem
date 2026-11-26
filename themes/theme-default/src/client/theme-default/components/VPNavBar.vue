@@ -30,7 +30,7 @@ const { y } = useWindowScroll()
 const isTop = computed(() => y.value <= 0)
 
 const overflow = provideNavOverflow({
-  itemsKey: () => JSON.stringify(theme.value.nav ?? null),
+  itemsKey: () => JSON.stringify(theme.value.navbar ?? null),
 })
 </script>
 

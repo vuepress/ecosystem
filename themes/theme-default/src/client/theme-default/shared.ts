@@ -105,6 +105,54 @@ export function isActive(
   return true
 }
 
+/**
+ * Whether a link is active under the current route
+ *
+ * It follows the behavior of the client `AutoLink` resolver: the link is active
+ * for its sub paths unless `exact` is enabled, and `activeMatch` tests the
+ * current route with a regular expression.
+ *
+ * 判断链接在当前路由下是否激活
+ *
+ * 行为与客户端 `AutoLink` 解析器一致：未启用 `exact` 时子路径同样算激活，`activeMatch` 则用正则匹配当前路由。
+ *
+ * @param currentPath - The relative path of the current page / 当前页面的相对路径
+ * @param currentHash - The hash of the current route / 当前路由的 hash
+ * @param link - The link to test / 需要判断的链接
+ * @param options - The active options / 激活选项
+ * @returns Whether the link is active / 链接是否激活
+ */
+export function isLinkActive(
+  currentPath: string,
+  currentHash: string,
+  link: string,
+  options: {
+    activeMatch?: string
+    exact?: boolean
+    skipHashCheck?: boolean
+  } = {},
+): boolean {
+  const { activeMatch, exact = false, skipHashCheck = false } = options
+
+  if (!link) return false
+
+  if (link.startsWith('#')) return link === currentHash
+
+  const normalizedPath = normalize(`/${currentPath}`)
+
+  if (activeMatch) return new RegExp(activeMatch, 'u').test(normalizedPath)
+
+  if (isActive(currentPath, currentHash, link, false, skipHashCheck))
+    return true
+
+  // the root link is an exact match, otherwise every page would be active
+  if (exact) return false
+
+  const normalizedLink = normalize(link)
+
+  return normalizedLink !== '/' && normalizedPath.startsWith(normalizedLink)
+}
+
 export function normalize(path: string): string {
   return decodeURI(path)
     .replace(HASH_OR_QUERY_RE, '')

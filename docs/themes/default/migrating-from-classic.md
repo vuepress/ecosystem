@@ -6,7 +6,7 @@ icon: arrow-right-left
 
 `@vuepress/theme-classic` is the theme that used to be the default theme of VuePress. It still works and it keeps its own look, but the new default theme is `@vuepress/theme-default`, a thin layout layer ported from VitePress.
 
-This page maps the options, the frontmatter and the styles of the classic theme to the new theme. Most options were renamed to match VitePress, and the ones that relied on SASS were replaced by CSS custom properties.
+This page maps the options, the frontmatter and the styles of the classic theme to the new theme. The new theme accepts the classic syntax of the navbar and the sidebar directly — string items, `prefix`, `children` and `collapsible` are normalized at build time — so most sites only need the package swap. Most other options were renamed to match VitePress, and the ones that relied on SASS were replaced by CSS custom properties.
 
 <NpmBadge package="@vuepress/theme-default" />
 
@@ -46,45 +46,48 @@ The new theme keeps the `defaultTheme` export name, so an existing `import { def
 | `home`             | `logoLink`                | The link of the logo in the navbar, and the home page of the site. The 404 button uses `notFound.link`. |
 | `repo`             | `socialLinks`             | `socialLinks: [{ icon: 'github', link: 'https://github.com/example/repo' }]`.                           |
 | `repoLabel`        | `socialLinks[].ariaLabel` | The label of the repository link.                                                                       |
-| `navbar`           | `nav`                     | See [Navbar](#navbar).                                                                                  |
-| `sidebar`          | `sidebar`                 | Same default (`'heading'`), new item shape.                                                             |
-| `sidebarDepth`     | `sidebarDepth`            | Same, and only used when `sidebar` is `'heading'`.                                                      |
+| `navbar`           | `navbar`                  | Same key and same item syntax. See [Navbar](#navbar).                                                   |
+| `sidebar`          | `sidebar`                 | Same key and same item syntax. The default is now `false`. See [Sidebar](#sidebar).                     |
 | `externalLinkIcon` | `externalLinkIcon`        | Same, defaults to `false`.                                                                              |
 | `themePlugins`     | `themePlugins`            | See [Theme Plugins](#theme-plugins).                                                                    |
 
 ### Navbar
 
-The classic `navbar` option is the new `nav` option. Its items are `NavItem` objects, which accept `text`, `link`, `icon`, `activeMatch` and, for a dropdown, `items`:
+The navbar keeps the `navbar` key and the classic item syntax: string items, `children`, `prefix` and `activeMatch` are normalized at build time. `navbar: false` hides the navbar.
 
-| Classic                       | New                           | Notes                                                                                      |
-| ----------------------------- | ----------------------------- | ------------------------------------------------------------------------------------------ |
-| `navbar: []` (default)        | `nav` omitted                 | Both render a navbar without items.                                                        |
-| `navbar: false`               | `nav: []`                     | Hides the navigation items. The navbar itself is configured with the `navbar` frontmatter. |
-| `{ text, link }`              | `{ text, link }`              | Same.                                                                                      |
-| `{ text, children }`          | `{ text, items }`             | The dropdown items.                                                                        |
-| `{ text, prefix, children }`  | `{ text, items }`             | No prefix: write the full link of each item.                                               |
-| `{ text, link, activeMatch }` | `{ text, link, activeMatch }` | Same, as a regular expression.                                                             |
-| `{ text, ariaLabel }`         | —                             | Not supported; add an `icon` or keep the text.                                             |
-| —                             | `{ component, props }`        | Renders a custom component in the navbar.                                                  |
-| —                             | `socialLinks`                 | The social links are separate from the nav items.                                          |
+| Classic                      | New                              | Notes                                                                               |
+| ---------------------------- | -------------------------------- | ----------------------------------------------------------------------------------- |
+| `navbar: []` (default)       | `navbar` omitted                 | Both render a navbar without items.                                                 |
+| `navbar: false`              | `navbar: false`                  | Hides the navbar itself.                                                            |
+| `'/guide/'` (a string entry) | same                             | The text is resolved from the title of the page at runtime.                         |
+| `{ text, link }`             | same                             | Same.                                                                               |
+| `{ text, children }`         | same, or `{ text, items }`       | `children` is a deprecated alias of `items`.                                        |
+| `{ text, prefix, children }` | same, or `{ text, base, items }` | `prefix` is a deprecated alias of `base`. The base applies to the child links only. |
+| `{ text, activeMatch }`      | same                             | Same, as a regular expression string.                                               |
+| `{ text, ariaLabel }`        | —                                | Not supported; add an `icon` or keep the text.                                      |
+| —                            | `{ exact }`                      | Makes the item active only on the exact page of its link.                           |
+| —                            | `{ component, props }`           | Renders a custom component in the navbar.                                           |
+| —                            | `socialLinks`                    | The social links are separate from the navbar items.                                |
 
 `navbarLabel` and `pageNavbarLabel` were the accessible labels of the navigation. Use `navMenuLabel` for the navbar; the page navbar no longer has a label of its own.
 
 ### Sidebar
 
-The sidebar item shape changed, since the theme now uses the same item type in the sidebar and in the navbar:
+The sidebar keeps the `sidebar` key and the classic item syntax, including string items, `children`, `prefix` and `collapsible`. The default is `false`, so a site without a sidebar config no longer generates the heading sidebar. The `'heading'` mode and the `sidebarDepth` option are removed: use `@vuepress/plugin-toc` for a table of contents.
 
-| Classic                                | New                     | Notes                                                                                      |
-| -------------------------------------- | ----------------------- | ------------------------------------------------------------------------------------------ |
-| `'/guide/'` (a string entry)           | `{ link: '/guide/' }`   | The text is resolved from the title of the page at runtime.                                |
-| `{ text, link }`                       | `{ text, link }`        | Same.                                                                                      |
-| `{ text, children }`                   | `{ text, items }`       | The nested items.                                                                          |
-| `{ text, prefix, children }`           | `{ text, base, items }` | `base` is the prefix of the links of the items.                                            |
-| `{ text, collapsible }`                | `{ text, collapsed }`   | A group is collapsible when `collapsed` is set, and it starts collapsed when it is `true`. |
-| `{ text, ariaLabel }`                  | —                       | Not supported.                                                                             |
-| —                                      | `{ icon }`              | The icon of the item.                                                                      |
-| —                                      | `{ docFooterText }`     | The text used by the previous/next links.                                                  |
-| sidebar object keyed by the page paths | same                    | Each value can be an array, `'heading'`, or `{ items, base }`.                             |
+| Classic                                | New                              | Notes                                                                     |
+| -------------------------------------- | -------------------------------- | ------------------------------------------------------------------------- |
+| `'/guide/'` (a string entry)           | same                             | The text is resolved from the title of the page at runtime.               |
+| `{ text, link }`                       | same                             | Same.                                                                     |
+| `{ text, children }`                   | same, or `{ text, items }`       | `children` is a deprecated alias of `items`.                              |
+| `{ text, prefix, children }`           | same, or `{ text, base, items }` | `prefix` is a deprecated alias of `base`.                                 |
+| `{ text, collapsible }`                | same                             | `expanded: true` makes the group start expanded.                          |
+| `{ text, collapsed }`                  | —                                | Removed; use `collapsible` with `expanded`.                               |
+| `{ text, ariaLabel }`                  | —                                | Not supported.                                                            |
+| —                                      | `{ icon }`                       | The icon of the item.                                                     |
+| —                                      | `{ activeMatch, exact }`         | Control when the item is active.                                          |
+| —                                      | `{ docFooterText }`              | The text used by the previous/next links.                                 |
+| sidebar object keyed by the page paths | same                             | Each value can be an array, `false`, `'structure'`, or `{ items, base }`. |
 
 ### Document Footer
 
@@ -224,8 +227,7 @@ export default defineUserConfig({
 | `editLinkPattern`   | —                   | The pattern is a theme option now.                                                                         |
 | `lastUpdated`       | `lastUpdated`       | Same, a boolean or a timestamp.                                                                            |
 | `contributors`      | `contributors`      | Same.                                                                                                      |
-| `sidebar`           | `sidebar`           | Same shapes, with the item changes above.                                                                  |
-| `sidebarDepth`      | `sidebarDepth`      | Same.                                                                                                      |
+| `sidebar`           | `sidebar`           | Same shapes, including the classic item syntax.                                                            |
 | `prev` / `next`     | `prev` / `next`     | A string is the text, an object accepts `text`, `link`, `target` and `rel`, and `false` hides the link.    |
 | `footer` (a string) | `footer` (a string) | The string is rendered as the page footer.                                                                 |
 | `footerHtml`        | `footerHtml`        | Whether to render the string footer as HTML.                                                               |
@@ -291,7 +293,7 @@ The `DefaultTheme` namespace of the new theme holds the types of nav items, side
 ```ts
 import type { DefaultTheme } from '@vuepress/theme-default'
 
-const nav: DefaultTheme.NavItem[] = [{ text: 'Guide', link: '/guide/' }]
+const navbar: DefaultTheme.NavItem[] = [{ text: 'Guide', link: '/guide/' }]
 ```
 
 ## Client API
@@ -326,7 +328,7 @@ A few classic features were dropped rather than renamed:
 ## Checklist
 
 1. Replace `@vuepress/theme-classic` with `@vuepress/theme-default` and `classicTheme` with `defaultTheme`.
-2. Convert `navbar` to `nav`, and the sidebar items to the new shape.
+2. Keep the `navbar` and `sidebar` configs as they are: the default theme accepts the classic syntax, see the compatibility tables above.
 3. Convert `colorMode` / `colorModeSwitch` to `appearance`, and the language switcher options to `locales.<path>.label` and `langMenuLabel`.
 4. Convert `home: true` to `type: home`, and `notFound` / `backToHome`; the other classic home keys keep their names.
 5. Rename the theme plugin switches, and opt out of Shiki if the site must keep Prism.

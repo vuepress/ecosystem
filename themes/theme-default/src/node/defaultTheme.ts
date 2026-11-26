@@ -27,9 +27,14 @@ import { isString } from 'vuepress/shared'
 import type {
   AppearanceOptions,
   DefaultTheme,
+  LocaleConfig,
   ThemeConfig,
   ThemePluginsOptions,
 } from '../shared/types.js'
+import {
+  normalizeSidebar,
+  normalizeThemeConfig,
+} from './normalizeThemeOptions.js'
 
 /**
  * The sidebar item of the theme generated from the file structure
@@ -88,17 +93,17 @@ export const resolveThemeData = (
     ...rest
   } = options
 
-  if (!locales) return rest
+  if (!locales) return normalizeThemeConfig(rest)
 
-  return {
+  return normalizeThemeConfig({
     ...rest,
     locales: Object.fromEntries(
       Object.entries(locales).map(([key, value]) => [
         resolveLocalePath(key, (value as { link?: string } | undefined)?.link),
-        value,
+        normalizeThemeConfig(value as ThemeOptions),
       ]),
     ),
-  }
+  })
 }
 
 /**
@@ -136,7 +141,7 @@ export const resolveTemplateAppearance = (
  * @returns The labels of the containers / 容器的标题文案
  */
 const resolveHintLabels = (
-  options: ThemeConfig,
+  options: ThemeOptions,
 ): Partial<MarkdownHintPluginLocaleData> => {
   const labels: Partial<MarkdownHintPluginLocaleData> = {}
 
@@ -238,7 +243,10 @@ const createTemplateBuildRenderer =
  *
  * 默认主题的配置项
  */
-export interface ThemeOptions extends ThemeConfig {
+export interface ThemeOptions extends Omit<
+  ThemeConfig,
+  'locales' | 'navbar' | 'sidebar'
+> {
   /**
    * Deployed hostname of the site
    *
@@ -252,6 +260,36 @@ export interface ThemeOptions extends ThemeConfig {
    *   'https://example.com'
    */
   hostname?: string
+
+  /**
+   * The navbar items, or `false` to hide the navbar
+   *
+   * String items, the deprecated `children` and `prefix` keys of the classic
+   * theme are supported and normalized at build time.
+   *
+   * 导航栏条目，设为 `false` 以隐藏导航栏
+   *
+   * 支持 classic 主题的字符串条目与已废弃的 `children`、`prefix` 键，它们会在构建期被归一化。
+   */
+  navbar?: DefaultTheme.NavbarOptions
+
+  /**
+   * The sidebar items, or `'structure'` to generate them from the file
+   * structure
+   *
+   * String items, the deprecated `children` and `prefix` keys, and `false` in
+   * the multi-sidebar config of the classic theme are supported and normalized
+   * at build time.
+   *
+   * 侧边栏条目，或设为 `'structure'` 使用文件结构自动生成侧边栏
+   *
+   * 支持 classic 主题的字符串条目、已废弃的 `children` 与 `prefix` 键，以及多侧边栏配置中的
+   * `false`，它们会在构建期被归一化。
+   */
+  sidebar?: DefaultTheme.SidebarOptions
+
+  /** Locale configs / 多语言配置 */
+  locales?: LocaleConfig<ThemeOptions>
 }
 
 /**
@@ -454,13 +492,6 @@ export const defaultTheme = (options: ThemeOptions = {}): ThemeObject => {
     childrenKey: 'items',
     prefixKey: 'base',
     sorter: sidebarSorter,
-
-    // the groups are collapsible by default, and they are collapsed unless
-    // the normalized `expanded` state tells them to be expanded
-    dirInfoGetter: (info, _page, defaults) => ({
-      ...defaults,
-      ...(info.collapsible ? { collapsed: !info.expanded } : {}),
-    }),
   })
 
   return {
@@ -478,6 +509,14 @@ export const defaultTheme = (options: ThemeOptions = {}): ThemeObject => {
 
     extendsPage: (page) => {
       extendsPageData(page)
+
+      // normalize the frontmatter sidebar written in the classic theme syntax,
+      // so that the client only deals with the normalized items
+      if (page.frontmatter.sidebar) {
+        page.data.frontmatter.sidebar = normalizeSidebar(
+          page.frontmatter.sidebar as DefaultTheme.SidebarOptions,
+        )
+      }
 
       // save the icon into the route meta, so that the navbar and the sidebar
       // fill the icon of the items that only define a link

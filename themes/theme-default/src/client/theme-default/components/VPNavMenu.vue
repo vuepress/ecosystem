@@ -15,7 +15,7 @@ const props = defineProps<{
 const theme = useThemeLocaleData<ThemeConfig>()
 
 const nav = computed(() =>
-  theme.value.nav ? resolveNavData(theme.value.nav) : undefined,
+  theme.value.navbar ? resolveNavData(theme.value.navbar) : undefined,
 )
 
 // bar only — inside the screen every item is always shown
