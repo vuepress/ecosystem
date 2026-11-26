@@ -12,7 +12,8 @@ const template = readFileSync(
 // the inline script is the only one in the template, it applies the theme
 // before the first paint
 const script =
-  /<script>(?<script>[\s\S]*?)<\/script>/u.exec(template)?.groups?.script ?? ''
+  /<script[^>]*>(?<script>[\s\S]*?)<\/script>/iu.exec(template)?.groups
+    ?.script ?? ''
 
 const renderFirstPaint = (appearance: string, storage?: string): string => {
   vi.stubGlobal(

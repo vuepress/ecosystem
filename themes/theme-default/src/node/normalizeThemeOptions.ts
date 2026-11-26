@@ -124,6 +124,15 @@ type ThemeConfigInput = Omit<
 const isNonEmptyString = (value: unknown): value is string =>
   typeof value === 'string' && value.length > 0
 
+// a regular expression is polynomial here, the input comes from the user
+const removeTrailingSlashes = (link: string): string => {
+  let result = link
+
+  while (result.endsWith('/')) result = result.slice(0, -1)
+
+  return result
+}
+
 /**
  * Normalize a sidebar item written in the classic theme syntax
  *
@@ -529,9 +538,9 @@ const resolveSocialLinks = (
   const link = isLinkHttp(repo) ? repo : `https://github.com/${repo}`
 
   // the same link may have been written with a trailing slash
-  const comparableLink = link.replace(/\/+$/u, '')
+  const comparableLink = removeTrailingSlashes(link)
 
-  if (links.some((item) => item.link.replace(/\/+$/u, '') === comparableLink))
+  if (links.some((item) => removeTrailingSlashes(item.link) === comparableLink))
     return links
 
   const repoType = resolveRepoType(repo)
