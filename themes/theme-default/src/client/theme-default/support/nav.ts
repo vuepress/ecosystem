@@ -1,6 +1,6 @@
 import { resolveRoute } from 'vuepress/client'
 
-import type { DefaultTheme } from '../shared.js'
+import type { NavItem, NavItemWithLink } from '../shared.js'
 import { isExternal, joinPath } from '../shared.js'
 
 const ensureEndingSlash = (path: string): string =>
@@ -40,10 +40,7 @@ const withBase = (
  * @param items - Nav items / 导航栏条目
  * @returns Resolved nav items / 解析后的导航栏条目
  */
-export const resolveNavData = (
-  items: DefaultTheme.NavItem[],
-  base?: string,
-): DefaultTheme.NavItem[] =>
+export const resolveNavData = (items: NavItem[], base?: string): NavItem[] =>
   items.map((item) => {
     if ('component' in item) return item
 
@@ -58,10 +55,7 @@ export const resolveNavData = (
 
       return {
         ...item,
-        items: resolveNavData(
-          item.items,
-          itemBase,
-        ) as DefaultTheme.NavItemWithLink[],
+        items: resolveNavData(item.items, itemBase) as NavItemWithLink[],
       }
     }
 

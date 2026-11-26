@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import { onBeforeUnmount, onMounted, ref } from 'vue'
 
-import type { DefaultTheme } from '../shared.js'
+import type { SidebarItem } from '../shared.js'
 import VPSidebarItem from './VPSidebarItem.vue'
 
 defineProps<{
-  items: DefaultTheme.SidebarItem[]
+  items: SidebarItem[]
 }>()
 
 const disableTransition = ref(true)

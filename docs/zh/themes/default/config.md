@@ -32,7 +32,7 @@ export default defineUserConfig({
 
 将其设为 `false` 可隐藏文字，只显示 Logo。
 
-@`logo` type=`DefaultTheme.ThemeableImage`
+@`logo` type=`ThemeableImage`
 
 导航栏中显示的 Logo 图片。把文件上传到公共目录，然后传入它的 URL。它接受：
 
@@ -60,7 +60,7 @@ Logo 和站点标题的链接。它默认为当前语言的主页链接（根语
 
 布局本身使用逻辑 CSS 属性编写，并根据 `<html>` 元素的 `dir` 属性切换方向，而主题不会设置该属性 —— 请使用 `@vuepress/plugin-rtl` 或你自己的客户端配置来设置。
 
-@`footer` type=`DefaultTheme.Footer`
+@`footer` type=`Footer`
 
 显示在每个页面底部的页脚。页面在 frontmatter 中设置 `footer: false` 时会隐藏它。
 
@@ -74,7 +74,7 @@ Logo 和站点标题的链接。它默认为当前语言的主页链接（根语
 
 页脚的版权行。允许使用 HTML。
 
-@`notFound` type=`DefaultTheme.NotFoundOptions`
+@`notFound` type=`NotFoundOptions`
 
 自定义 404 页面的文字。每个字段都会回退到内置的英文文案，因此站点只需设置自己想翻译的字段。
 
@@ -122,7 +122,7 @@ Logo 和站点标题的链接。它默认为当前语言的主页链接（根语
 ## 导航栏 {#navbar}
 
 :::: fields
-@`navbar` type=`DefaultTheme.NavbarOptions` default=`[]`
+@`navbar` type=`NavbarOptions` default=`[]`
 
 导航栏项目，设为 `false` 可隐藏导航栏。每个项目都是以下四种形态之一：
 
@@ -238,7 +238,7 @@ export default defineUserConfig({
 ```
 
 :::: fields
-@`socialLinks` type=`DefaultTheme.SocialLink[]`
+@`socialLinks` type=`SocialLink[]`
 
 显示在导航栏末尾与移动端菜单中的社交链接。
 
@@ -262,7 +262,7 @@ export default defineUserConfig({
 ## 侧边栏 {#sidebar}
 
 :::: fields
-@`sidebar` type=`DefaultTheme.SidebarOptions | false` default=`false`
+@`sidebar` type=`SidebarOptions | false` default=`false`
 
 侧边栏配置。它接受四种形态：
 
@@ -382,7 +382,7 @@ dir:
 ## 页面 {#page}
 
 :::: fields
-@`outline` type=`DefaultTheme.Outline | DefaultTheme.Outline['level'] | false` default=`2`
+@`outline` type=`Outline | Outline['level'] | false` default=`2`
 
 侧边栏大纲中显示的标题级别。默认值 `2` 只显示 `h2` 标题。
 
@@ -404,7 +404,7 @@ dir:
 
 首页上的页面始终会禁用侧边栏，页面也可以在 frontmatter 中覆盖主题配置。
 
-@`editLink` type=`DefaultTheme.EditLink`
+@`editLink` type=`EditLink`
 
 文档页脚中的“编辑此页”链接。未设置该配置项时它处于禁用状态。
 
@@ -418,7 +418,7 @@ dir:
 
 链接的文本。
 
-@`lastUpdated` type=`DefaultTheme.LastUpdatedOptions | boolean`
+@`lastUpdated` type=`LastUpdatedOptions | boolean`
 
 是否显示页面的最后更新时间。它默认为 `true`，时间来自 `@vuepress/plugin-git`；禁用 `git` 插件或设置 `lastUpdated: false` 可以隐藏它。
 
@@ -440,7 +440,7 @@ dir:
 
 贡献者列表之前显示的文本。
 
-@`docFooter` type=`DefaultTheme.DocFooter`
+@`docFooter` type=`DocFooter`
 
 自定义文档页脚中上一篇/下一篇页面链接的标签。
 

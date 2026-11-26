@@ -1,10 +1,10 @@
-<script lang="ts" setup generic="T extends DefaultTheme.NavItem">
+<script lang="ts" setup generic="T extends NavItem">
 import { onKeyStroke, useEventListener } from '@vueuse/core'
 import { ref, useId, useTemplateRef, watch } from 'vue'
 import { useRoute } from 'vuepress/client'
 
 import { useFlyout } from '../composables/useFlyout.js'
-import type { DefaultTheme } from '../shared.js'
+import type { NavItem } from '../shared.js'
 import VPMenu from './VPMenu.vue'
 import VPThemeIcon from './VPThemeIcon.vue'
 

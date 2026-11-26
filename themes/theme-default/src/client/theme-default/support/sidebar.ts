@@ -2,7 +2,7 @@ import { ensureEndingSlash } from '@vuepress/helper/client'
 import { getSidebarStructure } from '@vuepress/theme-helper/client'
 import { resolveRoute } from 'vuepress/client'
 
-import type { DefaultTheme } from '../shared.js'
+import type { Sidebar, SidebarArray, SidebarItem } from '../shared.js'
 import { isExternal, isLinkActive } from '../shared.js'
 import { ensureStartingSlash } from './utils.js'
 
@@ -13,8 +13,6 @@ export interface SidebarLink {
   rel?: string
   target?: string
 }
-
-type SidebarItem = DefaultTheme.SidebarItem
 
 /**
  * Normalize the route scope of an item to start and end with a slash
@@ -49,7 +47,7 @@ const resolveStructureSidebar = (scope: string): SidebarItem[] =>
  * return empty array.
  */
 export function getSidebar(
-  _sidebar: DefaultTheme.Sidebar | false | undefined,
+  _sidebar: Sidebar | false | undefined,
   path: string,
   routeLocale = '/',
 ): SidebarItem[] {
@@ -169,7 +167,7 @@ export function hasActiveLink(
 }
 
 function addBase(
-  items: DefaultTheme.SidebarArray,
+  items: SidebarArray,
   _base?: string,
   scope = '/',
 ): SidebarItem[] {

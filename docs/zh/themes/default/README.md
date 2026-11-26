@@ -104,7 +104,7 @@ export default defineUserConfig({
 
 ## 客户端 API {#client-api}
 
-Node 入口（`@vuepress/theme-default`）导出 `defaultTheme` 以及描述主题的类型：`ThemeOptions`、`ThemeConfig`、`ThemeLayout`、`ThemePageData`、`ThemePluginsOptions`、`ThemeContributor`、`AppearanceOptions`，还有 `DefaultTheme` 命名空间（导航项、侧边栏项、Hero 与特性配置项、页脚、团队成员等）。
+Node 入口（`@vuepress/theme-default`）导出 `defaultTheme` 以及描述主题的类型：`ThemeOptions`、`ThemeConfig`、`ThemeLayout`、`ThemePageData`、`ThemePluginsOptions`、`ThemeContributor`、`AppearanceOptions`，以及导航项、侧边栏项、大纲、页脚、团队成员等类型（`NavItem`、`SidebarItem`、`Outline`、`Footer`、`TeamMember` 等）。
 
 客户端入口（`@vuepress/theme-default/client`）导出内置组件和组合式函数。导入它还会加载主题样式和 Inter 网络字体。
 

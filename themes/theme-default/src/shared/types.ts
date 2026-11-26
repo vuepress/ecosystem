@@ -12,7 +12,7 @@ import type { SeoPluginOptions } from '@vuepress/plugin-seo'
 import type { ShikiPluginOptions } from '@vuepress/plugin-shiki'
 import type { SitemapPluginOptions } from '@vuepress/plugin-sitemap'
 import type { SidebarSorter } from '@vuepress/theme-helper'
-/* oxlint-disable typescript/no-explicit-any, typescript/no-namespace -- Theme types ported from VitePress, the namespace keeps the component-facing shapes */
+/* oxlint-disable typescript/no-explicit-any -- Theme types ported from VitePress */
 import type { UseDarkOptions } from '@vueuse/core'
 import type { Ref } from 'vue'
 
@@ -304,7 +304,7 @@ export interface ThemePluginsOptions {
  */
 export interface ThemeConfig {
   /** The logo file of the site / 站点 Logo 文件 */
-  logo?: DefaultTheme.ThemeableImage
+  logo?: ThemeableImage
 
   /** Overrides the link of the site logo / 覆盖站点 Logo 的链接 */
   logoLink?: string | { link?: string; rel?: string; target?: string }
@@ -319,14 +319,14 @@ export interface ThemeConfig {
    *
    * @default 2
    */
-  outline?: DefaultTheme.Outline | DefaultTheme.Outline['level'] | false
+  outline?: Outline | Outline['level'] | false
 
   /**
    * The navbar items, or `false` to hide the navbar
    *
    * 导航栏条目，设为 `false` 以隐藏导航栏
    */
-  navbar?: DefaultTheme.NavItem[] | false
+  navbar?: NavItem[] | false
 
   /**
    * The sidebar items, or `'structure'` to generate them from the file
@@ -336,7 +336,7 @@ export interface ThemeConfig {
    *
    * @default false
    */
-  sidebar?: DefaultTheme.Sidebar | false
+  sidebar?: Sidebar | false
 
   /**
    * Sorters of the sidebar generated from the file structure
@@ -354,13 +354,13 @@ export interface ThemeConfig {
   aside?: boolean | 'left'
 
   /** Info for the edit link / 编辑链接信息 */
-  editLink?: DefaultTheme.EditLink
+  editLink?: EditLink
 
   /** Whether to show the last updated time / 是否显示最后更新时间 */
-  lastUpdated?: DefaultTheme.LastUpdatedOptions | boolean
+  lastUpdated?: LastUpdatedOptions | boolean
 
   /** Set custom prev/next labels / 自定义上一页/下一页标签 */
-  docFooter?: DefaultTheme.DocFooter
+  docFooter?: DocFooter
 
   /**
    * Whether to show the contributors of the page / 是否显示页面贡献者
@@ -377,7 +377,7 @@ export interface ThemeConfig {
   contributorsText?: string
 
   /** The social links / 社交链接 */
-  socialLinks?: DefaultTheme.SocialLink[]
+  socialLinks?: SocialLink[]
 
   /**
    * The title of the `tip` container / `tip` 容器的标题
@@ -422,7 +422,7 @@ export interface ThemeConfig {
   themePlugins?: ThemePluginsOptions
 
   /** The footer configuration / 页脚配置 */
-  footer?: DefaultTheme.Footer
+  footer?: Footer
 
   /** Accessible label of the dark mode switch / 暗色模式切换的无障碍标签 */
   darkModeSwitchLabel?: string
@@ -467,7 +467,7 @@ export interface ThemeConfig {
   gradedContainers?: boolean
 
   /** Customize text of 404 page / 自定义 404 页面的文本 */
-  notFound?: DefaultTheme.NotFoundOptions
+  notFound?: NotFoundOptions
 
   /** Locale configs / 多语言配置 */
   locales?: LocaleConfig<ThemeConfig>
@@ -489,10 +489,10 @@ export interface ThemeLayout {
   isHome: Ref<boolean>
 
   /** The sidebar items of the current page / 当前页面的侧边栏条目 */
-  sidebar: Readonly<Ref<DefaultTheme.SidebarItem[]>>
+  sidebar: Readonly<Ref<SidebarItem[]>>
 
   /** The sidebar groups of the current page / 当前页面的侧边栏分组 */
-  sidebarGroups: Ref<DefaultTheme.SidebarItem[]>
+  sidebarGroups: Ref<SidebarItem[]>
 
   /** Whether the current page has a sidebar / 当前页面是否有侧边栏 */
   hasSidebar: Ref<boolean>
@@ -507,482 +507,479 @@ export interface ThemeLayout {
   leftAside: Ref<boolean>
 
   /** The outline headers of the current page / 当前页面的大纲标题 */
-  headers: Readonly<Ref<DefaultTheme.OutlineItem[]>>
+  headers: Readonly<Ref<OutlineItem[]>>
 
   /** Whether the current page has a local nav / 当前页面是否有本地导航 */
   hasLocalNav: Ref<boolean>
 }
 
-export namespace DefaultTheme {
+/**
+ * The layout state returned by `useLayout`
+ *
+ * `useLayout` 返回的布局状态
+ */
+// nav -----------------------------------------------------------------------
+
+/** A nav item / 导航条目 */
+export type NavItem = NavItemComponent | NavItemWithLink | NavItemWithChildren
+
+/** A nav item rendered by a component / 由组件渲染的导航条目 */
+export interface NavItemComponent {
+  /** The component name / 组件名称 */
+  component: string
+
+  /** The component props / 组件属性 */
+  props?: Record<string, any>
+}
+
+/** A nav item with a link / 带链接的导航条目 */
+export interface NavItemWithLink {
   /**
-   * The layout state returned by `useLayout`
+   * The icon of the item, falls back to the icon of the page metadata
    *
-   * `useLayout` 返回的布局状态
+   * 条目图标，省略时回退到页面元数据的图标
    */
-  // nav -----------------------------------------------------------------------
-
-  /** A nav item / 导航条目 */
-  export type NavItem = NavItemComponent | NavItemWithLink | NavItemWithChildren
-
-  /** A nav item rendered by a component / 由组件渲染的导航条目 */
-  export interface NavItemComponent {
-    /** The component name / 组件名称 */
-    component: string
-
-    /** The component props / 组件属性 */
-    props?: Record<string, any>
-  }
-
-  /** A nav item with a link / 带链接的导航条目 */
-  export interface NavItemWithLink {
-    /**
-     * The icon of the item, falls back to the icon of the page metadata
-     *
-     * 条目图标，省略时回退到页面元数据的图标
-     */
-    icon?: string
-
-    /**
-     * The text of the item, falls back to the title of the page metadata
-     *
-     * 条目文本，省略时回退到页面元数据的标题
-     */
-    text?: string
-
-    /** The link of the item / 条目链接 */
-    link: string | ((payload: ThemePageData) => string)
-
-    /** The children of the item / 条目子项 */
-    items?: never
-
-    /** The active match pattern, as a regex string / 激活匹配模式，正则字符串 */
-    activeMatch?: string
-
-    /**
-     * Whether the link must match the current path exactly
-     *
-     * 链接是否必须与当前路径完全匹配
-     *
-     * @default false
-     */
-    exact?: boolean
-
-    /** The `rel` attribute / `rel` 属性 */
-    rel?: string
-
-    /** The `target` attribute / `target` 属性 */
-    target?: string
-
-    /** Whether to hide the external link icon / 是否隐藏外部链接图标 */
-    noIcon?: boolean
-  }
-
-  /** A group of nav items / 导航条目分组 */
-  export interface NavItemChildren {
-    /** The icon of the group / 分组图标 */
-    icon?: string
-
-    /** The text of the group / 分组文本 */
-    text?: string
-
-    /** The items of the group / 分组条目 */
-    items: NavItemWithLink[]
-
-    /** Base path of the links / 链接的基础路径 */
-    base?: string
-
-    /**
-     * Whether the links must match the current path exactly
-     *
-     * 链接是否必须与当前路径完全匹配
-     *
-     * @default false
-     */
-    exact?: boolean
-  }
-
-  /** A nav item with children / 带子项的导航条目 */
-  export interface NavItemWithChildren {
-    /** The icon of the item / 条目图标 */
-    icon?: string
-
-    /** The text of the item / 条目文本 */
-    text?: string
-
-    /** The items of the item / 条目子项 */
-    items: (
-      | NavItemComponent
-      | NavItemChildren
-      | NavItemWithChildren
-      | NavItemWithLink
-    )[]
-
-    /** The active match pattern, as a regex string / 激活匹配模式，正则字符串 */
-    activeMatch?: string
-
-    /** Base path of the links / 链接的基础路径 */
-    base?: string
-
-    /**
-     * Whether the links must match the current path exactly
-     *
-     * 链接是否必须与当前路径完全匹配
-     *
-     * @default false
-     */
-    exact?: boolean
-  }
-
-  // navbar options -------------------------------------------------------------
+  icon?: string
 
   /**
-   * A navbar group, whose links can be nested under `items`
+   * The text of the item, falls back to the title of the page metadata
    *
-   * 导航栏分组，链接可以通过 `items` 嵌套
+   * 条目文本，省略时回退到页面元数据的标题
    */
-  export interface NavbarGroupOptions {
-    /** The icon of the group / 分组图标 */
-    icon?: string
+  text?: string
 
-    /** The text of the group / 分组文本 */
-    text: string
+  /** The link of the item / 条目链接 */
+  link: string | ((payload: ThemePageData) => string)
 
-    /** The items of the group / 分组条目 */
-    items?: (NavbarGroupOptions | NavItem | string)[]
+  /** The children of the item / 条目子项 */
+  items?: never
 
-    /**
-     * @deprecated Use `items` instead.
-     * @deprecated 请改用 `items`。
-     */
-    children?: (NavbarGroupOptions | NavItem | string)[]
+  /** The active match pattern, as a regex string / 激活匹配模式，正则字符串 */
+  activeMatch?: string
 
-    /** Base path of the links / 链接的基础路径 */
-    base?: string
+  /**
+   * Whether the link must match the current path exactly
+   *
+   * 链接是否必须与当前路径完全匹配
+   *
+   * @default false
+   */
+  exact?: boolean
 
-    /**
-     * @deprecated Use `base` instead.
-     * @deprecated 请改用 `base`。
-     */
-    prefix?: string
+  /** The `rel` attribute / `rel` 属性 */
+  rel?: string
 
-    /** The active match pattern, as a regex string / 激活匹配模式，正则字符串 */
-    activeMatch?: string
+  /** The `target` attribute / `target` 属性 */
+  target?: string
 
-    /**
-     * Whether the links must match the current path exactly
-     *
-     * 链接是否必须与当前路径完全匹配
-     *
-     * @default false
-     */
-    exact?: boolean
-  }
+  /** Whether to hide the external link icon / 是否隐藏外部链接图标 */
+  noIcon?: boolean
+}
 
-  /** A navbar item as configured by the user / 用户配置的导航栏条目 */
-  export type NavbarItemOptions = NavItem | NavbarGroupOptions | string
+/** A group of nav items / 导航条目分组 */
+export interface NavItemChildren {
+  /** The icon of the group / 分组图标 */
+  icon?: string
 
-  /** The navbar items as configured by the user / 用户配置的导航栏条目列表 */
-  export type NavbarOptions = NavbarItemOptions[] | false
+  /** The text of the group / 分组文本 */
+  text?: string
 
-  // image ---------------------------------------------------------------------
+  /** The items of the group / 分组条目 */
+  items: NavItemWithLink[]
 
-  /** An image that can be themed / 可随主题变化的图片 */
-  export type ThemeableImage =
-    | string
-    | { src: string; alt?: string; [prop: string]: any }
-    | { light: string; dark: string; alt?: string; [prop: string]: any }
+  /** Base path of the links / 链接的基础路径 */
+  base?: string
 
-  /** An icon used by a feature / 特性图标 */
-  export type FeatureIcon =
-    | string
-    | {
-        src: string
-        alt?: string
-        width?: string
-        height?: string
-        wrap?: boolean
-      }
-    | {
-        light: string
-        dark: string
-        alt?: string
-        width?: string
-        height?: string
-        wrap?: boolean
-      }
+  /**
+   * Whether the links must match the current path exactly
+   *
+   * 链接是否必须与当前路径完全匹配
+   *
+   * @default false
+   */
+  exact?: boolean
+}
 
-  // sidebar -------------------------------------------------------------------
+/** A nav item with children / 带子项的导航条目 */
+export interface NavItemWithChildren {
+  /** The icon of the item / 条目图标 */
+  icon?: string
 
-  /** The sidebar config / 侧边栏配置 */
-  export type Sidebar = SidebarArray | SidebarMulti | 'structure'
+  /** The text of the item / 条目文本 */
+  text?: string
 
-  /** The sidebar items of a single sidebar / 单个侧边栏的条目 */
-  export type SidebarArray = (SidebarItem | SidebarStructureItem)[]
-
-  /** The sidebar config of each path / 各路径的侧边栏配置 */
-  export type SidebarMulti = Record<
-    string,
-    SidebarArray | { items: SidebarArray; base: string } | 'structure' | false
-  >
-
-  /** The sidebar item as configured by the user / 用户配置的侧边栏条目 */
-  export interface SidebarItemOptions extends Omit<SidebarItem, 'items'> {
-    /** The children of the item / 条目子项 */
-    items?: (SidebarItemOptions | string)[]
-
-    /**
-     * @deprecated Use `items` instead.
-     * @deprecated 请改用 `items`。
-     */
-    children?: (SidebarItemOptions | string)[] | 'structure'
-
-    /**
-     * @deprecated Use `base` instead.
-     * @deprecated 请改用 `base`。
-     */
-    prefix?: string
-  }
-
-  /** The sidebar items as configured by the user / 用户配置的侧边栏条目列表 */
-  export type SidebarArrayOptions = (
-    | SidebarItemOptions
-    | SidebarStructureItem
-    | string
+  /** The items of the item / 条目子项 */
+  items: (
+    | NavItemComponent
+    | NavItemChildren
+    | NavItemWithChildren
+    | NavItemWithLink
   )[]
 
-  /** The sidebar config of each path as configured by the user / 用户配置的各路径侧边栏 */
-  export type SidebarMultiOptions = Record<
-    string,
-    | SidebarArrayOptions
-    | { items: SidebarArrayOptions; base: string }
-    | 'structure'
-    | false
-  >
+  /** The active match pattern, as a regex string / 激活匹配模式，正则字符串 */
+  activeMatch?: string
 
-  /** The sidebar config as configured by the user / 用户配置的侧边栏 */
-  export type SidebarOptions =
-    | SidebarArrayOptions
-    | SidebarMultiOptions
-    | 'structure'
-    | false
+  /** Base path of the links / 链接的基础路径 */
+  base?: string
 
   /**
-   * A sidebar group whose children are generated from the file structure
+   * Whether the links must match the current path exactly
    *
-   * 子项由文件结构生成的侧边栏分组
+   * 链接是否必须与当前路径完全匹配
+   *
+   * @default false
    */
-  export interface SidebarStructureItem extends Omit<SidebarItem, 'items'> {
-    /** Generate the children from the file structure / 由文件结构生成子项 */
-    items: 'structure'
-  }
+  exact?: boolean
+}
 
-  /** A sidebar item / 侧边栏条目 */
-  export interface SidebarItem {
-    /** The icon of the item / 条目图标 */
-    icon?: string
+// navbar options -------------------------------------------------------------
 
-    /** The text label of the item / 条目文本 */
-    text?: string
+/**
+ * A navbar group, whose links can be nested under `items`
+ *
+ * 导航栏分组，链接可以通过 `items` 嵌套
+ */
+export interface NavbarGroupOptions {
+  /** The icon of the group / 分组图标 */
+  icon?: string
 
-    /** The link of the item / 条目链接 */
-    link?: string
+  /** The text of the group / 分组文本 */
+  text: string
 
-    /** The children of the item / 条目子项 */
-    items?: SidebarItem[]
+  /** The items of the group / 分组条目 */
+  items?: (NavbarGroupOptions | NavItem | string)[]
 
-    /**
-     * Whether the group is collapsible. When enabled, the group can be
-     * collapsed and expanded, and it is expanded when it contains the active
-     * link
-     *
-     * 分组是否可折叠。启用后分组可以折叠与展开，包含当前激活链接时会自动展开
-     *
-     * @default false
-     */
-    collapsible?: boolean
+  /**
+   * @deprecated Use `items` instead.
+   * @deprecated 请改用 `items`。
+   */
+  children?: (NavbarGroupOptions | NavItem | string)[]
 
-    /**
-     * Whether the collapsible group is expanded initially
-     *
-     * 可折叠分组是否默认展开
-     *
-     * Only works when `collapsible` is `true`.
-     *
-     * 仅在 `collapsible` 为 `true` 时生效。
-     *
-     * @default false
-     */
-    expanded?: boolean
+  /** Base path of the links / 链接的基础路径 */
+  base?: string
 
-    /** Base path for the children items / 子项的基础路径 */
-    base?: string
+  /**
+   * @deprecated Use `base` instead.
+   * @deprecated 请改用 `base`。
+   */
+  prefix?: string
 
-    /**
-     * The active match pattern, as a regex string
-     *
-     * 激活匹配模式，正则字符串
-     */
-    activeMatch?: string
+  /** The active match pattern, as a regex string / 激活匹配模式，正则字符串 */
+  activeMatch?: string
 
-    /**
-     * Whether the link must match the current path exactly. Sub paths are only
-     * active when this is set to `false`.
-     *
-     * 链接是否必须与当前路径完全匹配。仅当设为 `false` 时子路径才会激活。
-     *
-     * @default true
-     */
-    exact?: boolean
+  /**
+   * Whether the links must match the current path exactly
+   *
+   * 链接是否必须与当前路径完全匹配
+   *
+   * @default false
+   */
+  exact?: boolean
+}
 
-    /**
-     * Customize text that appears on the footer of previous/next page /
-     * 自定义上一页/下一页文本
-     */
-    docFooterText?: string
+/** A navbar item as configured by the user / 用户配置的导航栏条目 */
+export type NavbarItemOptions = NavItem | NavbarGroupOptions | string
 
-    /** The `rel` attribute / `rel` 属性 */
-    rel?: string
+/** The navbar items as configured by the user / 用户配置的导航栏条目列表 */
+export type NavbarOptions = NavbarItemOptions[] | false
 
-    /** The `target` attribute / `target` 属性 */
-    target?: string
-  }
+// image ---------------------------------------------------------------------
 
-  // edit link -----------------------------------------------------------------
+/** An image that can be themed / 可随主题变化的图片 */
+export type ThemeableImage =
+  | string
+  | { src: string; alt?: string; [prop: string]: any }
+  | { light: string; dark: string; alt?: string; [prop: string]: any }
 
-  /** The edit link config / 编辑链接配置 */
-  export interface EditLink {
-    /** Pattern for edit link / 编辑链接的模式 */
-    pattern: string | ((payload: ThemePageData) => string)
+/** An icon used by a feature / 特性图标 */
+export type FeatureIcon =
+  | string
+  | {
+      src: string
+      alt?: string
+      width?: string
+      height?: string
+      wrap?: boolean
+    }
+  | {
+      light: string
+      dark: string
+      alt?: string
+      width?: string
+      height?: string
+      wrap?: boolean
+    }
 
-    /** Custom text for edit link / 编辑链接的自定义文本 */
-    text?: string
-  }
+// sidebar -------------------------------------------------------------------
 
-  // prev-next -----------------------------------------------------------------
+/** The sidebar config / 侧边栏配置 */
+export type Sidebar = SidebarArray | SidebarMulti | 'structure'
 
-  /** The previous/next page labels / 上一页/下一页标签 */
-  export interface DocFooter {
-    /** Custom label for previous page button / 上一页按钮的自定义标签 */
-    prev?: string | boolean
+/** The sidebar items of a single sidebar / 单个侧边栏的条目 */
+export type SidebarArray = (SidebarItem | SidebarStructureItem)[]
 
-    /** Custom label for next page button / 下一页按钮的自定义标签 */
-    next?: string | boolean
-  }
+/** The sidebar config of each path / 各路径的侧边栏配置 */
+export type SidebarMulti = Record<
+  string,
+  SidebarArray | { items: SidebarArray; base: string } | 'structure' | false
+>
 
-  // social link ---------------------------------------------------------------
+/** The sidebar item as configured by the user / 用户配置的侧边栏条目 */
+export interface SidebarItemOptions extends Omit<SidebarItem, 'items'> {
+  /** The children of the item / 条目子项 */
+  items?: (SidebarItemOptions | string)[]
 
-  /** A social link / 社交链接 */
-  export interface SocialLink {
-    /** The icon of the link / 链接图标 */
-    icon: SocialLinkIcon
+  /**
+   * @deprecated Use `items` instead.
+   * @deprecated 请改用 `items`。
+   */
+  children?: (SidebarItemOptions | string)[] | 'structure'
 
-    /** The link of the link / 链接地址 */
-    link: string
+  /**
+   * @deprecated Use `base` instead.
+   * @deprecated 请改用 `base`。
+   */
+  prefix?: string
+}
 
-    /** The `aria-label` attribute / `aria-label` 属性 */
-    ariaLabel?: string
+/** The sidebar items as configured by the user / 用户配置的侧边栏条目列表 */
+export type SidebarArrayOptions = (
+  | SidebarItemOptions
+  | SidebarStructureItem
+  | string
+)[]
 
-    /** The `target` attribute / `target` 属性 */
-    target?: string
-  }
+/** The sidebar config of each path as configured by the user / 用户配置的各路径侧边栏 */
+export type SidebarMultiOptions = Record<
+  string,
+  | SidebarArrayOptions
+  | { items: SidebarArrayOptions; base: string }
+  | 'structure'
+  | false
+>
 
-  /** The icon of a social link / 社交链接的图标 */
-  export type SocialLinkIcon = string | { svg: string }
+/** The sidebar config as configured by the user / 用户配置的侧边栏 */
+export type SidebarOptions =
+  | SidebarArrayOptions
+  | SidebarMultiOptions
+  | 'structure'
+  | false
 
-  // footer --------------------------------------------------------------------
+/**
+ * A sidebar group whose children are generated from the file structure
+ *
+ * 子项由文件结构生成的侧边栏分组
+ */
+export interface SidebarStructureItem extends Omit<SidebarItem, 'items'> {
+  /** Generate the children from the file structure / 由文件结构生成子项 */
+  items: 'structure'
+}
 
-  /** The footer config / 页脚配置 */
-  export interface Footer {
-    /** The message of the footer / 页脚消息 */
-    message?: string
+/** A sidebar item / 侧边栏条目 */
+export interface SidebarItem {
+  /** The icon of the item / 条目图标 */
+  icon?: string
 
-    /** The copyright of the footer / 页脚版权信息 */
-    copyright?: string
-  }
+  /** The text label of the item / 条目文本 */
+  text?: string
 
-  // team ----------------------------------------------------------------------
+  /** The link of the item / 条目链接 */
+  link?: string
 
-  /** A team member / 团队成员 */
-  export interface TeamMember {
-    /** The avatar of the member / 成员头像 */
-    avatar: string
+  /** The children of the item / 条目子项 */
+  items?: SidebarItem[]
 
-    /** The name of the member / 成员姓名 */
-    name: string
+  /**
+   * Whether the group is collapsible. When enabled, the group can be collapsed
+   * and expanded, and it is expanded when it contains the active link
+   *
+   * 分组是否可折叠。启用后分组可以折叠与展开，包含当前激活链接时会自动展开
+   *
+   * @default false
+   */
+  collapsible?: boolean
 
-    /** The title of the member / 成员头衔 */
-    title?: string
+  /**
+   * Whether the collapsible group is expanded initially
+   *
+   * 可折叠分组是否默认展开
+   *
+   * Only works when `collapsible` is `true`.
+   *
+   * 仅在 `collapsible` 为 `true` 时生效。
+   *
+   * @default false
+   */
+  expanded?: boolean
 
-    /** The organization of the member / 成员组织 */
-    org?: string
+  /** Base path for the children items / 子项的基础路径 */
+  base?: string
 
-    /** The link of the organization / 组织链接 */
-    orgLink?: string
+  /**
+   * The active match pattern, as a regex string
+   *
+   * 激活匹配模式，正则字符串
+   */
+  activeMatch?: string
 
-    /** The description of the member / 成员描述 */
-    desc?: string
+  /**
+   * Whether the link must match the current path exactly. Sub paths are only
+   * active when this is set to `false`.
+   *
+   * 链接是否必须与当前路径完全匹配。仅当设为 `false` 时子路径才会激活。
+   *
+   * @default true
+   */
+  exact?: boolean
 
-    /** The links of the member / 成员链接 */
-    links?: SocialLink[]
+  /**
+   * Customize text that appears on the footer of previous/next page /
+   * 自定义上一页/下一页文本
+   */
+  docFooterText?: string
 
-    /** The sponsor link of the member / 成员的赞助链接 */
-    sponsor?: string
+  /** The `rel` attribute / `rel` 属性 */
+  rel?: string
 
-    /** The action text of the member / 成员的操作文本 */
-    actionText?: string
-  }
+  /** The `target` attribute / `target` 属性 */
+  target?: string
+}
 
-  // outline -------------------------------------------------------------------
+// edit link -----------------------------------------------------------------
 
-  /** The outline config / 大纲配置 */
-  export interface Outline {
-    /** The header levels of the outline / 大纲的标题级别 */
-    level?: number | [number, number] | 'deep'
+/** The edit link config / 编辑链接配置 */
+export interface EditLink {
+  /** Pattern for edit link / 编辑链接的模式 */
+  pattern: string | ((payload: ThemePageData) => string)
 
-    /** The label of the outline / 大纲的标签 */
-    label?: string
-  }
+  /** Custom text for edit link / 编辑链接的自定义文本 */
+  text?: string
+}
 
-  /** An outline item / 大纲条目 */
-  export type OutlineItem = Omit<Header, 'slug' | 'children'> & {
-    /** The element of the header / 标题元素 */
-    element: HTMLHeadElement
+// prev-next -----------------------------------------------------------------
 
-    /** The children of the item / 子条目 */
-    children?: OutlineItem[]
-  }
+/** The previous/next page labels / 上一页/下一页标签 */
+export interface DocFooter {
+  /** Custom label for previous page button / 上一页按钮的自定义标签 */
+  prev?: string | boolean
 
-  // last updated --------------------------------------------------------------
+  /** Custom label for next page button / 下一页按钮的自定义标签 */
+  next?: string | boolean
+}
 
-  /** The last updated options / 最后更新选项 */
-  export interface LastUpdatedOptions {
-    /** Set custom last updated text / 自定义最后更新文本 */
-    text?: string
+// social link ---------------------------------------------------------------
 
-    /** Set options for last updated time formatting / 最后更新时间格式化选项 */
-    formatOptions?: Intl.DateTimeFormatOptions & { forceLocale?: boolean }
-  }
+/** A social link / 社交链接 */
+export interface SocialLink {
+  /** The icon of the link / 链接图标 */
+  icon: SocialLinkIcon
 
-  // not found -----------------------------------------------------------------
+  /** The link of the link / 链接地址 */
+  link: string
 
-  /** The 404 page options / 404 页面选项 */
-  export interface NotFoundOptions {
-    /** Set custom not found message / 自定义未找到消息 */
-    title?: string
+  /** The `aria-label` attribute / `aria-label` 属性 */
+  ariaLabel?: string
 
-    /** Set custom not found description / 自定义未找到描述 */
-    quote?: string
+  /** The `target` attribute / `target` 属性 */
+  target?: string
+}
 
-    /** Target of the home link / 首页链接目标 */
-    link?: string
+/** The icon of a social link / 社交链接的图标 */
+export type SocialLinkIcon = string | { svg: string }
 
-    /** Set aria label for home link / 首页链接的无障碍标签 */
-    linkLabel?: string
+// footer --------------------------------------------------------------------
 
-    /** Set custom home link text / 自定义首页链接文本 */
-    linkText?: string
+/** The footer config / 页脚配置 */
+export interface Footer {
+  /** The message of the footer / 页脚消息 */
+  message?: string
 
-    /** The 404 code / 404 代码 */
-    code?: string
-  }
+  /** The copyright of the footer / 页脚版权信息 */
+  copyright?: string
+}
+
+// team ----------------------------------------------------------------------
+
+/** A team member / 团队成员 */
+export interface TeamMember {
+  /** The avatar of the member / 成员头像 */
+  avatar: string
+
+  /** The name of the member / 成员姓名 */
+  name: string
+
+  /** The title of the member / 成员头衔 */
+  title?: string
+
+  /** The organization of the member / 成员组织 */
+  org?: string
+
+  /** The link of the organization / 组织链接 */
+  orgLink?: string
+
+  /** The description of the member / 成员描述 */
+  desc?: string
+
+  /** The links of the member / 成员链接 */
+  links?: SocialLink[]
+
+  /** The sponsor link of the member / 成员的赞助链接 */
+  sponsor?: string
+
+  /** The action text of the member / 成员的操作文本 */
+  actionText?: string
+}
+
+// outline -------------------------------------------------------------------
+
+/** The outline config / 大纲配置 */
+export interface Outline {
+  /** The header levels of the outline / 大纲的标题级别 */
+  level?: number | [number, number] | 'deep'
+
+  /** The label of the outline / 大纲的标签 */
+  label?: string
+}
+
+/** An outline item / 大纲条目 */
+export type OutlineItem = Omit<Header, 'slug' | 'children'> & {
+  /** The element of the header / 标题元素 */
+  element: HTMLHeadElement
+
+  /** The children of the item / 子条目 */
+  children?: OutlineItem[]
+}
+
+// last updated --------------------------------------------------------------
+
+/** The last updated options / 最后更新选项 */
+export interface LastUpdatedOptions {
+  /** Set custom last updated text / 自定义最后更新文本 */
+  text?: string
+
+  /** Set options for last updated time formatting / 最后更新时间格式化选项 */
+  formatOptions?: Intl.DateTimeFormatOptions & { forceLocale?: boolean }
+}
+
+// not found -----------------------------------------------------------------
+
+/** The 404 page options / 404 页面选项 */
+export interface NotFoundOptions {
+  /** Set custom not found message / 自定义未找到消息 */
+  title?: string
+
+  /** Set custom not found description / 自定义未找到描述 */
+  quote?: string
+
+  /** Target of the home link / 首页链接目标 */
+  link?: string
+
+  /** Set aria label for home link / 首页链接的无障碍标签 */
+  linkLabel?: string
+
+  /** Set custom home link text / 自定义首页链接文本 */
+  linkText?: string
+
+  /** The 404 code / 404 代码 */
+  code?: string
 }

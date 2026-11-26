@@ -2,12 +2,12 @@
 import { computed } from 'vue'
 
 import { useSidebarItemControl } from '../composables/useSidebarControl.js'
-import type { DefaultTheme } from '../shared.js'
+import type { SidebarItem } from '../shared.js'
 import VPLink from './VPLink.vue'
 import VPThemeIcon from './VPThemeIcon.vue'
 
 const props = defineProps<{
-  item: DefaultTheme.SidebarItem
+  item: SidebarItem
   depth: number
 }>()
 

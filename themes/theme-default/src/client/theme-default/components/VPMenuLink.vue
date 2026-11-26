@@ -1,4 +1,4 @@
-<script lang="ts" setup generic="T extends DefaultTheme.NavItemWithLink">
+<script lang="ts" setup generic="T extends NavItemWithLink">
 import { inject } from 'vue'
 
 import {
@@ -6,7 +6,7 @@ import {
   navScreenInjectionKey,
   useNavItemLink,
 } from '../composables/useNav.js'
-import type { DefaultTheme } from '../shared.js'
+import type { NavItemWithLink } from '../shared.js'
 import VPLink from './VPLink.vue'
 import VPThemeIcon from './VPThemeIcon.vue'
 

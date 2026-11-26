@@ -8,9 +8,11 @@ import {
 import type { PageDataRef } from 'vuepress/client'
 
 import type {
-  DefaultTheme,
   ThemePageData,
   ThemeConfig,
+  FeatureIcon,
+  SidebarOptions,
+  ThemeableImage,
 } from '../../shared/types.js'
 
 export type { ThemePageData } from '../../shared/types.js'
@@ -82,7 +84,7 @@ export interface ThemeHero {
   /** Tagline of the hero / hero 区域的标语 */
   tagline?: string
   /** Image of the hero / hero 区域的图片 */
-  image?: DefaultTheme.ThemeableImage
+  image?: ThemeableImage
   /** Actions of the hero / hero 区域的按钮 */
   actions?: ThemeHeroAction[]
 }
@@ -94,7 +96,7 @@ export interface ThemeHero {
  */
 export interface ThemeFeature {
   /** Icon of the feature / 特性图标 */
-  icon?: DefaultTheme.FeatureIcon
+  icon?: FeatureIcon
   /** Title of the feature / 特性标题 */
   title: string
   /** Details of the feature / 特性详情 */
@@ -222,7 +224,7 @@ export interface ThemePageFrontmatter {
    *
    * String 条目与 classic 主题已废弃的 `children`、`prefix` 键会在构建期被归一化。
    */
-  sidebar?: DefaultTheme.SidebarOptions | false
+  sidebar?: SidebarOptions | false
   /**
    * Page type of the theme, which controls the content layout
    *
@@ -360,7 +362,7 @@ export const useHomeHero = (): ComputedRef<ThemeHero | undefined> => {
         : tagline || site.value.description || 'Welcome to your VuePress site'
 
     const alt = heroAlt || name || 'hero'
-    const image: DefaultTheme.ThemeableImage | undefined = heroImage
+    const image: ThemeableImage | undefined = heroImage
       ? heroImageDark
         ? { light: heroImage, dark: heroImageDark, alt }
         : { src: heroImage, alt }

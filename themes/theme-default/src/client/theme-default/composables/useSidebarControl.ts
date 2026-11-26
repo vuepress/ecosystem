@@ -11,7 +11,7 @@ import {
 import { useRoute } from 'vuepress/client'
 
 import { useThemePageData } from '../../composables/useThemePageData.js'
-import type { DefaultTheme } from '../shared.js'
+import type { SidebarItem } from '../shared.js'
 import { isActive, isLinkActive } from '../shared.js'
 import { hasActiveLink as containsActiveLink } from '../support/sidebar.js'
 
@@ -71,9 +71,7 @@ export function useSidebarControl() {
   }
 }
 
-export function useSidebarItemControl(
-  item: ComputedRef<DefaultTheme.SidebarItem>,
-) {
+export function useSidebarItemControl(item: ComputedRef<SidebarItem>) {
   const route = useRoute()
   const page = useThemePageData()
 

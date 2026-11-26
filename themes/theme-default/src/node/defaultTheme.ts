@@ -26,10 +26,12 @@ import { isString } from 'vuepress/shared'
 
 import type {
   AppearanceOptions,
-  DefaultTheme,
   LocaleConfig,
   ThemeConfig,
   ThemePluginsOptions,
+  NavbarOptions,
+  SidebarItem,
+  SidebarOptions,
 } from '../shared/types.js'
 import {
   normalizeSidebar,
@@ -41,7 +43,7 @@ import {
  *
  * 根据文件结构生成的主题侧边栏条目
  */
-type StructureSidebarItem = DefaultTheme.SidebarItem & { text: string }
+type StructureSidebarItem = SidebarItem & { text: string }
 
 /**
  * Plugin list of the theme
@@ -271,7 +273,7 @@ export interface ThemeOptions extends Omit<
    *
    * 支持 classic 主题的字符串条目与已废弃的 `children`、`prefix` 键，它们会在构建期被归一化。
    */
-  navbar?: DefaultTheme.NavbarOptions
+  navbar?: NavbarOptions
 
   /**
    * The sidebar items, or `'structure'` to generate them from the file
@@ -286,7 +288,7 @@ export interface ThemeOptions extends Omit<
    * 支持 classic 主题的字符串条目、已废弃的 `children` 与 `prefix` 键，以及多侧边栏配置中的
    * `false`，它们会在构建期被归一化。
    */
-  sidebar?: DefaultTheme.SidebarOptions
+  sidebar?: SidebarOptions
 
   /** Locale configs / 多语言配置 */
   locales?: LocaleConfig<ThemeOptions>
@@ -514,7 +516,7 @@ export const defaultTheme = (options: ThemeOptions = {}): ThemeObject => {
       // so that the client only deals with the normalized items
       if (page.frontmatter.sidebar) {
         page.data.frontmatter.sidebar = normalizeSidebar(
-          page.frontmatter.sidebar as DefaultTheme.SidebarOptions,
+          page.frontmatter.sidebar as SidebarOptions,
         )
       }
 

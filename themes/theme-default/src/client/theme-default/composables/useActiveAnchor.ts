@@ -2,7 +2,7 @@ import { useMediaQuery } from '@vueuse/core'
 import { onMounted, onUpdated, type TemplateRef, watch } from 'vue'
 import { useRoute } from 'vuepress/client'
 
-import type { DefaultTheme, ThemeConfig } from '../shared.js'
+import type { ThemeConfig, OutlineItem } from '../shared.js'
 
 // cached list of anchor elements from resolveHeaders
 const resolvedHeaders: { element: HTMLHeadElement; link: string }[] = []
@@ -16,9 +16,7 @@ export function resolveTitle(theme: ThemeConfig): string {
   )
 }
 
-export function getHeaders(
-  range: ThemeConfig['outline'],
-): DefaultTheme.OutlineItem[] {
+export function getHeaders(range: ThemeConfig['outline']): OutlineItem[] {
   const headers = [
     ...document.querySelectorAll(
       '.vp-doc h1, .vp-doc h2, .vp-doc h3, .vp-doc h4, .vp-doc h5, .vp-doc h6',
@@ -52,9 +50,9 @@ function serializeHeader(h: Element): string {
 }
 
 export function resolveHeaders(
-  headers: DefaultTheme.OutlineItem[],
+  headers: OutlineItem[],
   range?: ThemeConfig['outline'],
-): DefaultTheme.OutlineItem[] {
+): OutlineItem[] {
   if (range === false) {
     return []
   }
@@ -140,17 +138,14 @@ export function useActiveAnchor(
 }
 
 function buildTree(
-  data: DefaultTheme.OutlineItem[],
+  data: OutlineItem[],
   min: number,
   max: number,
-): DefaultTheme.OutlineItem[] {
+): OutlineItem[] {
   resolvedHeaders.length = 0
 
-  const result: DefaultTheme.OutlineItem[] = []
-  const stack: (
-    | DefaultTheme.OutlineItem
-    | { level: number; shouldIgnore: true }
-  )[] = []
+  const result: OutlineItem[] = []
+  const stack: (OutlineItem | { level: number; shouldIgnore: true })[] = []
 
   data.forEach((item) => {
     const node = { ...item, children: [] }

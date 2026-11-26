@@ -1,11 +1,11 @@
 <script lang="ts" setup>
 import { computed } from 'vue'
 
-import type { DefaultTheme } from '../shared.js'
+import type { SocialLinkIcon } from '../shared.js'
 import { isExternal } from '../shared.js'
 
 const props = defineProps<{
-  icon: DefaultTheme.SocialLinkIcon
+  icon: SocialLinkIcon
   link: string
   ariaLabel?: string
   target?: string

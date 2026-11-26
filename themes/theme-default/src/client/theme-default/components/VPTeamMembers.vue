@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import type { DefaultTheme } from '../shared.js'
+import type { TeamMember } from '../shared.js'
 import VPTeamMembersItem from './VPTeamMembersItem.vue'
 
 interface Props {
   size?: 'small' | 'medium'
-  members: DefaultTheme.TeamMember[]
+  members: TeamMember[]
 }
 
 const props = withDefaults(defineProps<Props>(), {

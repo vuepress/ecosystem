@@ -104,7 +104,7 @@ A theme cannot choose a search backend for a site, so search is not part of the 
 
 ## Client API
 
-The node entry (`@vuepress/theme-default`) exports `defaultTheme` together with the types describing the theme: `ThemeOptions`, `ThemeConfig`, `ThemeLayout`, `ThemePageData`, `ThemePluginsOptions`, `ThemeContributor`, `AppearanceOptions` and the `DefaultTheme` namespace (nav items, sidebar items, hero and feature options, footer, team members, and so on).
+The node entry (`@vuepress/theme-default`) exports `defaultTheme` together with the types describing the theme: `ThemeOptions`, `ThemeConfig`, `ThemeLayout`, `ThemePageData`, `ThemePluginsOptions`, `ThemeContributor`, `AppearanceOptions`, and the types of the nav items, sidebar items, outline, footer, team members, and so on (`NavItem`, `SidebarItem`, `Outline`, `Footer`, `TeamMember`, ...).
 
 The client entry (`@vuepress/theme-default/client`) exports the built-in components and composables. Importing it also loads the theme styles and the Inter webfont.
 

@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import type { DefaultTheme } from '../shared.js'
+import type { FeatureIcon } from '../shared.js'
 import VPImage from './VPImage.vue'
 import VPLink from './VPLink.vue'
 
 defineProps<{
-  icon?: DefaultTheme.FeatureIcon
+  icon?: FeatureIcon
   title: string
   details?: string
   link?: string

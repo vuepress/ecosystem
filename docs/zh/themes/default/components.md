@@ -185,7 +185,7 @@ const members = [
 ### VPTeamMembers {#vpteammembers}
 
 ::: fields
-@`members` type=`DefaultTheme.TeamMember[]` required
+@`members` type=`TeamMember[]` required
 
 要渲染的成员。每个成员包含下面的字段。
 
@@ -225,7 +225,7 @@ const members = [
 
 赞助链接的文本。
 
-@@`members[*].links` type=`DefaultTheme.SocialLink[]`
+@@`members[*].links` type=`SocialLink[]`
 
 成员的社交链接，每个为 `{ icon: string | { svg: string }; link: string; ariaLabel?: string; target?: string }`。
 :::
@@ -328,7 +328,7 @@ A badge <Badge text="New" type="tip" /> in a sentence.
 ### VPImage {#vpimage}
 
 ::: fields
-@`image` type=`DefaultTheme.ThemeableImage` required
+@`image` type=`ThemeableImage` required
 
 图片。它接受 URL 字符串、`{ src, alt? }`，或用于跟随颜色模式切换的 `{ light, dark, alt? }`。
 
@@ -368,7 +368,7 @@ A badge <Badge text="New" type="tip" /> in a sentence.
 ### VPSocialLinks {#vpsociallinks}
 
 ::: fields
-@`links` type=`DefaultTheme.SocialLink[]` required
+@`links` type=`SocialLink[]` required
 
 要渲染的社交链接，每个为 `{ icon: string | { svg: string }; link: string; ariaLabel?: string; target?: string }`。
 

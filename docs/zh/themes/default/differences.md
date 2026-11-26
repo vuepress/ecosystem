@@ -95,7 +95,7 @@ icon: git-compare
 
 ## 主题配置项：独立的 `ThemeConfig` {#theme-options-an-independent-themeconfig}
 
-- **做法**：主题配置项是主题自己的 `ThemeConfig`（`src/shared/types.ts`），只包含主题实际支持的字段，从包的入口导出，并由 `defaultTheme(options: ThemeOptions)` 和 `useThemeData<ThemeConfig>()` 使用。嵌套类型（`NavItem`、`Sidebar`、`Hero`、`Feature`……）保留在 `DefaultTheme` 命名空间中，供组件和用户使用。
+- **做法**：主题配置项是主题自己的 `ThemeConfig`（`src/shared/types.ts`），只包含主题实际支持的字段，从包的入口导出，并由 `defaultTheme(options: ThemeOptions)` 和 `useThemeData<ThemeConfig>()` 使用。嵌套类型（`NavItem`、`Sidebar`、`Hero`、`Feature`……）从同一个模块导出，供组件和用户使用。
 - **原因**：VitePress 默认主题的配置包含许多主题未实现或不需要的字段；保留它的类型会让用户写出能通过类型检查但在运行时什么都不做的配置。配置项类型应当充当文档，错误的字段应当在类型检查时报错。
 - **收益**：配置项范围与实现一致；仅 VitePress 才有的字段会被类型检查器拒绝；包的入口导出了完整的配置项类型，因此用户在编写配置时能得到准确的提示。
 - **取舍**：为 VitePress 默认主题编写的配置无法原样复用类型，必须重写；主题配置项不会自动跟随 VitePress 的新字段。

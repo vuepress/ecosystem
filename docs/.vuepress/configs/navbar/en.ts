@@ -1,6 +1,6 @@
-import type { DefaultTheme } from '@vuepress/theme-default'
+import type { NavbarOptions } from '@vuepress/theme-default'
 
-export const navbarEn: DefaultTheme.NavbarOptions = [
+export const navbarEn: NavbarOptions = [
   {
     text: 'Themes',
     prefix: '/themes/',

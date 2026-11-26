@@ -95,7 +95,7 @@ The theme borrows the layout and the styles of the VitePress default theme, but 
 
 ## Theme options: an independent `ThemeConfig`
 
-- **Approach**: The theme options are the theme's own `ThemeConfig` (`src/shared/types.ts`), containing only the fields the theme actually supports, exported from the package entries and used by `defaultTheme(options: ThemeOptions)` and `useThemeData<ThemeConfig>()`. The nested types (`NavItem`, `Sidebar`, `Hero`, `Feature`, ...) stay in the `DefaultTheme` namespace for the components and the users.
+- **Approach**: The theme options are the theme's own `ThemeConfig` (`src/shared/types.ts`), containing only the fields the theme actually supports, exported from the package entries and used by `defaultTheme(options: ThemeOptions)` and `useThemeData<ThemeConfig>()`. The nested types (`NavItem`, `Sidebar`, `Hero`, `Feature`, ...) are exported from the same module for the components and the users.
 - **Reason**: The VitePress default theme config contains many fields the theme does not implement or need; keeping its type would let users write configurations that pass the type check but do nothing at runtime. The option type should be the documentation, and a wrong field should fail at type-check time.
 - **Benefits**: The option surface matches the implementation; VitePress-only fields are rejected by the type checker; the package entries export the full option types, so users get accurate hints while writing the config.
 - **Trade-off**: A configuration written for the VitePress default theme cannot reuse the type as-is and has to be rewritten; the theme options do not automatically follow new VitePress fields.

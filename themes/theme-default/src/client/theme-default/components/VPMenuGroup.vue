@@ -3,16 +3,21 @@
   setup
   generic="
     T extends
-      | DefaultTheme.NavItemComponent
-      | DefaultTheme.NavItemChildren
-      | DefaultTheme.NavItemWithChildren
-      | DefaultTheme.NavItemWithLink
+      | NavItemComponent
+      | NavItemChildren
+      | NavItemWithChildren
+      | NavItemWithLink
   "
 >
 import { computed, inject } from 'vue'
 
 import { navScreenInjectionKey } from '../composables/useNav.js'
-import type { DefaultTheme } from '../shared.js'
+import type {
+  NavItemChildren,
+  NavItemComponent,
+  NavItemWithChildren,
+  NavItemWithLink,
+} from '../shared.js'
 import VPMenuLink from './VPMenuLink.vue'
 import VPThemeIcon from './VPThemeIcon.vue'
 

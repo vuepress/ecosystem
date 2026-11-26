@@ -112,7 +112,7 @@ Hero 的主标题，渲染在名称下方。
 
 Hero 的标语，渲染在标题下方。
 
-@`hero.image` type=`DefaultTheme.ThemeableImage`
+@`hero.image` type=`ThemeableImage`
 
 Hero 图片。它接受与 [Logo](./config.md#basic-config) 相同的形态：URL 字符串、`{ src, alt }`，或用于随颜色模式切换的 `{ light, dark, alt }`。图片会渲染在一个装饰框中，并在小屏幕上隐藏。
 
@@ -148,7 +148,7 @@ Hero 的按钮。每个操作包含以下字段。
 
 显示在 Hero 下方的特性卡片。
 
-@`features[*].icon` type=`DefaultTheme.FeatureIcon`
+@`features[*].icon` type=`FeatureIcon`
 
 卡片的图标。它接受：
 
@@ -260,7 +260,7 @@ const members = [
 以下字段可以针对单个页面覆盖主题配置项：
 
 ::: fields
-@`outline` type=`DefaultTheme.Outline | DefaultTheme.Outline['level'] | false`
+@`outline` type=`Outline | Outline['level'] | false`
 
 大纲的标题级别。见 [outline](./config.md#page)。
 
@@ -294,7 +294,7 @@ lastUpdated: 1700000000000
 
 本页的下一篇页面链接，形态与 `prev` 相同。
 
-@`sidebar` type=`DefaultTheme.SidebarOptions | false`
+@`sidebar` type=`SidebarOptions | false`
 
 本页的侧边栏配置。classic 的写法，包括字符串项目、`children` 与 `prefix`，会在构建时归一化。见 [sidebar](./config.md#sidebar)。
 :::
@@ -361,34 +361,34 @@ lastUpdated: 1700000000000
 
 ## Frontmatter 参考 {#frontmatter-reference}
 
-| 字段             | 类型                                                          | 页面类型 | 参考                                  |
-| ---------------- | ------------------------------------------------------------- | -------- | ------------------------------------- |
-| `type`           | `'home' \| 'doc' \| 'page' \| 'content'`                      | 全部     | [页面类型](#page-type)                |
-| `layout`         | `string`                                                      | 全部     | [继承](./extending.md#custom-layouts) |
-| `navbar`         | `boolean`                                                     | 全部     | [所有页面](#all-pages)                |
-| `pageClass`      | `string`                                                      | 全部     | [所有页面](#all-pages)                |
-| `markdownStyles` | `boolean`                                                     | 首页     | [所有页面](#all-pages)                |
-| `hero`           | `ThemeHero`                                                   | 首页     | [Hero](#hero)                         |
-| `home`           | `boolean`                                                     | 首页     | [首页](#home-page)                    |
-| `heroText`       | `string \| null`                                              | 首页     | [首页](#home-page)                    |
-| `tagline`        | `string \| null`                                              | 首页     | [首页](#home-page)                    |
-| `heroImage`      | `string`                                                      | 首页     | [首页](#home-page)                    |
-| `heroImageDark`  | `string`                                                      | 首页     | [首页](#home-page)                    |
-| `heroAlt`        | `string`                                                      | 首页     | [首页](#home-page)                    |
-| `actions`        | `ThemeHeroAction[]`                                           | 首页     | [首页](#home-page)                    |
-| `features`       | `ThemeFeature[]`                                              | 首页     | [特性](#features)                     |
-| `footer`         | `boolean \| string`                                           | 全部     | [首页页脚](#home-footer)              |
-| `footerHtml`     | `boolean`                                                     | 全部     | [首页页脚](#home-footer)              |
-| `outline`        | `DefaultTheme.Outline \| number \| [number, number] \| false` | 文档     | [文档页面](#document-page)            |
-| `aside`          | `boolean \| 'left'`                                           | 文档     | [文档页面](#document-page)            |
-| `editLink`       | `boolean`                                                     | 文档     | [文档页面](#document-page)            |
-| `lastUpdated`    | `boolean \| number`                                           | 文档     | [文档页面](#document-page)            |
-| `contributors`   | `boolean`                                                     | 文档     | [文档页面](#document-page)            |
-| `prev`           | `string \| ThemePageLink \| false`                            | 文档     | [文档页面](#document-page)            |
-| `next`           | `string \| ThemePageLink \| false`                            | 文档     | [文档页面](#document-page)            |
-| `sidebar`        | `DefaultTheme.SidebarOptions \| false`                        | 文档     | [文档页面](#document-page)            |
-| `index`          | `boolean`                                                     | 文档     | [侧边栏结构](#sidebar-structure)      |
-| `order`          | `number`                                                      | 文档     | [侧边栏结构](#sidebar-structure)      |
-| `shortTitle`     | `string`                                                      | 文档     | [侧边栏结构](#sidebar-structure)      |
-| `icon`           | `string`                                                      | 文档     | [侧边栏结构](#sidebar-structure)      |
-| `dir`            | `SidebarDirOptions`                                           | 文档     | [侧边栏结构](#sidebar-structure)      |
+| 字段             | 类型                                             | 页面类型 | 参考                                  |
+| ---------------- | ------------------------------------------------ | -------- | ------------------------------------- |
+| `type`           | `'home' \| 'doc' \| 'page' \| 'content'`         | 全部     | [页面类型](#page-type)                |
+| `layout`         | `string`                                         | 全部     | [继承](./extending.md#custom-layouts) |
+| `navbar`         | `boolean`                                        | 全部     | [所有页面](#all-pages)                |
+| `pageClass`      | `string`                                         | 全部     | [所有页面](#all-pages)                |
+| `markdownStyles` | `boolean`                                        | 首页     | [所有页面](#all-pages)                |
+| `hero`           | `ThemeHero`                                      | 首页     | [Hero](#hero)                         |
+| `home`           | `boolean`                                        | 首页     | [首页](#home-page)                    |
+| `heroText`       | `string \| null`                                 | 首页     | [首页](#home-page)                    |
+| `tagline`        | `string \| null`                                 | 首页     | [首页](#home-page)                    |
+| `heroImage`      | `string`                                         | 首页     | [首页](#home-page)                    |
+| `heroImageDark`  | `string`                                         | 首页     | [首页](#home-page)                    |
+| `heroAlt`        | `string`                                         | 首页     | [首页](#home-page)                    |
+| `actions`        | `ThemeHeroAction[]`                              | 首页     | [首页](#home-page)                    |
+| `features`       | `ThemeFeature[]`                                 | 首页     | [特性](#features)                     |
+| `footer`         | `boolean \| string`                              | 全部     | [首页页脚](#home-footer)              |
+| `footerHtml`     | `boolean`                                        | 全部     | [首页页脚](#home-footer)              |
+| `outline`        | `Outline \| number \| [number, number] \| false` | 文档     | [文档页面](#document-page)            |
+| `aside`          | `boolean \| 'left'`                              | 文档     | [文档页面](#document-page)            |
+| `editLink`       | `boolean`                                        | 文档     | [文档页面](#document-page)            |
+| `lastUpdated`    | `boolean \| number`                              | 文档     | [文档页面](#document-page)            |
+| `contributors`   | `boolean`                                        | 文档     | [文档页面](#document-page)            |
+| `prev`           | `string \| ThemePageLink \| false`               | 文档     | [文档页面](#document-page)            |
+| `next`           | `string \| ThemePageLink \| false`               | 文档     | [文档页面](#document-page)            |
+| `sidebar`        | `SidebarOptions \| false`                        | 文档     | [文档页面](#document-page)            |
+| `index`          | `boolean`                                        | 文档     | [侧边栏结构](#sidebar-structure)      |
+| `order`          | `number`                                         | 文档     | [侧边栏结构](#sidebar-structure)      |
+| `shortTitle`     | `string`                                         | 文档     | [侧边栏结构](#sidebar-structure)      |
+| `icon`           | `string`                                         | 文档     | [侧边栏结构](#sidebar-structure)      |
+| `dir`            | `SidebarDirOptions`                              | 文档     | [侧边栏结构](#sidebar-structure)      |
