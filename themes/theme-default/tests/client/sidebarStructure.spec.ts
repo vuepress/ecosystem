@@ -64,13 +64,13 @@ const guideItems = structureData['/guide/']
 
 describe(getSidebar, () => {
   it('should resolve a `structure` sidebar of the matching locale', () => {
-    expect(getSidebar('structure', '/', undefined, '/zh/')).toStrictEqual([
+    expect(getSidebar('structure', '/', '/zh/')).toStrictEqual([
       { text: 'Home', link: '/zh/' },
     ])
   })
 
   it('should resolve a `structure` sidebar of the root locale', () => {
-    expect(getSidebar('structure', '/', undefined, '/')).toStrictEqual([
+    expect(getSidebar('structure', '/', '/')).toStrictEqual([
       { text: 'Home', link: '/' },
       { text: 'Guide', link: '/guide/' },
     ])
@@ -78,7 +78,7 @@ describe(getSidebar, () => {
 
   it('should resolve a `structure` sidebar of a multi sidebar config', () => {
     expect(
-      getSidebar({ '/guide/': 'structure' }, '/guide/a.html', undefined, '/'),
+      getSidebar({ '/guide/': 'structure' }, '/guide/a.html', '/'),
     ).toStrictEqual(guideItems)
   })
 
@@ -87,7 +87,6 @@ describe(getSidebar, () => {
       getSidebar(
         [{ text: 'Docs', base: '/guide/', items: 'structure' }],
         '/guide/a.html',
-        undefined,
         '/',
       ),
     ).toStrictEqual([{ text: 'Docs', base: '/guide/', items: guideItems }])

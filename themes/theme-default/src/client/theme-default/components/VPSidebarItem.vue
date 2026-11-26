@@ -80,7 +80,7 @@ function onItemClick() {
       /></component>
 
       <button
-        v-if="item.collapsed != null && item.items && item.items.length"
+        v-if="collapsible"
         type="button"
         class="caret"
         aria-label="toggle section"

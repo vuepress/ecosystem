@@ -213,21 +213,16 @@ export interface ThemePageFrontmatter {
   /** Previous page config / 上一页配置 */
   prev?: ThemePageLinkConfig
   /**
-   * The sidebar items of the page, `'heading'` to generate the sidebar from the
-   * page headings, or `false` to disable the sidebar
+   * The sidebar items of the page, or `false` to disable the sidebar
    *
-   * 页面的侧边栏条目，设为 `'heading'` 使用页面标题自动生成侧边栏，或设为 `false` 禁用侧边栏
+   * String items and the deprecated `children` and `prefix` keys of the classic
+   * theme are normalized at build time.
+   *
+   * 页面的侧边栏条目，或设为 `false` 禁用侧边栏
+   *
+   * String 条目与 classic 主题已废弃的 `children`、`prefix` 键会在构建期被归一化。
    */
-  sidebar?: DefaultTheme.Sidebar | 'heading' | false
-  /**
-   * The maximum depth of the sidebar headings, only used when `sidebar` is
-   * `'heading'`
-   *
-   * 侧边栏标题的最大深度，仅在 `sidebar` 为 `'heading'` 时生效
-   *
-   * @default 2
-   */
-  sidebarDepth?: number
+  sidebar?: DefaultTheme.SidebarOptions | false
   /**
    * Page type of the theme, which controls the content layout
    *

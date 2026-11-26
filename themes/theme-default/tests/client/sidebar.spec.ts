@@ -12,7 +12,13 @@ const resolveRoute = ((link: string) => ({
 
 vi.mock(import('vuepress/client'), () => ({ resolveRoute }))
 
-const { resolveSidebarData } =
+// the structure sidebar is generated from the file structure at build time
+vi.mock(import('@vuepress/theme-helper/client'), () => ({
+  getSidebarStructure: <T>(scope: string): T[] =>
+    [{ link: scope, text: scope }] as T[],
+}))
+
+const { getSidebar, hasActiveLink, resolveSidebarData } =
   await import('../../src/client/theme-default/support/sidebar.js')
 const { isExternal } = await import('../../src/client/theme-default/shared.js')
 
@@ -76,5 +82,58 @@ describe(resolveSidebarData, () => {
     expect(resolveSidebarData([{ link: externalLink }])).toStrictEqual([
       { link: externalLink },
     ])
+  })
+})
+
+describe(getSidebar, () => {
+  it('should prepend the matched scope to the relative links of the multi sidebar', () => {
+    expect(
+      getSidebar(
+        {
+          '/plugins/': [
+            { link: 'features/', text: 'Features' },
+            { link: '/plugins/search/' },
+          ],
+        },
+        'plugins/features/index.html',
+        '/',
+      ),
+    ).toStrictEqual([
+      { link: '/plugins/features/', text: 'Features' },
+      { link: '/plugins/search/' },
+    ])
+  })
+
+  it('should generate the structure sidebar for the object value scope', () => {
+    expect(
+      getSidebar(
+        { '/guide/': { base: '/guide/', items: 'structure' } } as never,
+        '/guide/install.html',
+      ),
+    ).toStrictEqual([{ link: '/guide/', text: '/guide/' }])
+  })
+
+  it('should disable the sidebar of a matched scope with `false`', () => {
+    expect(
+      getSidebar({ '/config/': false }, 'config/index.html', '/'),
+    ).toStrictEqual([])
+  })
+})
+
+describe(hasActiveLink, () => {
+  it('should match the links of the items exactly by default', () => {
+    expect(hasActiveLink('guide/install.html', '', { link: '/guide/' })).toBe(
+      false,
+    )
+    expect(hasActiveLink('guide/', '', { link: '/guide/' })).toBe(true)
+  })
+
+  it('should match the pages under the link with `exact: false`', () => {
+    expect(
+      hasActiveLink('guide/install.html', '', {
+        link: '/guide/',
+        exact: false,
+      }),
+    ).toBe(true)
   })
 })

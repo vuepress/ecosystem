@@ -13,8 +13,8 @@ import { defineUserConfig } from 'vuepress'
 export default defineUserConfig({
   theme: defaultTheme({
     siteTitle: 'My Site',
-    nav: [{ text: 'Guide', link: '/guide/' }],
-    sidebar: 'heading',
+    navbar: [{ text: 'Guide', link: '/guide/' }],
+    sidebar: ['/guide/', '/guide/install'],
   }),
 })
 ```
@@ -122,81 +122,101 @@ Logo 和站点标题的链接。它默认为当前语言的主页链接（根语
 ## 导航栏 {#navbar}
 
 :::: fields
-@`nav` type=`DefaultTheme.NavItem[]`
+@`navbar` type=`DefaultTheme.NavbarOptions` default=`[]`
 
-导航栏项目。每个项目都是以下三种形态之一：
+导航栏项目，设为 `false` 可隐藏导航栏。每个项目都是以下四种形态之一：
 
+- 字符串：以链接写成的链接项目，主题会用页面标题为它补齐文字。
 - 链接项目，在导航栏中渲染为链接。
-- 子项目，渲染为包含链接项目和分组的下拉菜单。
+- 子项目，渲染为包含链接项目与分组的下拉菜单。
 - 组件项目，由 VuePress 应用中注册的组件渲染。
 
-@`nav[*].text` type=string
+字符串项目、`children` 与 `prefix` 是 classic 主题的写法，会在构建时归一化。
 
-链接项目或子项目的文本。子项目必须提供该字段。
+@`navbar[*].text` type=string
 
-链接项目可以省略：主题会回退到页面元数据的 `title`，所以一个导航条目只需要它的 `link`，文本和它指向的页面一致。
+链接项目或子项目的文字。子项目必须提供该字段。
 
-@`nav[*].link` type=`string | ((payload: ThemePageData) => string)`
+链接项目可以省略它：主题会回退到页面元信息的 `title`，因此一个导航栏项目只需要 `link`，就会像它指向的页面那样被标注。
 
-链接项目的链接。传入函数可以根据当前页面数据计算链接，例如让读者始终停留在带版本号的目录中。
+@`navbar[*].link` type=`string | ((payload: ThemePageData) => string)`
 
-@`nav[*].icon` type=string
+链接项目的链接。传入函数可根据当前页面数据计算链接，例如把读者留在某个版本目录中。
 
-项目的图标。主题的图标类以 `vpi-` 开头（例如 `vpi-github`），也接受任何 [Iconify](https://iconify.design) 名称。见 [图标](../../plugins/features/icon.md)。
+@`navbar[*].icon` type=string
 
-链接项目或分组的图标省略时，主题会回退到页面元数据中的 `icon`，也就是链接指向页面的 frontmatter `icon`。
+项目的图标。主题的图标类以 `vpi-` 开头（例如 `vpi-github`），也接受任意 [Iconify](https://iconify.design) 名称。见 [图标](../../plugins/features/icon.md)。
 
-@`nav[*].activeMatch` type=string
+省略链接项目或分组的图标时，主题会回退到页面元信息的 `icon`，即链接指向页面的 frontmatter `icon`。
 
-一个正则表达式字符串，用于决定项目是否处于激活状态。默认情况下，只有当前页面与项目链接完全匹配时项目才会激活；使用 `'^/guide/'` 可以让项目在整个目录下保持激活。
+@`navbar[*].activeMatch` type=string
 
-@`nav[*].rel` type=string
+一个以字符串书写的正则表达式，用于判断项目是否处于激活状态。它测试当前页面路径，优先于 `exact`。
+
+@`navbar[*].exact` type=boolean default=`false`
+
+项目是否只在其链接对应的页面上激活。默认情况下，项目在其链接之下的页面中也会激活，例如 `/guide/` 项目在 `/guide/install.html` 上也是激活的。
+
+@`navbar[*].base` type=string
+
+子项目的子项链接所拼接的基路径，使子项可以写成相对链接。它不会作用于项目自身的链接。
+
+@`navbar[*].rel` type=string
 
 链接的 `rel` 属性。
 
-@`nav[*].target` type=string
+@`navbar[*].target` type=string
 
 链接的 `target` 属性，例如 `'_blank'`。
 
-@`nav[*].noIcon` type=boolean
+@`navbar[*].noIcon` type=boolean
 
 是否隐藏项目的外部链接图标。
 
-@`nav[*].items` type=`(NavItemComponent | NavItemChildren | NavItemWithLink)[]`
+@`navbar[*].items` type=`(NavItemComponent | NavItemChildren | NavItemWithLink)[]`
 
-子项目的子项。链接项目不允许使用该字段。
+子项目的子项。链接项目不允许该字段。
 
-@@`nav[*].items[*].component` type=string
+@@`navbar[*].items[*].component` type=string
 
-渲染该项目的全局注册组件的名称。与 `link` 互斥。
+渲染该项目的全局注册组件名，与 `link` 互斥。
 
-@@`nav[*].items[*].props` type=`Record<string, any>`
+@@`navbar[*].items[*].props` type=`Record<string, any>`
 
-传给该组件的属性。
+传给该组件的 props。
 
-@@`nav[*].items[*].items` type=`NavItemWithLink[]`
+@@`navbar[*].items[*].items` type=`(NavItemChildren | NavItemWithChildren | NavItemWithLink)[]`
 
-分组的项目。分组在下拉菜单中渲染为带标题的列。
+分组的子项。分组在下拉菜单中渲染为带标题的一列，并且可以包含嵌套分组。
 
-@@@`nav[*].items[*].items[*].text` type=string
+@@`navbar[*].items[*].children` type=`(NavbarGroupOptions | NavItem | string)[]`
 
-分组内链接的文本。省略时回退到页面元数据的 `title`。
+为兼容 classic 主题写法而保留的 `items` 的废弃别名。请改用 `items`。
 
-@@@`nav[*].items[*].items[*].link` type=`string | ((payload: ThemePageData) => string)`
+@@`navbar[*].items[*].prefix` type=string
+
+为兼容 classic 主题写法而保留的 `base` 的废弃别名。请改用 `base`。
+
+@@@`navbar[*].items[*].items[*].text` type=string
+
+分组内链接的文字。省略时回退到页面元信息的 `title`。
+
+@@@`navbar[*].items[*].items[*].link` type=`string | ((payload: ThemePageData) => string)`
 
 分组内链接的链接。
 
-@@@`nav[*].items[*].items[*].icon` type=string
+@@@`navbar[*].items[*].items[*].icon` type=string
 
-分组内链接的图标。省略时回退到页面元数据。
+分组内链接的图标。省略时回退到页面元信息。
 ::::
 
-一个包含下拉菜单、分组和外部链接的导航栏示例：
+一个包含下拉菜单、分组与外部链接的导航栏示例：
 
 ```ts
 export default defineUserConfig({
   theme: defaultTheme({
-    nav: [
+    navbar: [
+      '/guide/',
       { text: 'Guide', link: '/guide/' },
       {
         text: 'Ecosystem',
@@ -220,11 +240,11 @@ export default defineUserConfig({
 :::: fields
 @`socialLinks` type=`DefaultTheme.SocialLink[]`
 
-显示在导航栏末尾和移动端菜单中的社交链接。
+显示在导航栏末尾与移动端菜单中的社交链接。
 
 @`socialLinks[*].icon` type=`string | { svg: string }`
 
-链接的图标：与 `nav[*].icon` 相同的图标名称或类，或 `{ svg: '<svg>…</svg>' }` 以内联 SVG。
+链接的图标：与 `navbar[*].icon` 相同的图标名称或类，或 `{ svg: '<svg>…</svg>' }` 以内联 SVG。
 
 @`socialLinks[*].link` type=string required
 
@@ -242,85 +262,72 @@ export default defineUserConfig({
 ## 侧边栏 {#sidebar}
 
 :::: fields
-@`sidebar` type=`DefaultTheme.Sidebar | 'heading' | false` default=`'heading'`
+@`sidebar` type=`DefaultTheme.SidebarOptions | false` default=`false`
 
-侧边栏配置。它接受五种形态：
+侧边栏配置。它接受四种形态：
 
-- `'heading'`：根据当前页面的标题生成侧边栏。这是默认值。
-- `'structure'`：根据文件结构生成侧边栏。参考[根据文件结构生成](#generate-from-the-file-structure)。
-- 一个[侧边栏项目](#sidebar-items)数组：所有页面使用相同的侧边栏。
-- 一个以路径为键的对象：每个路径使用不同的侧边栏。键按路径前缀匹配，最长的匹配键生效。值为侧边栏数组、`'heading'` 或 `'structure'`。
-- `false`：不显示侧边栏。
+- 一个[侧边栏项目](#sidebar-items)数组：每个页面都使用同一个侧边栏。
+- 一个以路径为键的对象：每个路径使用不同的侧边栏。键按路径前缀匹配，最长的匹配键生效。值为侧边栏数组、`'structure'`、`false` 或 `{ items, base }`。
+- `'structure'`：根据文件结构生成侧边栏。见[根据文件结构生成](#generate-from-the-file-structure)。
+- `false`：不使用侧边栏。
 
-`sidebar` 可以在 frontmatter 中按页面覆盖。
-
-@`sidebarDepth` type=number default=`2`
-
-侧边栏的最大标题深度，包含页面标题本身。它仅在 `sidebar` 为 `'heading'` 时使用。`1` 显示页面标题和 `h2` 标题，`2` 还会显示 `h3` 标题，依此类推。
+`sidebar` 可以在页面的 frontmatter 中覆盖。
 
 @`sidebarSorter` type=`SidebarSorter` default=`['readme', 'order', 'title', 'filename']`
 
-根据文件结构生成的条目的排序器。它接受关键字、函数或它们的数组。参考[排序条目](../../tools/theme-helper.md#sorting-the-items)。
+根据文件结构生成的项目的排序器。它接受关键字、函数或它们的数组。见[排序项目](../../tools/theme-helper.md#sorting-the-items)。
 ::::
 
 ### 侧边栏项目 {#sidebar-items}
 
-侧边栏项目是一个链接，或一个包含项目的分组。没有链接的分组可以折叠；带链接的分组会渲染该链接，并在其下方渲染子项。
+侧边栏项目是一个链接，或一个包含项目的分组。没有链接的分组在启用 `collapsible` 时折叠其子项；带链接的分组会渲染该链接，并在其下方渲染子项。
+
+支持字符串项目：字符串即链接项目，文字会从页面标题解析。`children` 与 `prefix` 是 classic 主题的写法，会在构建时归一化为 `items` 与 `base`。
 
 :::: fields
 @`sidebar[*].text` type=string
 
-项目的文本。省略时，侧边栏会从项目所链接的页面解析文本：主题会把页面标题保存到路由元信息中，项目文本便使用该标题。
+项目的文字。省略时，侧边栏会从项目链接到的页面解析文字：主题会把页面标题写入路由元信息，项目文字即为该标题。
 
 @`sidebar[*].link` type=string
 
-项目的链接。没有链接的项目就是分组。
+项目的链接。没有链接的项目是分组。
 
 @`sidebar[*].icon` type=string
 
-项目的图标，形式与 `nav[*].icon` 相同。省略时，侧边栏会从被链接页面的路由元信息中解析图标：主题会把页面的 frontmatter `icon` 写入 `page.routeMeta.icon`。
+项目的图标，形式与 `navbar[*].icon` 相同。省略时，侧边栏会从被链接页面的路由元信息中解析图标：主题会把页面的 frontmatter `icon` 写入 `page.routeMeta.icon`。
 
-@`sidebar[*].items` type=`DefaultTheme.SidebarItem[]`
+@`sidebar[*].items` type=`(SidebarItemOptions | string)[]`
 
-项目的子项。分组本身也可以包含分组。
+项目的子项。分组本身可以包含分组，子项也可以写成字符串。
 
-@`sidebar[*].collapsed` type=boolean
+@`sidebar[*].collapsible` type=boolean default=`false`
 
-分组是否可折叠。省略该字段时，分组不可折叠，其子项始终显示。设置该字段后，分组会带有切换按钮，并且当值为 `true` 时初始为折叠状态。
+分组是否可被读者折叠。启用后分组会带有切换按钮，并在 `expanded` 为 `true` 时默认展开，否则默认折叠。包含当前页面的分组会自动展开。
+
+@`sidebar[*].expanded` type=boolean default=`false`
+
+分组是否默认展开。仅在启用 `collapsible` 时生效。
+
+@`sidebar[*].activeMatch` type=string
+
+一个以字符串书写的正则表达式，用于判断项目是否处于激活状态。它测试当前页面路径，优先于 `exact`。
+
+@`sidebar[*].exact` type=boolean default=`true`
+
+条目是否只在其链接对应的页面上激活。侧边栏条目默认保持经典主题的精确匹配行为；设为 `false` 时，条目在其链接之下的页面中也会激活。
 
 @`sidebar[*].base` type=string
 
-添加到该项目及其子项链接前的基路径，这样就能用相对路径书写子项链接。
+拼接在项目及其子项链接前的基路径，使子项链接可以写成相对形式。
 
-@`sidebar[*].docFooterText` type=string
+@`sidebar[*].prefix` type=string
 
-在文档页面的上一篇/下一篇页脚中用于该项目的文本，而非项目自身的文本。
+为兼容 classic 主题写法而保留的 `base` 的废弃别名。请改用 `base`。
 
-@`sidebar[*].rel` type=string
+@`sidebar[*].children` type=`(SidebarItemOptions | string)[] | 'structure'`
 
-链接的 `rel` 属性。
-
-@`sidebar[*].target` type=string
-
-链接的 `target` 属性。
-::::
-
-多侧边栏对象还接受 `{ items, base }` 来设置整个侧边栏分组的基路径，以及 `'heading'` 来在该路径下使用标题侧边栏：
-
-```ts
-export default defineUserConfig({
-  theme: defaultTheme({
-    sidebar: {
-      '/guide/': [{ text: 'Guide', items: ['/guide/', '/guide/install'] }],
-      '/advanced/': {
-        base: '/advanced/',
-        items: ['intro', 'options'],
-      },
-      '/reference/': 'heading',
-    },
-  }),
-})
-```
+为兼容 classic 主题写法而保留的 `items` 的废弃别名。请改用 `items`。
 
 ### 根据文件结构生成 {#generate-from-the-file-structure}
 

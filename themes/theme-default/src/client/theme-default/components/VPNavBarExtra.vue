@@ -6,6 +6,7 @@ import { useLangs } from '../composables/useLangs.js'
 import { useAppearanceSwitch } from '../composables/useNav.js'
 import { useNavOverflow } from '../composables/useNavOverflow.js'
 import type { ThemeConfig } from '../shared.js'
+import { resolveNavData } from '../support/nav.js'
 import VPFlyout from './VPFlyout.vue'
 import VPMenuGroup from './VPMenuGroup.vue'
 import VPMenuLink from './VPMenuLink.vue'
@@ -24,8 +25,10 @@ const overflow = useNavOverflow()
 // nav items the priority+ engine pushed out of the bar (contiguous suffix)
 const overflowItems = computed(() => {
   const count = overflow?.state.visibleItemCount ?? Infinity
-  if (count === Infinity || !theme.value.nav) return []
-  return theme.value.nav.slice(count)
+  if (count === Infinity || !theme.value.navbar) return []
+  // the overflow menu renders the items directly, so they need the resolved
+  // text, icon and `base` as well, not only the ones of the navbar menu
+  return resolveNavData(theme.value.navbar).slice(count)
 })
 
 const showTranslations = computed(

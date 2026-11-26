@@ -4,7 +4,7 @@ import { useRoute } from 'vuepress/client'
 
 import { useThemePageData } from '../../composables/useThemePageData.js'
 import type { DefaultTheme } from '../shared.js'
-import { isActive } from '../shared.js'
+import { isActive, isLinkActive } from '../shared.js'
 import VPFlyout from './VPFlyout.vue'
 import VPMenuGroup from './VPMenuGroup.vue'
 import VPMenuLink from './VPMenuLink.vue'
@@ -42,12 +42,10 @@ function isChildActive(navItem: DefaultTheme.NavItem): boolean {
         ? navItem.link(page.value)
         : navItem.link
 
-    return isActive(
-      page.value.filePathRelative ?? '',
-      route.hash,
-      navItem.activeMatch || href,
-      !!navItem.activeMatch,
-    )
+    return isLinkActive(page.value.filePathRelative ?? '', route.hash, href, {
+      activeMatch: navItem.activeMatch,
+      exact: navItem.exact,
+    })
   }
 
   return navItem.items.some(isChildActive)

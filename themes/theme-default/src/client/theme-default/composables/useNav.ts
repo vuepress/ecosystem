@@ -15,7 +15,7 @@ import { inBrowser } from '../../composables/inBrowser.js'
 import { isFixedAppearance } from '../../composables/useDarkMode.js'
 import { useThemePageData } from '../../composables/useThemePageData.js'
 import type { DefaultTheme, ThemeConfig } from '../shared.js'
-import { isActive } from '../shared.js'
+import { isActive, isLinkActive } from '../shared.js'
 
 // module-scoped so Layout.vue can render the rest of the app inert while the
 // screen (mobile drawer) is open, without threading props through VPNav
@@ -92,12 +92,16 @@ export function useNavItemLink(
   })
 
   const isActiveLink = computed(() => {
-    const { activeMatch } = toValue(item)
-    return isActive(
+    const { activeMatch, exact } = toValue(item)
+
+    return isLinkActive(
       page.value.filePathRelative ?? '',
       route.hash,
-      activeMatch || href.value,
-      Boolean(activeMatch),
+      href.value,
+      {
+        activeMatch,
+        exact,
+      },
     )
   })
 

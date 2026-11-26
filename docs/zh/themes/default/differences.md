@@ -85,7 +85,7 @@ icon: git-compare
 - **取舍**：内部组合式函数属于主题自己的 API，必须与 `@vuepress/theme-classic` 的数据形状和语义保持一致；新增或暂时缺失的字段记录在[配置](./config.md)和[从经典主题迁移](./migrating-from-classic.md)中，以免出现两套并行的约定。
 - **接口说明**：
   - 主题既不保留 VitePress 的数据形状，也不保留 VitePress 的数据组合式函数（`useData`、`useRouter`、`useRoute` 等）。站点扩展使用原生的 `vuepress/client` API；主题自己的布局状态组合式函数 `useLayout()` 返回主题的 `ThemeLayout` 类型，供移植的组件和使用扩展布局的站点使用。
-  - VitePress 的回调载荷（例如 `nav[].link` 和 `editLink.pattern`）不再构造 `VitePressData`；它们收到的是原生 VuePress 页面数据（`page`），其字段与之不同（例如 `filePath` 与 `filePathRelative`）。如果需要与 VitePress 兼容的载荷，请在站点侧做适配。
+  - VitePress 的回调载荷（例如 `navbar[].link` 和 `editLink.pattern`）不再构造 `VitePressData`；它们收到的是原生 VuePress 页面数据（`page`），其字段与之不同（例如 `filePath` 与 `filePathRelative`）。如果需要与 VitePress 兼容的载荷，请在站点侧做适配。
   - i18n 遵循 VuePress 模型：站点在 VuePress 的 `locales` 中声明语言，路由语言由站点的 `locales` 决定；主题既不覆盖 `@vuepress/plugin-theme-data` 的 `themeLocaleDataSymbol`，也不只从主题的 `locales` 推导语言。主题的 `locales` 只决定每个语言的主题配置和文案，其键在构建时映射到路由语言路径（`root` → `/`，其他 → `/<key>/` 或显式的 `link`）。
 
 ## 字体 {#fonts}

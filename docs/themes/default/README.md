@@ -30,8 +30,8 @@ export default defineUserConfig({
   theme: defaultTheme({
     siteTitle: 'My Site',
     logo: '/logo.svg',
-    nav: [{ text: 'Guide', link: '/guide/' }],
-    sidebar: 'heading',
+    navbar: [{ text: 'Guide', link: '/guide/' }],
+    sidebar: ['/guide/', '/guide/install'],
     appearance: true,
   }),
 })

@@ -25,12 +25,7 @@ export function usePrevNext() {
     next?: { text?: string; link?: string; target?: string; rel?: string }
   }>(() => {
     const sidebar = resolveSidebarData(
-      getSidebar(
-        theme.value.sidebar,
-        relativePath.value,
-        undefined,
-        routeLocale.value,
-      ),
+      getSidebar(theme.value.sidebar, relativePath.value, routeLocale.value),
     )
     const links = getFlatSideBarLinks(sidebar)
 

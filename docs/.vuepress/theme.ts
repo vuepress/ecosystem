@@ -1,196 +1,13 @@
-import type {
-  NavbarGroupOptions,
-  NavbarLinkOptions,
-  NavbarOptions,
-  SidebarItemOptions,
-  SidebarOptions,
-  SidebarStructureOptions,
-} from '@vuepress/theme-classic'
 import { defaultTheme } from '@vuepress/theme-default'
-import type { DefaultTheme, ThemeConfig } from '@vuepress/theme-default'
 
 import { navbarEn, navbarZh, sidebarEn, sidebarZh } from './configs/index.js'
 
-// The docs site is configured with the configs of `@vuepress/theme-classic`
-// (they also feed the LLM TOC and the catalog icons), so they are converted to
-// the shape of the default theme here.
-const WORD_FORMS: Record<string, string> = {
-  ai: 'AI',
-  api: 'API',
-  llms: 'LLMs',
-  pwa: 'PWA',
-  rtl: 'RTL',
-  seo: 'SEO',
-}
-
-const toTitle = (path: string): string => {
-  const segment = path.replace(/\/+$/u, '').split('/').pop() ?? ''
-
-  if (!segment) return 'Overview'
-
-  return (
-    WORD_FORMS[segment] ??
-    segment
-      .split('-')
-      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-      .join(' ')
-  )
-}
-
-const isExternalLink = (link: string): boolean =>
-  /^[a-z][a-z+.-]*:/iu.test(link)
-
-const resolveLink = (prefix: string, link: string): string => {
-  if (!link) return prefix || '/'
-  if (isExternalLink(link) || link.startsWith('/')) return link
-
-  return `${prefix}${link}`
-}
-
-const toIcon = (item: { icon?: string }): { icon?: string } =>
-  item.icon ? { icon: item.icon } : {}
-
-const toNavChild = (
-  item: NavbarLinkOptions | NavbarGroupOptions,
-  prefix: string,
-): DefaultTheme.NavItem => {
-  if (typeof item === 'string') return { link: resolveLink(prefix, item) }
-
-  if ('children' in item && Array.isArray(item.children)) {
-    const childPrefix = resolveLink(prefix, item.prefix ?? '')
-
-    const group: DefaultTheme.NavItemWithChildren = {
-      text: item.text ?? toTitle(item.link ?? item.prefix ?? ''),
-      ...toIcon(item),
-      items: item.children.map(
-        (child) =>
-          toNavChild(child, childPrefix) as
-            | DefaultTheme.NavItemChildren
-            | DefaultTheme.NavItemWithLink,
-      ),
-    }
-
-    return group
-  }
-
-  const link: DefaultTheme.NavItemWithLink = {
-    ...(item.text ? { text: item.text } : {}),
-    link: resolveLink(prefix, item.link ?? ''),
-    ...toIcon(item),
-  }
-
-  return link
-}
-
-const toNav = (navbar: NavbarOptions): DefaultTheme.NavItem[] => {
-  if (!Array.isArray(navbar)) return []
-
-  return navbar.map((item): DefaultTheme.NavItem => {
-    if (typeof item === 'string') return { link: item }
-
-    if ('children' in item && Array.isArray(item.children)) {
-      const prefix = item.prefix ?? ''
-
-      const group: DefaultTheme.NavItemWithChildren = {
-        text: item.text ?? toTitle(item.prefix ?? item.link ?? ''),
-        ...toIcon(item),
-        items: item.children.map(
-          (child) =>
-            toNavChild(child, prefix) as
-              | DefaultTheme.NavItemChildren
-              | DefaultTheme.NavItemWithLink,
-        ),
-      }
-
-      return group
-    }
-
-    const link: DefaultTheme.NavItemWithLink = {
-      ...(item.text ? { text: item.text } : {}),
-      link: resolveLink('', item.link ?? ''),
-      ...toIcon(item),
-    }
-
-    return link
-  })
-}
-
-const toSidebarItem = (
-  item: SidebarItemOptions | SidebarStructureOptions,
-  prefix: string,
-): DefaultTheme.SidebarItem => {
-  // The theme resolves the text and the icon from the page meta, so a plain
-  // string only needs its link resolved here.
-  if (typeof item === 'string') return { link: resolveLink(prefix, item) }
-
-  // the docs site does not generate a sidebar from the file structure, so the
-  // generated children are left empty
-  if ('children' in item && item.children === 'structure') {
-    return {
-      text: item.text ?? toTitle(item.link ?? item.prefix ?? ''),
-      ...toIcon(item),
-      ...(item.link === undefined
-        ? {}
-        : { link: resolveLink(prefix, item.link) }),
-      items: [],
-      ...(item.collapsible ? { collapsed: false } : {}),
-    }
-  }
-
-  if ('children' in item && Array.isArray(item.children)) {
-    const childPrefix = resolveLink(prefix, item.prefix ?? '')
-
-    const group: DefaultTheme.SidebarItem = {
-      text: item.text ?? toTitle(item.link ?? item.prefix ?? ''),
-      ...toIcon(item),
-      ...(item.link === undefined
-        ? {}
-        : { link: resolveLink(prefix, item.link) }),
-      items: item.children.map((child) => toSidebarItem(child, childPrefix)),
-      ...(item.collapsible ? { collapsed: false } : {}),
-    }
-
-    return group
-  }
-
-  const link: DefaultTheme.SidebarItem = {
-    ...(item.text ? { text: item.text } : {}),
-    ...toIcon(item),
-    ...(item.link === undefined
-      ? {}
-      : { link: resolveLink(prefix, item.link) }),
-  }
-
-  return link
-}
-
-const toSidebar = (sidebar: SidebarOptions | false): ThemeConfig['sidebar'] => {
-  if (sidebar === false) return false
-  if (sidebar === 'heading') return 'heading'
-  if (sidebar === 'structure') return 'structure'
-
-  if (Array.isArray(sidebar))
-    return sidebar.map((item) => toSidebarItem(item, ''))
-
-  const result: Record<
-    string,
-    DefaultTheme.SidebarItem[] | 'heading' | 'structure' | false
-  > = {}
-
-  for (const [prefix, items] of Object.entries(sidebar)) {
-    result[prefix] =
-      items === false || items === 'heading' || items === 'structure'
-        ? items
-        : items.map((item) => toSidebarItem(item, prefix))
-  }
-
-  return result as DefaultTheme.Sidebar
-}
-
-const navEn = toNav(navbarEn)
-const navZh = toNav(navbarZh)
-const sidebarConfigEn = toSidebar(sidebarEn)
-const sidebarConfigZh = toSidebar(sidebarZh)
+// The docs site is written in the classic theme syntax: string items, `prefix`
+// and `children` are normalized by the default theme at build time.
+const navbarConfigEn = navbarEn
+const navbarConfigZh = navbarZh
+const sidebarConfigEn = sidebarEn
+const sidebarConfigZh = sidebarZh
 
 // The theme data is serialized to JSON by `@vuepress/plugin-theme-data`, so the
 // pattern must be a string. `:path` is replaced with the page relative path.
@@ -205,7 +22,7 @@ const editLinkEn = {
 export default defaultTheme({
   logo: '/images/hero.png',
   hostname: 'https://ecosystem.vuejs.press',
-  nav: navEn,
+  navbar: navbarConfigEn,
   sidebar: sidebarConfigEn,
   editLink: editLinkEn,
 
@@ -248,7 +65,7 @@ export default defaultTheme({
       label: 'English',
       lang: 'en-US',
       link: '/',
-      nav: navEn,
+      navbar: navbarConfigEn,
       sidebar: sidebarConfigEn,
       editLink: editLinkEn,
       footer: {
@@ -260,7 +77,7 @@ export default defaultTheme({
       label: '简体中文',
       lang: 'zh-CN',
       link: '/zh/',
-      nav: navZh,
+      navbar: navbarConfigZh,
       sidebar: sidebarConfigZh,
       editLink: {
         pattern: EDIT_LINK_PATTERN,

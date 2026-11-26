@@ -321,18 +321,22 @@ export interface ThemeConfig {
    */
   outline?: DefaultTheme.Outline | DefaultTheme.Outline['level'] | false
 
-  /** The nav items / 导航条目 */
-  nav?: DefaultTheme.NavItem[]
+  /**
+   * The navbar items, or `false` to hide the navbar
+   *
+   * 导航栏条目，设为 `false` 以隐藏导航栏
+   */
+  navbar?: DefaultTheme.NavItem[] | false
 
   /**
-   * The sidebar items, `'heading'` to generate the sidebar from the page
-   * headings, or `'structure'` to generate it from the file structure
+   * The sidebar items, or `'structure'` to generate them from the file
+   * structure
    *
-   * 侧边栏条目，设为 `'heading'` 使用页面标题自动生成侧边栏，或设为 `'structure'` 使用文件结构自动生成侧边栏
+   * 侧边栏条目，或设为 `'structure'` 使用文件结构自动生成侧边栏
    *
-   * @default 'heading'
+   * @default false
    */
-  sidebar?: DefaultTheme.Sidebar | 'heading' | false
+  sidebar?: DefaultTheme.Sidebar | false
 
   /**
    * Sorters of the sidebar generated from the file structure
@@ -342,16 +346,6 @@ export interface ThemeConfig {
    * @default ['readme', 'order', 'title', 'filename']
    */
   sidebarSorter?: SidebarSorter
-
-  /**
-   * The maximum depth of the sidebar headings, only used when `sidebar` is
-   * `'heading'`
-   *
-   * 侧边栏标题的最大深度，仅在 `sidebar` 为 `'heading'` 时生效
-   *
-   * @default 2
-   */
-  sidebarDepth?: number
 
   /**
    * Set to `false` to prevent rendering of aside container / 设为 `false`
@@ -564,6 +558,15 @@ export namespace DefaultTheme {
     /** The active match pattern, as a regex string / 激活匹配模式，正则字符串 */
     activeMatch?: string
 
+    /**
+     * Whether the link must match the current path exactly
+     *
+     * 链接是否必须与当前路径完全匹配
+     *
+     * @default false
+     */
+    exact?: boolean
+
     /** The `rel` attribute / `rel` 属性 */
     rel?: string
 
@@ -584,6 +587,18 @@ export namespace DefaultTheme {
 
     /** The items of the group / 分组条目 */
     items: NavItemWithLink[]
+
+    /** Base path of the links / 链接的基础路径 */
+    base?: string
+
+    /**
+     * Whether the links must match the current path exactly
+     *
+     * 链接是否必须与当前路径完全匹配
+     *
+     * @default false
+     */
+    exact?: boolean
   }
 
   /** A nav item with children / 带子项的导航条目 */
@@ -595,11 +610,79 @@ export namespace DefaultTheme {
     text?: string
 
     /** The items of the item / 条目子项 */
-    items: (NavItemComponent | NavItemChildren | NavItemWithLink)[]
+    items: (
+      | NavItemComponent
+      | NavItemChildren
+      | NavItemWithChildren
+      | NavItemWithLink
+    )[]
 
     /** The active match pattern, as a regex string / 激活匹配模式，正则字符串 */
     activeMatch?: string
+
+    /** Base path of the links / 链接的基础路径 */
+    base?: string
+
+    /**
+     * Whether the links must match the current path exactly
+     *
+     * 链接是否必须与当前路径完全匹配
+     *
+     * @default false
+     */
+    exact?: boolean
   }
+
+  // navbar options -------------------------------------------------------------
+
+  /**
+   * A navbar group, whose links can be nested under `items`
+   *
+   * 导航栏分组，链接可以通过 `items` 嵌套
+   */
+  export interface NavbarGroupOptions {
+    /** The icon of the group / 分组图标 */
+    icon?: string
+
+    /** The text of the group / 分组文本 */
+    text: string
+
+    /** The items of the group / 分组条目 */
+    items?: (NavbarGroupOptions | NavItem | string)[]
+
+    /**
+     * @deprecated Use `items` instead.
+     * @deprecated 请改用 `items`。
+     */
+    children?: (NavbarGroupOptions | NavItem | string)[]
+
+    /** Base path of the links / 链接的基础路径 */
+    base?: string
+
+    /**
+     * @deprecated Use `base` instead.
+     * @deprecated 请改用 `base`。
+     */
+    prefix?: string
+
+    /** The active match pattern, as a regex string / 激活匹配模式，正则字符串 */
+    activeMatch?: string
+
+    /**
+     * Whether the links must match the current path exactly
+     *
+     * 链接是否必须与当前路径完全匹配
+     *
+     * @default false
+     */
+    exact?: boolean
+  }
+
+  /** A navbar item as configured by the user / 用户配置的导航栏条目 */
+  export type NavbarItemOptions = NavItem | NavbarGroupOptions | string
+
+  /** The navbar items as configured by the user / 用户配置的导航栏条目列表 */
+  export type NavbarOptions = NavbarItemOptions[] | false
 
   // image ---------------------------------------------------------------------
 
@@ -639,11 +722,49 @@ export namespace DefaultTheme {
   /** The sidebar config of each path / 各路径的侧边栏配置 */
   export type SidebarMulti = Record<
     string,
-    | SidebarArray
-    | { items: SidebarArray; base: string }
-    | 'heading'
-    | 'structure'
+    SidebarArray | { items: SidebarArray; base: string } | 'structure' | false
   >
+
+  /** The sidebar item as configured by the user / 用户配置的侧边栏条目 */
+  export interface SidebarItemOptions extends Omit<SidebarItem, 'items'> {
+    /** The children of the item / 条目子项 */
+    items?: (SidebarItemOptions | string)[]
+
+    /**
+     * @deprecated Use `items` instead.
+     * @deprecated 请改用 `items`。
+     */
+    children?: (SidebarItemOptions | string)[] | 'structure'
+
+    /**
+     * @deprecated Use `base` instead.
+     * @deprecated 请改用 `base`。
+     */
+    prefix?: string
+  }
+
+  /** The sidebar items as configured by the user / 用户配置的侧边栏条目列表 */
+  export type SidebarArrayOptions = (
+    | SidebarItemOptions
+    | SidebarStructureItem
+    | string
+  )[]
+
+  /** The sidebar config of each path as configured by the user / 用户配置的各路径侧边栏 */
+  export type SidebarMultiOptions = Record<
+    string,
+    | SidebarArrayOptions
+    | { items: SidebarArrayOptions; base: string }
+    | 'structure'
+    | false
+  >
+
+  /** The sidebar config as configured by the user / 用户配置的侧边栏 */
+  export type SidebarOptions =
+    | SidebarArrayOptions
+    | SidebarMultiOptions
+    | 'structure'
+    | false
 
   /**
    * A sidebar group whose children are generated from the file structure
@@ -669,11 +790,49 @@ export namespace DefaultTheme {
     /** The children of the item / 条目子项 */
     items?: SidebarItem[]
 
-    /** Whether the group is collapsible / 分组是否可折叠 */
-    collapsed?: boolean
+    /**
+     * Whether the group is collapsible. When enabled, the group can be
+     * collapsed and expanded, and it is expanded when it contains the active
+     * link
+     *
+     * 分组是否可折叠。启用后分组可以折叠与展开，包含当前激活链接时会自动展开
+     *
+     * @default false
+     */
+    collapsible?: boolean
+
+    /**
+     * Whether the collapsible group is expanded initially
+     *
+     * 可折叠分组是否默认展开
+     *
+     * Only works when `collapsible` is `true`.
+     *
+     * 仅在 `collapsible` 为 `true` 时生效。
+     *
+     * @default false
+     */
+    expanded?: boolean
 
     /** Base path for the children items / 子项的基础路径 */
     base?: string
+
+    /**
+     * The active match pattern, as a regex string
+     *
+     * 激活匹配模式，正则字符串
+     */
+    activeMatch?: string
+
+    /**
+     * Whether the link must match the current path exactly. Sub paths are only
+     * active when this is set to `false`.
+     *
+     * 链接是否必须与当前路径完全匹配。仅当设为 `false` 时子路径才会激活。
+     *
+     * @default true
+     */
+    exact?: boolean
 
     /**
      * Customize text that appears on the footer of previous/next page /

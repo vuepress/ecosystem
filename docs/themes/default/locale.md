@@ -21,7 +21,7 @@ export default defineUserConfig({
       '/': {
         label: 'English',
         lang: 'en-US',
-        nav: [{ text: 'Guide', link: '/guide/' }],
+        navbar: [{ text: 'Guide', link: '/guide/' }],
         sidebar: ['/guide/'],
         editLink: {
           pattern: 'https://github.com/example/repo/edit/main/:path',
@@ -30,7 +30,7 @@ export default defineUserConfig({
       '/zh/': {
         label: '简体中文',
         lang: 'zh-CN',
-        nav: [{ text: '指南', link: '/zh/guide/' }],
+        navbar: [{ text: '指南', link: '/zh/guide/' }],
         sidebar: ['/zh/guide/'],
         editLink: {
           pattern: 'https://github.com/example/repo/edit/main/:path',

@@ -72,3 +72,66 @@ describe(resolveNavData, () => {
     ).toStrictEqual([{ link: 'https://vuepress.vuejs.org/' }])
   })
 })
+
+describe(resolveNavData, () => {
+  it('should prepend the base of a group to its relative child links', () => {
+    expect(
+      resolveNavData([
+        {
+          text: 'Themes',
+          base: '/themes/',
+          items: [{ link: 'features/' }, { link: 'default/' }],
+        },
+      ]),
+    ).toStrictEqual([
+      {
+        text: 'Themes',
+        base: '/themes/',
+        items: [
+          {
+            icon: 'lucide:sparkles',
+            link: '/themes/features/',
+            text: 'Common Features',
+          },
+          {
+            icon: 'lucide:scroll-text',
+            link: '/themes/default/',
+            text: 'Markdown',
+          },
+        ],
+      },
+    ])
+  })
+
+  it('should resolve the nested base of the groups', () => {
+    expect(
+      resolveNavData([
+        {
+          text: 'Plugins',
+          base: '/plugins/',
+          items: [
+            { text: 'Features', base: 'features/', items: [{ link: 'icon' }] },
+          ],
+        },
+      ]),
+    ).toStrictEqual([
+      {
+        text: 'Plugins',
+        base: '/plugins/',
+        items: [
+          {
+            text: 'Features',
+            base: 'features/',
+            items: [
+              {
+                icon: 'lucide:sparkles',
+                link: '/plugins/features/icon',
+                text: 'Common Features',
+              },
+            ],
+          },
+        ],
+      },
+    ])
+  })
+})

@@ -31,7 +31,6 @@ import { useCloseSidebarOnEscape } from './useSidebarControl.js'
 
 const headers = shallowRef<DefaultTheme.OutlineItem[]>([])
 const sidebar = shallowRef<DefaultTheme.SidebarItem[]>([])
-const sidebarHeaders = shallowRef<DefaultTheme.OutlineItem[]>([])
 
 const isDesktop = useMediaQuery('(min-width: 60rem)')
 
@@ -94,12 +93,13 @@ export function registerWatchers({ closeSidebar }: RegisterWatchersOptions) {
   const page = usePageData()
   const routeLocale = useRouteLocale()
 
-  const sidebarConfig = computed(
-    () => frontmatter.value.sidebar ?? theme.value.sidebar ?? 'heading',
-  )
-
-  const sidebarDepth = computed(
-    () => frontmatter.value.sidebarDepth ?? theme.value.sidebarDepth ?? 2,
+  // the frontmatter sidebar is normalized at build time, but the frontmatter
+  // type keeps the input shape to accept the classic theme syntax
+  const sidebarConfig = computed<DefaultTheme.Sidebar | false>(
+    () =>
+      (frontmatter.value.sidebar as DefaultTheme.Sidebar | false | undefined) ??
+      theme.value.sidebar ??
+      false,
   )
 
   function updateSidebar(): void {
@@ -110,10 +110,6 @@ export function registerWatchers({ closeSidebar }: RegisterWatchersOptions) {
             getSidebar(
               sidebarConfig.value,
               relativePath.value,
-              {
-                title: page.value.title,
-                headers: sidebarHeaders.value,
-              },
               routeLocale.value,
             ),
           )
@@ -122,18 +118,14 @@ export function registerWatchers({ closeSidebar }: RegisterWatchersOptions) {
       sidebar.value = newSidebar
   }
 
-  watch(
-    [sidebarConfig, sidebarDepth, relativePath, () => page.value.title],
-    updateSidebar,
-    { immediate: true, deep: true, flush: 'sync' },
-  )
+  watch([sidebarConfig, relativePath, () => page.value.title], updateSidebar, {
+    immediate: true,
+    deep: true,
+    flush: 'sync',
+  })
 
   onContentUpdated(() => {
     headers.value = getHeaders(frontmatter.value.outline ?? theme.value.outline)
-    sidebarHeaders.value = getHeaders([2, sidebarDepth.value + 1] as [
-      number,
-      number,
-    ])
     updateSidebar()
   })
 

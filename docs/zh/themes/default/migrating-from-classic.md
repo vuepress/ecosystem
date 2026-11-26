@@ -46,45 +46,48 @@ icon: arrow-right-left
 | `home`             | `logoLink`                | 导航栏中 logo 的链接，以及站点的首页。404 按钮使用 `notFound.link`。           |
 | `repo`             | `socialLinks`             | `socialLinks: [{ icon: 'github', link: 'https://github.com/example/repo' }]`。 |
 | `repoLabel`        | `socialLinks[].ariaLabel` | 仓库链接的标签。                                                               |
-| `navbar`           | `nav`                     | 见[导航栏](#navbar)。                                                          |
-| `sidebar`          | `sidebar`                 | 相同的默认值（`'heading'`），新的条目形状。                                    |
-| `sidebarDepth`     | `sidebarDepth`            | 相同，且仅在 `sidebar` 为 `'heading'` 时使用。                                 |
+| `navbar`           | `navbar`                  | 相同的键与相同的条目写法。见[导航栏](#navbar)。                                |
+| `sidebar`          | `sidebar`                 | 相同的键与相同的条目写法。默认值现在是 `false`。见[侧边栏](#sidebar)。         |
 | `externalLinkIcon` | `externalLinkIcon`        | 相同，默认值为 `false`。                                                       |
 | `themePlugins`     | `themePlugins`            | 见[主题插件](#theme-plugins)。                                                 |
 
 ### 导航栏 {#navbar}
 
-经典主题的 `navbar` 配置项就是新的 `nav` 配置项。它的条目是 `NavItem` 对象，接受 `text`、`link`、`icon`、`activeMatch`，如果是下拉菜单则还有 `items`：
+导航栏保留 `navbar` 键与经典主题的条目写法：字符串条目、`children`、`prefix` 与 `activeMatch` 会在构建时归一化。`navbar: false` 会隐藏导航栏。
 
-| 经典主题                      | 新主题                        | 说明                                                   |
-| ----------------------------- | ----------------------------- | ------------------------------------------------------ |
-| `navbar: []`（默认）          | 不写 `nav`                    | 两者都渲染不带条目的导航栏。                           |
-| `navbar: false`               | `nav: []`                     | 隐藏导航条目。导航栏本身由 `navbar` frontmatter 配置。 |
-| `{ text, link }`              | `{ text, link }`              | 相同。                                                 |
-| `{ text, children }`          | `{ text, items }`             | 下拉菜单的条目。                                       |
-| `{ text, prefix, children }`  | `{ text, items }`             | 没有前缀：为每个条目写完整的链接。                     |
-| `{ text, link, activeMatch }` | `{ text, link, activeMatch }` | 相同，作为正则表达式。                                 |
-| `{ text, ariaLabel }`         | —                             | 不支持；添加一个 `icon` 或保留文本。                   |
-| —                             | `{ component, props }`        | 在导航栏中渲染自定义组件。                             |
-| —                             | `socialLinks`                 | 社交链接与导航条目是分开的。                           |
+| 经典主题                     | 新主题                           | 说明                                                    |
+| ---------------------------- | -------------------------------- | ------------------------------------------------------- |
+| `navbar: []`（默认）         | 不写 `navbar`                    | 两者都渲染不带条目的导航栏。                            |
+| `navbar: false`              | `navbar: false`                  | 隐藏导航栏本身。                                        |
+| `'/guide/'`（字符串条目）    | 相同                             | 文本在运行时从该页面的标题解析。                        |
+| `{ text, link }`             | 相同                             | 相同。                                                  |
+| `{ text, children }`         | 相同，或 `{ text, items }`       | `children` 是 `items` 的废弃别名。                      |
+| `{ text, prefix, children }` | 相同，或 `{ text, base, items }` | `prefix` 是 `base` 的废弃别名。基路径只作用于子项链接。 |
+| `{ text, activeMatch }`      | 相同                             | 相同，作为正则表达式字符串。                            |
+| `{ text, ariaLabel }`        | —                                | 不支持；添加一个 `icon` 或保留文本。                    |
+| —                            | `{ exact }`                      | 使条目只在其链接对应的页面上激活。                      |
+| —                            | `{ component, props }`           | 在导航栏中渲染自定义组件。                              |
+| —                            | `socialLinks`                    | 社交链接与导航条目是分开的。                            |
 
 `navbarLabel` 和 `pageNavbarLabel` 曾是导航的无障碍标签。导航栏请使用 `navMenuLabel`；页面导航栏不再有自己的标签。
 
 ### 侧边栏 {#sidebar}
 
-侧边栏的条目形状有所变化，因为主题现在在侧边栏和导航栏中使用相同的条目类型：
+侧边栏保留 `sidebar` 键与经典主题的条目写法，包括字符串条目、`children`、`prefix` 与 `collapsible`。默认值现在是 `false`，因此没有配置侧边栏的站点不再生成标题侧边栏。`'heading'` 模式与 `sidebarDepth` 配置项已移除：请使用 `@vuepress/plugin-toc` 提供目录。
 
-| 经典主题                     | 新主题                  | 说明                                                                  |
-| ---------------------------- | ----------------------- | --------------------------------------------------------------------- |
-| `'/guide/'`（字符串条目）    | `{ link: '/guide/' }`   | 文本在运行时从页面标题解析。                                          |
-| `{ text, link }`             | `{ text, link }`        | 相同。                                                                |
-| `{ text, children }`         | `{ text, items }`       | 嵌套条目。                                                            |
-| `{ text, prefix, children }` | `{ text, base, items }` | `base` 是各条目链接的前缀。                                           |
-| `{ text, collapsible }`      | `{ text, collapsed }`   | 设置 `collapsed` 时分组可折叠，且它为 `true` 时分组初始处于折叠状态。 |
-| `{ text, ariaLabel }`        | —                       | 不支持。                                                              |
-| —                            | `{ icon }`              | 条目的图标。                                                          |
-| —                            | `{ docFooterText }`     | 上一篇/下一篇链接使用的文本。                                         |
-| 以页面路径为键的侧边栏对象   | 相同                    | 每个值可以是数组、`'heading'`，或 `{ items, base }`。                 |
+| 经典主题                     | 新主题                           | 说明                                                             |
+| ---------------------------- | -------------------------------- | ---------------------------------------------------------------- |
+| `'/guide/'`（字符串条目）    | 相同                             | 文本在运行时从该页面的标题解析。                                 |
+| `{ text, link }`             | 相同                             | 相同。                                                           |
+| `{ text, children }`         | 相同，或 `{ text, items }`       | `children` 是 `items` 的废弃别名。                               |
+| `{ text, prefix, children }` | 相同，或 `{ text, base, items }` | `prefix` 是 `base` 的废弃别名。                                  |
+| `{ text, collapsible }`      | 相同                             | `expanded: true` 使分组默认展开。                                |
+| `{ text, collapsed }`        | —                                | 已移除；请使用 `collapsible` 配合 `expanded`。                   |
+| `{ text, ariaLabel }`        | —                                | 不支持。                                                         |
+| —                            | `{ icon }`                       | 条目的图标。                                                     |
+| —                            | `{ activeMatch, exact }`         | 控制条目何时激活。                                               |
+| —                            | `{ docFooterText }`              | 上一篇/下一篇链接使用的文本。                                    |
+| 以页面路径为键的侧边栏对象   | 相同                             | 每个值可以是数组、`false`、`'structure'`，或 `{ items, base }`。 |
 
 ### 文档页脚 {#document-footer}
 
@@ -224,8 +227,7 @@ export default defineUserConfig({
 | `editLinkPattern`  | —                  | pattern 现在是主题配置项。                                                   |
 | `lastUpdated`      | `lastUpdated`      | 相同，一个布尔值或一个时间戳。                                               |
 | `contributors`     | `contributors`     | 相同。                                                                       |
-| `sidebar`          | `sidebar`          | 形状相同，只是条目有上面的变化。                                             |
-| `sidebarDepth`     | `sidebarDepth`     | 相同。                                                                       |
+| `sidebar`          | `sidebar`          | 形状相同，包括 classic 条目写法。                                            |
 | `prev` / `next`    | `prev` / `next`    | 字符串即文本；对象接受 `text`、`link`、`target` 和 `rel`；`false` 隐藏链接。 |
 | `footer`（字符串） | `footer`（字符串） | 字符串会渲染为页面页脚。                                                     |
 | `footerHtml`       | `footerHtml`       | 是否将字符串页脚作为 HTML 渲染。                                             |
@@ -291,7 +293,7 @@ export default defineUserConfig({
 ```ts
 import type { DefaultTheme } from '@vuepress/theme-default'
 
-const nav: DefaultTheme.NavItem[] = [{ text: 'Guide', link: '/guide/' }]
+const navbar: DefaultTheme.NavItem[] = [{ text: 'Guide', link: '/guide/' }]
 ```
 
 ## 客户端 API {#client-api}
@@ -326,7 +328,7 @@ const nav: DefaultTheme.NavItem[] = [{ text: 'Guide', link: '/guide/' }]
 ## 检查清单 {#checklist}
 
 1. 把 `@vuepress/theme-classic` 替换为 `@vuepress/theme-default`，把 `classicTheme` 替换为 `defaultTheme`。
-2. 把 `navbar` 转换为 `nav`，并把侧边栏条目转换为新的形状。
+2. 保持 `navbar` 与 `sidebar` 配置不变：默认主题接受经典主题的写法，见上文的兼容性表格。
 3. 把 `colorMode` / `colorModeSwitch` 转换为 `appearance`，把语言切换器配置项转换为 `locales.<path>.label` 和 `langMenuLabel`。
 4. 将 `home: true` 转换为 `type: home`，并转换 `notFound` / `backToHome`；其他经典首页字段保持原来的名称。
 5. 重命名主题插件开关，如果站点必须保留 Prism 则关掉 Shiki。
