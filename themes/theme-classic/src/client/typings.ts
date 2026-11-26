@@ -5,9 +5,13 @@ import type {
   SidebarLinkOptions,
 } from '../shared/index.js'
 
-export type NavbarItem = AutoLinkOptions | NavGroup<NavbarItem>
+/** A resolved navbar link, the text is always filled / 解析后的导航栏链接，文本必定存在 */
+export type NavbarLinkItem = AutoLinkOptions & { text: string }
 
-export type SidebarLinkItem = SidebarLinkOptions
+export type NavbarItem = NavbarLinkItem | NavGroup<NavbarItem>
+
+/** A resolved sidebar link, the text is always filled / 解析后的侧边栏链接，文本必定存在 */
+export type SidebarLinkItem = SidebarLinkOptions & { text: string }
 
 export interface SidebarHeaderItem {
   text: string

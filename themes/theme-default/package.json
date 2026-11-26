@@ -71,13 +71,14 @@
     "@vuepress/plugin-shiki": "workspace:*",
     "@vuepress/plugin-sitemap": "workspace:*",
     "@vuepress/plugin-theme-data": "workspace:*",
+    "@vuepress/theme-helper": "workspace:*",
     "@vueuse/core": "catalog:",
     "markdown-it": "catalog:",
     "vue": "catalog:"
   },
   "devDependencies": {
-    "@volar/typescript": "^2.4.28",
-    "@vue/language-core": "^3.3.12",
+    "@volar/typescript": "^2.4.31",
+    "@vue/language-core": "^3.3.14",
     "vue-sfc-transformer": "^0.3.5"
   },
   "peerDependencies": {

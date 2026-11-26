@@ -17,13 +17,26 @@ import { seoPlugin } from '@vuepress/plugin-seo'
 import { shikiPlugin } from '@vuepress/plugin-shiki'
 import { sitemapPlugin } from '@vuepress/plugin-sitemap'
 import { themeDataPlugin } from '@vuepress/plugin-theme-data'
+import {
+  createSidebarStructureHelper,
+  extendsPageData,
+} from '@vuepress/theme-helper'
 import type { ThemeObject } from 'vuepress'
+import { isString } from 'vuepress/shared'
 
 import type {
   AppearanceOptions,
+  DefaultTheme,
   ThemeConfig,
   ThemePluginsOptions,
 } from '../shared/types.js'
+
+/**
+ * The sidebar item of the theme generated from the file structure
+ *
+ * 根据文件结构生成的主题侧边栏条目
+ */
+type StructureSidebarItem = DefaultTheme.SidebarItem & { text: string }
 
 /**
  * Plugin list of the theme
@@ -66,9 +79,14 @@ const resolveLocalePath = (key: string, link?: string): string => {
 export const resolveThemeData = (
   options: ThemeOptions,
 ): Record<string, unknown> => {
-  // `hostname` is used by the SEO and sitemap plugins, it is not part of the
-  // theme data
-  const { hostname: _hostname, locales, ...rest } = options
+  // `hostname` is used by the SEO and sitemap plugins, while `sidebarSorter`
+  // may contain functions, neither of them is part of the theme data
+  const {
+    hostname: _hostname,
+    locales,
+    sidebarSorter: _sidebarSorter,
+    ...rest
+  } = options
 
   if (!locales) return rest
 
@@ -428,8 +446,22 @@ const resolveThemePlugins = (
  * @returns The theme plugin / 主题插件
  */
 export const defaultTheme = (options: ThemeOptions = {}): ThemeObject => {
-  const { hostname } = options
+  const { hostname, sidebarSorter, ...themeOptions } = options
   const plugins: ThemePluginsOptions = options.themePlugins ?? {}
+
+  const sidebarHelper = createSidebarStructureHelper<StructureSidebarItem>({
+    themeData: resolveThemeData(themeOptions),
+    childrenKey: 'items',
+    prefixKey: 'base',
+    sorter: sidebarSorter,
+
+    // the groups are collapsible by default, and they are collapsed unless
+    // the normalized `expanded` state tells them to be expanded
+    dirInfoGetter: (info, _page, defaults) => ({
+      ...defaults,
+      ...(info.collapsible ? { collapsed: !info.expanded } : {}),
+    }),
+  })
 
   return {
     name: '@vuepress/theme-default',
@@ -445,10 +477,23 @@ export const defaultTheme = (options: ThemeOptions = {}): ThemeObject => {
     clientConfigFile: path.resolve(__dirname, '../client/config.js'),
 
     extendsPage: (page) => {
-      page.data.filePathRelative = page.filePathRelative
-      page.routeMeta.title = page.title
+      extendsPageData(page)
+
+      // save the icon into the route meta, so that the navbar and the sidebar
+      // fill the icon of the items that only define a link
+      if (isString(page.frontmatter.icon))
+        page.routeMeta.icon = page.frontmatter.icon
     },
 
-    plugins: resolveThemePlugins(options, plugins, hostname),
+    // the client reads the sidebar generated from the file structure from a
+    // generated module, which must exist even when no sidebar uses
+    // `'structure'`, so the data is always prepared
+    onPrepared: (app) => sidebarHelper.prepare(app),
+
+    onWatched: (app, watchers): void => {
+      sidebarHelper.watch(app, watchers)
+    },
+
+    plugins: resolveThemePlugins(themeOptions, plugins, hostname),
   }
 }

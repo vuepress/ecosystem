@@ -92,8 +92,31 @@ const resolveThemeModule = (id: string): string | undefined => {
   return undefined
 }
 
+/**
+ * Fallback modules of the unconditionally imported generated modules
+ *
+ * A theme client imports the sidebar data generated in the temp directory, but
+ * a unit test has no build step, so the module is resolved to a checked-in
+ * fixture instead. Tests can still register their own module with
+ * `stubModule()`, because the stubbed modules are resolved before this map.
+ *
+ * 无条件导入的生成模块的回退模块
+ *
+ * 主题客户端会导入临时目录中生成的侧边栏数据，但单元测试没有构建步骤，因此该模块会被解析为仓库中的替身文件。 测试仍然可以通过 `stubModule()`
+ * 注册自己的模块，因为打桩模块会先于该映射被解析。
+ */
+const TEMP_MODULE_FALLBACKS: Record<string, string> = {
+  '@temp/theme-helper/sidebar.js': path.resolve(
+    __dirname,
+    './tools/theme-helper/tests/fixtures/sidebarData.ts',
+  ),
+}
+
+const resolveTestModule = (id: string): string | undefined =>
+  TEMP_MODULE_FALLBACKS[id] ?? resolveThemeModule(id)
+
 export default defineConfig({
-  plugins: [vue(), vuepressTestPlugin({ resolve: resolveThemeModule })],
+  plugins: [vue(), vuepressTestPlugin({ resolve: resolveTestModule })],
   resolve: {
     alias: [
       ...createSourceAliases(pluginPackages),

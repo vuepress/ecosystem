@@ -8,7 +8,12 @@ import {
   type ComputedRef,
   type InjectionKey,
 } from 'vue'
-import { onContentUpdated, usePageData, useRoute } from 'vuepress/client'
+import {
+  onContentUpdated,
+  usePageData,
+  useRoute,
+  useRouteLocale,
+} from 'vuepress/client'
 
 import {
   usePageRelativePath,
@@ -87,6 +92,7 @@ export function registerWatchers({ closeSidebar }: RegisterWatchersOptions) {
   const theme = useThemeLocaleData<ThemeConfig>()
   const relativePath = usePageRelativePath()
   const page = usePageData()
+  const routeLocale = useRouteLocale()
 
   const sidebarConfig = computed(
     () => frontmatter.value.sidebar ?? theme.value.sidebar ?? 'heading',
@@ -101,10 +107,15 @@ export function registerWatchers({ closeSidebar }: RegisterWatchersOptions) {
       sidebarConfig.value === false
         ? []
         : resolveSidebarData(
-            getSidebar(sidebarConfig.value, relativePath.value, {
-              title: page.value.title,
-              headers: sidebarHeaders.value,
-            }),
+            getSidebar(
+              sidebarConfig.value,
+              relativePath.value,
+              {
+                title: page.value.title,
+                headers: sidebarHeaders.value,
+              },
+              routeLocale.value,
+            ),
           )
 
     if (JSON.stringify(newSidebar) !== JSON.stringify(sidebar.value))

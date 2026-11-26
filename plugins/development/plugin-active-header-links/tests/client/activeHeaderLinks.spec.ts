@@ -147,7 +147,7 @@ const mockScrollTo = (): ScrollToMock => {
   return {
     scrollTo,
     getPendingScrollTop: () => pendingScrollTop,
-    resetPendingScrollTop: () => {
+    resetPendingScrollTop: (): void => {
       pendingScrollTop = null
     },
   }

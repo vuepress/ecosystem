@@ -6,6 +6,7 @@ import { useRoute, useRouter } from 'vuepress/client'
 import { isActiveSidebarItem } from '@theme/isActiveSidebarItem'
 import VPAutoLink from '@theme/VPAutoLink.vue'
 import VPDropdownTransition from '@theme/VPDropdownTransition.vue'
+import VPThemeIcon from '@theme/VPThemeIcon.vue'
 
 import type { SidebarGroupItem, SidebarItem } from '../typings.js'
 
@@ -72,10 +73,20 @@ onBeforeUnmount(() => {
       :aria-expanded="isOpen"
       @click="toggleIsOpen()"
     >
+      <VPThemeIcon
+        v-if="item.icon"
+        :icon="item.icon"
+        class="vp-sidebar-item-icon"
+      />
       {{ item.text }}
       <span class="arrow" :class="isOpen ? 'down' : 'right'" />
     </button>
     <p v-else :class="itemClass">
+      <VPThemeIcon
+        v-if="item.icon"
+        :icon="item.icon"
+        class="vp-sidebar-item-icon"
+      />
       {{ item.text }}
     </p>
 

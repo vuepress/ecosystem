@@ -30,7 +30,7 @@ export const useDocSearchShim = (): Partial<DocSearchProps> => {
     // navigation behavior triggered by `onKeyDown` internally
     navigator: {
       // when pressing Enter without metaKey
-      navigate: ({ itemUrl }) => {
+      navigate: ({ itemUrl }): void => {
         void router.push(itemUrl.replace(__VUEPRESS_BASE__, '/'))
       },
     },

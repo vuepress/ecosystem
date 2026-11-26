@@ -305,6 +305,34 @@ The maximum heading depth of the `'heading'` sidebar of this page.
 
 By default the previous/next links are the neighbours of the page in the sidebar. The link text falls back to the `docFooterText` of the sidebar item, then to the item text.
 
+## Sidebar Structure
+
+The fields in this section are used when the sidebar is generated from the file structure, i.e. when [sidebar](./config.md#generate-from-the-file-structure) is `'structure'`, `'/path/': 'structure'` or `{ items: 'structure' }`. They have no effect on a sidebar that is configured manually.
+
+:::: fields
+@`index` type=boolean
+
+Set it to `false` to hide the page from the generated sidebar.
+
+@`order` type=number
+
+The position of the item among its siblings. A positive value puts the page before the pages without an order, a negative value puts it after them.
+
+@`shortTitle` type=string
+
+The text of the item, it takes precedence over the page title.
+
+@`icon` type=string
+
+The icon of the item, in the same form as `sidebar[*].icon`.
+
+@`dir` type=`SidebarDirOptions`
+
+The options of the group that represents the directory of this page. It is only read from the `README.md` of the directory, the field of the other pages is ignored.
+
+The options are documented in [theme-helper](../../tools/theme-helper.md#default-frontmatter-mapping): `text`, `icon`, `collapsible`, `expanded`, `link`, `index` and `order`.
+::::
+
 ## 404 Page
 
 The theme registers a `NotFound` layout. VuePress generates the `404.html` page with that layout, so the page shows the theme's not-found screen: an error code, a title, a quote and a link home.
@@ -364,3 +392,8 @@ Whether to wrap the home page content in the document styles. It only applies to
 | `next`           | `string \| ThemePageLink \| false`                            | doc       | [Document Page](#document-page)            |
 | `sidebar`        | `DefaultTheme.Sidebar \| 'heading' \| false`                  | doc       | [Document Page](#document-page)            |
 | `sidebarDepth`   | `number`                                                      | doc       | [Document Page](#document-page)            |
+| `index`          | `boolean`                                                     | doc       | [Sidebar Structure](#sidebar-structure)    |
+| `order`          | `number`                                                      | doc       | [Sidebar Structure](#sidebar-structure)    |
+| `shortTitle`     | `string`                                                      | doc       | [Sidebar Structure](#sidebar-structure)    |
+| `icon`           | `string`                                                      | doc       | [Sidebar Structure](#sidebar-structure)    |
+| `dir`            | `SidebarDirOptions`                                           | doc       | [Sidebar Structure](#sidebar-structure)    |

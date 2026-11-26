@@ -1,6 +1,6 @@
 // @vitest-environment happy-dom
 import { mountVuePress, renderVuePress } from '@vuepress/test-utils/client'
-import { describe, expect, it } from 'vitest'
+import { describe, expect, it, vi } from 'vitest'
 import type { Component, VNode } from 'vue'
 import { defineComponent, h } from 'vue'
 
@@ -10,6 +10,35 @@ import { useSidebarItems } from '../../src/client/composables/useSidebarItems.js
 import themeClassicClientConfig from '../../src/client/config.js'
 import type { SidebarItem } from '../../src/client/typings.js'
 
+// the structure data is generated at build time and read by the client of the
+// helper, it is replaced with a fixture so that the resolution of the theme can
+// be tested
+const { structureData } = vi.hoisted(
+  (): {
+    structureData: Record<string, SidebarItem[]>
+  } => ({
+    structureData: {
+      '/': [
+        { text: 'Home', link: '/', icon: 'home-icon' },
+        {
+          text: 'Guide',
+          link: '/guide/',
+          icon: 'guide-icon',
+          children: [{ text: 'A', link: '/guide/a.html' }],
+        },
+      ],
+      '/guide/': [
+        { text: 'A', link: '/guide/a.html' },
+        { text: 'B', link: '/guide/b.html' },
+      ],
+    },
+  }),
+)
+
+vi.mock(import('@vuepress/theme-helper/client'), () => ({
+  getSidebarStructure: <Item>(scope: string): Item[] =>
+    (structureData[scope] ?? []) as unknown as Item[],
+}))
 /**
  * The client configs that a default theme site applies
  *
@@ -47,6 +76,19 @@ const SidebarTree = defineComponent({
     const sidebarItems = useSidebarItems()
 
     return () => h('pre', serializeSidebar(sidebarItems.value))
+  },
+})
+
+/**
+ * Serialize the raw sidebar items, so that the fields other than the text and
+ * the link can be asserted.
+ */
+const SidebarData = defineComponent({
+  name: 'TestSidebarData',
+  setup(): () => VNode {
+    const sidebarItems = useSidebarItems()
+
+    return () => h('pre', JSON.stringify(sidebarItems.value))
   },
 })
 
@@ -219,5 +261,72 @@ describe('sidebar item', () => {
 
     expect(label.text()).toBe('Foo')
     expect(label.attributes('tabindex')).toBeUndefined()
+  })
+})
+
+describe('structure sidebar', () => {
+  it('should resolve the sidebar from the file structure', async () => {
+    const html = await renderVuePress({
+      clientConfigs,
+      rootComponent: SidebarTree,
+      page: { path: '/', title: 'Home' },
+      site: { title: 'My Site' },
+      themeData: { locales: { '/': { sidebar: 'structure' } } },
+    })
+
+    expect(html).toContain(
+      ['Home | /', 'Guide | /guide/', '  A | /guide/a.html'].join('\n'),
+    )
+  })
+
+  it('should keep the icons of the structure items', async () => {
+    const html = await renderVuePress({
+      clientConfigs,
+      rootComponent: SidebarData,
+      page: { path: '/', title: 'Home' },
+      site: { title: 'My Site' },
+      themeData: { locales: { '/': { sidebar: 'structure' } } },
+    })
+
+    expect(html).toContain('&quot;icon&quot;:&quot;home-icon&quot;')
+    expect(html).toContain('&quot;icon&quot;:&quot;guide-icon&quot;')
+  })
+
+  it('should resolve a `structure` sidebar of a path', async () => {
+    const html = await renderVuePress({
+      clientConfigs,
+      rootComponent: SidebarTree,
+      page: { path: '/guide/a.html', title: 'A' },
+      site: { title: 'My Site' },
+      themeData: {
+        locales: { '/': { sidebar: { '/guide/': 'structure' } } },
+      },
+    })
+
+    expect(html).toContain(
+      ['A | /guide/a.html', 'B | /guide/b.html'].join('\n'),
+    )
+  })
+
+  it('should resolve the structure items of a nested group', async () => {
+    const html = await renderVuePress({
+      clientConfigs,
+      rootComponent: SidebarTree,
+      page: { path: '/guide/a.html', title: 'A' },
+      site: { title: 'My Site' },
+      themeData: {
+        locales: {
+          '/': {
+            sidebar: [
+              { text: 'Docs', prefix: '/guide/', children: 'structure' },
+            ],
+          },
+        },
+      },
+    })
+
+    expect(html).toContain(
+      ['Docs', '  A | /guide/a.html', '  B | /guide/b.html'].join('\n'),
+    )
   })
 })

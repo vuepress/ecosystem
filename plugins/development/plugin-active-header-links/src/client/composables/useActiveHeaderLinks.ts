@@ -96,7 +96,7 @@ const createUserInteractionTracker = (): {
 
   return {
     hasInteracted: () => interacted,
-    cleanup: () => {
+    cleanup: (): void => {
       for (const event of interactionEvents)
         window.removeEventListener(event, markInteracted)
     },

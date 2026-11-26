@@ -244,11 +244,12 @@ The `target` attribute of the link.
 :::: fields
 @`sidebar` type=`DefaultTheme.Sidebar | 'heading' | false` default=`'heading'`
 
-The sidebar configuration. It accepts four shapes:
+The sidebar configuration. It accepts five shapes:
 
 - `'heading'`: generate the sidebar from the headings of the current page. This is the default.
+- `'structure'`: generate the sidebar from the file structure. See [Generate from the file structure](#generate-from-the-file-structure).
 - an array of [sidebar items](#sidebar-items): the same sidebar on every page.
-- an object keyed by path: a different sidebar for each path. The key is matched as a path prefix and the longest matching key wins.
+- an object keyed by path: a different sidebar for each path. The key is matched as a path prefix and the longest matching key wins. The value is a sidebar array, `'heading'` or `'structure'`.
 - `false`: no sidebar.
 
 `sidebar` can be overridden per page in the frontmatter.
@@ -256,6 +257,10 @@ The sidebar configuration. It accepts four shapes:
 @`sidebarDepth` type=number default=`2`
 
 The maximum heading depth of the sidebar, including the page title heading. It is only used when `sidebar` is `'heading'`. `1` shows the page title and the `h2` headings, `2` also shows the `h3` headings, and so on.
+
+@`sidebarSorter` type=`SidebarSorter` default=`['readme', 'order', 'title', 'filename']`
+
+The comparator of the items generated from the file structure. It accepts a keyword, a function, or an array of them. See [Sorting the items](../../tools/theme-helper.md#sorting-the-items).
 ::::
 
 ### Sidebar items
@@ -273,7 +278,7 @@ The link of the item. An item without a link is a group.
 
 @`sidebar[*].icon` type=string
 
-The icon of the item, in the same form as `nav[*].icon`. When it is omitted, the sidebar resolves the icon from the route meta of the linked page, so a site can add page icons by writing them into `page.routeMeta.icon` in an `extendsPage` hook.
+The icon of the item, in the same form as `nav[*].icon`. When it is omitted, the sidebar resolves the icon from the route meta of the linked page: the theme saves the frontmatter `icon` of the page into `page.routeMeta.icon`.
 
 @`sidebar[*].items` type=`DefaultTheme.SidebarItem[]`
 
@@ -316,6 +321,56 @@ export default defineUserConfig({
   }),
 })
 ```
+
+### Generate from the file structure
+
+The sidebar can be generated from the file structure of the site. Set `sidebar` to `'structure'` to generate the sidebar of every route scope, use it as a value of the path object to generate the sidebar of the paths, or set `items` of a group to `'structure'` to generate its children only:
+
+```ts title=".vuepress/config.ts"
+export default defineUserConfig({
+  theme: defaultTheme({
+    // the whole site
+    sidebar: 'structure',
+    // or: only some paths
+    // sidebar: { '/guide/': 'structure' },
+    // or: only the children of a group
+    // sidebar: [{ text: 'Guide', base: '/guide/', items: 'structure' }],
+  }),
+})
+```
+
+The items are read from the pages under the scope, and they are nested by directories. The structure helper reads the following frontmatter fields by default:
+
+- `index: false` hides the page from the sidebar.
+- `order` puts the page before (positive) or after (negative) the pages without an order.
+- `shortTitle` overrides the item text.
+- `icon` sets the item icon.
+- the `dir` field of a `README.md` configures the group of its directory: `text`, `icon`, `collapsible`, `expanded`, `link`, `index` and `order`.
+
+```md title="guide/a.md"
+---
+order: 1
+icon: a
+---
+```
+
+```md title="guide/README.md"
+---
+dir:
+  text: Guide
+  icon: guide
+  collapsible: true
+  expanded: true
+---
+```
+
+See [theme-helper](../../tools/theme-helper.md#default-frontmatter-mapping) for the default frontmatter mapping, and [Sorting the items](../../tools/theme-helper.md#sorting-the-items) for the `sidebarSorter` option.
+
+::: tip
+
+`'structure'` is only supported in the theme config, not in the frontmatter of a page.
+
+:::
 
 ## Page
 

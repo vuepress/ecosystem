@@ -46,6 +46,10 @@ export const navbarEn: NavbarOptions = [
     text: 'Tools',
     icon: 'hammer',
     prefix: '/tools/',
-    children: ['helper/', { text: '@vuepress/test-utils', link: 'test-utils' }],
+    children: [
+      'helper/',
+      { text: '@vuepress/theme-helper', link: 'theme-helper' },
+      { text: '@vuepress/test-utils', link: 'test-utils' },
+    ],
   },
 ]

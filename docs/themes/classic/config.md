@@ -63,29 +63,37 @@ Configuration of navbar.
 
 Set to `false` to disable navbar.
 
-To configure the navbar items, you can set it to a _navbar array_, each item of which could be a `NavbarLink` object, a `NavbarGroup` object, or a string:
+To configure the navbar items, you can set it to a _navbar array_. A plain link item is recommended to be a string, which is the path to the target page file. It will be converted to a `NavbarLink` object, using the page route path as `link`, and the page title and the frontmatter `icon` of the page as `text` and `icon`.
 
-- A `NavbarLink` object should have a `text` field and a `link` field, could have an optional `activeMatch` field.
-- A `NavbarGroup` object should have a `text` field and a `children` field, could have an optional `prefix` field. The `children` field should be a _navbar array_ too, and `prefix` will be prepended before every link inside it.
-- A string should be the path to the target page file. It will be converted to a `NavbarLink` object, using the page title as `text`, and the page route path as `link`.
+You can also use objects when an item needs more control:
+
+- A `NavbarLink` object should have a `link` field, could have an optional `text` field and an optional `activeMatch` field. When `text` is omitted, the page title is used, and the frontmatter `icon` of the page is used as the icon.
+- A `NavbarGroup` object should have a `text` field and a `children` field, could have an optional `prefix` field and an optional `icon` field. The `children` field should be a _navbar array_ too, and `prefix` will be prepended before every link inside it.
+
+::: tip
+
+The icon of an item is rendered by the theme. Iconify icons are rendered by the global `VPIcon` component of [`@vuepress/plugin-icon`](../../plugins/features/icon.md), which the classic theme does not include, so add the plugin to your site to use them. Class icons whose name starts with `vpi-` are rendered as CSS classes directly.
+
+:::
 
 ```ts title=".vuepress/config.ts"
 export default {
   theme: classicTheme({
     navbar: [
-      // NavbarLink
-      {
-        text: 'Foo',
-        link: '/foo/',
-      },
+      // string - page file path, resolved with the page title and icon
+      '/bar/README.md',
       // NavbarGroup
       {
         text: 'Group',
         prefix: '/group/',
         children: ['foo.md', 'bar.md'],
       },
-      // string - page file path
-      '/bar/README.md',
+      // NavbarLink - with custom text and active match
+      {
+        text: 'Foo',
+        link: '/foo/',
+        activeMatch: '^/foo/',
+      },
     ],
   }),
 }
@@ -216,15 +224,36 @@ Set to `false` to disable sidebar.
 
 If you set it to `'heading'`, the sidebar will be automatically generated from the page headers.
 
+If you set it to `'structure'`, the sidebar will be generated from the file structure of your pages. The structure helper reads some frontmatter fields by default, see [sidebar structure](./frontmatter.md#sidebar-structure):
+
+```ts title=".vuepress/config.ts"
+export default {
+  theme: classicTheme({
+    // the whole site
+    sidebar: 'structure',
+    // or: only some paths
+    // sidebar: { '/guide/': 'structure' },
+    // or: generate the children of a group, `prefix` is the scope
+    // sidebar: [{ text: 'Guide', prefix: '/guide/', children: 'structure' }],
+  }),
+}
+```
+
 To configure the sidebar items manually, you can set this option to a _sidebar array_, each item of which could be a `SidebarItem` object or a string:
 
-- A `SidebarItem` object should have a `text` field, could have an optional `link` field, an optional `children` field, an optional `collapsible` field and an optional `prefix` field. The `children` field should be a _sidebar array_, where `prefix` will be prepended to every link inside it. The `collapsible` field controls whether the item is collapsible.
-- A string should be the path to the target page file. It will be converted to a `SidebarItem` object, whose `text` is the page title, `link` is the page route path, and `children` is automatically generated from the page headers.
+To configure the sidebar items manually, you can set this option to a _sidebar array_. A plain link item is recommended to be a string, which is the path to the target page file. It will be converted to a `SidebarItem` object, whose `text` is the page title, `link` is the page route path, `icon` is the frontmatter `icon` of the page, and `children` are automatically generated from the page headers.
+
+You can also use objects when an item needs more control:
+
+- A link item object should have a `link` field, and can omit `text` and `icon` like a `NavbarLink` object: the page title is used as the text, and the frontmatter `icon` of the page is used as the icon. Unlike a string, it does not generate `children` from the page headers, and it can have a custom `activeMatch`.
+- A group item object should have a `text` field and a `children` field, and could have an optional `link` field, an optional `icon` field, an optional `collapsible` field and an optional `prefix` field. The `children` field should be a _sidebar array_, where `prefix` will be prepended to every link inside it. The `collapsible` field controls whether the item is collapsible.
 
 If you want to set different sidebar for different sub paths, you can set this option to a _sidebar object_:
 
 - The key should be the path prefix.
-- The value should be a _sidebar array_ or set to `'heading'` to automatically generate the sidebar from the page headers for just the corresponding path.
+- The value should be a _sidebar array_, `'heading'` to automatically generate the sidebar from the page headers for just the corresponding path, or `'structure'` to generate it from the file structure.
+
+To generate the children of a group from the file structure, set `children` of the group to `'structure'`. The `prefix` of the group is the scope of the generated children.
 
 ```ts title=".vuepress/config.ts"
 export default {
@@ -232,25 +261,29 @@ export default {
     // sidebar array
     // all pages will use the same sidebar
     sidebar: [
-      // SidebarItem
+      // string - page file path, resolved with the page title and icon
+      '/bar/README.md',
+      // group item
       {
         text: 'Foo',
         prefix: '/foo/',
         link: '/foo/',
         children: [
-          // SidebarItem
-          {
-            text: 'github',
-            link: 'https://github.com',
-            children: [],
-          },
-          // string - page file path
           'bar.md', // resolved to `/foo/bar.md`
           '/ray.md', // resolved to `/ray.md`
+          // an external link
+          {
+            text: 'GitHub',
+            link: 'https://github.com',
+          },
         ],
       },
-      // string - page file path
-      '/bar/README.md',
+      // link item object - with custom text and active match
+      {
+        text: 'Baz',
+        link: '/baz/',
+        activeMatch: '^/baz/',
+      },
     ],
   }),
 }
@@ -313,6 +346,12 @@ Set the maximum depth of the sidebar children which are automatically generated 
 - ...
 
 You can override this global option via [sidebarDepth](./frontmatter.md#sidebardepth) frontmatter in your pages.
+
+@`sidebarSorter` type=`SidebarSorter` default=`['readme', 'order', 'title', 'filename']`
+
+The comparator of the items generated from the file structure. It accepts a keyword, a function, or an array of them.
+
+See also: [Sorting the items](../../tools/theme-helper.md#sorting-the-items)
 
 @`editLink` type=boolean default=`true`
 

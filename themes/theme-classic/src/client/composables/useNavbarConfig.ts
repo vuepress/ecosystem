@@ -4,6 +4,7 @@ import { computed } from 'vue'
 import { isString } from 'vuepress/shared'
 
 import { resolveAutoLink } from '@theme/resolveAutoLink'
+import { resolveLinkItem } from '@theme/resolveLinkItem'
 import { resolvePrefix } from '@theme/resolvePrefix'
 import { useData } from '@theme/useData'
 
@@ -11,7 +12,7 @@ import type {
   NavbarGroupOptions,
   NavbarLinkOptions,
 } from '../../shared/navbar.js'
-import type { NavbarItem } from '../typings.js'
+import type { NavbarItem, NavbarLinkItem } from '../typings.js'
 
 const resolveNavbarItem = (
   item: NavbarGroupOptions | NavbarLinkOptions,
@@ -28,12 +29,12 @@ const resolveNavbarItem = (
     }
   }
 
-  return {
-    ...item,
-    link: isLinkRelative(item.link)
-      ? resolveAutoLink(resolvePrefix(prefix, item.link)).link
-      : item.link,
-  }
+  if (isLinkRelative(item.link))
+    return resolveLinkItem(item, resolvePrefix(prefix, item.link))
+
+  const linkItem: NavbarLinkItem = { ...item, text: item.text || item.link }
+
+  return linkItem
 }
 
 export const useNavbarConfig = (): ComputedRef<NavbarItem[]> => {

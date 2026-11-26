@@ -51,7 +51,7 @@
   },
   "devDependencies": {
     "@vuepress/bundler-rspack": "catalog:",
-    "webpack": "^5.112.2"
+    "webpack": "^5.113.0"
   },
   "peerDependencies": {
     "vuepress": "catalog:"

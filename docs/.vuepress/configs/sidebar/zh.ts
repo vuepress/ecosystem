@@ -4,53 +4,43 @@ export const sidebarZh: SidebarOptions = {
   '/zh/plugins/': [
     {
       text: '常用功能',
-      icon: 'sparkles',
       link: 'features/',
     },
     {
       text: 'Markdown',
-      icon: 'octicon:markdown-16',
       link: 'markdown/',
     },
     {
       text: '搜索',
-      icon: 'search',
       link: 'search/',
     },
     {
       text: '博客',
-      icon: 'la:blog',
       link: 'blog/',
     },
 
     {
       text: '分析统计',
-      icon: 'chart-no-axes-combined',
       link: 'analytics/',
     },
     {
       text: '搜索引擎优化',
-      icon: 'scan-search',
       link: 'seo/',
     },
     {
       text: '渐进式应用',
-      icon: 'layout-grid',
       link: 'pwa/',
     },
     {
       text: '主题开发',
-      icon: 'server-cog',
       link: 'development/',
     },
     {
       text: '工具',
-      icon: 'hammer',
       link: 'tools/',
     },
     {
       text: 'AI',
-      icon: 'eos-icons:ai',
       link: 'ai/',
     },
   ],
@@ -65,43 +55,27 @@ export const sidebarZh: SidebarOptions = {
   '/zh/plugins/blog/': [
     {
       text: '博客',
-      icon: 'la:blog',
       link: 'blog',
     },
     {
       text: '评论',
-      icon: 'message-circle-more',
       prefix: 'comment/',
       link: 'comment/',
       children: [
         'guide',
-        {
-          text: 'Giscus',
-          icon: 'github',
-          link: 'giscus',
-        },
+        'giscus',
         {
           text: 'Waline',
-          icon: 'https://waline.js.org/favicon.ico',
           prefix: 'waline/',
           link: 'waline/',
           children: ['', 'config'],
         },
-        {
-          text: 'Artalk',
-          icon: 'https://artalk.js.org/favicon.png',
-          link: 'artalk',
-        },
-        {
-          text: 'Twikoo',
-          icon: 'https://twikoo.js.org/twikoo-logo-mini.png',
-          link: 'twikoo',
-        },
+        'artalk',
+        'twikoo',
       ],
     },
     {
       text: 'Feed',
-      icon: 'rss',
       link: 'feed',
     },
   ],
@@ -114,7 +88,6 @@ export const sidebarZh: SidebarOptions = {
     'rtl',
     {
       text: 'Sass Palette',
-      icon: 'palette',
       link: 'sass-palette',
     },
     'theme-data',
@@ -140,7 +113,6 @@ export const sidebarZh: SidebarOptions = {
     'append-date',
     {
       text: 'markdown-chart',
-      icon: 'chart-no-axes-combined',
       prefix: 'markdown-chart/',
       link: 'markdown-chart/',
       children: [
@@ -169,7 +141,6 @@ export const sidebarZh: SidebarOptions = {
     'prismjs',
     {
       text: 'revealjs',
-      icon: 'presentation',
       prefix: 'revealjs/',
       link: 'revealjs/',
       children: ['', 'demo', 'themes'],
@@ -180,7 +151,6 @@ export const sidebarZh: SidebarOptions = {
   '/zh/plugins/pwa/': [
     {
       text: 'PWA',
-      icon: 'layout-grid',
       link: 'pwa',
     },
     '/zh/plugins/pwa/remove-pwa',
@@ -208,12 +178,10 @@ export const sidebarZh: SidebarOptions = {
   '/zh/plugins/seo/': [
     {
       text: '搜索引擎增强',
-      icon: 'scan-search',
       link: 'seo',
     },
     {
       text: '站点地图',
-      icon: 'network',
       link: 'sitemap',
     },
   ],
@@ -224,7 +192,6 @@ export const sidebarZh: SidebarOptions = {
     'guidelines',
     {
       text: '默认主题',
-      icon: 'palette',
       prefix: 'default/',
       link: 'default/',
       children: [
@@ -242,7 +209,6 @@ export const sidebarZh: SidebarOptions = {
     },
     {
       text: '经典主题',
-      icon: 'palette',
       prefix: 'classic/',
       link: 'classic/',
       children: [
@@ -276,7 +242,6 @@ export const sidebarZh: SidebarOptions = {
   '/zh/tools/': [
     {
       text: '@vuepress/helper',
-      icon: 'hammer',
       prefix: 'helper/',
       link: 'helper/',
       children: [
@@ -292,8 +257,12 @@ export const sidebarZh: SidebarOptions = {
       ],
     },
     {
+      text: '@vuepress/theme-helper',
+      icon: 'hammer',
+      link: 'theme-helper',
+    },
+    {
       text: '@vuepress/test-utils',
-      icon: 'flask',
       link: 'test-utils',
     },
   ],

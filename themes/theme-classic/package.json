@@ -73,6 +73,7 @@
     "@vuepress/plugin-seo": "workspace:*",
     "@vuepress/plugin-sitemap": "workspace:*",
     "@vuepress/plugin-theme-data": "workspace:*",
+    "@vuepress/theme-helper": "workspace:*",
     "@vueuse/core": "catalog:",
     "vue": "catalog:",
     "vue-router": "^5.5.1"
