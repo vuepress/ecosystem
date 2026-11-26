@@ -8,17 +8,17 @@ packages:
 # virtualStoreType: global
 
 catalog:
-  '@vuepress/bundler-rspack': 2.0.0-rc.32
-  '@vuepress/bundler-vite': 2.0.0-rc.32
-  '@vuepress/bundler-webpack': 2.0.0-rc.32
+  '@vuepress/bundler-rspack': 2.0.0-rc.33
+  '@vuepress/bundler-vite': 2.0.0-rc.33
+  '@vuepress/bundler-webpack': 2.0.0-rc.33
   '@vueuse/core': ^15.1.0
   chokidar: ^6.0.0
   markdown-it: ^15.0.3
   sass: ^1.108.2
   sass-embedded: ^1.108.2
-  sass-loader: ^17.1.0
-  vue: ^3.5.45
-  vuepress: 2.0.0-rc.32
+  sass-loader: ^17.1.1
+  vue: ^3.5.46
+  vuepress: 2.0.0-rc.33
 catalogPrune: true
 
 # Pin vulnerable transitive dependencies to patched versions.
@@ -57,6 +57,17 @@ minimumReleaseAgeExclude:
   - 'vue'
   - 'vuepress'
   - vue-sfc-transformer@0.3.5
+  - '@types/node@22.20.7'
+  - '@videojs/core@10.7.0'
+  - '@videojs/element@10.7.0'
+  - '@videojs/html@10.7.0'
+  - '@videojs/media@10.7.0'
+  - '@videojs/native-hls-video@10.7.0'
+  - '@videojs/spf@10.7.0'
+  - '@videojs/store@10.7.0'
+  - '@videojs/utils@10.7.0'
+  - video.js@10.7.0
+  - watermark-js-plus@1.6.7
 minimumReleaseAgeExcludePrune: true
 trustPolicy: no-downgrade
 trustPolicyIgnoreAfter: 720

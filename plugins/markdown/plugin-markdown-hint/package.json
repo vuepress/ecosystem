@@ -54,7 +54,7 @@
     "@vueuse/core": "catalog:"
   },
   "devDependencies": {
-    "@mdit/plugin-attrs": "^1.5.0",
+    "@mdit/plugin-attrs": "^1.5.1",
     "markdown-it": "catalog:"
   },
   "peerDependencies": {

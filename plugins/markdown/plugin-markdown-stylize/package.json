@@ -52,14 +52,14 @@
   "dependencies": {
     "@mdit/helper": "^1.2.1",
     "@mdit/plugin-align": "^1.1.5",
-    "@mdit/plugin-attrs": "^1.5.0",
+    "@mdit/plugin-attrs": "^1.5.1",
     "@mdit/plugin-container": "^2.2.0",
     "@mdit/plugin-layout": "^2.0.1",
     "@mdit/plugin-mark": "^2.2.0",
-    "@mdit/plugin-spoiler": "^2.2.0",
+    "@mdit/plugin-spoiler": "^2.2.1",
     "@mdit/plugin-stylize": "^2.0.5",
-    "@mdit/plugin-sub": "^1.2.0",
-    "@mdit/plugin-sup": "^1.2.0",
+    "@mdit/plugin-sub": "^1.2.1",
+    "@mdit/plugin-sup": "^1.2.1",
     "@vuepress/helper": "workspace:*"
   },
   "devDependencies": {

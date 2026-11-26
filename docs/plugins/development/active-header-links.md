@@ -41,7 +41,7 @@ If a _header anchor_ does not have a corresponding _header link_, this plugin wo
 
 Selector of _header anchor_.
 
-You don't need to specify this option unless you have changed the `permalinkClass` option of [markdown-it-anchor](https://github.com/valeriangalliat/markdown-it-anchor#readme) via [markdown.anchor](https://vuejs.press/reference/config.html#markdown-anchor).
+You don't need to specify this option unless you have changed the class of the _header anchor_ through [markdown.anchor](https://vuejs.press/reference/config.html#markdown-anchor), e.g. by passing a custom `permalink` created with `headerLink({ class: '...' })` from [@mdit/plugin-anchor](https://mdit-plugins.github.io/anchor.html).
 
 See also: [Guide > Markdown > Syntax Extensions > Header Anchors](https://vuejs.press/guide/markdown.html#header-anchors).
 
