@@ -79,6 +79,7 @@ interface ClassicThemePluginsOptions {
   markdownHint?: MarkdownPluginsOptions['hint']
   markdownRaw?: MarkdownPluginsOptions['raw']
   markdownTab?: MarkdownPluginsOptions['tab']
+  linksCheck?: MarkdownPluginsOptions['linksCheck']
   hint?: MarkdownPluginsOptions['hint']
   tab?: MarkdownPluginsOptions['tab']
   prismjs?: boolean
@@ -591,6 +592,7 @@ const resolveMarkdownPlugins = (
 
   setPlugin('ext', themePlugins.markdownExt)
   setPlugin('hint', themePlugins.markdownHint ?? themePlugins.hint)
+  setPlugin('linksCheck', themePlugins.linksCheck)
   setPlugin('raw', themePlugins.markdownRaw)
   setPlugin('shiki', themePlugins.shiki)
   setPlugin('tab', themePlugins.markdownTab ?? themePlugins.tab)
@@ -614,6 +616,7 @@ const resolveThemePlugins = (
 
   const {
     hint: _hint,
+    linksCheck: _linksCheck,
     markdownExt: _markdownExt,
     markdownHint: _markdownHint,
     markdownRaw: _markdownRaw,
@@ -819,6 +822,7 @@ export const normalizeThemeConfig = (config: ThemeConfigInput): ThemeConfig => {
   }
 
   for (const key of [
+    'linksCheck',
     'markdownExt',
     'markdownHint',
     'markdownRaw',

@@ -171,23 +171,23 @@ When `locales.<localePath>.label` is missing, the language switcher falls back t
 
 ### Theme Plugins
 
-| Classic             | New                     | Notes                                                                                   |
-| ------------------- | ----------------------- | --------------------------------------------------------------------------------------- |
-| `activeHeaderLinks` | `activeHeaderLinks`     | Boolean only.                                                                           |
-| `backToTop`         | `backToTop`             | Same options.                                                                           |
-| `copyCode`          | `copyCode`              | Same options.                                                                           |
-| `git`               | `git`                   | Same options.                                                                           |
-| `hint`              | `markdownPlugins.hint`  | Same options, moved to `markdownPlugins`.                                               |
-| `linksCheck`        | `linksCheck`            | Same options.                                                                           |
-| `mediumZoom`        | `mediumZoom`            | Same meaning, options object accepted.                                                  |
-| `nprogress`         | `nprogress`             | Same.                                                                                   |
-| `prismjs`           | `markdownPlugins.shiki` | The highlighter changed. Set `shiki: false` and register `prismjsPlugin` to keep Prism. |
-| `seo`               | `seo`                   | Same options, requires `hostname`.                                                      |
-| `sitemap`           | `sitemap`               | Same options, requires `hostname`.                                                      |
-| `tab`               | `markdownPlugins.tab`   | Code tabs are on by default; `::: tabs` needs `tab: { tabs: true }`.                    |
-| —                   | `icon`                  | Renders icons with Iconify.                                                             |
-| `markdownExt`       | `markdownPlugins.ext`   | GFM, footnotes, task lists and the `v-pre` container.                                   |
-| `markdownRaw`       | `markdownPlugins.raw`   | The `raw` container with style isolation.                                               |
+| Classic             | New                          | Notes                                                                                   |
+| ------------------- | ---------------------------- | --------------------------------------------------------------------------------------- |
+| `activeHeaderLinks` | `activeHeaderLinks`          | Boolean only.                                                                           |
+| `backToTop`         | `backToTop`                  | Same options.                                                                           |
+| `copyCode`          | `copyCode`                   | Same options.                                                                           |
+| `git`               | `git`                        | Same options.                                                                           |
+| `hint`              | `markdownPlugins.hint`       | Same options, moved to `markdownPlugins`.                                               |
+| `linksCheck`        | `markdownPlugins.linksCheck` | Same options, moved to `markdownPlugins`.                                               |
+| `mediumZoom`        | `mediumZoom`                 | Same meaning, options object accepted.                                                  |
+| `nprogress`         | `nprogress`                  | Same.                                                                                   |
+| `prismjs`           | `markdownPlugins.shiki`      | The highlighter changed. Set `shiki: false` and register `prismjsPlugin` to keep Prism. |
+| `seo`               | `seo`                        | Same options, requires `hostname`.                                                      |
+| `sitemap`           | `sitemap`                    | Same options, requires `hostname`.                                                      |
+| `tab`               | `markdownPlugins.tab`        | Code tabs are on by default; `::: tabs` needs `tab: { tabs: true }`.                    |
+| —                   | `icon`                       | Renders icons with Iconify.                                                             |
+| `markdownExt`       | `markdownPlugins.ext`        | GFM, footnotes, task lists and the `v-pre` container.                                   |
+| `markdownRaw`       | `markdownPlugins.raw`        | The `raw` container with style isolation.                                               |
 
 The SASS palette is gone. `@vuepress/plugin-palette` is not wired, since the theme is styled with CSS custom properties that a site overrides in `.vuepress/styles/index.css`. See [Styles](#styles).
 
@@ -196,10 +196,10 @@ A plugin is disabled with `false` and configured with an object, as before:
 ```ts
 defaultTheme({
   themePlugins: {
-    linksCheck: { exclude: [/^#\//u] },
     sitemap: false,
   },
   markdownPlugins: {
+    linksCheck: { exclude: [/^#\//u] },
     shiki: { themes: { light: 'nord', dark: 'nord' } },
   },
 })

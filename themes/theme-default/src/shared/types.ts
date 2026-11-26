@@ -236,10 +236,14 @@ export interface ThemePluginsOptions {
   icon?: IconThemePluginOptions | boolean
 
   /**
-   * Options of `@vuepress/plugin-links-check` / `@vuepress/plugin-links-check`
-   * 的配置项
+   * The Links Check plugin options, use `markdownPlugins.linksCheck` instead
+   *
+   * 死链检测插件的配置项，请改用 `markdownPlugins.linksCheck`
+   *
+   * @deprecated Use `markdownPlugins.linksCheck` instead. / 请改用
+   *   `markdownPlugins.linksCheck`。
    */
-  linksCheck?: LinksCheckPluginOptions | boolean
+  linksCheck?: never
 
   /**
    * Options of `@vuepress/plugin-medium-zoom` / `@vuepress/plugin-medium-zoom`
@@ -404,6 +408,14 @@ export interface MarkdownPluginsOptions {
    * @default true
    */
   hint?: MarkdownHintPluginOptions | boolean
+
+  /**
+   * Options of `@vuepress/plugin-links-check` / `@vuepress/plugin-links-check`
+   * 的配置项
+   *
+   * @default true
+   */
+  linksCheck?: LinksCheckPluginOptions | boolean
 
   /**
    * Options of `@vuepress/plugin-markdown-raw` /

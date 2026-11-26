@@ -171,23 +171,23 @@ defaultTheme({
 
 ### 主题插件 {#theme-plugins}
 
-| 经典主题            | 新主题                  | 说明                                                                    |
-| ------------------- | ----------------------- | ----------------------------------------------------------------------- |
-| `activeHeaderLinks` | `activeHeaderLinks`     | 只接受布尔值。                                                          |
-| `backToTop`         | `backToTop`             | 相同的配置项。                                                          |
-| `copyCode`          | `copyCode`              | 相同的配置项。                                                          |
-| `git`               | `git`                   | 相同的配置项。                                                          |
-| `hint`              | `markdownPlugins.hint`  | 相同的配置项，已移到 `markdownPlugins`。                                |
-| `linksCheck`        | `linksCheck`            | 相同的配置项。                                                          |
-| `mediumZoom`        | `mediumZoom`            | 含义相同，接受配置对象。                                                |
-| `nprogress`         | `nprogress`             | 相同。                                                                  |
-| `prismjs`           | `markdownPlugins.shiki` | 高亮器变了。设置 `shiki: false` 并注册 `prismjsPlugin` 即可保留 Prism。 |
-| `seo`               | `seo`                   | 相同的配置项，需要 `hostname`。                                         |
-| `sitemap`           | `sitemap`               | 相同的配置项，需要 `hostname`。                                         |
-| `tab`               | `markdownPlugins.tab`   | 代码选项卡默认开启；`::: tabs` 需要 `tab: { tabs: true }`。             |
-| —                   | `icon`                  | 使用 Iconify 渲染图标。                                                 |
-| `markdownExt`       | `markdownPlugins.ext`   | GFM、脚注、任务列表和 `v-pre` 容器。                                    |
-| `markdownRaw`       | `markdownPlugins.raw`   | 带样式隔离的 `raw` 容器。                                               |
+| 经典主题            | 新主题                       | 说明                                                                    |
+| ------------------- | ---------------------------- | ----------------------------------------------------------------------- |
+| `activeHeaderLinks` | `activeHeaderLinks`          | 只接受布尔值。                                                          |
+| `backToTop`         | `backToTop`                  | 相同的配置项。                                                          |
+| `copyCode`          | `copyCode`                   | 相同的配置项。                                                          |
+| `git`               | `git`                        | 相同的配置项。                                                          |
+| `hint`              | `markdownPlugins.hint`       | 相同的配置项，已移到 `markdownPlugins`。                                |
+| `linksCheck`        | `markdownPlugins.linksCheck` | 相同的配置项，移到 `markdownPlugins` 下。                               |
+| `mediumZoom`        | `mediumZoom`                 | 含义相同，接受配置对象。                                                |
+| `nprogress`         | `nprogress`                  | 相同。                                                                  |
+| `prismjs`           | `markdownPlugins.shiki`      | 高亮器变了。设置 `shiki: false` 并注册 `prismjsPlugin` 即可保留 Prism。 |
+| `seo`               | `seo`                        | 相同的配置项，需要 `hostname`。                                         |
+| `sitemap`           | `sitemap`                    | 相同的配置项，需要 `hostname`。                                         |
+| `tab`               | `markdownPlugins.tab`        | 代码选项卡默认开启；`::: tabs` 需要 `tab: { tabs: true }`。             |
+| —                   | `icon`                       | 使用 Iconify 渲染图标。                                                 |
+| `markdownExt`       | `markdownPlugins.ext`        | GFM、脚注、任务列表和 `v-pre` 容器。                                    |
+| `markdownRaw`       | `markdownPlugins.raw`        | 带样式隔离的 `raw` 容器。                                               |
 
 SASS 调色板已被移除。主题不再接入 `@vuepress/plugin-palette`，因为主题使用 CSS 自定义属性编写样式，站点在 `.vuepress/styles/index.css` 中覆盖它们即可。见[样式](#styles)。
 
@@ -196,10 +196,10 @@ SASS 调色板已被移除。主题不再接入 `@vuepress/plugin-palette`，因
 ```ts
 defaultTheme({
   themePlugins: {
-    linksCheck: { exclude: [/^#\//u] },
     sitemap: false,
   },
   markdownPlugins: {
+    linksCheck: { exclude: [/^#\//u] },
     shiki: { themes: { light: 'nord', dark: 'nord' } },
   },
 })

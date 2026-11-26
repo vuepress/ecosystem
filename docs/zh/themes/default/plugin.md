@@ -17,14 +17,13 @@ icon: plug
 | `@vuepress/plugin-git`                 | `git`               | `true` | 收集最后更新时间和贡献者。                                 |
 | `@vuepress/plugin-active-header-links` | `activeHeaderLinks` | `true` | 让 URL 哈希与大纲保持同步。                                |
 | `@vuepress/plugin-back-to-top`         | `backToTop`         | `true` | 返回顶部按钮。                                             |
-| `@vuepress/plugin-links-check`         | `linksCheck`        | `true` | 死链检测，使用插件默认配置。                               |
 | `@vuepress/plugin-icon`                | `icon`              | `true` | 运行时加载的 Iconify 资源。                                |
 | `@vuepress/plugin-medium-zoom`         | `mediumZoom`        | `true` | 文档图片的图片缩放。                                       |
 | `@vuepress/plugin-nprogress`           | `nprogress`         | `true` | 导航时的进度条。                                           |
 | `@vuepress/plugin-seo`                 | `seo`               | `true` | 仅在设置了 [`hostname`](./config.md#basic-config) 时接入。 |
 | `@vuepress/plugin-sitemap`             | `sitemap`           | `true` | 仅在设置了 [`hostname`](./config.md#basic-config) 时接入。 |
 
-Markdown 插件 —— Shiki、Markdown Ext、Markdown Raw、Markdown Hint 和 Markdown Tab —— 统一放在 [`markdownPlugins`](#markdown-plugins) 下，与上面的插件分开配置。
+Markdown 插件 —— Shiki、Markdown Ext、Markdown Raw、Markdown Hint、Markdown Tab 和链接检查 —— 统一放在 [`markdownPlugins`](#markdown-plugins) 下，与上面的插件分开配置。
 
 搜索并未内置。导航栏会渲染一个 `SearchBox` 占位符，由搜索插件填充：[SlimSearch](../../plugins/search/slimsearch.md) 提供本地索引，[DocSearch](../../plugins/search/docsearch.md) 提供 Algolia 搜索。见 [搜索](#search)。
 
@@ -112,21 +111,6 @@ themePlugins: {
 themePlugins: {
   // show the button after 200px of scrolling, with a progress bar
   backToTop: { threshold: 200, progress: true },
-}
-```
-
-@`themePlugins.linksCheck` type=`LinksCheckPluginOptions | boolean` default=`true`
-
-接入[链接检查](../../plugins/markdown/links-check.md)，使用插件默认配置。对象就是插件配置项：
-
-```ts
-themePlugins: {
-  linksCheck: {
-    // do not check the anchor links in development
-    dev: false,
-    // fail the build on a dead link
-    build: 'error',
-  },
 }
 ```
 
@@ -225,6 +209,21 @@ markdownPlugins: {
 ```
 
 `markdownPlugins.shiki: false` 会让代码块不带高亮。如果改用 Prism，可以配合 [`@vuepress/plugin-prismjs`](../../plugins/markdown/prismjs.md)。
+
+@`markdownPlugins.linksCheck` type=`LinksCheckPluginOptions | boolean` default=`true`
+
+接入[链接检查](../../plugins/markdown/links-check.md)，使用插件默认配置。对象就是插件配置项：
+
+```ts
+markdownPlugins: {
+  linksCheck: {
+    // do not check the anchor links in development
+    dev: false,
+    // fail the build on a dead link
+    build: 'error',
+  },
+}
+```
 
 @`markdownPlugins.ext` type=`MarkdownExtPluginOptions | boolean` default=`true`
 

@@ -17,14 +17,13 @@ The theme data plugin is always enabled and is not configurable, because the who
 | `@vuepress/plugin-git`                 | `git`               | `true`  | Collects the last updated time and the contributors.           |
 | `@vuepress/plugin-active-header-links` | `activeHeaderLinks` | `true`  | Keeps the URL hash in sync with the outline.                   |
 | `@vuepress/plugin-back-to-top`         | `backToTop`         | `true`  | The back to top button.                                        |
-| `@vuepress/plugin-links-check`         | `linksCheck`        | `true`  | Dead link detection, with the plugin defaults.                 |
 | `@vuepress/plugin-icon`                | `icon`              | `true`  | Iconify assets, loaded at runtime.                             |
 | `@vuepress/plugin-medium-zoom`         | `mediumZoom`        | `true`  | Image zoom on the document images.                             |
 | `@vuepress/plugin-nprogress`           | `nprogress`         | `true`  | The progress bar on navigation.                                |
 | `@vuepress/plugin-seo`                 | `seo`               | `true`  | Only wired when [`hostname`](./config.md#basic-config) is set. |
 | `@vuepress/plugin-sitemap`             | `sitemap`           | `true`  | Only wired when [`hostname`](./config.md#basic-config) is set. |
 
-The Markdown plugins — Shiki, Markdown Ext, Markdown Raw, Markdown Hint and Markdown Tab — are grouped under [`markdownPlugins`](#markdown-plugins) instead, apart from the plugins above.
+The Markdown plugins — Shiki, Markdown Ext, Markdown Raw, Markdown Hint, Markdown Tab and Links Check — are grouped under [`markdownPlugins`](#markdown-plugins) instead, apart from the plugins above.
 
 Search is not bundled. The navbar renders a `SearchBox` placeholder, which a search plugin fills: [SlimSearch](../../plugins/search/slimsearch.md) for a local index or [DocSearch](../../plugins/search/docsearch.md) for Algolia. See [Search](#search).
 
@@ -112,21 +111,6 @@ Wires [Back To Top](../../plugins/features/back-to-top.md). The label of the but
 themePlugins: {
   // show the button after 200px of scrolling, with a progress bar
   backToTop: { threshold: 200, progress: true },
-}
-```
-
-@`themePlugins.linksCheck` type=`LinksCheckPluginOptions | boolean` default=`true`
-
-Wires [Links Check](../../plugins/markdown/links-check.md) with the plugin defaults. The object is the plugin options:
-
-```ts
-themePlugins: {
-  linksCheck: {
-    // do not check the anchor links in development
-    dev: false,
-    // fail the build on a dead link
-    build: 'error',
-  },
 }
 ```
 
@@ -227,6 +211,21 @@ markdownPlugins: {
 ```
 
 `markdownPlugins.shiki: false` leaves the code blocks unhighlighted. Pair it with [`@vuepress/plugin-prismjs`](../../plugins/markdown/prismjs.md) if Prism is needed instead.
+
+@`markdownPlugins.linksCheck` type=`LinksCheckPluginOptions | boolean` default=`true`
+
+Wires [Links Check](../../plugins/markdown/links-check.md) with the plugin defaults. The object is the plugin options:
+
+```ts
+markdownPlugins: {
+  linksCheck: {
+    // do not check the anchor links in development
+    dev: false,
+    // fail the build on a dead link
+    build: 'error',
+  },
+}
+```
 
 @`markdownPlugins.ext` type=`MarkdownExtPluginOptions | boolean` default=`true`
 

@@ -227,6 +227,17 @@ describe(normalizeThemeConfig, () => {
       )
     })
 
+    it('should move the classic links check options', () => {
+      expect(
+        normalize({
+          themePlugins: { linksCheck: { exclude: [/^#\//u] } },
+        }).markdownPlugins,
+      ).toStrictEqual({ linksCheck: { exclude: [/^#\//u] } })
+      expect(console.warn).toHaveBeenCalledWith(
+        expect.stringContaining('`themePlugins.linksCheck`'),
+      )
+    })
+
     it('should prefer the markdownPlugins option', () => {
       expect(
         normalize({

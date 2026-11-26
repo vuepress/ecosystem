@@ -43,15 +43,15 @@ export default defaultTheme({
         avatar: true,
       },
     },
-    // `#/1/1` in the reveal.js demos is a slide route rather than a markdown anchor
-    linksCheck: {
-      exclude: [/^#\//u],
-    },
     // the site config already registers these plugins with its own options
     icon: false,
   },
 
   markdownPlugins: {
+    // `#/1/1` in the reveal.js demos is a slide route rather than a markdown anchor
+    linksCheck: {
+      exclude: [/^#\//u],
+    },
     hint: {
       alert: true,
       hint: true,

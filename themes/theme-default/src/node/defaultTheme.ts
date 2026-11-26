@@ -342,6 +342,13 @@ const resolveMarkdownPlugins = (
           ...(typeof plugins.ext === 'object' ? plugins.ext : {}),
         }),
       ]),
+  ...(plugins.linksCheck === false
+    ? []
+    : [
+        linksCheckPlugin({
+          ...(typeof plugins.linksCheck === 'object' ? plugins.linksCheck : {}),
+        }),
+      ]),
   ...(plugins.raw === false
     ? []
     : [
@@ -432,13 +439,6 @@ const resolveThemePlugins = (
         backToTopPlugin({
           // the label of the button comes from the locales of the plugin
           ...(typeof plugins.backToTop === 'object' ? plugins.backToTop : {}),
-        }),
-      ]),
-  ...(plugins.linksCheck === false
-    ? []
-    : [
-        linksCheckPlugin({
-          ...(typeof plugins.linksCheck === 'object' ? plugins.linksCheck : {}),
         }),
       ]),
   ...(plugins.icon === false
