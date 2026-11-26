@@ -72,3 +72,9 @@ minimumReleaseAgeExcludePrune: true
 trustPolicy: no-downgrade
 trustPolicyIgnoreAfter: 720
 trustPolicyExcludePrune: true
+permissions:
+  tsdown:
+    skills: true
+skills:
+  dirs:
+    - .agents/skills
