@@ -490,7 +490,7 @@ classic 主题的 `editLink: true`、`editLinkText`、`editLinkPattern`、`docsR
 
 所选模式会以 `'auto'`、`'dark'` 或 `'light'` 的形式存储在 `localStorage` 的 `vuepress-color-scheme` 键下。主题会在 `<html>` 上设置 `data-theme` 属性（`'dark'` 或 `'light'`），样式跟随该属性；不存在 `dark` 类。
 
-为了首次绘制时不闪烁，`appearance` 的值还会写入构建出的 HTML 模板的 `data-appearance` 属性，内联脚本会在应用加载前解析主题。CSS 相关部分见 [样式](./styles.md)。
+为了首次绘制时不闪烁，解析后的 appearance 值还会写入构建出的 HTML 模板的 `data-appearance` 属性，内联脚本会在应用加载前解析主题。CSS 相关部分见 [样式](./styles.md)。
 ::::
 
 ## 无障碍标签 {#accessibility-labels}

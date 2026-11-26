@@ -167,7 +167,7 @@ defaultTheme({
 | `openInNewWindow`         | —                                                                           |
 | —                         | `returnToTopLabel`、`extraMenuLabel`、`skipToContentLabel`                  |
 
-如果没有设置 `locales.<localePath>.label`，语言切换器会回退到 locale 路径，因此只配置了 `selectLanguageName` 的站点在迁移时需要补上它。
+如果没有设置 `locales.<localePath>.label`，语言切换器会回退到 locale 路径，因此只配置了 `selectLanguageText` 的 locale 在迁移时需要补上它。
 
 ### 主题插件 {#theme-plugins}
 

@@ -5,7 +5,7 @@ import path from 'node:path'
 import { describe, expect, it, vi } from 'vitest'
 
 const template = readFileSync(
-  path.resolve('themes/theme-default/templates/build.html'),
+  path.resolve(import.meta.dirname, '../../templates/build.html'),
   'utf8',
 )
 

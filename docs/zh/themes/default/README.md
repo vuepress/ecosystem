@@ -77,9 +77,9 @@ export default defineUserConfig({
 
 ## 内置插件 {#wired-plugins}
 
-主题会自动接入以下插件。每个插件都可以通过 `themePlugins` 设为 `false` 禁用，或传入配置对象进行配置；见 [插件](./plugin.md)。
+主题会自动接入以下插件。每个插件都可以通过 `themePlugins` 或 `markdownPlugins` 设为 `false` 禁用，或传入配置对象进行配置；见 [插件](./plugin.md)。
 
-| 插件                                   | `themePlugins` 键       | 默认值                             |
+| 插件                                   | 选项                    | 默认值                             |
 | -------------------------------------- | ----------------------- | ---------------------------------- |
 | `@vuepress/plugin-theme-data`          | —                       | 始终启用                           |
 | `@vuepress/plugin-copy-code`           | `copyCode`              | 启用                               |

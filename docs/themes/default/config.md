@@ -520,7 +520,7 @@ The color mode of the site. The value is one of:
 
 The chosen mode is stored in `localStorage` under the `vuepress-color-scheme` key, as `'auto'`, `'dark'` or `'light'`. The theme sets the `data-theme` attribute (`'dark'` or `'light'`) on `<html>`, and styles follow that attribute; there is no `dark` class.
 
-For a first paint without a flash, the `appearance` value is also written into the `data-appearance` attribute of the built HTML template, and an inline script resolves the theme before the app loads. See [Styles](./styles.md) for the CSS side.
+For a first paint without a flash, the resolved appearance value is also written into the `data-appearance` attribute of the built HTML template, and an inline script resolves the theme before the app loads. See [Styles](./styles.md) for the CSS side.
 ::::
 
 ## Accessibility labels

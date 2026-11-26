@@ -77,7 +77,7 @@ See [Frontmatter](./frontmatter.md) for the fields each page type accepts, and [
 
 ## Wired plugins
 
-The theme wires the following plugins automatically. Each of them can be disabled with `false` or configured with an options object through `themePlugins`; see [Plugins](./plugin.md).
+The theme wires the following plugins automatically. Each of them can be disabled with `false` or configured with an options object through `themePlugins` or `markdownPlugins`; see [Plugins](./plugin.md).
 
 | Plugin                                 | Option                  | Default                               |
 | -------------------------------------- | ----------------------- | ------------------------------------- |

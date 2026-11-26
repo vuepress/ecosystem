@@ -167,7 +167,7 @@ defaultTheme({
 | `openInNewWindow`         | —                                                                            |
 | —                         | `returnToTopLabel`, `extraMenuLabel`, `skipToContentLabel`                   |
 
-When `locales.<localePath>.label` is missing, the language switcher falls back to the locale path, so set it while migrating a site that only configured `selectLanguageName`.
+When `locales.<localePath>.label` is missing, the language switcher falls back to the locale path, so set it while migrating a locale that only configured `selectLanguageText`.
 
 ### Theme Plugins
 
