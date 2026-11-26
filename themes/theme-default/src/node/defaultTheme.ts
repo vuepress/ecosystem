@@ -132,9 +132,10 @@ export const resolveTemplateAppearance = (
   if (appearance === 'dark') return 'dark'
   if (appearance === 'force-dark') return 'force-dark'
   if (appearance === 'force-auto') return 'force-auto'
-  return typeof appearance === 'object' && appearance.initialValue === 'dark'
-    ? 'dark'
-    : 'auto'
+  if (typeof appearance === 'object' && appearance.initialValue)
+    return appearance.initialValue
+
+  return 'auto'
 }
 
 /**
@@ -389,7 +390,7 @@ const resolveThemePlugins = (
   markdownPlugins: MarkdownPluginsOptions,
   hostname?: string,
 ): ThemePluginList => [
-  themeDataPlugin({ themeData: resolveThemeData(options) }),
+  themeDataPlugin({ themeData }),
   ...(plugins.copyCode === false
     ? []
     : [
@@ -498,7 +499,7 @@ const resolveThemePlugins = (
  * @returns The theme plugin / 主题插件
  */
 export const defaultTheme = (options: ThemeOptions = {}): ThemeObject => {
-  const { hostname, sidebarSorter, ...themeOptions } = options
+  const { hostname, sidebarSorter } = options
 
   // normalize the classic options once, the plugin wiring and the theme data
   // both read the normalized result
@@ -508,7 +509,7 @@ export const defaultTheme = (options: ThemeOptions = {}): ThemeObject => {
     themeData.markdownPlugins ?? {}
 
   const sidebarHelper = createSidebarStructureHelper<StructureSidebarItem>({
-    themeData: resolveThemeData(themeOptions),
+    themeData,
     childrenKey: 'items',
     prefixKey: 'base',
     sorter: sidebarSorter,
@@ -523,7 +524,7 @@ export const defaultTheme = (options: ThemeOptions = {}): ThemeObject => {
 
     templateBuild: path.resolve(__dirname, '../../templates/build.html'),
 
-    templateBuildRenderer: createTemplateBuildRenderer(options.appearance),
+    templateBuildRenderer: createTemplateBuildRenderer(themeData.appearance),
 
     clientConfigFile: path.resolve(__dirname, '../client/config.js'),
 

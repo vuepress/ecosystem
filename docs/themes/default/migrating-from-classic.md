@@ -108,16 +108,15 @@ The sidebar keeps the `sidebar` key and the classic item syntax, including strin
 
 ### Color Mode
 
-| Classic              | New                                                                |
-| -------------------- | ------------------------------------------------------------------ |
-| `colorMode: 'auto'`  | `appearance: true`                                                 |
-| `colorMode: 'light'` | `appearance: false`                                                |
-| `colorMode: 'dark'`  | `appearance: 'dark'`                                               |
-| —                    | `appearance: 'force-dark'` (always dark)                           |
-| —                    | `appearance: 'force-auto'` (follows the system, no switch)         |
-| —                    | `appearance: { initialValue: 'dark' }` (starts dark, switch shown) |
+| Classic              | New                                                        |
+| -------------------- | ---------------------------------------------------------- |
+| `colorMode: 'auto'`  | `appearance: true`                                         |
+| `colorMode: 'light'` | `appearance: { initialValue: 'light' }`                    |
+| `colorMode: 'dark'`  | `appearance: 'dark'`                                       |
+| —                    | `appearance: 'force-dark'` (always dark)                   |
+| —                    | `appearance: 'force-auto'` (follows the system, no switch) |
 
-`colorModeSwitch: false` has no direct equivalent. The switch is hidden when the appearance is fixed, so use `appearance: false`, `'dark'`, `'force-dark'` or `'force-auto'` to hide it. To keep the switch and change only the initial value, use the object form.
+`colorModeSwitch: false` is mapped at build time: with `colorMode: 'light'` it becomes `appearance: false`, with `'dark'` it becomes `'force-dark'`, and without `colorMode` it becomes `'force-auto'`. The switch is hidden when the appearance is fixed.
 
 The storage key is still `vuepress-color-scheme`, but the dark mode is now driven by the `data-theme` attribute on `<html>` rather than a `dark` class. A stylesheet that targets `.dark` must target `[data-theme='dark']`.
 
@@ -330,7 +329,7 @@ A few classic features were dropped rather than renamed:
 2. Keep the `navbar` and `sidebar` configs as they are: the default theme accepts the classic syntax, see the compatibility tables above. The classic options are accepted too, so the site builds before the options are migrated; the build log lists every deprecated option it still finds.
 3. Convert `colorMode` / `colorModeSwitch` to `appearance`, and the language switcher options to `locales.<path>.label` and `langMenuLabel`.
 4. Convert `home: true` to `type: home`, and `notFound` / `backToHome`; the other classic home keys keep their names.
-5. Rename the Markdown plugin switches to `markdownPlugins`, and opt out of Shiki if the site must keep Prism. Remove the options that now log a deprecation warning: `colorMode`, `colorModeSwitch`, `coloredLinks`, `home`, `navbarLabel`, `logoDark`, `logoAlt`, `repo`, `repoLabel`, `selectLanguage*`, `sidebarDepth`, `editLink*`, `docsRepo`, `docsBranch`, `docsDir`, `lastUpdatedText`, `backToHome`, `openInNewWindow`, `toggleColorMode`, `toggleSidebar`, `prev`, `next` and the classic `themePlugins.markdown*` / `themePlugins.hint` / `themePlugins.tab` / `themePlugins.prismjs` keys.
+5. Rename the Markdown plugin switches to `markdownPlugins`, and opt out of Shiki if the site must keep Prism. Remove the options that now log a deprecation warning: `colorMode`, `colorModeSwitch`, `home`, `navbarLabel`, `logoDark`, `logoAlt`, `repo`, `repoLabel`, `selectLanguage*`, `sidebarDepth`, `editLink*`, `docsRepo`, `docsBranch`, `docsDir`, `lastUpdatedText`, `backToHome`, `openInNewWindow`, `toggleColorMode`, `toggleSidebar`, `prev`, `next` and the classic `themePlugins.markdown*` / `themePlugins.hint` / `themePlugins.tab` / `themePlugins.prismjs` keys.
 6. Move the SASS palette to CSS variables in `.vuepress/styles/index.css`.
 7. Replace `ParentLayout` and the `@theme/*` imports with `theme.Layout` and the public components.
 8. Update the type names.

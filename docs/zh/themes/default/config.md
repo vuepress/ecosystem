@@ -406,7 +406,7 @@ dir:
 
 首页上的页面始终会禁用侧边栏，页面也可以在 frontmatter 中覆盖主题配置。
 
-@`editLink` type=`EditLink | false`
+@`editLink` type=`EditLink | boolean`
 
 文档页脚中的“编辑此页”链接。未设置该配置项或设为 `false` 时它处于禁用状态。
 
@@ -486,7 +486,7 @@ classic 主题的 `editLink: true`、`editLinkText`、`editLinkPattern`、`docsR
 - `'dark'`：优先暗色模式，用户可以切换。
 - `'force-dark'`：仅暗色模式，并隐藏切换按钮。
 - `'force-auto'`：两种模式都有，始终跟随系统偏好，并隐藏切换按钮。
-- 一个对象 `{ initialValue: 'dark' }`：优先暗色模式，用户可以切换。它与 `'dark'` 相同，仅为兼容 VitePress 而保留。
+- 一个对象 `{ initialValue: 'dark' | 'light' }`：优先使用指定颜色，用户可以切换。`'dark'` 与 `'dark'` 相同，`'light'` 会保留切换按钮并从浅色模式开始。
 
 所选模式会以 `'auto'`、`'dark'` 或 `'light'` 的形式存储在 `localStorage` 的 `vuepress-color-scheme` 键下。主题会在 `<html>` 上设置 `data-theme` 属性（`'dark'` 或 `'light'`），样式跟随该属性；不存在 `dark` 类。
 

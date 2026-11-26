@@ -123,7 +123,7 @@ The other extensions of the plugin — the GFM support, the footnotes, the task 
 
 ```ts
 defaultTheme({
-  themePlugins: {
+  markdownPlugins: {
     ext: { gfm: true, footnote: true, tasklist: true },
   },
 })

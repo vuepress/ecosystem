@@ -108,16 +108,15 @@ icon: arrow-right-left
 
 ### 颜色模式 {#color-mode}
 
-| 经典主题             | 新主题                                                             |
-| -------------------- | ------------------------------------------------------------------ |
-| `colorMode: 'auto'`  | `appearance: true`                                                 |
-| `colorMode: 'light'` | `appearance: false`                                                |
-| `colorMode: 'dark'`  | `appearance: 'dark'`                                               |
-| —                    | `appearance: 'force-dark'`（始终为暗色）                           |
-| —                    | `appearance: 'force-auto'`（跟随系统，不显示切换按钮）             |
-| —                    | `appearance: { initialValue: 'dark' }`（初始为暗色，显示切换按钮） |
+| 经典主题             | 新主题                                                 |
+| -------------------- | ------------------------------------------------------ |
+| `colorMode: 'auto'`  | `appearance: true`                                     |
+| `colorMode: 'light'` | `appearance: { initialValue: 'light' }`                |
+| `colorMode: 'dark'`  | `appearance: 'dark'`                                   |
+| —                    | `appearance: 'force-dark'`（始终为暗色）               |
+| —                    | `appearance: 'force-auto'`（跟随系统，不显示切换按钮） |
 
-`colorModeSwitch: false` 没有直接对应项。外观固定时切换按钮会被隐藏，因此要隐藏它请使用 `appearance: false`、`'dark'`、`'force-dark'` 或 `'force-auto'`。如果只想修改初始值而保留切换按钮，请使用对象形式。
+`colorModeSwitch: false` 会在构建期映射：配合 `colorMode: 'light'` 变成 `appearance: false`，配合 `'dark'` 变成 `'force-dark'`，不写 `colorMode` 则变成 `'force-auto'`。外观固定时切换按钮会被隐藏。
 
 存储键仍然是 `vuepress-color-scheme`，但暗色模式现在由 `<html>` 上的 `data-theme` 属性驱动，而不再由 `dark` class 驱动。针对 `.dark` 的样式表必须改为针对 `[data-theme='dark']`。
 
@@ -330,7 +329,7 @@ const navbar: NavItem[] = [{ text: 'Guide', link: '/guide/' }]
 2. 保持 `navbar` 与 `sidebar` 配置不变：默认主题接受经典主题的写法，见上文的兼容性表格。经典主题的配置项同样会被接受，因此在迁移配置项之前站点依然可以构建；构建日志会列出它仍然找到的每一个已弃用的配置项。
 3. 把 `colorMode` / `colorModeSwitch` 转换为 `appearance`，把语言切换器配置项转换为 `locales.<path>.label` 和 `langMenuLabel`。
 4. 将 `home: true` 转换为 `type: home`，并转换 `notFound` / `backToHome`；其他经典首页字段保持原来的名称。
-5. 把 Markdown 插件开关重命名为 `markdownPlugins`，如果站点必须保留 Prism 则关掉 Shiki。移除现在会输出弃用警告的配置项：`colorMode`、`colorModeSwitch`、`coloredLinks`、`home`、`navbarLabel`、`logoDark`、`logoAlt`、`repo`、`repoLabel`、`selectLanguage*`、`sidebarDepth`、`editLink*`、`docsRepo`、`docsBranch`、`docsDir`、`lastUpdatedText`、`backToHome`、`openInNewWindow`、`toggleColorMode`、`toggleSidebar`、`prev`、`next`，以及经典主题的 `themePlugins.markdown*` / `themePlugins.hint` / `themePlugins.tab` / `themePlugins.prismjs` 键。
+5. 把 Markdown 插件开关重命名为 `markdownPlugins`，如果站点必须保留 Prism 则关掉 Shiki。移除现在会输出弃用警告的配置项：`colorMode`、`colorModeSwitch`、`home`、`navbarLabel`、`logoDark`、`logoAlt`、`repo`、`repoLabel`、`selectLanguage*`、`sidebarDepth`、`editLink*`、`docsRepo`、`docsBranch`、`docsDir`、`lastUpdatedText`、`backToHome`、`openInNewWindow`、`toggleColorMode`、`toggleSidebar`、`prev`、`next`，以及经典主题的 `themePlugins.markdown*` / `themePlugins.hint` / `themePlugins.tab` / `themePlugins.prismjs` 键。
 6. 把 SASS 调色板迁移为 `.vuepress/styles/index.css` 中的 CSS 变量。
 7. 用 `theme.Layout` 和公共组件替换 `ParentLayout` 与 `@theme/*` 导入。
 8. 更新类型名称。

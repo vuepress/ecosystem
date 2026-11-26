@@ -123,7 +123,7 @@ Carrot
 
 ```ts
 defaultTheme({
-  themePlugins: {
+  markdownPlugins: {
     ext: { gfm: true, footnote: true, tasklist: true },
   },
 })

@@ -436,7 +436,7 @@ Where to render the aside that contains the outline. The default is the right si
 
 A page always has its aside disabled on the home page, and it can override the theme config in its frontmatter.
 
-@`editLink` type=`EditLink | false`
+@`editLink` type=`EditLink | boolean`
 
 The "edit this page" link in the document footer. It is disabled when the option is not set or is `false`.
 
@@ -516,7 +516,7 @@ The color mode of the site. The value is one of:
 - `'dark'`: dark mode first, and the user can switch.
 - `'force-dark'`: dark mode only, and the switch is hidden.
 - `'force-auto'`: both modes, always following the system preference, and the switch is hidden.
-- an object `{ initialValue: 'dark' }`: dark mode first, and the user can switch. This is the same as `'dark'` and exists for VitePress compatibility.
+- an object `{ initialValue: 'dark' | 'light' }`: the given color first, and the user can switch. `'dark'` is the same as `'dark'`, `'light'` keeps the switch while starting from light mode.
 
 The chosen mode is stored in `localStorage` under the `vuepress-color-scheme` key, as `'auto'`, `'dark'` or `'light'`. The theme sets the `data-theme` attribute (`'dark'` or `'light'`) on `<html>`, and styles follow that attribute; there is no `dark` class.
 

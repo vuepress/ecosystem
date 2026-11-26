@@ -100,7 +100,7 @@ export type AppearanceOptions =
   | 'dark'
   | 'force-dark'
   | 'force-auto'
-  | (UseDarkOptions & { initialValue?: 'dark' })
+  | (UseDarkOptions & { initialValue?: 'dark' | 'light' })
 
 /**
  * The site-level data for the active locale

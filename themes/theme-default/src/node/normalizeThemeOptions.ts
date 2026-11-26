@@ -325,7 +325,7 @@ const resolveAppearance = (
   // `appearance: true` keeps the switch and starts from the preferred color
   // scheme, it is the only shape that can represent the classic `auto` mode
   if (colorMode === 'dark') return 'dark'
-  if (colorMode === 'light') return true
+  if (colorMode === 'light') return { initialValue: 'light' }
 
   return undefined
 }
@@ -432,7 +432,9 @@ const resolveEditLink = (
     }
   }
 
-  return editLink
+  return isNonEmptyString(editLinkText)
+    ? { ...editLink, text: editLink.text ?? editLinkText }
+    : editLink
 }
 
 /**
@@ -526,7 +528,11 @@ const resolveSocialLinks = (
 
   const link = isLinkHttp(repo) ? repo : `https://github.com/${repo}`
 
-  if (links.some((item) => item.link === link)) return links
+  // the same link may have been written with a trailing slash
+  const comparableLink = link.replace(/\/+$/u, '')
+
+  if (links.some((item) => item.link.replace(/\/+$/u, '') === comparableLink))
+    return links
 
   const repoType = resolveRepoType(repo)
 
@@ -541,7 +547,9 @@ const resolveSocialLinks = (
   links.push({
     icon: { svg: REPO_ICONS[repoType] },
     link,
-    ...(isNonEmptyString(repoLabel) ? { ariaLabel: repoLabel } : {}),
+    // the classic theme labels the repository link with the repository type
+    // when no label is configured
+    ariaLabel: isNonEmptyString(repoLabel) ? repoLabel : repoType,
   })
 
   return links
@@ -724,9 +732,9 @@ export const normalizeThemeConfig = (config: ThemeConfigInput): ThemeConfig => {
       'The theme no longer renders the page headers in the sidebar. Use `@vuepress/plugin-toc` instead.',
     )
   }
-  if (editLinkText !== undefined) 
+  if (editLinkText !== undefined)
     warnDeprecatedThemeOption('editLinkText', 'Use `editLink.text` instead.')
-  
+
   if (editLinkPattern !== undefined) {
     warnDeprecatedThemeOption(
       'editLinkPattern',
@@ -757,9 +765,9 @@ export const normalizeThemeConfig = (config: ThemeConfigInput): ThemeConfig => {
       'Use `lastUpdated.text` instead.',
     )
   }
-  if (backToHome !== undefined) 
+  if (backToHome !== undefined)
     warnDeprecatedThemeOption('backToHome', 'Use `notFound.linkText` instead.')
-  
+
   if (openInNewWindow !== undefined) {
     warnDeprecatedThemeOption(
       'openInNewWindow',
@@ -801,6 +809,21 @@ export const normalizeThemeConfig = (config: ThemeConfigInput): ThemeConfig => {
     )
   }
 
+  for (const key of [
+    'markdownExt',
+    'markdownHint',
+    'markdownRaw',
+    'markdownTab',
+    'shiki',
+  ] as const) {
+    if (themePlugins?.[key] !== undefined) {
+      warnDeprecatedThemeOption(
+        `themePlugins.${key}`,
+        `Use \`markdownPlugins.${key.replace(/^markdown/u, '').replace(/^./u, (char) => char.toLowerCase())}\` instead.`,
+      )
+    }
+  }
+
   const appearance = resolveAppearance({ ...rest, colorMode, colorModeSwitch })
   const logo = resolveLogo({
     ...rest,
@@ -818,6 +841,7 @@ export const normalizeThemeConfig = (config: ThemeConfigInput): ThemeConfig => {
     repo,
   })
   const notFound = resolveNotFound({ ...rest, backToHome, home })
+  const logoLink = rest.logoLink ?? (isNonEmptyString(home) ? home : undefined)
   const lastUpdated = resolveLastUpdated({ ...rest, lastUpdatedText })
   const docFooter = resolveDocFooter({ ...rest, next, prev })
   const socialLinks = resolveSocialLinks({ ...rest, repo, repoLabel })
@@ -836,11 +860,8 @@ export const normalizeThemeConfig = (config: ThemeConfigInput): ThemeConfig => {
       isNonEmptyString(item),
     )
 
-  const label = isNonEmptyString(rest.label)
-    ? rest.label
-    : [selectLanguageName, selectLanguageText].find((item) =>
-        isNonEmptyString(item),
-      )
+  // `selectLanguageText` is the menu button label, not the language name
+  const label = isNonEmptyString(rest.label) ? rest.label : selectLanguageName
 
   return {
     ...rest,
@@ -848,6 +869,7 @@ export const normalizeThemeConfig = (config: ThemeConfigInput): ThemeConfig => {
     ...(logo === undefined ? {} : { logo }),
     ...(editLink === undefined ? {} : { editLink }),
     ...(notFound === undefined ? {} : { notFound }),
+    ...(logoLink === undefined ? {} : { logoLink }),
     ...(lastUpdated === undefined ? {} : { lastUpdated }),
     ...(docFooter === undefined ? {} : { docFooter }),
     ...(socialLinks === undefined ? {} : { socialLinks }),

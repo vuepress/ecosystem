@@ -235,6 +235,7 @@ describe(resolveTemplateAppearance, () => {
     expect(resolveTemplateAppearance(true)).toBe('auto')
     expect(resolveTemplateAppearance(undefined)).toBe('auto')
     expect(resolveTemplateAppearance({ initialValue: 'dark' })).toBe('dark')
+    expect(resolveTemplateAppearance({ initialValue: 'light' })).toBe('light')
   })
 })
 
@@ -269,6 +270,14 @@ describe('templateBuildRenderer', () => {
     const html = defaultTheme().templateBuildRenderer!(template, context)
 
     expect(html).toContain('data-appearance="auto"')
+  })
+
+  it('should inject the appearance mapped from the classic color mode', () => {
+    const theme = defaultTheme({ colorMode: 'light' } as never)
+
+    const html = theme.templateBuildRenderer!(template, context)
+
+    expect(html).toContain('data-appearance="light"')
   })
 })
 

@@ -21,7 +21,9 @@ describe(normalizeThemeConfig, () => {
     it('should map colorMode to appearance', () => {
       expect(normalize({ colorMode: 'auto' }).appearance).toBeUndefined()
       expect(normalize({ colorMode: 'dark' }).appearance).toBe('dark')
-      expect(normalize({ colorMode: 'light' }).appearance).toBe(true)
+      expect(normalize({ colorMode: 'light' }).appearance).toStrictEqual({
+        initialValue: 'light',
+      })
     })
 
     it('should force the appearance when colorModeSwitch is disabled', () => {
@@ -98,6 +100,18 @@ describe(normalizeThemeConfig, () => {
           .editLink,
       ).toStrictEqual({ pattern: 'https://example.com/:path' })
     })
+
+    it('should apply the classic text to an explicit edit link', () => {
+      expect(
+        normalize({
+          editLink: { pattern: 'https://example.com/:path' },
+          editLinkText: 'Improve this page',
+        }).editLink,
+      ).toStrictEqual({
+        pattern: 'https://example.com/:path',
+        text: 'Improve this page',
+      })
+    })
   })
 
   describe('notFound', () => {
@@ -113,6 +127,15 @@ describe(normalizeThemeConfig, () => {
         linkText: 'Back home',
         quote: 'Page not found',
       })
+    })
+  })
+
+  describe('logoLink', () => {
+    it('should use home as the logo link', () => {
+      expect(normalize({ home: '/guide/' }).logoLink).toBe('/guide/')
+      expect(normalize({ home: '/guide/', logoLink: '/home/' }).logoLink).toBe(
+        '/home/',
+      )
     })
   })
 
@@ -146,6 +169,25 @@ describe(normalizeThemeConfig, () => {
       expect((socialLink.icon as { svg: string }).svg).toMatch(/^<svg/u)
     })
 
+    it('should label the repository link with the repository type by default', () => {
+      const [socialLink] = normalize({
+        repo: 'vuepress/ecosystem',
+      }).socialLinks!
+
+      expect(socialLink.ariaLabel).toBe('GitHub')
+    })
+
+    it('should not duplicate an existing social link with a trailing slash', () => {
+      const { socialLinks } = normalize({
+        repo: 'vuepress/ecosystem',
+        socialLinks: [
+          { icon: 'github', link: 'https://github.com/vuepress/ecosystem/' },
+        ],
+      })
+
+      expect(socialLinks).toHaveLength(1)
+    })
+
     it('should not duplicate an existing social link', () => {
       const { socialLinks } = normalize({
         repo: 'vuepress/ecosystem',
@@ -177,6 +219,14 @@ describe(normalizeThemeConfig, () => {
       ).toStrictEqual({ hint: { themes: ['tip'] }, tab: false })
     })
 
+    it('should warn about the classic markdown plugin options', () => {
+      normalize({ themePlugins: { markdownExt: { gfm: true } } })
+
+      expect(console.warn).toHaveBeenCalledWith(
+        expect.stringContaining('`themePlugins.markdownExt`'),
+      )
+    })
+
     it('should prefer the markdownPlugins option', () => {
       expect(
         normalize({
@@ -200,6 +250,13 @@ describe(normalizeThemeConfig, () => {
       expect(config.langMenuLabel).toBe('Choose language')
       expect(config.darkModeSwitchLabel).toBe('Switch theme')
       expect(config.sidebarMenuLabel).toBe('Toggle sidebar')
+    })
+
+    it('should not use the language menu label as the language name', () => {
+      expect(
+        (normalize({ selectLanguageText: 'Languages' }) as { label?: string })
+          .label,
+      ).toBeUndefined()
     })
 
     it('should map the locale language name', () => {
