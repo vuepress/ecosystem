@@ -26,6 +26,7 @@ import { isString } from 'vuepress/shared'
 
 import type {
   AppearanceOptions,
+  EditLink,
   LocaleConfig,
   MarkdownPluginsOptions,
   NavbarOptions,
@@ -249,7 +250,7 @@ const createTemplateBuildRenderer =
  */
 export interface ThemeOptions extends Omit<
   ThemeConfig,
-  'locales' | 'navbar' | 'sidebar'
+  'editLink' | 'locales' | 'navbar' | 'sidebar'
 > {
   /**
    * Deployed hostname of the site
@@ -291,6 +292,19 @@ export interface ThemeOptions extends Omit<
    * `false`，它们会在构建期被归一化。
    */
   sidebar?: SidebarOptions
+
+  /**
+   * The "edit this page" link
+   *
+   * The boolean form of the classic theme is accepted and normalized at build
+   * time: `true` builds the link from the repository options, `false` disables
+   * it.
+   *
+   * “编辑此页”链接
+   *
+   * 接受 classic 主题的布尔写法并在构建期归一化：`true` 会根据仓库配置生成链接，`false` 禁用它。
+   */
+  editLink?: EditLink | boolean
 
   /** Locale configs / 多语言配置 */
   locales?: LocaleConfig<ThemeOptions>
