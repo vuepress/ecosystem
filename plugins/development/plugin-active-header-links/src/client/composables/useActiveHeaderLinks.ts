@@ -1,6 +1,5 @@
 import { useDebounceFn, useEventListener } from '@vueuse/core'
-import type { Router } from 'vuepress/client'
-import { useRouter } from 'vuepress/client'
+import { useRouter, withoutScrollRestoration } from 'vuepress/client'
 
 export interface UseActiveHeaderLinksOptions {
   headerLinkSelector: string
@@ -9,31 +8,24 @@ export interface UseActiveHeaderLinksOptions {
   offset?: number
 }
 
+let warnedDeprecatedScrollBehavior = false
+
 /**
- * Update current hash and do not trigger `scrollBehavior`
+ * Warn once when the router still uses the deprecated `scrollBehavior` option
  *
- * @param router - Vue Router instance / Vue Router 实例
- * @param hash - Hash to update / 要更新的 hash
+ * @param scrollBehavior - The deprecated `scrollBehavior` option / 已废弃的
+ *   `scrollBehavior` 选项
  */
-const updateHash = async (router: Router, hash: string): Promise<void> => {
-  const { path, query } = router.currentRoute.value
-  const { scrollX, scrollY } = window
-  // oxlint-disable-next-line typescript/no-deprecated
-  const { scrollBehavior } = router.options
+const warnDeprecatedScrollBehavior = (scrollBehavior: unknown): void => {
+  if (!__VUEPRESS_DEV__ || warnedDeprecatedScrollBehavior || !scrollBehavior)
+    return
 
-  // temporarily disable `scrollBehavior`
-  // oxlint-disable-next-line typescript/no-deprecated
-  router.options.scrollBehavior = undefined
-  await router.replace({ path, query, hash })
-  // restore it after navigation
-  // oxlint-disable-next-line typescript/no-deprecated
-  router.options.scrollBehavior = scrollBehavior
-
-  // The client restores the scroll position of the route after the navigation,
-  // which moves the page to the hash element. Restore the position the user has
-  // scrolled to, otherwise scrolling the page would jump between the headings.
-  if (window.scrollX !== scrollX || window.scrollY !== scrollY)
-    window.scrollTo(scrollX, scrollY)
+  warnedDeprecatedScrollBehavior = true
+  // oxlint-disable-next-line no-console
+  console.warn(
+    '[plugin-active-header-links] The `scrollBehavior` router option is deprecated by Vue Router and may conflict with active header links. ' +
+      'Remove it and migrate to `ScrollRestoration`. See https://router.vuejs.org/guide/advanced/scroll-behavior.html',
+  )
 }
 
 export const useActiveHeaderLinks = ({
@@ -46,7 +38,52 @@ export const useActiveHeaderLinks = ({
 
   const router = useRouter()
 
-  const setActiveRouteHash = (): void => {
+  // oxlint-disable-next-line typescript/no-deprecated
+  warnDeprecatedScrollBehavior(router.options.scrollBehavior)
+
+  let isUpdating = false
+  let needsUpdate = false
+  // assigned after `updateHash`, which references it
+  // oxlint-disable-next-line prefer-const
+  let setActiveRouteHash: () => void
+
+  const updateHash = async (hash: string): Promise<void> => {
+    if (isUpdating) {
+      needsUpdate = true
+
+      return
+    }
+
+    isUpdating = true
+
+    const { path, query } = router.currentRoute.value
+
+    try {
+      // Skip the client scroll restoration, which would otherwise scroll the
+      // page to the hash element and move the viewport while the user is
+      // scrolling. The viewport is not touched by this navigation at all.
+      await router.replace(withoutScrollRestoration({ path, query, hash }))
+    } finally {
+      isUpdating = false
+
+      // The scroll position may have changed during the update, so the active
+      // header may be different now. Reconcile the hash after the update, unless
+      // the user navigated to another page in the meantime.
+      if (needsUpdate) {
+        needsUpdate = false
+
+        if (router.currentRoute.value.path === path) setActiveRouteHash()
+      }
+    }
+  }
+
+  setActiveRouteHash = (): void => {
+    if (isUpdating) {
+      needsUpdate = true
+
+      return
+    }
+
     // get current scrollTop
     const scrollTop = Math.max(
       window.scrollY,
@@ -58,7 +95,7 @@ export const useActiveHeaderLinks = ({
 
     // replace current route hash with empty string when scrolling back to the top
     if (isAtPageTop) {
-      void updateHash(router, '')
+      void updateHash('')
 
       return
     }
@@ -127,7 +164,7 @@ export const useActiveHeaderLinks = ({
       }
 
       // replace current route hash with the active anchor hash
-      void updateHash(router, anchorHash)
+      void updateHash(anchorHash)
 
       return
     }

@@ -75,7 +75,8 @@
     "@vuepress/plugin-theme-data": "workspace:*",
     "@vuepress/theme-helper": "workspace:*",
     "@vueuse/core": "catalog:",
-    "vue": "catalog:"
+    "vue": "catalog:",
+    "vue-router": "^5.5.1"
   },
   "peerDependencies": {
     "sass": "catalog:",

@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import type { Slot } from '@vuepress/helper/client'
-import { computed, ref } from 'vue'
-import { onContentUpdated } from 'vuepress/client'
+import { computed, ref, watch } from 'vue'
+import { useScrollRestoration } from 'vue-router/experimental'
+import { onContentUpdated, useRouter } from 'vuepress/client'
 
 import { useData } from '@theme/useData'
 import { useScrollPromise } from '@theme/useScrollPromise'
@@ -77,10 +78,37 @@ onContentUpdated(() => {
   toggleSidebar(false)
 })
 
-// handle scrollBehavior with transition
+// handle scroll restoration with transition
+const router = useRouter()
 const scrollPromise = useScrollPromise()
 const onBeforeEnter = scrollPromise.resolve
 const onBeforeLeave = scrollPromise.pending
+
+// VuePress core restores the scroll position right after the route changes,
+// before the new page has been rendered. Restore it after the transition and
+// after the new content is mounted ourselves, so hash targets exist when they
+// are scrolled into view. Only path changes are restored: hash-only updates are
+// handled by the client, and restoring the scroll position for them would move
+// the page away from the position the user has scrolled to.
+const { scroll: restoreScroll } = useScrollRestoration({ manual: true })
+
+let pendingRestore = false
+
+watch(
+  () => router.currentRoute.value.path,
+  () => {
+    pendingRestore = true
+  },
+)
+
+onContentUpdated((reason) => {
+  if (reason === 'beforeUnmount' || !pendingRestore) return
+
+  pendingRestore = false
+  void Promise.resolve(scrollPromise.wait()).then(() => {
+    restoreScroll()
+  })
+})
 </script>
 
 <template>

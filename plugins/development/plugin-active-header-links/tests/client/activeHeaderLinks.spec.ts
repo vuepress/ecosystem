@@ -9,6 +9,7 @@ import { createTestClient } from '@vuepress/test-utils/client'
 import { describe, expect, it, vi } from 'vitest'
 import type { VNode } from 'vue'
 import { defineComponent, h } from 'vue'
+import { withoutScrollRestoration } from 'vuepress/client'
 
 import { useActiveHeaderLinks } from '../../src/client/index.js'
 import { activeHeaderLinksPlugin } from '../../src/node/index.js'
@@ -110,6 +111,21 @@ const setSectionOffsets = (offsetA = 100, offsetB = 200): void => {
   })
 }
 
+/**
+ * Create a promise that can be resolved from the test
+ *
+ * @returns The promise and its resolver
+ */
+const createDeferred = (): { promise: Promise<void>; resolve: () => void } => {
+  let resolveDeferred: () => void = () => {}
+
+  const promise = new Promise<void>((resolve) => {
+    resolveDeferred = resolve
+  })
+
+  return { promise, resolve: resolveDeferred }
+}
+
 describe('active header links composable', () => {
   it('should set the route hash of the anchor at the scroll position', async () => {
     document.body.innerHTML = ''
@@ -145,23 +161,7 @@ describe('active header links composable', () => {
       route: '/guide/',
     })
     const wrapper = await client.mount({ attachTo: document.body })
-    const { replace } = client.router
-    // the client restores the scroll position of the new route after the
-    // navigation, which would move the page away from where the user scrolled
-    vi.spyOn(client.router, 'replace').mockImplementation(async (to) => {
-      const result = await replace(to)
-
-      window.scrollY = 0
-
-      return result
-    })
-    // the router scrolls to the hash element with the options signature while
-    // the composable restores the scroll position with the numbers signature
-    const scrollTo = vi
-      .spyOn(window, 'scrollTo')
-      .mockImplementation((_options: ScrollToOptions | number, y = 0) => {
-        window.scrollY = y
-      })
+    const replace = vi.spyOn(client.router, 'replace')
 
     try {
       setSectionOffsets()
@@ -170,10 +170,63 @@ describe('active header links composable', () => {
       await triggerScroll()
 
       expect(client.router.currentRoute.value.hash).toBe('#b')
-      expect(scrollTo).toHaveBeenCalledWith(window.scrollX, 250)
+      // the navigation is wrapped by `withoutScrollRestoration()`, so the
+      // client does not restore the scroll position and move the viewport
+      expect(replace).toHaveBeenLastCalledWith(
+        withoutScrollRestoration({
+          path: '/guide/',
+          query: {},
+          hash: '#b',
+        }),
+      )
       expect(window.scrollY).toBe(250)
     } finally {
-      scrollTo.mockRestore()
+      replace.mockRestore()
+      wrapper.unmount()
+    }
+  })
+
+  it('should reconcile the hash when the page scrolls during an update', async () => {
+    document.body.innerHTML = ''
+
+    const client = await createTestClient({
+      page: { path: '/guide/', title: 'Guide' },
+      rootComponent: createProbe(probeOptions),
+      route: '/guide/',
+    })
+    const wrapper = await client.mount({ attachTo: document.body })
+    const replaceDeferred = createDeferred()
+    const originalReplace = client.router.replace
+    const replace = vi
+      .spyOn(client.router, 'replace')
+      .mockImplementation(async (to) => {
+        await replaceDeferred.promise
+
+        return originalReplace(to)
+      })
+
+    try {
+      setSectionOffsets()
+
+      // the first update targets `#b` and stays pending
+      setScrollMetrics({ innerHeight: 600, scrollHeight: 3000, scrollTop: 250 })
+      await triggerScroll()
+
+      // the user scrolls back to `#a` during the update
+      setScrollMetrics({ innerHeight: 600, scrollHeight: 3000, scrollTop: 150 })
+      window.dispatchEvent(new Event('scroll'))
+      await new Promise((resolve) => {
+        setTimeout(resolve, 20)
+      })
+
+      replaceDeferred.resolve()
+      await flushPromises()
+      await flushPromises()
+
+      expect(replace).toHaveBeenCalledTimes(2)
+      expect(client.router.currentRoute.value.hash).toBe('#a')
+    } finally {
+      replace.mockRestore()
       wrapper.unmount()
     }
   })
