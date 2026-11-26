@@ -6,11 +6,11 @@ import { onContentUpdated } from 'vuepress/client'
 
 import { resolveTitle } from '../composables/useActiveAnchor.js'
 import { useBodyScrollLock } from '../composables/useBodyScrollLock.js'
-import type { DefaultTheme, ThemeConfig } from '../shared.js'
+import type { ThemeConfig, OutlineItem } from '../shared.js'
 import VPDocOutlineItem from './VPDocOutlineItem.vue'
 
 const props = defineProps<{
-  headers: DefaultTheme.OutlineItem[]
+  headers: OutlineItem[]
   navHeight: number
 }>()
 

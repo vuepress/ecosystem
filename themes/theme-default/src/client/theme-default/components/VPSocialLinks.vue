@@ -1,10 +1,10 @@
 <script lang="ts" setup>
-import type { DefaultTheme } from '../shared.js'
+import type { SocialLink } from '../shared.js'
 import VPSocialLink from './VPSocialLink.vue'
 
 withDefaults(
   defineProps<{
-    links: DefaultTheme.SocialLink[]
+    links: SocialLink[]
     me?: boolean
   }>(),
   {

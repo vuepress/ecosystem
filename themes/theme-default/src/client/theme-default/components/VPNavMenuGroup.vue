@@ -3,7 +3,7 @@ import { computed, ref, useId } from 'vue'
 import { useRoute } from 'vuepress/client'
 
 import { useThemePageData } from '../../composables/useThemePageData.js'
-import type { DefaultTheme } from '../shared.js'
+import type { NavItem, NavItemWithChildren } from '../shared.js'
 import { isActive, isLinkActive } from '../shared.js'
 import VPFlyout from './VPFlyout.vue'
 import VPMenuGroup from './VPMenuGroup.vue'
@@ -11,7 +11,7 @@ import VPMenuLink from './VPMenuLink.vue'
 import VPThemeIcon from './VPThemeIcon.vue'
 
 const props = defineProps<{
-  item: DefaultTheme.NavItemWithChildren
+  item: NavItemWithChildren
   /** Accordion inside the nav screen */
   screen?: boolean
   /** Flat titled group inside a menu panel (e.g. the `⋯` menu) */
@@ -33,7 +33,7 @@ const isActiveGroup = computed(() => {
   return isChildActive(props.item)
 })
 
-function isChildActive(navItem: DefaultTheme.NavItem): boolean {
+function isChildActive(navItem: NavItem): boolean {
   if ('component' in navItem) return false
 
   if ('link' in navItem) {

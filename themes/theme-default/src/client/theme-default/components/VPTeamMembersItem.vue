@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import type { DefaultTheme } from '../shared.js'
+import type { TeamMember } from '../shared.js'
 import VPLink from './VPLink.vue'
 import VPSocialLinks from './VPSocialLinks.vue'
 
 interface Props {
   size?: 'small' | 'medium'
-  member: DefaultTheme.TeamMember
+  member: TeamMember
 }
 
 withDefaults(defineProps<Props>(), {

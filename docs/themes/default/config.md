@@ -32,7 +32,7 @@ The site title shown next to the logo in the navbar. It defaults to the site tit
 
 Set it to `false` to hide the text and show the logo only.
 
-@`logo` type=`DefaultTheme.ThemeableImage`
+@`logo` type=`ThemeableImage`
 
 The logo image shown in the navbar. Upload the file to the public directory and pass its URL. It accepts:
 
@@ -60,7 +60,7 @@ The text direction of the language. It is carried into the locale data used by t
 
 The layout itself is written with logical CSS properties and switches its direction from the `dir` attribute of the `<html>` element, which the theme does not set — use `@vuepress/plugin-rtl` or your own client config to set it.
 
-@`footer` type=`DefaultTheme.Footer`
+@`footer` type=`Footer`
 
 The footer shown at the bottom of every page. It is hidden when the page sets `footer: false` in its frontmatter.
 
@@ -74,7 +74,7 @@ The message line of the footer. HTML is allowed.
 
 The copyright line of the footer. HTML is allowed.
 
-@`notFound` type=`DefaultTheme.NotFoundOptions`
+@`notFound` type=`NotFoundOptions`
 
 Customize the text of the 404 page. Every field falls back to the built-in English text, so a site only sets the fields it wants to translate.
 
@@ -122,7 +122,7 @@ See [Markdown containers](./markdown.md#hint-containers) for the container synta
 ## Navbar
 
 :::: fields
-@`navbar` type=`DefaultTheme.NavbarOptions` default=`[]`
+@`navbar` type=`NavbarOptions` default=`[]`
 
 The navbar items, or `false` to hide the navbar. Every item is one of four shapes:
 
@@ -238,7 +238,7 @@ export default defineUserConfig({
 ```
 
 :::: fields
-@`socialLinks` type=`DefaultTheme.SocialLink[]`
+@`socialLinks` type=`SocialLink[]`
 
 The social links shown at the end of the navbar and in the mobile menu.
 
@@ -262,7 +262,7 @@ The `target` attribute of the link.
 ## Sidebar
 
 :::: fields
-@`sidebar` type=`DefaultTheme.SidebarOptions | false` default=`false`
+@`sidebar` type=`SidebarOptions | false` default=`false`
 
 The sidebar configuration. It accepts four shapes:
 
@@ -412,7 +412,7 @@ See [theme-helper](../../tools/theme-helper.md#default-frontmatter-mapping) for 
 ## Page
 
 :::: fields
-@`outline` type=`DefaultTheme.Outline | DefaultTheme.Outline['level'] | false` default=`2`
+@`outline` type=`Outline | Outline['level'] | false` default=`2`
 
 The heading levels shown in the outline of the aside. The default, `2`, shows only the `h2` headings.
 
@@ -434,7 +434,7 @@ Where to render the aside that contains the outline. The default is the right si
 
 A page always has its aside disabled on the home page, and it can override the theme config in its frontmatter.
 
-@`editLink` type=`DefaultTheme.EditLink`
+@`editLink` type=`EditLink`
 
 The "edit this page" link in the document footer. It is disabled when the option is not set.
 
@@ -448,7 +448,7 @@ The pattern of the link. In a string pattern, `:path` is replaced by the file pa
 
 The text of the link.
 
-@`lastUpdated` type=`DefaultTheme.LastUpdatedOptions | boolean`
+@`lastUpdated` type=`LastUpdatedOptions | boolean`
 
 Whether to show the last updated time of the page. It defaults to `true`, and the time comes from `@vuepress/plugin-git`; disable the `git` plugin or set `lastUpdated: false` to hide it.
 
@@ -470,7 +470,7 @@ Whether to show the contributors of the page in the document footer. The list co
 
 The text shown before the contributor list.
 
-@`docFooter` type=`DefaultTheme.DocFooter`
+@`docFooter` type=`DocFooter`
 
 Customize the labels of the previous/next page links in the document footer.
 

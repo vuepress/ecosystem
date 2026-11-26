@@ -1,7 +1,6 @@
 import type { HeadConfig, SiteData } from '../../shared/types.js'
 
 export type {
-  DefaultTheme,
   HeadConfig,
   Header,
   LocaleConfig,
@@ -11,6 +10,35 @@ export type {
   ThemeLayout,
   ThemePageData,
   ThemePluginsOptions,
+  NavItem,
+  NavItemComponent,
+  NavItemWithLink,
+  NavItemChildren,
+  NavItemWithChildren,
+  NavbarGroupOptions,
+  NavbarItemOptions,
+  NavbarOptions,
+  ThemeableImage,
+  FeatureIcon,
+  Sidebar,
+  SidebarArray,
+  SidebarMulti,
+  SidebarItemOptions,
+  SidebarArrayOptions,
+  SidebarMultiOptions,
+  SidebarOptions,
+  SidebarStructureItem,
+  SidebarItem,
+  EditLink,
+  DocFooter,
+  SocialLink,
+  SocialLinkIcon,
+  Footer,
+  TeamMember,
+  Outline,
+  OutlineItem,
+  LastUpdatedOptions,
+  NotFoundOptions,
 } from '../../shared/types.js'
 
 export const EXTERNAL_URL_RE = /^(?:[a-z]+:|\/\/)/i

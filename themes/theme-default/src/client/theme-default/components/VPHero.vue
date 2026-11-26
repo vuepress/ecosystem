@@ -2,7 +2,7 @@
 import { computed, inject } from 'vue'
 
 import { layoutInfoInjectionKey } from '../composables/useLayout.js'
-import type { DefaultTheme } from '../shared.js'
+import type { ThemeableImage } from '../shared.js'
 import VPButton from './VPButton.vue'
 import VPImage from './VPImage.vue'
 
@@ -18,7 +18,7 @@ defineProps<{
   name?: string
   text?: string
   tagline?: string
-  image?: DefaultTheme.ThemeableImage
+  image?: ThemeableImage
   actions?: HeroAction[]
 }>()
 

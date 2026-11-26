@@ -20,7 +20,13 @@ import {
   usePageType,
   useThemePageFrontmatter,
 } from '../../composables/useThemePageData.js'
-import type { DefaultTheme, ThemeConfig, ThemeLayout } from '../shared.js'
+import type {
+  ThemeConfig,
+  ThemeLayout,
+  OutlineItem,
+  Sidebar,
+  SidebarItem,
+} from '../shared.js'
 import {
   getSidebar,
   getSidebarGroups,
@@ -29,8 +35,8 @@ import {
 import { getHeaders } from './useActiveAnchor.js'
 import { useCloseSidebarOnEscape } from './useSidebarControl.js'
 
-const headers = shallowRef<DefaultTheme.OutlineItem[]>([])
-const sidebar = shallowRef<DefaultTheme.SidebarItem[]>([])
+const headers = shallowRef<OutlineItem[]>([])
+const sidebar = shallowRef<SidebarItem[]>([])
 
 const isDesktop = useMediaQuery('(min-width: 60rem)')
 
@@ -95,9 +101,9 @@ export function registerWatchers({ closeSidebar }: RegisterWatchersOptions) {
 
   // the frontmatter sidebar is normalized at build time, but the frontmatter
   // type keeps the input shape to accept the classic theme syntax
-  const sidebarConfig = computed<DefaultTheme.Sidebar | false>(
+  const sidebarConfig = computed<Sidebar | false>(
     () =>
-      (frontmatter.value.sidebar as DefaultTheme.Sidebar | false | undefined) ??
+      (frontmatter.value.sidebar as Sidebar | false | undefined) ??
       theme.value.sidebar ??
       false,
   )

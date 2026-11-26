@@ -1,12 +1,23 @@
 // oxlint-disable typescript/no-deprecated -- the classic theme syntax is supported here
-import type { DefaultTheme } from '../shared/types.js'
+import type {
+  NavItem,
+  NavItemWithChildren,
+  NavItemWithLink,
+  NavbarGroupOptions,
+  NavbarItemOptions,
+  NavbarOptions,
+  Sidebar,
+  SidebarArray,
+  SidebarArrayOptions,
+  SidebarItem,
+  SidebarItemOptions,
+  SidebarOptions,
+  SidebarStructureItem,
+} from '../shared/types.js'
 
-type SidebarItemInput =
-  | DefaultTheme.SidebarItemOptions
-  | DefaultTheme.SidebarStructureItem
-  | string
+type SidebarItemInput = SidebarItemOptions | SidebarStructureItem | string
 
-type NavbarItemInput = DefaultTheme.NavbarItemOptions
+type NavbarItemInput = NavbarItemOptions
 
 /**
  * Normalize a sidebar item written in the classic theme syntax
@@ -16,18 +27,16 @@ type NavbarItemInput = DefaultTheme.NavbarItemOptions
  * @param item - The sidebar item to normalize / 需要归一化的侧边栏条目
  * @returns The normalized sidebar item / 归一化后的侧边栏条目
  */
-const normalizeSidebarItem = (
-  item: SidebarItemInput,
-): DefaultTheme.SidebarArray[number] => {
+const normalizeSidebarItem = (item: SidebarItemInput): SidebarArray[number] => {
   if (typeof item === 'string') return { link: item }
 
-  if ((item as DefaultTheme.SidebarStructureItem).items === 'structure') {
+  if ((item as SidebarStructureItem).items === 'structure') {
     const {
       collapsed: _collapsed,
       children: _children,
       prefix,
       ...rest
-    } = item as DefaultTheme.SidebarItemOptions & { collapsed?: boolean }
+    } = item as SidebarItemOptions & { collapsed?: boolean }
 
     return {
       ...rest,
@@ -42,7 +51,7 @@ const normalizeSidebarItem = (
     items,
     prefix,
     ...rest
-  } = item as DefaultTheme.SidebarItemOptions & { collapsed?: boolean }
+  } = item as SidebarItemOptions & { collapsed?: boolean }
 
   const normalizedItems = items ?? children
 
@@ -56,7 +65,7 @@ const normalizeSidebarItem = (
             : 'structure',
         }
       : {}),
-  } as DefaultTheme.SidebarItem
+  } as SidebarItem
 }
 
 /**
@@ -73,8 +82,8 @@ const normalizeSidebarItem = (
  * @returns The normalized sidebar config / 归一化后的侧边栏配置
  */
 export const normalizeSidebar = (
-  sidebar: DefaultTheme.SidebarOptions | undefined,
-): DefaultTheme.Sidebar | false | undefined => {
+  sidebar: SidebarOptions | undefined,
+): Sidebar | false | undefined => {
   if (sidebar == null || sidebar === false) return sidebar
   if (typeof sidebar === 'string')
     return sidebar === 'structure' ? sidebar : undefined
@@ -95,7 +104,7 @@ export const normalizeSidebar = (
         return [scope, value.map((item) => normalizeSidebarItem(item))]
 
       const { items } = value as {
-        items?: DefaultTheme.SidebarArrayOptions | 'structure'
+        items?: SidebarArrayOptions | 'structure'
       }
 
       return [
@@ -109,7 +118,7 @@ export const normalizeSidebar = (
         },
       ]
     }),
-  ) as DefaultTheme.Sidebar
+  ) as Sidebar
 }
 
 /**
@@ -120,26 +129,26 @@ export const normalizeSidebar = (
  * @param item - The navbar item to normalize / 需要归一化的导航栏条目
  * @returns The normalized navbar item / 归一化后的导航栏条目
  */
-const normalizeNavbarItem = (item: NavbarItemInput): DefaultTheme.NavItem => {
+const normalizeNavbarItem = (item: NavbarItemInput): NavItem => {
   if (typeof item === 'string') return { link: item }
   if ('component' in item) return item
 
-  const { children, prefix, items, ...rest } =
-    item as DefaultTheme.NavbarGroupOptions & { base?: string }
+  const { children, prefix, items, ...rest } = item as NavbarGroupOptions & {
+    base?: string
+  }
 
   const normalizedItems = items ?? children
 
   if (!normalizedItems) {
-    const { base: _base, ...linkItem } =
-      rest as DefaultTheme.NavItemWithLink & {
-        base?: string
-      }
+    const { base: _base, ...linkItem } = rest as NavItemWithLink & {
+      base?: string
+    }
 
     return linkItem
   }
 
   return {
-    ...(rest as DefaultTheme.NavItemWithChildren),
+    ...(rest as NavItemWithChildren),
     ...(prefix && rest.base == null ? { base: prefix } : {}),
     items: normalizedItems.map((child) => normalizeNavbarItem(child)),
   }
@@ -159,8 +168,8 @@ const normalizeNavbarItem = (item: NavbarItemInput): DefaultTheme.NavItem => {
  * @returns The normalized navbar config / 归一化后的导航栏配置
  */
 export const normalizeNavbar = (
-  navbar: DefaultTheme.NavbarOptions | undefined,
-): DefaultTheme.NavItem[] | false | undefined => {
+  navbar: NavbarOptions | undefined,
+): NavItem[] | false | undefined => {
   if (navbar == null || navbar === false) return navbar
 
   return navbar.map((item) => normalizeNavbarItem(item))
@@ -176,14 +185,14 @@ export const normalizeNavbar = (
  */
 export const normalizeThemeConfig = <
   T extends {
-    navbar?: DefaultTheme.NavbarOptions
-    sidebar?: DefaultTheme.SidebarOptions
+    navbar?: NavbarOptions
+    sidebar?: SidebarOptions
   },
 >(
   config: T,
 ): Omit<T, 'navbar' | 'sidebar'> & {
-  navbar?: DefaultTheme.NavItem[] | false
-  sidebar?: DefaultTheme.Sidebar | false
+  navbar?: NavItem[] | false
+  sidebar?: Sidebar | false
 } => {
   const { navbar, sidebar, ...rest } = config
 

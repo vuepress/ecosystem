@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 
-import type { DefaultTheme } from '../shared.js'
+import type { FeatureIcon } from '../shared.js'
 import VPFeature from './VPFeature.vue'
 
 export interface Feature {
-  icon?: DefaultTheme.FeatureIcon
+  icon?: FeatureIcon
   title: string
   details: string
   link?: string

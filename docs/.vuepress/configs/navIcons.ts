@@ -4,12 +4,15 @@ import {
   isLinkAbsolute,
   isLinkWithProtocol,
 } from '@vuepress/helper'
-import type { DefaultTheme } from '@vuepress/theme-default'
+import type {
+  NavbarGroupOptions,
+  NavbarItemOptions,
+  NavbarOptions,
+  SidebarItemOptions,
+  SidebarOptions,
+} from '@vuepress/theme-default'
 
-type NavItem =
-  | DefaultTheme.NavbarGroupOptions
-  | DefaultTheme.NavbarItemOptions
-  | DefaultTheme.SidebarItemOptions
+type NavItem = NavbarGroupOptions | NavbarItemOptions | SidebarItemOptions
 
 const resolvePrefix = (prefix: string, path: string): string =>
   isLinkAbsolute(path) || isLinkWithProtocol(path)
@@ -51,8 +54,8 @@ const collectIcons = (
  * @returns A map of page path to icon
  */
 export const getNavIcons = (
-  navbars: (DefaultTheme.NavbarOptions | undefined)[],
-  sidebars: (DefaultTheme.SidebarOptions | undefined)[],
+  navbars: (NavbarOptions | undefined)[],
+  sidebars: (SidebarOptions | undefined)[],
 ): Map<string, string> => {
   const result = new Map<string, string>()
 

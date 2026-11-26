@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { withBase } from 'vuepress/client'
 
-import type { DefaultTheme } from '../shared.js'
+import type { ThemeableImage } from '../shared.js'
 
 defineProps<{
-  image: DefaultTheme.ThemeableImage
+  image: ThemeableImage
   alt?: string
 }>()
 

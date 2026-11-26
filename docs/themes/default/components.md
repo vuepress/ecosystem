@@ -185,7 +185,7 @@ A section of the page. It has the `title`, the `lead` and the `members` slots.
 ### VPTeamMembers
 
 ::: fields
-@`members` type=`DefaultTheme.TeamMember[]` required
+@`members` type=`TeamMember[]` required
 
 The members to render. Each member has the fields below.
 
@@ -225,7 +225,7 @@ A link to the sponsor profile of the member. When it is set, the card shows a sp
 
 The text of the sponsor link.
 
-@@`members[*].links` type=`DefaultTheme.SocialLink[]`
+@@`members[*].links` type=`SocialLink[]`
 
 The social links of the member, each being `{ icon: string | { svg: string }; link: string; ariaLabel?: string; target?: string }`.
 :::
@@ -328,7 +328,7 @@ A badge <Badge text="New" type="tip" /> in a sentence.
 ### VPImage
 
 ::: fields
-@`image` type=`DefaultTheme.ThemeableImage` required
+@`image` type=`ThemeableImage` required
 
 The image. It accepts a URL string, `{ src, alt? }`, or `{ light, dark, alt? }` for a color-mode-aware image.
 
@@ -368,7 +368,7 @@ The `rel` attribute of the link.
 ### VPSocialLinks
 
 ::: fields
-@`links` type=`DefaultTheme.SocialLink[]` required
+@`links` type=`SocialLink[]` required
 
 The social links to render, each being `{ icon: string | { svg: string }; link: string; ariaLabel?: string; target?: string }`.
 

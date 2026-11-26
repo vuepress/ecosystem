@@ -1,5 +1,5 @@
-<script lang="ts" setup generic="T extends DefaultTheme.NavItem">
-import type { DefaultTheme } from '../shared.js'
+<script lang="ts" setup generic="T extends NavItem">
+import type { NavItem } from '../shared.js'
 import VPMenuGroup from './VPMenuGroup.vue'
 import VPMenuLink from './VPMenuLink.vue'
 

@@ -285,15 +285,15 @@ export default defineUserConfig({
 | `ClassicThemeHomePageFrontmatter`   | `ThemePageFrontmatter`（带 `type: 'home'` 和 `hero`） |
 | `ClassicThemeNormalPageFrontmatter` | `ThemePageFrontmatter`（带 `type: 'doc'`）            |
 | `ClassicThemePluginsOptions`        | `ThemePluginsOptions`                                 |
-| `NavbarOptions`                     | `DefaultTheme.NavItem[]`                              |
-| `SidebarOptions`                    | `DefaultTheme.Sidebar`                                |
+| `NavbarOptions`                     | `NavItem[]`                                           |
+| `SidebarOptions`                    | `Sidebar`                                             |
 
-新主题的 `DefaultTheme` 命名空间存放导航条目、侧边栏条目、hero 和特性、页脚、团队成员以及赞助商的类型。以类型形式导入它，即可为配置对象标注类型：
+导航条目、侧边栏条目、hero 和特性、页脚、团队成员以及赞助商的类型都以普通类型从包中导出。导入它们即可为配置对象标注类型：
 
 ```ts
-import type { DefaultTheme } from '@vuepress/theme-default'
+import type { NavItem } from '@vuepress/theme-default'
 
-const navbar: DefaultTheme.NavItem[] = [{ text: 'Guide', link: '/guide/' }]
+const navbar: NavItem[] = [{ text: 'Guide', link: '/guide/' }]
 ```
 
 ## 客户端 API {#client-api}

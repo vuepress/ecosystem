@@ -285,15 +285,15 @@ A layout of the classic theme imports its components from `@vuepress/theme-class
 | `ClassicThemeHomePageFrontmatter`   | `ThemePageFrontmatter` (with `type: 'home'` and `hero`) |
 | `ClassicThemeNormalPageFrontmatter` | `ThemePageFrontmatter` (with `type: 'doc'`)             |
 | `ClassicThemePluginsOptions`        | `ThemePluginsOptions`                                   |
-| `NavbarOptions`                     | `DefaultTheme.NavItem[]`                                |
-| `SidebarOptions`                    | `DefaultTheme.Sidebar`                                  |
+| `NavbarOptions`                     | `NavItem[]`                                             |
+| `SidebarOptions`                    | `Sidebar`                                               |
 
-The `DefaultTheme` namespace of the new theme holds the types of nav items, sidebar items, hero and features, footer, team members and sponsors. Import it as a type to annotate a configuration object:
+The nav items, sidebar items, hero and features, footer, team members and sponsors are exported as plain types from the package. Import them to annotate a configuration object:
 
 ```ts
-import type { DefaultTheme } from '@vuepress/theme-default'
+import type { NavItem } from '@vuepress/theme-default'
 
-const navbar: DefaultTheme.NavItem[] = [{ text: 'Guide', link: '/guide/' }]
+const navbar: NavItem[] = [{ text: 'Guide', link: '/guide/' }]
 ```
 
 ## Client API

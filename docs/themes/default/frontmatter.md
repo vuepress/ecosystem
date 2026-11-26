@@ -112,7 +112,7 @@ The main title of the hero, rendered below the name.
 
 The tagline of the hero, rendered below the text.
 
-@`hero.image` type=`DefaultTheme.ThemeableImage`
+@`hero.image` type=`ThemeableImage`
 
 The hero image. It accepts the same shapes as the [logo](./config.md#basic-config): a URL string, `{ src, alt }`, or `{ light, dark, alt }` for a color-mode-aware image. The image is rendered in a decorative box and is hidden on small screens.
 
@@ -148,7 +148,7 @@ The `rel` attribute of the link.
 
 The feature cards shown below the hero.
 
-@`features[*].icon` type=`DefaultTheme.FeatureIcon`
+@`features[*].icon` type=`FeatureIcon`
 
 The icon of the card. It accepts:
 
@@ -260,7 +260,7 @@ A document page is a page without a `type` field, or with `type: doc`. It render
 The following fields override the theme options for one page:
 
 ::: fields
-@`outline` type=`DefaultTheme.Outline | DefaultTheme.Outline['level'] | false`
+@`outline` type=`Outline | Outline['level'] | false`
 
 The heading levels of the outline. See [outline](./config.md#page).
 
@@ -294,7 +294,7 @@ The previous page link of this page. A string is used as the link text. Set it t
 
 The next page link of this page, with the same shapes as `prev`.
 
-@`sidebar` type=`DefaultTheme.SidebarOptions | false`
+@`sidebar` type=`SidebarOptions | false`
 
 The sidebar configuration of this page. The classic syntax, including string items, `children` and `prefix`, is normalized at build time. See [sidebar](./config.md#sidebar).
 :::
@@ -361,34 +361,34 @@ Whether to wrap the home page content in the document styles. It only applies to
 
 ## Frontmatter Reference
 
-| Field            | Type                                                          | Page type | See also                                   |
-| ---------------- | ------------------------------------------------------------- | --------- | ------------------------------------------ |
-| `type`           | `'home' \| 'doc' \| 'page' \| 'content'`                      | all       | [Page Type](#page-type)                    |
-| `layout`         | `string`                                                      | all       | [Extending](./extending.md#custom-layouts) |
-| `navbar`         | `boolean`                                                     | all       | [All Pages](#all-pages)                    |
-| `pageClass`      | `string`                                                      | all       | [All Pages](#all-pages)                    |
-| `markdownStyles` | `boolean`                                                     | home      | [All Pages](#all-pages)                    |
-| `hero`           | `ThemeHero`                                                   | home      | [Hero](#hero)                              |
-| `home`           | `boolean`                                                     | home      | [Home Page](#home-page)                    |
-| `heroText`       | `string \| null`                                              | home      | [Home Page](#home-page)                    |
-| `tagline`        | `string \| null`                                              | home      | [Home Page](#home-page)                    |
-| `heroImage`      | `string`                                                      | home      | [Home Page](#home-page)                    |
-| `heroImageDark`  | `string`                                                      | home      | [Home Page](#home-page)                    |
-| `heroAlt`        | `string`                                                      | home      | [Home Page](#home-page)                    |
-| `actions`        | `ThemeHeroAction[]`                                           | home      | [Home Page](#home-page)                    |
-| `features`       | `ThemeFeature[]`                                              | home      | [Features](#features)                      |
-| `footer`         | `boolean \| string`                                           | all       | [Home Footer](#home-footer)                |
-| `footerHtml`     | `boolean`                                                     | all       | [Home Footer](#home-footer)                |
-| `outline`        | `DefaultTheme.Outline \| number \| [number, number] \| false` | doc       | [Document Page](#document-page)            |
-| `aside`          | `boolean \| 'left'`                                           | doc       | [Document Page](#document-page)            |
-| `editLink`       | `boolean`                                                     | doc       | [Document Page](#document-page)            |
-| `lastUpdated`    | `boolean \| number`                                           | doc       | [Document Page](#document-page)            |
-| `contributors`   | `boolean`                                                     | doc       | [Document Page](#document-page)            |
-| `prev`           | `string \| ThemePageLink \| false`                            | doc       | [Document Page](#document-page)            |
-| `next`           | `string \| ThemePageLink \| false`                            | doc       | [Document Page](#document-page)            |
-| `sidebar`        | `DefaultTheme.SidebarOptions \| false`                        | doc       | [Document Page](#document-page)            |
-| `index`          | `boolean`                                                     | doc       | [Sidebar Structure](#sidebar-structure)    |
-| `order`          | `number`                                                      | doc       | [Sidebar Structure](#sidebar-structure)    |
-| `shortTitle`     | `string`                                                      | doc       | [Sidebar Structure](#sidebar-structure)    |
-| `icon`           | `string`                                                      | doc       | [Sidebar Structure](#sidebar-structure)    |
-| `dir`            | `SidebarDirOptions`                                           | doc       | [Sidebar Structure](#sidebar-structure)    |
+| Field            | Type                                             | Page type | See also                                   |
+| ---------------- | ------------------------------------------------ | --------- | ------------------------------------------ |
+| `type`           | `'home' \| 'doc' \| 'page' \| 'content'`         | all       | [Page Type](#page-type)                    |
+| `layout`         | `string`                                         | all       | [Extending](./extending.md#custom-layouts) |
+| `navbar`         | `boolean`                                        | all       | [All Pages](#all-pages)                    |
+| `pageClass`      | `string`                                         | all       | [All Pages](#all-pages)                    |
+| `markdownStyles` | `boolean`                                        | home      | [All Pages](#all-pages)                    |
+| `hero`           | `ThemeHero`                                      | home      | [Hero](#hero)                              |
+| `home`           | `boolean`                                        | home      | [Home Page](#home-page)                    |
+| `heroText`       | `string \| null`                                 | home      | [Home Page](#home-page)                    |
+| `tagline`        | `string \| null`                                 | home      | [Home Page](#home-page)                    |
+| `heroImage`      | `string`                                         | home      | [Home Page](#home-page)                    |
+| `heroImageDark`  | `string`                                         | home      | [Home Page](#home-page)                    |
+| `heroAlt`        | `string`                                         | home      | [Home Page](#home-page)                    |
+| `actions`        | `ThemeHeroAction[]`                              | home      | [Home Page](#home-page)                    |
+| `features`       | `ThemeFeature[]`                                 | home      | [Features](#features)                      |
+| `footer`         | `boolean \| string`                              | all       | [Home Footer](#home-footer)                |
+| `footerHtml`     | `boolean`                                        | all       | [Home Footer](#home-footer)                |
+| `outline`        | `Outline \| number \| [number, number] \| false` | doc       | [Document Page](#document-page)            |
+| `aside`          | `boolean \| 'left'`                              | doc       | [Document Page](#document-page)            |
+| `editLink`       | `boolean`                                        | doc       | [Document Page](#document-page)            |
+| `lastUpdated`    | `boolean \| number`                              | doc       | [Document Page](#document-page)            |
+| `contributors`   | `boolean`                                        | doc       | [Document Page](#document-page)            |
+| `prev`           | `string \| ThemePageLink \| false`               | doc       | [Document Page](#document-page)            |
+| `next`           | `string \| ThemePageLink \| false`               | doc       | [Document Page](#document-page)            |
+| `sidebar`        | `SidebarOptions \| false`                        | doc       | [Document Page](#document-page)            |
+| `index`          | `boolean`                                        | doc       | [Sidebar Structure](#sidebar-structure)    |
+| `order`          | `number`                                         | doc       | [Sidebar Structure](#sidebar-structure)    |
+| `shortTitle`     | `string`                                         | doc       | [Sidebar Structure](#sidebar-structure)    |
+| `icon`           | `string`                                         | doc       | [Sidebar Structure](#sidebar-structure)    |
+| `dir`            | `SidebarDirOptions`                              | doc       | [Sidebar Structure](#sidebar-structure)    |

@@ -14,7 +14,7 @@ import { useRoute } from 'vuepress/client'
 import { inBrowser } from '../../composables/inBrowser.js'
 import { isFixedAppearance } from '../../composables/useDarkMode.js'
 import { useThemePageData } from '../../composables/useThemePageData.js'
-import type { DefaultTheme, ThemeConfig } from '../shared.js'
+import type { ThemeConfig, NavItemWithLink } from '../shared.js'
 import { isActive, isLinkActive } from '../shared.js'
 
 // module-scoped so Layout.vue can render the rest of the app inert while the
@@ -79,9 +79,7 @@ export function useAppearanceSwitch() {
   return computed(() => !isFixedAppearance(themeData.value.appearance ?? true))
 }
 
-export function useNavItemLink(
-  item: MaybeRefOrGetter<DefaultTheme.NavItemWithLink>,
-) {
+export function useNavItemLink(item: MaybeRefOrGetter<NavItemWithLink>) {
   const route = useRoute()
   const page = useThemePageData()
 

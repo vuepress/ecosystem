@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import type { DefaultTheme } from '../shared.js'
+import type { OutlineItem } from '../shared.js'
 
 defineProps<{
-  headers: DefaultTheme.OutlineItem[]
+  headers: OutlineItem[]
   root?: boolean
 }>()
 </script>
