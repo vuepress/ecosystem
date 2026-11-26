@@ -45,7 +45,7 @@ icon: arrow-right-left
 | `logoAlt`          | `logo: { alt }`           | logo 的替代文本。                                                                                                     |
 | `home`             | `logoLink`                | 导航栏中 logo 的链接，以及站点的首页。404 按钮使用 `notFound.link`。                                                  |
 | `repo`             | `socialLinks`             | 在构建时接受并映射。GitHub、GitLab、Gitee 和 Bitbucket 会自动添加品牌图标，因此只有其他托管平台才需要 `socialLinks`。 |
-| `repoLabel`        | `socialLinks[].ariaLabel` | 仓库链接的标签。                                                                                                      |
+| `repoLabel`        | `socialLinks[].ariaLabel` | 仓库链接的标签。默认使用仓库类型，例如 `GitHub`。                                                                     |
 | `navbar`           | `navbar`                  | 相同的键与相同的条目写法。见[导航栏](#navbar)。                                                                       |
 | `sidebar`          | `sidebar`                 | 相同的键与相同的条目写法。默认值现在是 `false`。见[侧边栏](#sidebar)。                                                |
 | `externalLinkIcon` | `externalLinkIcon`        | 相同，默认值为 `false`。                                                                                              |
@@ -167,6 +167,8 @@ defaultTheme({
 | `openInNewWindow`         | —                                                                           |
 | —                         | `returnToTopLabel`、`extraMenuLabel`、`skipToContentLabel`                  |
 
+如果没有设置 `locales.<localePath>.label`，语言切换器会回退到 locale 路径，因此只配置了 `selectLanguageName` 的站点在迁移时需要补上它。
+
 ### 主题插件 {#theme-plugins}
 
 | 经典主题            | 新主题                  | 说明                                                                    |
@@ -194,9 +196,11 @@ SASS 调色板已被移除。主题不再接入 `@vuepress/plugin-palette`，因
 ```ts
 defaultTheme({
   themePlugins: {
-    shiki: { themes: { light: 'nord', dark: 'nord' } },
     linksCheck: { exclude: [/^#\//u] },
     sitemap: false,
+  },
+  markdownPlugins: {
+    shiki: { themes: { light: 'nord', dark: 'nord' } },
   },
 })
 ```

@@ -127,8 +127,8 @@ export const resolveThemeData = (
  */
 export const resolveTemplateAppearance = (
   appearance: AppearanceOptions | undefined,
-): 'light' | 'dark' | 'auto' | 'force-dark' | 'force-auto' => {
-  if (appearance === false) return 'light'
+): 'light' | 'dark' | 'auto' | 'force-light' | 'force-dark' | 'force-auto' => {
+  if (appearance === false) return 'force-light'
   if (appearance === 'dark') return 'dark'
   if (appearance === 'force-dark') return 'force-dark'
   if (appearance === 'force-auto') return 'force-auto'

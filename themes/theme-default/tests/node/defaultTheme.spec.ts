@@ -228,7 +228,7 @@ describe(defaultTheme, () => {
 
 describe(resolveTemplateAppearance, () => {
   it('should resolve the appearance of the build template', () => {
-    expect(resolveTemplateAppearance(false)).toBe('light')
+    expect(resolveTemplateAppearance(false)).toBe('force-light')
     expect(resolveTemplateAppearance('dark')).toBe('dark')
     expect(resolveTemplateAppearance('force-dark')).toBe('force-dark')
     expect(resolveTemplateAppearance('force-auto')).toBe('force-auto')

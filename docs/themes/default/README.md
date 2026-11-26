@@ -79,7 +79,7 @@ See [Frontmatter](./frontmatter.md) for the fields each page type accepts, and [
 
 The theme wires the following plugins automatically. Each of them can be disabled with `false` or configured with an options object through `themePlugins`; see [Plugins](./plugin.md).
 
-| Plugin                                 | `themePlugins` key      | Default                               |
+| Plugin                                 | Option                  | Default                               |
 | -------------------------------------- | ----------------------- | ------------------------------------- |
 | `@vuepress/plugin-theme-data`          | —                       | Always enabled                        |
 | `@vuepress/plugin-copy-code`           | `copyCode`              | Enabled                               |

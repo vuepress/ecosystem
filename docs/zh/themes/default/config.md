@@ -486,7 +486,7 @@ classic 主题的 `editLink: true`、`editLinkText`、`editLinkPattern`、`docsR
 - `'dark'`：优先暗色模式，用户可以切换。
 - `'force-dark'`：仅暗色模式，并隐藏切换按钮。
 - `'force-auto'`：两种模式都有，始终跟随系统偏好，并隐藏切换按钮。
-- 一个对象 `{ initialValue: 'dark' | 'light' }`：优先使用指定颜色，用户可以切换。`'dark'` 与 `'dark'` 相同，`'light'` 会保留切换按钮并从浅色模式开始。
+- 一个对象 `{ initialValue: 'dark' | 'light' }`：优先使用指定颜色，用户可以切换。`{ initialValue: 'dark' }` 与 `'dark'` 相同；`{ initialValue: 'light' }` 会保留切换按钮并从浅色模式开始。
 
 所选模式会以 `'auto'`、`'dark'` 或 `'light'` 的形式存储在 `localStorage` 的 `vuepress-color-scheme` 键下。主题会在 `<html>` 上设置 `data-theme` 属性（`'dark'` 或 `'light'`），样式跟随该属性；不存在 `dark` 类。
 

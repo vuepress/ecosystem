@@ -45,7 +45,7 @@ The new theme keeps the `defaultTheme` export name, so an existing `import { def
 | `logoAlt`          | `logo: { alt }`           | The alternative text of the logo.                                                                                                                                |
 | `home`             | `logoLink`                | The link of the logo in the navbar, and the home page of the site. The 404 button uses `notFound.link`.                                                          |
 | `repo`             | `socialLinks`             | Accepted and mapped at build time. A brand icon is added automatically for GitHub, GitLab, Gitee and Bitbucket, so `socialLinks` is only needed for other hosts. |
-| `repoLabel`        | `socialLinks[].ariaLabel` | The label of the repository link.                                                                                                                                |
+| `repoLabel`        | `socialLinks[].ariaLabel` | The label of the repository link. It defaults to the repository type, such as `GitHub`.                                                                          |
 | `navbar`           | `navbar`                  | Same key and same item syntax. See [Navbar](#navbar).                                                                                                            |
 | `sidebar`          | `sidebar`                 | Same key and same item syntax. The default is now `false`. See [Sidebar](#sidebar).                                                                              |
 | `externalLinkIcon` | `externalLinkIcon`        | Same, defaults to `false`.                                                                                                                                       |
@@ -167,6 +167,8 @@ defaultTheme({
 | `openInNewWindow`         | —                                                                            |
 | —                         | `returnToTopLabel`, `extraMenuLabel`, `skipToContentLabel`                   |
 
+When `locales.<localePath>.label` is missing, the language switcher falls back to the locale path, so set it while migrating a site that only configured `selectLanguageName`.
+
 ### Theme Plugins
 
 | Classic             | New                     | Notes                                                                                   |
@@ -194,9 +196,11 @@ A plugin is disabled with `false` and configured with an object, as before:
 ```ts
 defaultTheme({
   themePlugins: {
-    shiki: { themes: { light: 'nord', dark: 'nord' } },
     linksCheck: { exclude: [/^#\//u] },
     sitemap: false,
+  },
+  markdownPlugins: {
+    shiki: { themes: { light: 'nord', dark: 'nord' } },
   },
 })
 ```

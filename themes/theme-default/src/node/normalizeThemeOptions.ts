@@ -683,7 +683,7 @@ export const normalizeThemeConfig = (config: ThemeConfigInput): ThemeConfig => {
   if (home !== undefined) {
     warnDeprecatedThemeOption(
       'home',
-      'Use `logoLink` and `notFound.link` instead.',
+      'Use `logoLink` and `notFound.link` instead, and `type: home` for `home: true`.',
     )
   }
   if (pageNavbarLabel !== undefined || rest.navbarLabel !== undefined)

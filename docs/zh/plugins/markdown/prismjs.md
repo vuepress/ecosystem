@@ -8,7 +8,7 @@ icon: pyramid
 
 该插件使用 [Prism.js](https://prismjs.com/) 来为 Markdown 代码块启用代码高亮。
 
-默认主题使用 [Shiki](./shiki.md) 做代码高亮，而不是这个插件。如需使用 Prism.js，请在主题配置中设置 `themePlugins: { shiki: false }`，并注册这个插件。
+默认主题使用 [Shiki](./shiki.md) 做代码高亮，而不是这个插件。如需使用 Prism.js，请在主题配置中设置 `markdownPlugins: { shiki: false }`，并注册这个插件。
 
 ## 使用方法 {#usage}
 
