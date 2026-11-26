@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.0-rc.142](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.141...v2.0.0-rc.142) (2026-11-26)
+
+### 🐛 Bug Fixes
+
+- **plugin-back-to-top:** guard scroll progress against an unmeasurable body ([#1157](https://github.com/vuepress/ecosystem/issues/1157)) ([54e94df](https://github.com/vuepress/ecosystem/commit/54e94df7819e1e95b8441f0038b85558742fd566))
+
 ## [2.0.0-rc.139](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.138...v2.0.0-rc.139) (2026-11-21)
 
 **Note:** Version bump only for package @vuepress/plugin-back-to-top

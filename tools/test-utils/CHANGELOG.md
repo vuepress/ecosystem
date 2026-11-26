@@ -2,6 +2,24 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.0-rc.142](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.141...v2.0.0-rc.142) (2026-11-26)
+
+### ✨ Features
+
+- resolve navbar and sidebar item text and icon ([#1152](https://github.com/vuepress/ecosystem/issues/1152)) ([248b76d](https://github.com/vuepress/ecosystem/commit/248b76d3f8c14a63b2c1d2bd40747bca8fd58d58))
+
+### 🐛 Bug Fixes
+
+- **plugin-active-header-links:** keep the viewport when the hash updates ([#1150](https://github.com/vuepress/ecosystem/issues/1150)) ([165e200](https://github.com/vuepress/ecosystem/commit/165e20056a9458431bf8831b0e46e0a0029e383e))
+
+### Miscellaneous Chores
+
+- **deps:** update oxc ([#1154](https://github.com/vuepress/ecosystem/issues/1154)) ([9212c8b](https://github.com/vuepress/ecosystem/commit/9212c8ba669622578fd08c522c95a049c21f9e65))
+
+### Build System
+
+- **deps:** bump vuepress to 2.0.0-rc.33 and non-major dependencies ([#1155](https://github.com/vuepress/ecosystem/issues/1155)) ([56acc9b](https://github.com/vuepress/ecosystem/commit/56acc9b9764ca29d0eb6e185756f9304a72002ed))
+
 ## [2.0.0-rc.141](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.140...v2.0.0-rc.141) (2026-11-23)
 
 ### ✨ Features

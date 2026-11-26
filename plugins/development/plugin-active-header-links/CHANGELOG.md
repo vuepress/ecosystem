@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.0-rc.142](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.141...v2.0.0-rc.142) (2026-11-26)
+
+### 🐛 Bug Fixes
+
+- **plugin-active-header-links:** keep the viewport when the hash updates ([#1150](https://github.com/vuepress/ecosystem/issues/1150)) ([165e200](https://github.com/vuepress/ecosystem/commit/165e20056a9458431bf8831b0e46e0a0029e383e))
+
 ## [2.0.0-rc.141](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.140...v2.0.0-rc.141) (2026-11-23)
 
 ### ✨ Features

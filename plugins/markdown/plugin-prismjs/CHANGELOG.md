@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.0-rc.142](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.141...v2.0.0-rc.142) (2026-11-26)
+
+### Miscellaneous Chores
+
+- **deps:** update oxc ([#1154](https://github.com/vuepress/ecosystem/issues/1154)) ([9212c8b](https://github.com/vuepress/ecosystem/commit/9212c8ba669622578fd08c522c95a049c21f9e65))
+
 ## [2.0.0-rc.139](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.138...v2.0.0-rc.139) (2026-11-21)
 
 **Note:** Version bump only for package @vuepress/plugin-prismjs

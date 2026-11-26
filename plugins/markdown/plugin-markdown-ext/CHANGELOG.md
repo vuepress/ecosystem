@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.0-rc.142](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.141...v2.0.0-rc.142) (2026-11-26)
+
+### Build System
+
+- **deps:** bump vuepress to 2.0.0-rc.33 and non-major dependencies ([#1155](https://github.com/vuepress/ecosystem/issues/1155)) ([56acc9b](https://github.com/vuepress/ecosystem/commit/56acc9b9764ca29d0eb6e185756f9304a72002ed))
+
 ## [2.0.0-rc.139](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.138...v2.0.0-rc.139) (2026-11-21)
 
 **Note:** Version bump only for package @vuepress/plugin-markdown-ext
