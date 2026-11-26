@@ -12,7 +12,7 @@ const template = readFileSync(
 // the inline script is the only one in the template, it applies the theme
 // before the first paint
 const script =
-  /<script[^>]*>(?<script>[\s\S]*?)<\/script>/iu.exec(template)?.groups
+  /<script[^>]*>(?<script>[\s\S]*?)<\/script\s*>/iu.exec(template)?.groups
     ?.script ?? ''
 
 const renderFirstPaint = (appearance: string, storage?: string): string => {
