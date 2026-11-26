@@ -494,7 +494,7 @@ importers:
         version: 1.2.100
       '@videojs/html':
         specifier: 10.7.0
-        version: 10.7.0(@videojs/dash-video@10.6.0)(@videojs/hlsjs-video@10.6.0)(@videojs/spotify-audio@10.6.0)(@videojs/tiktok-video@10.6.0)(@videojs/twitch-video@10.6.0)(@videojs/vimeo-video@10.6.0)(@videojs/youtube-video@10.6.0)(react@19.3.1)
+        version: 10.7.0(@videojs/dash-video@10.7.0(@svta/cml-cta@1.0.6(@svta/cml-structured-field-values@1.1.3(@svta/cml-utils@1.5.0))(@svta/cml-utils@1.5.0))(@svta/cml-structured-field-values@1.1.3(@svta/cml-utils@1.5.0))(@svta/cml-utils@1.5.0))(@videojs/hlsjs-video@10.7.0)(@videojs/spotify-audio@10.7.0)(@videojs/tiktok-video@10.7.0)(@videojs/twitch-video@10.7.0)(@videojs/vimeo-video@10.7.0)(@videojs/youtube-video@10.7.0)(react@19.3.1)
       '@vuepress/bundler-rspack':
         specifier: 'catalog:'
         version: 2.0.0-rc.33(@vue/compiler-sfc@3.5.46)(esbuild@0.28.2)(rolldown@1.3.3)(rollup@4.68.8)(selfsigned@5.5.0)(supports-color@8.1.1)(typescript@6.0.3)(vite@8.3.8(@types/node@22.20.7)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.108.2)(sass@1.108.2)(terser@5.51.4)(yaml@2.9.1))(webpack@5.113.0(clean-css@5.3.3)(cssnano@9.9.0(postcss@8.5.33))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.33)(svgo@4.1.0)(uglify-js@3.19.3))
@@ -985,28 +985,28 @@ importers:
         version: 1.0.0(markdown-it@15.0.3)
       '@videojs/dash-video':
         specifier: ^10.3.0
-        version: 10.6.0
+        version: 10.7.0(@svta/cml-cta@1.0.6(@svta/cml-structured-field-values@1.1.3(@svta/cml-utils@1.5.0))(@svta/cml-utils@1.5.0))(@svta/cml-structured-field-values@1.1.3(@svta/cml-utils@1.5.0))(@svta/cml-utils@1.5.0)
       '@videojs/hlsjs-video':
         specifier: ^10.3.0
-        version: 10.6.0
+        version: 10.7.0
       '@videojs/html':
         specifier: ^10.3.0
-        version: 10.7.0(@videojs/dash-video@10.6.0)(@videojs/hlsjs-video@10.6.0)(@videojs/spotify-audio@10.6.0)(@videojs/tiktok-video@10.6.0)(@videojs/twitch-video@10.6.0)(@videojs/vimeo-video@10.6.0)(@videojs/youtube-video@10.6.0)(react@19.3.1)
+        version: 10.7.0(@videojs/dash-video@10.7.0(@svta/cml-cta@1.0.6(@svta/cml-structured-field-values@1.1.3(@svta/cml-utils@1.5.0))(@svta/cml-utils@1.5.0))(@svta/cml-structured-field-values@1.1.3(@svta/cml-utils@1.5.0))(@svta/cml-utils@1.5.0))(@videojs/hlsjs-video@10.7.0)(@videojs/spotify-audio@10.7.0)(@videojs/tiktok-video@10.7.0)(@videojs/twitch-video@10.7.0)(@videojs/vimeo-video@10.7.0)(@videojs/youtube-video@10.7.0)(react@19.3.1)
       '@videojs/spotify-audio':
         specifier: ^10.3.0
-        version: 10.6.0
+        version: 10.7.0
       '@videojs/tiktok-video':
         specifier: ^10.3.0
-        version: 10.6.0
+        version: 10.7.0
       '@videojs/twitch-video':
         specifier: ^10.3.0
-        version: 10.6.0
+        version: 10.7.0
       '@videojs/vimeo-video':
         specifier: ^10.3.0
-        version: 10.6.0
+        version: 10.7.0
       '@videojs/youtube-video':
         specifier: ^10.3.0
-        version: 10.6.0
+        version: 10.7.0
       '@vuepress/helper':
         specifier: workspace:*
         version: link:../../../tools/helper
@@ -5595,6 +5595,13 @@ packages:
       '@svta/cml-structured-field-values': 1.1.6
       '@svta/cml-utils': 1.6.1
 
+  '@svta/cml-cta@1.0.6':
+    resolution: {integrity: sha512-l13/4myTX1EbRd38nY8J1umVY5UdR/nZO6CeKqVLXnMMIayg7/fu0TueZckjTA9Loal55MGK1xbHnXVjz7OUUw==}
+    engines: {node: '>=20'}
+    peerDependencies:
+      '@svta/cml-structured-field-values': 1.1.3
+      '@svta/cml-utils': 1.5.0
+
   '@svta/cml-dash@1.0.6':
     resolution: {integrity: sha512-4XtHYlPrzL/dRe/8XmRQoLnTo9S86tISgrl67eUqKl5MtNTpZBYTncuPrspslPZPZROBBWNrBuepYfYUtU9CKA==}
     engines: {node: '>=20'}
@@ -5640,6 +5647,16 @@ packages:
       '@svta/cml-cmcd': 2.8.2
       '@svta/cml-utils': 1.6.1
       '@svta/cml-xml': 1.2.1
+
+  '@svta/cml-structured-field-values@1.1.3':
+    resolution: {integrity: sha512-XqLzQOTznz6kh/nsSh8dy1kV7GQjL4csG+2U5EvLGhAqNuNUczbVg5EAsDobKDVg8xhdthdXx2UuwM+ZHQCxSg==}
+    engines: {node: '>=20'}
+    peerDependencies:
+      '@svta/cml-utils': 1.5.0
+
+  '@svta/cml-utils@1.5.0':
+    resolution: {integrity: sha512-JMqclD7Akd+GSJiuaYNUHOP2wNtf/nauKeszlYeivSHfi0Lp3pmSW5PXDvJ2dO4aPmmSOQbF0ztTsW9Vcs2Whw==}
+    engines: {node: '>=20'}
 
   '@svta/cml-utils@1.8.0':
     resolution: {integrity: sha512-BCY/hP8oGrMB5nCDVGA0Pzs5Dek2uwEdhW+9YW8F1YWvIEg1B8xstAMhd64R+BEW71yD81mImF5DA1NcleClJA==}
@@ -5787,8 +5804,8 @@ packages:
   '@types/d3-scale@4.0.9':
     resolution: {integrity: sha512-dLmtwB8zkAeO/juAMfnV+sItKjlsw2lKdZVVy6LRr0cBmegxSABiLEpGVmSJJ8O08i4+sGR6qQtb6WtuwJdvVw==}
 
-  '@types/d3-selection@3.0.12':
-    resolution: {integrity: sha512-Qe/KWYhEiIIxGs7HrAAjMfShxKldx19SJtr5zu53f3afPsdZNz7HHtdTLXo/kqeiWNXVycI24kSnfzBYkTzpgw==}
+  '@types/d3-selection@3.0.13':
+    resolution: {integrity: sha512-oXz0iHVpWOhurycj7P8KehdevbbwQfdOyYPd6u5TUcrk6ofXeQfY0e4Ow+0/35arZ24gs6ubpjJX0CuZHV5fdw==}
 
   '@types/d3-shape@3.2.0':
     resolution: {integrity: sha512-kVd74ta9eof3eJOvbNd1vGKS/XERRyQbT26Og63hIsvDO84cjD5gEOhsXf26w3FSoNlPVz84DOFcKv/oou+fMw==}
@@ -5874,8 +5891,8 @@ packages:
   '@types/node@22.20.7':
     resolution: {integrity: sha512-F/Mcc4pD3YwXQCG50hb8BjB5RmrOere6hge7n2XHf0V8tpkZOVEjwYv9Ql7n0MpMn8Bv7+q12P9w6UHsBm0Sfw==}
 
-  '@types/node@26.6.6':
-    resolution: {integrity: sha512-MzQj+8Kx3XI40OmUAE6Qoh58ZMNstNNMwn2nfd3qWsfe7nDNSqJNzes4njhz6AHwrSHOffSLwXU6yb474Q4aog==}
+  '@types/node@26.6.7':
+    resolution: {integrity: sha512-tovuRfrUILu6v46bMG+BgXxMvsqPBx2WO2as8Rpln+JTff1dbexMtAM4KFTejmL0axsnSWViCW7MecUQpLuBRA==}
 
   '@types/parse-path@7.0.3':
     resolution: {integrity: sha512-LriObC2+KYZD3FzCrgWGv/qufdUy4eXrxcLgQMfYXgPbLIecKIsVBaQgUPmxSSLcjmYbDTQbMgr6qr6l/eb7Bg==}
@@ -5955,14 +5972,14 @@ packages:
   '@videojs/core@10.7.0':
     resolution: {integrity: sha512-B8lqQ0UN5HOiXRRBbGW6/Cl7iRat+XG7Ruq1anAHR0VDuWHOrgV7k1s3d5ViEru2QWVIaFeCCkork5jlIYE7Fg==}
 
-  '@videojs/dash-video@10.6.0':
-    resolution: {integrity: sha512-jX8sQY7efZ1K0yNzd8biVCfgptDjl/x0A7+SiAlBD3842RwB4EYC38wFk+c4wL0JT602/97ihrZhlTnezk8jhQ==}
+  '@videojs/dash-video@10.7.0':
+    resolution: {integrity: sha512-w4L2IJxbcLIHJuRnijb9Sz5Yjd+3U1fUb3Uvz1D8GRhRq8Jyh9AQJDRp3LQr/NhE4moTvlyqJV3H6w6lCACK+A==}
 
   '@videojs/element@10.7.0':
     resolution: {integrity: sha512-h2FVa/WMhVzZqywhbZM2jcKQiGaOw07HWR1OHrwrRhZkMQhG/FDP9dbZ77KyRZiUYenS37iyP1MQcxRzd0yMow==}
 
-  '@videojs/hlsjs-video@10.6.0':
-    resolution: {integrity: sha512-qWTEV6wtZ/RU+oqZx7LVoA0hz9XdCtQSYVCnmCD7tLFRMsDqXAcIGKHJREjJYAibjkwxnt2mGVTRJ6u655QU1w==}
+  '@videojs/hlsjs-video@10.7.0':
+    resolution: {integrity: sha512-GMjV99UMxWBESE+tX6BMqURpT0V7Q+lIbPg3LTOOaz49BekkVQ5id2uA+Ayyua6wbrVoN/yQA4qC1OsRgTvPyg==}
 
   '@videojs/html@10.7.0':
     resolution: {integrity: sha512-/CCSQ/+tB58zO8iyPtktjvHDUsevvC7QixZM1gRQPCRfMbumxP5MDFLIAIVVpPJG0VvzZLNgeuYxezAE1EXESw==}
@@ -6029,26 +6046,17 @@ packages:
       '@videojs/youtube-video':
         optional: true
 
-  '@videojs/media@10.6.0':
-    resolution: {integrity: sha512-L8tqcihVyWShKRAg3+XAubeIDH0RPsxMqB1dkXsqvgewtuh3+hnhSNL/bZTxi76XiFnBsCaQIqHzNyKZTMa86A==}
-
   '@videojs/media@10.7.0':
     resolution: {integrity: sha512-A2+Lg6KMIFAc7vU1Min2gS+tS5ChjYl3MOBrbmttfchBQgeVopVv9jll3lEMkO2zGo25TcmrbzoMaJRd+hvzFg==}
-
-  '@videojs/native-hls-video@10.6.0':
-    resolution: {integrity: sha512-9DGA02tOpYHscymRcO7C+xW9my6qg8KL3dXDhdTTAiZ/WtAj5qtXeNN0EwNPJeX1GC0ylWkI01Nhp/VnI83ldw==}
 
   '@videojs/native-hls-video@10.7.0':
     resolution: {integrity: sha512-O2Q6KYd7H/MLm9NMB9ohavSTSfv583xLrVnSY6JtLWtvPR910Y5iPCXyMNp/58V0b0DU5e4QWtMiVNVCQDUrEg==}
 
-  '@videojs/spf@10.6.0':
-    resolution: {integrity: sha512-0Q3GY0P5dAfFvNoFYzTmdf7MPfwmRHKA1B+0ItnXiz91xj0ngvJKmIKhqy0ySy3ooWXjMIV4jDJ7DulrjpvxDw==}
-
   '@videojs/spf@10.7.0':
     resolution: {integrity: sha512-vN7cxIZ7OlV31mKZLSNhmpnmg/6DuTLkXZSbPjr38zC1nqMczU9+QM92dpJ5ikgJBvJ+dHHyx+pIhCcPm6LJcA==}
 
-  '@videojs/spotify-audio@10.6.0':
-    resolution: {integrity: sha512-a0BIrdN9F/yArnXec7Ou4wN1rcqb0tFg6vh9yFZxzE039/rfYNJspZ3hvpyomb0OQfwXbyjShdjEyD15H8tVaQ==}
+  '@videojs/spotify-audio@10.7.0':
+    resolution: {integrity: sha512-4IZ4Io8wMVZ6lckFVE2m4PRC1OVq/rVX2n+micGS+9SZinwMCYFzcdMeZDiMK8/DnMFNPpFsDsbvyAWlh8c5/w==}
 
   '@videojs/store@10.7.0':
     resolution: {integrity: sha512-q36pxYfLgZlKgl5RfMD3QilFLMJpzHlxN2+njAKV1mCBhaAuUhhFQAZhdIcdgiYDVxbJY/beHQNDifKn8fJU6A==}
@@ -6061,23 +6069,20 @@ packages:
       react:
         optional: true
 
-  '@videojs/tiktok-video@10.6.0':
-    resolution: {integrity: sha512-45cz/yLCBp417X6sf9yFw3ZHLeiek6n8fWf2Br/eJ2poqbK59Zyzg7JtOkAvHh2AypKr5Ojj6MNzQPH0LVIsVg==}
+  '@videojs/tiktok-video@10.7.0':
+    resolution: {integrity: sha512-x/F/YgcFb0DpRU0kbje8Ddyx1SRDTQhnQ+qFnkCyqKmIjWX9ON057rbof8U3CE21QWEACH1fTLrT6REgfN/t2w==}
 
-  '@videojs/twitch-video@10.6.0':
-    resolution: {integrity: sha512-3n8N2gvMXLIz3lFsNdOZVj+qVpsWsKXNxyFqzW89n1k1jlMvpnqzQXyTbgV/n6OpvCiAgkf53IjAXydG2L+O2Q==}
-
-  '@videojs/utils@10.6.0':
-    resolution: {integrity: sha512-lQeB3CC55Hzzx3umwneyYjiyVabqdzuInObQfuBfGfqBaxAm8SwY4jIDPyGIYTo6jvMb6YMEUQ0wYZig5hhWug==}
+  '@videojs/twitch-video@10.7.0':
+    resolution: {integrity: sha512-pPfsDICTu/oXRuS1gkq4CZG53Q+/vMHhOJ+C7cerKABYBvT0hFqCDabHlTc01Au5p45DHJkyWUTbdZuvVV5/Cw==}
 
   '@videojs/utils@10.7.0':
     resolution: {integrity: sha512-jKO/wWaZzV5XmK7rgJW6qmubWMvZYax0CNdeRSRj+qEo565p5zWGBKIiGX0SXfSqOWG0ze419wHbkfntxo22Yw==}
 
-  '@videojs/vimeo-video@10.6.0':
-    resolution: {integrity: sha512-tp0OjQ1R3AexOO6+8dpda9S2XRHKT5nGbpnvR5F+aztTX0BAK7PIEUlmn5xkhkbyQ3bdIQGQkVDMZcaSi1V3Uw==}
+  '@videojs/vimeo-video@10.7.0':
+    resolution: {integrity: sha512-/Vk+3tM/+x+jOLZ+MhJN1z8FMFnvS8tsX87B+hzwtYC1Fos+Jv6s7KWay7d7XGnNQYLGJtzCU7+pN6bBibPFLw==}
 
-  '@videojs/youtube-video@10.6.0':
-    resolution: {integrity: sha512-ASfMLjs6CYOwySevKmIAs9DZC55yOOBqzvwDTvp79ilYZ2lhtfJuiszYnPyF36LGOxIsI1mrYi3JYpB7seBMoQ==}
+  '@videojs/youtube-video@10.7.0':
+    resolution: {integrity: sha512-Tv/FIYbEFgphy74Cxl8pEUoWHGxVa+crw9iDIbagDH+RSsKMrQoduOHtJ8S3Pl11/MR0cCAaI5/yqkTH/IfahA==}
 
   '@vimeo/player@2.30.3':
     resolution: {integrity: sha512-3skwNetfstLG/KvbfrwhUDms3Cd68LfqbN2DNYijcMV+oPGf5GzekVBxNCrxbeLXyVZMNZCXWV0DQQAwcQJ/iA==}
@@ -7438,8 +7443,8 @@ packages:
     engines: {node: '>=0.10.0'}
     hasBin: true
 
-  electron-to-chromium@1.5.493:
-    resolution: {integrity: sha512-/Wto2sKd0EpepzMqwSP2il2TNc+rnBDF6k1poCvhRKpaSSD4sLGRBE+FydqHs2QwcW9cXKLVDqnauzJy1oByYw==}
+  electron-to-chromium@1.5.494:
+    resolution: {integrity: sha512-Tph7ohL4Xc0ft3DXElYEIVTmPI3H0MtPCTdgtz5AwWGZG6q+vMiT3IzJ3RJX/HJQ8pYzeimQyvi6SsBTOS0nyQ==}
 
   elkjs@0.12.1:
     resolution: {integrity: sha512-IhMYKHE4S2vtx0QrhBP3lYOIKDeIiJXBrdq9MGYkuB8ZHqhrBnHNfSUndjXFewrX1CPK8chwq+2NA0K0hliYuw==}
@@ -7683,8 +7688,8 @@ packages:
     resolution: {integrity: sha512-b6suED+5/3rTpUBdG1gupIl8MPFCAMA0QXwmljLhvCUKcUvdE4gWky9zpuGCcXHOsz4J9wPGNWq6OKpmIzz3hQ==}
     hasBin: true
 
-  flatbush@4.7.0:
-    resolution: {integrity: sha512-oFBkbYI3Rx6snZEBQOiJSaxt1MfZtbH2p862dRmIOOYRVxQWDyAn4oyKjoJv7TgmOft2yIavvooOU5itliagOw==}
+  flatbush@4.8.0:
+    resolution: {integrity: sha512-VX5qs2fSGZlMIQQZg4x9LjbbRGTxY31UxYaE3XExXYvjgwUM1GGTeQAyfO8HPUAPvo/W01QaZ1AHJq7mWntmSA==}
 
   flatqueue@3.1.0:
     resolution: {integrity: sha512-Ia4qIYrrsEqIRx3c3XhkT+QDLQuUV5ovsr6ah1rIgKT5wclhoGK3lAMS1bWRAWxlx7wtlTBpV7QXB5d9fOSRxA==}
@@ -10529,8 +10534,8 @@ packages:
     resolution: {integrity: sha512-uo33abH+Ays0xYaDysoBt494Hb3hsEczMpcC0MwFl773pazORx4fmvKhclhR1wonUbB6vvpRsvVMwnhfqeMc+A==}
     engines: {node: ^16.14.0 || >= 17.3.0}
 
-  tinyexec@1.3.1:
-    resolution: {integrity: sha512-GCvB3aoys96IuDFBMcTB46JOR6mdMtAToqwiW8JlWhsoh1mhHi/xn9ss/Dg7N555GiJyEt2qzoG/NHCwM6h1EA==}
+  tinyexec@1.4.0:
+    resolution: {integrity: sha512-PV6lIcJQh57aFeJDwx16JNHmgFRh5xguzallrDW1qe8nAghYgr5MKz2K5k7wEyV/ygZhdnIAP8+HZSarHPBCsg==}
     engines: {node: '>=18'}
 
   tinyglobby@0.2.17:
@@ -11503,7 +11508,7 @@ snapshots:
   '@antfu/install-pkg@2.1.0':
     dependencies:
       package-manager-detector: 1.9.0
-      tinyexec: 1.3.1
+      tinyexec: 1.4.0
 
   '@apideck/better-ajv-errors@0.3.7(ajv@8.20.0)':
     dependencies:
@@ -13016,7 +13021,7 @@ snapshots:
 
   '@jest/pattern@30.5.0':
     dependencies:
-      '@types/node': 26.6.6
+      '@types/node': 22.20.7
       jest-regex-util: 30.5.0
 
   '@jest/schemas@30.5.0':
@@ -13029,7 +13034,7 @@ snapshots:
       '@jest/schemas': 30.5.0
       '@types/istanbul-lib-coverage': 2.0.6
       '@types/istanbul-reports': 3.0.4
-      '@types/node': 26.6.6
+      '@types/node': 22.20.7
       '@types/yargs': 17.0.35
       chalk: 4.1.2
 
@@ -13214,7 +13219,7 @@ snapshots:
       json5: 2.2.3
       lilconfig: 3.1.5
       npm-package-arg: 13.0.2
-      tinyexec: 1.3.1
+      tinyexec: 1.4.0
       verkit: 0.5.0
       write-file-atomic: 7.0.1
       write-json-file: 7.0.0
@@ -13345,7 +13350,7 @@ snapshots:
       '@markmap/render': 1.1.1
       d3-selection: 3.0.1
       d3-zoom: 3.0.1
-      flatbush: 4.7.0
+      flatbush: 4.8.0
       hast-util-sanitize: 5.0.2
       hast-util-to-html: 9.0.7
       hast-util-to-text: 4.0.5
@@ -14121,7 +14126,7 @@ snapshots:
 
   '@publint/pack@0.1.7':
     dependencies:
-      tinyexec: 1.3.1
+      tinyexec: 1.4.0
 
   '@quansync/fs@1.1.0':
     dependencies:
@@ -14543,15 +14548,29 @@ snapshots:
 
   '@svta/cml-608@1.1.0': {}
 
-  '@svta/cml-cmcd@2.3.2': {}
+  '@svta/cml-cmcd@2.3.2(@svta/cml-structured-field-values@1.1.3(@svta/cml-utils@1.5.0))(@svta/cml-utils@1.5.0)':
+    dependencies:
+      '@svta/cml-structured-field-values': 1.1.3(@svta/cml-utils@1.5.0)
+      '@svta/cml-utils': 1.5.0
 
   '@svta/cml-cmcd@2.8.2': {}
 
-  '@svta/cml-cmsd@1.0.6': {}
+  '@svta/cml-cmsd@1.0.6(@svta/cml-cta@1.0.6(@svta/cml-structured-field-values@1.1.3(@svta/cml-utils@1.5.0))(@svta/cml-utils@1.5.0))(@svta/cml-structured-field-values@1.1.3(@svta/cml-utils@1.5.0))(@svta/cml-utils@1.5.0)':
+    dependencies:
+      '@svta/cml-cta': 1.0.6(@svta/cml-structured-field-values@1.1.3(@svta/cml-utils@1.5.0))(@svta/cml-utils@1.5.0)
+      '@svta/cml-structured-field-values': 1.1.3(@svta/cml-utils@1.5.0)
+      '@svta/cml-utils': 1.5.0
 
   '@svta/cml-cmsd@1.1.1': {}
 
-  '@svta/cml-dash@1.0.6': {}
+  '@svta/cml-cta@1.0.6(@svta/cml-structured-field-values@1.1.3(@svta/cml-utils@1.5.0))(@svta/cml-utils@1.5.0)':
+    dependencies:
+      '@svta/cml-structured-field-values': 1.1.3(@svta/cml-utils@1.5.0)
+      '@svta/cml-utils': 1.5.0
+
+  '@svta/cml-dash@1.0.6(@svta/cml-utils@1.5.0)':
+    dependencies:
+      '@svta/cml-utils': 1.5.0
 
   '@svta/cml-dash@1.0.9': {}
 
@@ -14559,23 +14578,34 @@ snapshots:
     dependencies:
       '@svta/cml-utils': 1.8.0
 
-  '@svta/cml-id3@1.0.6': {}
+  '@svta/cml-id3@1.0.6(@svta/cml-utils@1.5.0)':
+    dependencies:
+      '@svta/cml-utils': 1.5.0
 
   '@svta/cml-id3@1.0.9': {}
 
-  '@svta/cml-request@1.0.12(@svta/cml-cmcd@2.3.2)(@svta/cml-xml@1.1.4)':
+  '@svta/cml-request@1.0.12(@svta/cml-cmcd@2.3.2(@svta/cml-structured-field-values@1.1.3(@svta/cml-utils@1.5.0))(@svta/cml-utils@1.5.0))(@svta/cml-utils@1.5.0)(@svta/cml-xml@1.1.4(@svta/cml-utils@1.5.0))':
     dependencies:
-      '@svta/cml-cmcd': 2.3.2
-      '@svta/cml-xml': 1.1.4
+      '@svta/cml-cmcd': 2.3.2(@svta/cml-structured-field-values@1.1.3(@svta/cml-utils@1.5.0))(@svta/cml-utils@1.5.0)
+      '@svta/cml-utils': 1.5.0
+      '@svta/cml-xml': 1.1.4(@svta/cml-utils@1.5.0)
 
   '@svta/cml-request@1.0.21(@svta/cml-cmcd@2.8.2)(@svta/cml-xml@1.2.1)':
     dependencies:
       '@svta/cml-cmcd': 2.8.2
       '@svta/cml-xml': 1.2.1
 
+  '@svta/cml-structured-field-values@1.1.3(@svta/cml-utils@1.5.0)':
+    dependencies:
+      '@svta/cml-utils': 1.5.0
+
+  '@svta/cml-utils@1.5.0': {}
+
   '@svta/cml-utils@1.8.0': {}
 
-  '@svta/cml-xml@1.1.4': {}
+  '@svta/cml-xml@1.1.4(@svta/cml-utils@1.5.0)':
+    dependencies:
+      '@svta/cml-utils': 1.5.0
 
   '@svta/cml-xml@1.2.1': {}
 
@@ -14618,11 +14648,11 @@ snapshots:
   '@types/body-parser@1.19.6':
     dependencies:
       '@types/connect': 3.4.38
-      '@types/node': 26.6.6
+      '@types/node': 22.20.7
 
   '@types/bonjour@3.5.13':
     dependencies:
-      '@types/node': 26.6.6
+      '@types/node': 22.20.7
 
   '@types/byte-size@8.1.2': {}
 
@@ -14634,11 +14664,11 @@ snapshots:
   '@types/connect-history-api-fallback@1.5.4':
     dependencies:
       '@types/express-serve-static-core': 5.1.3
-      '@types/node': 26.6.6
+      '@types/node': 22.20.7
 
   '@types/connect@3.4.38':
     dependencies:
-      '@types/node': 26.6.6
+      '@types/node': 22.20.7
 
   '@types/culori@4.0.1': {}
 
@@ -14646,11 +14676,11 @@ snapshots:
 
   '@types/d3-axis@3.0.6':
     dependencies:
-      '@types/d3-selection': 3.0.12
+      '@types/d3-selection': 3.0.13
 
   '@types/d3-brush@3.0.6':
     dependencies:
-      '@types/d3-selection': 3.0.12
+      '@types/d3-selection': 3.0.13
 
   '@types/d3-chord@3.0.6': {}
 
@@ -14667,7 +14697,7 @@ snapshots:
 
   '@types/d3-drag@3.0.7':
     dependencies:
-      '@types/d3-selection': 3.0.12
+      '@types/d3-selection': 3.0.13
 
   '@types/d3-dsv@3.0.7': {}
 
@@ -14705,7 +14735,7 @@ snapshots:
     dependencies:
       '@types/d3-time': 3.0.4
 
-  '@types/d3-selection@3.0.12': {}
+  '@types/d3-selection@3.0.13': {}
 
   '@types/d3-shape@3.2.0':
     dependencies:
@@ -14719,12 +14749,12 @@ snapshots:
 
   '@types/d3-transition@3.0.9':
     dependencies:
-      '@types/d3-selection': 3.0.12
+      '@types/d3-selection': 3.0.13
 
   '@types/d3-zoom@3.0.9':
     dependencies:
       '@types/d3-interpolate': 3.0.4
-      '@types/d3-selection': 3.0.12
+      '@types/d3-selection': 3.0.13
 
   '@types/d3@7.4.3':
     dependencies:
@@ -14751,7 +14781,7 @@ snapshots:
       '@types/d3-random': 3.0.4
       '@types/d3-scale': 4.0.9
       '@types/d3-scale-chromatic': 3.1.0
-      '@types/d3-selection': 3.0.12
+      '@types/d3-selection': 3.0.13
       '@types/d3-shape': 3.2.0
       '@types/d3-time': 3.0.4
       '@types/d3-time-format': 4.0.3
@@ -14769,7 +14799,7 @@ snapshots:
 
   '@types/express-serve-static-core@5.1.3':
     dependencies:
-      '@types/node': 26.6.6
+      '@types/node': 22.20.7
       '@types/qs': 6.15.1
       '@types/range-parser': 1.2.7
       '@types/send': 1.2.1
@@ -14827,7 +14857,7 @@ snapshots:
     dependencies:
       undici-types: 6.21.0
 
-  '@types/node@26.6.6':
+  '@types/node@26.6.7':
     dependencies:
       undici-types: 8.9.0
 
@@ -14839,7 +14869,7 @@ snapshots:
 
   '@types/qrcode@1.5.6':
     dependencies:
-      '@types/node': 26.6.6
+      '@types/node': 22.20.7
 
   '@types/qs@6.15.1': {}
 
@@ -14849,13 +14879,13 @@ snapshots:
 
   '@types/sax@1.2.7':
     dependencies:
-      '@types/node': 26.6.6
+      '@types/node': 26.6.7
 
   '@types/semver@7.8.0': {}
 
   '@types/send@1.2.1':
     dependencies:
-      '@types/node': 26.6.6
+      '@types/node': 22.20.7
 
   '@types/serve-index@1.9.4':
     dependencies:
@@ -14864,7 +14894,7 @@ snapshots:
   '@types/serve-static@2.2.0':
     dependencies:
       '@types/http-errors': 2.0.5
-      '@types/node': 26.6.6
+      '@types/node': 22.20.7
 
   '@types/trusted-types@2.0.7': {}
 
@@ -14912,11 +14942,11 @@ snapshots:
       - '@videojs/element'
       - react
 
-  '@videojs/dash-video@10.6.0':
+  '@videojs/dash-video@10.7.0(@svta/cml-cta@1.0.6(@svta/cml-structured-field-values@1.1.3(@svta/cml-utils@1.5.0))(@svta/cml-utils@1.5.0))(@svta/cml-structured-field-values@1.1.3(@svta/cml-utils@1.5.0))(@svta/cml-utils@1.5.0)':
     dependencies:
-      '@videojs/media': 10.6.0
-      '@videojs/utils': 10.6.0
-      dashjs: 5.2.0
+      '@videojs/media': 10.7.0
+      '@videojs/utils': 10.7.0
+      dashjs: 5.2.0(@svta/cml-cta@1.0.6(@svta/cml-structured-field-values@1.1.3(@svta/cml-utils@1.5.0))(@svta/cml-utils@1.5.0))(@svta/cml-structured-field-values@1.1.3(@svta/cml-utils@1.5.0))(@svta/cml-utils@1.5.0)
     transitivePeerDependencies:
       - '@svta/cml-cta'
       - '@svta/cml-structured-field-values'
@@ -14927,15 +14957,15 @@ snapshots:
       '@lit/context': 1.1.6
       '@videojs/utils': 10.7.0
 
-  '@videojs/hlsjs-video@10.6.0':
+  '@videojs/hlsjs-video@10.7.0':
     dependencies:
-      '@videojs/media': 10.6.0
-      '@videojs/native-hls-video': 10.6.0
-      '@videojs/spf': 10.6.0
-      '@videojs/utils': 10.6.0
+      '@videojs/media': 10.7.0
+      '@videojs/native-hls-video': 10.7.0
+      '@videojs/spf': 10.7.0
+      '@videojs/utils': 10.7.0
       hls.js: 1.7.4
 
-  '@videojs/html@10.7.0(@videojs/dash-video@10.6.0)(@videojs/hlsjs-video@10.6.0)(@videojs/spotify-audio@10.6.0)(@videojs/tiktok-video@10.6.0)(@videojs/twitch-video@10.6.0)(@videojs/vimeo-video@10.6.0)(@videojs/youtube-video@10.6.0)(react@19.3.1)':
+  '@videojs/html@10.7.0(@videojs/dash-video@10.7.0(@svta/cml-cta@1.0.6(@svta/cml-structured-field-values@1.1.3(@svta/cml-utils@1.5.0))(@svta/cml-utils@1.5.0))(@svta/cml-structured-field-values@1.1.3(@svta/cml-utils@1.5.0))(@svta/cml-utils@1.5.0))(@videojs/hlsjs-video@10.7.0)(@videojs/spotify-audio@10.7.0)(@videojs/tiktok-video@10.7.0)(@videojs/twitch-video@10.7.0)(@videojs/vimeo-video@10.7.0)(@videojs/youtube-video@10.7.0)(react@19.3.1)':
     dependencies:
       '@videojs/core': 10.7.0(@videojs/element@10.7.0)(react@19.3.1)
       '@videojs/element': 10.7.0
@@ -14945,43 +14975,25 @@ snapshots:
       '@videojs/store': 10.7.0(@videojs/element@10.7.0)(react@19.3.1)
       '@videojs/utils': 10.7.0
     optionalDependencies:
-      '@videojs/dash-video': 10.6.0
-      '@videojs/hlsjs-video': 10.6.0
-      '@videojs/spotify-audio': 10.6.0
-      '@videojs/tiktok-video': 10.6.0
-      '@videojs/twitch-video': 10.6.0
-      '@videojs/vimeo-video': 10.6.0
-      '@videojs/youtube-video': 10.6.0
+      '@videojs/dash-video': 10.7.0(@svta/cml-cta@1.0.6(@svta/cml-structured-field-values@1.1.3(@svta/cml-utils@1.5.0))(@svta/cml-utils@1.5.0))(@svta/cml-structured-field-values@1.1.3(@svta/cml-utils@1.5.0))(@svta/cml-utils@1.5.0)
+      '@videojs/hlsjs-video': 10.7.0
+      '@videojs/spotify-audio': 10.7.0
+      '@videojs/tiktok-video': 10.7.0
+      '@videojs/twitch-video': 10.7.0
+      '@videojs/vimeo-video': 10.7.0
+      '@videojs/youtube-video': 10.7.0
     transitivePeerDependencies:
       - react
-
-  '@videojs/media@10.6.0':
-    dependencies:
-      '@videojs/utils': 10.6.0
 
   '@videojs/media@10.7.0':
     dependencies:
       '@videojs/utils': 10.7.0
-
-  '@videojs/native-hls-video@10.6.0':
-    dependencies:
-      '@videojs/media': 10.6.0
-      '@videojs/spf': 10.6.0
-      '@videojs/utils': 10.6.0
 
   '@videojs/native-hls-video@10.7.0':
     dependencies:
       '@videojs/media': 10.7.0
       '@videojs/spf': 10.7.0
       '@videojs/utils': 10.7.0
-
-  '@videojs/spf@10.6.0':
-    dependencies:
-      '@svta/cml-error-codes': 0.1.2(@svta/cml-utils@1.8.0)
-      '@svta/cml-utils': 1.8.0
-      '@videojs/media': 10.6.0
-      '@videojs/utils': 10.6.0
-      signal-polyfill: 0.2.3
 
   '@videojs/spf@10.7.0':
     dependencies:
@@ -14991,10 +15003,10 @@ snapshots:
       '@videojs/utils': 10.7.0
       signal-polyfill: 0.2.3
 
-  '@videojs/spotify-audio@10.6.0':
+  '@videojs/spotify-audio@10.7.0':
     dependencies:
-      '@videojs/media': 10.6.0
-      '@videojs/utils': 10.6.0
+      '@videojs/media': 10.7.0
+      '@videojs/utils': 10.7.0
 
   '@videojs/store@10.7.0(@videojs/element@10.7.0)(react@19.3.1)':
     dependencies:
@@ -15003,30 +15015,28 @@ snapshots:
       '@videojs/element': 10.7.0
       react: 19.3.1
 
-  '@videojs/tiktok-video@10.6.0':
+  '@videojs/tiktok-video@10.7.0':
     dependencies:
-      '@videojs/media': 10.6.0
-      '@videojs/utils': 10.6.0
+      '@videojs/media': 10.7.0
+      '@videojs/utils': 10.7.0
 
-  '@videojs/twitch-video@10.6.0':
+  '@videojs/twitch-video@10.7.0':
     dependencies:
-      '@videojs/media': 10.6.0
-      '@videojs/utils': 10.6.0
-
-  '@videojs/utils@10.6.0': {}
+      '@videojs/media': 10.7.0
+      '@videojs/utils': 10.7.0
 
   '@videojs/utils@10.7.0': {}
 
-  '@videojs/vimeo-video@10.6.0':
+  '@videojs/vimeo-video@10.7.0':
     dependencies:
-      '@videojs/media': 10.6.0
-      '@videojs/utils': 10.6.0
+      '@videojs/media': 10.7.0
+      '@videojs/utils': 10.7.0
       '@vimeo/player': 2.30.3
 
-  '@videojs/youtube-video@10.6.0':
+  '@videojs/youtube-video@10.7.0':
     dependencies:
-      '@videojs/media': 10.6.0
-      '@videojs/utils': 10.6.0
+      '@videojs/media': 10.7.0
+      '@videojs/utils': 10.7.0
 
   '@vimeo/player@2.30.3':
     dependencies:
@@ -15893,7 +15903,7 @@ snapshots:
     dependencies:
       baseline-browser-mapping: 2.11.39
       caniuse-lite: 1.0.30001828
-      electron-to-chromium: 1.5.493
+      electron-to-chromium: 1.5.494
       node-releases: 2.0.65
       update-browserslist-db: 1.4.0(browserslist@4.29.6)
 
@@ -16582,15 +16592,15 @@ snapshots:
       d3: 7.9.2
       lodash-es: 4.18.1
 
-  dashjs@5.2.0:
+  dashjs@5.2.0(@svta/cml-cta@1.0.6(@svta/cml-structured-field-values@1.1.3(@svta/cml-utils@1.5.0))(@svta/cml-utils@1.5.0))(@svta/cml-structured-field-values@1.1.3(@svta/cml-utils@1.5.0))(@svta/cml-utils@1.5.0):
     dependencies:
       '@svta/cml-608': 1.0.2
-      '@svta/cml-cmcd': 2.3.2
-      '@svta/cml-cmsd': 1.0.6
-      '@svta/cml-dash': 1.0.6
-      '@svta/cml-id3': 1.0.6
-      '@svta/cml-request': 1.0.12(@svta/cml-cmcd@2.3.2)(@svta/cml-xml@1.1.4)
-      '@svta/cml-xml': 1.1.4
+      '@svta/cml-cmcd': 2.3.2(@svta/cml-structured-field-values@1.1.3(@svta/cml-utils@1.5.0))(@svta/cml-utils@1.5.0)
+      '@svta/cml-cmsd': 1.0.6(@svta/cml-cta@1.0.6(@svta/cml-structured-field-values@1.1.3(@svta/cml-utils@1.5.0))(@svta/cml-utils@1.5.0))(@svta/cml-structured-field-values@1.1.3(@svta/cml-utils@1.5.0))(@svta/cml-utils@1.5.0)
+      '@svta/cml-dash': 1.0.6(@svta/cml-utils@1.5.0)
+      '@svta/cml-id3': 1.0.6(@svta/cml-utils@1.5.0)
+      '@svta/cml-request': 1.0.12(@svta/cml-cmcd@2.3.2(@svta/cml-structured-field-values@1.1.3(@svta/cml-utils@1.5.0))(@svta/cml-utils@1.5.0))(@svta/cml-utils@1.5.0)(@svta/cml-xml@1.1.4(@svta/cml-utils@1.5.0))
+      '@svta/cml-xml': 1.1.4(@svta/cml-utils@1.5.0)
       bcp-47-match: 2.0.3
       codem-isoboxer: 0.3.10
       fast-deep-equal: 3.1.3
@@ -16797,7 +16807,7 @@ snapshots:
     dependencies:
       jake: 10.9.4
 
-  electron-to-chromium@1.5.493: {}
+  electron-to-chromium@1.5.494: {}
 
   elkjs@0.12.1: {}
 
@@ -17105,7 +17115,7 @@ snapshots:
 
   flat@5.0.2: {}
 
-  flatbush@4.7.0:
+  flatbush@4.8.0:
     dependencies:
       flatqueue: 3.1.0
 
@@ -17738,7 +17748,7 @@ snapshots:
   jest-util@30.5.1:
     dependencies:
       '@jest/types': 30.5.1
-      '@types/node': 26.6.6
+      '@types/node': 22.20.7
       chalk: 4.1.2
       ci-info: 4.5.0
       graceful-fs: 4.2.12
@@ -17746,13 +17756,13 @@ snapshots:
 
   jest-worker@27.5.1:
     dependencies:
-      '@types/node': 26.6.6
+      '@types/node': 22.20.7
       merge-stream: 2.0.0
       supports-color: 8.1.1
 
   jest-worker@30.5.1:
     dependencies:
-      '@types/node': 26.6.6
+      '@types/node': 22.20.7
       '@ungap/structured-clone': 1.4.0
       jest-util: 30.5.1
       merge-stream: 2.0.0
@@ -19976,7 +19986,7 @@ snapshots:
 
   sitemap@10.0.0:
     dependencies:
-      '@types/node': 26.6.6
+      '@types/node': 26.6.7
       '@types/sax': 1.2.7
       sax: 1.6.1
 
@@ -20338,7 +20348,7 @@ snapshots:
 
   tinyclip@0.1.15: {}
 
-  tinyexec@1.3.1: {}
+  tinyexec@1.4.0: {}
 
   tinyglobby@0.2.17:
     dependencies:
@@ -20384,7 +20394,7 @@ snapshots:
       picomatch: 4.0.7
       rolldown: 1.3.3
       rolldown-plugin-dts: 0.30.2(@volar/typescript@2.4.31(typescript@6.0.3))(@vue/language-core@3.3.14)(rolldown@1.3.3)(typescript@6.0.3)
-      tinyexec: 1.3.1
+      tinyexec: 1.4.0
       tinyglobby: 0.2.17
       tinyps: 0.5.2
       unconfig-core: 7.5.0
@@ -20678,7 +20688,7 @@ snapshots:
       picomatch: 4.0.7
       std-env: 4.3.0
       tinybench: 6.2.5
-      tinyexec: 1.3.1
+      tinyexec: 1.4.0
       tinyglobby: 0.2.17
       vite: 8.3.8(@types/node@22.20.7)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.108.2)(sass@1.108.2)(terser@5.51.4)(yaml@2.9.1)
       why-is-node-running: 3.2.1
