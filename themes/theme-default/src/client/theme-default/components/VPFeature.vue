@@ -1,7 +1,16 @@
 <script setup lang="ts">
+import { getCurrentInstance, type Component } from 'vue'
+
 import type { FeatureIcon } from '../shared.js'
 import VPImage from './VPImage.vue'
 import VPLink from './VPLink.vue'
+
+// `VPIcon` is registered by `@vuepress/plugin-icon`, resolve it from the app
+// context so that a site without the plugin does not warn about a missing
+// component
+const iconComponent = getCurrentInstance()?.appContext.components.VPIcon as
+  | Component
+  | undefined
 
 defineProps<{
   icon?: FeatureIcon
@@ -44,7 +53,7 @@ defineProps<{
         class="icon"
       >
         <!-- iconify icon names are rendered by @vuepress/plugin-icon -->
-        <VPIcon :icon="icon" />
+        <component v-if="iconComponent" :is="iconComponent" :icon="icon" />
       </div>
       <div v-else-if="icon" class="icon" v-html="icon"></div>
       <h2 class="title"><bdi v-html="title" /></h2>

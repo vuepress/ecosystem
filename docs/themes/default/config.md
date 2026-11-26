@@ -74,9 +74,11 @@ The message line of the footer. HTML is allowed.
 
 The copyright line of the footer. HTML is allowed.
 
-@`notFound` type=`NotFoundOptions`
+@`notFound` type=`NotFoundOptions | string[]`
 
 Customize the text of the 404 page. Every field falls back to the built-in English text, so a site only sets the fields it wants to translate.
+
+The classic theme option passes a list of random messages: only the first one is used as the `quote`.
 
 Its fields are:
 
@@ -434,9 +436,9 @@ Where to render the aside that contains the outline. The default is the right si
 
 A page always has its aside disabled on the home page, and it can override the theme config in its frontmatter.
 
-@`editLink` type=`EditLink`
+@`editLink` type=`EditLink | false`
 
-The "edit this page" link in the document footer. It is disabled when the option is not set.
+The "edit this page" link in the document footer. It is disabled when the option is not set or is `false`.
 
 Its fields are:
 
@@ -447,6 +449,25 @@ The pattern of the link. In a string pattern, `:path` is replaced by the file pa
 @@`editLink.text` type=string default=`'Edit this page'`
 
 The text of the link.
+
+The theme exports `getEditLinkPattern` to build the pattern from a repository, a branch and a directory:
+
+```ts
+import { defaultTheme, getEditLinkPattern } from '@vuepress/theme-default'
+
+export default defaultTheme({
+  editLink: {
+    pattern: getEditLinkPattern({
+      repo: 'vuepress/ecosystem',
+      branch: 'main',
+      dir: 'docs',
+    }),
+    text: 'Edit this page',
+  },
+})
+```
+
+The classic theme options `editLink: true`, `editLinkText`, `editLinkPattern`, `docsRepo`, `docsBranch` and `docsDir` are still accepted and mapped to this option, but they are deprecated and log a warning at build time.
 
 @`lastUpdated` type=`LastUpdatedOptions | boolean`
 
@@ -611,12 +632,25 @@ export default defineUserConfig({
   theme: defaultTheme({
     themePlugins: {
       copyCode: false,
+      icon: false,
+    },
+    markdownPlugins: {
       shiki: { themes: { light: 'vitesse-light', dark: 'vitesse-dark' } },
-      markdownHint: { alert: true },
+      hint: { alert: true },
     },
   }),
 })
 ```
 
 See [Plugins](./plugin.md) for every key, its default value and the plugin documentation.
+::::
+
+## Markdown Plugins
+
+:::: fields
+@`markdownPlugins` type=`MarkdownPluginsOptions`
+
+The options of the Markdown plugins wired by the theme: `shiki`, `ext`, `raw`, `hint` and `tab`. Like `themePlugins`, a key accepts `true`, `false` or an options object.
+
+See [Plugins](./plugin.md#markdownplugins) for every key and its default value.
 ::::

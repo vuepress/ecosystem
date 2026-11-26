@@ -27,11 +27,12 @@ import { isString } from 'vuepress/shared'
 import type {
   AppearanceOptions,
   LocaleConfig,
-  ThemeConfig,
-  ThemePluginsOptions,
+  MarkdownPluginsOptions,
   NavbarOptions,
   SidebarItem,
   SidebarOptions,
+  ThemeConfig,
+  ThemePluginsOptions,
 } from '../shared/types.js'
 import {
   normalizeSidebar,
@@ -95,7 +96,8 @@ export const resolveThemeData = (
     ...rest
   } = options
 
-  if (!locales) return normalizeThemeConfig(rest)
+  if (!locales)
+    return normalizeThemeConfig(rest) as unknown as Record<string, unknown>
 
   return normalizeThemeConfig({
     ...rest,
@@ -105,7 +107,7 @@ export const resolveThemeData = (
         normalizeThemeConfig(value as ThemeOptions),
       ]),
     ),
-  })
+  }) as unknown as Record<string, unknown>
 }
 
 /**
@@ -192,9 +194,9 @@ export const resolveHintLocales = (
  * @param options - Theme options / 主题配置项
  * @returns Whether to collect the contributors / 是否收集贡献者
  */
-const resolveContributors = (options: ThemeOptions): boolean =>
-  options.contributors !== false ||
-  Object.values(options.locales ?? {}).some(
+const resolveContributors = (themeData: ThemeConfig): boolean =>
+  themeData.contributors !== false ||
+  Object.values(themeData.locales ?? {}).some(
     (locale) => locale.contributors !== false,
   )
 
@@ -305,21 +307,27 @@ export interface ThemeOptions extends Omit<
  */
 const resolveMarkdownPlugins = (
   options: ThemeOptions,
-  plugins: ThemePluginsOptions,
+  plugins: MarkdownPluginsOptions,
 ): ThemePluginList => [
-  ...(plugins.markdownExt === false
+  ...(plugins.shiki === false
+    ? []
+    : [
+        shikiPlugin({
+          themes: { light: 'github-light', dark: 'github-dark' },
+          ...(typeof plugins.shiki === 'object' ? plugins.shiki : {}),
+        }),
+      ]),
+  ...(plugins.ext === false
     ? []
     : [
         markdownExtPlugin({
           // `v-pre` is the VitePress built-in container, it is provided by the
           // markdown extensions plugin
           vPre: true,
-          ...(typeof plugins.markdownExt === 'object'
-            ? plugins.markdownExt
-            : {}),
+          ...(typeof plugins.ext === 'object' ? plugins.ext : {}),
         }),
       ]),
-  ...(plugins.markdownRaw === false
+  ...(plugins.raw === false
     ? []
     : [
         markdownRawPlugin({
@@ -327,31 +335,25 @@ const resolveMarkdownPlugins = (
           // that the container works out of the box. VitePress leaves the
           // isolation to the site (it is opt-in there).
           isolateStyles: true,
-          ...(typeof plugins.markdownRaw === 'object'
-            ? plugins.markdownRaw
-            : {}),
+          ...(typeof plugins.raw === 'object' ? plugins.raw : {}),
         }),
       ]),
-  ...(plugins.markdownHint === false
+  ...(plugins.hint === false
     ? []
     : [
         markdownHintPlugin({
           alert: true,
           hint: true,
           locales: resolveHintLocales(options),
-          ...(typeof plugins.markdownHint === 'object'
-            ? plugins.markdownHint
-            : {}),
+          ...(typeof plugins.hint === 'object' ? plugins.hint : {}),
         }),
       ]),
-  ...(plugins.markdownTab === false
+  ...(plugins.tab === false
     ? []
     : [
         markdownTabPlugin({
           codeTabs: true,
-          ...(typeof plugins.markdownTab === 'object'
-            ? plugins.markdownTab
-            : {}),
+          ...(typeof plugins.tab === 'object' ? plugins.tab : {}),
         }),
       ]),
 ]
@@ -368,7 +370,9 @@ const resolveMarkdownPlugins = (
  */
 const resolveThemePlugins = (
   options: ThemeOptions,
+  themeData: ThemeConfig,
   plugins: ThemePluginsOptions,
+  markdownPlugins: MarkdownPluginsOptions,
   hostname?: string,
 ): ThemePluginList => [
   themeDataPlugin({ themeData: resolveThemeData(options) }),
@@ -389,23 +393,15 @@ const resolveThemePlugins = (
         gitPlugin({
           createdTime: false,
           updatedTime:
-            typeof options.lastUpdated === 'object'
+            typeof themeData.lastUpdated === 'object'
               ? true
-              : (options.lastUpdated ?? true),
-          contributors: resolveContributors(options),
+              : (themeData.lastUpdated ?? true),
+          contributors: resolveContributors(themeData),
           changelog: false,
           ...(typeof plugins.git === 'object' ? plugins.git : {}),
         }),
       ]),
-  ...(plugins.shiki === false
-    ? []
-    : [
-        shikiPlugin({
-          themes: { light: 'github-light', dark: 'github-dark' },
-          ...(typeof plugins.shiki === 'object' ? plugins.shiki : {}),
-        }),
-      ]),
-  ...resolveMarkdownPlugins(options, plugins),
+  ...resolveMarkdownPlugins(options, markdownPlugins),
   ...(plugins.activeHeaderLinks === false
     ? []
     : [
@@ -436,9 +432,11 @@ const resolveThemePlugins = (
         iconPlugin({
           // `assets: 'iconify'` uses the runtime iconify web component,
           // the icon set packages are loaded by the client from the
-          // iconify CDN
+          // iconify CDN. The component name is fixed: the theme renderers
+          // depend on the props and the DOM of `VPIcon`.
           assets: 'iconify',
           ...(typeof plugins.icon === 'object' ? plugins.icon : {}),
+          component: 'VPIcon',
         }),
       ]),
   ...(plugins.mediumZoom === false
@@ -487,7 +485,13 @@ const resolveThemePlugins = (
  */
 export const defaultTheme = (options: ThemeOptions = {}): ThemeObject => {
   const { hostname, sidebarSorter, ...themeOptions } = options
-  const plugins: ThemePluginsOptions = options.themePlugins ?? {}
+
+  // normalize the classic options once, the plugin wiring and the theme data
+  // both read the normalized result
+  const themeData = resolveThemeData(options) as unknown as ThemeConfig
+  const plugins: ThemePluginsOptions = themeData.themePlugins ?? {}
+  const markdownPlugins: MarkdownPluginsOptions =
+    themeData.markdownPlugins ?? {}
 
   const sidebarHelper = createSidebarStructureHelper<StructureSidebarItem>({
     themeData: resolveThemeData(themeOptions),
@@ -535,6 +539,12 @@ export const defaultTheme = (options: ThemeOptions = {}): ThemeObject => {
       sidebarHelper.watch(app, watchers)
     },
 
-    plugins: resolveThemePlugins(themeOptions, plugins, hostname),
+    plugins: resolveThemePlugins(
+      options,
+      themeData,
+      plugins,
+      markdownPlugins,
+      hostname,
+    ),
   }
 }

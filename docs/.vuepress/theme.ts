@@ -1,4 +1,4 @@
-import { defaultTheme } from '@vuepress/theme-default'
+import { defaultTheme, getEditLinkPattern } from '@vuepress/theme-default'
 
 import { navbarEn, navbarZh, sidebarEn, sidebarZh } from './configs/index.js'
 
@@ -11,8 +11,10 @@ const sidebarConfigZh = sidebarZh
 
 // The theme data is serialized to JSON by `@vuepress/plugin-theme-data`, so the
 // pattern must be a string. `:path` is replaced with the page relative path.
-const EDIT_LINK_PATTERN =
-  'https://github.com/vuepress/ecosystem/edit/main/docs/:path'
+const EDIT_LINK_PATTERN = getEditLinkPattern({
+  dir: 'docs',
+  repo: 'vuepress/ecosystem',
+})
 
 const editLinkEn = {
   pattern: EDIT_LINK_PATTERN,
@@ -41,22 +43,26 @@ export default defaultTheme({
         avatar: true,
       },
     },
-    markdownHint: {
-      alert: true,
-      hint: true,
-    },
-    markdownTab: {
-      tabs: true,
-      codeTabs: true,
-    },
     // `#/1/1` in the reveal.js demos is a slide route rather than a markdown anchor
     linksCheck: {
       exclude: [/^#\//u],
     },
     // the site config already registers these plugins with its own options
     icon: false,
-    markdownExt: false,
-    markdownRaw: false,
+  },
+
+  markdownPlugins: {
+    hint: {
+      alert: true,
+      hint: true,
+    },
+    tab: {
+      tabs: true,
+      codeTabs: true,
+    },
+    // the site config already registers these plugins with its own options
+    ext: false,
+    raw: false,
     shiki: false,
   },
 

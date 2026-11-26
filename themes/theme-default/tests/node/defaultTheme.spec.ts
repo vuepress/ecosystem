@@ -47,9 +47,11 @@ describe(defaultTheme, () => {
     const disabled = createTheme({
       themePlugins: {
         icon: false,
-        markdownRaw: false,
         nprogress: false,
         mediumZoom: false,
+      },
+      markdownPlugins: {
+        raw: false,
       },
     })
 
@@ -390,7 +392,7 @@ describe('markdown containers', () => {
 
   it('should not render the raw container when the markdown raw plugin is disabled', async () => {
     const app = await createTestApp({
-      theme: createTheme({ themePlugins: { markdownRaw: false } }),
+      theme: createTheme({ markdownPlugins: { raw: false } }),
     })
 
     expect(app.markdown.render('::: raw\nHello\n:::', {})).toContain('::: raw')
@@ -398,7 +400,7 @@ describe('markdown containers', () => {
 
   it('should keep the v-pre container when the markdown raw plugin is disabled', async () => {
     const app = await createTestApp({
-      theme: createTheme({ themePlugins: { markdownRaw: false } }),
+      theme: createTheme({ markdownPlugins: { raw: false } }),
     })
 
     expect(app.markdown.render('::: v-pre\nHello\n:::', {})).toContain(
@@ -408,7 +410,7 @@ describe('markdown containers', () => {
 
   it('should not render the v-pre container when the markdown extensions plugin is disabled', async () => {
     const app = await createTestApp({
-      theme: createTheme({ themePlugins: { markdownExt: false } }),
+      theme: createTheme({ markdownPlugins: { ext: false } }),
     })
 
     expect(app.markdown.render('::: v-pre\nHello\n:::', {})).toContain(

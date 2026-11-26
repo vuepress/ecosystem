@@ -6,7 +6,7 @@ icon: arrow-right-left
 
 `@vuepress/theme-classic` is the theme that used to be the default theme of VuePress. It still works and it keeps its own look, but the new default theme is `@vuepress/theme-default`, a thin layout layer ported from VitePress.
 
-This page maps the options, the frontmatter and the styles of the classic theme to the new theme. The new theme accepts the classic syntax of the navbar and the sidebar directly — string items, `prefix`, `children` and `collapsible` are normalized at build time — so most sites only need the package swap. Most other options were renamed to match VitePress, and the ones that relied on SASS were replaced by CSS custom properties.
+This page maps the options, the frontmatter and the styles of the classic theme to the new theme. The new theme accepts the classic syntax of the navbar and the sidebar directly — string items, `prefix`, `children` and `collapsible` are normalized at build time — so most sites only need the package swap. The classic theme options are accepted as well: they are mapped to their new counterparts at build time and log a deprecation warning once, so the migration can be done one option at a time. The tables below show the replacement of every option; options that have no new counterpart are marked as such. Styles were SASS, and they are CSS custom properties now.
 
 <NpmBadge package="@vuepress/theme-default" />
 
@@ -35,21 +35,21 @@ The new theme keeps the `defaultTheme` export name, so an existing `import { def
 
 ### General
 
-| Classic            | New                       | Notes                                                                                                   |
-| ------------------ | ------------------------- | ------------------------------------------------------------------------------------------------------- |
-| `hostname`         | `hostname`                | Same. It enables the SEO and the sitemap plugins.                                                       |
-| `locales`          | `locales`                 | Add `label`, `lang` and `link` to each locale, since they drive the language menu.                      |
-| `colorMode`        | `appearance`              | See [Color Mode](#color-mode).                                                                          |
-| `logo`             | `logo`                    | A string, or a `ThemeableImage` object.                                                                 |
-| `logoDark`         | `logo: { light, dark }`   | The dark variant of the logo.                                                                           |
-| `logoAlt`          | `logo: { alt }`           | The alternative text of the logo.                                                                       |
-| `home`             | `logoLink`                | The link of the logo in the navbar, and the home page of the site. The 404 button uses `notFound.link`. |
-| `repo`             | `socialLinks`             | `socialLinks: [{ icon: 'github', link: 'https://github.com/example/repo' }]`.                           |
-| `repoLabel`        | `socialLinks[].ariaLabel` | The label of the repository link.                                                                       |
-| `navbar`           | `navbar`                  | Same key and same item syntax. See [Navbar](#navbar).                                                   |
-| `sidebar`          | `sidebar`                 | Same key and same item syntax. The default is now `false`. See [Sidebar](#sidebar).                     |
-| `externalLinkIcon` | `externalLinkIcon`        | Same, defaults to `false`.                                                                              |
-| `themePlugins`     | `themePlugins`            | See [Theme Plugins](#theme-plugins).                                                                    |
+| Classic            | New                       | Notes                                                                                                                                                            |
+| ------------------ | ------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `hostname`         | `hostname`                | Same. It enables the SEO and the sitemap plugins.                                                                                                                |
+| `locales`          | `locales`                 | Add `label`, `lang` and `link` to each locale, since they drive the language menu.                                                                               |
+| `colorMode`        | `appearance`              | Mapped at build time, see [Color Mode](#color-mode). Logs a deprecation warning.                                                                                 |
+| `logo`             | `logo`                    | A string, or a `ThemeableImage` object.                                                                                                                          |
+| `logoDark`         | `logo: { light, dark }`   | The dark variant of the logo.                                                                                                                                    |
+| `logoAlt`          | `logo: { alt }`           | The alternative text of the logo.                                                                                                                                |
+| `home`             | `logoLink`                | The link of the logo in the navbar, and the home page of the site. The 404 button uses `notFound.link`.                                                          |
+| `repo`             | `socialLinks`             | Accepted and mapped at build time. A brand icon is added automatically for GitHub, GitLab, Gitee and Bitbucket, so `socialLinks` is only needed for other hosts. |
+| `repoLabel`        | `socialLinks[].ariaLabel` | The label of the repository link.                                                                                                                                |
+| `navbar`           | `navbar`                  | Same key and same item syntax. See [Navbar](#navbar).                                                                                                            |
+| `sidebar`          | `sidebar`                 | Same key and same item syntax. The default is now `false`. See [Sidebar](#sidebar).                                                                              |
+| `externalLinkIcon` | `externalLinkIcon`        | Same, defaults to `false`.                                                                                                                                       |
+| `themePlugins`     | `themePlugins`            | See [Theme Plugins](#theme-plugins).                                                                                                                             |
 
 ### Navbar
 
@@ -91,20 +91,20 @@ The sidebar keeps the `sidebar` key and the classic item syntax, including strin
 
 ### Document Footer
 
-| Classic            | New                | Notes                                                                                      |
-| ------------------ | ------------------ | ------------------------------------------------------------------------------------------ |
-| `editLink`         | `editLink`         | The link is rendered when `editLink.pattern` is set.                                       |
-| `editLinkText`     | `editLink.text`    | Defaults to `'Edit this page'`.                                                            |
-| `editLinkPattern`  | `editLink.pattern` | A URL template with `:path`, or a function of the page data.                               |
-| `docsRepo`         | —                  | Build the pattern yourself, for example `https://github.com/example/repo/edit/main/:path`. |
-| `docsBranch`       | —                  | Same.                                                                                      |
-| `docsDir`          | —                  | Same.                                                                                      |
-| `lastUpdated`      | `lastUpdated`      | Same, or an object with `text` and `formatOptions`.                                        |
-| `lastUpdatedText`  | `lastUpdated.text` | Defaults to `'Last updated'`.                                                              |
-| `contributors`     | `contributors`     | Same, defaults to `true`.                                                                  |
-| `contributorsText` | `contributorsText` | Same, defaults to `'Contributors'`.                                                        |
-| `prev`             | `docFooter.prev`   | A string label, or `false` to hide the previous link.                                      |
-| `next`             | `docFooter.next`   | A string label, or `false` to hide the next link.                                          |
+| Classic            | New                            | Notes                                                                                 |
+| ------------------ | ------------------------------ | ------------------------------------------------------------------------------------- |
+| `editLink`         | `editLink`                     | `false` disables the link. `true` is mapped to a pattern from the repository options. |
+| `editLinkText`     | `editLink.text`                | Accepted and mapped at build time.                                                    |
+| `editLinkPattern`  | `editLink.pattern`             | Accepted and mapped at build time. `:path` is the only placeholder.                   |
+| `docsRepo`         | `getEditLinkPattern({ repo })` | Accepted and mapped at build time. The helper builds the pattern outside the config.  |
+| `docsBranch`       | —                              | Accepted and mapped into the pattern at build time.                                   |
+| `docsDir`          | —                              | Accepted and mapped into the pattern at build time.                                   |
+| `lastUpdated`      | `lastUpdated`                  | Same, or an object with `text` and `formatOptions`.                                   |
+| `lastUpdatedText`  | `lastUpdated.text`             | Defaults to `'Last updated'`.                                                         |
+| `contributors`     | `contributors`                 | Same, defaults to `true`.                                                             |
+| `contributorsText` | `contributorsText`             | Same, defaults to `'Contributors'`.                                                   |
+| `prev`             | `docFooter.prev`               | A string label, or `false` to hide the previous link.                                 |
+| `next`             | `docFooter.next`               | A string label, or `false` to hide the next link.                                     |
 
 ### Color Mode
 
@@ -170,23 +170,23 @@ defaultTheme({
 
 ### Theme Plugins
 
-| Classic             | New                 | Notes                                                                                 |
-| ------------------- | ------------------- | ------------------------------------------------------------------------------------- |
-| `activeHeaderLinks` | `activeHeaderLinks` | Boolean only.                                                                         |
-| `backToTop`         | `backToTop`         | Same options.                                                                         |
-| `copyCode`          | `copyCode`          | Same options.                                                                         |
-| `git`               | `git`               | Same options.                                                                         |
-| `hint`              | `markdownHint`      | Same options.                                                                         |
-| `linksCheck`        | `linksCheck`        | Same options.                                                                         |
-| `mediumZoom`        | `mediumZoom`        | Same meaning, options object accepted.                                                |
-| `nprogress`         | `nprogress`         | Same.                                                                                 |
-| `prismjs`           | `shiki`             | The highlighter changed. Opt out of Shiki and register `prismjsPlugin` to keep Prism. |
-| `seo`               | `seo`               | Same options, requires `hostname`.                                                    |
-| `sitemap`           | `sitemap`           | Same options, requires `hostname`.                                                    |
-| `tab`               | `markdownTab`       | Code tabs are on by default; `::: tabs` needs `markdownTab: { tabs: true }`.          |
-| —                   | `icon`              | Renders icons with Iconify.                                                           |
-| —                   | `markdownExt`       | GFM, footnotes, task lists and the `v-pre` container.                                 |
-| —                   | `markdownRaw`       | The `raw` container with style isolation.                                             |
+| Classic             | New                     | Notes                                                                                   |
+| ------------------- | ----------------------- | --------------------------------------------------------------------------------------- |
+| `activeHeaderLinks` | `activeHeaderLinks`     | Boolean only.                                                                           |
+| `backToTop`         | `backToTop`             | Same options.                                                                           |
+| `copyCode`          | `copyCode`              | Same options.                                                                           |
+| `git`               | `git`                   | Same options.                                                                           |
+| `hint`              | `markdownPlugins.hint`  | Same options, moved to `markdownPlugins`.                                               |
+| `linksCheck`        | `linksCheck`            | Same options.                                                                           |
+| `mediumZoom`        | `mediumZoom`            | Same meaning, options object accepted.                                                  |
+| `nprogress`         | `nprogress`             | Same.                                                                                   |
+| `prismjs`           | `markdownPlugins.shiki` | The highlighter changed. Set `shiki: false` and register `prismjsPlugin` to keep Prism. |
+| `seo`               | `seo`                   | Same options, requires `hostname`.                                                      |
+| `sitemap`           | `sitemap`               | Same options, requires `hostname`.                                                      |
+| `tab`               | `markdownPlugins.tab`   | Code tabs are on by default; `::: tabs` needs `tab: { tabs: true }`.                    |
+| —                   | `icon`                  | Renders icons with Iconify.                                                             |
+| `markdownExt`       | `markdownPlugins.ext`   | GFM, footnotes, task lists and the `v-pre` container.                                   |
+| `markdownRaw`       | `markdownPlugins.raw`   | The `raw` container with style isolation.                                               |
 
 The SASS palette is gone. `@vuepress/plugin-palette` is not wired, since the theme is styled with CSS custom properties that a site overrides in `.vuepress/styles/index.css`. See [Styles](#styles).
 
@@ -210,7 +210,7 @@ import { prismjsPlugin } from '@vuepress/plugin-prismjs'
 export default defineUserConfig({
   plugins: [prismjsPlugin()],
   theme: defaultTheme({
-    themePlugins: { shiki: false },
+    markdownPlugins: { shiki: false },
   }),
 })
 ```
@@ -317,9 +317,8 @@ The new theme does not re-export the composables of `vuepress/client`. Import `u
 
 A few classic features were dropped rather than renamed:
 
-- The `repo` icon and its label in the navbar. Use a `socialLinks` entry instead.
-- The automatic edit link built from `docsRepo`, `docsBranch` and `docsDir`. Build the `editLink.pattern` yourself.
-- The randomized 404 quote list. The new theme has a single `quote`.
+- The `repo` item of the navbar. The repository is mapped to a `socialLinks` entry with its brand icon, which is the only place v1 renders social links.
+- The randomized 404 quote list. Only the first message of the classic list is used as the `quote`.
 - The `openInNewWindow` text of external links. The new theme only has the `externalLinkIcon` boolean.
 - The `@theme/*` aliases and the replaceable internal components. Use slots and layouts instead.
 - The `pageNavbarLabel` label.
@@ -328,10 +327,10 @@ A few classic features were dropped rather than renamed:
 ## Checklist
 
 1. Replace `@vuepress/theme-classic` with `@vuepress/theme-default` and `classicTheme` with `defaultTheme`.
-2. Keep the `navbar` and `sidebar` configs as they are: the default theme accepts the classic syntax, see the compatibility tables above.
+2. Keep the `navbar` and `sidebar` configs as they are: the default theme accepts the classic syntax, see the compatibility tables above. The classic options are accepted too, so the site builds before the options are migrated; the build log lists every deprecated option it still finds.
 3. Convert `colorMode` / `colorModeSwitch` to `appearance`, and the language switcher options to `locales.<path>.label` and `langMenuLabel`.
 4. Convert `home: true` to `type: home`, and `notFound` / `backToHome`; the other classic home keys keep their names.
-5. Rename the theme plugin switches, and opt out of Shiki if the site must keep Prism.
+5. Rename the Markdown plugin switches to `markdownPlugins`, and opt out of Shiki if the site must keep Prism. Remove the options that now log a deprecation warning: `colorMode`, `colorModeSwitch`, `coloredLinks`, `home`, `navbarLabel`, `logoDark`, `logoAlt`, `repo`, `repoLabel`, `selectLanguage*`, `sidebarDepth`, `editLink*`, `docsRepo`, `docsBranch`, `docsDir`, `lastUpdatedText`, `backToHome`, `openInNewWindow`, `toggleColorMode`, `toggleSidebar`, `prev`, `next` and the classic `themePlugins.markdown*` / `themePlugins.hint` / `themePlugins.tab` / `themePlugins.prismjs` keys.
 6. Move the SASS palette to CSS variables in `.vuepress/styles/index.css`.
 7. Replace `ParentLayout` and the `@theme/*` imports with `theme.Layout` and the public components.
 8. Update the type names.

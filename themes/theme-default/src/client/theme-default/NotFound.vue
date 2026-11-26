@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { useThemeLocaleData } from '@vuepress/plugin-theme-data/client'
+import { computed } from 'vue'
 import { withBase } from 'vuepress/client'
 
 import { useLangs } from './composables/useLangs.js'
@@ -7,18 +8,28 @@ import type { ThemeConfig } from './shared.js'
 
 const theme = useThemeLocaleData<ThemeConfig>()
 const { currentLang } = useLangs()
+
+// the classic theme configures a list of messages, the theme keeps the first
+// one as the quote before the config reaches the client
+const notFound = computed(() => {
+  const value = theme.value.notFound
+
+  if (Array.isArray(value)) return { quote: value[0] }
+
+  return value ?? {}
+})
 </script>
 
 <template>
   <div class="vp-not-found">
-    <p class="code">{{ theme.notFound?.code ?? '404' }}</p>
+    <p class="code">{{ notFound.code ?? '404' }}</p>
     <h1 class="title">
-      <bdi>{{ theme.notFound?.title ?? 'PAGE NOT FOUND' }}</bdi>
+      <bdi>{{ notFound.title ?? 'PAGE NOT FOUND' }}</bdi>
     </h1>
     <div class="divider" />
     <blockquote class="quote">
       <bdi>{{
-        theme.notFound?.quote ??
+        notFound.quote ??
         "But if you don't change your direction, and if you keep looking, you may end up where you are heading."
       }}</bdi>
     </blockquote>
@@ -26,10 +37,10 @@ const { currentLang } = useLangs()
     <div class="action">
       <a
         class="link"
-        :href="withBase(theme.notFound?.link ?? currentLang.link)"
-        :aria-label="theme.notFound?.linkLabel ?? 'go to home'"
+        :href="withBase(notFound.link ?? currentLang.link)"
+        :aria-label="notFound.linkLabel ?? 'go to home'"
       >
-        <bdi>{{ theme.notFound?.linkText ?? 'Take me home' }}</bdi>
+        <bdi>{{ notFound.linkText ?? 'Take me home' }}</bdi>
       </a>
     </div>
   </div>

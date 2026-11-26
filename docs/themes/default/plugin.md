@@ -15,11 +15,6 @@ The theme data plugin is always enabled and is not configurable, because the who
 | `@vuepress/plugin-theme-data`          | —                   | enabled | Always enabled.                                                |
 | `@vuepress/plugin-copy-code`           | `copyCode`          | `true`  | Scoped to the code blocks in the page content.                 |
 | `@vuepress/plugin-git`                 | `git`               | `true`  | Collects the last updated time and the contributors.           |
-| `@vuepress/plugin-shiki`               | `shiki`             | `true`  | `github-light` and `github-dark` themes.                       |
-| `@vuepress/plugin-markdown-ext`        | `markdownExt`       | `true`  | The `v-pre` container.                                         |
-| `@vuepress/plugin-markdown-raw`        | `markdownRaw`       | `true`  | The `raw` container, with style isolation.                     |
-| `@vuepress/plugin-markdown-hint`       | `markdownHint`      | `true`  | The hint containers and the GFM alerts.                        |
-| `@vuepress/plugin-markdown-tab`        | `markdownTab`       | `true`  | Code tabs. Other tab groups are opt-in.                        |
 | `@vuepress/plugin-active-header-links` | `activeHeaderLinks` | `true`  | Keeps the URL hash in sync with the outline.                   |
 | `@vuepress/plugin-back-to-top`         | `backToTop`         | `true`  | The back to top button.                                        |
 | `@vuepress/plugin-links-check`         | `linksCheck`        | `true`  | Dead link detection, with the plugin defaults.                 |
@@ -28,6 +23,8 @@ The theme data plugin is always enabled and is not configurable, because the who
 | `@vuepress/plugin-nprogress`           | `nprogress`         | `true`  | The progress bar on navigation.                                |
 | `@vuepress/plugin-seo`                 | `seo`               | `true`  | Only wired when [`hostname`](./config.md#basic-config) is set. |
 | `@vuepress/plugin-sitemap`             | `sitemap`           | `true`  | Only wired when [`hostname`](./config.md#basic-config) is set. |
+
+The Markdown plugins — Shiki, Markdown Ext, Markdown Raw, Markdown Hint and Markdown Tab — are grouped under [`markdownPlugins`](#markdown-plugins) instead, apart from the plugins above.
 
 Search is not bundled. The navbar renders a `SearchBox` placeholder, which a search plugin fills: [SlimSearch](../../plugins/search/slimsearch.md) for a local index or [DocSearch](../../plugins/search/docsearch.md) for Algolia. See [Search](#search).
 
@@ -57,7 +54,7 @@ export default defineUserConfig({
 Some plugins are enabled by the theme options themselves rather than by `themePlugins` entries:
 
 - `git` receives `updatedTime` and `contributors` from [`lastUpdated`](./config.md#page) and [`contributors`](./config.md#page). When every locale disables the contributors, the git plugin does not collect them.
-- `markdownHint` receives the [hint container labels](./locale.md#hint-containers) from `tip`, `warning`, `danger`, `important` and `note`.
+- `markdownPlugins.hint` receives the [hint container labels](./locale.md#hint-containers) from `tip`, `warning`, `danger`, `important` and `note`.
 - `seo` and `sitemap` require [`hostname`](./config.md#basic-config).
 - `shiki`, `activeHeaderLinks` and `copyCode` scope their features to the classes the theme renders, so overriding those options may break the integration they rely on.
 
@@ -103,59 +100,6 @@ themePlugins: {
 }
 ```
 
-@`themePlugins.shiki` type=`ShikiPluginOptions | boolean` default=`true`
-
-Wires [Shiki](../../plugins/markdown/shiki.md) with the `github-light` and `github-dark` themes, which are consumed by the theme CSS as a light and a dark theme at the same time.
-
-Pass a `themes` object to replace them:
-
-```ts
-themePlugins: {
-  shiki: {
-    themes: { light: 'vitesse-light', dark: 'vitesse-dark' },
-  },
-}
-```
-
-`themePlugins.shiki: false` leaves the code blocks unhighlighted. Pair it with [`@vuepress/plugin-prismjs`](../../plugins/markdown/prismjs.md) if Prism is needed instead.
-
-@`themePlugins.markdownExt` type=`MarkdownExtPluginOptions | boolean` default=`true`
-
-Wires [Markdown Ext](../../plugins/markdown/markdown-ext.md) with the `v-pre` container only, i.e. `{ vPre: true }`.
-
-The other Markdown extensions of the plugin are opt-in. `gfm: true` enables the GFM support — footnotes, task lists, soft line breaks and linkified URLs:
-
-```ts
-themePlugins: {
-  markdownExt: { gfm: true },
-}
-```
-
-@`themePlugins.markdownRaw` type=`MarkdownRawPluginOptions | boolean` default=`true`
-
-Wires [Markdown Raw](../../plugins/markdown/markdown-raw.md) with `isolateStyles: true`, so the styles of the theme are isolated from the raw content.
-
-@`themePlugins.markdownHint` type=`MarkdownHintPluginOptions | boolean` default=`true`
-
-Wires [Markdown Hint](../../plugins/markdown/markdown-hint.md) with `hint: true` and `alert: true`, plus the localized labels of the theme options.
-
-```ts
-themePlugins: {
-  // disable the GFM alerts, keep the containers
-  markdownHint: { alert: false },
-}
-```
-
-@`themePlugins.markdownTab` type=`MarkdownTabPluginOptions | boolean` default=`true`
-
-Wires [Markdown Tab](../../plugins/markdown/markdown-tab.md) with `codeTabs: true`. Code tabs work out of the box; the generic `::: tabs` group is opt-in:
-
-```ts
-themePlugins: {
-  markdownTab: { tabs: true },
-}
-```
-
 @`themePlugins.activeHeaderLinks` type=boolean default=`true`
 
 Wires [Active Header Links](../../plugins/development/active-header-links.md) with `headerLinkSelector: '.outline-link'`, so the URL hash follows the outline while scrolling. Only a boolean: the selector is fixed by the theme because it is tied to the outline markup.
@@ -189,6 +133,8 @@ themePlugins: {
 @`themePlugins.icon` type=`IconPluginOptions | boolean` default=`true`
 
 Wires [Icon](../../plugins/features/icon.md) with `assets: 'iconify'`, i.e. the iconify web component resolved at runtime from the iconify CDN, which is what the navbar, sidebar and feature icons use.
+
+The theme renders the icons through the `VPIcon` component, so the `component` option of the plugin is reserved by the theme and cannot be changed.
 
 ```ts
 themePlugins: {
@@ -242,6 +188,81 @@ defaultTheme({
     sitemap: { changefreq: 'weekly', excludePaths: ['/404.html'] },
   },
 })
+```
+::::
+
+## markdownPlugins
+
+:::: fields
+@`markdownPlugins` type=`MarkdownPluginsOptions`
+
+The options of the Markdown plugins wired by the theme. A key accepts `true` (or leaving it out) to enable the plugin with its defaults, `false` to skip the plugin, and an object that is merged over the defaults.
+
+```ts
+import { defaultTheme } from '@vuepress/theme-default'
+import { defineUserConfig } from 'vuepress'
+
+export default defineUserConfig({
+  theme: defaultTheme({
+    markdownPlugins: {
+      shiki: { themes: { light: 'vitesse-light', dark: 'vitesse-dark' } },
+      hint: { alert: true },
+    },
+  }),
+})
+```
+
+@`markdownPlugins.shiki` type=`ShikiPluginOptions | boolean` default=`true`
+
+Wires [Shiki](../../plugins/markdown/shiki.md) with the `github-light` and `github-dark` themes, which are consumed by the theme CSS as a light and a dark theme at the same time.
+
+Pass a `themes` object to replace them:
+
+```ts
+markdownPlugins: {
+  shiki: {
+    themes: { light: 'vitesse-light', dark: 'vitesse-dark' },
+  },
+}
+```
+
+`markdownPlugins.shiki: false` leaves the code blocks unhighlighted. Pair it with [`@vuepress/plugin-prismjs`](../../plugins/markdown/prismjs.md) if Prism is needed instead.
+
+@`markdownPlugins.ext` type=`MarkdownExtPluginOptions | boolean` default=`true`
+
+Wires [Markdown Ext](../../plugins/markdown/markdown-ext.md) with the `v-pre` container only, i.e. `{ vPre: true }`.
+
+The other Markdown extensions of the plugin are opt-in. `gfm: true` enables the GFM support — footnotes, task lists, soft line breaks and linkified URLs:
+
+```ts
+markdownPlugins: {
+  ext: { gfm: true },
+}
+```
+
+@`markdownPlugins.raw` type=`MarkdownRawPluginOptions | boolean` default=`true`
+
+Wires [Markdown Raw](../../plugins/markdown/markdown-raw.md) with `isolateStyles: true`, so the styles of the theme are isolated from the raw content.
+
+@`markdownPlugins.hint` type=`MarkdownHintPluginOptions | boolean` default=`true`
+
+Wires [Markdown Hint](../../plugins/markdown/markdown-hint.md) with `hint: true` and `alert: true`, plus the localized labels of the theme options.
+
+```ts
+markdownPlugins: {
+  // disable the GFM alerts, keep the containers
+  hint: { alert: false },
+}
+```
+
+@`markdownPlugins.tab` type=`MarkdownTabPluginOptions | boolean` default=`true`
+
+Wires [Markdown Tab](../../plugins/markdown/markdown-tab.md) with `codeTabs: true`. Code tabs work out of the box; the generic `::: tabs` group is opt-in:
+
+```ts
+markdownPlugins: {
+  tab: { tabs: true },
+}
 ```
 ::::
 

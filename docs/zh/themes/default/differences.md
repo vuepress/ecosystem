@@ -58,7 +58,7 @@ icon: git-compare
 - **做法**：主题启用 `markdownHintPlugin({ hint: true, alert: true })`。`tip` / `info` / `warning` / `caution` / `note` / `important` / `danger`（渲染为 `caution`，与 theme-classic 一致）以及 `details` 由插件解析、渲染和设置样式：`.hint-container`、`.hint-container-title`、标题前的图标，`details` 则是原生的可折叠 `<details>`。主题不再注册容器渲染器，也不再为容器写样式；它只做三件事：
   1. 导入 `@vuepress/helper/colors.css`，因为插件的样式依赖 `--vp-c-*-bg` / `-text` / `-soft` 色板，而该色板会随 `[data-theme='dark']` 切换，与主题的暗色模式一致。
   2. 在 `styles/vars.css` 中覆盖少量变量：用 `--hint-font-size: 0.875rem` 对齐 VitePress 的容器字号，并把插件色板中的蓝色映射到靛蓝（VitePress 的 info 容器使用靛蓝）。
-  3. `v-pre` 和 `raw` 容器分别由 `@vuepress/plugin-markdown-ext`（`vPre: true`）和 `@vuepress/plugin-markdown-raw` 提供：前者只输出 `<div v-pre>`；后者输出 `<div class="vp-raw">`，且主题默认开启样式隔离（`isolateStyles: true`，在 VitePress 中这是 `postcss.config` 里的可选开启项）。主题还接管了容器内链接的点击，使它们不经过 SPA 路由，与 VitePress 一致。禁用 `themePlugins.markdownRaw` 会让 `::: raw` 按纯文本渲染。
+  3. `v-pre` 和 `raw` 容器分别由 `@vuepress/plugin-markdown-ext`（`vPre: true`）和 `@vuepress/plugin-markdown-raw` 提供：前者只输出 `<div v-pre>`；后者输出 `<div class="vp-raw">`，且主题默认开启样式隔离（`isolateStyles: true`，在 VitePress 中这是 `postcss.config` 里的可选开启项）。主题还接管了容器内链接的点击，使它们不经过 SPA 路由，与 VitePress 一致。禁用 `markdownPlugins.raw` 会让 `::: raw` 按纯文本渲染。
 - **原因**：容器属于特性，应当由官方插件提供；样式对齐的做法是覆盖插件的 CSS 变量，而不是在主题中复制或映射一整套 VitePress 容器样式。
 - **收益**：主题中不再有容器样式或渲染代码；容器图标、本地化的默认标题以及打印前自动展开 `<details>` 都由插件维护；外观与 theme-classic 一致，且只受主题色板影响；插件的改进会自动到达主题。
 - **取舍（与 VitePress 的差异）**：
@@ -66,7 +66,7 @@ icon: git-compare
   - 标题前有图标（插件样式的一部分），而 VitePress 的容器标题没有图标。
   - `::: tip {no-title}` 渲染为无标题的容器（插件支持该写法，它只读取信息字符串末尾的标记；`details` 会忽略它）。
   - token 上的额外属性（例如 `id` 或额外的 `class`）不会被传递到容器。
-  - `raw` 的样式隔离由主题默认开启，需要站点的打包器用 PostCSS 处理主题的 `vp-doc.css` / `base.css`：自定义了 `css.postcss`（Vite）或 `postcss-loader` 配置项的站点必须确保相关插件被合并。可以用 `themePlugins.markdownRaw: { isolateStyles: false }` 关闭隔离。
+  - `raw` 的样式隔离由主题默认开启，需要站点的打包器用 PostCSS 处理主题的 `vp-doc.css` / `base.css`：自定义了 `css.postcss`（Vite）或 `postcss-loader` 配置项的站点必须确保相关插件被合并。可以用 `markdownPlugins.raw: { isolateStyles: false }` 关闭隔离。
   - `::: danger` 输出 `caution` 类型（标题为 "Caution"），与 theme-classic 的兼容映射一致。
 - **已完成的插件改进**：`@vuepress/plugin-markdown-hint` 现已支持 `{no-title}`，并把容器间距和圆角暴露为 `--hint-container-*` / `--hint-details-*` CSS 变量，因此主题只用变量即可对齐布局（见插件 PR #1136）。剩余的差异是 token 上的额外属性（例如 `id` 或额外的 `class`）不会被传递到输出的 DOM。
 
