@@ -964,7 +964,7 @@ importers:
     devDependencies:
       '@iconify-json/lucide':
         specifier: ^1.2.159
-        version: 1.2.159
+        version: 1.2.160
       '@iconify-json/mdi':
         specifier: ^1.2.3
         version: 1.2.3
@@ -3647,8 +3647,8 @@ packages:
     resolution: {integrity: sha512-GmzA9ckNokPypTg10pgpeHNQe7ph+iIKKmhKu3Ob9ANkswreCx7R3cKmY781K8QK3AqVL3xVh9A42JvIAbkkSA==}
     engines: {node: ^20.17.0 || >=22.9.0}
 
-  '@iconify-json/lucide@1.2.159':
-    resolution: {integrity: sha512-rE8dHb2LRSR2Vl6L6LspAJ83uPNKOIbEE8BLLo/ObQT8xHIEE3zmwIpO9LcZPjTsEnICSxWPFJcJ0Q38nxuZPw==}
+  '@iconify-json/lucide@1.2.160':
+    resolution: {integrity: sha512-811QWUxsgfjFZewGJG45+TG62TNaeGMhsQr6XGiheTJpoe9Dc/vY2RHPLjOE1EuZ6vt70060MBkqz0whJG9I3w==}
 
   '@iconify-json/mdi@1.2.3':
     resolution: {integrity: sha512-O3cLwbDOK7NNDf2ihaQOH5F9JglnulNDFV7WprU2dSoZu3h3cWH//h74uQAB87brHmvFVxIOkuBX2sZSzYhScg==}
@@ -12867,7 +12867,7 @@ snapshots:
 
   '@gar/promise-retry@1.0.3': {}
 
-  '@iconify-json/lucide@1.2.159':
+  '@iconify-json/lucide@1.2.160':
     dependencies:
       '@iconify/types': 2.0.0
 
