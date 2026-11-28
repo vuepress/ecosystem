@@ -1,0 +1,159 @@
+---
+url: /ecosystem/plugins/features/copyright.md
+---
+# copyright
+
+This plugin can automatically append copyright information when visitors copy content from your site, and can also prohibit site copying or selection.
+
+## Usage
+
+```bash
+npm i -D @vuepress/plugin-copyright@next
+```
+
+```ts title=".vuepress/config.ts"
+import { copyrightPlugin } from '@vuepress/plugin-copyright'
+
+export default {
+  plugins: [
+    copyrightPlugin({
+      // options
+    }),
+  ],
+}
+```
+
+## Guide
+
+### Enabling Copyright
+
+This plugin **is disabled globally by default**, you can:
+
+* Manually enable it by setting `copy: true` in page frontmatter
+* Set `global: true` in plugin options to enable it globally, and set `copy: false` in page frontmatter to disable it.
+
+To avoid disturbing visitors, copyright information will be appended only when the copied content length is greater than 100. Set `triggerLength` in plugin options if you want to change this threshold, or set `copy.triggerLength` in page frontmatter.
+
+You can set default author and license information via `author` and `license` in plugin options.
+
+If your site have different authors and license in different pages, you can set `authorGetter` and `licenseGetter` with function `(page: Page) => string` that takes the current page object as parameter and returns the corresponding information.
+
+The plugin will generate copyright information from author, license, and page link via template by default, and append it when copying. If you think that this is not flexible enough, you can set `copyrightGetter` option to return a completely customized information with Page object or return null to use the default template.
+
+### Disabling Copy and Selection
+
+If you want to prevent users copying long content, you can set `maxLength` in plugin options to customize this limit, or set `copy.maxLength` in page frontmatter.
+
+* If you don't want users to copy your entire site or specific page text, you can set `disableCopy` in plugin options or `copy.disableCopy` in page frontmatter. The latter has higher priority.
+* If you don't want users to select your entire site or specific page text, you can set `disableSelection` in plugin options or `copy.disableSelection` in page frontmatter. The latter has higher priority.
+
+## Options
+
+:::: fields
+@`author` type=string
+
+Default author information.
+
+@`license` type=string
+
+Default license information.
+
+@`authorGetter` type=`(page: Page) => string | null`
+
+Author getter. It takes the current page as the parameter and returns the author information.
+
+@`licenseGetter` type=`(page: Page) => string | null`
+
+License getter. It takes the current page as the parameter and returns the license information.
+
+@`copyrightGetter` type=`(page: Page) => string | null`
+
+Copyright getter. It takes the current page as the parameter and returns a completely customized copyright information, or `null` to use the default template.
+
+@`canonical` type=string
+
+Canonical hostname with base, which is used as the reference link in the appended copyright information.
+
+::: tip Example
+
+If you are deploying same content under `https://myblog.com` and `https://blog.com/username/`, you may want to prefer one site as reference link.
+
+* If you prefer the first one, you should set `canonical` to `https://myblog.com`
+* If you prefer the second one, you should set `canonical` to `https://blog.com/username/`
+
+So copyright message triggered on another site also points to your preferred site.
+
+:::
+
+@`global` type=boolean
+
+Whether to enable the plugin globally.
+
+See also: [Enabling Copyright](#enabling-copyright).
+
+@`disableCopy` type=boolean
+
+Whether to disable copying.
+
+See also: [Disabling Copy and Selection](#disabling-copy-and-selection).
+
+@`disableSelection` type=boolean
+
+Whether to disable selection.
+
+See also: [Disabling Copy and Selection](#disabling-copy-and-selection).
+
+@`triggerLength` type=number default=`100`
+
+Min content length triggering copyright append.
+
+@`maxLength` type=number default=`0`
+
+Max content length which allows to copy, `0` means no limit.
+
+@`locales` type=`CopyrightPluginLocaleConfig`
+
+Locale config of the plugin.
+
+See also: [Locales](../supported-locales.md).
+
+@@`locales.<localePath>.author` type=string
+
+Author text, where `:author` will be replaced by the author.
+
+@@`locales.<localePath>.license` type=string
+
+License text, where `:license` will be replaced by the current license.
+
+@@`locales.<localePath>.link` type=string
+
+Link text, where `:link` will be replaced by the current page link.
+
+::::
+
+## Frontmatter
+
+::: fields
+@`copy` type=`boolean | object`
+
+Whether to enable the plugin for the current page, or an object to configure it.
+
+Set it to `true` to enable the plugin on the current page, or `false` to disable it when the plugin is enabled globally.
+
+@@`copy.triggerLength` type=number default=`100`
+
+Min content length triggering copyright append. This overrides the global [triggerLength](#triggerlength) option.
+
+@@`copy.maxLength` type=number default=`0`
+
+Max content length which allows to copy, `0` means no limit. This overrides the global [maxLength](#maxlength) option.
+
+@@`copy.disableCopy` type=boolean default=`false`
+
+Whether to disable copying. This overrides the global [disableCopy](#disablecopy) option.
+
+@@`copy.disableSelection` type=boolean default=`false`
+
+Whether to disable selection. This overrides the global [disableSelection](#disableselection) option.
+
+:::
