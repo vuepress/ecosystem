@@ -74,9 +74,11 @@ The message line of the footer. HTML is allowed.
 
 The copyright line of the footer. HTML is allowed.
 
-@`notFound` type=`NotFoundOptions`
+@`notFound` type=`NotFoundOptions | string[]`
 
 Customize the text of the 404 page. Every field falls back to the built-in English text, so a site only sets the fields it wants to translate.
+
+The classic theme option passes a list of random messages: only the first one is used as the `quote`.
 
 Its fields are:
 
@@ -434,9 +436,9 @@ Where to render the aside that contains the outline. The default is the right si
 
 A page always has its aside disabled on the home page, and it can override the theme config in its frontmatter.
 
-@`editLink` type=`EditLink`
+@`editLink` type=`EditLink | boolean`
 
-The "edit this page" link in the document footer. It is disabled when the option is not set.
+The "edit this page" link in the document footer. It is disabled when the option is not set or is `false`.
 
 Its fields are:
 
@@ -447,6 +449,25 @@ The pattern of the link. In a string pattern, `:path` is replaced by the file pa
 @@`editLink.text` type=string default=`'Edit this page'`
 
 The text of the link.
+
+The theme exports `getEditLinkPattern` to build the pattern from a repository, a branch and a directory:
+
+```ts
+import { defaultTheme, getEditLinkPattern } from '@vuepress/theme-default'
+
+export default defaultTheme({
+  editLink: {
+    pattern: getEditLinkPattern({
+      repo: 'vuepress/ecosystem',
+      branch: 'main',
+      dir: 'docs',
+    }),
+    text: 'Edit this page',
+  },
+})
+```
+
+The classic theme options `editLink: true`, `editLinkText`, `editLinkPattern`, `docsRepo`, `docsBranch` and `docsDir` are still accepted and mapped to this option, but they are deprecated and log a warning at build time.
 
 @`lastUpdated` type=`LastUpdatedOptions | boolean`
 
@@ -495,11 +516,11 @@ The color mode of the site. The value is one of:
 - `'dark'`: dark mode first, and the user can switch.
 - `'force-dark'`: dark mode only, and the switch is hidden.
 - `'force-auto'`: both modes, always following the system preference, and the switch is hidden.
-- an object `{ initialValue: 'dark' }`: dark mode first, and the user can switch. This is the same as `'dark'` and exists for VitePress compatibility.
+- an object `{ initialValue: 'dark' | 'light' }`: the given color first, and the user can switch. `{ initialValue: 'dark' }` is the same as `'dark'`; `{ initialValue: 'light' }` keeps the switch while starting from light mode.
 
 The chosen mode is stored in `localStorage` under the `vuepress-color-scheme` key, as `'auto'`, `'dark'` or `'light'`. The theme sets the `data-theme` attribute (`'dark'` or `'light'`) on `<html>`, and styles follow that attribute; there is no `dark` class.
 
-For a first paint without a flash, the `appearance` value is also written into the `data-appearance` attribute of the built HTML template, and an inline script resolves the theme before the app loads. See [Styles](./styles.md) for the CSS side.
+For a first paint without a flash, the resolved appearance value is also written into the `data-appearance` attribute of the built HTML template, and an inline script resolves the theme before the app loads. See [Styles](./styles.md) for the CSS side.
 ::::
 
 ## Accessibility labels
@@ -611,12 +632,25 @@ export default defineUserConfig({
   theme: defaultTheme({
     themePlugins: {
       copyCode: false,
+      icon: false,
+    },
+    markdownPlugins: {
       shiki: { themes: { light: 'vitesse-light', dark: 'vitesse-dark' } },
-      markdownHint: { alert: true },
+      hint: { alert: true },
     },
   }),
 })
 ```
 
 See [Plugins](./plugin.md) for every key, its default value and the plugin documentation.
+::::
+
+## Markdown Plugins
+
+:::: fields
+@`markdownPlugins` type=`MarkdownPluginsOptions`
+
+The options of the Markdown plugins wired by the theme: `shiki`, `ext`, `raw`, `hint` and `tab`. Like `themePlugins`, a key accepts `true`, `false` or an options object.
+
+See [Plugins](./plugin.md#markdownplugins) for every key and its default value.
 ::::

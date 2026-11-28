@@ -15,12 +15,17 @@
 
         if (appearance === 'force-dark') {
           isDark = true
+        } else if (appearance === 'force-light') {
+          isDark = false
         } else if (appearance === 'force-auto') {
           isDark = prefersDark
-        } else if (appearance === 'light') {
-          isDark = false
         } else {
-          const fallback = appearance === 'dark' ? 'dark' : 'auto'
+          // `light` and `dark` only set the initial value, the stored
+          // preference still wins
+          const fallback =
+            appearance === 'light' || appearance === 'dark'
+              ? appearance
+              : 'auto'
           const preference =
             localStorage.getItem('vuepress-color-scheme') || fallback
 

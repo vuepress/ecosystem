@@ -74,9 +74,11 @@ Logo 和站点标题的链接。它默认为当前语言的主页链接（根语
 
 页脚的版权行。允许使用 HTML。
 
-@`notFound` type=`NotFoundOptions`
+@`notFound` type=`NotFoundOptions | string[]`
 
 自定义 404 页面的文字。每个字段都会回退到内置的英文文案，因此站点只需设置自己想翻译的字段。
+
+classic 主题的配置项传入的是随机文案列表：只有第一项会作为 `quote`。
 
 它的字段为：
 
@@ -404,9 +406,9 @@ dir:
 
 首页上的页面始终会禁用侧边栏，页面也可以在 frontmatter 中覆盖主题配置。
 
-@`editLink` type=`EditLink`
+@`editLink` type=`EditLink | boolean`
 
-文档页脚中的“编辑此页”链接。未设置该配置项时它处于禁用状态。
+文档页脚中的“编辑此页”链接。未设置该配置项或设为 `false` 时它处于禁用状态。
 
 它的字段为：
 
@@ -417,6 +419,25 @@ dir:
 @@`editLink.text` type=string default=`'Edit this page'`
 
 链接的文本。
+
+主题导出 `getEditLinkPattern`，用于从仓库、分支和目录构建模式：
+
+```ts
+import { defaultTheme, getEditLinkPattern } from '@vuepress/theme-default'
+
+export default defaultTheme({
+  editLink: {
+    pattern: getEditLinkPattern({
+      repo: 'vuepress/ecosystem',
+      branch: 'main',
+      dir: 'docs',
+    }),
+    text: '在 GitHub 上编辑此页',
+  },
+})
+```
+
+classic 主题的 `editLink: true`、`editLinkText`、`editLinkPattern`、`docsRepo`、`docsBranch` 和 `docsDir` 仍会被接受并映射到该配置项，但已废弃，构建时会输出警告。
 
 @`lastUpdated` type=`LastUpdatedOptions | boolean`
 
@@ -465,11 +486,11 @@ dir:
 - `'dark'`：优先暗色模式，用户可以切换。
 - `'force-dark'`：仅暗色模式，并隐藏切换按钮。
 - `'force-auto'`：两种模式都有，始终跟随系统偏好，并隐藏切换按钮。
-- 一个对象 `{ initialValue: 'dark' }`：优先暗色模式，用户可以切换。它与 `'dark'` 相同，仅为兼容 VitePress 而保留。
+- 一个对象 `{ initialValue: 'dark' | 'light' }`：优先使用指定颜色，用户可以切换。`{ initialValue: 'dark' }` 与 `'dark'` 相同；`{ initialValue: 'light' }` 会保留切换按钮并从浅色模式开始。
 
 所选模式会以 `'auto'`、`'dark'` 或 `'light'` 的形式存储在 `localStorage` 的 `vuepress-color-scheme` 键下。主题会在 `<html>` 上设置 `data-theme` 属性（`'dark'` 或 `'light'`），样式跟随该属性；不存在 `dark` 类。
 
-为了首次绘制时不闪烁，`appearance` 的值还会写入构建出的 HTML 模板的 `data-appearance` 属性，内联脚本会在应用加载前解析主题。CSS 相关部分见 [样式](./styles.md)。
+为了首次绘制时不闪烁，解析后的 appearance 值还会写入构建出的 HTML 模板的 `data-appearance` 属性，内联脚本会在应用加载前解析主题。CSS 相关部分见 [样式](./styles.md)。
 ::::
 
 ## 无障碍标签 {#accessibility-labels}
@@ -581,12 +602,25 @@ export default defineUserConfig({
   theme: defaultTheme({
     themePlugins: {
       copyCode: false,
+      icon: false,
+    },
+    markdownPlugins: {
       shiki: { themes: { light: 'vitesse-light', dark: 'vitesse-dark' } },
-      markdownHint: { alert: true },
+      hint: { alert: true },
     },
   }),
 })
 ```
 
 每个键、其默认值以及对应插件的文档见 [插件](./plugin.md)。
+::::
+
+## Markdown 插件 {#markdown-plugins}
+
+:::: fields
+@`markdownPlugins` type=`MarkdownPluginsOptions`
+
+主题接入的 Markdown 插件的配置项：`shiki`、`ext`、`raw`、`hint` 和 `tab`。与 `themePlugins` 一样，每个键接受 `true`、`false` 或配置对象。
+
+每个键及其默认值见 [插件](./plugin.md#markdownplugins)。
 ::::

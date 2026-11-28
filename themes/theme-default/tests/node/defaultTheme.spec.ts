@@ -47,9 +47,11 @@ describe(defaultTheme, () => {
     const disabled = createTheme({
       themePlugins: {
         icon: false,
-        markdownRaw: false,
         nprogress: false,
         mediumZoom: false,
+      },
+      markdownPlugins: {
+        raw: false,
       },
     })
 
@@ -226,13 +228,14 @@ describe(defaultTheme, () => {
 
 describe(resolveTemplateAppearance, () => {
   it('should resolve the appearance of the build template', () => {
-    expect(resolveTemplateAppearance(false)).toBe('light')
+    expect(resolveTemplateAppearance(false)).toBe('force-light')
     expect(resolveTemplateAppearance('dark')).toBe('dark')
     expect(resolveTemplateAppearance('force-dark')).toBe('force-dark')
     expect(resolveTemplateAppearance('force-auto')).toBe('force-auto')
     expect(resolveTemplateAppearance(true)).toBe('auto')
     expect(resolveTemplateAppearance(undefined)).toBe('auto')
     expect(resolveTemplateAppearance({ initialValue: 'dark' })).toBe('dark')
+    expect(resolveTemplateAppearance({ initialValue: 'light' })).toBe('light')
   })
 })
 
@@ -267,6 +270,14 @@ describe('templateBuildRenderer', () => {
     const html = defaultTheme().templateBuildRenderer!(template, context)
 
     expect(html).toContain('data-appearance="auto"')
+  })
+
+  it('should inject the appearance mapped from the classic color mode', () => {
+    const theme = defaultTheme({ colorMode: 'light' } as never)
+
+    const html = theme.templateBuildRenderer!(template, context)
+
+    expect(html).toContain('data-appearance="light"')
   })
 })
 
@@ -390,7 +401,7 @@ describe('markdown containers', () => {
 
   it('should not render the raw container when the markdown raw plugin is disabled', async () => {
     const app = await createTestApp({
-      theme: createTheme({ themePlugins: { markdownRaw: false } }),
+      theme: createTheme({ markdownPlugins: { raw: false } }),
     })
 
     expect(app.markdown.render('::: raw\nHello\n:::', {})).toContain('::: raw')
@@ -398,7 +409,7 @@ describe('markdown containers', () => {
 
   it('should keep the v-pre container when the markdown raw plugin is disabled', async () => {
     const app = await createTestApp({
-      theme: createTheme({ themePlugins: { markdownRaw: false } }),
+      theme: createTheme({ markdownPlugins: { raw: false } }),
     })
 
     expect(app.markdown.render('::: v-pre\nHello\n:::', {})).toContain(
@@ -408,7 +419,7 @@ describe('markdown containers', () => {
 
   it('should not render the v-pre container when the markdown extensions plugin is disabled', async () => {
     const app = await createTestApp({
-      theme: createTheme({ themePlugins: { markdownExt: false } }),
+      theme: createTheme({ markdownPlugins: { ext: false } }),
     })
 
     expect(app.markdown.render('::: v-pre\nHello\n:::', {})).toContain(

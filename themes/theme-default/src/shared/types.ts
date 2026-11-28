@@ -100,7 +100,7 @@ export type AppearanceOptions =
   | 'dark'
   | 'force-dark'
   | 'force-auto'
-  | (UseDarkOptions & { initialValue?: 'dark' })
+  | (UseDarkOptions & { initialValue?: 'dark' | 'light' })
 
 /**
  * The site-level data for the active locale
@@ -225,42 +225,25 @@ export interface ThemePluginsOptions {
   /** Options of `@vuepress/plugin-git` / `@vuepress/plugin-git` 的配置项 */
   git?: GitPluginOptions | boolean
 
-  /** Options of `@vuepress/plugin-icon` / `@vuepress/plugin-icon` 的配置项 */
-  icon?: IconPluginOptions | boolean
   /**
-   * Options of `@vuepress/plugin-markdown-ext` /
-   * `@vuepress/plugin-markdown-ext` 的配置项
-   */
-  markdownExt?: MarkdownExtPluginOptions | boolean
-
-  /**
-   * Options of `@vuepress/plugin-markdown-hint` /
-   * `@vuepress/plugin-markdown-hint` 的配置项
-   */
-  markdownHint?: MarkdownHintPluginOptions | boolean
-
-  /**
-   * Options of `@vuepress/plugin-markdown-raw` /
-   * `@vuepress/plugin-markdown-raw` 的配置项
+   * Options of `@vuepress/plugin-icon` / `@vuepress/plugin-icon` 的配置项
    *
-   * The theme isolates the page styles from the `raw` container by default, set
-   * `isolateStyles: false` to keep the container without the style isolation.
+   * The theme renders icons through the component registered by the plugin and
+   * reserves the `VPIcon` name, so the `component` option is not available.
    *
-   * 主题默认将页面样式与 `raw` 容器隔离，设置为 `isolateStyles: false` 可只保留容器而不隔离样式。
+   * 主题通过插件注册的组件渲染图标，并保留 `VPIcon` 名称，因此不提供 `component` 选项。
    */
-  markdownRaw?: MarkdownRawPluginOptions | boolean
+  icon?: IconThemePluginOptions | boolean
 
   /**
-   * Options of `@vuepress/plugin-markdown-tab` /
-   * `@vuepress/plugin-markdown-tab` 的配置项
+   * The Links Check plugin options, use `markdownPlugins.linksCheck` instead
+   *
+   * 死链检测插件的配置项，请改用 `markdownPlugins.linksCheck`
+   *
+   * @deprecated Use `markdownPlugins.linksCheck` instead. / 请改用
+   *   `markdownPlugins.linksCheck`。
    */
-  markdownTab?: MarkdownTabPluginOptions | boolean
-
-  /**
-   * Options of `@vuepress/plugin-links-check` / `@vuepress/plugin-links-check`
-   * 的配置项
-   */
-  linksCheck?: LinksCheckPluginOptions | boolean
+  linksCheck?: never
 
   /**
    * Options of `@vuepress/plugin-medium-zoom` / `@vuepress/plugin-medium-zoom`
@@ -283,9 +266,6 @@ export interface ThemePluginsOptions {
    */
   seo?: Partial<SeoPluginOptions> | boolean
 
-  /** Options of `@vuepress/plugin-shiki` / `@vuepress/plugin-shiki` 的配置项 */
-  shiki?: ShikiPluginOptions | boolean
-
   /**
    * Options of `@vuepress/plugin-sitemap` / `@vuepress/plugin-sitemap` 的配置项
    *
@@ -294,6 +274,176 @@ export interface ThemePluginsOptions {
    * 需要先配置 `hostname`。
    */
   sitemap?: Partial<SitemapPluginOptions> | boolean
+
+  /**
+   * The Markdown plugin options of the classic theme, use `markdownPlugins`
+   * instead
+   *
+   * Classic 主题的 Markdown 插件配置项，请改用 `markdownPlugins`
+   *
+   * @deprecated Use `markdownPlugins` instead. / 请改用 `markdownPlugins`。
+   */
+  markdownExt?: never
+
+  /**
+   * The Markdown plugin options of the classic theme, use `markdownPlugins`
+   * instead
+   *
+   * Classic 主题的 Markdown 插件配置项，请改用 `markdownPlugins`
+   *
+   * @deprecated Use `markdownPlugins.hint` instead. / 请改用
+   *   `markdownPlugins.hint`。
+   */
+  markdownHint?: never
+
+  /**
+   * The Markdown plugin options of the classic theme, use `markdownPlugins`
+   * instead
+   *
+   * Classic 主题的 Markdown 插件配置项，请改用 `markdownPlugins`
+   *
+   * @deprecated Use `markdownPlugins.raw` instead. / 请改用 `markdownPlugins.raw`。
+   */
+  markdownRaw?: never
+
+  /**
+   * The Markdown plugin options of the classic theme, use `markdownPlugins`
+   * instead
+   *
+   * Classic 主题的 Markdown 插件配置项，请改用 `markdownPlugins`
+   *
+   * @deprecated Use `markdownPlugins.tab` instead. / 请改用 `markdownPlugins.tab`。
+   */
+  markdownTab?: never
+
+  /**
+   * The Markdown plugin options of the classic theme, use `markdownPlugins`
+   * instead
+   *
+   * Classic 主题的 Markdown 插件配置项，请改用 `markdownPlugins`
+   *
+   * @deprecated Use `markdownPlugins` instead. / 请改用 `markdownPlugins`。
+   */
+  hint?: never
+
+  /**
+   * The Markdown plugin options of the classic theme, use `markdownPlugins`
+   * instead
+   *
+   * Classic 主题的 Markdown 插件配置项，请改用 `markdownPlugins`
+   *
+   * @deprecated Use `markdownPlugins` instead. / 请改用 `markdownPlugins`。
+   */
+  tab?: never
+
+  /**
+   * The syntax highlighter of the classic theme, the theme always uses
+   * `@vuepress/plugin-shiki`
+   *
+   * Classic 主题的语法高亮插件，主题始终使用 `@vuepress/plugin-shiki`
+   *
+   * @deprecated Use `markdownPlugins.shiki` instead. / 请改用
+   *   `markdownPlugins.shiki`。
+   */
+  prismjs?: never
+
+  /**
+   * The syntax highlighter of the classic theme, use `markdownPlugins` instead
+   *
+   * Classic 主题的语法高亮插件，请改用 `markdownPlugins`
+   *
+   * @deprecated Use `markdownPlugins.shiki` instead. / 请改用
+   *   `markdownPlugins.shiki`。
+   */
+  shiki?: never
+}
+
+/**
+ * Options of `@vuepress/plugin-icon` wired by the theme
+ *
+ * The theme renders icons through the component registered by the plugin and
+ * reserves the `VPIcon` name, so the `component` option is not available.
+ *
+ * 主题接入的 `@vuepress/plugin-icon` 配置项
+ *
+ * 主题通过插件注册的组件渲染图标，并保留 `VPIcon` 名称，因此不提供 `component` 选项。
+ */
+export type IconThemePluginOptions = Omit<IconPluginOptions, 'component'> & {
+  /**
+   * The component name registered by the plugin
+   *
+   * The theme keeps it as `VPIcon`, so this option cannot be set.
+   *
+   * 插件注册的组件名
+   *
+   * 主题固定使用 `VPIcon`，因此该选项不可设置。
+   *
+   * @deprecated The component name is managed by the theme. / 组件名由主题管理。
+   */
+  component?: never
+}
+
+/**
+ * Options of the Markdown plugins wired by the theme
+ *
+ * Every plugin is enabled by default, set it to `false` to disable the plugin.
+ *
+ * 主题接入的 Markdown 插件配置项
+ *
+ * 每个插件默认启用，设为 `false` 可禁用对应插件。
+ */
+export interface MarkdownPluginsOptions {
+  /**
+   * Options of `@vuepress/plugin-markdown-ext` /
+   * `@vuepress/plugin-markdown-ext` 的配置项
+   *
+   * @default true
+   */
+  ext?: MarkdownExtPluginOptions | boolean
+
+  /**
+   * Options of `@vuepress/plugin-markdown-hint` /
+   * `@vuepress/plugin-markdown-hint` 的配置项
+   *
+   * @default true
+   */
+  hint?: MarkdownHintPluginOptions | boolean
+
+  /**
+   * Options of `@vuepress/plugin-links-check` / `@vuepress/plugin-links-check`
+   * 的配置项
+   *
+   * @default true
+   */
+  linksCheck?: LinksCheckPluginOptions | boolean
+
+  /**
+   * Options of `@vuepress/plugin-markdown-raw` /
+   * `@vuepress/plugin-markdown-raw` 的配置项
+   *
+   * The theme isolates the page styles from the `raw` container by default, set
+   * `isolateStyles: false` to keep the container without the style isolation.
+   *
+   * 主题默认将页面样式与 `raw` 容器隔离，设置为 `isolateStyles: false` 可只保留容器而不隔离样式。
+   *
+   * @default true
+   */
+  raw?: MarkdownRawPluginOptions | boolean
+
+  /**
+   * Options of `@vuepress/plugin-shiki` / `@vuepress/plugin-shiki` 的配置项
+   *
+   * @default true
+   */
+  shiki?: ShikiPluginOptions | boolean
+
+  /**
+   * Options of `@vuepress/plugin-markdown-tab` /
+   * `@vuepress/plugin-markdown-tab` 的配置项
+   *
+   * @default true
+   */
+  tab?: MarkdownTabPluginOptions | boolean
 }
 
 /**
@@ -353,8 +503,19 @@ export interface ThemeConfig {
    */
   aside?: boolean | 'left'
 
-  /** Info for the edit link / 编辑链接信息 */
-  editLink?: EditLink
+  /**
+   * Info for the edit link
+   *
+   * Set it to `false` to hide the edit link. The classic theme syntax
+   * (`editLink: true`, `editLinkText`, `editLinkPattern`, `docsRepo`,
+   * `docsBranch`, `docsDir`) is normalized at build time.
+   *
+   * 编辑链接信息
+   *
+   * 设为 `false` 隐藏编辑链接。classic 主题的写法（`editLink: true`、`editLinkText`、
+   * `editLinkPattern`、`docsRepo`、`docsBranch`、`docsDir`）会在构建期被归一化。
+   */
+  editLink?: EditLink | false
 
   /** Whether to show the last updated time / 是否显示最后更新时间 */
   lastUpdated?: LastUpdatedOptions | boolean
@@ -421,6 +582,13 @@ export interface ThemeConfig {
    */
   themePlugins?: ThemePluginsOptions
 
+  /**
+   * Options of the Markdown plugins wired by the theme
+   *
+   * 主题接入的 Markdown 插件配置项
+   */
+  markdownPlugins?: MarkdownPluginsOptions
+
   /** The footer configuration / 页脚配置 */
   footer?: Footer
 
@@ -466,8 +634,256 @@ export interface ThemeConfig {
   /** Color custom containers on a graded severity scale / 是否按严重程度为自定义容器着色 */
   gradedContainers?: boolean
 
-  /** Customize text of 404 page / 自定义 404 页面的文本 */
-  notFound?: NotFoundOptions
+  /**
+   * Customize text of 404 page
+   *
+   * The classic theme syntax (`notFound: string[]`) is normalized at build
+   * time: the first item is used as the quote.
+   *
+   * 自定义 404 页面的文本
+   *
+   * Classic 主题的写法（`notFound: string[]`）会在构建期被归一化：第一项会被用作引文。
+   */
+  notFound?: NotFoundOptions | string[]
+
+  /**
+   * Color mode of the classic theme, use `appearance` instead
+   *
+   * Classic 主题的颜色模式，请改用 `appearance`
+   *
+   * @deprecated Use `appearance` instead. / 请改用 `appearance`。
+   */
+  colorMode?: never
+
+  /**
+   * Whether to show the color mode switch of the classic theme, use
+   * `appearance` instead
+   *
+   * Classic 主题是否显示颜色模式切换，请改用 `appearance`
+   *
+   * @deprecated Use `appearance` instead. / 请改用 `appearance`。
+   */
+  colorModeSwitch?: never
+
+  /**
+   * Home path of the classic theme, use `logoLink` and `notFound.link` instead
+   *
+   * Classic 主题的首页路径，请改用 `logoLink` 与 `notFound.link`
+   *
+   * @deprecated Use `logoLink` and `notFound.link` instead. / 请改用 `logoLink` 与
+   *   `notFound.link`。
+   */
+  home?: never
+
+  /**
+   * Navbar label of the classic theme, use `navMenuLabel` instead
+   *
+   * Classic 主题的导航栏标签，请改用 `navMenuLabel`
+   *
+   * @deprecated Use `navMenuLabel` instead. / 请改用 `navMenuLabel`。
+   */
+  navbarLabel?: never
+
+  /**
+   * Page navbar label of the classic theme, use `navMenuLabel` instead
+   *
+   * Classic 主题的页面导航栏标签，请改用 `navMenuLabel`
+   *
+   * @deprecated Use `navMenuLabel` instead. / 请改用 `navMenuLabel`。
+   */
+  pageNavbarLabel?: never
+
+  /**
+   * Dark logo of the classic theme, use `logo: { light, dark }` instead
+   *
+   * Classic 主题的暗色 Logo，请改用 `logo: { light, dark }`
+   *
+   * @deprecated Use `logo: { light, dark }` instead. / 请改用 `logo: { light, dark
+   *   }`。
+   */
+  logoDark?: never
+
+  /**
+   * Logo alt of the classic theme, use `logo.alt` instead
+   *
+   * Classic 主题的 Logo 替代文本，请改用 `logo.alt`
+   *
+   * @deprecated Use `logo.alt` instead. / 请改用 `logo.alt`。
+   */
+  logoAlt?: never
+
+  /**
+   * Repository link of the classic theme, use `socialLinks` instead
+   *
+   * Classic 主题的仓库链接，请改用 `socialLinks`
+   *
+   * @deprecated Use `socialLinks` instead. / 请改用 `socialLinks`。
+   */
+  repo?: never
+
+  /**
+   * Repository label of the classic theme, use `socialLinks[*].ariaLabel`
+   * instead
+   *
+   * Classic 主题的仓库标签，请改用 `socialLinks[*].ariaLabel`
+   *
+   * @deprecated Use `socialLinks[*].ariaLabel` instead. / 请改用
+   *   `socialLinks[*].ariaLabel`。
+   */
+  repoLabel?: never
+
+  /**
+   * Language menu text of the classic theme, use `langMenuLabel` instead
+   *
+   * Classic 主题的语言菜单文案，请改用 `langMenuLabel`
+   *
+   * @deprecated Use `langMenuLabel` instead. / 请改用 `langMenuLabel`。
+   */
+  selectLanguageText?: never
+
+  /**
+   * Language menu aria label of the classic theme, use `langMenuLabel` instead
+   *
+   * Classic 主题的语言菜单无障碍标签，请改用 `langMenuLabel`
+   *
+   * @deprecated Use `langMenuLabel` instead. / 请改用 `langMenuLabel`。
+   */
+  selectLanguageAriaLabel?: never
+
+  /**
+   * Language menu name of the classic theme, use `locales.<locale>.label`
+   * instead
+   *
+   * Classic 主题的语言菜单名称，请改用 `locales.<locale>.label`
+   *
+   * @deprecated Use `locales.<locale>.label` instead. / 请改用
+   *   `locales.<locale>.label`。
+   */
+  selectLanguageName?: never
+
+  /**
+   * Sidebar depth of the classic theme, use `@vuepress/plugin-toc` instead
+   *
+   * Classic 主题的侧边栏深度，请改用 `@vuepress/plugin-toc`
+   *
+   * @deprecated The theme no longer renders the page headers in the sidebar. Use
+   *   `@vuepress/plugin-toc` instead. / 主题不再在侧边栏中渲染页面标题，请改用
+   *   `@vuepress/plugin-toc`。
+   */
+  sidebarDepth?: never
+
+  /**
+   * Edit link text of the classic theme, use `editLink.text` instead
+   *
+   * Classic 主题的编辑链接文案，请改用 `editLink.text`
+   *
+   * @deprecated Use `editLink.text` instead. / 请改用 `editLink.text`。
+   */
+  editLinkText?: never
+
+  /**
+   * Edit link pattern of the classic theme, use `editLink.pattern` instead
+   *
+   * Classic 主题的编辑链接模式，请改用 `editLink.pattern`
+   *
+   * @deprecated Use `editLink.pattern` instead. / 请改用 `editLink.pattern`。
+   */
+  editLinkPattern?: never
+
+  /**
+   * Documentation repository of the classic theme, use `getEditLinkPattern`
+   * instead
+   *
+   * Classic 主题的文档仓库，请改用 `getEditLinkPattern`
+   *
+   * @deprecated Use `getEditLinkPattern` instead. / 请改用 `getEditLinkPattern`。
+   */
+  docsRepo?: never
+
+  /**
+   * Documentation branch of the classic theme, use `getEditLinkPattern` instead
+   *
+   * Classic 主题的文档分支，请改用 `getEditLinkPattern`
+   *
+   * @deprecated Use `getEditLinkPattern` instead. / 请改用 `getEditLinkPattern`。
+   */
+  docsBranch?: never
+
+  /**
+   * Documentation directory of the classic theme, use `getEditLinkPattern`
+   * instead
+   *
+   * Classic 主题的文档目录，请改用 `getEditLinkPattern`
+   *
+   * @deprecated Use `getEditLinkPattern` instead. / 请改用 `getEditLinkPattern`。
+   */
+  docsDir?: never
+
+  /**
+   * Last updated text of the classic theme, use `lastUpdated.text` instead
+   *
+   * Classic 主题的最后更新文案，请改用 `lastUpdated.text`
+   *
+   * @deprecated Use `lastUpdated.text` instead. / 请改用 `lastUpdated.text`。
+   */
+  lastUpdatedText?: never
+
+  /**
+   * 404 page back home text of the classic theme, use `notFound.linkText`
+   * instead
+   *
+   * Classic 主题 404 页面的返回文案，请改用 `notFound.linkText`
+   *
+   * @deprecated Use `notFound.linkText` instead. / 请改用 `notFound.linkText`。
+   */
+  backToHome?: never
+
+  /**
+   * External link label of the classic theme, the theme always appends the
+   * external link icon
+   *
+   * Classic 主题的外链标签，主题总是追加外部链接图标
+   *
+   * @deprecated Use `externalLinkIcon` instead. / 请改用 `externalLinkIcon`。
+   */
+  openInNewWindow?: never
+
+  /**
+   * Color mode switch label of the classic theme, use `darkModeSwitchLabel`
+   * instead
+   *
+   * Classic 主题的颜色模式切换标签，请改用 `darkModeSwitchLabel`
+   *
+   * @deprecated Use `darkModeSwitchLabel` instead. / 请改用 `darkModeSwitchLabel`。
+   */
+  toggleColorMode?: never
+
+  /**
+   * Sidebar toggle label of the classic theme, use `sidebarMenuLabel` instead
+   *
+   * Classic 主题的侧边栏切换标签，请改用 `sidebarMenuLabel`
+   *
+   * @deprecated Use `sidebarMenuLabel` instead. / 请改用 `sidebarMenuLabel`。
+   */
+  toggleSidebar?: never
+
+  /**
+   * Previous page label of the classic theme, use `docFooter.prev` instead
+   *
+   * Classic 主题的上一页标签，请改用 `docFooter.prev`
+   *
+   * @deprecated Use `docFooter.prev` instead. / 请改用 `docFooter.prev`。
+   */
+  prev?: never
+
+  /**
+   * Next page label of the classic theme, use `docFooter.next` instead
+   *
+   * Classic 主题的下一页标签，请改用 `docFooter.next`
+   *
+   * @deprecated Use `docFooter.next` instead. / 请改用 `docFooter.next`。
+   */
+  next?: never
 
   /** Locale configs / 多语言配置 */
   locales?: LocaleConfig<ThemeConfig>

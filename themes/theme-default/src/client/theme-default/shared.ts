@@ -10,6 +10,8 @@ export type {
   ThemeLayout,
   ThemePageData,
   ThemePluginsOptions,
+  IconThemePluginOptions,
+  MarkdownPluginsOptions,
   NavItem,
   NavItemComponent,
   NavItemWithLink,

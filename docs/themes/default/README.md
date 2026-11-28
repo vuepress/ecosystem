@@ -77,26 +77,26 @@ See [Frontmatter](./frontmatter.md) for the fields each page type accepts, and [
 
 ## Wired plugins
 
-The theme wires the following plugins automatically. Each of them can be disabled with `false` or configured with an options object through `themePlugins`; see [Plugins](./plugin.md).
+The theme wires the following plugins automatically. Each of them can be disabled with `false` or configured with an options object through `themePlugins` or `markdownPlugins`; see [Plugins](./plugin.md).
 
-| Plugin                                 | `themePlugins` key  | Default                               |
-| -------------------------------------- | ------------------- | ------------------------------------- |
-| `@vuepress/plugin-theme-data`          | —                   | Always enabled                        |
-| `@vuepress/plugin-copy-code`           | `copyCode`          | Enabled                               |
-| `@vuepress/plugin-git`                 | `git`               | Enabled                               |
-| `@vuepress/plugin-shiki`               | `shiki`             | Enabled, `github-light`/`github-dark` |
-| `@vuepress/plugin-markdown-hint`       | `markdownHint`      | Enabled, `hint` and `alert`           |
-| `@vuepress/plugin-markdown-tab`        | `markdownTab`       | Enabled, `codeTabs`                   |
-| `@vuepress/plugin-markdown-ext`        | `markdownExt`       | Enabled, `vPre`                       |
-| `@vuepress/plugin-markdown-raw`        | `markdownRaw`       | Enabled, style isolation on           |
-| `@vuepress/plugin-active-header-links` | `activeHeaderLinks` | Enabled                               |
-| `@vuepress/plugin-icon`                | `icon`              | Enabled, `assets: 'iconify'`          |
-| `@vuepress/plugin-medium-zoom`         | `mediumZoom`        | Enabled                               |
-| `@vuepress/plugin-nprogress`           | `nprogress`         | Enabled                               |
-| `@vuepress/plugin-back-to-top`         | `backToTop`         | Enabled                               |
-| `@vuepress/plugin-links-check`         | `linksCheck`        | Enabled                               |
-| `@vuepress/plugin-seo`                 | `seo`               | Only with `hostname`                  |
-| `@vuepress/plugin-sitemap`             | `sitemap`           | Only with `hostname`                  |
+| Plugin                                 | Option                       | Default                               |
+| -------------------------------------- | ---------------------------- | ------------------------------------- |
+| `@vuepress/plugin-theme-data`          | —                            | Always enabled                        |
+| `@vuepress/plugin-copy-code`           | `copyCode`                   | Enabled                               |
+| `@vuepress/plugin-git`                 | `git`                        | Enabled                               |
+| `@vuepress/plugin-shiki`               | `markdownPlugins.shiki`      | Enabled, `github-light`/`github-dark` |
+| `@vuepress/plugin-markdown-hint`       | `markdownPlugins.hint`       | Enabled, `hint` and `alert`           |
+| `@vuepress/plugin-markdown-tab`        | `markdownPlugins.tab`        | Enabled, `codeTabs`                   |
+| `@vuepress/plugin-markdown-ext`        | `markdownPlugins.ext`        | Enabled, `vPre`                       |
+| `@vuepress/plugin-markdown-raw`        | `markdownPlugins.raw`        | Enabled, style isolation on           |
+| `@vuepress/plugin-active-header-links` | `activeHeaderLinks`          | Enabled                               |
+| `@vuepress/plugin-icon`                | `icon`                       | Enabled, `assets: 'iconify'`          |
+| `@vuepress/plugin-medium-zoom`         | `mediumZoom`                 | Enabled                               |
+| `@vuepress/plugin-nprogress`           | `nprogress`                  | Enabled                               |
+| `@vuepress/plugin-back-to-top`         | `backToTop`                  | Enabled                               |
+| `@vuepress/plugin-links-check`         | `markdownPlugins.linksCheck` | Enabled                               |
+| `@vuepress/plugin-seo`                 | `seo`                        | Only with `hostname`                  |
+| `@vuepress/plugin-sitemap`             | `sitemap`                    | Only with `hostname`                  |
 
 ::: tip Search is not bundled
 A theme cannot choose a search backend for a site, so search is not part of the theme. Install `@vuepress/plugin-slimsearch` (local search) or `@vuepress/plugin-docsearch` (Algolia) and register it in `plugins`; the navbar renders the globally registered `SearchBox` component automatically.

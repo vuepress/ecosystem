@@ -77,26 +77,26 @@ export default defineUserConfig({
 
 ## 内置插件 {#wired-plugins}
 
-主题会自动接入以下插件。每个插件都可以通过 `themePlugins` 设为 `false` 禁用，或传入配置对象进行配置；见 [插件](./plugin.md)。
+主题会自动接入以下插件。每个插件都可以通过 `themePlugins` 或 `markdownPlugins` 设为 `false` 禁用，或传入配置对象进行配置；见 [插件](./plugin.md)。
 
-| 插件                                   | `themePlugins` 键   | 默认值                             |
-| -------------------------------------- | ------------------- | ---------------------------------- |
-| `@vuepress/plugin-theme-data`          | —                   | 始终启用                           |
-| `@vuepress/plugin-copy-code`           | `copyCode`          | 启用                               |
-| `@vuepress/plugin-git`                 | `git`               | 启用                               |
-| `@vuepress/plugin-shiki`               | `shiki`             | 启用，`github-light`/`github-dark` |
-| `@vuepress/plugin-markdown-hint`       | `markdownHint`      | 启用，`hint` 和 `alert`            |
-| `@vuepress/plugin-markdown-tab`        | `markdownTab`       | 启用，`codeTabs`                   |
-| `@vuepress/plugin-markdown-ext`        | `markdownExt`       | 启用，`vPre`                       |
-| `@vuepress/plugin-markdown-raw`        | `markdownRaw`       | 启用，样式隔离开启                 |
-| `@vuepress/plugin-active-header-links` | `activeHeaderLinks` | 启用                               |
-| `@vuepress/plugin-icon`                | `icon`              | 启用，`assets: 'iconify'`          |
-| `@vuepress/plugin-medium-zoom`         | `mediumZoom`        | 启用                               |
-| `@vuepress/plugin-nprogress`           | `nprogress`         | 启用                               |
-| `@vuepress/plugin-back-to-top`         | `backToTop`         | 启用                               |
-| `@vuepress/plugin-links-check`         | `linksCheck`        | 启用                               |
-| `@vuepress/plugin-seo`                 | `seo`               | 仅在设置了 `hostname` 时启用       |
-| `@vuepress/plugin-sitemap`             | `sitemap`           | 仅在设置了 `hostname` 时启用       |
+| 插件                                   | 选项                         | 默认值                             |
+| -------------------------------------- | ---------------------------- | ---------------------------------- |
+| `@vuepress/plugin-theme-data`          | —                            | 始终启用                           |
+| `@vuepress/plugin-copy-code`           | `copyCode`                   | 启用                               |
+| `@vuepress/plugin-git`                 | `git`                        | 启用                               |
+| `@vuepress/plugin-shiki`               | `markdownPlugins.shiki`      | 启用，`github-light`/`github-dark` |
+| `@vuepress/plugin-markdown-hint`       | `markdownPlugins.hint`       | 启用，`hint` 和 `alert`            |
+| `@vuepress/plugin-markdown-tab`        | `markdownPlugins.tab`        | 启用，`codeTabs`                   |
+| `@vuepress/plugin-markdown-ext`        | `markdownPlugins.ext`        | 启用，`vPre`                       |
+| `@vuepress/plugin-markdown-raw`        | `markdownPlugins.raw`        | 启用，样式隔离开启                 |
+| `@vuepress/plugin-active-header-links` | `activeHeaderLinks`          | 启用                               |
+| `@vuepress/plugin-icon`                | `icon`                       | 启用，`assets: 'iconify'`          |
+| `@vuepress/plugin-medium-zoom`         | `mediumZoom`                 | 启用                               |
+| `@vuepress/plugin-nprogress`           | `nprogress`                  | 启用                               |
+| `@vuepress/plugin-back-to-top`         | `backToTop`                  | 启用                               |
+| `@vuepress/plugin-links-check`         | `markdownPlugins.linksCheck` | 启用                               |
+| `@vuepress/plugin-seo`                 | `seo`                        | 仅在设置了 `hostname` 时启用       |
+| `@vuepress/plugin-sitemap`             | `sitemap`                    | 仅在设置了 `hostname` 时启用       |
 
 ::: tip 搜索并未内置
 主题无法为站点选择搜索后端，因此搜索不属于主题的一部分。请安装 `@vuepress/plugin-slimsearch`（本地搜索）或 `@vuepress/plugin-docsearch`（Algolia），并在 `plugins` 中注册；导航栏会自动渲染全局注册的 `SearchBox` 组件。

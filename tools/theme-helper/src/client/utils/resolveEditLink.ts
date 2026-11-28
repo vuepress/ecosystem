@@ -4,21 +4,9 @@ import {
   removeLeadingSlash,
 } from 'vuepress/shared'
 
-import type { RepoType } from './resolveRepoType.js'
-import { resolveRepoType } from './resolveRepoType.js'
+import { EDIT_LINK_PATTERNS, resolveRepoType } from '../../shared/editLink.js'
 
-/**
- * Default edit link patterns of the supported repositories
- *
- * 支持的仓库的默认编辑链接模式
- */
-export const EDIT_LINK_PATTERNS: Record<Exclude<RepoType, null>, string> = {
-  GitHub: ':repo/edit/:branch/:path',
-  GitLab: ':repo/-/edit/:branch/:path',
-  Gitee: ':repo/edit/:branch/:path',
-  Bitbucket:
-    ':repo/src/:branch/:path?mode=edit&spa=0&at=:branch&fileviewer=file-view-default',
-}
+export { EDIT_LINK_PATTERNS } from '../../shared/editLink.js'
 
 const resolveEditLinkPatterns = ({
   docsRepo,

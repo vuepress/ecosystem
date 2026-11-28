@@ -8,7 +8,7 @@ icon: pyramid
 
 This plugin enables syntax highlighting for markdown code fences with [Prism.js](https://prismjs.com/).
 
-The default theme uses [Shiki](./shiki.md) for syntax highlighting instead of this plugin. To use Prism.js, set `themePlugins: { shiki: false }` in the theme options and register this plugin.
+The default theme uses [Shiki](./shiki.md) for syntax highlighting instead of this plugin. To use Prism.js, set `markdownPlugins: { shiki: false }` in the theme options and register this plugin.
 
 ## Usage
 

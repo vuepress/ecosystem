@@ -15,19 +15,15 @@ icon: plug
 | `@vuepress/plugin-theme-data`          | —                   | 启用   | 始终启用。                                                 |
 | `@vuepress/plugin-copy-code`           | `copyCode`          | `true` | 作用范围限定为页面内容中的代码块。                         |
 | `@vuepress/plugin-git`                 | `git`               | `true` | 收集最后更新时间和贡献者。                                 |
-| `@vuepress/plugin-shiki`               | `shiki`             | `true` | `github-light` 和 `github-dark` 主题。                     |
-| `@vuepress/plugin-markdown-ext`        | `markdownExt`       | `true` | `v-pre` 容器。                                             |
-| `@vuepress/plugin-markdown-raw`        | `markdownRaw`       | `true` | `raw` 容器，带样式隔离。                                   |
-| `@vuepress/plugin-markdown-hint`       | `markdownHint`      | `true` | 提示容器和 GFM 警告。                                      |
-| `@vuepress/plugin-markdown-tab`        | `markdownTab`       | `true` | 代码标签页。其他标签页分组需要手动开启。                   |
 | `@vuepress/plugin-active-header-links` | `activeHeaderLinks` | `true` | 让 URL 哈希与大纲保持同步。                                |
 | `@vuepress/plugin-back-to-top`         | `backToTop`         | `true` | 返回顶部按钮。                                             |
-| `@vuepress/plugin-links-check`         | `linksCheck`        | `true` | 死链检测，使用插件默认配置。                               |
 | `@vuepress/plugin-icon`                | `icon`              | `true` | 运行时加载的 Iconify 资源。                                |
 | `@vuepress/plugin-medium-zoom`         | `mediumZoom`        | `true` | 文档图片的图片缩放。                                       |
 | `@vuepress/plugin-nprogress`           | `nprogress`         | `true` | 导航时的进度条。                                           |
 | `@vuepress/plugin-seo`                 | `seo`               | `true` | 仅在设置了 [`hostname`](./config.md#basic-config) 时接入。 |
 | `@vuepress/plugin-sitemap`             | `sitemap`           | `true` | 仅在设置了 [`hostname`](./config.md#basic-config) 时接入。 |
+
+Markdown 插件 —— Shiki、Markdown Ext、Markdown Raw、Markdown Hint、Markdown Tab 和链接检查 —— 统一放在 [`markdownPlugins`](#markdown-plugins) 下，与上面的插件分开配置。
 
 搜索并未内置。导航栏会渲染一个 `SearchBox` 占位符，由搜索插件填充：[SlimSearch](../../plugins/search/slimsearch.md) 提供本地索引，[DocSearch](../../plugins/search/docsearch.md) 提供 Algolia 搜索。见 [搜索](#search)。
 
@@ -57,7 +53,7 @@ export default defineUserConfig({
 有些插件是由主题配置项本身启用的，而不是由 `themePlugins` 条目启用的：
 
 - `git` 会从 [`lastUpdated`](./config.md#page) 和 [`contributors`](./config.md#page) 接收 `updatedTime` 和 `contributors`。当所有语言都禁用贡献者时，git 插件不会收集它们。
-- `markdownHint` 会从 `tip`、`warning`、`danger`、`important` 和 `note` 接收[提示容器标签](./locale.md#hint-containers)。
+- `markdownPlugins.hint` 会从 `tip`、`warning`、`danger`、`important` 和 `note` 接收[提示容器标签](./locale.md#hint-containers)。
 - `seo` 和 `sitemap` 需要 [`hostname`](./config.md#basic-config)。
 - `shiki`、`activeHeaderLinks` 和 `copyCode` 会把功能限定到主题渲染的类上，因此覆盖这些配置项可能破坏它们依赖的集成。
 
@@ -103,59 +99,6 @@ themePlugins: {
 }
 ```
 
-@`themePlugins.shiki` type=`ShikiPluginOptions | boolean` default=`true`
-
-接入 [Shiki](../../plugins/markdown/shiki.md)，使用 `github-light` 和 `github-dark` 主题，主题 CSS 会同时把它们作为亮色和暗色主题使用。
-
-传入 `themes` 对象可以替换它们：
-
-```ts
-themePlugins: {
-  shiki: {
-    themes: { light: 'vitesse-light', dark: 'vitesse-dark' },
-  },
-}
-```
-
-`themePlugins.shiki: false` 会让代码块不带高亮。如果改用 Prism，可以配合 [`@vuepress/plugin-prismjs`](../../plugins/markdown/prismjs.md)。
-
-@`themePlugins.markdownExt` type=`MarkdownExtPluginOptions | boolean` default=`true`
-
-接入 [Markdown Ext](../../plugins/markdown/markdown-ext.md)，但只启用 `v-pre` 容器，即 `{ vPre: true }`。
-
-该插件的其他 Markdown 扩展需要手动开启。`gfm: true` 会启用 GFM 支持 —— 脚注、任务列表、软换行和自动链接的 URL：
-
-```ts
-themePlugins: {
-  markdownExt: { gfm: true },
-}
-```
-
-@`themePlugins.markdownRaw` type=`MarkdownRawPluginOptions | boolean` default=`true`
-
-接入 [Markdown Raw](../../plugins/markdown/markdown-raw.md)，并设置 `isolateStyles: true`，从而让主题样式与原始内容隔离。
-
-@`themePlugins.markdownHint` type=`MarkdownHintPluginOptions | boolean` default=`true`
-
-接入 [Markdown Hint](../../plugins/markdown/markdown-hint.md)，设置 `hint: true` 和 `alert: true`，并传入主题配置项中的本地化标签。
-
-```ts
-themePlugins: {
-  // disable the GFM alerts, keep the containers
-  markdownHint: { alert: false },
-}
-```
-
-@`themePlugins.markdownTab` type=`MarkdownTabPluginOptions | boolean` default=`true`
-
-接入 [Markdown Tab](../../plugins/markdown/markdown-tab.md)，并设置 `codeTabs: true`。代码标签页开箱即用；通用的 `::: tabs` 分组需要手动开启：
-
-```ts
-themePlugins: {
-  markdownTab: { tabs: true },
-}
-```
-
 @`themePlugins.activeHeaderLinks` type=boolean default=`true`
 
 接入 [Active Header Links](../../plugins/development/active-header-links.md)，并设置 `headerLinkSelector: '.outline-link'`，从而在滚动时让 URL 哈希跟随大纲。只接受布尔值：选择器由主题固定，因为它与大纲的标记绑定。
@@ -168,21 +111,6 @@ themePlugins: {
 themePlugins: {
   // show the button after 200px of scrolling, with a progress bar
   backToTop: { threshold: 200, progress: true },
-}
-```
-
-@`themePlugins.linksCheck` type=`LinksCheckPluginOptions | boolean` default=`true`
-
-接入[链接检查](../../plugins/markdown/links-check.md)，使用插件默认配置。对象就是插件配置项：
-
-```ts
-themePlugins: {
-  linksCheck: {
-    // do not check the anchor links in development
-    dev: false,
-    // fail the build on a dead link
-    build: 'error',
-  },
 }
 ```
 
@@ -242,6 +170,96 @@ defaultTheme({
     sitemap: { changefreq: 'weekly', excludePaths: ['/404.html'] },
   },
 })
+```
+::::
+
+## markdownPlugins {#markdownplugins}
+
+:::: fields
+@`markdownPlugins` type=`MarkdownPluginsOptions`
+
+主题接入的 Markdown 插件配置项。每个键接受 `true`（或不写）以使用默认值启用插件，`false` 跳过该插件，或一个会合并到默认值之上的对象。
+
+```ts
+import { defaultTheme } from '@vuepress/theme-default'
+import { defineUserConfig } from 'vuepress'
+
+export default defineUserConfig({
+  theme: defaultTheme({
+    markdownPlugins: {
+      shiki: { themes: { light: 'vitesse-light', dark: 'vitesse-dark' } },
+      hint: { alert: true },
+    },
+  }),
+})
+```
+
+@`markdownPlugins.shiki` type=`ShikiPluginOptions | boolean` default=`true`
+
+接入 [Shiki](../../plugins/markdown/shiki.md)，使用 `github-light` 和 `github-dark` 主题，主题 CSS 会同时把它们作为亮色和暗色主题使用。
+
+传入 `themes` 对象可以替换它们：
+
+```ts
+markdownPlugins: {
+  shiki: {
+    themes: { light: 'vitesse-light', dark: 'vitesse-dark' },
+  },
+}
+```
+
+`markdownPlugins.shiki: false` 会让代码块不带高亮。如果改用 Prism，可以配合 [`@vuepress/plugin-prismjs`](../../plugins/markdown/prismjs.md)。
+
+@`markdownPlugins.linksCheck` type=`LinksCheckPluginOptions | boolean` default=`true`
+
+接入[链接检查](../../plugins/markdown/links-check.md)，使用插件默认配置。对象就是插件配置项：
+
+```ts
+markdownPlugins: {
+  linksCheck: {
+    // do not check the anchor links in development
+    dev: false,
+    // fail the build on a dead link
+    build: 'error',
+  },
+}
+```
+
+@`markdownPlugins.ext` type=`MarkdownExtPluginOptions | boolean` default=`true`
+
+接入 [Markdown Ext](../../plugins/markdown/markdown-ext.md)，但只启用 `v-pre` 容器，即 `{ vPre: true }`。
+
+该插件的其他 Markdown 扩展需要手动开启。`gfm: true` 会启用 GFM 支持 —— 脚注、任务列表、软换行和自动链接的 URL：
+
+```ts
+markdownPlugins: {
+  ext: { gfm: true },
+}
+```
+
+@`markdownPlugins.raw` type=`MarkdownRawPluginOptions | boolean` default=`true`
+
+接入 [Markdown Raw](../../plugins/markdown/markdown-raw.md)，并设置 `isolateStyles: true`，从而让主题样式与原始内容隔离。
+
+@`markdownPlugins.hint` type=`MarkdownHintPluginOptions | boolean` default=`true`
+
+接入 [Markdown Hint](../../plugins/markdown/markdown-hint.md)，设置 `hint: true` 和 `alert: true`，并传入主题配置项中的本地化标签。
+
+```ts
+markdownPlugins: {
+  // disable the GFM alerts, keep the containers
+  hint: { alert: false },
+}
+```
+
+@`markdownPlugins.tab` type=`MarkdownTabPluginOptions | boolean` default=`true`
+
+接入 [Markdown Tab](../../plugins/markdown/markdown-tab.md)，并设置 `codeTabs: true`。代码标签页开箱即用；通用的 `::: tabs` 分组需要手动开启：
+
+```ts
+markdownPlugins: {
+  tab: { tabs: true },
+}
 ```
 ::::
 

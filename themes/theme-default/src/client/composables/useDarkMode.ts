@@ -83,7 +83,9 @@ export const createDarkModeRef = (
     appearance === 'dark' ||
     (typeof appearance === 'object' && appearance.initialValue === 'dark')
       ? 'dark'
-      : 'auto'
+      : typeof appearance === 'object' && appearance.initialValue === 'light'
+        ? 'light'
+        : 'auto'
   const darkStorage = useStorage(COLOR_MODE_STORAGE_KEY, initialValue)
 
   return computed({

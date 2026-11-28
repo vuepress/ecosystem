@@ -5,6 +5,8 @@ export type {
   ThemeLayout,
   ThemePageData,
   ThemePluginsOptions,
+  IconThemePluginOptions,
+  MarkdownPluginsOptions,
   NavItem,
   NavItemComponent,
   NavItemWithLink,
@@ -35,5 +37,7 @@ export type {
   LastUpdatedOptions,
   NotFoundOptions,
 } from '../shared/types.js'
+export { getEditLinkPattern } from '@vuepress/theme-helper'
+export type { GetEditLinkPatternOptions } from '@vuepress/theme-helper'
 export { defaultTheme } from './defaultTheme.js'
 export type { ThemeOptions } from './defaultTheme.js'

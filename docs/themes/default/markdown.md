@@ -88,7 +88,7 @@ The generic tab group is opt-in, because the theme only enables `codeTabs` by de
 ```ts
 export default defineUserConfig({
   theme: defaultTheme({
-    themePlugins: { markdownTab: { tabs: true } },
+    markdownPlugins: { tab: { tabs: true } },
   }),
 })
 ```
@@ -119,12 +119,12 @@ The theme enables the `v-pre` container of [`@vuepress/plugin-markdown-ext`](../
 :::
 ```
 
-The other extensions of the plugin — the GFM support, the footnotes, the task lists and the `component` fence — are opt-in through `themePlugins.markdownExt`. For example:
+The other extensions of the plugin — the GFM support, the footnotes, the task lists and the `component` fence — are opt-in through `markdownPlugins.ext`. For example:
 
 ```ts
 defaultTheme({
-  themePlugins: {
-    markdownExt: { gfm: true, footnote: true, tasklist: true },
+  markdownPlugins: {
+    ext: { gfm: true, footnote: true, tasklist: true },
   },
 })
 ```

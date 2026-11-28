@@ -6,7 +6,7 @@ icon: arrow-right-left
 
 `@vuepress/theme-classic` 是曾经作为 VuePress 默认主题的主题。它依然可用，也保持着自己的外观，但新的默认主题是 `@vuepress/theme-default` —— 一个从 VitePress 移植而来的轻量布局层。
 
-本页把经典主题的配置项、frontmatter 和样式映射到新主题。大部分配置项为了与 VitePress 对齐而改了名，而依赖 SASS 的配置项则由 CSS 自定义属性替代。
+本页把经典主题的配置项、frontmatter 和样式映射到新主题。新主题直接接受导航栏和侧边栏的经典写法 —— 字符串条目、`prefix`、`children` 与 `collapsible` 会在构建时归一化 —— 因此大多数站点只需要更换依赖包。经典主题的配置项同样会被接受：它们在构建时映射到对应的新配置项，并且只输出一次弃用警告，因此可以逐个配置项地迁移。下面的表格列出了每个配置项的替代项；没有对应新配置项的会注明。样式曾经是 SASS，现在则是 CSS 自定义属性。
 
 <NpmBadge package="@vuepress/theme-default" />
 
@@ -35,21 +35,21 @@ icon: arrow-right-left
 
 ### 通用 {#general}
 
-| 经典主题           | 新主题                    | 说明                                                                           |
-| ------------------ | ------------------------- | ------------------------------------------------------------------------------ |
-| `hostname`         | `hostname`                | 相同。它会启用 SEO 插件和 sitemap 插件。                                       |
-| `locales`          | `locales`                 | 为每个语言添加 `label`、`lang` 和 `link`，因为语言菜单依赖它们。               |
-| `colorMode`        | `appearance`              | 见[颜色模式](#color-mode)。                                                    |
-| `logo`             | `logo`                    | 一个字符串，或一个 `ThemeableImage` 对象。                                     |
-| `logoDark`         | `logo: { light, dark }`   | logo 的暗色变体。                                                              |
-| `logoAlt`          | `logo: { alt }`           | logo 的替代文本。                                                              |
-| `home`             | `logoLink`                | 导航栏中 logo 的链接，以及站点的首页。404 按钮使用 `notFound.link`。           |
-| `repo`             | `socialLinks`             | `socialLinks: [{ icon: 'github', link: 'https://github.com/example/repo' }]`。 |
-| `repoLabel`        | `socialLinks[].ariaLabel` | 仓库链接的标签。                                                               |
-| `navbar`           | `navbar`                  | 相同的键与相同的条目写法。见[导航栏](#navbar)。                                |
-| `sidebar`          | `sidebar`                 | 相同的键与相同的条目写法。默认值现在是 `false`。见[侧边栏](#sidebar)。         |
-| `externalLinkIcon` | `externalLinkIcon`        | 相同，默认值为 `false`。                                                       |
-| `themePlugins`     | `themePlugins`            | 见[主题插件](#theme-plugins)。                                                 |
+| 经典主题           | 新主题                    | 说明                                                                                                                  |
+| ------------------ | ------------------------- | --------------------------------------------------------------------------------------------------------------------- |
+| `hostname`         | `hostname`                | 相同。它会启用 SEO 插件和 sitemap 插件。                                                                              |
+| `locales`          | `locales`                 | 为每个语言添加 `label`、`lang` 和 `link`，因为语言菜单依赖它们。                                                      |
+| `colorMode`        | `appearance`              | 在构建时映射，见[颜色模式](#color-mode)。会输出弃用警告。                                                             |
+| `logo`             | `logo`                    | 一个字符串，或一个 `ThemeableImage` 对象。                                                                            |
+| `logoDark`         | `logo: { light, dark }`   | logo 的暗色变体。                                                                                                     |
+| `logoAlt`          | `logo: { alt }`           | logo 的替代文本。                                                                                                     |
+| `home`             | `logoLink`                | 导航栏中 logo 的链接，以及站点的首页。404 按钮使用 `notFound.link`。                                                  |
+| `repo`             | `socialLinks`             | 在构建时接受并映射。GitHub、GitLab、Gitee 和 Bitbucket 会自动添加品牌图标，因此只有其他托管平台才需要 `socialLinks`。 |
+| `repoLabel`        | `socialLinks[].ariaLabel` | 仓库链接的标签。默认使用仓库类型，例如 `GitHub`。                                                                     |
+| `navbar`           | `navbar`                  | 相同的键与相同的条目写法。见[导航栏](#navbar)。                                                                       |
+| `sidebar`          | `sidebar`                 | 相同的键与相同的条目写法。默认值现在是 `false`。见[侧边栏](#sidebar)。                                                |
+| `externalLinkIcon` | `externalLinkIcon`        | 相同，默认值为 `false`。                                                                                              |
+| `themePlugins`     | `themePlugins`            | 见[主题插件](#theme-plugins)。                                                                                        |
 
 ### 导航栏 {#navbar}
 
@@ -91,33 +91,32 @@ icon: arrow-right-left
 
 ### 文档页脚 {#document-footer}
 
-| 经典主题           | 新主题             | 说明                                                                       |
-| ------------------ | ------------------ | -------------------------------------------------------------------------- |
-| `editLink`         | `editLink`         | 设置了 `editLink.pattern` 时才渲染链接。                                   |
-| `editLinkText`     | `editLink.text`    | 默认值为 `'Edit this page'`。                                              |
-| `editLinkPattern`  | `editLink.pattern` | 带 `:path` 的 URL 模板，或页面数据的函数。                                 |
-| `docsRepo`         | —                  | 自行构建 pattern，例如 `https://github.com/example/repo/edit/main/:path`。 |
-| `docsBranch`       | —                  | 同上。                                                                     |
-| `docsDir`          | —                  | 同上。                                                                     |
-| `lastUpdated`      | `lastUpdated`      | 相同，或带 `text` 和 `formatOptions` 的对象。                              |
-| `lastUpdatedText`  | `lastUpdated.text` | 默认值为 `'Last updated'`。                                                |
-| `contributors`     | `contributors`     | 相同，默认值为 `true`。                                                    |
-| `contributorsText` | `contributorsText` | 相同，默认值为 `'Contributors'`。                                          |
-| `prev`             | `docFooter.prev`   | 一个字符串标签，或 `false` 以隐藏上一篇链接。                              |
-| `next`             | `docFooter.next`   | 一个字符串标签，或 `false` 以隐藏下一篇链接。                              |
+| 经典主题           | 新主题                         | 说明                                                       |
+| ------------------ | ------------------------------ | ---------------------------------------------------------- |
+| `editLink`         | `editLink`                     | `false` 会禁用链接。`true` 会按仓库配置项映射为 pattern。  |
+| `editLinkText`     | `editLink.text`                | 在构建时接受并映射。                                       |
+| `editLinkPattern`  | `editLink.pattern`             | 在构建时接受并映射。`:path` 是唯一的占位符。               |
+| `docsRepo`         | `getEditLinkPattern({ repo })` | 在构建时接受并映射。该辅助函数用于在配置之外构建 pattern。 |
+| `docsBranch`       | —                              | 在构建时接受并映射到 pattern 中。                          |
+| `docsDir`          | —                              | 在构建时接受并映射到 pattern 中。                          |
+| `lastUpdated`      | `lastUpdated`                  | 相同，或带 `text` 和 `formatOptions` 的对象。              |
+| `lastUpdatedText`  | `lastUpdated.text`             | 默认值为 `'Last updated'`。                                |
+| `contributors`     | `contributors`                 | 相同，默认值为 `true`。                                    |
+| `contributorsText` | `contributorsText`             | 相同，默认值为 `'Contributors'`。                          |
+| `prev`             | `docFooter.prev`               | 一个字符串标签，或 `false` 以隐藏上一篇链接。              |
+| `next`             | `docFooter.next`               | 一个字符串标签，或 `false` 以隐藏下一篇链接。              |
 
 ### 颜色模式 {#color-mode}
 
-| 经典主题             | 新主题                                                             |
-| -------------------- | ------------------------------------------------------------------ |
-| `colorMode: 'auto'`  | `appearance: true`                                                 |
-| `colorMode: 'light'` | `appearance: false`                                                |
-| `colorMode: 'dark'`  | `appearance: 'dark'`                                               |
-| —                    | `appearance: 'force-dark'`（始终为暗色）                           |
-| —                    | `appearance: 'force-auto'`（跟随系统，不显示切换按钮）             |
-| —                    | `appearance: { initialValue: 'dark' }`（初始为暗色，显示切换按钮） |
+| 经典主题             | 新主题                                                 |
+| -------------------- | ------------------------------------------------------ |
+| `colorMode: 'auto'`  | `appearance: true`                                     |
+| `colorMode: 'light'` | `appearance: { initialValue: 'light' }`                |
+| `colorMode: 'dark'`  | `appearance: 'dark'`                                   |
+| —                    | `appearance: 'force-dark'`（始终为暗色）               |
+| —                    | `appearance: 'force-auto'`（跟随系统，不显示切换按钮） |
 
-`colorModeSwitch: false` 没有直接对应项。外观固定时切换按钮会被隐藏，因此要隐藏它请使用 `appearance: false`、`'dark'`、`'force-dark'` 或 `'force-auto'`。如果只想修改初始值而保留切换按钮，请使用对象形式。
+`colorModeSwitch: false` 会在构建期映射：配合 `colorMode: 'light'` 变成 `appearance: false`，配合 `'dark'` 变成 `'force-dark'`，不写 `colorMode` 则变成 `'force-auto'`。外观固定时切换按钮会被隐藏。
 
 存储键仍然是 `vuepress-color-scheme`，但暗色模式现在由 `<html>` 上的 `data-theme` 属性驱动，而不再由 `dark` class 驱动。针对 `.dark` 的样式表必须改为针对 `[data-theme='dark']`。
 
@@ -128,7 +127,7 @@ icon: arrow-right-left
 | 经典主题（frontmatter）         | 新主题（frontmatter）                                  | 说明                                                       |
 | ------------------------------- | ------------------------------------------------------ | ---------------------------------------------------------- |
 | `home: true`                    | `type: home`                                           | `home: true` 仍可使用，但已弃用并会输出警告。              |
-| `heroImage`                     | `heroImage`                                            | 字符串；使用 `hero.image` 时也可以是 `{ src }`。           |
+| `heroImage`                     | `heroImage`                                            | 一个字符串，或 `{ src }` 对象（使用 `hero.image` 时）。    |
 | `heroImageDark`                 | `heroImageDark`                                        | 图片的暗色变体。                                           |
 | `heroAlt`                       | `heroAlt`                                              | 替代文本。                                                 |
 | `heroHeight`                    | —                                                      | 不可配置。                                                 |
@@ -168,25 +167,27 @@ defaultTheme({
 | `openInNewWindow`         | —                                                                           |
 | —                         | `returnToTopLabel`、`extraMenuLabel`、`skipToContentLabel`                  |
 
+如果没有设置 `locales.<localePath>.label`，语言切换器会回退到 locale 路径，因此只配置了 `selectLanguageText` 的 locale 在迁移时需要补上它。
+
 ### 主题插件 {#theme-plugins}
 
-| 经典主题            | 新主题              | 说明                                                                |
-| ------------------- | ------------------- | ------------------------------------------------------------------- |
-| `activeHeaderLinks` | `activeHeaderLinks` | 只接受布尔值。                                                      |
-| `backToTop`         | `backToTop`         | 相同的配置项。                                                      |
-| `copyCode`          | `copyCode`          | 相同的配置项。                                                      |
-| `git`               | `git`               | 相同的配置项。                                                      |
-| `hint`              | `markdownHint`      | 相同的配置项。                                                      |
-| `linksCheck`        | `linksCheck`        | 相同的配置项。                                                      |
-| `mediumZoom`        | `mediumZoom`        | 含义相同，接受配置对象。                                            |
-| `nprogress`         | `nprogress`         | 相同。                                                              |
-| `prismjs`           | `shiki`             | 高亮器变了。关掉 Shiki 并注册 `prismjsPlugin` 即可保留 Prism。      |
-| `seo`               | `seo`               | 相同的配置项，需要 `hostname`。                                     |
-| `sitemap`           | `sitemap`           | 相同的配置项，需要 `hostname`。                                     |
-| `tab`               | `markdownTab`       | 代码选项卡默认开启；`::: tabs` 需要 `markdownTab: { tabs: true }`。 |
-| —                   | `icon`              | 使用 Iconify 渲染图标。                                             |
-| —                   | `markdownExt`       | GFM、脚注、任务列表和 `v-pre` 容器。                                |
-| —                   | `markdownRaw`       | 带样式隔离的 `raw` 容器。                                           |
+| 经典主题            | 新主题                       | 说明                                                                    |
+| ------------------- | ---------------------------- | ----------------------------------------------------------------------- |
+| `activeHeaderLinks` | `activeHeaderLinks`          | 只接受布尔值。                                                          |
+| `backToTop`         | `backToTop`                  | 相同的配置项。                                                          |
+| `copyCode`          | `copyCode`                   | 相同的配置项。                                                          |
+| `git`               | `git`                        | 相同的配置项。                                                          |
+| `hint`              | `markdownPlugins.hint`       | 相同的配置项，已移到 `markdownPlugins`。                                |
+| `linksCheck`        | `markdownPlugins.linksCheck` | 相同的配置项，移到 `markdownPlugins` 下。                               |
+| `mediumZoom`        | `mediumZoom`                 | 含义相同，接受配置对象。                                                |
+| `nprogress`         | `nprogress`                  | 相同。                                                                  |
+| `prismjs`           | `markdownPlugins.shiki`      | 高亮器变了。设置 `shiki: false` 并注册 `prismjsPlugin` 即可保留 Prism。 |
+| `seo`               | `seo`                        | 相同的配置项，需要 `hostname`。                                         |
+| `sitemap`           | `sitemap`                    | 相同的配置项，需要 `hostname`。                                         |
+| `tab`               | `markdownPlugins.tab`        | 代码选项卡默认开启；`::: tabs` 需要 `tab: { tabs: true }`。             |
+| —                   | `icon`                       | 使用 Iconify 渲染图标。                                                 |
+| `markdownExt`       | `markdownPlugins.ext`        | GFM、脚注、任务列表和 `v-pre` 容器。                                    |
+| `markdownRaw`       | `markdownPlugins.raw`        | 带样式隔离的 `raw` 容器。                                               |
 
 SASS 调色板已被移除。主题不再接入 `@vuepress/plugin-palette`，因为主题使用 CSS 自定义属性编写样式，站点在 `.vuepress/styles/index.css` 中覆盖它们即可。见[样式](#styles)。
 
@@ -195,9 +196,11 @@ SASS 调色板已被移除。主题不再接入 `@vuepress/plugin-palette`，因
 ```ts
 defaultTheme({
   themePlugins: {
-    shiki: { themes: { light: 'nord', dark: 'nord' } },
-    linksCheck: { exclude: [/^#\//u] },
     sitemap: false,
+  },
+  markdownPlugins: {
+    linksCheck: { exclude: [/^#\//u] },
+    shiki: { themes: { light: 'nord', dark: 'nord' } },
   },
 })
 ```
@@ -210,7 +213,7 @@ import { prismjsPlugin } from '@vuepress/plugin-prismjs'
 export default defineUserConfig({
   plugins: [prismjsPlugin()],
   theme: defaultTheme({
-    themePlugins: { shiki: false },
+    markdownPlugins: { shiki: false },
   }),
 })
 ```
@@ -317,9 +320,8 @@ const navbar: NavItem[] = [{ text: 'Guide', link: '/guide/' }]
 
 有几个经典特性是被移除而不是改名：
 
-- 导航栏中的 `repo` 图标及其标签。请改用 `socialLinks` 条目。
-- 由 `docsRepo`、`docsBranch` 和 `docsDir` 自动构建的编辑链接。请自行构建 `editLink.pattern`。
-- 随机化的 404 引文列表。新主题只有单个 `quote`。
+- 导航栏的 `repo` 条目。仓库会映射为一个带品牌图标的 `socialLinks` 条目，这也是 v1 渲染社交链接的唯一位置。
+- 随机化的 404 引文列表。只使用经典列表中的第一条消息作为 `quote`。
 - 外链的 `openInNewWindow` 文本。新主题只有 `externalLinkIcon` 布尔值。
 - `@theme/*` 别名和可替换的内部组件。请改用插槽和布局。
 - `pageNavbarLabel` 标签。
@@ -328,10 +330,10 @@ const navbar: NavItem[] = [{ text: 'Guide', link: '/guide/' }]
 ## 检查清单 {#checklist}
 
 1. 把 `@vuepress/theme-classic` 替换为 `@vuepress/theme-default`，把 `classicTheme` 替换为 `defaultTheme`。
-2. 保持 `navbar` 与 `sidebar` 配置不变：默认主题接受经典主题的写法，见上文的兼容性表格。
+2. 保持 `navbar` 与 `sidebar` 配置不变：默认主题接受经典主题的写法，见上文的兼容性表格。经典主题的配置项同样会被接受，因此在迁移配置项之前站点依然可以构建；构建日志会列出它仍然找到的每一个已弃用的配置项。
 3. 把 `colorMode` / `colorModeSwitch` 转换为 `appearance`，把语言切换器配置项转换为 `locales.<path>.label` 和 `langMenuLabel`。
 4. 将 `home: true` 转换为 `type: home`，并转换 `notFound` / `backToHome`；其他经典首页字段保持原来的名称。
-5. 重命名主题插件开关，如果站点必须保留 Prism 则关掉 Shiki。
+5. 把 Markdown 插件开关重命名为 `markdownPlugins`，如果站点必须保留 Prism 则关掉 Shiki。移除现在会输出弃用警告的配置项：`colorMode`、`colorModeSwitch`、`home`、`navbarLabel`、`logoDark`、`logoAlt`、`repo`、`repoLabel`、`selectLanguage*`、`sidebarDepth`、`editLink*`、`docsRepo`、`docsBranch`、`docsDir`、`lastUpdatedText`、`backToHome`、`openInNewWindow`、`toggleColorMode`、`toggleSidebar`、`prev`、`next`，以及经典主题的 `themePlugins.markdown*` / `themePlugins.hint` / `themePlugins.tab` / `themePlugins.prismjs` 键。
 6. 把 SASS 调色板迁移为 `.vuepress/styles/index.css` 中的 CSS 变量。
 7. 用 `theme.Layout` 和公共组件替换 `ParentLayout` 与 `@theme/*` 导入。
 8. 更新类型名称。
