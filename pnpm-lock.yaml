@@ -612,7 +612,7 @@ importers:
         version: 15.0.1(supports-color@8.1.1)
       tokenx:
         specifier: ^2.2.1
-        version: 2.2.1
+        version: 2.2.2
       unist-util-remove:
         specifier: ^4.0.0
         version: 4.0.0
@@ -10456,9 +10456,8 @@ packages:
     resolution: {integrity: sha512-o5sSPKEkg/DIQNmH43V0/uerLrpzVedkUh8tGNvaeXpfpuwjKenlSox/2O/BTlZUtEe+JG7s5YhEz608PlAHRA==}
     engines: {node: '>=0.6'}
 
-  tokenx@2.2.1:
-    resolution: {integrity: sha512-SUJNDK3y8yv9R3eHgo1HmtfOq1hUFNac3syYwtJ8xKbzKsc1Mbr54fduWceYWFsBIRwTG26GuL7N1AkyomONwg==}
-    engines: {node: '>=24'}
+  tokenx@2.2.2:
+    resolution: {integrity: sha512-Oq0Vgd88BUj+Mey7YBdpvRx4SmV2Wv0FwWhBQ1X91L8oihNu5XR0xmK9cD4/ryml7ynVm8y9kzUk1DFABc72SQ==}
     hasBin: true
 
   tree-dump@1.1.0:
@@ -20184,7 +20183,7 @@ snapshots:
 
   toidentifier@1.0.1: {}
 
-  tokenx@2.2.1: {}
+  tokenx@2.2.2: {}
 
   tree-dump@1.1.0(tslib@2.9.1):
     dependencies:
